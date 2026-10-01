@@ -13,6 +13,7 @@
   --border: #d7dee3;
   --accent: #2454a6;
   --accent-soft: #e5edf7;
+  --on-accent: #ffffff;
   --good: #1f7a4d;
   --good-soft: #e1f2e8;
   --warn: #9a6a1e;
@@ -34,6 +35,7 @@
     --border: #2a3744;
     --accent: #7fb0ee;
     --accent-soft: #1b2a3d;
+    --on-accent: #10161d;
     --good: #5bc490;
     --good-soft: #153324;
     --warn: #e0b060;
@@ -55,6 +57,7 @@
   --border: #2a3744;
   --accent: #7fb0ee;
   --accent-soft: #1b2a3d;
+  --on-accent: #10161d;
   --good: #5bc490;
   --good-soft: #153324;
   --warn: #e0b060;
@@ -75,6 +78,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
   --color-good: var(--good);
   --color-good-soft: var(--good-soft);
   --color-warn: var(--warn);
