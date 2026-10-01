@@ -132,7 +132,7 @@
       "id": "htl-1-p4",
       "type": "mcq",
       "level": "L1",
-      "prompt": "Đẳng thức nào **sai**?",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Đẳng thức nào **sai**?",
       "options": ["$AB^2 = BH \\cdot BC$", "$AC^2 = CH \\cdot BC$", "$AH \\cdot BC = AB \\cdot AC$", "$AH^2 = AB \\cdot AC$"],
       "correct": 3,
       "solution": "$AH^2 = BH \\cdot CH$, không phải $AB \\cdot AC$. Ba đẳng thức còn lại đều đúng."
@@ -146,7 +146,7 @@
         "$\\triangle ABH \\backsim \\triangle CAH$",
         "$\\triangle ABH \\backsim \\triangle CBA$",
         "$\\triangle ACH \\backsim \\triangle BCA$",
-        "$\\triangle ABC \\backsim \\triangle AHC$"
+        "$\\triangle ABC \\backsim \\triangle HAC$"
       ],
       "correct": 0,
       "mistakes": {
@@ -208,7 +208,7 @@
       "id": "htl-1-x2",
       "type": "mcq",
       "level": "L1",
-      "prompt": "$AH \\cdot BC$ bằng:",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Khi đó $AH \\cdot BC$ bằng:",
       "options": ["$AB \\cdot AC$", "$BH \\cdot CH$", "$AB^2$", "$AB + AC$"],
       "correct": 0,
       "mistakes": {
