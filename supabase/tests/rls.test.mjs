@@ -15,6 +15,7 @@ await db.exec(`
   grant usage on schema auth to authenticated, anon; grant usage on schema public to authenticated, anon;
 `);
 await db.exec(fs.readFileSync(`${repo}/migrations/0001_p0_accounts.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0002_service_role_grants_and_profile_trigger.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -59,4 +60,15 @@ check('heartbeat hidden from clients', isErr(await as('me@example.com','select *
 // lock the tutor → loses access
 await db.exec(`update public.profiles set is_active=false, locked_at=now() where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor sees no student', names(await as('trang@example.com','select full_name from public.students')), []);
+// 0002: GoTrue-style creation (insert without role, then set app_metadata) still yields a profile
+await db.exec(`insert into auth.users (email, raw_user_meta_data) values ('late@example.com','{"display_name":"Late"}')`);
+await db.exec(`update auth.users set raw_app_meta_data='{"role":"tutor"}' where email='late@example.com'`);
+check('profile created when role is set after insert', names(await db.query(`select display_name from public.profiles p join auth.users u on u.id=p.id where u.email='late@example.com'`).then(r=>r.rows)), ['Late']);
+await db.exec(`update auth.users set raw_app_meta_data='{"role":"tutor"}' where email='late@example.com'`);
+check('re-update does not duplicate or fail', (await db.query(`select count(*)::int c from public.profiles p join auth.users u on u.id=p.id where u.email='late@example.com'`)).rows[0].c, 1);
+// 0002: service_role can write the public tables
+await db.exec(`set role service_role`);
+const sr = await db.query(`insert into public.students (full_name, grade) values ('SR test', 9) returning id`).then(()=>true, ()=>false);
+await db.exec(`reset role`);
+check('service_role can insert into students', sr, true);
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);

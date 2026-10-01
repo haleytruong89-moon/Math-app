@@ -92,8 +92,25 @@ export async function createAccount(_p: ActionState, fd: FormData): Promise<Acti
     );
   }
 
+  // The DB trigger normally creates the profile; upsert here too so account creation never
+  // depends on trigger timing (idempotent).
+  const { error: profileError } = await admin
+    .from("profiles")
+    .upsert({ id: data.user.id, role: v.role, display_name: v.displayName }, { onConflict: "id" });
+  if (profileError) {
+    console.error("createAccount profile upsert failed:", profileError.code, profileError.message);
+    return fail(`Tạo được đăng nhập nhưng chưa tạo được hồ sơ: ${profileError.message}`);
+  }
+
   if (v.role === "student") {
-    await admin.from("students").update({ profile_id: data.user.id }).eq("id", v.studentId!);
+    const { error: linkError } = await admin
+      .from("students")
+      .update({ profile_id: data.user.id })
+      .eq("id", v.studentId!);
+    if (linkError) {
+      console.error("createAccount student link failed:", linkError.code, linkError.message);
+      return fail(`Không gắn được tài khoản với học sinh: ${linkError.message}`);
+    }
   }
 
   revalidatePath(PAGE);
