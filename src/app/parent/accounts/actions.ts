@@ -83,10 +83,12 @@ export async function createAccount(_p: ActionState, fd: FormData): Promise<Acti
     user_metadata: { display_name: v.displayName },
   });
   if (error || !data.user) {
+    console.error("createAccount failed:", error?.status, error?.message);
+    // This page is parent-only, so showing the provider's message is safe and makes setup problems diagnosable.
     return fail(
       error?.message?.toLowerCase().includes("already")
         ? "Email này đã có tài khoản."
-        : "Không tạo được tài khoản. Thử lại sau.",
+        : `Không tạo được tài khoản: ${error?.message ?? "lỗi không rõ"}`,
     );
   }
 
