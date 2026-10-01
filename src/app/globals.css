@@ -104,3 +104,8 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* KaTeX defaults to 1.21em, which is too large next to Source Serif on phones. */
+.katex {
+  font-size: 1.08em;
+}

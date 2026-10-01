@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:db": "node supabase/tests/rls.test.mjs"
+    "test:db": "node supabase/tests/rls.test.mjs",
+    "test:content": "node --test src/lib/content/*.test.ts",
+    "test": "npm run test:content && npm run test:db"
   },
   "dependencies": {
     "@fontsource-variable/libre-franklin": "^5.3.0",
@@ -15,6 +17,7 @@
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
+    "katex": "^0.16.47",
     "next": "^16.3.8",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

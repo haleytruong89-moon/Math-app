@@ -1,0 +1,232 @@
+{
+  "id": "htl-2",
+  "module": "he-thuc-luong",
+  "order": 2,
+  "title": "Tính độ dài bằng hệ thức lượng",
+  "status": "draft",
+  "estMinutes": 25,
+  "figure": "right-triangle-altitude",
+  "theory": [
+    "Trước mỗi bài, tự hỏi 3 câu: **đề cho gì**, **cần tìm gì**, **hệ thức nào nối hai thứ đó**?",
+    "Tính xuôi: biết hình chiếu và cạnh huyền thì $AB = \\sqrt{BH \\cdot BC}$. Tính ngược: biết cạnh góc vuông và cạnh huyền thì $BH = \\dfrac{AB^2}{BC}$.",
+    "Nếu đề chỉ cho hai cạnh góc vuông, tìm cạnh huyền bằng định lý Pythagore trước: $BC^2 = AB^2 + AC^2$.",
+    "Ghi đáp số ở dạng chính xác: số nguyên, số thập phân, phân số hoặc căn (ví dụ $\\dfrac{24}{5}$, $4{,}8$ hay $2\\sqrt{3}$). Dùng nút √ để gõ căn."
+  ],
+  "worked": {
+    "problem": "Cho $AB = 6$, $AC = 8$. Tính $AH$.",
+    "steps": [
+      {
+        "text": "Đề cho hai cạnh góc vuông, cần tìm đường cao $AH$. Hệ thức nối chúng là $AH \\cdot BC = AB \\cdot AC$, nhưng còn thiếu $BC$.",
+        "why": "Chọn hệ thức trước khi tính giúp thấy ngay mình còn thiếu đại lượng nào."
+      },
+      {
+        "text": "Tìm $BC$ bằng Pythagore: $BC^2 = 6^2 + 8^2 = 100$, nên $BC = 10$.",
+        "why": "$BC$ là cạnh huyền của tam giác $ABC$ vuông tại $A$."
+      },
+      {
+        "text": "Thay vào: $AH = \\dfrac{AB \\cdot AC}{BC} = \\dfrac{6 \\cdot 8}{10} = \\dfrac{24}{5} = 4{,}8$.",
+        "why": "Chia cả hai vế của $AH \\cdot BC = AB \\cdot AC$ cho $BC$."
+      }
+    ],
+    "selfExplain": "Nếu đề cho $BH$ và $CH$ thay vì $AB$ và $AC$, con dùng hệ thức nào để tính $AH$ ngay mà không cần Pythagore?"
+  },
+  "faded": {
+    "problem": "Cho $AB = 9$, $AC = 12$. Tính $BH$.",
+    "steps": [
+      { "text": "Cần tìm $BH$, hình chiếu của $AB$. Hệ thức: $AB^2 = BH \\cdot BC$, nên $BH = \\dfrac{AB^2}{BC}$. Còn thiếu $BC$." },
+      {
+        "prompt": "Tính cạnh huyền $BC$.",
+        "item": {
+          "id": "htl-2-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "$BC = ?$",
+          "answer": "15",
+          "mistakes": [
+            { "answer": "225", "code": "E10", "feedback": "$225$ là $BC^2$. Còn bước lấy căn bậc hai." },
+            { "answer": "21", "code": "E04", "feedback": "Không cộng thẳng hai cạnh. Dùng $BC^2 = AB^2 + AC^2$." }
+          ],
+          "solution": "$BC^2 = 9^2 + 12^2 = 81 + 144 = 225$, nên $BC = 15$."
+        }
+      },
+      {
+        "prompt": "Tính $BH = \\dfrac{AB^2}{BC}$.",
+        "item": {
+          "id": "htl-2-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "$BH = ?$",
+          "answer": "27/5",
+          "mistakes": [
+            { "answer": "3/5", "code": "E10", "feedback": "Con quên bình phương $AB$: phải là $\\dfrac{9^2}{15}$." },
+            { "answer": "48/5", "code": "E03", "feedback": "$\\dfrac{144}{15}$ là $CH = \\dfrac{AC^2}{BC}$. Cần hình chiếu của $AB$." }
+          ],
+          "solution": "$BH = \\dfrac{81}{15} = \\dfrac{27}{5} = 5{,}4$."
+        }
+      },
+      { "text": "Vậy $BH = \\dfrac{27}{5} = 5{,}4$." }
+    ]
+  },
+  "practice": [
+    {
+      "id": "htl-2-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $BC = 20$, $BH = 5$. Tính $AB$.",
+      "answer": "10",
+      "mistakes": [
+        { "answer": "100", "code": "E10", "feedback": "$100$ là $AB^2$. Còn bước lấy căn bậc hai." }
+      ],
+      "solution": "$AB^2 = BH \\cdot BC = 5 \\cdot 20 = 100$, nên $AB = 10$."
+    },
+    {
+      "id": "htl-2-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $BC = 18$, $CH = 8$. Tính $AC$.",
+      "answer": "12",
+      "mistakes": [
+        { "answer": "144", "code": "E10", "feedback": "$144$ là $AC^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "√80", "code": "E03", "feedback": "Con đã nhân $CH \\cdot BH$. Cạnh $AC$ đi với $CH$ và cạnh huyền: $AC^2 = CH \\cdot BC$." }
+      ],
+      "solution": "$AC^2 = CH \\cdot BC = 8 \\cdot 18 = 144$, nên $AC = 12$."
+    },
+    {
+      "id": "htl-2-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $AB = 15$, $BC = 25$. Tính $BH$.",
+      "answer": "9",
+      "mistakes": [
+        { "answer": "3/5", "code": "E10", "feedback": "Con quên bình phương $AB$: $BH = \\dfrac{AB^2}{BC}$." },
+        { "answer": "125/3", "code": "E06", "feedback": "Tính ngược là $BH = \\dfrac{AB^2}{BC}$, không phải $\\dfrac{BC^2}{AB}$." }
+      ],
+      "solution": "$BH = \\dfrac{AB^2}{BC} = \\dfrac{225}{25} = 9$."
+    },
+    {
+      "id": "htl-2-p4",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $AH = 12$, $BH = 9$. Tính $CH$.",
+      "answer": "16",
+      "mistakes": [
+        { "answer": "4/3", "code": "E10", "feedback": "Con quên bình phương $AH$: $CH = \\dfrac{AH^2}{BH}$." },
+        { "answer": "27/4", "code": "E06", "feedback": "Con đã tính $\\dfrac{BH^2}{AH}$. Từ $AH^2 = BH \\cdot CH$ suy ra $CH = \\dfrac{AH^2}{BH}$." }
+      ],
+      "solution": "$AH^2 = BH \\cdot CH$ nên $CH = \\dfrac{AH^2}{BH} = \\dfrac{144}{9} = 16$."
+    },
+    {
+      "id": "htl-2-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $AB = 6$, $AC = 8$. Tính $BH$.",
+      "answer": "18/5",
+      "mistakes": [
+        { "answer": "32/5", "code": "E03", "feedback": "$\\dfrac{64}{10}$ là $CH$. Hình chiếu của $AB$ là $BH = \\dfrac{AB^2}{BC}$." },
+        { "answer": "18/7", "code": "E04", "feedback": "$BC$ không bằng $AB + AC$. Dùng Pythagore: $BC^2 = 36 + 64$." }
+      ],
+      "solution": "$BC^2 = 36 + 64 = 100$ nên $BC = 10$. Khi đó $BH = \\dfrac{AB^2}{BC} = \\dfrac{36}{10} = \\dfrac{18}{5} = 3{,}6$."
+    },
+    {
+      "id": "htl-2-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $AB = 5$, $AC = 12$. Tính $AH$ (ghi dạng phân số).",
+      "answer": "60/13",
+      "mistakes": [
+        { "answer": "60/17", "code": "E04", "feedback": "$BC$ không bằng $AB + AC$. Dùng Pythagore: $BC^2 = 25 + 144$." }
+      ],
+      "solution": "$BC^2 = 25 + 144 = 169$ nên $BC = 13$. Khi đó $AH = \\dfrac{AB \\cdot AC}{BC} = \\dfrac{60}{13}$."
+    },
+    {
+      "id": "htl-2-p7",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 2$, $CH = 6$. Tính $AB$.",
+      "answer": "4",
+      "mistakes": [
+        { "answer": "16", "code": "E10", "feedback": "$16$ là $AB^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "√12", "code": "E03", "feedback": "$\\sqrt{BH \\cdot CH}$ là $AH$. Cạnh $AB$ đi với $BH$ và cạnh huyền $BC = BH + CH$." }
+      ],
+      "solution": "$BC = BH + CH = 8$. Khi đó $AB^2 = BH \\cdot BC = 2 \\cdot 8 = 16$, nên $AB = 4$."
+    },
+    {
+      "id": "htl-2-p8",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 1$, $CH = 3$. Tính $AH$.",
+      "answer": "√3",
+      "mistakes": [
+        { "answer": "3", "code": "E10", "feedback": "$3$ là $AH^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "2", "code": "E03", "feedback": "$2$ là $AB$ (từ $BH \\cdot BC$). Đường cao đi với hai hình chiếu." }
+      ],
+      "solution": "$AH^2 = BH \\cdot CH = 1 \\cdot 3 = 3$, nên $AH = \\sqrt{3}$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "htl-2-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $BC = 16$, $BH = 4$. Tính $AB$.",
+      "answer": "8",
+      "mistakes": [
+        { "answer": "64", "code": "E10", "feedback": "$64$ là $AB^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "8√3", "code": "E03", "feedback": "$8\\sqrt{3}$ là $AC$ (từ $CH \\cdot BC$). Cạnh $AB$ đi với $BH$." }
+      ],
+      "solution": "$AB^2 = BH \\cdot BC = 4 \\cdot 16 = 64$, nên $AB = 8$."
+    },
+    {
+      "id": "htl-2-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Biết $AC = 6$, $BC = 9$. Tính $CH$.",
+      "answer": "4",
+      "mistakes": [
+        { "answer": "2/3", "code": "E10", "feedback": "Con quên bình phương $AC$: $CH = \\dfrac{AC^2}{BC}$." },
+        { "answer": "5", "code": "E03", "feedback": "$5$ là $BH = BC - CH$. Đề hỏi $CH$." }
+      ],
+      "solution": "$CH = \\dfrac{AC^2}{BC} = \\dfrac{36}{9} = 4$."
+    },
+    {
+      "id": "htl-2-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $AB = 3$, $AC = 4$. Tính $AH$.",
+      "answer": "12/5",
+      "mistakes": [
+        { "answer": "12/7", "code": "E04", "feedback": "$BC$ không bằng $AB + AC$. Dùng Pythagore: $BC^2 = 9 + 16$." }
+      ],
+      "solution": "$BC^2 = 9 + 16 = 25$ nên $BC = 5$. Khi đó $AH = \\dfrac{AB \\cdot AC}{BC} = \\dfrac{12}{5} = 2{,}4$."
+    },
+    {
+      "id": "htl-2-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 3$, $CH = 9$. Tính $AH$.",
+      "answer": "3√3",
+      "mistakes": [
+        { "answer": "27", "code": "E10", "feedback": "$27$ là $AH^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "6", "code": "E03", "feedback": "$6$ là $AB$ (từ $BH \\cdot BC$). Đường cao đi với hai hình chiếu." }
+      ],
+      "solution": "$AH^2 = BH \\cdot CH = 3 \\cdot 9 = 27$, nên $AH = \\sqrt{27} = 3\\sqrt{3}$."
+    },
+    {
+      "id": "htl-2-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Đề cho $AB$ và $AC$, hỏi $CH$. Thứ tự làm hợp lý là:",
+      "options": [
+        "Tính ngay $CH = \\dfrac{AC^2}{BC}$",
+        "Tính $BC$ bằng Pythagore, rồi $CH = \\dfrac{AC^2}{BC}$",
+        "Tính $AH$ trước, rồi lấy $CH = AH$",
+        "Tính $BH$ trước, rồi lấy $CH = BH$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E06", "feedback": "Chưa có $BC$ thì chưa tính được $\\dfrac{AC^2}{BC}$." }
+      },
+      "solution": "Đề chưa cho cạnh huyền, nên tìm $BC$ bằng Pythagore trước, rồi dùng $AC^2 = CH \\cdot BC$."
+    }
+  ]
+}

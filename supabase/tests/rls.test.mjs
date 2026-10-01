@@ -16,6 +16,7 @@ await db.exec(`
 `);
 await db.exec(fs.readFileSync(`${repo}/migrations/0001_p0_accounts.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0002_service_role_grants_and_profile_trigger.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0003_p1_learning_attempts.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -71,4 +72,21 @@ await db.exec(`set role service_role`);
 const sr = await db.query(`insert into public.students (full_name, grade) values ('SR test', 9) returning id`).then(()=>true, ()=>false);
 await db.exec(`reset role`);
 check('service_role can insert into students', sr, true);
+// 0003: attempts / unit_progress — written by service_role, read through RLS
+await db.exec(`set role service_role`);
+const wrote = await db.query(`
+  with s as (select id from public.students where full_name='Hạnh Nguyên')
+  , p as (insert into public.unit_progress (student_id, unit_id, worked_viewed_at) select id, 'htl-1', now() from s)
+  insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, error_code)
+  select id, 'htl-1', 'htl-1-p1', 'practice', '10', false, 'E03' from s`).then(()=>true, e=>{console.error(e.message); return false;});
+await db.exec(`reset role`);
+check('service_role can write attempts + unit_progress', wrote, true);
+check('student sees own attempts', (await as('nguyen@example.com','select count(*)::int c from public.attempts'))[0].c, 1);
+check('student sees own unit_progress', (await as('nguyen@example.com','select count(*)::int c from public.unit_progress'))[0].c, 1);
+check('other student sees no attempts', (await as('an@example.com','select count(*)::int c from public.attempts'))[0].c, 0);
+check('parent sees child attempts', (await as('me@example.com','select count(*)::int c from public.attempts'))[0].c, 1);
+check('locked tutor sees no attempts', (await as('trang@example.com','select count(*)::int c from public.attempts'))[0].c, 0);
+check('student cannot insert attempts directly', isErr(await as('nguyen@example.com',`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct) select id, 'htl-1','x','exit','1',true from public.students`)), true);
+check('student cannot fake worked_viewed_at', isErr(await as('nguyen@example.com',`update public.unit_progress set faded_done_at=now()`)), true);
+check('bad error code rejected', isErr(await db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, error_code) select id,'htl-1','x','practice','1',false,'E99' from public.students limit 1`).then(()=>'ok', e=>'ERROR '+e.message)), true);
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);

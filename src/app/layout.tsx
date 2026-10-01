@@ -3,6 +3,7 @@ import "@fontsource-variable/libre-franklin";
 import "@fontsource-variable/source-serif-4/opsz.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
+import "katex/dist/katex.min.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
