@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — taken from the approved Phase 2 mockups (01/10/2026).
+ * Ink-blue on pale ruled-paper background; mastery scale m0..m4 runs grey → ink blue → green.
+ * Dark mode follows the OS unless <html data-theme="light|dark"> overrides it.
+ */
+:root {
+  --bg: #eef2f5;
+  --surface: #ffffff;
+  --ink: #1b2430;
+  --muted: #5b6b7a;
+  --border: #d7dee3;
+  --accent: #2454a6;
+  --accent-soft: #e5edf7;
+  --good: #1f7a4d;
+  --good-soft: #e1f2e8;
+  --warn: #9a6a1e;
+  --warn-soft: #f6ecd9;
+  --m0: #c3cdd4;
+  --m1: #9db6cf;
+  --m2: #5f8dbf;
+  --m3: #2454a6;
+  --m4: #1f7a4d;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10161d;
+    --surface: #161f29;
+    --ink: #e7edf3;
+    --muted: #93a4b3;
+    --border: #2a3744;
+    --accent: #7fb0ee;
+    --accent-soft: #1b2a3d;
+    --good: #5bc490;
+    --good-soft: #153324;
+    --warn: #e0b060;
+    --warn-soft: #2c2416;
+    --m0: #3a4753;
+    --m1: #4d6478;
+    --m2: #5f8dbf;
+    --m3: #7fb0ee;
+    --m4: #5bc490;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #10161d;
+  --surface: #161f29;
+  --ink: #e7edf3;
+  --muted: #93a4b3;
+  --border: #2a3744;
+  --accent: #7fb0ee;
+  --accent-soft: #1b2a3d;
+  --good: #5bc490;
+  --good-soft: #153324;
+  --warn: #e0b060;
+  --warn-soft: #2c2416;
+  --m0: #3a4753;
+  --m1: #4d6478;
+  --m2: #5f8dbf;
+  --m3: #7fb0ee;
+  --m4: #5bc490;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-m0: var(--m0);
+  --color-m1: var(--m1);
+  --color-m2: var(--m2);
+  --color-m3: var(--m3);
+  --color-m4: var(--m4);
+
+  --font-display: "Libre Franklin Variable", system-ui, sans-serif;
+  --font-body: "Source Serif 4 Variable", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
