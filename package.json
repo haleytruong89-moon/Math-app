@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:db": "node supabase/tests/rls.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/libre-franklin": "^5.3.0",
@@ -17,6 +18,7 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
