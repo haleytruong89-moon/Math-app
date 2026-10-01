@@ -1,0 +1,50 @@
+# D19 weekly backup: dumps the Supabase database (roles, schema, data incl. auth)
+# and stores it as a private workflow artifact for 90 days (~12 weekly copies).
+#
+# Setup (once): GitHub repo → Settings → Secrets and variables → Actions →
+#   New repository secret  SUPABASE_DB_URL = the "Session pooler" connection string
+#   from Supabase → Connect (contains the DB password — never paste it in chat).
+name: Weekly database backup
+
+on:
+  schedule:
+    - cron: "0 19 * * 6" # Saturday 19:00 UTC = Sunday 02:00 Vietnam time
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check secret is configured
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ]; then
+            echo "::error::SUPABASE_DB_URL secret is not set — see comments at the top of this workflow."
+            exit 1
+          fi
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Dump roles, schema and data
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          mkdir -p backup
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/roles.sql --role-only
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/schema.sql
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/data.sql --use-copy --data-only
+          ls -la backup
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup-${{ github.run_id }}
+          path: backup/
+          retention-days: 90
+          if-no-files-found: error
