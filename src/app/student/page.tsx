@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
-import Link from "next/link";
 import { ActionForm } from "@/components/action-form";
-import { listModules } from "@/lib/content";
+import { dueReviews, loadStudentState, type StudentState, type UnitState } from "@/lib/learning/state";
+import { RULES, daysBetween } from "@/lib/learning/rules";
 import { giveConsent } from "./actions";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
+// Mockup "Hôm nay cần làm" (§2.7): weekly goal, progress map, then today's list —
+// reviews first, then units in progress, then the next new unit. No streaks (D17).
 export default async function StudentHome() {
   const user = await requireRole("student");
   const supabase = await createClient();
@@ -20,48 +23,87 @@ export default async function StudentHome() {
   // Acceptance criterion (§2.7): no way past this screen until consent is recorded.
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
-  const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric" });
+  const state = await loadStudentState(supabase, me.id);
+  const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric", timeZone: "Asia/Ho_Chi_Minh" });
   return (
     <>
       <div className="flex items-baseline justify-between">
         <h1 className="font-display text-2xl font-bold">Chào {user.displayName}</h1>
         <span className="font-mono text-xs text-muted">{today}</span>
       </div>
+      <WeeklyGoal days={state.studyDays} />
+      <ProgressMap units={state.units} />
       <h2 className="mt-8 font-display text-base font-semibold">Hôm nay cần làm</h2>
-      <TodayList studentId={me.id} />
+      <TodayList state={state} />
     </>
   );
 }
 
-// Slice 1: approved units in order with their status. Review sessions, interleaving and the
-// weekly goal arrive in slice 2 (docs/P1_PLAN.md).
-async function TodayList({ studentId }: { studentId: string }) {
-  const supabase = await createClient();
-  const [{ data: progress }, { data: exits }] = await Promise.all([
-    supabase.from("unit_progress").select("unit_id, worked_viewed_at, faded_done_at").eq("student_id", studentId),
-    supabase
-      .from("attempts")
-      .select("unit_id, exit_run, correct, created_at")
-      .eq("student_id", studentId)
-      .eq("mode", "exit")
-      .order("created_at", { ascending: false })
-      .limit(500),
-  ]);
+function WeeklyGoal({ days }: { days: number }) {
+  const goal = RULES.weeklyGoalDays;
+  const pct = Math.min(100, Math.round((days / goal) * 100));
+  return (
+    <div className="mt-5 rounded-xl border border-border bg-surface p-4">
+      <div className="flex justify-between text-sm">
+        <span>Mục tiêu tuần này</span>
+        <span className="font-mono tabular-nums">
+          {Math.min(days, goal)}/{goal} buổi{days > goal ? ` (+${days - goal})` : ""}
+        </span>
+      </div>
+      <div className="mt-2 h-2 overflow-hidden rounded-full bg-accent-soft" role="progressbar" aria-valuenow={days} aria-valuemin={0} aria-valuemax={goal} aria-label="Mục tiêu tuần">
+        <div className="h-full rounded-full bg-accent" style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
 
-  // Latest exit-test run per unit → score.
-  const lastExit = new Map<string, { run: string; right: number; total: number }>();
-  for (const a of exits ?? []) {
-    const cur = lastExit.get(a.unit_id);
-    if (!cur) lastExit.set(a.unit_id, { run: a.exit_run!, right: a.correct ? 1 : 0, total: 1 });
-    else if (cur.run === a.exit_run) {
-      cur.total += 1;
-      if (a.correct) cur.right += 1;
-    }
-  }
-  const prog = new Map((progress ?? []).map((p) => [p.unit_id, p]));
-  const units = listModules().flatMap((m) => m.unitList.filter((u) => u.status === "approved"));
+const LEVEL_BG = ["bg-m0", "bg-m1", "bg-m2", "bg-m3", "bg-m4"] as const;
 
-  if (!units.length) {
+function ProgressMap({ units }: { units: UnitState[] }) {
+  if (!units.length) return null;
+  return (
+    <div className="mt-4 grid grid-cols-2 gap-2" role="list" aria-label="Bản đồ tiến độ">
+      {units.map((u) => (
+        <div key={u.unit.id} role="listitem" className="flex items-center gap-2.5 rounded-xl border border-border bg-surface p-2.5">
+          <span
+            className={`grid size-9 shrink-0 place-items-center rounded-full font-mono text-xs font-medium ${LEVEL_BG[u.mastery.level]} ${u.mastery.level >= 2 ? "text-on-accent" : "text-ink"}`}
+          >
+            M{u.mastery.level}
+          </span>
+          <span className="min-w-0 text-sm leading-tight">
+            {u.unit.title}
+            <span className="block font-mono text-[11px] text-muted">
+              {u.mastery.enoughData ? `${u.mastery.answers} câu đã làm` : "chưa đủ dữ liệu"}
+            </span>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TodayCard({ title, badge, badgeCls, note, minutes, href, cta }: {
+  title: string; badge: string; badgeCls: string; note: string; minutes: number; href: string; cta: string;
+}) {
+  return (
+    <li className="rounded-xl border border-border bg-surface p-4">
+      <div className="flex items-start justify-between gap-3">
+        <p className="font-display font-semibold leading-snug">{title}</p>
+        <span className={`shrink-0 rounded-full px-2.5 py-0.5 font-mono text-xs ${badgeCls}`}>{badge}</span>
+      </div>
+      <p className="mt-1 text-sm text-muted">{note}</p>
+      <div className="mt-3 flex items-center justify-between">
+        <span className="font-mono text-xs text-muted">~{minutes} phút</span>
+        <Link href={href} className="rounded-lg bg-accent px-4 py-2 font-display text-sm font-bold text-on-accent">
+          {cta}
+        </Link>
+      </div>
+    </li>
+  );
+}
+
+function TodayList({ state }: { state: StudentState }) {
+  if (!state.units.length) {
     return (
       <div className="mt-3 rounded-xl border border-dashed border-border bg-surface p-4 text-sm text-muted">
         Chưa có bài nào được mở. Bố mẹ sẽ mở bài mới sau khi duyệt nội dung.
@@ -69,44 +111,69 @@ async function TodayList({ studentId }: { studentId: string }) {
     );
   }
 
-  return (
-    <ul className="mt-3 flex flex-col gap-3">
-      {units.map((u) => {
-        const p = prog.get(u.id);
-        const ex = lastExit.get(u.id);
-        const badge = ex
-          ? { text: `Kiểm tra ${ex.right}/${ex.total}`, cls: "bg-good-soft text-good" }
-          : p?.worked_viewed_at
-            ? { text: "Đang học", cls: "bg-accent-soft text-accent" }
-            : { text: "Bài mới", cls: "bg-warn-soft text-warn" };
-        const note = !p?.worked_viewed_at
-          ? "Xem lời giải mẫu trước khi tự làm"
-          : !p.faded_done_at
-            ? "Tiếp tục phần điền bước"
-            : ex
-              ? "Làm lại luyện tập hoặc kiểm tra nếu muốn"
-              : "Luyện tập rồi làm bài kiểm tra";
-        return (
-          <li key={u.id} className="rounded-xl border border-border bg-surface p-4">
-            <div className="flex items-start justify-between gap-3">
-              <p className="font-display font-semibold leading-snug">{u.title}</p>
-              <span className={`shrink-0 rounded-full px-2.5 py-0.5 font-mono text-xs ${badge.cls}`}>{badge.text}</span>
-            </div>
-            <p className="mt-1 text-sm text-muted">{note}</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-mono text-xs text-muted">~{u.estMinutes} phút</span>
-              <Link
-                href={`/student/learn/${u.id}`}
-                className="rounded-lg bg-accent px-4 py-2 font-display text-sm font-bold text-on-accent"
-              >
-                {p?.worked_viewed_at ? "Học tiếp" : "Học bài mới"}
-              </Link>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  const due = dueReviews(state);
+  const inProgress = state.units.filter((u) => u.workedViewed && u.mastery.level < 3 && !u.review);
+  const nextNew = state.units.find((u) => !u.workedViewed);
+  const questions = due.length * RULES.reviewItemsPerUnit;
+  const overdue = due.filter((u) => daysBetween(u.review!.dueOn!, state.today) > 0).length;
+
+  const cards: React.ReactNode[] = [];
+  if (due.length) {
+    cards.push(
+      <TodayCard
+        key="review"
+        title={due.length === 1 ? due[0].unit.title : `Ôn lại ${due.length} bài`}
+        badge="Ôn lại"
+        badgeCls="bg-accent-soft text-accent"
+        note={`${questions} câu${due.length > 1 ? `, trộn ${due.map((u) => `“${u.unit.title}”`).join(", ")}` : ""}${overdue ? ` · ${overdue} bài quá hạn` : ""}`}
+        minutes={Math.ceil(questions * 1.5)}
+        href="/student/review"
+        cta="Bắt đầu ôn"
+      />,
+    );
+  }
+  for (const u of inProgress) {
+    cards.push(
+      <TodayCard
+        key={u.unit.id}
+        title={u.unit.title}
+        badge="Đang học"
+        badgeCls="bg-m1 text-ink"
+        note={!u.fadedDone ? "Tiếp tục phần điền bước" : u.mastery.lastExit ? "Làm lại luyện tập rồi kiểm tra lại" : "Luyện tập rồi làm bài kiểm tra"}
+        minutes={u.unit.estMinutes}
+        href={`/student/learn/${u.unit.id}`}
+        cta="Học tiếp"
+      />,
+    );
+  }
+  if (nextNew) {
+    cards.push(
+      <TodayCard
+        key={nextNew.unit.id}
+        title={nextNew.unit.title}
+        badge="Bài mới"
+        badgeCls="bg-warn-soft text-warn"
+        note="Xem lời giải mẫu trước khi tự làm"
+        minutes={nextNew.unit.estMinutes}
+        href={`/student/learn/${nextNew.unit.id}`}
+        cta="Học bài mới"
+      />,
+    );
+  }
+
+  if (!cards.length) {
+    const upcoming = state.units
+      .map((u) => u.review?.dueOn)
+      .filter((d): d is string => !!d)
+      .sort()[0];
+    return (
+      <div className="mt-3 rounded-xl border border-border bg-surface p-4 text-sm">
+        Hôm nay không có bài bắt buộc. Nghỉ ngơi cũng được!
+        {upcoming && <span className="text-muted"> Lượt ôn tiếp theo: {upcoming.split("-").reverse().join("/")}.</span>}
+      </div>
+    );
+  }
+  return <ul className="mt-3 flex flex-col gap-3">{cards}</ul>;
 }
 
 function ConsentScreen({ name }: { name: string }) {

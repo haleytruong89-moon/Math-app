@@ -3,7 +3,8 @@
   "module": "he-thuc-luong",
   "order": 1,
   "title": "Bốn hệ thức lượng: hiểu và nhớ",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-02",
   "estMinutes": 20,
   "figure": "right-triangle-altitude",
   "theory": [

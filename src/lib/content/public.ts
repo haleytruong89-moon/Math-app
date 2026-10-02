@@ -38,4 +38,13 @@ export type ExitResult =
       score: number;
       total: number;
       items: { id: string; correct: boolean; answer: string; feedbackHtml?: string; solutionHtml: string }[];
+      /** Set when this result reached M3 and the first review (D+1) was scheduled. */
+      nextReviewOn?: string;
     };
+
+/** One question of a mixed review session (D14). */
+export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicItem };
+
+export type ReviewSummary =
+  | { ok: false; message: string }
+  | { ok: true; units: { unitId: string; correct: number; total: number; passed: boolean; nextDueOn: string | null; completed: boolean }[] };

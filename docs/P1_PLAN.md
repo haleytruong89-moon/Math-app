@@ -2,14 +2,14 @@
 
 > Nguồn sự thật về sản phẩm: `claude/PJ_APP_TOAN.md` (D1–D19, §2.5–2.7, §3). File này chỉ chia việc.
 > Trạng thái từng lát và câu hỏi đang chờ: `docs/PROGRESS.md`.
-> Tạo 02/10/2026. **Chờ phụ huynh duyệt** các mục đánh dấu 🟡.
+> Tạo 02/10/2026. Các số ở §2 **phụ huynh đã duyệt 02/10/2026** (dùng cho pilot, chỉnh theo dữ liệu thật sau).
 
 ## 1. Cách làm việc (áp dụng cho mọi lát)
 
 | Quy tắc | Chi tiết |
 |---|---|
 | Nhánh | Mỗi lát một nhánh `p1-slice-N` tách từ `main`. Không bao giờ push thẳng `main`. |
-| Xong một lát nghĩa là | `npm run lint` + `npm test` + `npm run build` đều qua; tiêu chí nghiệm thu của lát đã tự kiểm (Playwright/PGlite); `docs/PROGRESS.md` có báo cáo. |
+| Xong một lát nghĩa là | `npm run lint` + `npm test` + `npm run build` + `./e2e/run.sh` đều qua (e2e: trình duyệt thật + PGlite, không cần Supabase); tiêu chí nghiệm thu của lát đã tự kiểm; `docs/PROGRESS.md` có báo cáo. |
 | Báo cáo | Mỗi lát thêm 1 mục vào `PROGRESS.md`: đã làm gì, cách thử trên preview (checklist), SQL cần chạy, câu hỏi cho phụ huynh. |
 | Migration | File mới `supabase/migrations/000N_*.sql`, chỉ **thêm** (không xoá/đổi tên cột có dữ liệu), có GRANT cho `service_role`, RLS bật, có test PGlite. Phụ huynh tự chạy SQL trên Supabase **trước khi merge**. |
 | Nội dung toán | Claude soạn ở trạng thái `draft`. Học sinh chỉ thấy KU `approved`. Đổi sang `approved` chỉ khi phụ huynh nói "duyệt KU …" (D16). |
@@ -18,29 +18,31 @@
 
 ## 2. Quy tắc học & mastery (theo D14, D15, §3.5–3.7)
 
-🟡 = số cụ thể Claude đề xuất, phụ huynh duyệt hoặc sửa (đúng §10 "chốt khi soạn module 1").
+✅ = đã duyệt 02/10/2026 (đúng §10 PJ_APP_TOAN "chốt khi soạn module 1"). Code: `src/lib/learning/rules.ts` (`RULES`).
 
 **Trình tự trong 1 KU (§3.5):** lời giải mẫu (bắt buộc xem hết từng bước) → lời giải khuyết bước (điền) → luyện tập L1 → L2 → exit test (không AI, không xem đáp án đến khi nộp).
 
 **Mức hệ thống tính (D15: trung bình các lần gần nhất + số lần làm):**
 
-| Mức | Điều kiện 🟡 |
+| Mức | Điều kiện ✅ |
 |---|---|
 | M0 | Chưa xem lời giải mẫu |
 | M1 | Đã xem lời giải mẫu, chưa đủ M2 |
-| M2 | Tỉ lệ đúng của **5 câu luyện tập gần nhất ≥ 60%** |
+| M2 | Tỉ lệ đúng của **5 câu luyện tập gần nhất ≥ 60%** (chỉ tính lần trả lời đầu tiên của mỗi câu trong ngày) |
 | M3 | Exit test gần nhất **≥ 80%** và không lặp cùng một mã lỗi ≥ 2 lần trong exit test đó |
 | M4 | Đang M3 và **qua lượt ôn D+21** |
 | Độ chắc chắn | Hiển thị số lần làm; **< 5 câu đã làm → nhãn "chưa đủ dữ liệu"** |
 | KU hình học | Tối đa M3 cho đến khi có bài C5 gia sư xác nhận (C5 thuộc P3) |
 
 **Lịch ôn (D14):** đạt M3 → lượt ôn D+1, rồi D+7, rồi D+21.
-- Ôn sai (< 2/3 câu đúng) → quay về D+1, mức hệ thống không hạ ngay (chỉ hạ nếu exit/mastery sau đó < 80%). 🟡
-- Ôn đúng **và** học sinh tự chọn "dễ" → khoảng tiếp theo ×1,5 (D+7 → D+11, D+21 → D+32). 🟡
-- Mỗi lượt ôn = 3 câu/KU; phiên ôn trộn câu nhiều KU, không 2 câu liên tiếp cùng KU (khi có ≥ 2 KU đến hạn).
+- Một lượt ôn của một bài = 3 câu; đạt khi đúng ≥ 2/3.
+- Ôn sai (< 2/3 câu đúng) → quay về D+1, mức hệ thống không hạ ngay (chỉ hạ nếu exit/mastery sau đó < 80%). ✅
+- Ôn đúng **và** học sinh tự chọn "dễ" → khoảng tiếp theo ×1,5 (D+7 → D+11, D+21 → D+32). ✅
+- Phiên ôn trộn câu nhiều KU, không 2 câu liên tiếp cùng KU (khi có ≥ 2 KU đến hạn); chọn câu lâu chưa làm nhất.
+- Qua D+21 → M4, **dừng lịch ôn** của bài đó (spec chưa nói ôn duy trì sau D+21 — xem câu hỏi trong PROGRESS).
 - Log đủ (đúng/sai, thời gian, dễ/khó) để chuyển FSRS sau.
 
-**Mục tiêu tuần (D17):** mặc định **4 phiên học/tuần** 🟡, tuần tính từ thứ Hai; không streak.
+**Mục tiêu tuần (D17):** **4 buổi học/tuần** ✅, tuần tính từ thứ Hai (giờ Việt Nam); không streak. Một "buổi" = một ngày có nộp bài kiểm tra, hoặc xong lượt ôn, hoặc ≥ 5 câu luyện tập.
 
 **Cờ lệch (D8):** |mức gia sư đề xuất − mức hệ thống| ≥ 1 → cờ ⚠️ cho phụ huynh; mức phụ huynh chốt là nguồn cuối.
 

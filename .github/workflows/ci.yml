@@ -19,6 +19,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: No local e2e patch committed
+        run: "! grep -rn \"E2E_ROLE\\|e2e-fake\" src"
       - run: npm run lint
       - run: npm test
       - run: npm run build
