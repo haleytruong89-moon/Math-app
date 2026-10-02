@@ -1,0 +1,43 @@
+# Opens a pull request automatically when Claude pushes a work branch (p1-*, p2-*, fix-*),
+# so the parent only has to review the preview and press "Merge".
+#
+# One-time setup: GitHub repo → Settings → Actions → General → Workflow permissions →
+#   tick "Allow GitHub Actions to create and approve pull requests" → Save.
+name: Auto pull request
+
+on:
+  push:
+    branches: ["p[0-9]-*", "fix-*"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.ref.replace("refs/heads/", "");
+            const { owner, repo } = context.repo;
+            const open = await github.rest.pulls.list({ owner, repo, head: `${owner}:${branch}`, state: "open" });
+            if (open.data.length) {
+              core.info(`PR already open: ${open.data[0].html_url}`);
+              return;
+            }
+            const pr = await github.rest.pulls.create({
+              owner, repo, head: branch, base: "main",
+              title: `[${branch}] ${context.payload.head_commit?.message.split("\n")[0] ?? branch}`,
+              body: [
+                "Tự động mở khi Claude push nhánh này.",
+                "",
+                "**Phụ huynh cần làm:**",
+                "1. Đọc báo cáo trong `docs/PROGRESS.md` (mục mới nhất).",
+                "2. Chạy SQL mới (nếu báo cáo có ghi) trong Supabase → SQL Editor.",
+                "3. Bấm link Preview của Vercel bên dưới, thử theo checklist trong báo cáo.",
+                "4. Ổn thì bấm **Merge pull request**.",
+              ].join("\n"),
+            });
+            core.info(`Opened ${pr.data.html_url}`);

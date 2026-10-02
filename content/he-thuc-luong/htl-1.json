@@ -1,0 +1,261 @@
+{
+  "id": "htl-1",
+  "module": "he-thuc-luong",
+  "order": 1,
+  "title": "Bốn hệ thức lượng: hiểu và nhớ",
+  "status": "draft",
+  "estMinutes": 20,
+  "figure": "right-triangle-altitude",
+  "theory": [
+    "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$ ($H$ nằm trên cạnh huyền $BC$). Đoạn $BH$ là **hình chiếu** của cạnh $AB$ trên cạnh huyền, đoạn $CH$ là hình chiếu của cạnh $AC$.",
+    "Bốn hệ thức: $AB^2 = BH \\cdot BC$, $AC^2 = CH \\cdot BC$, $AH^2 = BH \\cdot CH$, $AH \\cdot BC = AB \\cdot AC$.",
+    "Mẹo nhớ: cạnh chứa chữ $B$ đi với hình chiếu chứa chữ $B$ ($AB$ với $BH$); cạnh chứa chữ $C$ đi với $CH$. Đường cao $AH$ đứng giữa nên đi với cả hai hình chiếu."
+  ],
+  "worked": {
+    "problem": "Chứng minh $AB^2 = BH \\cdot BC$.",
+    "steps": [
+      {
+        "text": "Xét $\\triangle ABH$ và $\\triangle CBA$.",
+        "why": "Muốn có $AB^2$ thì cần một tỉ số mà $AB$ xuất hiện hai lần, nên chọn hai tam giác cùng chứa cạnh $AB$: tam giác nhỏ $ABH$ và tam giác lớn $CBA$."
+      },
+      {
+        "text": "$\\widehat{B}$ chung và $\\widehat{AHB} = \\widehat{CAB} = 90^\\circ$, nên $\\triangle ABH \\backsim \\triangle CBA$ (g.g).",
+        "why": "Hai tam giác có hai cặp góc bằng nhau thì đồng dạng, không cần biết độ dài cạnh nào."
+      },
+      {
+        "text": "Các cạnh tương ứng tỉ lệ: $\\dfrac{AB}{CB} = \\dfrac{BH}{BA}$.",
+        "why": "Ghép đúng đỉnh tương ứng: $A \\leftrightarrow C$, $B \\leftrightarrow B$, $H \\leftrightarrow A$. Cạnh $AB$ ứng với $CB$, cạnh $BH$ ứng với $BA$."
+      },
+      {
+        "text": "Nhân chéo: $AB \\cdot BA = BH \\cdot CB$, tức là $AB^2 = BH \\cdot BC$. $\\blacksquare$",
+        "why": "Hai tỉ số bằng nhau thì tích chéo bằng nhau."
+      }
+    ],
+    "selfExplain": "Vì sao ta chọn cặp $\\triangle ABH$ và $\\triangle CBA$, mà không chọn cặp $\\triangle ABH$ và $\\triangle CAH$?"
+  },
+  "faded": {
+    "problem": "Làm tương tự bài mẫu: chứng minh $AC^2 = CH \\cdot BC$.",
+    "steps": [
+      { "text": "Xét $\\triangle ACH$ và $\\triangle BCA$." },
+      {
+        "prompt": "Hai tam giác này có góc nào chung?",
+        "item": {
+          "id": "htl-1-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Góc chung của $\\triangle ACH$ và $\\triangle BCA$ là:",
+          "options": ["$\\widehat{A}$", "$\\widehat{B}$", "$\\widehat{C}$", "$\\widehat{H}$"],
+          "correct": 2,
+          "mistakes": {
+            "1": { "code": "E08", "feedback": "Tam giác $ACH$ không có đỉnh $B$. Nhìn lại ba đỉnh của từng tam giác." }
+          },
+          "solution": "Cả hai tam giác đều có đỉnh $C$ với cùng hai tia $CA$ và $CB$, nên $\\widehat{C}$ là góc chung."
+        }
+      },
+      { "text": "Thêm $\\widehat{AHC} = \\widehat{BAC} = 90^\\circ$, nên $\\triangle ACH \\backsim \\triangle BCA$ (g.g)." },
+      {
+        "prompt": "Viết tỉ số các cạnh tương ứng.",
+        "item": {
+          "id": "htl-1-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Từ $\\triangle ACH \\backsim \\triangle BCA$, tỉ số nào đúng?",
+          "options": [
+            "$\\dfrac{AC}{BC} = \\dfrac{CH}{CA}$",
+            "$\\dfrac{AC}{CH} = \\dfrac{BC}{AB}$",
+            "$\\dfrac{AC}{AB} = \\dfrac{CH}{BC}$",
+            "$\\dfrac{AH}{AC} = \\dfrac{CH}{BC}$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": { "code": "E09", "feedback": "Ghép sai cạnh tương ứng. Viết cặp đỉnh trước: $A \\leftrightarrow B$, $C \\leftrightarrow C$, $H \\leftrightarrow A$, rồi mới lập tỉ số." }
+          },
+          "solution": "Đỉnh tương ứng: $A \\leftrightarrow B$, $C \\leftrightarrow C$, $H \\leftrightarrow A$. Cạnh $AC$ ứng với $BC$, cạnh $CH$ ứng với $CA$, nên $\\dfrac{AC}{BC} = \\dfrac{CH}{CA}$."
+        }
+      },
+      {
+        "prompt": "Nhân chéo để kết luận.",
+        "item": {
+          "id": "htl-1-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Nhân chéo $\\dfrac{AC}{BC} = \\dfrac{CH}{CA}$ ta được:",
+          "options": ["$AC^2 = CH \\cdot BC$", "$AC^2 = BH \\cdot BC$", "$AC \\cdot BC = CH^2$", "$AC^2 = CH \\cdot AB$"],
+          "correct": 0,
+          "mistakes": {
+            "1": { "code": "E03", "feedback": "Nhầm hình chiếu: $AC$ đi với $CH$ (cùng chữ $C$), không phải $BH$." }
+          },
+          "solution": "$AC \\cdot CA = CH \\cdot BC$, tức là $AC^2 = CH \\cdot BC$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "htl-1-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Khi đó $AB^2$ bằng:",
+      "options": ["$AH \\cdot BC$", "$BH \\cdot BC$", "$CH \\cdot BC$", "$BH \\cdot CH$"],
+      "correct": 1,
+      "mistakes": {
+        "2": { "code": "E03", "feedback": "$AB$ đi với hình chiếu $BH$ (cùng chữ $B$), không phải $CH$." },
+        "3": { "code": "E03", "feedback": "$BH \\cdot CH$ bằng $AH^2$, không phải $AB^2$." }
+      },
+      "solution": "$AB^2 = BH \\cdot BC$: cạnh góc vuông bình phương bằng hình chiếu của nó nhân cạnh huyền."
+    },
+    {
+      "id": "htl-1-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Khi đó $AH^2$ bằng:",
+      "options": ["$AB \\cdot AC$", "$BH \\cdot CH$", "$BH \\cdot BC$", "$CH \\cdot BC$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E03", "feedback": "$AB \\cdot AC$ bằng $AH \\cdot BC$, không phải $AH^2$." }
+      },
+      "solution": "$AH^2 = BH \\cdot CH$: đường cao bình phương bằng tích hai hình chiếu."
+    },
+    {
+      "id": "htl-1-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Hình chiếu của cạnh $AC$ trên cạnh huyền $BC$ là đoạn nào?",
+      "options": ["$BH$", "$CH$", "$AH$", "$BC$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E08", "feedback": "$BH$ là hình chiếu của $AB$. Hình chiếu của $AC$ là đoạn từ $C$ đến chân đường cao $H$." }
+      },
+      "solution": "Chiếu điểm $A$ xuống $BC$ được $H$, nên hình chiếu của $AC$ là $CH$."
+    },
+    {
+      "id": "htl-1-p4",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Đẳng thức nào **sai**?",
+      "options": ["$AB^2 = BH \\cdot BC$", "$AC^2 = CH \\cdot BC$", "$AH \\cdot BC = AB \\cdot AC$", "$AH^2 = AB \\cdot AC$"],
+      "correct": 3,
+      "solution": "$AH^2 = BH \\cdot CH$, không phải $AB \\cdot AC$. Ba đẳng thức còn lại đều đúng."
+    },
+    {
+      "id": "htl-1-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Để chứng minh $AH^2 = BH \\cdot CH$, ta dùng cặp tam giác đồng dạng nào?",
+      "options": [
+        "$\\triangle ABH \\backsim \\triangle CAH$",
+        "$\\triangle ABH \\backsim \\triangle CBA$",
+        "$\\triangle ACH \\backsim \\triangle BCA$",
+        "$\\triangle ABC \\backsim \\triangle HAC$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E06", "feedback": "Cặp này cho $AB^2 = BH \\cdot BC$. Muốn có $AH^2$, cần hai tam giác cùng chứa cạnh $AH$." }
+      },
+      "solution": "Cần tỉ số có $AH$ hai lần, nên chọn hai tam giác nhỏ cùng chứa $AH$: $\\triangle ABH$ và $\\triangle CAH$. Có $\\widehat{ABH} = \\widehat{CAH}$ (cùng phụ với $\\widehat{ACB}$) và $\\widehat{AHB} = \\widehat{CHA} = 90^\\circ$, suy ra $\\dfrac{BH}{AH} = \\dfrac{AH}{CH}$."
+    },
+    {
+      "id": "htl-1-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 4$, $BC = 9$. Tính $AB$.",
+      "answer": "6",
+      "mistakes": [
+        { "answer": "36", "code": "E10", "feedback": "$36$ là $AB^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "√45", "code": "E03", "feedback": "Con đã dùng $CH \\cdot BC$ (đó là $AC^2$). Cạnh $AB$ đi với hình chiếu $BH$." }
+      ],
+      "solution": "$AB^2 = BH \\cdot BC = 4 \\cdot 9 = 36$, nên $AB = 6$."
+    },
+    {
+      "id": "htl-1-p7",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 4$, $CH = 9$. Tính $AH$.",
+      "answer": "6",
+      "mistakes": [
+        { "answer": "36", "code": "E10", "feedback": "$36$ là $AH^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "√52", "code": "E03", "feedback": "$AH^2 = BH \\cdot CH$, không phải $BH \\cdot BC$." }
+      ],
+      "solution": "$AH^2 = BH \\cdot CH = 4 \\cdot 9 = 36$, nên $AH = 6$."
+    },
+    {
+      "id": "htl-1-p8",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $CH = 2$, $BC = 8$. Tính $AC$.",
+      "answer": "4",
+      "mistakes": [
+        { "answer": "16", "code": "E10", "feedback": "$16$ là $AC^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "√12", "code": "E03", "feedback": "Con đã nhân $CH \\cdot BH$ (đó là $AH^2$). Cạnh $AC$ đi với $CH$ và cạnh huyền $BC$." }
+      ],
+      "solution": "$AC^2 = CH \\cdot BC = 2 \\cdot 8 = 16$, nên $AC = 4$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "htl-1-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Khi đó $AC^2$ bằng:",
+      "options": ["$BH \\cdot BC$", "$CH \\cdot BC$", "$AH \\cdot BC$", "$BH \\cdot CH$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E03", "feedback": "$AC$ đi với hình chiếu $CH$, không phải $BH$." }
+      },
+      "solution": "$AC^2 = CH \\cdot BC$."
+    },
+    {
+      "id": "htl-1-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Khi đó $AH \\cdot BC$ bằng:",
+      "options": ["$AB \\cdot AC$", "$BH \\cdot CH$", "$AB^2$", "$AB + AC$"],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E03", "feedback": "$BH \\cdot CH$ bằng $AH^2$." }
+      },
+      "solution": "Tính diện tích tam giác $ABC$ hai cách: $\\tfrac12 AB \\cdot AC = \\tfrac12 AH \\cdot BC$, nên $AH \\cdot BC = AB \\cdot AC$."
+    },
+    {
+      "id": "htl-1-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Vì sao $\\triangle ABH \\backsim \\triangle CBA$?",
+      "options": [
+        "Ba cặp cạnh tương ứng tỉ lệ",
+        "$\\widehat{B}$ chung và $\\widehat{AHB} = \\widehat{CAB} = 90^\\circ$",
+        "Hai tam giác có cạnh huyền bằng nhau",
+        "Hai tam giác cùng có góc $\\widehat{A}$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E09", "feedback": "Chưa biết độ dài cạnh nào nên không thể dùng ba cạnh tỉ lệ." }
+      },
+      "solution": "Trường hợp góc–góc: $\\widehat{B}$ chung và hai góc vuông $\\widehat{AHB} = \\widehat{CAB} = 90^\\circ$."
+    },
+    {
+      "id": "htl-1-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 9$, $BC = 25$. Tính $AB$.",
+      "answer": "15",
+      "mistakes": [
+        { "answer": "225", "code": "E10", "feedback": "$225$ là $AB^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "12", "code": "E03", "feedback": "$12$ là $AH$ (từ $BH \\cdot CH$). Cạnh $AB$ đi với $BH$ và $BC$." }
+      ],
+      "solution": "$AB^2 = BH \\cdot BC = 9 \\cdot 25 = 225$, nên $AB = 15$."
+    },
+    {
+      "id": "htl-1-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $BH = 9$, $CH = 16$. Tính $AH$.",
+      "answer": "12",
+      "mistakes": [
+        { "answer": "144", "code": "E10", "feedback": "$144$ là $AH^2$. Còn bước lấy căn bậc hai." },
+        { "answer": "15", "code": "E03", "feedback": "$15$ là $AB$ (từ $BH \\cdot BC$). Đường cao đi với hai hình chiếu." }
+      ],
+      "solution": "$AH^2 = BH \\cdot CH = 9 \\cdot 16 = 144$, nên $AH = 12$."
+    }
+  ]
+}

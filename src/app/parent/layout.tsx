@@ -9,6 +9,7 @@ export default async function ParentLayout({ children }: { children: React.React
         user={user}
         nav={[
           { href: "/parent", label: "Tổng quan" },
+          { href: "/parent/content", label: "Nội dung" },
           { href: "/parent/accounts", label: "Tài khoản" },
         ]}
       />
