@@ -7,9 +7,71 @@
 
 | Lát | Nhánh | Trạng thái |
 |---|---|---|
-| S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | 🟡 Chờ phụ huynh review & merge |
-| S2 — Mastery + lịch ôn + "Hôm nay cần làm" | — | ⏸ Chờ duyệt các số 🟡 trong P1_PLAN §2 |
-| S3–S7 | — | ⬜ |
+| S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
+| S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | 🟡 PR #2 — chờ phụ huynh chạy SQL **0004 + 0005**, merge |
+| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ⬜ **Tiếp theo** (lịch chạy đêm) |
+| S4 — Phụ huynh "Tổng quan" | — | ⬜ |
+| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, sau S3 |
+| S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
+
+### Câu hỏi đang mở
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q8 | "Buổi dạy chưa ghi > 24h" cần lịch dạy: phụ huynh nhập ngày dạy trong tuần khi gán gia sư (ví dụ T3, T5)? | Có — làm trong S4 |
+
+---
+
+## 03/10/2026 — Quyết định + bổ sung vào PR #2
+
+**Phụ huynh duyệt (03/10, "ok cả 3"):**
+- Q5: sau D+21 → **ôn duy trì 60 ngày/lần** đến kỳ thi.
+- Q6: tạo tài khoản Nguyên **sau S3**.
+- Q7: **bật lịch tự chạy mỗi đêm 23:00**.
+- Theo `vibe-code`: đưa spec vào repo (`docs/SPEC.md`, `docs/DESIGN.md`); **pilot sớm**, lùi hình học C1–C3 (S5) sau khi pilot chạy.
+
+**Đã làm (cùng nhánh `p1-slice-2`):**
+- `docs/SPEC.md`: bản sao PJ_APP_TOAN (D1–D19, §2.5–2.7, §3, §4, §10) + bảng quyết định trong lúc build. `docs/DESIGN.md`: kiến trúc thực tế, route, bảng dữ liệu, nội dung, chấm điểm, vận hành, kiểm thử, lưu ý. `CLAUDE.md` trỏ tới hai file này.
+- Ôn duy trì: migration **0005** (stage 4 = duy trì), quy tắc + test; màn kết quả ôn hiện "Ôn duy trì lần tới".
+- `P1_PLAN.md`: thứ tự lát mới (S3 → S4 → pilot → S6 → S5) + tiêu chí nghiệm thu chi tiết cho S3, S4.
+- Tự kiểm: lint, build, 22 test quy tắc/nội dung, 36 test RLS, e2e **39/39**.
+
+**Phụ huynh cần làm:** chạy SQL `0004` (nếu chưa) rồi `0005` → merge PR #2.
+
+---
+
+## 02/10/2026 — S2 xong (nhánh `p1-slice-2`)
+
+**Quyết định của phụ huynh (02/10):** Q1 duyệt các số ở P1_PLAN §2; Q2 duyệt 2 bài `htl-1`, `htl-2` (đã đổi sang *Đã duyệt*). Q3, Q4 coi như theo đề xuất (8 + 5 câu; tự dán SQL).
+
+### Đã làm
+- **Mức hiểu hệ thống (D15)** tính từ dữ liệu làm bài, theo đúng các số đã duyệt; luôn kèm số câu đã làm, < 5 câu → "chưa đủ dữ liệu". Code: `src/lib/learning/rules.ts` (dùng lại cho màn gia sư/phụ huynh ở S3–S4).
+- **Lịch ôn (D14)**: nộp bài kiểm tra đạt M3 → tự hẹn ôn D+1 → D+7 → D+21; ôn sai → về D+1; ôn đúng + "Dễ" → ×1,5. Lưu đủ lịch sử trong `review_log` để sau này chuyển FSRS.
+- **Phiên ôn trộn** `/student/review`: mọi bài đến hạn trong một phiên, 3 câu/bài, **xen kẽ giữa các bài**, ưu tiên câu lâu chưa làm. Cuối phiên học sinh chọn "Dễ / Bình thường" cho bài làm đúng.
+- **"Hôm nay cần làm"** theo mockup: thanh **mục tiêu tuần** (4 buổi), **bản đồ tiến độ** M0–M4, danh sách *Ôn lại* (trước) → *Đang học* → *Bài mới* (chỉ 1 bài kế tiếp). Không streak/xếp hạng (D17).
+- **Bảng mới** (migration `0004`): `review_queue`, `review_log` — RLS như các bảng khác.
+- **Bộ thử tự động bằng trình duyệt** `e2e/run.sh`: chạy app với database giả lập (PGlite + migration thật), không cần Supabase. Dùng cho các phiên tự chạy sau này.
+
+### Đã tự kiểm
+- lint, build, 21 test quy tắc/nội dung + 31 test RLS: qua.
+- `./e2e/run.sh`: **36/36** qua — 16 bước xem trước của phụ huynh + 20 bước luồng học sinh: học bài 1 → kiểm tra 5/5 → hẹn ôn ngày mai → (giả lập đến hạn) phiên ôn 2 bài xen kẽ → bài đúng + "Dễ" hẹn D+11, bài sai về D+1 → thẻ ôn biến mất.
+
+### Phụ huynh cần làm (khoảng 15–20 phút)
+1. **Chạy SQL** `supabase/migrations/0004_p1_review_queue.sql` (nội dung trong tin nhắn chat) → "Success. No rows returned".
+2. PR `p1-slice-2` lần này **tự mở** (đã bật quyền). Kiểm tra CI ✓.
+3. **Thử preview**: hiện chưa có tài khoản học sinh nên màn học sinh chưa xem được bằng tài khoản thật. Phụ huynh xem lại **Nội dung** → 2 bài hiện *Đã duyệt*. Ảnh chụp màn học sinh (từ bộ thử tự động) Claude gửi trong chat.
+4. **Merge**.
+
+### Câu hỏi cho phụ huynh
+| # | Câu hỏi | Claude đề xuất |
+|---|---|---|
+| Q5 | Bài đã qua D+21 (M4): dừng ôn hẳn, hay ôn duy trì thưa (ví dụ 60 ngày/lần) đến kỳ thi? | Ôn duy trì 60 ngày — thi vào 10 còn ~8 tháng, dễ quên |
+| Q6 | Khi nào tạo tài khoản cho Nguyên (sau khi nói chuyện D18)? Pilot 2 tuần cần có tài khoản. | Sau khi xong S3 (gia sư ghi buổi dạy) |
+| Q7 | Bật **lịch tự chạy mỗi đêm** (23:00) cho các lát S3–S6? Mỗi sáng có PR + báo cáo như hôm nay. | Bật |
+
+### Ghi chú kỹ thuật (cho phiên sau)
+- `finishReview` cố ý **không** `revalidatePath`: làm vậy sẽ render lại `/student/review` (đã hết bài đến hạn) và xoá màn kết quả.
+- Mục "Đang học" không hiện bài đã vào lịch ôn mà sau đó làm lại kiểm tra < 80% (hiếm) — xử lý khi có dữ liệu thật.
+- `e2e/run.sh` vá tạm `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` rồi tự hoàn nguyên; CI chặn nếu lỡ commit bản vá.
 
 ---
 

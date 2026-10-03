@@ -9,7 +9,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { fadedItems, findItem, getUnit } from "@/lib/content";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
-import type { CheckResult, ExitResult } from "@/lib/content/public";
+import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
+import { afterReview, exitReachesM3, firstReview, lastExitRun, reviewPassed, vnDate, type Rating, type Stage } from "@/lib/learning/rules";
 
 // Grading always happens here, never in the browser. A student's answers are recorded;
 // a parent previewing content (D16) gets the same grading but nothing is written.
@@ -196,6 +197,7 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
     if (!p?.faded_done_at) return { ok: false, message: "Con cần học xong các phần trước rồi mới làm bài kiểm tra." };
   }
 
+  let nextReviewOn: string | undefined;
   // Unanswered or unreadable answers count as wrong in a test.
   const graded = found.unit.exit.map((item) => {
     const answer = (v.answers[item.id] ?? "").trim();
@@ -224,6 +226,20 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       console.error("submitExit insert", error.message);
       return SAVE_FAILED;
     }
+    // Reaching M3 the first time starts the D+1/D+7/D+21 review cycle (D14).
+    const exitScore = lastExitRun(graded.map((r) => ({ item_id: r.item.id, mode: "exit", correct: r.correct, error_code: r.errorCode ?? null, exit_run: run, created_at: new Date().toISOString() })));
+    if (exitScore && exitReachesM3(exitScore)) {
+      const first = firstReview(vnDate());
+      const { data: inserted, error: qErr } = await createAdminClient()
+        .from("review_queue")
+        .upsert(
+          { student_id: who.studentId, unit_id: v.unitId, stage: first.stage, due_on: first.dueOn },
+          { onConflict: "student_id,unit_id", ignoreDuplicates: true },
+        )
+        .select("due_on");
+      if (qErr) console.error("submitExit queue", qErr.message);
+      else if (inserted?.length) nextReviewOn = first.dueOn;
+    }
     revalidatePath("/student");
   }
 
@@ -238,5 +254,132 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       feedbackHtml: r.feedback ? texToHtml(r.feedback) : undefined,
       solutionHtml: texToHtml(r.item.solution),
     })),
+    nextReviewOn,
   };
+}
+
+// ---------------------------------------------------------------------
+// Mixed review (D14). The run id comes from the review page; answers are
+// grouped by it so each review is scored once.
+
+async function dueQueueRow(studentId: string, unitId: string) {
+  const { data } = await createAdminClient()
+    .from("review_queue")
+    .select("stage, due_on, completed_at")
+    .eq("student_id", studentId)
+    .eq("unit_id", unitId)
+    .maybeSingle();
+  if (!data?.due_on || data.due_on > vnDate()) return null; // maintenance (stage 4) is due like any other review
+  return data as { stage: Stage; due_on: string; completed_at: string | null };
+}
+
+const ReviewCheck = z.object({ runId: z.uuid(), unitId: UnitId, itemId: UnitId, answer: Answer, durationMs: Duration });
+
+export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<CheckResult> {
+  const who = await learner();
+  const parsed = ReviewCheck.safeParse(input);
+  if (!who || who.kind !== "student" || !parsed.success) return DENIED;
+  const v = parsed.data;
+  const found = loadUnit(who, v.unitId);
+  const item = found && findItem(found.unit, v.itemId, "review");
+  if (!item || !(await dueQueueRow(who.studentId, v.unitId))) return { ok: false, message: "Bài này chưa đến hạn ôn." };
+
+  const g = gradeItem(item, v.answer);
+  if (!g.understood) return { ok: true, understood: false };
+  const { error } = await createAdminClient().from("attempts").insert({
+    student_id: who.studentId,
+    unit_id: v.unitId,
+    item_id: v.itemId,
+    mode: "review",
+    answer: v.answer.trim(),
+    correct: g.correct,
+    error_code: g.errorCode ?? null,
+    duration_ms: v.durationMs ?? null,
+    exit_run: v.runId,
+  });
+  if (error) {
+    console.error("checkReview insert", error.message);
+    return SAVE_FAILED;
+  }
+  return {
+    ok: true,
+    understood: true,
+    correct: g.correct,
+    feedbackHtml: g.feedback ? texToHtml(g.feedback) : undefined,
+    solutionHtml: texToHtml(item.solution),
+  };
+}
+
+const ReviewFinish = z.object({ runId: z.uuid(), ratings: z.record(UnitId, z.enum(["easy", "normal"])) });
+
+export async function finishReview(input: z.input<typeof ReviewFinish>): Promise<ReviewSummary> {
+  const who = await learner();
+  const parsed = ReviewFinish.safeParse(input);
+  if (!who || who.kind !== "student" || !parsed.success) return DENIED;
+  const { runId, ratings } = parsed.data;
+  const admin = createAdminClient();
+
+  const { data: rows, error } = await admin
+    .from("attempts")
+    .select("unit_id, item_id, correct, created_at")
+    .eq("student_id", who.studentId)
+    .eq("mode", "review")
+    .eq("exit_run", runId)
+    .order("created_at", { ascending: true });
+  if (error || !rows?.length) return { ok: false, message: "Không tìm thấy câu trả lời của lượt ôn này." };
+
+  // Score = first answer to each question of the run, per unit.
+  const first = new Map<string, { unit: string; correct: boolean }>();
+  for (const r of rows) if (!first.has(r.item_id)) first.set(r.item_id, { unit: r.unit_id, correct: r.correct });
+  const perUnit = new Map<string, { correct: number; total: number }>();
+  for (const { unit, correct } of first.values()) {
+    const u = perUnit.get(unit) ?? { correct: 0, total: 0 };
+    u.total += 1;
+    if (correct) u.correct += 1;
+    perUnit.set(unit, u);
+  }
+
+  const today = vnDate();
+  const units: Extract<ReviewSummary, { ok: true }>["units"] = [];
+  for (const [unitId, score] of perUnit) {
+    const due = await dueQueueRow(who.studentId, unitId);
+    if (!due) continue; // already scored (double submit) or not due
+    const passed = reviewPassed(score.correct, score.total);
+    const rating: Rating = ratings[unitId] ?? "normal";
+    const next = afterReview(due.stage, passed, rating, today);
+
+    const { error: logErr } = await admin.from("review_log").insert({
+      student_id: who.studentId,
+      unit_id: unitId,
+      run_id: runId,
+      stage: due.stage,
+      correct: score.correct,
+      total: score.total,
+      passed,
+      rating: passed ? rating : null,
+      due_on: due.due_on,
+      next_due_on: next.dueOn,
+    });
+    if (logErr) {
+      console.error("finishReview log", logErr.message);
+      continue; // unique (run_id, unit_id): this unit was already scored
+    }
+    const { error: qErr } = await admin
+      .from("review_queue")
+      .update({
+        stage: next.stage,
+        due_on: next.dueOn,
+        // Keep the date M4 was first reached; a failed review clears it.
+        completed_at: next.completed ? (due.completed_at ?? new Date().toISOString()) : null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("student_id", who.studentId)
+      .eq("unit_id", unitId);
+    if (qErr) console.error("finishReview queue", qErr.message);
+    units.push({ unitId, ...score, passed, nextDueOn: next.dueOn, completed: next.completed });
+  }
+
+  // No revalidatePath here: it would re-render /student/review (now with nothing due)
+  // and wipe the summary the student is looking at. /student is dynamic anyway.
+  return { ok: true, units };
 }

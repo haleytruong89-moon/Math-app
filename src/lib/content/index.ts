@@ -28,7 +28,7 @@ export function getUnit(id: string): { unit: Unit; module: Module } | null {
   return null;
 }
 
-export type ItemMode = "faded" | "practice" | "exit";
+export type ItemMode = "faded" | "practice" | "exit" | "review";
 
 /** Find an item in the part of the unit that matches the mode (so exit items can't be "practised"). */
 export function findItem(unit: Unit, itemId: string, mode: ItemMode): Item | null {
@@ -37,7 +37,9 @@ export function findItem(unit: Unit, itemId: string, mode: ItemMode): Item | nul
       ? unit.faded.steps.flatMap((s) => ("item" in s ? [s.item] : []))
       : mode === "practice"
         ? unit.practice
-        : unit.exit;
+        : mode === "exit"
+          ? unit.exit
+          : [...unit.practice, ...unit.exit]; // review draws from both pools
   return pool.find((i) => i.id === itemId) ?? null;
 }
 
@@ -45,7 +47,7 @@ export function fadedItems(unit: Unit): Item[] {
   return unit.faded.steps.flatMap((s) => ("item" in s ? [s.item] : []));
 }
 
-function publicItem(it: Item): PublicItem {
+export function publicItem(it: Item): PublicItem {
   return {
     id: it.id,
     type: it.type,

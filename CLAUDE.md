@@ -2,7 +2,7 @@
 
 Web app helping Hạnh Nguyên (grade 9) learn math and prepare for the grade-10 entrance exam. Shared by three roles: parent (admin), tutor, student.
 
-**Source of truth for product decisions:** `claude/PJ_APP_TOAN.md` in the "STUDY BB" claude.ai Project (decisions D1–D19, non-goals §2.5, user stories §2.6, acceptance criteria §2.7, architecture §3). Do not change a decision in code without updating that doc.
+**Source of truth for product decisions:** `claude/PJ_APP_TOAN.md` in the "STUDY BB" claude.ai Project. **Repo copy: `docs/SPEC.md`** (D1–D19, non-goals, user stories, acceptance criteria, architecture, plus build decisions in §0) — read it if you can't reach the Project. As-built design: `docs/DESIGN.md`. Do not change a decision in code without updating both.
 
 @AGENTS.md
 
@@ -15,3 +15,8 @@ Web app helping Hạnh Nguyên (grade 9) learn math and prepare for the grade-10
 - UI text in Vietnamese; code, comments, commit messages, file names in English.
 - Design tokens come from the approved mockups (ink-blue accent, mastery scale m0–m4, Libre Franklin / Source Serif 4 / IBM Plex Mono). No streaks or leaderboards anywhere (D17).
 - Small commits per checkpoint; run `npm run lint` and `npm run build` before committing.
+
+## Build workflow (P1+)
+- Plan: `docs/P1_PLAN.md`; status, open questions and the latest report: `docs/PROGRESS.md` — read both first.
+- One branch per slice (`p1-slice-N`), never push `main`; pushing a `p[0-9]-*` branch auto-opens a PR. The parent runs new SQL in Supabase and merges.
+- Before pushing: `npm run lint`, `npm test`, `npm run build`, `./e2e/run.sh` (browser + in-memory DB; patches auth temporarily and reverts itself).
