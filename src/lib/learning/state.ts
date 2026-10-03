@@ -16,15 +16,20 @@ export type UnitState = {
 
 export type StudentState = {
   today: string;
-  units: UnitState[]; // approved units, in course order
+  units: UnitState[]; // approved units (or all units with includeDrafts), in course order
   studyDays: number;
 };
 
 /**
  * Everything the screens need about one student, read through RLS with the caller's
  * client (works for the student, their parent, and an assigned tutor).
+ * Tutors pass includeDrafts: they teach the school programme, so every unit can be logged.
  */
-export async function loadStudentState(supabase: SupabaseClient, studentId: string): Promise<StudentState> {
+export async function loadStudentState(
+  supabase: SupabaseClient,
+  studentId: string,
+  opts: { includeDrafts?: boolean } = {},
+): Promise<StudentState> {
   const [progress, attempts, queue] = await Promise.all([
     supabase.from("unit_progress").select("unit_id, worked_viewed_at, faded_done_at").eq("student_id", studentId),
     supabase
@@ -48,7 +53,7 @@ export async function loadStudentState(supabase: SupabaseClient, studentId: stri
 
   const units: UnitState[] = listModules().flatMap((m) =>
     m.unitList
-      .filter((u) => u.status === "approved")
+      .filter((u) => opts.includeDrafts || u.status === "approved")
       .map((unit) => {
         const p = prog.get(unit.id);
         const r = q.get(unit.id);

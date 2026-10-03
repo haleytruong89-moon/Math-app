@@ -23,4 +23,5 @@ run() { # role port script
 mkdir -p e2e/out
 run parent 3100 e2e/preview-flow.mjs; a=$?
 run student 3101 e2e/student-flow.mjs; b=$?
-exit $(( a || b ))
+run tutor 3102 e2e/tutor-flow.mjs; c=$?
+exit $(( a || b || c ))

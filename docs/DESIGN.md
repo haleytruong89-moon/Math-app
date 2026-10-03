@@ -2,7 +2,7 @@
 
 > How the app is actually put together. Product rules live in `docs/SPEC.md`; the slice plan in
 > `docs/P1_PLAN.md`; status in `docs/PROGRESS.md`. Update this file in the same PR as any change
-> to routes, tables, auth or content format. Last updated: 03/10/2026 (after slice 2).
+> to routes, tables, auth or content format. Last updated: 03/10/2026 (after slice 3).
 
 ## 1. Architecture
 
@@ -39,7 +39,8 @@ Key choices
 | `/parent` | parent | overview (P0 shell; real numbers in S4) |
 | `/parent/accounts` | parent | create/lock accounts, reset password, students, tutor assignment |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
-| `/tutor` | tutor | shell (S3: "Ghi buổi dạy") |
+| `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
+| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence → level M0–M4 → note → save; last 5 own sessions |
 | `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → in progress → next new |
 | `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only) |
 | `/student/review` | student | mixed review of all due units, interleaved |
@@ -57,13 +58,17 @@ Key choices
 | `attempts` (0003) | every graded answer: mode faded/practice/exit/review, correct, error code, duration, run id | learn actions |
 | `review_queue` (0004, 0005) | next review per unit: stage 1/2/3 = D+1/7/21, 4 = maintenance (60 days); `completed_at` = M4 | learn actions |
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
+| `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
+| `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
 
 RLS read rule for learning tables: `is_parent_of(student) or is_active_tutor_of(student) or is_self_student(student)`
 (security-definer helpers in 0001). **Every new table needs explicit GRANTs to `service_role`** (Supabase no longer
 grants them automatically — this broke account creation once, see 0002).
 
-Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.ts`). Tutor-proposed and
-parent-confirmed levels arrive in S3/S4.
+Teaching tables read rule: `is_parent_of(student) or (tutor_id = auth.uid() and is_active_tutor_of(student))` —
+a tutor sees only their own sessions and only while assigned (D3); students don't read them.
+
+Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.ts`). Parent-confirmed levels arrive in S4.
 
 ## 4. Content
 
@@ -85,6 +90,10 @@ parent-confirmed levels arrive in S3/S4.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
 - Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.
+- Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;
+  a session with no unit needs a note. The action (`src/app/tutor/actions.ts`) re-checks an active tutor profile and an
+  active assignment with the admin client, inserts the session then the proposals, and deletes the session if the
+  proposals fail.
 
 ## 6. Operations
 
@@ -103,11 +112,13 @@ parent-confirmed levels arrive in S3/S4.
 |---|---|
 | `npm run test:content` | grading, content files, learning rules (node --test) |
 | `npm run test:db` | migrations + RLS on PGlite with a stubbed auth schema |
-| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
+| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
 
 ## 8. Gotchas
 
 - Next 16: `proxy.ts` not middleware; async `params`; ESLint CLI; read `node_modules/next/dist/docs/` before using an API.
 - React compiler lint: no `Date.now()` during render; refs must be named `…Ref` to be mutated in handlers.
 - Don't `revalidatePath` in an action whose page would re-render into a different state mid-flow (`finishReview`).
+- Forms whose save can be refused must not use `<form action>`: React resets the form after the action and wipes
+  the user's choices. `SessionForm` submits via `onSubmit` + `startTransition(formAction)` and remounts on success.
 - Vietnam dates come from `vnDate()`; never compare against `new Date().toISOString().slice(0,10)` (UTC).
