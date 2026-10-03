@@ -8,6 +8,7 @@ export const RULES = {
   m3ExitRate: 0.8,
   minAnswersForConfidence: 5, // fewer answers → "chưa đủ dữ liệu"
   reviewIntervals: [1, 7, 21] as const, // D+1, D+7, D+21 (D14)
+  maintenanceDays: 60, // after D+21: keep reviewing every 60 days until the exam (Q5, 03/10/2026)
   easyFactor: 1.5,
   reviewItemsPerUnit: 3,
   reviewPassRatio: 2 / 3,
@@ -109,7 +110,7 @@ export function systemMastery(input: { workedViewed: boolean; attempts: AttemptR
 
 // ---------- review schedule (D14) ----------
 
-export type Stage = 1 | 2 | 3;
+export type Stage = 1 | 2 | 3 | 4; // 4 = maintenance
 export type Rating = "easy" | "normal";
 
 export function reviewPassed(correct: number, total: number): boolean {
@@ -121,19 +122,22 @@ export function firstReview(today: string): { stage: Stage; dueOn: string } {
   return { stage: 1, dueOn: addDays(today, RULES.reviewIntervals[0]) };
 }
 
-/** Next state after finishing the review of `stage`. */
+/**
+ * Next state after finishing the review of `stage`.
+ * Pass: 1 → 2 (D+7), 2 → 3 (D+21), 3 → 4 maintenance (+60, reaching M4), 4 → 4 (+60).
+ * "Easy" stretches the next interval ×1.5. Fail at any stage: back to 1 (D+1) and M4 is lost.
+ */
 export function afterReview(
   stage: Stage,
   passed: boolean,
   rating: Rating,
   today: string,
-): { stage: Stage; dueOn: string | null; completed: boolean } {
+): { stage: Stage; dueOn: string; completed: boolean } {
   if (!passed) return { stage: 1, dueOn: addDays(today, RULES.reviewIntervals[0]), completed: false };
-  if (stage === 3) return { stage: 3, dueOn: null, completed: true };
-  const next = (stage + 1) as Stage;
-  const base = RULES.reviewIntervals[next - 1];
+  const next: Stage = stage >= 3 ? 4 : ((stage + 1) as Stage);
+  const base = next === 4 ? RULES.maintenanceDays : RULES.reviewIntervals[next - 1];
   const days = rating === "easy" ? Math.ceil(base * RULES.easyFactor) : base;
-  return { stage: next, dueOn: addDays(today, days), completed: false };
+  return { stage: next, dueOn: addDays(today, days), completed: next === 4 };
 }
 
 // ---------- review session building ----------

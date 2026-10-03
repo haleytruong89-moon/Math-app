@@ -109,6 +109,24 @@ await page.goBack();
 await page.goto(`${BASE}/student`);
 ok("today: review card gone", (await page.getByRole("link", { name: "Bắt đầu ôn" }).count()) === 0);
 await page.screenshot({ path: "e2e/out/student/7-today-end.png", fullPage: true });
+// ---- Q5: passing D+21 → maintenance every 60 days, M4
+await sql(`update public.review_queue set stage = 3, due_on = '${vnToday}' where unit_id = 'htl-1'`);
+await page.goto(`${BASE}/student/review`);
+for (let i = 0; i < 3; i++) {
+  const id = await page.locator("[data-item]").getAttribute("data-item");
+  await answer(id);
+  await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
+  await page.getByRole("button", { name: /Câu tiếp|Xem kết quả/ }).click();
+}
+await page.getByRole("button", { name: "Lưu kết quả ôn" }).click();
+await page.getByText("Xong lượt ôn").waitFor();
+ok("review: maintenance message after D+21", (await page.getByText(/Ôn duy trì lần tới/).count()) === 1);
+const m = await sql(`select stage, due_on::text, completed_at is not null as done from public.review_queue where unit_id = 'htl-1'`);
+ok("db: D+21 passed → stage 4, +60 days, completed", m[0].stage === 4 && m[0].due_on === add(vnToday, 60) && m[0].done === true, JSON.stringify(m));
+await page.goto(`${BASE}/student`);
+ok("today: htl-1 shows M4", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M4").count()) === 1);
+await page.screenshot({ path: "e2e/out/student/9-today-m4.png", fullPage: true });
+
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage(); await dp.goto(`${BASE}/student`); await dp.screenshot({ path: "e2e/out/student/8-today-dark.png", fullPage: true });
 ok("no browser errors", errors.length === 0, errors.join(" | "));

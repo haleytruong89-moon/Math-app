@@ -71,5 +71,5 @@ export async function loadStudentState(supabase: SupabaseClient, studentId: stri
 }
 
 export function dueReviews(state: StudentState): UnitState[] {
-  return state.units.filter((u) => u.review && !u.review.completed && u.review.dueOn && u.review.dueOn <= state.today);
+  return state.units.filter((u) => u.review?.dueOn && u.review.dueOn <= state.today);
 }

@@ -18,6 +18,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0001_p0_accounts.sql`, 'utf8')
 await db.exec(fs.readFileSync(`${repo}/migrations/0002_service_role_grants_and_profile_trigger.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0003_p1_learning_attempts.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0004_p1_review_queue.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0005_p1_maintenance_review.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -103,5 +104,7 @@ check('student sees own review_queue', (await as('nguyen@example.com','select co
 check('other student sees no review_log', (await as('an@example.com','select count(*)::int c from public.review_log'))[0].c, 0);
 check('parent sees child review_log', (await as('me@example.com','select count(*)::int c from public.review_log'))[0].c, 1);
 check('student cannot move own due date', isErr(await as('nguyen@example.com',`update public.review_queue set due_on = current_date + 99`)), true);
-check('queue: due_on and completed_at consistent', await db.query(`insert into public.review_queue (student_id, unit_id, stage, due_on, completed_at) select id,'htl-2',3,current_date,now() from public.students limit 1`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
+check('queue: completed_at only at maintenance stage', await db.query(`insert into public.review_queue (student_id, unit_id, stage, due_on, completed_at) select id,'htl-2',3,current_date,now() from public.students limit 1`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
+check('queue: due date always set', await db.query(`insert into public.review_queue (student_id, unit_id, stage, due_on) select id,'htl-2',2,null from public.students limit 1`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
+check('queue: maintenance stage 4 accepted', await db.query(`insert into public.review_queue (student_id, unit_id, stage, due_on, completed_at) select id,'htl-2',4,current_date + 60,now() from public.students where full_name='Hạnh Nguyên'`).then(()=>'ok', e=>'ERROR '+e.message), 'ok');
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);

@@ -269,8 +269,8 @@ async function dueQueueRow(studentId: string, unitId: string) {
     .eq("student_id", studentId)
     .eq("unit_id", unitId)
     .maybeSingle();
-  if (!data || data.completed_at || !data.due_on || data.due_on > vnDate()) return null;
-  return data as { stage: Stage; due_on: string };
+  if (!data?.due_on || data.due_on > vnDate()) return null; // maintenance (stage 4) is due like any other review
+  return data as { stage: Stage; due_on: string; completed_at: string | null };
 }
 
 const ReviewCheck = z.object({ runId: z.uuid(), unitId: UnitId, itemId: UnitId, answer: Answer, durationMs: Duration });
@@ -369,7 +369,8 @@ export async function finishReview(input: z.input<typeof ReviewFinish>): Promise
       .update({
         stage: next.stage,
         due_on: next.dueOn,
-        completed_at: next.completed ? new Date().toISOString() : null,
+        // Keep the date M4 was first reached; a failed review clears it.
+        completed_at: next.completed ? (due.completed_at ?? new Date().toISOString()) : null,
         updated_at: new Date().toISOString(),
       })
       .eq("student_id", who.studentId)

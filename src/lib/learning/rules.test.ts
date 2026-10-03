@@ -72,8 +72,14 @@ test("review schedule: D+1 → D+7 → D+21, easy ×1.5, wrong → D+1", () => {
   assert.deepEqual(afterReview(1, true, "easy", "2026-10-06"), { stage: 2, dueOn: "2026-10-17", completed: false }); // 11 days
   assert.deepEqual(afterReview(2, true, "normal", "2026-10-13"), { stage: 3, dueOn: "2026-11-03", completed: false });
   assert.deepEqual(afterReview(2, true, "easy", "2026-10-13"), { stage: 3, dueOn: "2026-11-14", completed: false }); // 32 days
-  assert.deepEqual(afterReview(3, true, "normal", "2026-11-03"), { stage: 3, dueOn: null, completed: true });
   assert.deepEqual(afterReview(2, false, "easy", "2026-10-13"), { stage: 1, dueOn: "2026-10-14", completed: false });
+});
+
+test("after D+21: maintenance every 60 days (easy 90); a failed maintenance review goes back to D+1", () => {
+  assert.deepEqual(afterReview(3, true, "normal", "2026-11-03"), { stage: 4, dueOn: "2027-01-02", completed: true });
+  assert.deepEqual(afterReview(4, true, "normal", "2027-01-02"), { stage: 4, dueOn: "2027-03-03", completed: true });
+  assert.deepEqual(afterReview(4, true, "easy", "2027-01-02"), { stage: 4, dueOn: "2027-04-02", completed: true });
+  assert.deepEqual(afterReview(4, false, "normal", "2027-01-02"), { stage: 1, dueOn: "2027-01-03", completed: false });
 });
 
 test("review pass = at least 2 of 3", () => {

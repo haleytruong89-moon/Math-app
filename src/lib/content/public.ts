@@ -47,4 +47,4 @@ export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicIt
 
 export type ReviewSummary =
   | { ok: false; message: string }
-  | { ok: true; units: { unitId: string; correct: number; total: number; passed: boolean; nextDueOn: string | null; completed: boolean }[] };
+  | { ok: true; units: { unitId: string; correct: number; total: number; passed: boolean; nextDueOn: string; completed: boolean }[] };

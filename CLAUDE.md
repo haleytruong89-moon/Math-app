@@ -2,7 +2,7 @@
 
 Web app helping Hạnh Nguyên (grade 9) learn math and prepare for the grade-10 entrance exam. Shared by three roles: parent (admin), tutor, student.
 
-**Source of truth for product decisions:** `claude/PJ_APP_TOAN.md` in the "STUDY BB" claude.ai Project (decisions D1–D19, non-goals §2.5, user stories §2.6, acceptance criteria §2.7, architecture §3). Do not change a decision in code without updating that doc.
+**Source of truth for product decisions:** `claude/PJ_APP_TOAN.md` in the "STUDY BB" claude.ai Project. **Repo copy: `docs/SPEC.md`** (D1–D19, non-goals, user stories, acceptance criteria, architecture, plus build decisions in §0) — read it if you can't reach the Project. As-built design: `docs/DESIGN.md`. Do not change a decision in code without updating both.
 
 @AGENTS.md
 

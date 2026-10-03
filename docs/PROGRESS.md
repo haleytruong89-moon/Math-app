@@ -8,9 +8,34 @@
 | Lát | Nhánh | Trạng thái |
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
-| S2 — Mastery + lịch ôn + "Hôm nay cần làm" | `p1-slice-2` | 🟡 Chờ phụ huynh chạy SQL 0004, review & merge |
-| S3 — Gia sư "Ghi buổi dạy" | — | ⬜ Tiếp theo |
-| S4–S7 | — | ⬜ |
+| S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | 🟡 PR #2 — chờ phụ huynh chạy SQL **0004 + 0005**, merge |
+| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ⬜ **Tiếp theo** (lịch chạy đêm) |
+| S4 — Phụ huynh "Tổng quan" | — | ⬜ |
+| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, sau S3 |
+| S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
+
+### Câu hỏi đang mở
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q8 | "Buổi dạy chưa ghi > 24h" cần lịch dạy: phụ huynh nhập ngày dạy trong tuần khi gán gia sư (ví dụ T3, T5)? | Có — làm trong S4 |
+
+---
+
+## 03/10/2026 — Quyết định + bổ sung vào PR #2
+
+**Phụ huynh duyệt (03/10, "ok cả 3"):**
+- Q5: sau D+21 → **ôn duy trì 60 ngày/lần** đến kỳ thi.
+- Q6: tạo tài khoản Nguyên **sau S3**.
+- Q7: **bật lịch tự chạy mỗi đêm 23:00**.
+- Theo `vibe-code`: đưa spec vào repo (`docs/SPEC.md`, `docs/DESIGN.md`); **pilot sớm**, lùi hình học C1–C3 (S5) sau khi pilot chạy.
+
+**Đã làm (cùng nhánh `p1-slice-2`):**
+- `docs/SPEC.md`: bản sao PJ_APP_TOAN (D1–D19, §2.5–2.7, §3, §4, §10) + bảng quyết định trong lúc build. `docs/DESIGN.md`: kiến trúc thực tế, route, bảng dữ liệu, nội dung, chấm điểm, vận hành, kiểm thử, lưu ý. `CLAUDE.md` trỏ tới hai file này.
+- Ôn duy trì: migration **0005** (stage 4 = duy trì), quy tắc + test; màn kết quả ôn hiện "Ôn duy trì lần tới".
+- `P1_PLAN.md`: thứ tự lát mới (S3 → S4 → pilot → S6 → S5) + tiêu chí nghiệm thu chi tiết cho S3, S4.
+- Tự kiểm: lint, build, 22 test quy tắc/nội dung, 36 test RLS, e2e **39/39**.
+
+**Phụ huynh cần làm:** chạy SQL `0004` (nếu chưa) rồi `0005` → merge PR #2.
 
 ---
 

@@ -9,7 +9,7 @@ import { FORMAT_HINT, ItemInput } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
 
-const STAGE_LABEL = { 1: "D+1", 2: "D+7", 3: "D+21" } as const;
+const STAGE_LABEL = { 1: "D+1", 2: "D+7", 3: "D+21", 4: "duy trì" } as const;
 
 function formatDate(iso: string) {
   const [y, m, d] = iso.split("-").map(Number);
@@ -25,7 +25,7 @@ export function ReviewPlayer({
 }: {
   runId: string;
   questions: ReviewQuestion[];
-  units: { id: string; title: string; stage: 1 | 2 | 3 }[];
+  units: { id: string; title: string; stage: 1 | 2 | 3 | 4 }[];
   hasFigure: boolean;
 }) {
   const [pos, setPos] = useState(0);
@@ -82,12 +82,14 @@ export function ReviewPlayer({
             <p className="font-display font-semibold">{title(u.unitId)}</p>
             <p className="mt-1 text-sm">
               Đúng {u.correct}/{u.total} ·{" "}
-              {u.completed ? (
-                <b className="text-good">Đã qua cả 3 lượt ôn — nhớ lâu rồi!</b>
-              ) : u.passed ? (
-                <>Lần ôn tiếp: <b>{formatDate(u.nextDueOn!)}</b></>
+              {!u.passed ? (
+                <span className="text-warn">Chưa chắc lắm — ôn lại vào <b>{formatDate(u.nextDueOn)}</b></span>
+              ) : u.completed ? (
+                <>
+                  <b className="text-good">Nhớ chắc rồi!</b> Ôn duy trì lần tới: <b>{formatDate(u.nextDueOn)}</b>
+                </>
               ) : (
-                <span className="text-warn">Chưa chắc lắm — ôn lại vào <b>{formatDate(u.nextDueOn!)}</b></span>
+                <>Lần ôn tiếp: <b>{formatDate(u.nextDueOn)}</b></>
               )}
             </p>
           </Card>
