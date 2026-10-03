@@ -9,15 +9,69 @@
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | 🟡 PR #2 — chờ phụ huynh chạy SQL **0004 + 0005**, merge |
-| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ⬜ **Tiếp theo** (lịch chạy đêm) |
-| S4 — Phụ huynh "Tổng quan" | — | ⬜ |
-| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, sau S3 |
+| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | 🟡 PR mới (xếp chồng trên `p1-slice-2`) — chờ SQL **0006**, merge **sau** PR #2 |
+| S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo — **chỉ chạy khi PR #2 đã merge** (quy tắc: ≥ 2 PR lát chưa merge thì đêm sau không làm lát mới) |
+| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
 |---|---|---|
 | Q8 | "Buổi dạy chưa ghi > 24h" cần lịch dạy: phụ huynh nhập ngày dạy trong tuần khi gán gia sư (ví dụ T3, T5)? | Có — làm trong S4 |
+| Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
+| Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
+| Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 03/10/2026 (đêm) — S3 xong: Gia sư "Ghi buổi dạy" (nhánh `p1-slice-3`)
+
+**Nhánh xếp chồng:** PR #2 (`p1-slice-2`) chưa merge nên `p1-slice-3` tách từ `p1-slice-2`; PR mới có base = `p1-slice-2`. Merge PR #2 trước, PR S3 sẽ tự chuyển base về `main` (nếu GitHub không tự chuyển: mở PR → *Edit* → base `main`).
+
+**Quyết định dùng (mặc định, chưa hỏi được):**
+- Thiết kế S3 theo P1_PLAN §3 (đã viết sẵn "mặc định, đổi được khi review").
+- Q8: chưa đụng — thuộc S4.
+- Mới (Q9–Q11 bên dưới): buổi không tick bài nào vẫn lưu được nếu có ghi chú; lùi tối đa 7 ngày; gia sư chỉ thấy buổi của chính mình.
+- Nhãn M0–M4 trên form lấy đúng thang trong `PROJECT_HOC_TOAN_LOP9_6_THANG_MASTER.md` §2.
+
+### Đã làm
+- **`/tutor`**: danh sách học sinh **đang được gán** (RLS) + ngày buổi ghi gần nhất; nút "Ghi buổi dạy" đã mở.
+- **`/tutor/[học sinh]` — form một màn, cho điện thoại**: ngày dạy (mặc định hôm nay, không cho ngày tương lai, lùi tối đa 7 ngày) → tick bài đã dạy (mọi bài, kể cả bài nháp — ghi chú "chưa mở cho học sinh") → **bằng chứng hiện ngay khi tick**: mức hệ thống, số câu đã làm (hoặc "chưa đủ dữ liệu"), bài kiểm tra gần nhất x/y, % đúng 5 câu luyện gần nhất, ngày làm bài cuối → chọn mức đề xuất M0–M4 (**bắt buộc**) → ghi chú ≤ 500 ký tự → "Lưu buổi dạy".
+- Thiếu mức → không lưu, báo đúng tên bài thiếu; các lựa chọn đã chọn **được giữ nguyên**. Lưu xong → "✓ Đã lưu lúc HH:MM", form trống lại, danh sách 5 buổi gần nhất cập nhật (đề xuất vs hệ thống).
+- **Bảng mới** (migration `0006`): `teaching_sessions` (học sinh, gia sư, ngày dạy, ghi chú), `tutor_proposals` (buổi, bài, mức đề xuất + **ảnh chụp mức hệ thống và số câu lúc đề xuất** — để S4 hiện bằng chứng cho cờ lệch, D8). RLS: phụ huynh đọc mọi buổi của con; gia sư chỉ đọc **buổi của mình** khi còn được gán (D3); học sinh không đọc. Ghi qua server action, kiểm tra lại tài khoản gia sư còn hoạt động + gán còn hiệu lực.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua.
+- `npm test`: **29** test quy tắc/nội dung (thêm 7 test form buổi dạy) + **49** test RLS (thêm 15 cho 2 bảng mới): qua.
+- `./e2e/run.sh`: **67/67** — 16 xem trước phụ huynh + 23 luồng học sinh + **28 luồng gia sư mới**: chỉ thấy học sinh được gán; bằng chứng hiện khi tick (M2, 10 câu, kiểm tra 3/5, luyện 80%); thiếu mức bị chặn + giữ lựa chọn; lưu 1 buổi 2 bài = **7 lần chạm** (≤ 10, kể cả 1 lần lưu bị chặn); DB đúng 1 buổi + 2 đề xuất kèm ảnh chụp mức hệ thống; chặn ngày tương lai / quá 7 ngày / buổi trống (kiểm ở máy chủ); buổi chỉ có ghi chú lưu được; hết gán → không lưu được, học sinh biến mất, link form 404; gia sư bị khoá → không lưu được.
+- Ảnh chụp điện thoại 390px sáng + tối: `e2e/out/tutor/` (không commit).
+- Không có nội dung toán mới → không cần soát toán.
+
+### Phụ huynh cần làm (khoảng 15 phút)
+1. Nếu chưa: chạy SQL `0004` → `0005` → merge **PR #2** trước.
+2. **Chạy SQL** `supabase/migrations/0006_p1_teaching_sessions.sql` → "Success. No rows returned".
+3. Thử preview (cần một tài khoản gia sư được gán cho Nguyên — tạo ở **Tài khoản** nếu chưa có):
+   - Đăng nhập gia sư → thấy đúng Nguyên → bấm **Ghi buổi dạy**.
+   - Tick 1 bài → thấy bằng chứng ngay; tick bài thứ 2, chỉ chọn mức cho bài 1 → bấm Lưu → bị chặn, nêu tên bài 2.
+   - Chọn mức bài 2, gõ ghi chú → Lưu → "Đã lưu lúc …", form trống, buổi hiện ở danh sách dưới.
+   - Đổi ngày dạy về hôm qua rồi lưu thử một buổi chỉ có ghi chú.
+   - (Tuỳ chọn) Khoá tài khoản gia sư thử → đăng nhập lại không được.
+4. **Merge** PR S3 (sau PR #2). Lưu ý: preview dùng database thật — buổi thử sẽ nằm lại trong dữ liệu (chưa có nút xoá; nhờ Claude xoá nếu cần).
+5. Sau merge: có thể bắt đầu **pilot** (S7) — tạo tài khoản Nguyên sau khi nói chuyện D18.
+
+### Câu hỏi cho phụ huynh
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q9 | Buổi không tick bài nào (chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có |
+| Q10 | Ghi trễ tối đa bao nhiêu ngày? | 7 ngày |
+| Q11 | Gia sư mới có xem buổi của gia sư cũ? | Không (D3); phụ huynh xem hết |
+
+### Ghi chú kỹ thuật (cho phiên sau)
+- Form có thể bị từ chối **không** dùng `<form action>` (React tự reset form sau action → mất lựa chọn). `SessionForm` dùng `onSubmit` + `startTransition(formAction)`, reset bằng `key` khi lưu thành công.
+- `loadStudentState(..., { includeDrafts: true })` cho gia sư; học sinh/phụ huynh giữ mặc định (chỉ bài đã duyệt).
+- S4 cờ lệch: lấy `tutor_proposals` mới nhất theo `(student_id, unit_id, created_at)` (đã có index); `system_level` là ảnh chụp lúc đề xuất, còn cờ lệch so với mức hệ thống **hiện tại** (§2.7).
+- e2e có vai trò `tutor` (`E2E_ROLE=tutor`, `TUTOR_UID`), fake client có `.delete()`; DB giả có thêm học sinh "Đăng An" không gán gia sư.
+- Sửa/xoá buổi đã ghi: chưa làm (spec không yêu cầu) — nếu gia sư cần, thêm ở S4/S7.
 
 ---
 
