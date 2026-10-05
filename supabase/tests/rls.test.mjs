@@ -23,6 +23,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0005_p1_maintenance_review.sql
 await db.exec(fs.readFileSync(`${repo}/migrations/0006_p1_teaching_sessions.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0007_p1_homework.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0008_p1_parent_overview.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0009_p1_curriculum.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -181,6 +182,25 @@ const badWd = (arr) => db.query(`update public.tutor_assignments set weekdays = 
 check('weekdays 1–7, unique, not null', await badWd(`'{0}'`) && await badWd(`'{8}'`) && await badWd(`'{2,2}'`) && await badWd(`array[null]::smallint[]`), true);
 check('weekdays valid set accepted', await db.query(`update public.tutor_assignments set weekdays = '{2,4}' where ended_at is null`).then(()=>true, ()=>false), true);
 check('weekdays_ok has a fixed search_path', (await db.query(`select proconfig from pg_proc where proname = 'weekdays_ok'`)).rows[0].proconfig, ['search_path=""']);
+// 0009: unit_unlocks + unit_progress test-out columns (S6a)
+await db.exec(`set role service_role`);
+const ul = await db.query(`
+  insert into public.unit_unlocks (student_id, unit_id, unlocked_by)
+  select s.id, 'htl-2', (select p.id from public.profiles p where p.role = 'parent' limit 1) from public.students s where s.full_name='Hạnh Nguyên'`).then(()=>true, e=>{console.error(e.message); return false;});
+const to = await db.query(`
+  insert into public.unit_progress (student_id, unit_id, testout_run, testout_at)
+  select id, 'a-tanso', gen_random_uuid(), now() from public.students where full_name='Hạnh Nguyên'`).then(()=>true, e=>{console.error(e.message); return false;});
+await db.exec(`reset role`);
+check('service_role can write unit_unlocks + test-out columns', ul && to, true);
+check('parent sees unlocks of child', (await as('me@example.com','select count(*)::int c from public.unit_unlocks'))[0].c, 1);
+check('active tutor sees unlocks', (await as('trang@example.com','select count(*)::int c from public.unit_unlocks'))[0].c, 1);
+check('student sees own unlocks', (await as('nguyen@example.com','select count(*)::int c from public.unit_unlocks'))[0].c, 1);
+check('other student sees none', (await as('an@example.com','select count(*)::int c from public.unit_unlocks'))[0].c, 0);
+check('ended tutor sees no unlocks', (await as('old@example.com','select count(*)::int c from public.unit_unlocks'))[0].c, 0);
+check('nobody writes unlocks directly', isErr(await as('me@example.com',`insert into public.unit_unlocks (student_id, unit_id, unlocked_by) select id, 'htl-1', auth.uid() from public.students`)), true);
+check('one unlock per student and unit', await db.query(`insert into public.unit_unlocks (student_id, unit_id, unlocked_by) select student_id, unit_id, unlocked_by from public.unit_unlocks`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
+check('test-out: run and time set together', await db.query(`update public.unit_progress set testout_at = null where unit_id = 'a-tanso'`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
+check('student reads own test-out state', (await as('nguyen@example.com',`select (testout_run is not null) t from public.unit_progress where unit_id = 'a-tanso'`))[0]?.t, true);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);
