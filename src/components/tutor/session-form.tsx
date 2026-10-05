@@ -16,6 +16,9 @@ export type UnitEvidence = {
   lastExit: string | null; // "4/5"
   practiceRate: number | null; // 0..1 over the last 5 practice first-tries
   lastActive: string | null; // dd/mm
+  module: string;
+  needsTutor: boolean; // LT6: grading partial/tutor → "cần gia sư xác nhận"
+  noContent: boolean; // in the roadmap, no content file yet
   confirmed: string | null; // parent-confirmed level still in effect, e.g. "M3 (05/10)"
 };
 
@@ -82,6 +85,9 @@ function Fields({ studentId, today, minDate, units, defaultDue, maxDue }: FormPr
   const [note, setNote] = useState("");
   const [day, setDay] = useState(today);
   const [levels, setLevels] = useState<Record<string, number>>({});
+  const [q, setQ] = useState("");
+  const match = (u: UnitEvidence) => !q.trim() || `${u.title} ${u.moduleTitle}`.toLocaleLowerCase("vi").includes(q.trim().toLocaleLowerCase("vi"));
+  const groups = [...new Set(units.map((u) => u.module))].map((m) => units.filter((u) => u.module === m));
   const toggle = (id: string, on: boolean) =>
     setTicked((s) => {
       const n = new Set(s);
@@ -109,33 +115,47 @@ function Fields({ studentId, today, minDate, units, defaultDue, maxDue }: FormPr
 
       <fieldset>
         <legend className="font-display text-sm font-semibold uppercase tracking-wide text-muted">Bài đã dạy</legend>
-        <ul className="mt-2 flex flex-col gap-2">
-          {units.map((u) => {
-            const on = ticked.has(u.id);
-            return (
-              <li key={u.id} className={`rounded-xl border bg-surface ${on ? "border-accent" : "border-border"}`}>
-                <label className="flex cursor-pointer items-start gap-3 p-3.5">
-                  <input
-                    type="checkbox"
-                    name="unit"
-                    value={u.id}
-                    checked={on}
-                    onChange={(e) => toggle(u.id, e.target.checked)}
-                    className="mt-0.5 size-5 shrink-0 accent-[var(--accent)]"
-                  />
-                  <span className="min-w-0">
-                    <span className="block font-display font-semibold leading-snug">{u.title}</span>
-                    <span className="font-mono text-xs text-muted">
-                      {u.moduleTitle}
-                      {u.draft && " · chưa mở cho học sinh"}
-                    </span>
-                  </span>
-                </label>
-                {on && <Evidence u={u} studentId={studentId} level={levels[u.id]} onLevel={(l) => setLevels((m) => ({ ...m, [u.id]: l }))} />}
-              </li>
-            );
-          })}
-        </ul>
+        <input
+          type="search"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Tìm bài…"
+          aria-label="Tìm bài"
+          className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-base text-ink"
+        />
+        {groups.map((g) => (
+          // Filtered-out rows stay in the DOM (hidden) so a ticked unit is still submitted.
+          <div key={g[0].module} className={g.some((u) => ticked.has(u.id) || match(u)) ? "mt-3" : "hidden"}>
+            <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted">{g[0].moduleTitle}</p>
+            <ul className="flex flex-col gap-2">
+              {g.map((u) => {
+                const on = ticked.has(u.id);
+                return (
+                  <li key={u.id} className={`rounded-xl border bg-surface ${on ? "border-accent" : "border-border"} ${on || match(u) ? "" : "hidden"}`}>
+                    <label className="flex cursor-pointer items-start gap-3 p-3.5">
+                      <input
+                        type="checkbox"
+                        name="unit"
+                        value={u.id}
+                        checked={on}
+                        onChange={(e) => toggle(u.id, e.target.checked)}
+                        className="mt-0.5 size-5 shrink-0 accent-[var(--accent)]"
+                      />
+                      <span className="min-w-0">
+                        <span className="block font-display font-semibold leading-snug">{u.title}</span>
+                        <span className="font-mono text-xs text-muted">
+                          {u.needsTutor && <span className="text-warn">cần gia sư xác nhận · </span>}
+                          {u.noContent ? "chưa có bài trên app" : u.draft ? "chưa mở cho học sinh" : "đang có trên app"}
+                        </span>
+                      </span>
+                    </label>
+                    {on && <Evidence u={u} studentId={studentId} level={levels[u.id]} onLevel={(l) => setLevels((m) => ({ ...m, [u.id]: l }))} />}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </fieldset>
 
       <label className="flex flex-col gap-1.5 text-sm text-muted">

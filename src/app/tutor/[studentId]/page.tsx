@@ -54,23 +54,36 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
     ? await supabase.from("tutor_proposals").select("session_id, unit_id, level, system_level").in("session_id", ids)
     : { data: [] };
 
-  const units: UnitEvidence[] = state.units.map((u) => {
-    const last = u.attempts.filter((a) => a.mode !== "faded").at(-1);
+  // S6a: every roadmap KU, grouped by module; "cần gia sư xác nhận" (LT6) first in its module.
+  const moduleOrder = new Map(state.modules.map((m, i) => [m.id, i]));
+  const moduleTitle = new Map(state.modules.map((m) => [m.id, m.title]));
+  const nodes = [...state.roadmap].sort(
+    (a, b) =>
+      (moduleOrder.get(a.entry.module) ?? 0) - (moduleOrder.get(b.entry.module) ?? 0) ||
+      Number(b.entry.grading === "partial" || b.entry.grading === "tutor") - Number(a.entry.grading === "partial" || a.entry.grading === "tutor") ||
+      a.entry.seq - b.entry.seq,
+  );
+  const units: UnitEvidence[] = nodes.map(({ entry, state: u }) => {
+    const last = u?.attempts.filter((a) => a.mode !== "faded").at(-1);
+    const c = confs.get(entry.id);
     return {
-      id: u.unit.id,
-      title: u.unit.title,
-      moduleTitle: u.moduleTitle,
-      draft: u.unit.status !== "approved",
-      level: u.mastery.level,
-      answers: u.mastery.answers,
-      enoughData: u.mastery.enoughData,
-      lastExit: u.mastery.lastExit ? `${u.mastery.lastExit.right}/${u.mastery.lastExit.total}` : null,
-      practiceRate: u.mastery.practiceRate,
+      id: entry.id,
+      title: entry.title,
+      moduleTitle: moduleTitle.get(entry.module) ?? entry.module,
+      module: entry.module,
+      needsTutor: entry.grading === "partial" || entry.grading === "tutor",
+      noContent: !u,
+      draft: !!u && u.unit.status !== "approved",
+      level: u?.mastery.level ?? 0,
+      answers: u?.mastery.answers ?? 0,
+      enoughData: !!u?.mastery.enoughData,
+      lastExit: u?.mastery.lastExit ? `${u.mastery.lastExit.right}/${u.mastery.lastExit.total}` : null,
+      practiceRate: u?.mastery.practiceRate ?? null,
       lastActive: last ? ddmm(vnDate(last.created_at)) : null,
-      confirmed: (() => {
-        const c = confs.get(u.unit.id);
-        return c && displayLevel(u.mastery.level, c, { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).confirmed ? `M${c.level} (${ddmm(vnDate(c.created_at))})` : null;
-      })(),
+      confirmed:
+        u && c && displayLevel(u.mastery.level, c, { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).confirmed
+          ? `M${c.level} (${ddmm(vnDate(c.created_at))})`
+          : null,
     };
   });
 
