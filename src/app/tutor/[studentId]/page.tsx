@@ -5,6 +5,7 @@ import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { getUnit } from "@/lib/content";
 import { addDays, vnDate } from "@/lib/learning/rules";
+import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { SESSION_RULES } from "@/lib/learning/session";
 import { loadStudentState } from "@/lib/learning/state";
 import { SessionForm, type UnitEvidence } from "@/components/tutor/session-form";
@@ -27,7 +28,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
   const { data: student } = await supabase.from("students").select("id, full_name").eq("id", studentId).maybeSingle();
   if (!student) notFound();
 
-  const [state, sessions, openHw] = await Promise.all([
+  const [state, sessions, openHw, confRows] = await Promise.all([
     loadStudentState(supabase, student.id, { includeDrafts: true }),
     supabase
       .from("teaching_sessions")
@@ -45,7 +46,9 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       .is("reviewed_at", null)
       .order("due_on", { ascending: true })
       .limit(20),
+    supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", student.id).limit(500),
   ]);
+  const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   const ids = (sessions.data ?? []).map((s) => s.id as string);
   const { data: proposals } = ids.length
     ? await supabase.from("tutor_proposals").select("session_id, unit_id, level, system_level").in("session_id", ids)
@@ -64,6 +67,10 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       lastExit: u.mastery.lastExit ? `${u.mastery.lastExit.right}/${u.mastery.lastExit.total}` : null,
       practiceRate: u.mastery.practiceRate,
       lastActive: last ? ddmm(vnDate(last.created_at)) : null,
+      confirmed: (() => {
+        const c = confs.get(u.unit.id);
+        return c && displayLevel(u.mastery.level, c).confirmed ? `M${c.level} (${ddmm(vnDate(c.created_at))})` : null;
+      })(),
     };
   });
 

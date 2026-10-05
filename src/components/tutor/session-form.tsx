@@ -16,6 +16,7 @@ export type UnitEvidence = {
   lastExit: string | null; // "4/5"
   practiceRate: number | null; // 0..1 over the last 5 practice first-tries
   lastActive: string | null; // dd/mm
+  confirmed: string | null; // parent-confirmed level still in effect, e.g. "M3 (05/10)"
 };
 
 const LEVEL_BG = ["bg-m0", "bg-m1", "bg-m2", "bg-m3", "bg-m4"] as const;
@@ -168,6 +169,7 @@ function Evidence({ u, studentId, level, onLevel }: { u: UnitEvidence; studentId
     u.lastExit ? `Kiểm tra gần nhất ${u.lastExit}` : "Chưa làm bài kiểm tra",
     u.practiceRate !== null ? `5 câu luyện gần nhất đúng ${Math.round(u.practiceRate * 100)}%` : null,
     u.lastActive ? `Làm bài lần cuối ${u.lastActive}` : null,
+    u.confirmed ? `Bố mẹ chốt ${u.confirmed}` : null,
   ].filter(Boolean);
   return (
     <div className="border-t border-border px-3.5 pb-3.5 pt-3">

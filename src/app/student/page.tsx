@@ -7,6 +7,7 @@ import { dueReviews, loadStudentState, type StudentState, type UnitState } from 
 import { RULES, daysBetween } from "@/lib/learning/rules";
 import { giveConsent, setHomeworkDone } from "./actions";
 import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
+import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -25,11 +26,13 @@ export default async function StudentHome() {
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
   const cols = "id, task, links, due_on, done_at, reviewed_at, review_note";
-  const [state, open, recent] = await Promise.all([
+  const [state, open, recent, confRows] = await Promise.all([
     loadStudentState(supabase, me.id),
     supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
     supabase.from("homework").select(cols).eq("student_id", me.id).order("created_at", { ascending: false }).limit(20),
+    supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", me.id).limit(500),
   ]);
+  const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
   const homework = studentHomework((open.data ?? []) as HomeworkRow[], (recent.data ?? []) as HomeworkRow[], new Date());
   const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric", timeZone: "Asia/Ho_Chi_Minh" });
@@ -40,7 +43,7 @@ export default async function StudentHome() {
         <span className="font-mono text-xs text-muted">{today}</span>
       </div>
       <WeeklyGoal days={state.studyDays} />
-      <ProgressMap units={state.units} />
+      <ProgressMap units={state.units} confs={confs} />
       <h2 className="mt-8 font-display text-base font-semibold">Hôm nay cần làm</h2>
       <TodayList state={state} homework={homework} />
     </>
@@ -67,25 +70,30 @@ function WeeklyGoal({ days }: { days: number }) {
 
 const LEVEL_BG = ["bg-m0", "bg-m1", "bg-m2", "bg-m3", "bg-m4"] as const;
 
-function ProgressMap({ units }: { units: UnitState[] }) {
+function ProgressMap({ units, confs }: { units: UnitState[]; confs: Map<string, ConfirmationRow> }) {
   if (!units.length) return null;
   return (
     <div className="mt-4 grid grid-cols-2 gap-2" role="list" aria-label="Bản đồ tiến độ">
-      {units.map((u) => (
-        <div key={u.unit.id} role="listitem" className="flex items-center gap-2.5 rounded-xl border border-border bg-surface p-2.5">
-          <span
-            className={`grid size-9 shrink-0 place-items-center rounded-full font-mono text-xs font-medium ${LEVEL_BG[u.mastery.level]} ${u.mastery.level >= 2 ? "text-on-accent" : "text-ink"}`}
-          >
-            M{u.mastery.level}
-          </span>
-          <span className="min-w-0 text-sm leading-tight">
-            {u.unit.title}
-            <span className="block font-mono text-[11px] text-muted">
-              {u.mastery.enoughData ? `${u.mastery.answers} câu đã làm` : "chưa đủ dữ liệu"}
+      {units.map((u) => {
+        // Display only (S4, P2): the parent's level while the system level is unchanged.
+        const shown = displayLevel(u.mastery.level, confs.get(u.unit.id));
+        return (
+          <div key={u.unit.id} role="listitem" className="flex items-center gap-2.5 rounded-xl border border-border bg-surface p-2.5">
+            <span
+              className={`grid size-9 shrink-0 place-items-center rounded-full font-mono text-xs font-medium ${LEVEL_BG[shown.level]} ${shown.level >= 2 ? "text-on-accent" : "text-ink"}`}
+            >
+              M{shown.level}
             </span>
-          </span>
-        </div>
-      ))}
+            <span className="min-w-0 text-sm leading-tight">
+              {u.unit.title}
+              <span className="block font-mono text-[11px] text-muted">
+                {u.mastery.enoughData ? `${u.mastery.answers} câu đã làm` : "chưa đủ dữ liệu"}
+                {shown.confirmed && " · bố mẹ chốt"}
+              </span>
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

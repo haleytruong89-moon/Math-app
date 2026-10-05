@@ -5,6 +5,7 @@ import type { Item } from "@/lib/content/schema";
 import { loadStudentState, type UnitState } from "@/lib/learning/state";
 import { vnDate } from "@/lib/learning/rules";
 import { commonErrors, durationLabel, workEntries, type WorkAttempt, type WorkEntry } from "@/lib/learning/work";
+import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { RightTriangleAltitude } from "@/components/lesson/figure";
 import { Rich } from "@/components/lesson/rich";
 
@@ -32,7 +33,7 @@ type Props = {
  */
 export async function StudentWork(props: Props) {
   const { supabase, student, basePath } = props;
-  const [state, proposals] = await Promise.all([
+  const [state, proposals, confRows] = await Promise.all([
     loadStudentState(supabase, student.id, { includeDrafts: true }),
     supabase
       .from("tutor_proposals")
@@ -40,7 +41,9 @@ export async function StudentWork(props: Props) {
       .eq("student_id", student.id)
       .order("created_at", { ascending: false })
       .limit(200),
+    supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", student.id).limit(500),
   ]);
+  const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   if (proposals.error) console.error("StudentWork proposals", proposals.error.message);
   const latest = new Map<string, Proposal>();
   for (const p of (proposals.data ?? []) as Proposal[]) if (!latest.has(p.unit_id)) latest.set(p.unit_id, p);
@@ -55,13 +58,13 @@ export async function StudentWork(props: Props) {
       </Link>
       <h1 className="mt-2 font-display text-2xl font-bold">Bài làm của {student.full_name}</h1>
       {unit ? (
-        <UnitWork {...props} u={unit} proposal={latest.get(unit.unit.id)} />
+        <UnitWork {...props} u={unit} proposal={latest.get(unit.unit.id)} conf={confs.get(unit.unit.id)} />
       ) : (
         <ul className="mt-6 flex flex-col gap-3" aria-label="Các bài">
           {state.units.map((u) => (
             <li key={u.unit.id}>
               <Link href={`${basePath}?unit=${u.unit.id}`} className="block rounded-xl border border-border bg-surface p-4 hover:border-accent">
-                <Summary u={u} proposal={latest.get(u.unit.id)} proposer={props.proposer} />
+                <Summary u={u} proposal={latest.get(u.unit.id)} conf={confs.get(u.unit.id)} proposer={props.proposer} />
               </Link>
             </li>
           ))}
@@ -71,8 +74,9 @@ export async function StudentWork(props: Props) {
   );
 }
 
-function Summary({ u, proposal, proposer }: { u: UnitState; proposal?: Proposal; proposer: string }) {
+function Summary({ u, proposal, conf, proposer }: { u: UnitState; proposal?: Proposal; conf?: ConfirmationRow; proposer: string }) {
   const errors = commonErrors(u.attempts);
+  const confirmed = conf && displayLevel(u.mastery.level, conf).confirmed ? conf : null;
   const graded = u.attempts.filter((a) => a.mode !== "faded").length;
   return (
     <div data-testid={`work-summary-${u.unit.id}`}>
@@ -90,7 +94,7 @@ function Summary({ u, proposal, proposer }: { u: UnitState; proposal?: Proposal;
           </span>
         </span>
       </div>
-      {(errors.length > 0 || proposal) && (
+      {(errors.length > 0 || proposal || confirmed) && (
         <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
           {errors.map((e) => (
             <span key={e.code} className="rounded-full bg-warn-soft px-2 py-0.5 font-mono text-warn">
@@ -102,13 +106,14 @@ function Summary({ u, proposal, proposer }: { u: UnitState; proposal?: Proposal;
               {proposer} đề xuất M{proposal.level} · {ddmm(proposal.created_at)}
             </span>
           )}
+          {confirmed && <span className="rounded-full bg-good-soft px-2 py-0.5 font-mono text-good">Bố mẹ chốt M{confirmed.level}</span>}
         </p>
       )}
     </div>
   );
 }
 
-async function UnitWork(props: Props & { u: UnitState; proposal?: Proposal }) {
+async function UnitWork(props: Props & { u: UnitState; proposal?: Proposal; conf?: ConfirmationRow }) {
   const { u } = props;
   const { data, error } = await props.supabase
     .from("attempts")
@@ -131,7 +136,7 @@ async function UnitWork(props: Props & { u: UnitState; proposal?: Proposal }) {
   return (
     <>
       <div className="mt-4 rounded-xl border border-border bg-surface p-4">
-        <Summary u={u} proposal={props.proposal} proposer={props.proposer} />
+        <Summary u={u} proposal={props.proposal} conf={props.conf} proposer={props.proposer} />
       </div>
       <nav className="mt-4 grid grid-cols-2 gap-2" aria-label="Lọc câu">
         <Link href={href(false)} aria-current={!props.all ? "page" : undefined} className={tab(!props.all)}>
