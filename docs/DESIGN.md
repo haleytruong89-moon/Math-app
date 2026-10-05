@@ -40,9 +40,9 @@ Key choices
 | `/parent/accounts` | parent | create/lock accounts, reset password, students, tutor assignment |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
-| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → save; last 5 own sessions |
+| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |
 | `/tutor/[studentId]/work`, `/parent/students/[studentId]/work` | tutor (assigned), parent | "Bài làm của con" (`StudentWork`): per-unit summary (level, answers, error codes seen ≥ 2×, latest proposal) → one unit's answers, wrong only by default (`?unit=…&all=1`): student answer, right answer, error code + content feedback, "lần sau làm đúng", solution. Read-only, RLS |
-| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → in progress → next new |
+| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → next new |
 | `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only) |
 | `/student/review` | student | mixed review of all due units, interleaved |
 | `/api/cron/ping` | Vercel Cron | heartbeat upsert |
@@ -61,6 +61,7 @@ Key choices
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
 | `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
 | `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
+| `homework` (0007) | homework given in a session: unit (or "Khác"), task ≤ 300, 0–3 `https://` links (Drive), due date, student `done_at`, tutor `reviewed_at` + note; composite FK to the session. RLS: parent, own active tutor, the student. Never graded, not in mastery/weekly goal | `saveTeachingSession`, `reviewHomework`, `setHomeworkDone` |
 
 RLS read rule for learning tables: `is_parent_of(student) or is_active_tutor_of(student) or is_self_student(student)`
 (security-definer helpers in 0001). **Every new table needs explicit GRANTs to `service_role`** (Supabase no longer
