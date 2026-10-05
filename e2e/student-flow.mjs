@@ -137,6 +137,12 @@ await page.goto(`${BASE}/student`);
 ok("today: htl-1 shows M4", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M4").count()) === 1);
 await page.screenshot({ path: "e2e/out/student/9-today-m4.png", fullPage: true });
 
+// ---- parent-confirmed level shows on the student's map (S4); htl-2 is M1 here
+await sql(`insert into public.parent_confirmations (student_id, parent_id, unit_id, level, system_level)
+  select id, '00000000-0000-0000-0000-00000000e2e0', 'htl-2', 3, 1 from public.students where full_name = 'Hạnh Nguyên'`);
+await page.goto(`${BASE}/student`);
+ok("student map: parent-confirmed level with label", (await page.locator("[role=listitem]").filter({ hasText: "Tính độ dài" }).getByText(/bố mẹ chốt/).count()) === 1);
+
 // ---- homework from the tutor (part B)
 await page.goto(`${BASE}/student`);
 const goalBefore = await page.getByRole("progressbar").getAttribute("aria-valuenow");

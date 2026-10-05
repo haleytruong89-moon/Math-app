@@ -25,4 +25,5 @@ run parent 3100 e2e/preview-flow.mjs; a=$?
 run student 3101 e2e/student-flow.mjs; b=$?
 run tutor 3102 e2e/tutor-flow.mjs; c=$?
 run parent 3103 e2e/accounts-flow.mjs; d=$?
-exit $(( a || b || c || d ))
+run parent 3104 e2e/overview-flow.mjs; e=$?
+exit $(( a || b || c || d || e ))
