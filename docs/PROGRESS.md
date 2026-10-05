@@ -36,6 +36,15 @@
 
 ---
 
+## 05/10/2026 (đêm) — Chỉ mục nguồn 68 đề
+
+**Đã làm:** `docs/SOURCE_INDEX.md` — 68 đề → 914 câu, phân loại theo KU (tự động + soát mẫu), số trang, tóm tắt ngắn; bảng tần suất KU.
+**Phát hiện cần phụ huynh quyết (chưa sửa `CURRICULUM.md`):** (1) khung đề sách này: Bài 1 = 1,5đ, Bài 5 = **0,5đ**, Bài 4 = 4đ — khác §4.3;
+(2) parabol/giao điểm, tỉ số lượng giác, vị trí tương đối, ngoại/nội tiếp gần như không xuất hiện → cân nhắc hạ ưu tiên.
+**Phụ huynh cần làm:** tải file PDF 68 đề vào Project "STUDY BB" (Files) để phiên soạn bài đọc được đề gốc.
+
+---
+
 ## 05/10/2026 (tối) — Thiết kế AI trong app (AI1–AI4)
 
 **Phụ huynh chốt (popup):** bật AI cho con sau 3–4 tuần pilot (~09/11) (AI1); gợi ý H1–H3 viết sẵn trong nội dung, AI chỉ cho câu hỏi tự do (AI2);
