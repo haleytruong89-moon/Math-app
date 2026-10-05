@@ -57,3 +57,9 @@ test("checkCurriculum catches the mistakes the roadmap can contain", () => {
   const extra = [...files(), { mod: { id: "x", title: "x", domains: ["A"], units: ["zz-1"] }, units: [{ id: "zz-1", module: "x", title: "Z" } as never] }];
   assert.match(checkCurriculum(base, extra).join("\n"), /zz-1: có file nhưng không có trong curriculum/);
 });
+
+test("generated registry is up to date (run `npm run content:index`)", async () => {
+  const { render, OUT } = await import("../../../scripts/content-index.mjs");
+  const onDisk = fs.readFileSync(OUT, "utf8").replace(/\r\n/g, "\n");
+  assert.equal(onDisk, render("content"), "src/lib/content/registry.generated.ts is stale or was generated from fixtures");
+});
