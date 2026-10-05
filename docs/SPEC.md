@@ -23,6 +23,8 @@
 | 03/10/2026 | **Pilot early**: Nguyên starts with the approved units once S3 (tutor log) is in; S4 parent dashboard and more content follow during the pilot | `docs/P1_PLAN.md` §3 |
 | 03/10/2026 | Geometry proof items **C1–C3 (S5) move to after the pilot starts** (deviation from §3.4 / §4 "P1"; hub doc to be updated) | `docs/P1_PLAN.md` §3 |
 | 03/10/2026 | Nightly scheduled build at 23:00 (Vietnam) for remaining slices; parent reviews, runs SQL and merges each morning | `docs/PROGRESS.md` |
+| 05/10/2026 | **Student UX engagement theme** approved: warm cream bg (`#FFF8F0`), teal accent (`#0D9488`), SVG circle weekly goal, vertical progress map with plant emoji badges (🔒→🌱→🌿→🌳→⭐), 2-state question feedback (celebration green + gentle-wrong yellow). Scoped to student routes only via `.student-theme` CSS class. No DB changes. | `docs/DESIGN.md` §9, `docs/HANDOVER_STUDENT_UX.md` |
+| 05/10/2026 | Session correct count in question feedback is **client-side only** (useState) — complies with D17 (no persistent streaks) | same |
 
 ## 1. Mục tiêu
 

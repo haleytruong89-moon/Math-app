@@ -21,6 +21,22 @@
 
 ---
 
+## 05/10/2026 — Student UX mockup duyệt + handover
+
+**Phụ huynh duyệt (05/10):** Mockup Student UX (3 màn hình: StudentHome, ProgressMap, QuestionFeedback).
+
+**Đã làm:**
+- Design artifact (3 artboards) trên Claude.ai: `https://claude.ai/artifact/LNFSgD23tfTxRb3Yi7vWbJ`.
+- `docs/HANDOVER_STUDENT_UX.md`: mô tả chi tiết component changes, token mapping, data sources cho Claude Code.
+- `docs/DESIGN.md` §9: student theme spec (warm teal, plant emoji badges, SVG ring, question feedback).
+- `docs/SPEC.md` §0: thêm 2 build decisions (student UX theme + session correct count D17).
+
+**Scope:** Chỉ thay đổi UI student routes — không sửa server logic, DB schema, hay parent/tutor routes.
+
+**Claude Code cần làm:** Đọc `docs/HANDOVER_STUDENT_UX.md` → implement theo thứ tự đề xuất (§8 trong handover).
+
+---
+
 ## 03/10/2026 — Quyết định + bổ sung vào PR #2
 
 **Phụ huynh duyệt (03/10, "ok cả 3"):**
