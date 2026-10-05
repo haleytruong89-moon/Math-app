@@ -82,7 +82,9 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 - Schema: `src/lib/content/schema.ts` (zod). Unit = theory, worked example (steps + "why"), faded example
   (text steps + blanks that are items), practice items, exit items, optional figure.
 - Items: `mcq` (options, correct index, per-option mistakes) or `numeric` (exact answer like `27/5`, `2√3`,
-  typical wrong answers with error codes E01–E15). IDs are prefixed with the unit id.
+  typical wrong answers with error codes E01–E15). IDs are prefixed with the unit id. Levels L1–L3.
+- Authoring fields (CONTENT_STANDARD, S6a+): item `source`, `recognition: true`, `hints` (exactly 3), mistake `review` (a prerequisite KU id). They stay on the server — `publicItem` is a whitelist; hints and "Ôn lại" links are shown from S6b.
+- `src/lib/content/standard.ts` (`checkStandard`, run on every file by `npm test`): practice 3 L1 + 3 L2 + 2 L3 with ≥ 1 recognition MCQ (wrong options E05), 3 hints per practice item (≤ 25 words, no answer of 2+ characters as a token), exit bank 2 L1 + 3 L2 + 3 L3 without hints and with ≥ 1 `source`, `review` ∈ prerequisites (`ancestors`). `STANDARD_EXEMPT` = htl-1, htl-2 until batch 1.
 - Text: plain Vietnamese with `$…$` TeX and `**bold**`, rendered server-side by `texToHtml` (KaTeX, throws on bad TeX).
 - Students see `status: "approved"` units only; the parent previews drafts. Approval = PR that flips status + `approvedOn`.
 - `npm test` checks every file: schema, unique IDs, answers parse, mistakes ≠ answer, TeX renders, module lists files.
@@ -93,6 +95,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
   decimals of irrational answers; unreadable input → "format hint", not counted.
 - Practice: one graded try per item, wrong items return once at the end. Faded blanks: retry until right,
   solution after the 2nd wrong try. Exit test: no feedback until submitted; blanks count as wrong.
+  Exit bank (LT13, `src/lib/learning/exit-draw.ts`): a run shows 5 of the bank (1 L1 + 2 L2 + 2 L3), unseen first, then seen longest ago, seeded by student + unit + number of past runs; the learn page sends only those, `submitExit` re-draws and refuses another set. Banks ≤ 5 are used whole; the parent preview gets the whole bank with a note.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
 - Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.

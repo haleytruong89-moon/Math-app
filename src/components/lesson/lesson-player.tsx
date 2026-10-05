@@ -405,7 +405,7 @@ function ExitStage({
     run(async () => {
       if (unreadable.length) return `Câu ${unreadable.join(", ")}: ${FORMAT_HINT.charAt(0).toLowerCase()}${FORMAT_HINT.slice(1)}`;
       if (unanswered && !window.confirm(`Còn ${unanswered} câu chưa làm. Câu bỏ trống tính là sai. Vẫn nộp bài?`)) return;
-      const r = await submitExit({ unitId: unit.id, answers, durationMs: Date.now() - startedAtRef.current, testOut });
+      const r = await submitExit({ unitId: unit.id, answers, items: unit.exit.map((i) => i.id), durationMs: Date.now() - startedAtRef.current, testOut });
       if (!r.ok) return r.message;
       setResult(r);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -434,7 +434,8 @@ function ExitStage({
           </p>
         </Card>
         {unit.exit.map((it, i) => {
-          const r = result.items.find((x) => x.id === it.id)!;
+          const r = result.items.find((x) => x.id === it.id);
+          if (!r) return null;
           return (
             <Card key={it.id}>
               <p className="font-mono text-xs text-muted">Câu {i + 1}</p>
@@ -468,6 +469,12 @@ function ExitStage({
       <p className="rounded-lg border border-border bg-accent-soft px-3 py-2 text-sm">
         <b>Bài kiểm tra cuối:</b> {unit.exit.length} câu, tự làm, không có gợi ý và không hỏi AI. Nộp bài xong mới xem đáp án.
       </p>
+      {unit.exit.length > 5 && (
+        // Only the parent preview gets the whole bank; a student gets this run's 5 (LT13).
+        <p className="rounded-lg border border-warn bg-warn-soft px-3 py-2 text-sm text-warn" data-testid="exit-bank-note">
+          Xem trước: kho {unit.exit.length} câu — mỗi lượt con được rút 5 (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp.
+        </p>
+      )}
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
       {unit.exit.map((it, i) => (
         <Card key={it.id}>

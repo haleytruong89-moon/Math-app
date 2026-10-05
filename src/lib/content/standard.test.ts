@@ -56,7 +56,7 @@ test("standard: exit bank is 2 L1 + 3 L2 + 3 L3 with at least one sourced item",
 });
 
 test("standard: a 'review' link must point to a prerequisite (direct or indirect)", () => {
-  assert.match(issues((u) => { (u.practice[7] as { mistakes: { review: string }[] }).mistakes[0].review = "other"; }).join(), /review "other"/);
+  assert.match(issues((u) => { (u.practice[7] as unknown as { mistakes: { review: string }[] }).mistakes[0].review = "other"; }).join(), /review "other"/);
 });
 
 test("standard: exempt units (htl-1/2 until batch 1 normalises them) still need valid review links", () => {

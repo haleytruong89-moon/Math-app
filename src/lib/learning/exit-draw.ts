@@ -41,3 +41,8 @@ export function drawExit(bank: BankItem[], attempts: AttemptRow[], salt: string)
   }
   return bank.filter((b) => picked.has(b.id)).map((b) => b.id);
 }
+
+/** The draw for one student and unit (same salt on the page and in submitExit). */
+export function exitDrawFor(studentId: string, unit: { id: string; exit: BankItem[] }, attempts: AttemptRow[]): string[] {
+  return drawExit(unit.exit, attempts, `${studentId}:${unit.id}`);
+}

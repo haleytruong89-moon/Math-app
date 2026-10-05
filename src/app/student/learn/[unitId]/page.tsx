@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getUnit, toPublicUnit } from "@/lib/content";
 import { LessonPlayer } from "@/components/lesson/lesson-player";
 import { loadStudentState } from "@/lib/learning/state";
+import { exitDrawFor } from "@/lib/learning/exit-draw";
 
 export const metadata: Metadata = { title: "Học bài — App Toán" };
 
@@ -25,10 +26,13 @@ export default async function LearnPage(props: PageProps<"/student/learn/[unitId
   if (!u) notFound();
   if (u.status === "locked") redirect("/student");
   const testOut = sp.testout === "1" && !!u.entry?.testOut && !u.started;
+  // LT13: only this run's 5 items of the exit bank reach the browser.
+  const drawn = new Set(exitDrawFor(me.id, found.unit, u.attempts));
+  const unit = { ...found.unit, exit: found.unit.exit.filter((i) => drawn.has(i.id)) };
 
   return (
     <LessonPlayer
-      unit={toPublicUnit(found.unit, found.module)}
+      unit={toPublicUnit(unit, found.module)}
       mode="student"
       initial={{ workedViewed: u.workedViewed, fadedDone: u.fadedDone }}
       backHref="/student"
