@@ -2,7 +2,7 @@
 
 > How the app is actually put together. Product rules live in `docs/SPEC.md`; the slice plan in
 > `docs/P1_PLAN.md`; status in `docs/PROGRESS.md`. Update this file in the same PR as any change
-> to routes, tables, auth or content format. Last updated: 03/10/2026 (after slice 3).
+> to routes, tables, auth or content format. Last updated: 05/10/2026 (slice 3 + tutor tools + student UX approval).
 
 ## 1. Architecture
 
@@ -118,6 +118,49 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 | `npm run test:content` | grading, content files, learning rules (node --test) |
 | `npm run test:db` | migrations + RLS on PGlite with a stubbed auth schema |
 | `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
+
+## 9. Student theme (approved 05/10/2026)
+
+> Mockup: `https://claude.ai/artifact/LNFSgD23tfTxRb3Yi7vWbJ` (3 artboards).
+> Full handover: `docs/HANDOVER_STUDENT_UX.md`.
+
+Student routes use a **warm teal engagement theme** instead of the default ink-blue admin theme.
+Parent and tutor routes keep the original theme unchanged.
+
+**Scoping:** A `.student-theme` CSS class on the student layout overrides the design tokens
+in `globals.css` for student routes only. No changes to parent/tutor routes.
+
+| Token | Default (admin) | Student theme |
+|---|---|---|
+| `--bg` | `#eef2f5` | `#FFF8F0` (warm cream) |
+| `--accent` | `#2454a6` | `#0D9488` (teal-600) |
+| `--accent-soft` | `#e5edf7` | `#CCFBF1` (teal-100) |
+| `--good` | `#1f7a4d` | `#059669` (emerald-600) |
+| `--good-soft` | `#e1f2e8` | `#D1FAE5` (emerald-100) |
+| `--warn` | `#9a6a1e` | `#D97706` (amber-600) |
+| `--warn-soft` | `#f6ecd9` | `#FEF3C7` (amber-100) |
+
+**Mastery badges:** Emoji plant metaphor replaces `M{n}` text in colored circles.
+
+| Level | Emoji | Node gradient | Border |
+|---|---|---|---|
+| M0 | 🔒 | gray, dashed, opacity 0.5 | `#D1D5DB` |
+| M1 | 🌱 | `#EDE9FE` → `#DDD6FE` | `#8B5CF6` |
+| M2 | 🌿 | `#DBEAFE` → `#BFDBFE` | `#2563EB` |
+| M3 | 🌳 | `#CCFBF1` → `#99F6E4` | `#0D9488` |
+| M4 | ⭐ | `#FEF3C7` → `#FDE68A` | `#F59E0B` |
+
+**Key components changed:**
+- `WeeklyGoal`: linear bar → SVG circle ring (stroke-dasharray/dashoffset).
+- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors. **Updated 05/10 (LT9):** with 50 KUs the map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a progress bar (structure built in S6a, plant styling in the UX slice).
+- `QuestionFeedback` (new): 2-state card — correct (green gradient, 🎉, session-only correct count, mastery nudge) and wrong (yellow gradient, 💡, side-by-side comparison, error tag, encouragement).
+- Student layout: teal gradient header with greeting.
+
+**D17 compliance:** Session correct count in QuestionFeedback is client-side `useState` only — not stored,
+not persistent, not a streak. No leaderboards anywhere.
+
+**No DB changes:** All data for the new components comes from existing `loadStudentState()`, `dueReviews()`,
+`systemMastery()`, and grading response data.
 
 ## 8. Gotchas
 
