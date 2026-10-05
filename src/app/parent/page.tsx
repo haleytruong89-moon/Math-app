@@ -2,16 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
+import { StudentOverview } from "@/components/parent/student-overview";
 
 export const metadata: Metadata = { title: "Tổng quan — App Toán" };
 
-// P0 shell of the parent dashboard (mockup "Tổng quan"). The three numbers
-// get real data in P1 once modules, attempts and mastery exist.
-const STATS = [
-  { label: "Bài đạt M3 trở lên", warn: false },
-  { label: "Bài ôn quá hạn", warn: false },
-  { label: "Cờ lệch đánh giá cần chốt", warn: true },
-];
+// Mockup "Tổng quan" (§2.7, S4): one overview per student, then the student list.
 
 export default async function ParentHome() {
   await requireRole("parent");
@@ -25,17 +20,9 @@ export default async function ParentHome() {
     <>
       <h1 className="font-display text-2xl font-bold">Tổng quan</h1>
 
-      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        {STATS.map((s) => (
-          <div key={s.label} className="rounded-xl border border-border bg-surface p-4">
-            <div className={`font-display text-3xl font-bold tabular-nums ${s.warn ? "text-warn" : ""}`}>—</div>
-            <div className="mt-1.5 text-sm text-muted">{s.label}</div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-3 font-mono text-xs text-muted">
-        Số liệu sẽ có khi module Hệ thức lượng được đưa vào (P1).
-      </p>
+      {(students ?? []).map((s) => (
+        <StudentOverview key={s.id} supabase={supabase} student={s} />
+      ))}
 
       <h2 className="mt-10 font-display text-base font-semibold">Học sinh</h2>
       <ul className="mt-3 divide-y divide-border rounded-xl border border-border bg-surface">
