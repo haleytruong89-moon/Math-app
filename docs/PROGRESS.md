@@ -10,11 +10,13 @@
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
-| Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
-| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: 🟡 PR mới (`p1-homework`, **SQL 0007**) |
+| Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | ✅ Merged 05/10 (PR #4) |
+| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools`, `p1-homework` | ✅ Merged 05/10 (PR #5, #7), SQL 0007 đã chạy |
 | S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo |
-| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
-| S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
+| S7 — Pilot (tài khoản Nguyên) | — | 🟡 Bắt đầu 05/10: tài khoản con + gia sư tạo lại, D18 xong, sao lưu hằng tuần chạy được (`SUPABASE_DB_URL`) |
+| S6 — Soạn KU còn lại | — | ⬜ Chờ phụ huynh brainstorm danh sách bài lớp 8–9 + ưu tiên trên claude.ai — dùng `docs/CONTENT_BRIEF.md` |
+| Giao diện học sinh (handover PR #6) | `p1-student-ux-handover` | ⬜ Lên kế hoạch sau S4; PR #6 gộp vào lúc đó |
+| S5 — Hình học C1–C3 | — | ⬜ Sau khi pilot chạy |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
