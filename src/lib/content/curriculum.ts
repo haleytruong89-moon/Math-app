@@ -87,3 +87,17 @@ export function checkCurriculum(c: Curriculum, files: FileModule[]): string[] {
   }
   return errs;
 }
+
+/** Every KU reachable through prerequisites (direct or indirect) — valid targets of a mistake's "review" link (LT16). */
+export function ancestors(c: Curriculum, id: string): Set<string> {
+  const prereq = new Map(c.units.map((u) => [u.id, u.prereq]));
+  const out = new Set<string>();
+  const stack = [...(prereq.get(id) ?? [])];
+  while (stack.length) {
+    const p = stack.pop()!;
+    if (out.has(p)) continue;
+    out.add(p);
+    stack.push(...(prereq.get(p) ?? []));
+  }
+  return out;
+}

@@ -352,7 +352,7 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
           Câu {Math.min(pos + 1, unit.practice.length)}/{unit.practice.length}
           {isRetry && " · làm lại câu sai"}
         </span>
-        <span>{item.level === "L1" ? "Cơ bản" : "Vận dụng"}</span>
+        <span>{item.level === "L1" ? "Cơ bản" : item.level === "L2" ? "Vận dụng" : "Nâng cao"}</span>
       </div>
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />

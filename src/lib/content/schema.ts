@@ -8,9 +8,20 @@ const Id = z.string().regex(/^[a-z0-9-]+$/, "id: chỉ dùng a-z, 0-9, dấu g�
 /** Text may contain inline TeX between $…$ and **bold**. */
 const Text = z.string().trim().min(1);
 export const ErrorCode = z.string().regex(/^E(0[1-9]|1[0-5])$/, "mã lỗi phải thuộc E01–E15");
-export const Level = z.enum(["L1", "L2"]);
+export const Level = z.enum(["L1", "L2", "L3"]);
 
-const Mistake = z.object({ code: ErrorCode, feedback: Text });
+/** LT16: a wrong answer rooted in an earlier KU links to it ("Ôn lại: …", shown from S6b). */
+const Mistake = z.object({ code: ErrorCode, feedback: Text, review: Id.optional() });
+
+/** CONTENT_STANDARD fields shared by both item types; none of them reaches the browser yet (see publicItem). */
+const Authoring = {
+  /** LT15: where an L3 / exam-style item comes from, e.g. "68 đề – Đề 12, Bài 2c (chuyển thể)". */
+  source: Text.optional(),
+  /** LT14: "which method / first step?" item; wrong options are E05. */
+  recognition: z.literal(true).optional(),
+  /** AI2: pre-written hints H1 goal → H2 recognise → H3 tool (practice only). */
+  hints: z.tuple([Text, Text, Text]).optional(),
+};
 
 export const McqItem = z
   .object({
@@ -18,6 +29,7 @@ export const McqItem = z
     type: z.literal("mcq"),
     level: Level,
     prompt: Text,
+    ...Authoring,
     options: z.array(Text).min(2).max(6),
     correct: z.number().int().nonnegative(),
     /** Wrong option index (as string) → error code + targeted feedback. */
@@ -40,6 +52,7 @@ export const NumericItem = z
     type: z.literal("numeric"),
     level: Level,
     prompt: Text,
+    ...Authoring,
     /** Exact value in answer syntax: 12, 4,8, 12/5, 2√3, √3/2 … */
     answer: z.string(),
     unit: z.string().optional(),

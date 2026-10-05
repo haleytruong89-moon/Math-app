@@ -4,7 +4,7 @@
 export type PublicItem = {
   id: string;
   type: "mcq" | "numeric";
-  level: "L1" | "L2";
+  level: "L1" | "L2" | "L3";
   promptHtml: string;
   optionsHtml?: string[];
   unit?: string;

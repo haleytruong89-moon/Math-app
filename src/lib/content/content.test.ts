@@ -14,7 +14,7 @@ function texts(v: unknown, out: string[] = []): string[] {
   if (typeof v === "string") out.push(v);
   else if (Array.isArray(v)) v.forEach((x) => texts(x, out));
   else if (v && typeof v === "object")
-    for (const [k, x] of Object.entries(v)) if (!["id", "type", "level", "status", "module", "figure", "approvedOn", "code", "answer"].includes(k)) texts(x, out);
+    for (const [k, x] of Object.entries(v)) if (!["id", "type", "level", "status", "module", "figure", "approvedOn", "code", "answer", "review"].includes(k)) texts(x, out);
   return out;
 }
 

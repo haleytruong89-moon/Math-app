@@ -16,6 +16,7 @@ export const RULES = {
   practiceAnswersForStudyDay: 5,
   maxInProgress: 2, // LT3: no new suggestion beyond 2 KUs in progress
   maxUnitsPerReview: 5, // LT8: one session a day, at most 5 units (~15 questions)
+  exitDraw: { size: 5, quota: { L1: 1, L2: 2, L3: 2 } }, // LT13: 5 of the bank of 8, unseen first
 } as const;
 
 export type Level = 0 | 1 | 2 | 3 | 4;
