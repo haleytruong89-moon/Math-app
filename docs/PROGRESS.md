@@ -8,14 +8,21 @@
 | Lát | Nhánh | Trạng thái |
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
-| S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
+| S2 — Mastery + lịch ôn + "Hôm nay cần làm" | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
-| Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
-| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: 🟡 PR mới (`p1-homework`, **SQL 0007**) |
-| Giao diện học sinh mới (U1–U8) | `p1-student-ux` | 🟡 PR mới, **không SQL**; xếp chồng trên PR #11 (merge #9 → #11 → PR này); đóng PR #6 |
-| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR mới — **SQL 0008**; xếp chồng trên PR #9 (merge #9 trước) |
-| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
-| S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
+| Sửa lỗi trước pilot · S3b công cụ gia sư + bài về nhà | `p1-fixes`, `p1-tutor-tools`, `p1-homework` | ✅ Merged 05/10 (PR #4, #5, #7) — SQL 0007 |
+| Tài khoản: danh sách, đổi tên, xoá | `p1-account-tools` | ✅ Merged 05/10 (PR #9) |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **chờ chạy SQL 0008** rồi merge |
+| Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
+| Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
+| Docs — Lộ trình 50 KU + quyết định LT1–LT12 | `p1-curriculum-design` | 🟡 PR #10 |
+| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
+| UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
+| S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
+| S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
+| Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
+| S5 — Hình học C1–C3 | — | ⬜ xét lại trước GĐ3 (01/2027) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -24,6 +31,59 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+| Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 05/10/2026 — Review kiến trúc lộ trình + chốt LT1–LT12 (nhánh `p1-curriculum-design`)
+
+**Kết luận review:** curriculum đã rõ *học gì*, nhưng app chưa đủ để code 50 KU (chỉ chạy 1 module theo thứ tự file, 2 loại câu, 1 hình cố định). Trang review: `https://claude.ai/artifact/HuDrqkHFP1jRPZGC7rLrss`.
+
+**Phụ huynh chốt (05/10, qua câu hỏi popup):** cả 11 phương án đề xuất + mốc thời gian. Chi tiết ở `docs/SPEC.md` §0 (mã LT1–LT12; trang review gọi là Q1–Q12):
+| # | Chốt |
+|---|---|
+| LT1 | `content/curriculum.json` + test là nguồn app đọc |
+| LT2 | Mở khoá khi tiên quyết đạt M3; phụ huynh mở tay được (migration 0009) |
+| LT3 | Gợi ý 1 bài Track A + 1 bài Track B/C, con chọn; tối đa 2 bài đang học |
+| LT4 | Kiểm tra vượt cho Track B + bù nền F1/F3, 1 lần/KU (**đổi quy tắc học**) |
+| LT5 | Câu nhiều bước = 1 câu, đúng khi đúng hết, mã lỗi ở bước sai đầu |
+| LT6 | App giữ phần tự chấm; chứng minh trên giấy với gia sư; nhãn "cần gia sư xác nhận" |
+| LT7 | Hình = SVG trong file nội dung |
+| LT8 | Tối đa 5 bài/phiên ôn |
+| LT9 | Bản đồ nhóm track → module |
+| LT10 | Kiểm tra độc lập + phụ huynh duyệt; gia sư soát C, E, G |
+| LT11 | Lộ trình trước; chạy song song với pilot (S3 đã merge, S4 ở PR #11) |
+| LT12 | Bắt đầu **12/10/2026**; học xong 50 KU trước **31/03/2027**; tháng 4–5 chỉ luyện đề |
+
+**Đã làm (nhánh `p1-curriculum-design`):**
+- `docs/CURRICULUM.md`: sửa 13 dòng thiếu cột trọng số đề; số đếm loại chấm khớp bảng (26 / 4 / 15 / 5 → 60% tự chấm toàn bộ); lịch nén 4 giai đoạn đến 31/03 (Tết tuần 17–18 chỉ ôn; gate 8.5 xong ~21/02); 10 đợt nội dung có hạn duyệt; §9 khớp schema thật.
+- `docs/P1_PLAN.md`: thiết kế + nghiệm thu S6a, S6b, S4b; thứ tự lát mới; lịch song song 4 tuần đầu; quy trình kiểm tra toán.
+- Nhánh đã merge `main` mới nhất (sau PR #7) để khớp số migration: lộ trình dùng **0009** (0006 S3, 0007 bài về nhà, 0008 S4).
+- `docs/SPEC.md` §0: 13 dòng quyết định mới.
+
+**Phụ huynh cần làm tuần này (05–11/10):**
+1. Merge theo thứ tự: PR #9 (tài khoản) → PR #11 (S4, **chạy SQL 0008** trước) → PR #8 (content brief + checklist pilot) → PR #6 (handover UX) → PR #10 (lộ trình). Các PR tài liệu có thể đụng nhau ở `PROGRESS.md`; Claude sửa xung đột nếu GitHub báo.
+2. Nói chuyện D18 với Nguyên → tạo tài khoản học sinh trước 12/10; gia sư bắt đầu ghi buổi dạy.
+3. Cập nhật hub `claude/PJ_APP_TOAN.md` (thêm LT1–LT12, mốc 12/10 → 31/03) qua chu trình update → review → commit.
+4. Chọn cách chạy build S6a: bật lại lịch đêm (đang tắt) hay làm trong phiên chat.
+
+**Lưu ý:** HANDOVER_STUDENT_UX §3.3 (đường dọc 1 cột) được thay bằng bản đồ nhóm track → module (LT9); kiểu nút cây giữ nguyên.
+
+---
+
+## 05/10/2026 — Student UX mockup duyệt + handover
+
+**Phụ huynh duyệt (05/10):** Mockup Student UX (3 màn hình: StudentHome, ProgressMap, QuestionFeedback).
+
+**Đã làm:**
+- Design artifact (3 artboards) trên Claude.ai: `https://claude.ai/artifact/LNFSgD23tfTxRb3Yi7vWbJ`.
+- `docs/HANDOVER_STUDENT_UX.md`: mô tả chi tiết component changes, token mapping, data sources cho Claude Code.
+- `docs/DESIGN.md` §9: student theme spec (warm teal, plant emoji badges, SVG ring, question feedback).
+- `docs/SPEC.md` §0: thêm 2 build decisions (student UX theme + session correct count D17).
+
+**Scope:** Chỉ thay đổi UI student routes — không sửa server logic, DB schema, hay parent/tutor routes.
+
+**Claude Code cần làm:** Đọc `docs/HANDOVER_STUDENT_UX.md` → implement theo thứ tự đề xuất (§8 trong handover).
 
 ---
 
@@ -176,7 +236,8 @@ Từ đợt review PR #2/#3 (phụ huynh đồng ý sửa điểm 1, 2, 4 trư�
 
 ### Đã tự kiểm
 - `npm run lint`, `npm run build`: qua. `npm test`: **31** test quy tắc/nội dung (thêm 2 cho tiếp tục lượt ôn, 1 cho ghi chú xuống dòng) + **49** test RLS: qua.
-- `./e2e/run.sh` (chạy trong container Playwright Linux): **72/72** — thêm: F5 sau câu sai → tiếp ở "Câu 3/6", không câu nào hỏi lại, câu sai vẫn tính (htl-2 vẫn về D+1, đúng 1/3); mọi câu ôn thuộc phần luyện tập; gia sư gõ ghi chú 9 dòng hiện 500/500 → lưu được, DB lưu đúng 500 ký tự, không có ``.
+- `./e2e/run.sh` (chạy trong container Playwright Linux): **72/72** — thêm: F5 sau câu sai → tiếp ở "Câu 3/6", không câu nào hỏi lại, câu sai vẫn tính (htl-2 vẫn về D+1, đúng 1/3); mọi câu ôn thuộc phần luyện tập; gia sư gõ ghi chú 9 dòng hiện 500/500 → lưu được, DB lưu đúng 500 ký tự, không có `
+`.
 
 ### Phụ huynh cần làm (khoảng 10 phút)
 1. Không có SQL.

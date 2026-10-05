@@ -89,6 +89,10 @@ Center text: "{days}/{goal}" (IBM Plex Mono, bold)
 
 ### 3.3 Progress Map (`src/app/student/page.tsx` → `ProgressMap`)
 
+> **Cập nhật 05/10/2026 (LT9, `docs/SPEC.md` §0):** với 50 KU, bản đồ **nhóm theo track → module**; chỉ module đang học
+> mở sẵn, module khác thu gọn 1 dòng + thanh tiến độ. Cấu trúc nhóm làm trong S6a; lát UX áp kiểu nút cây, màu, đường nối
+> dưới đây **bên trong từng module**. KU chưa có nội dung hiện mờ "Sắp có".
+
 **Hiện tại:** 2-column grid, `M{level}` text in colored circles.
 
 **Thay đổi sang vertical path map:**
@@ -109,6 +113,7 @@ Emoji mapping (MASTERY_EMOJI constant):
 
 Status text per level:
   M0: "Chưa mở" (gray, italic)
+  M0: "Chưa mở" (gray, italic) — *cập nhật 05/10: tách 3 trạng thái, xem P1_PLAN S6a "Quyết định chi tiết": 🔒 Khoá / ○ Chưa bắt đầu / Sắp có*
   M1: "Đang học" or "Chưa đủ dữ liệu ({n} câu)" if < 5 answers
   M2: progress bar ({correct}/{total} practice accuracy) + e.g. "3/5 đúng"
   M3: review date if exists ("Ôn D+1 ngày mai")
@@ -131,6 +136,7 @@ Connector lines:
 - `workedViewed` (đã xem lời giải mẫu)
 
 Không cần thêm query hay thay đổi `loadStudentState()`.
+Không cần thêm query hay thay đổi `loadStudentState()`. *(Cập nhật 05/10: S6a đổi `loadStudentState()` để nạp đủ 50 KU từ `curriculum.json` + trạng thái khoá; lát UX dùng dữ liệu đó, không tự query thêm.)*
 
 ### 3.4 Today List (`src/app/student/page.tsx` → `TodayList`, `TodayCard`)
 
@@ -140,6 +146,7 @@ Không cần thêm query hay thay đổi `loadStudentState()`.
 - CTA button dùng teal accent thay vì ink-blue.
 
 **Data source:** Giữ nguyên hoàn toàn. Logic `dueReviews()`, `inProgress`, `nextNew` không đổi.
+**Data source:** *(Cập nhật 05/10)* S6a thay `nextNew` bằng `suggestNew()` (1 bài Track A + 1 bài Track B/C) và giới hạn 5 bài/phiên ôn; lát UX chỉ đổi giao diện các thẻ này.
 
 ### 3.5 Question Feedback — **component mới**
 

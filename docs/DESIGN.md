@@ -2,7 +2,7 @@
 
 > How the app is actually put together. Product rules live in `docs/SPEC.md`; the slice plan in
 > `docs/P1_PLAN.md`; status in `docs/PROGRESS.md`. Update this file in the same PR as any change
-> to routes, tables, auth or content format. Last updated: 03/10/2026 (after slice 3).
+> to routes, tables, auth or content format. Last updated: 05/10/2026 (slice 3 + tutor tools + student UX approval).
 
 ## 1. Architecture
 
@@ -128,6 +128,7 @@ Spec `docs/superpowers/specs/2026-10-05-student-ux-design.md` (supersedes `docs/
 - Mastery emoji/gradients: `src/components/student/mastery.ts` (🌰 M0 "Chưa bắt đầu" … ⭐ M4 "Đã vững").
 - `QuestionFeedback` (practice + review only; faded steps and the exit test keep the old flow): correct → "Chính xác!" + session total + solution + level nudge (`masteryNudge`, real rules); wrong → "Gần đúng rồi!" (known mistake) / "Chưa đúng", error label (`errorLabel`, Vietnamese), "Con trả lời / Đáp án đúng", solution, only "Câu tiếp".
 - `checkAnswer`/`checkReview` return `answerHtml`, `correctHtml` (faded: only when the solution may show), `errorCode`, and practice `mastery` (real student only).
+- **LT9 (05/10):** with 50 KUs the journey map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a bar; KUs without approved content show "Sắp có" (built in S6a).
 
 ## 8. Gotchas
 
