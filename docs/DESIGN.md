@@ -36,7 +36,7 @@ Key choices
 |---|---|---|
 | `/login` | public | email + password |
 | `/` | any | redirect to the role's home |
-| `/parent` | parent | overview (P0 shell; real numbers in S4) |
+| `/parent` | parent | "Tổng quan" per student (`StudentOverview`): 3 numbers (M3+ by display level, overdue reviews, open flags), "Cần chú ý" (tutor/system mismatch flags + "Chốt mức"; missed sessions by weekly schedule, 14 days, up to yesterday), unit map (display level, "bố mẹ chốt"), this week's summary |
 | `/parent/accounts` | parent | create/lock accounts, reset password, tutor assignment; **students**: profile list (login email or "chưa có tài khoản", tutors), rename/grade, delete (type the name again; cascades all learning data + deletes the linked login), "tạo tài khoản cho …" preselects the profile (`?student=`) |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
@@ -53,7 +53,7 @@ Key choices
 |---|---|---|
 | `profiles` (0001) | role, display name, active flag per auth user | trigger + parent actions |
 | `students` (0001) | learner records; `profile_id` links a login; `consent_at` (D18) | parent / consent action |
-| `parent_students`, `tutor_assignments` (0001) | who may see which student; ended assignments keep history (D3) | parent actions |
+| `parent_students`, `tutor_assignments` (0001; `weekdays` 0008) | who may see which student; ended assignments keep history (D3); `weekdays` 1–7 = teaching days for the missed-session reminder | parent actions |
 | `heartbeat` (0001) | keep-alive row | cron |
 | `unit_progress` (0003) | per student × unit: worked example viewed, faded done | learn actions |
 | `attempts` (0003) | every graded answer: mode faded/practice/exit/review, correct, error code, duration, run id | learn actions |
@@ -62,6 +62,7 @@ Key choices
 | `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
 | `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
 | `homework` (0007) | homework given in a session: unit (or "Khác"), task ≤ 300, 0–3 `https://` links (Drive), due date, student `done_at`, tutor `reviewed_at` + note; composite FK to the session. RLS: parent, own active tutor, the student. Never graded, not in mastery/weekly goal | `saveTeachingSession`, `reviewHomework`, `setHomeworkDone` |
+| `parent_confirmations` (0008) | parent's confirmed level per unit (D8): level, `system_level` snapshot, proposal session, note. Display only — shown while the system level equals the snapshot. RLS: parent, active tutor, the student | `confirmLevel` |
 
 RLS read rule for learning tables: `is_parent_of(student) or is_active_tutor_of(student) or is_self_student(student)`
 (security-definer helpers in 0001). **Every new table needs explicit GRANTs to `service_role`** (Supabase no longer

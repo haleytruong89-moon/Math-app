@@ -12,7 +12,7 @@
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
 | S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: 🟡 PR mới (`p1-homework`, **SQL 0007**) |
-| S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR mới — **SQL 0008**; xếp chồng trên PR #9 (merge #9 trước) |
 | S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
 
@@ -23,6 +23,35 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 05/10/2026 — S4: Phụ huynh "Tổng quan" (nhánh `p1-slice-4`)
+
+Spec `docs/superpowers/specs/2026-10-05-parent-overview-design.md` (P1–P3, phụ huynh duyệt 05/10). **Có SQL mới: `0008`.** Nhánh xếp chồng trên `p1-account-tools` (PR #9) vì cùng sửa trang Tài khoản → merge #9 trước.
+
+**Chỉnh so với spec lúc lập kế hoạch:** mức bố mẹ chốt hiện **cho tới khi mức hệ thống đổi** (bỏ điều kiện "mới hơn đề xuất" — học sinh không đọc được đề xuất của gia sư). Gia sư đề xuất lại mà vẫn lệch → cờ lệch hiện lại.
+
+### Đã làm
+- **Tổng quan** (mỗi học sinh): 3 con số (bài đạt M3+ / tổng, bài ôn quá hạn, cờ lệch cần chốt) → **"Cần chú ý"**: cờ lệch (gia sư đề xuất M3 · hệ thống M1 + bằng chứng + ghi chú buổi dạy + "Xem bài làm" + **"Chốt mức"** M0–M4 có ghi chú) và **buổi dạy chưa ghi** (ngày dạy theo lịch đã qua > 24h, 14 ngày gần nhất) → **các bài** (mức hiển thị, "bố mẹ chốt", "ôn quá hạn") → **tuần này** (buổi học /4, bài kiểm tra, lượt ôn, buổi dạy đã ghi, bài về nhà giao/xong/chữa).
+- **Tài khoản**: chọn ngày dạy T2…CN khi gán gia sư; "Lịch: T3, T5 · Sửa lịch" cho phân công đang hoạt động. Chưa đặt lịch → Tổng quan nhắc đặt lịch.
+- Mức bố mẹ chốt hiện ở: bản đồ tiến độ của con ("bố mẹ chốt"), bằng chứng trong form gia sư ("Bố mẹ chốt M3 (05/10)"), "Bài làm của con". Lịch ôn, "Hôm nay cần làm" và quy tắc mức **không đổi** (P2).
+- SQL 0008: bảng `parent_confirmations` (giữ mọi lần chốt, chụp mức hệ thống lúc chốt), cột `tutor_assignments.weekdays` (DB chặn ngày sai/trùng).
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **54** test quy tắc/nội dung (thêm 6: ngày trong tuần, mức hiển thị, cờ lệch — kể cả đề xuất lại sau khi chốt, buổi chưa ghi — hôm nay chưa nhắc/trước ngày gán không nhắc/gia sư khác không tính, tóm tắt tuần) + **78** test RLS (thêm 13).
+- `./e2e/run.sh`: **115/115** (thêm 9): Tổng quan 0/2 · 0 · 1 cờ → chốt M3 có ghi chú → DB lưu kèm mức hệ thống, 1/2, hết cờ, "bố mẹ chốt"; nhắc ngày dạy hôm qua → ghi buổi → hết nhắc; sửa lịch → DB [2,5]; con thấy "bố mẹ chốt" trên bản đồ.
+
+### Phụ huynh cần làm (khoảng 15 phút)
+1. Merge **PR #9** trước (nếu chưa).
+2. **Chạy SQL** `supabase/migrations/0008_p1_parent_overview.sql` → "Success. No rows returned".
+3. Tài khoản → Lịch sử phân công → **Sửa lịch** → tick ngày gia sư dạy → Lưu lịch.
+4. Thử preview: Tổng quan → xem 3 con số, "Cần chú ý", "Các bài", "Tuần này". (Có cờ lệch thật thì có thể chốt luôn — đó là dữ liệu thật.)
+5. Merge PR.
+
+### Ghi chú kỹ thuật
+- Quy tắc thuần ở `src/lib/learning/overview.ts`; `StudentOverview` (`src/components/parent/student-overview.tsx`) đọc qua RLS của phụ huynh.
+- `parentOwnsStudent` chuyển sang `src/lib/parent.ts` (server-only), dùng chung cho `/parent` và Tài khoản.
 
 ---
 

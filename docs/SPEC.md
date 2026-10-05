@@ -24,6 +24,7 @@
 | 03/10/2026 | Geometry proof items **C1–C3 (S5) move to after the pilot starts** (deviation from §3.4 / §4 "P1"; hub doc to be updated) | `docs/P1_PLAN.md` §3 |
 | 05/10/2026 | Review questions come from **practice items only**; reloading the review page resumes the unfinished run | `src/lib/learning/rules.ts` (`planReview`) |
 | 05/10/2026 | Tutor tools (T1–T5): homework is done on paper and corrected by the tutor next session, never counted in mastery or the weekly goal (D4 unchanged); task sheets/photos via **Google Drive links** (≤ 3, no file storage in the app); default due date today + 3; the student sees the tutor's correction note; "Bài làm của con" shows practice/exit/review only (no faded steps) | `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` |
+| 05/10/2026 | S4 (P1–P3): tutor schedule = fixed weekdays chosen when assigning (reminder when a scheduled day passes > 24h without a logged session); parent-confirmed level is **display only**, shown while the system level is unchanged since confirming; every confirmation is kept | `docs/superpowers/specs/2026-10-05-parent-overview-design.md` |
 | 03/10/2026 | Nightly scheduled build at 23:00 (Vietnam) for remaining slices; parent reviews, runs SQL and merges each morning | `docs/PROGRESS.md` |
 
 ## 1. Mục tiêu
