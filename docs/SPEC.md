@@ -22,6 +22,8 @@
 | 03/10/2026 | After D+21: keep a **maintenance review every 60 days** until the exam (fail → back to D+1, M4 lost until D+21 is passed again) | rules.ts, migration 0005 |
 | 03/10/2026 | **Pilot early**: Nguyên starts with the approved units once S3 (tutor log) is in; S4 parent dashboard and more content follow during the pilot | `docs/P1_PLAN.md` §3 |
 | 03/10/2026 | Geometry proof items **C1–C3 (S5) move to after the pilot starts** (deviation from §3.4 / §4 "P1"; hub doc to be updated) | `docs/P1_PLAN.md` §3 |
+| 05/10/2026 | Review questions come from **practice items only**; reloading the review page resumes the unfinished run | `src/lib/learning/rules.ts` (`planReview`) |
+| 05/10/2026 | Tutor tools (T1–T5): homework is done on paper and corrected by the tutor next session, never counted in mastery or the weekly goal (D4 unchanged); task sheets/photos via **Google Drive links** (≤ 3, no file storage in the app); default due date today + 3; the student sees the tutor's correction note; "Bài làm của con" shows practice/exit/review only (no faded steps) | `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` |
 | 03/10/2026 | Nightly scheduled build at 23:00 (Vietnam) for remaining slices; parent reviews, runs SQL and merges each morning | `docs/PROGRESS.md` |
 
 ## 1. Mục tiêu
