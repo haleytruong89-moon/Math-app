@@ -14,6 +14,8 @@ export const RULES = {
   reviewPassRatio: 2 / 3,
   weeklyGoalDays: 4,
   practiceAnswersForStudyDay: 5,
+  maxInProgress: 2, // LT3: no new suggestion beyond 2 KUs in progress
+  maxUnitsPerReview: 5, // LT8: one session a day, at most 5 units (~15 questions)
 } as const;
 
 export type Level = 0 | 1 | 2 | 3 | 4;

@@ -1,0 +1,792 @@
+{
+  "start": "2026-10-12",
+  "learnBy": "2027-03-31",
+  "modules": [
+    {
+      "id": "backfill-dai-so",
+      "title": "Bù lỗ hổng đại số lớp 7–8",
+      "domains": [
+        "F1"
+      ]
+    },
+    {
+      "id": "backfill-hinh",
+      "title": "Bù lỗ hổng hình học lớp 8",
+      "domains": [
+        "F3"
+      ]
+    },
+    {
+      "id": "thong-ke",
+      "title": "Thống kê",
+      "domains": [
+        "A"
+      ]
+    },
+    {
+      "id": "xac-suat",
+      "title": "Xác suất",
+      "domains": [
+        "B"
+      ]
+    },
+    {
+      "id": "can-thuc",
+      "title": "Căn bậc hai & biểu thức chứa căn",
+      "domains": [
+        "C"
+      ]
+    },
+    {
+      "id": "pt-bac-hai",
+      "title": "Phương trình bậc hai",
+      "domains": [
+        "D"
+      ]
+    },
+    {
+      "id": "viet",
+      "title": "Định lý Viète",
+      "domains": [
+        "E"
+      ]
+    },
+    {
+      "id": "ham-so",
+      "title": "Hàm số & parabol",
+      "domains": [
+        "F"
+      ]
+    },
+    {
+      "id": "bai-toan-tt",
+      "title": "Giải bài toán bằng PT/HPT",
+      "domains": [
+        "G"
+      ]
+    },
+    {
+      "id": "hinh-khoi",
+      "title": "Hình khối trong thực tiễn",
+      "domains": [
+        "P"
+      ]
+    },
+    {
+      "id": "he-thuc-luong",
+      "title": "Hệ thức lượng trong tam giác vuông",
+      "domains": [
+        "I"
+      ]
+    },
+    {
+      "id": "duong-tron",
+      "title": "Đường tròn cơ bản",
+      "domains": [
+        "J"
+      ]
+    },
+    {
+      "id": "noi-tiep",
+      "title": "Góc & tứ giác nội tiếp",
+      "domains": [
+        "K"
+      ]
+    },
+    {
+      "id": "tiep-tuyen",
+      "title": "Tiếp tuyến",
+      "domains": [
+        "L"
+      ]
+    },
+    {
+      "id": "vi-tri-td",
+      "title": "Vị trí tương đối & ngoại/nội tiếp",
+      "domains": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "hinh-nang-cao",
+      "title": "Hình học tổng hợp nâng cao",
+      "domains": [
+        "O"
+      ]
+    },
+    {
+      "id": "toi-uu",
+      "title": "BĐT & tối ưu",
+      "domains": [
+        "H",
+        "Q"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "f1-hdt",
+      "module": "backfill-dai-so",
+      "title": "7 hằng đẳng thức đáng nhớ",
+      "track": "A",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": "indirect",
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "f1-pnt",
+      "module": "backfill-dai-so",
+      "title": "Phân tích đa thức thành nhân tử",
+      "track": "A",
+      "seq": 20,
+      "prereq": [
+        "f1-hdt"
+      ],
+      "examWeight": "indirect",
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "f1-tgon",
+      "module": "backfill-dai-so",
+      "title": "Thu gọn đa thức & phân thức",
+      "track": "A",
+      "seq": 30,
+      "prereq": [
+        "f1-hdt",
+        "f1-pnt"
+      ],
+      "examWeight": 1,
+      "grading": "scaffolded",
+      "testOut": true,
+      "batch": 2
+    },
+    {
+      "id": "f1-qd",
+      "module": "backfill-dai-so",
+      "title": "Quy đồng & điều kiện xác định",
+      "track": "A",
+      "seq": 40,
+      "prereq": [
+        "f1-tgon"
+      ],
+      "examWeight": "indirect",
+      "grading": "scaffolded",
+      "testOut": true,
+      "batch": 2
+    },
+    {
+      "id": "c-dkxd",
+      "module": "can-thuc",
+      "title": "Điều kiện xác định biểu thức căn",
+      "track": "A",
+      "seq": 50,
+      "prereq": [
+        "f1-qd"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 3
+    },
+    {
+      "id": "c-coban",
+      "module": "can-thuc",
+      "title": "Căn thức cơ bản",
+      "track": "A",
+      "seq": 60,
+      "prereq": [
+        "c-dkxd"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 4
+    },
+    {
+      "id": "c-truccan",
+      "module": "can-thuc",
+      "title": "Trục căn thức ở mẫu",
+      "track": "A",
+      "seq": 70,
+      "prereq": [
+        "c-coban"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 4
+    },
+    {
+      "id": "c-rutgon",
+      "module": "can-thuc",
+      "title": "Rút gọn biểu thức chứa căn",
+      "track": "A",
+      "seq": 80,
+      "prereq": [
+        "c-truccan"
+      ],
+      "examWeight": 1,
+      "grading": "scaffolded",
+      "testOut": false,
+      "batch": 5
+    },
+    {
+      "id": "c-cauphu",
+      "module": "can-thuc",
+      "title": "Câu phụ sau rút gọn",
+      "track": "A",
+      "seq": 90,
+      "prereq": [
+        "c-rutgon"
+      ],
+      "examWeight": 0.5,
+      "grading": "scaffolded",
+      "testOut": false,
+      "batch": 5
+    },
+    {
+      "id": "d-ptbh",
+      "module": "pt-bac-hai",
+      "title": "PT bậc hai: biệt thức & công thức nghiệm",
+      "track": "A",
+      "seq": 100,
+      "prereq": [
+        "f1-qd"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 6
+    },
+    {
+      "id": "d-nhamnghiem",
+      "module": "pt-bac-hai",
+      "title": "Nhẩm nghiệm & phân tích nhân tử qua nghiệm",
+      "track": "A",
+      "seq": 110,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 6
+    },
+    {
+      "id": "d-thamso",
+      "module": "pt-bac-hai",
+      "title": "PT bậc hai chứa tham số",
+      "track": "A",
+      "seq": 120,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 6
+    },
+    {
+      "id": "e-viete",
+      "module": "viet",
+      "title": "Viète cơ bản: tổng tích & biểu thức đối xứng",
+      "track": "A",
+      "seq": 130,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 7
+    },
+    {
+      "id": "e-vietets",
+      "module": "viet",
+      "title": "Viète có tham số",
+      "track": "A",
+      "seq": 140,
+      "prereq": [
+        "e-viete",
+        "d-thamso"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 7
+    },
+    {
+      "id": "g-chuyendong",
+      "module": "bai-toan-tt",
+      "title": "Chuyển động & dòng nước",
+      "track": "A",
+      "seq": 150,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 8
+    },
+    {
+      "id": "g-nangsuat",
+      "module": "bai-toan-tt",
+      "title": "Năng suất, làm chung, vòi nước",
+      "track": "A",
+      "seq": 160,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 8
+    },
+    {
+      "id": "g-phantram",
+      "module": "bai-toan-tt",
+      "title": "Giá bán, lãi suất, tăng giảm %",
+      "track": "A",
+      "seq": 170,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 8
+    },
+    {
+      "id": "g-honhop",
+      "module": "bai-toan-tt",
+      "title": "Pha trộn, hình học có ẩn & dẫn tới PT bậc hai",
+      "track": "A",
+      "seq": 180,
+      "prereq": [
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 8
+    },
+    {
+      "id": "hq-amgm",
+      "module": "toi-uu",
+      "title": "BĐT cơ bản, AM-GM & tìm MAX/MIN",
+      "track": "A",
+      "seq": 190,
+      "prereq": [
+        "f1-hdt"
+      ],
+      "examWeight": 0.25,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 9
+    },
+    {
+      "id": "hq-doanhthu",
+      "module": "toi-uu",
+      "title": "Tối ưu kinh tế: doanh thu, lợi nhuận, chi phí",
+      "track": "A",
+      "seq": 200,
+      "prereq": [
+        "hq-amgm",
+        "d-ptbh"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 10
+    },
+    {
+      "id": "hq-hinhhoc",
+      "module": "toi-uu",
+      "title": "Tối ưu hình học: diện tích, thể tích, hộp cắt góc",
+      "track": "A",
+      "seq": 210,
+      "prereq": [
+        "hq-amgm"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 10
+    },
+    {
+      "id": "e-giaodiem",
+      "module": "viet",
+      "title": "Giao điểm parabol – đường thẳng & Viète",
+      "track": "A",
+      "seq": 220,
+      "prereq": [
+        "e-viete"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 10
+    },
+    {
+      "id": "a-tanso",
+      "module": "thong-ke",
+      "title": "Tần số & tần số tương đối",
+      "track": "B",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "b-phepthu",
+      "module": "xac-suat",
+      "title": "Phép thử & không gian mẫu",
+      "track": "B",
+      "seq": 20,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "a-bieudo",
+      "module": "thong-ke",
+      "title": "Biểu đồ & khai thác dữ liệu",
+      "track": "B",
+      "seq": 30,
+      "prereq": [
+        "a-tanso"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 2
+    },
+    {
+      "id": "b-xsuat",
+      "module": "xac-suat",
+      "title": "Xác suất cổ điển & một bước",
+      "track": "B",
+      "seq": 40,
+      "prereq": [
+        "b-phepthu"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 2
+    },
+    {
+      "id": "p-trunon",
+      "module": "hinh-khoi",
+      "title": "Hình trụ & hình nón: công thức",
+      "track": "B",
+      "seq": 50,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 3
+    },
+    {
+      "id": "b-haib",
+      "module": "xac-suat",
+      "title": "Xác suất hai bước & công cụ đếm",
+      "track": "B",
+      "seq": 60,
+      "prereq": [
+        "b-xsuat"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 3
+    },
+    {
+      "id": "p-cau",
+      "module": "hinh-khoi",
+      "title": "Hình cầu & hình bán cầu",
+      "track": "B",
+      "seq": 70,
+      "prereq": [
+        "p-trunon"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": true,
+      "batch": 3
+    },
+    {
+      "id": "p-ghep",
+      "module": "hinh-khoi",
+      "title": "Hình ghép, thể tích còn lại & vật liệu",
+      "track": "B",
+      "seq": 80,
+      "prereq": [
+        "p-trunon",
+        "p-cau"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 3
+    },
+    {
+      "id": "htl-1",
+      "module": "he-thuc-luong",
+      "title": "Bốn hệ thức lượng: hiểu và nhớ",
+      "track": "B",
+      "seq": 90,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 0
+    },
+    {
+      "id": "htl-2",
+      "module": "he-thuc-luong",
+      "title": "Tính độ dài bằng hệ thức lượng",
+      "track": "B",
+      "seq": 100,
+      "prereq": [
+        "htl-1"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 0
+    },
+    {
+      "id": "i-giaitgv",
+      "module": "he-thuc-luong",
+      "title": "Giải tam giác vuông",
+      "track": "B",
+      "seq": 110,
+      "prereq": [
+        "htl-1"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": true,
+      "batch": 10
+    },
+    {
+      "id": "i-ungdung",
+      "module": "he-thuc-luong",
+      "title": "Ứng dụng TSLG: góc nâng/hạ & bài thực tế",
+      "track": "B",
+      "seq": 120,
+      "prereq": [
+        "i-giaitgv"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 10
+    },
+    {
+      "id": "f-hamso",
+      "module": "ham-so",
+      "title": "Hàm số bậc nhất & mặt phẳng Oxy",
+      "track": "B",
+      "seq": 130,
+      "prereq": [],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": true,
+      "batch": 10
+    },
+    {
+      "id": "f-parabol",
+      "module": "ham-so",
+      "title": "Parabol y=ax² & điểm thuộc đồ thị",
+      "track": "B",
+      "seq": 140,
+      "prereq": [
+        "f-hamso"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": true,
+      "batch": 10
+    },
+    {
+      "id": "f3-dongdang",
+      "module": "backfill-hinh",
+      "title": "Tam giác đồng dạng & tỉ số cạnh",
+      "track": "C",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": "indirect",
+      "grading": "partial",
+      "testOut": true,
+      "batch": 4
+    },
+    {
+      "id": "j-coban",
+      "module": "duong-tron",
+      "title": "Đường tròn: tâm, bán kính, dây, góc ở tâm",
+      "track": "C",
+      "seq": 20,
+      "prereq": [],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 4
+    },
+    {
+      "id": "k-goiintiep",
+      "module": "noi-tiep",
+      "title": "Góc nội tiếp & các tính chất",
+      "track": "C",
+      "seq": 30,
+      "prereq": [
+        "j-coban"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 5
+    },
+    {
+      "id": "k-tugiacnt",
+      "module": "noi-tiep",
+      "title": "Tứ giác nội tiếp: dấu hiệu & ứng dụng",
+      "track": "C",
+      "seq": 40,
+      "prereq": [
+        "k-goiintiep"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 5
+    },
+    {
+      "id": "l-tieptuyen",
+      "module": "tiep-tuyen",
+      "title": "Tiếp tuyến: dấu hiệu & hai TT từ một điểm",
+      "track": "C",
+      "seq": 50,
+      "prereq": [
+        "j-coban"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 6
+    },
+    {
+      "id": "o-chungminh",
+      "module": "hinh-nang-cao",
+      "title": "CM vuông góc, song song, thẳng hàng, đồng quy",
+      "track": "C",
+      "seq": 60,
+      "prereq": [
+        "k-tugiacnt",
+        "f3-dongdang"
+      ],
+      "examWeight": 0.5,
+      "grading": "tutor",
+      "testOut": false,
+      "batch": 7
+    },
+    {
+      "id": "o-dongdang",
+      "module": "hinh-nang-cao",
+      "title": "Đồng dạng trong đường tròn & tích đoạn thẳng",
+      "track": "C",
+      "seq": 70,
+      "prereq": [
+        "o-chungminh",
+        "l-tieptuyen"
+      ],
+      "examWeight": 0.5,
+      "grading": "tutor",
+      "testOut": false,
+      "batch": 7
+    },
+    {
+      "id": "l-kethop",
+      "module": "tiep-tuyen",
+      "title": "Tiếp tuyến kết hợp dây – góc – đồng dạng",
+      "track": "C",
+      "seq": 80,
+      "prereq": [
+        "l-tieptuyen",
+        "k-tugiacnt"
+      ],
+      "examWeight": 0.5,
+      "grading": "tutor",
+      "testOut": false,
+      "batch": 9
+    },
+    {
+      "id": "o-nangcao",
+      "module": "hinh-nang-cao",
+      "title": "Điểm cố định, đường cố định & điểm di động",
+      "track": "C",
+      "seq": 90,
+      "prereq": [
+        "o-dongdang"
+      ],
+      "examWeight": 0.5,
+      "grading": "tutor",
+      "testOut": false,
+      "batch": 9
+    },
+    {
+      "id": "j-cung",
+      "module": "duong-tron",
+      "title": "Cung, độ dài cung & hình quạt tròn",
+      "track": "C",
+      "seq": 100,
+      "prereq": [
+        "j-coban"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 10
+    },
+    {
+      "id": "m-vitri",
+      "module": "vi-tri-td",
+      "title": "Vị trí tương đối: điểm, đường thẳng, 2 đường tròn",
+      "track": "C",
+      "seq": 110,
+      "prereq": [
+        "j-coban"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 10
+    },
+    {
+      "id": "n-ngoainoi",
+      "module": "vi-tri-td",
+      "title": "Đường tròn ngoại tiếp & nội tiếp tam giác",
+      "track": "C",
+      "seq": 120,
+      "prereq": [
+        "k-goiintiep"
+      ],
+      "examWeight": 0.25,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 10
+    }
+  ]
+}

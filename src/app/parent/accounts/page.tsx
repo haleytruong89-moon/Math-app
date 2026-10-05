@@ -11,8 +11,10 @@ import {
   endAssignment,
   resetPassword,
   setAccountLocked,
+  setAssignmentWeekdays,
   updateStudent,
 } from "./actions";
+import { WEEKDAY_SHORT } from "@/lib/learning/overview";
 import { deleteImpact } from "@/lib/accounts/rules";
 
 export const metadata: Metadata = { title: "Tài khoản — App Toán" };
@@ -20,6 +22,20 @@ export const metadata: Metadata = { title: "Tài khoản — App Toán" };
 const ROLE_LABEL: Record<string, string> = { parent: "Phụ huynh", tutor: "Gia sư", student: "Học sinh" };
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" });
+
+function WeekdayBoxes({ selected = [] }: { selected?: number[] }) {
+  return (
+    <fieldset className="flex flex-wrap gap-2">
+      <legend className="mb-1 text-sm text-muted">Ngày dạy trong tuần (để nhắc khi gia sư quên ghi buổi)</legend>
+      {WEEKDAY_SHORT.map((label, i) => (
+        <label key={label} className="flex items-center gap-1 text-sm">
+          <input type="checkbox" name="weekday" value={i + 1} defaultChecked={selected.includes(i + 1)} />
+          {label}
+        </label>
+      ))}
+    </fieldset>
+  );
+}
 
 export default async function AccountsPage(props: PageProps<"/parent/accounts">) {
   await requireRole("parent");
@@ -32,7 +48,7 @@ export default async function AccountsPage(props: PageProps<"/parent/accounts">)
     supabase.from("students").select("id, full_name, grade, profile_id").order("created_at"),
     supabase
       .from("tutor_assignments")
-      .select("id, tutor_id, student_id, started_at, ended_at")
+      .select("id, tutor_id, student_id, started_at, ended_at, weekdays")
       .order("started_at", { ascending: false }),
     createAdminClient().auth.admin.listUsers({ perPage: 200 }),
   ]);
@@ -245,6 +261,7 @@ export default async function AccountsPage(props: PageProps<"/parent/accounts">)
                 ))}
               </select>
             </label>
+            <WeekdayBoxes />
           </ActionForm>
 
           <h3 className="mt-8 font-display text-sm font-semibold">Lịch sử phân công</h3>
@@ -261,6 +278,17 @@ export default async function AccountsPage(props: PageProps<"/parent/accounts">)
                   <ActionForm action={endAssignment} submitLabel="Kết thúc" variant="quiet" className="flex">
                     <input type="hidden" name="assignmentId" value={a.id} />
                   </ActionForm>
+                )}
+                {!a.ended_at && (
+                  <details className="w-full text-sm">
+                    <summary className="cursor-pointer text-accent">
+                      Lịch: {(a.weekdays as number[]).length ? (a.weekdays as number[]).map((d) => WEEKDAY_SHORT[d - 1]).join(", ") : "chưa đặt"} · Sửa lịch
+                    </summary>
+                    <ActionForm action={setAssignmentWeekdays} submitLabel="Lưu lịch" variant="quiet" className="mt-2 flex flex-col gap-2">
+                      <input type="hidden" name="assignmentId" value={a.id} />
+                      <WeekdayBoxes selected={a.weekdays as number[]} />
+                    </ActionForm>
+                  </details>
                 )}
               </li>
             ))}

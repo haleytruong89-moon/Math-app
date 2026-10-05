@@ -81,7 +81,7 @@ export const Unit = z
     /** Students only ever see "approved" units (D16). */
     status: z.enum(["draft", "approved"]),
     approvedOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
-    estMinutes: z.number().int().min(5).max(60),
+    estMinutes: z.number().int().min(5).max(90),
     figure: Figure.optional(),
     theory: z.array(Text).min(1),
     worked: z.object({ problem: Text, steps: z.array(WorkedStep).min(2), selfExplain: Text }).strict(),
@@ -107,13 +107,17 @@ export const Unit = z
   });
 export type Unit = z.infer<typeof Unit>;
 
+// Module domains: master plan A–Q or backfill F0–F3 (LT1). The old single "domain" field still reads.
+const ModuleDomain = z.string().regex(/^([A-Q]|F[0-3])$/, "domain phải thuộc A–Q hoặc F0–F3");
 export const Module = z
   .object({
     id: Id,
     title: Text,
-    /** Domain letter from the master plan (A–Q). */
-    domain: z.string().regex(/^[A-Q]$/),
+    domains: z.array(ModuleDomain).min(1).optional(),
+    domain: z.string().regex(/^[A-Q]$/).optional(),
     units: z.array(Id).min(1),
   })
-  .strict();
+  .strict()
+  .refine((m) => m.domains || m.domain, { message: "module cần domains" })
+  .transform(({ domain, domains, ...m }) => ({ ...m, domains: domains ?? [domain!] }));
 export type Module = z.infer<typeof Module>;

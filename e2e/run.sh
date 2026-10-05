@@ -9,7 +9,7 @@ mkdir -p src/app/api/e2e/sql && cp e2e/patch/route.ts src/app/api/e2e/sql/route.
 python3 e2e/patch/patch.py
 revert() {
   [ -n "${PID:-}" ] && kill -- "-$PID" 2>/dev/null
-  git checkout -- src/lib/dal.ts src/lib/supabase/server.ts src/lib/supabase/admin.ts next.config.ts
+  git checkout -- src/lib/dal.ts src/lib/supabase/server.ts src/lib/supabase/admin.ts next.config.ts src/lib/content/registry.generated.ts
   rm -rf src/lib/e2e-fake.ts src/app/api/e2e .next/dev
 }
 trap revert EXIT
@@ -25,4 +25,10 @@ run parent 3100 e2e/preview-flow.mjs; a=$?
 run student 3101 e2e/student-flow.mjs; b=$?
 run tutor 3102 e2e/tutor-flow.mjs; c=$?
 run parent 3103 e2e/accounts-flow.mjs; d=$?
-exit $(( a || b || c || d ))
+run parent 3104 e2e/overview-flow.mjs; e=$?
+# S6a: curriculum engine on the fixture content (registry swapped, restored right after)
+node scripts/content-index.mjs --fixtures
+run student 3105 e2e/curriculum-flow.mjs; f=$?
+run parent 3106 e2e/curriculum-parent-flow.mjs; g=$?
+node scripts/content-index.mjs
+exit $(( a || b || c || d || e || f || g ))

@@ -70,6 +70,67 @@
   color-scheme: dark;
 }
 
+/* Student routes only (spec 2026-10-05 student UX): warm cream + teal. Parent/tutor keep the tokens above. */
+.student-theme {
+  --bg: #FFF8F0;
+  --surface: #ffffff;
+  --ink: #1E293B;
+  --muted: #64748B;
+  --border: #F1E8DD;
+  --accent: #0D9488;
+  --accent-soft: #CCFBF1;
+  --on-accent: #ffffff;
+  --good: #059669;
+  --good-soft: #D1FAE5;
+  --warn: #B45309;
+  --warn-soft: #FEF3C7;
+  --m0: #D1D5DB;
+  --m1: #C4B5FD;
+  --m2: #93C5FD;
+  --m3: #5EEAD4;
+  --m4: #FCD34D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .student-theme {
+  --bg: #1A1613;
+  --surface: #241F1B;
+  --ink: #F3EDE6;
+  --muted: #B8ADA2;
+  --border: #3A322B;
+  --accent: #2DD4BF;
+  --accent-soft: #12332F;
+  --on-accent: #0B1A18;
+  --good: #34D399;
+  --good-soft: #10291F;
+  --warn: #FBBF24;
+  --warn-soft: #33270F;
+  --m0: #4B4540;
+  --m1: #7C6BC4;
+  --m2: #4F7FC0;
+  --m3: #2A9D90;
+  --m4: #C9A227;
+  }
+}
+:root[data-theme="dark"] .student-theme {
+  --bg: #1A1613;
+  --surface: #241F1B;
+  --ink: #F3EDE6;
+  --muted: #B8ADA2;
+  --border: #3A322B;
+  --accent: #2DD4BF;
+  --accent-soft: #12332F;
+  --on-accent: #0B1A18;
+  --good: #34D399;
+  --good-soft: #10291F;
+  --warn: #FBBF24;
+  --warn-soft: #33270F;
+  --m0: #4B4540;
+  --m1: #7C6BC4;
+  --m2: #4F7FC0;
+  --m3: #2A9D90;
+  --m4: #C9A227;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

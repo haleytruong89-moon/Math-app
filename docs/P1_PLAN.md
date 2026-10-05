@@ -60,8 +60,8 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 3 | **S3** | Gia sư "Ghi buổi dạy" | ✅ merged (PR #3) | — |
 | 3b | **S3b** | Công cụ gia sư: "Bài làm của con" + giao bài về nhà qua link Drive (SQL 0007) | ✅ merged (PR #4, #5, #7) | — |
 | 4 | **S4** | Phụ huynh "Tổng quan" (SQL 0008) | 🟡 PR #11, xếp chồng trên PR #9 | trước 12/10 |
-| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ⬜ **tiếp theo** | 16/10 (để đợt 1 lên app tuần 2) |
-| 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | 🟡 PR #12 | 18/10 |
+| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ✅ Merged 05/10 (PR #13) | 16/10 (để đợt 1 lên app tuần 2) |
+| 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | ✅ Merged 05/10 (qua PR #13) | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | ⬜ | 23/10 (để đợt 2 lên app tuần 3) |
 | 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration 0011) | ⬜ code 26/10 – 06/11; bật ~09/11 sau khi đạt bộ test | 06/11 |
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |

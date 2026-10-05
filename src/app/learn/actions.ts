@@ -10,7 +10,17 @@ import { fadedItems, findItem, getUnit } from "@/lib/content";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
-import { afterReview, exitReachesM3, firstReview, lastExitRun, reviewPassed, vnDate, type Rating, type Stage } from "@/lib/learning/rules";
+import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
+import { answerHtml, correctHtml } from "@/lib/learning/work";
+import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
+import { loadStudentState } from "@/lib/learning/state";
+import { masteryHistory } from "@/lib/learning/sequence";
+
+/** S6a (LT2): a locked KU can't be started; returns the unit's roadmap state for a student. */
+async function roadmapState(studentId: string, unitId: string) {
+  const st = await loadStudentState(createAdminClient(), studentId);
+  return st.units.find((u) => u.unit.id === unitId) ?? null;
+}
 
 // Grading always happens here, never in the browser. A student's answers are recorded;
 // a parent previewing content (D16) gets the same grading but nothing is written.
@@ -47,7 +57,7 @@ function loadUnit(who: Learner, unitId: string) {
 async function progress(studentId: string, unitId: string) {
   const { data } = await createAdminClient()
     .from("unit_progress")
-    .select("worked_viewed_at, faded_done_at")
+    .select("worked_viewed_at, faded_done_at, testout_run")
     .eq("student_id", studentId)
     .eq("unit_id", unitId)
     .maybeSingle();
@@ -55,6 +65,24 @@ async function progress(studentId: string, unitId: string) {
 }
 
 const DENIED = { ok: false as const, message: "Không mở được bài này." };
+
+/** Mastery of one unit right after a practice answer (feeds the student's level nudge). */
+async function practiceMastery(studentId: string, unitId: string) {
+  const admin = createAdminClient();
+  const [rows, p, q, c] = await Promise.all([
+    admin.from("attempts").select("item_id, mode, correct, error_code, exit_run, created_at").eq("student_id", studentId).eq("unit_id", unitId).order("created_at", { ascending: true }),
+    progress(studentId, unitId),
+    admin.from("review_queue").select("completed_at").eq("student_id", studentId).eq("unit_id", unitId).maybeSingle(),
+    admin.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", studentId).eq("unit_id", unitId),
+  ]);
+  if (rows.error || q.error) return undefined; // no nudge rather than a wrong one
+  const history = masteryHistory((rows.data ?? []) as AttemptRow[], (p?.testout_run as string | null) ?? null, !!p?.worked_viewed_at, !!q.data?.completed_at);
+  const m = systemMastery(history);
+  const recent = practiceFirstTries(history.attempts).slice(-RULES.practiceWindow);
+  const conf = latestByUnit((c.data ?? []) as ConfirmationRow[]).get(unitId);
+  const confirmed = displayLevel(m.level, conf, history).confirmed;
+  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter((a) => a.correct).length, confirmed };
+}
 const SAVE_FAILED = { ok: false as const, message: "Chưa lưu được câu trả lời. Kiểm tra mạng rồi thử lại." };
 
 // ---------------------------------------------------------------------
@@ -64,6 +92,8 @@ export async function markWorkedViewed(unitIdRaw: string): Promise<{ ok: boolean
   const unitId = UnitId.safeParse(unitIdRaw);
   if (!who || !unitId.success || !loadUnit(who, unitId.data)) return DENIED;
   if (who.kind === "preview") return { ok: true };
+  const rs = await roadmapState(who.studentId, unitId.data);
+  if (rs?.status === "locked") return { ok: false, message: "Bài này chưa mở — con cần đạt M3 ở bài trước." };
 
   const { error } = await createAdminClient()
     .from("unit_progress")
@@ -74,6 +104,15 @@ export async function markWorkedViewed(unitIdRaw: string): Promise<{ ok: boolean
   if (error) {
     console.error("markWorkedViewed", error.message);
     return SAVE_FAILED;
+  }
+  if (rs?.testout.tried && !rs.workedViewed) {
+    // The row exists from a failed test-out (upsert above ignored it): record the worked example now.
+    await createAdminClient()
+      .from("unit_progress")
+      .update({ worked_viewed_at: new Date().toISOString() })
+      .eq("student_id", who.studentId)
+      .eq("unit_id", unitId.data)
+      .is("worked_viewed_at", null);
   }
   revalidatePath("/student");
   return { ok: true };
@@ -137,6 +176,10 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     correct: g.correct,
     feedbackHtml: g.feedback ? texToHtml(g.feedback) : undefined,
     solutionHtml: showSolution ? texToHtml(item.solution) : undefined,
+    answerHtml: answerHtml(item, v.answer),
+    correctHtml: showSolution ? correctHtml(item) : undefined,
+    errorCode: g.correct ? null : (g.errorCode ?? null),
+    mastery: who.kind === "student" && v.mode === "practice" ? await practiceMastery(who.studentId, v.unitId) : undefined,
   };
 }
 
@@ -182,6 +225,8 @@ const ExitInput = z.object({
   unitId: UnitId,
   answers: z.record(UnitId, Answer),
   durationMs: Duration,
+  /** LT4: the exit test taken directly, once per KU (track B / backfill only). */
+  testOut: z.boolean().optional(),
 });
 
 export async function submitExit(input: z.input<typeof ExitInput>): Promise<ExitResult> {
@@ -193,8 +238,14 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
   if (!found) return DENIED;
 
   if (who.kind === "student") {
-    const p = await progress(who.studentId, v.unitId);
-    if (!p?.faded_done_at) return { ok: false, message: "Con cần học xong các phần trước rồi mới làm bài kiểm tra." };
+    if (v.testOut) {
+      const rs = await roadmapState(who.studentId, v.unitId);
+      if (!rs || !rs.entry?.testOut || rs.status !== "open" || rs.started)
+        return { ok: false, message: "Bài này không làm kiểm tra vượt được (chỉ một lần, trước khi học)." };
+    } else {
+      const p = await progress(who.studentId, v.unitId);
+      if (!p?.faded_done_at) return { ok: false, message: "Con cần học xong các phần trước rồi mới làm bài kiểm tra." };
+    }
   }
 
   let nextReviewOn: string | undefined;
@@ -204,10 +255,33 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
     const g = gradeItem(item, answer);
     return { item, answer, correct: g.understood && g.correct, errorCode: g.errorCode, feedback: g.feedback };
   });
+  const exitScore = lastExitRun(graded.map((r) => ({ item_id: r.item.id, mode: "exit", correct: r.correct, error_code: r.errorCode ?? null, exit_run: "this", created_at: "" })));
+  const reachedM3 = !!exitScore && exitReachesM3(exitScore);
 
   if (who.kind === "student") {
     const run = randomUUID();
-    const { error } = await createAdminClient()
+    const admin = createAdminClient();
+    if (v.testOut) {
+      // Claim the one test-out before saving answers: the conditional update lets only one of two
+      // simultaneous submissions through (the other changes no row and is refused).
+      await admin
+        .from("unit_progress")
+        .upsert({ student_id: who.studentId, unit_id: v.unitId }, { onConflict: "student_id,unit_id", ignoreDuplicates: true });
+      const { data: claimed, error: cErr } = await admin
+        .from("unit_progress")
+        .update({ testout_run: run, testout_at: new Date().toISOString() })
+        .eq("student_id", who.studentId)
+        .eq("unit_id", v.unitId)
+        .is("testout_at", null)
+        .is("worked_viewed_at", null)
+        .select("unit_id");
+      if (cErr) {
+        console.error("submitExit testout claim", cErr.message);
+        return SAVE_FAILED;
+      }
+      if (!claimed?.length) return { ok: false, message: "Bài này không làm kiểm tra vượt được (chỉ một lần, trước khi học)." };
+    }
+    const { error } = await admin
       .from("attempts")
       .insert(
         graded.map((r) => ({
@@ -224,11 +298,12 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       );
     if (error) {
       console.error("submitExit insert", error.message);
+      // Nothing was saved: give the test-out back so the student can submit again.
+      if (v.testOut) await admin.from("unit_progress").update({ testout_run: null, testout_at: null }).eq("student_id", who.studentId).eq("unit_id", v.unitId).eq("testout_run", run);
       return SAVE_FAILED;
     }
     // Reaching M3 the first time starts the D+1/D+7/D+21 review cycle (D14).
-    const exitScore = lastExitRun(graded.map((r) => ({ item_id: r.item.id, mode: "exit", correct: r.correct, error_code: r.errorCode ?? null, exit_run: run, created_at: new Date().toISOString() })));
-    if (exitScore && exitReachesM3(exitScore)) {
+    if (reachedM3) {
       const first = firstReview(vnDate());
       const { data: inserted, error: qErr } = await createAdminClient()
         .from("review_queue")
@@ -255,6 +330,8 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       solutionHtml: texToHtml(r.item.solution),
     })),
     nextReviewOn,
+    // Passed = the same M3 rule as the system level (the review row may fail to save separately).
+    testOut: v.testOut ? { passed: reachedM3 } : undefined,
   };
 }
 
@@ -307,6 +384,9 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
     correct: g.correct,
     feedbackHtml: g.feedback ? texToHtml(g.feedback) : undefined,
     solutionHtml: texToHtml(item.solution),
+    answerHtml: answerHtml(item, v.answer),
+    correctHtml: correctHtml(item),
+    errorCode: g.correct ? null : (g.errorCode ?? null),
   };
 }
 

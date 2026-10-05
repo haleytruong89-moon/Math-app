@@ -40,7 +40,8 @@ export function commonErrors(attempts: AttemptRow[], min = 2): { code: string; c
     .sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
 }
 
-function answerHtml(item: Item, raw: string): string {
+/** What the student entered: escaped text, or the chosen MCQ option rendered. */
+export function answerHtml(item: Item, raw: string): string {
   const answer = raw.trim();
   if (!answer) return "(bỏ trống)";
   if (item.type === "mcq") {
@@ -50,7 +51,7 @@ function answerHtml(item: Item, raw: string): string {
   return escapeHtml(answer);
 }
 
-function correctHtml(item: Item): string {
+export function correctHtml(item: Item): string {
   return item.type === "mcq" ? texToHtml(item.options[item.correct]) : texToHtml(item.unit ? `${item.answer} ${item.unit}` : item.answer);
 }
 

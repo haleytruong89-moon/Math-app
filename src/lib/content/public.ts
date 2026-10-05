@@ -29,7 +29,20 @@ export type PublicUnit = {
 export type CheckResult =
   | { ok: false; message: string }
   | { ok: true; understood: false }
-  | { ok: true; understood: true; correct: boolean; feedbackHtml?: string; solutionHtml?: string };
+  | {
+      ok: true;
+      understood: true;
+      correct: boolean;
+      feedbackHtml?: string;
+      solutionHtml?: string;
+      /** What the student entered (escaped / MCQ option text). */
+      answerHtml?: string;
+      /** The right answer — only when the solution may be shown (faded steps keep their reveal rule). */
+      correctHtml?: string;
+      errorCode?: string | null;
+      /** Practice, real student only: mastery right after this answer (for the level nudge). */
+      mastery?: { level: number; practiceCount: number; practiceRight: number; confirmed: boolean };
+    };
 
 export type ExitResult =
   | { ok: false; message: string }
@@ -38,6 +51,8 @@ export type ExitResult =
       score: number;
       total: number;
       items: { id: string; correct: boolean; answer: string; feedbackHtml?: string; solutionHtml: string }[];
+      /** LT4: set when this was a test-out attempt. */
+      testOut?: { passed: boolean };
       /** Set when this result reached M3 and the first review (D+1) was scheduled. */
       nextReviewOn?: string;
     };
