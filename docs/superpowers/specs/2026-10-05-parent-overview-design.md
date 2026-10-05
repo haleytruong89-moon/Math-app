@@ -29,12 +29,13 @@ Có cờ khi **cả ba** đúng:
 1. `|đề xuất − mức hệ thống hiện tại| ≥ 1`;
 2. chưa có lần phụ huynh chốt nào **sau** đề xuất đó;
 3. (tự hết) nếu mức hệ thống hiện tại đã bằng mức đề xuất → không còn cờ.
+4. (chỉnh 05/10 sau review) đề xuất **trùng với mức bố mẹ chốt còn hiệu lực** → không bật cờ (gia sư đồng ý với phụ huynh).
 
 Thẻ cờ: tên bài · "Gia sư {tên} đề xuất M3 ({ngày})" · "Hệ thống M1" · bằng chứng (số câu, kiểm tra gần nhất x/y,
 % đúng 5 câu luyện gần nhất, "chưa đủ dữ liệu" nếu < 5 câu) · ghi chú buổi dạy đó · link "Xem bài làm" (trang S3b).
 Nút **"Chốt mức"** → chọn M0–M4 (chọn sẵn mức đề xuất), ghi chú ≤ 300 ký tự (tuỳ chọn) → lưu → cờ biến mất.
 
-**Buổi dạy chưa ghi** — với mỗi phân công đang hoạt động có lịch: mỗi ngày dạy theo lịch trong **14 ngày gần nhất**,
+**Buổi dạy chưa ghi** — với mỗi phân công đang hoạt động có lịch: mỗi ngày dạy theo lịch trong **7 ngày gần nhất** (= giới hạn ghi trễ của gia sư, để nhắc nào cũng xoá được — chỉnh 05/10 sau review, trước là 14),
 từ ngày bắt đầu phân công, đã qua **hơn 24h** (tức ngày đó ≤ hôm qua) mà gia sư đó **không có buổi nào** có
 `taught_on` = ngày đó → thẻ "Thứ Ba 07/10: Cô Trang chưa ghi buổi dạy". Phân công không có lịch → không nhắc.
 
@@ -45,6 +46,7 @@ Không có mục nào → "Không có gì cần chú ý."
 (con chưa làm gì làm mức đổi); ngược lại `= mức hệ thống`. Có nhãn "bố mẹ chốt" khi dùng mức chốt.
 (Chỉnh 05/10 khi lập kế hoạch: bỏ điều kiện "mới hơn đề xuất mới nhất" — học sinh không đọc được `tutor_proposals` (RLS),
 nên quy tắc phải tính được ở mọi màn hình. Đề xuất mới lệch với mức đã chốt vẫn bật lại **cờ lệch** ở mục 2.)
+(Chỉnh 05/10 sau review: mức hệ thống **đã đổi ở bất kỳ lúc nào sau khi chốt** thì lần chốt đó hết hiệu lực hẳn — lên M2 rồi tụt về M1 không làm "bố mẹ chốt" hiện lại. App dò lại các câu con làm sau lần chốt.)
 Áp dụng ở: Tổng quan, trang gia sư (bằng chứng + "Bài làm của con"), bản đồ tiến độ của con.
 
 ### 4. Bản đồ các bài

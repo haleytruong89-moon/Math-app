@@ -32,6 +32,8 @@ Spec `docs/superpowers/specs/2026-10-05-parent-overview-design.md` (P1–P3, ph�
 
 **Chỉnh so với spec lúc lập kế hoạch:** mức bố mẹ chốt hiện **cho tới khi mức hệ thống đổi** (bỏ điều kiện "mới hơn đề xuất" — học sinh không đọc được đề xuất của gia sư). Gia sư đề xuất lại mà vẫn lệch → cờ lệch hiện lại.
 
+**Sửa sau review độc lập (3 điểm):** nhắc buổi chưa ghi chỉ trong **7 ngày** (bằng giới hạn ghi trễ — trước là 14, có nhắc không xoá được); gia sư đề xuất **trùng** mức bố mẹ đã chốt thì không bật cờ; mức hệ thống **đã đổi sau khi chốt** (kể cả đổi rồi quay lại) thì mức chốt hết hiệu lực hẳn.
+
 ### Đã làm
 - **Tổng quan** (mỗi học sinh): 3 con số (bài đạt M3+ / tổng, bài ôn quá hạn, cờ lệch cần chốt) → **"Cần chú ý"**: cờ lệch (gia sư đề xuất M3 · hệ thống M1 + bằng chứng + ghi chú buổi dạy + "Xem bài làm" + **"Chốt mức"** M0–M4 có ghi chú) và **buổi dạy chưa ghi** (ngày dạy theo lịch đã qua > 24h, 14 ngày gần nhất) → **các bài** (mức hiển thị, "bố mẹ chốt", "ôn quá hạn") → **tuần này** (buổi học /4, bài kiểm tra, lượt ôn, buổi dạy đã ghi, bài về nhà giao/xong/chữa).
 - **Tài khoản**: chọn ngày dạy T2…CN khi gán gia sư; "Lịch: T3, T5 · Sửa lịch" cho phân công đang hoạt động. Chưa đặt lịch → Tổng quan nhắc đặt lịch.

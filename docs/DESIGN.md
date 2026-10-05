@@ -36,7 +36,7 @@ Key choices
 |---|---|---|
 | `/login` | public | email + password |
 | `/` | any | redirect to the role's home |
-| `/parent` | parent | "Tổng quan" per student (`StudentOverview`): 3 numbers (M3+ by display level, overdue reviews, open flags), "Cần chú ý" (tutor/system mismatch flags + "Chốt mức"; missed sessions by weekly schedule, 14 days, up to yesterday), unit map (display level, "bố mẹ chốt"), this week's summary |
+| `/parent` | parent | "Tổng quan" per student (`StudentOverview`): 3 numbers (M3+ by display level, overdue reviews, open flags), "Cần chú ý" (tutor/system mismatch flags + "Chốt mức"; missed sessions by weekly schedule, last 7 days = backdate limit, up to yesterday), unit map (display level, "bố mẹ chốt"), this week's summary |
 | `/parent/accounts` | parent | create/lock accounts, reset password, tutor assignment; **students**: profile list (login email or "chưa có tài khoản", tutors), rename/grade, delete (type the name again; cascades all learning data + deletes the linked login), "tạo tài khoản cho …" preselects the profile (`?student=`) |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |

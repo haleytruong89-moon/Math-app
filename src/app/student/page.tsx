@@ -76,7 +76,7 @@ function ProgressMap({ units, confs }: { units: UnitState[]; confs: Map<string, 
     <div className="mt-4 grid grid-cols-2 gap-2" role="list" aria-label="Bản đồ tiến độ">
       {units.map((u) => {
         // Display only (S4, P2): the parent's level while the system level is unchanged.
-        const shown = displayLevel(u.mastery.level, confs.get(u.unit.id));
+        const shown = displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed });
         return (
           <div key={u.unit.id} role="listitem" className="flex items-center gap-2.5 rounded-xl border border-border bg-surface p-2.5">
             <span

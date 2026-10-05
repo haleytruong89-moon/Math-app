@@ -69,7 +69,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       lastActive: last ? ddmm(vnDate(last.created_at)) : null,
       confirmed: (() => {
         const c = confs.get(u.unit.id);
-        return c && displayLevel(u.mastery.level, c).confirmed ? `M${c.level} (${ddmm(vnDate(c.created_at))})` : null;
+        return c && displayLevel(u.mastery.level, c, { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).confirmed ? `M${c.level} (${ddmm(vnDate(c.created_at))})` : null;
       })(),
     };
   });

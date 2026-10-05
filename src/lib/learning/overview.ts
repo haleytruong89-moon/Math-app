@@ -1,6 +1,7 @@
 // Parent "Tổng quan" rules (S4, spec 2026-10-05). Pure, so `node --test` covers it.
 // Confirmed levels are display only (P2): nothing here changes reviews or mastery.
-import { addDays, studyDaysThisWeek, vnDate, weekStart, type AttemptRow, type Level } from "./rules.ts";
+import { addDays, studyDaysThisWeek, systemMastery, vnDate, weekStart, type AttemptRow, type Level } from "./rules.ts";
+import { SESSION_RULES } from "./session.ts";
 
 export const WEEKDAY_SHORT = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"] as const; // index = weekday − 1
 
@@ -32,22 +33,44 @@ export function latestByUnit<T extends { unit_id: string; created_at: string }>(
   return m;
 }
 
-/** §3 (amended): the parent's level is shown while the system level hasn't moved since confirming. */
-export function displayLevel(system: Level, confirmation?: ConfirmationRow): { level: Level; confirmed: boolean } {
-  if (confirmation && confirmation.system_level === system) return { level: confirmation.level as Level, confirmed: true };
-  return { level: system, confirmed: false };
+export type UnitHistory = { attempts: AttemptRow[]; workedViewed: boolean; reviewsCompleted: boolean };
+
+/**
+ * §3 (amended): the parent's level is shown while the system level hasn't moved since confirming.
+ * With the unit's history, any change after the confirmation voids it for good — a level that
+ * moves away and back doesn't bring an old confirmation back.
+ */
+export function displayLevel(system: Level, confirmation?: ConfirmationRow, history?: UnitHistory): { level: Level; confirmed: boolean } {
+  if (!confirmation || confirmation.system_level !== system) return { level: system, confirmed: false };
+  if (history) {
+    const sorted = [...history.attempts].sort((a, b) => a.created_at.localeCompare(b.created_at));
+    for (let i = 0; i < sorted.length; i++) {
+      if (sorted[i].created_at <= confirmation.created_at) continue;
+      const level = systemMastery({ workedViewed: history.workedViewed, attempts: sorted.slice(0, i + 1), reviewsCompleted: history.reviewsCompleted }).level;
+      if (level !== confirmation.system_level) return { level: system, confirmed: false };
+    }
+  }
+  return { level: confirmation.level as Level, confirmed: true };
 }
 
 export type Flag = { unitId: string; proposal: ProposalRow; system: Level };
 
-/** Latest proposal per unit (any tutor) ≥ 1 level from the current system level, not confirmed since. */
-export function mismatchFlags(units: { id: string; system: Level }[], proposals: ProposalRow[], confirmations: ConfirmationRow[]): Flag[] {
+/**
+ * Latest proposal per unit (any tutor) ≥ 1 level from the current system level, not confirmed since,
+ * and not simply agreeing with the parent's confirmed level that is still in effect.
+ */
+export function mismatchFlags(
+  units: { id: string; system: Level; confirmedLevel?: number | null }[],
+  proposals: ProposalRow[],
+  confirmations: ConfirmationRow[],
+): Flag[] {
   const p = latestByUnit(proposals);
   const c = latestByUnit(confirmations);
   const out: Flag[] = [];
   for (const u of units) {
     const prop = p.get(u.id);
     if (!prop || Math.abs(prop.level - u.system) < 1) continue;
+    if (u.confirmedLevel != null && prop.level === u.confirmedLevel) continue;
     const conf = c.get(u.id);
     if (conf && conf.created_at > prop.created_at) continue;
     out.push({ unitId: u.id, proposal: prop, system: u.system });
@@ -57,12 +80,15 @@ export function mismatchFlags(units: { id: string; system: Level }[], proposals:
 
 export type AssignmentRow = { id: string; tutor_id: string; started_at: string; ended_at: string | null; weekdays: number[] };
 
-/** Scheduled teaching days in the last `days` days, up to yesterday, with no session logged by that tutor. */
+/**
+ * Scheduled teaching days up to yesterday with no session logged by that tutor. Only as far back as a
+ * tutor may still log a session (SESSION_RULES.maxBackdateDays), so every reminder can be cleared.
+ */
 export function missedSessions(
   assignments: AssignmentRow[],
   sessions: { tutor_id: string; taught_on: string }[],
   today: string,
-  days = 14,
+  days: number = SESSION_RULES.maxBackdateDays,
 ): { assignmentId: string; tutorId: string; date: string }[] {
   const logged = new Set(sessions.map((s) => `${s.tutor_id}|${s.taught_on}`));
   const out: { assignmentId: string; tutorId: string; date: string }[] = [];

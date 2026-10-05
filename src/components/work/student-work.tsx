@@ -76,7 +76,7 @@ export async function StudentWork(props: Props) {
 
 function Summary({ u, proposal, conf, proposer }: { u: UnitState; proposal?: Proposal; conf?: ConfirmationRow; proposer: string }) {
   const errors = commonErrors(u.attempts);
-  const confirmed = conf && displayLevel(u.mastery.level, conf).confirmed ? conf : null;
+  const confirmed = conf && displayLevel(u.mastery.level, conf, { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).confirmed ? conf : null;
   const graded = u.attempts.filter((a) => a.mode !== "faded").length;
   return (
     <div data-testid={`work-summary-${u.unit.id}`}>
