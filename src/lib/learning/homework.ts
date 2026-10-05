@@ -99,3 +99,14 @@ export function visibleHomework(rows: HomeworkRow[], now: Date): HomeworkRow[] {
   const cutoff = now.getTime() - HOMEWORK_RULES.shownAfterReviewDays * 86_400_000;
   return rows.filter((r) => !r.reviewed_at || Date.parse(r.reviewed_at) >= cutoff);
 }
+
+/**
+ * The student's list from two reads: every open homework, plus the newest rows (for ones
+ * corrected in the last 7 days). Reading both keeps new homework from being pushed out of a
+ * single limited query by old corrected rows. Sorted by due date.
+ */
+export function studentHomework(open: HomeworkRow[], recent: HomeworkRow[], now: Date): HomeworkRow[] {
+  const byId = new Map<string, HomeworkRow>();
+  for (const r of [...open, ...visibleHomework(recent, now)]) byId.set(r.id, r);
+  return [...byId.values()].sort((a, b) => a.due_on.localeCompare(b.due_on) || a.id.localeCompare(b.id));
+}

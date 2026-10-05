@@ -6,7 +6,7 @@ import { ActionForm } from "@/components/action-form";
 import { dueReviews, loadStudentState, type StudentState, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
 import { giveConsent, setHomeworkDone } from "./actions";
-import { dueLabel, visibleHomework, type HomeworkRow } from "@/lib/learning/homework";
+import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -24,17 +24,14 @@ export default async function StudentHome() {
   // Acceptance criterion (§2.7): no way past this screen until consent is recorded.
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
-  const [state, hw] = await Promise.all([
+  const cols = "id, task, links, due_on, done_at, reviewed_at, review_note";
+  const [state, open, recent] = await Promise.all([
     loadStudentState(supabase, me.id),
-    supabase
-      .from("homework")
-      .select("id, task, links, due_on, done_at, reviewed_at, review_note")
-      .eq("student_id", me.id)
-      .order("due_on", { ascending: true })
-      .limit(50),
+    supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
+    supabase.from("homework").select(cols).eq("student_id", me.id).order("created_at", { ascending: false }).limit(20),
   ]);
-  if (hw.error) console.error("StudentHome homework", hw.error.message);
-  const homework = visibleHomework((hw.data ?? []) as HomeworkRow[], new Date());
+  for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
+  const homework = studentHomework((open.data ?? []) as HomeworkRow[], (recent.data ?? []) as HomeworkRow[], new Date());
   const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric", timeZone: "Asia/Ho_Chi_Minh" });
   return (
     <>

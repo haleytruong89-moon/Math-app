@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dueLabel, isDriveLink, parseHomework, readHomeworkForm, reviewNote, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
+import { dueLabel, isDriveLink, parseHomework, readHomeworkForm, reviewNote, studentHomework, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
 
 const ctx = { taughtOn: "2026-10-05", today: "2026-10-05", ticked: new Set(["htl-1"]) };
 const raw = (p: Partial<RawHomework>): RawHomework => ({ unit: "htl-1", task: "Làm bài 3 trang 72", links: [], due: "2026-10-08", ...p });
@@ -74,4 +74,13 @@ test("reviewed homework stays visible for 7 days", () => {
   const now = new Date("2026-10-20T12:00:00Z");
   const rows = [row(null), row("2026-10-14T12:00:00Z"), row("2026-10-12T12:00:00Z")];
   assert.deepEqual(visibleHomework(rows, now).map((r) => r.id), ["open", "2026-10-14T12:00:00Z"]);
+});
+
+test("student list: open homework is never pushed out by old corrected rows", () => {
+  const row = (id: string, due_on: string, reviewed_at: string | null): HomeworkRow => ({ id, task: id, links: [], due_on, done_at: null, reviewed_at, review_note: null });
+  const now = new Date("2026-10-20T12:00:00Z");
+  // `open` = every unreviewed row; `recent` = the newest rows (may repeat open ones, may hold old corrected ones)
+  const open = [row("new-open", "2026-10-23", null), row("late-open", "2026-10-01", null)];
+  const recent = [row("new-open", "2026-10-23", null), row("just-corrected", "2026-10-18", "2026-10-19T08:00:00Z"), row("old-corrected", "2026-09-01", "2026-09-05T08:00:00Z")];
+  assert.deepEqual(studentHomework(open, recent, now).map((r) => r.id), ["late-open", "just-corrected", "new-open"]);
 });
