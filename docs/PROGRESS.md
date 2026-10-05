@@ -9,15 +9,57 @@
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | 🟡 PR #2 — chờ phụ huynh chạy SQL **0004 + 0005**, merge |
-| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ⬜ **Tiếp theo** (lịch chạy đêm) |
-| S4 — Phụ huynh "Tổng quan" | — | ⬜ |
-| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, sau S3 |
-| S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
+| Docs — Student UX handover | `p1-student-ux-handover` | 🟡 chờ merge |
+| Docs — Curriculum 50 KU + quyết định Q1–Q12 | `p1-curriculum-design` | 🟡 chờ merge |
+| S6a — Bộ lộ trình (curriculum engine) | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
+| UX — Giao diện học sinh | `p1-student-ux` | ⬜ 18/10 |
+| S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
+| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ⬜ 30/10 |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | ⬜ 13/11 |
+| Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, bắt đầu **12/10/2026** |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
 |---|---|---|
-| Q8 | "Buổi dạy chưa ghi > 24h" cần lịch dạy: phụ huynh nhập ngày dạy trong tuần khi gán gia sư (ví dụ T3, T5)? | Có — làm trong S4 |
+| Q8 (cũ) | "Buổi dạy chưa ghi > 24h" cần lịch dạy: phụ huynh nhập ngày dạy trong tuần khi gán gia sư (ví dụ T3, T5)? | Có — làm trong S4 |
+| Q13 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; học xong 31/03 không phụ thuộc |
+
+---
+
+## 05/10/2026 — Review kiến trúc lộ trình + chốt Q1–Q12
+
+**Kết luận review:** curriculum đã rõ *học gì*, nhưng app chưa đủ để code 50 KU (chỉ chạy 1 module theo thứ tự file, 2 loại câu, 1 hình cố định). Trang review: `https://claude.ai/artifact/HuDrqkHFP1jRPZGC7rLrss`.
+
+**Phụ huynh chốt (05/10, qua câu hỏi popup):** cả 11 phương án đề xuất + mốc thời gian. Chi tiết ở `docs/SPEC.md` §0:
+| # | Chốt |
+|---|---|
+| Q1 | `content/curriculum.json` + test là nguồn app đọc |
+| Q2 | Mở khoá khi tiên quyết đạt M3; phụ huynh mở tay được (migration 0006) |
+| Q3 | Gợi ý 1 bài Track A + 1 bài Track B/C, con chọn; tối đa 2 bài đang học |
+| Q4 | Kiểm tra vượt cho Track B + bù nền F1/F3, 1 lần/KU (**đổi quy tắc học**) |
+| Q5 | Câu nhiều bước = 1 câu, đúng khi đúng hết, mã lỗi ở bước sai đầu |
+| Q6 | App giữ phần tự chấm; chứng minh trên giấy với gia sư; nhãn "cần gia sư xác nhận" |
+| Q7 | Hình = SVG trong file nội dung |
+| Q8 | Tối đa 5 bài/phiên ôn |
+| Q9 | Bản đồ nhóm track → module |
+| Q10 | Kiểm tra độc lập + phụ huynh duyệt; gia sư soát C, E, G |
+| Q11 | Lộ trình trước gia sư; chạy song song với pilot |
+| Q12 | Bắt đầu **12/10/2026**; học xong 50 KU trước **31/03/2027**; tháng 4–5 chỉ luyện đề |
+
+**Đã làm (nhánh `p1-curriculum-design`):**
+- `docs/CURRICULUM.md`: sửa 13 dòng thiếu cột trọng số đề; số đếm loại chấm khớp bảng (26 / 4 / 15 / 5 → 60% tự chấm toàn bộ); lịch nén 4 giai đoạn đến 31/03 (Tết tuần 17–18 chỉ ôn; gate 8.5 xong ~21/02); 10 đợt nội dung có hạn duyệt; §9 khớp schema thật.
+- `docs/P1_PLAN.md`: thiết kế + nghiệm thu S6a, S6b; thứ tự lát mới; lịch song song 4 tuần đầu; quy trình kiểm tra toán.
+- `docs/SPEC.md` §0: 13 dòng quyết định mới.
+
+**Phụ huynh cần làm tuần này (05–11/10):**
+1. Chạy SQL `0004` (nếu chưa) rồi `0005` → merge PR #2 (S2).
+2. Merge 2 PR tài liệu (`p1-student-ux-handover`, `p1-curriculum-design`).
+3. Nói chuyện D18 với Nguyên → tạo tài khoản học sinh trước 12/10.
+4. Cập nhật hub `claude/PJ_APP_TOAN.md` (thêm Q1–Q12, mốc 12/10 → 31/03) qua chu trình update → review → commit.
+5. Chọn cách chạy build: bật lại lịch đêm (đang tắt) hay làm trong phiên chat.
+
+**Lưu ý:** HANDOVER_STUDENT_UX §3.3 (đường dọc 1 cột) được thay bằng bản đồ nhóm track → module (Q9); kiểu nút cây giữ nguyên.
 
 ---
 

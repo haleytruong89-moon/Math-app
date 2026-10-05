@@ -138,7 +138,7 @@ in `globals.css` for student routes only. No changes to parent/tutor routes.
 
 **Key components changed:**
 - `WeeklyGoal`: linear bar → SVG circle ring (stroke-dasharray/dashoffset).
-- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors.
+- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors. **Updated 05/10 (Q9):** with 50 KUs the map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a progress bar (structure built in S6a, plant styling in the UX slice).
 - `QuestionFeedback` (new): 2-state card — correct (green gradient, 🎉, session-only correct count, mastery nudge) and wrong (yellow gradient, 💡, side-by-side comparison, error tag, encouragement).
 - Student layout: teal gradient header with greeting.
 

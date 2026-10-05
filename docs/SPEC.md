@@ -25,6 +25,19 @@
 | 03/10/2026 | Nightly scheduled build at 23:00 (Vietnam) for remaining slices; parent reviews, runs SQL and merges each morning | `docs/PROGRESS.md` |
 | 05/10/2026 | **Student UX engagement theme** approved: warm cream bg (`#FFF8F0`), teal accent (`#0D9488`), SVG circle weekly goal, vertical progress map with plant emoji badges (🔒→🌱→🌿→🌳→⭐), 2-state question feedback (celebration green + gentle-wrong yellow). Scoped to student routes only via `.student-theme` CSS class. No DB changes. | `docs/DESIGN.md` §9, `docs/HANDOVER_STUDENT_UX.md` |
 | 05/10/2026 | Session correct count in question feedback is **client-side only** (useState) — complies with D17 (no persistent streaks) | same |
+| 05/10/2026 | **Curriculum:** 50 KUs in 2 parallel tracks + geometry track + H/Q, per `docs/CURRICULUM.md` (2-track structure and ~90 h estimate) | `docs/CURRICULUM.md` |
+| 05/10/2026 | **Timeline:** pilot starts **Mon 12/10/2026**; all 50 KUs learned by **31/03/2027**; April–May = exam papers + maintenance reviews only; exam assumed ~early June 2027 (to confirm when announced) | `docs/CURRICULUM.md` §3 |
+| 05/10/2026 | **Q1 Curriculum registry:** machine-readable `content/curriculum.json` (track, sequence, prerequisites, exam weight, grading kind), validated by `npm test`; CURRICULUM.md keeps the explanation | `docs/P1_PLAN.md` S6a |
+| 05/10/2026 | **Q2 Unlock:** a KU opens when every prerequisite is at **M3**; the parent can **unlock manually** (new table, migration 0006) | same |
+| 05/10/2026 | **Q3 Suggestion:** "Bài mới" offers **1 unlocked KU from Track A + 1 from Track B/C**, student picks; at most **2 KUs in progress** at once (no new suggestion beyond that) | same |
+| 05/10/2026 | **Q4 Test-out (rule change):** for Track B and backfill KUs (F1/F3), the student may take the exit test directly, **once per KU**; ≥ 80% (same M3 rule) → M3 + review D+1; below → normal learning, the attempt doesn't count toward mastery | same |
+| 05/10/2026 | **Q5 Multi-step items:** new item type `steps` (shared stem + 2–5 MCQ/numeric steps) counts as **one** question; correct only if all steps correct; error code = first wrong step; practice gives per-step feedback; reviews use the whole item | `docs/P1_PLAN.md` S6b |
+| 05/10/2026 | **Q6 Tutor-graded parts:** the app holds only auto-gradable items; proofs are done on paper with the tutor. KUs with a tutor part are flagged "cần gia sư xác nhận"; final level via tutor proposal (S3) + parent confirmation (S4). No upload/photo grading in P1 | same |
+| 05/10/2026 | **Q7 Figures:** inline **SVG in content JSON** (`figure` field on unit or item), sanitised + validated by tests, colours from theme tokens | same |
+| 05/10/2026 | **Q8 Review cap:** at most **5 units per review session** (~15 questions), most overdue first; the rest roll to the next day and still count as overdue for the parent | `src/lib/learning/rules.ts` |
+| 05/10/2026 | **Q9 Progress map:** grouped **track → module**; only the module(s) in progress expanded, others collapsed to one row with a bar; plant badges unchanged | `docs/DESIGN.md` §9 |
+| 05/10/2026 | **Q10 Content QA:** Claude drafts per batch; each KU gets an **independent second solve + scripted answer recomputation** before the parent previews; tutor reviews the hard batches (C, E, G) | `docs/P1_PLAN.md` §1 |
+| 05/10/2026 | **Q11 Build order:** curriculum before tutor log — S6a (curriculum engine) → student UX → S6b (item types + figures) → S3 → S4, run **in parallel with the pilot** starting 12/10 (week 1 on htl-1/2 in the app + F1 with the tutor on paper). Supersedes the 03/10 "pilot after S3" order | `docs/P1_PLAN.md` §3 |
 
 ## 1. Mục tiêu
 
