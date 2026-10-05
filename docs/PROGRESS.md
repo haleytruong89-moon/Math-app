@@ -11,6 +11,7 @@
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
+| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: ⬜ |
 | S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo |
 | S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
@@ -22,6 +23,35 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 05/10/2026 — S3b phần A: "Bài làm của con" (nhánh `p1-tutor-tools`)
+
+Theo góp ý sau khi gia sư dùng thử: gia sư không xem được con làm sai câu nào. Thiết kế + quyết định T1–T5: `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` (phụ huynh duyệt 05/10). **Không có SQL.**
+
+**Nhánh xếp chồng:** `p1-tutor-tools` tách từ `p1-fixes` (PR #4 chưa merge). Merge PR #4 trước; PR này sau đó chỉ còn phần mới.
+
+### Đã làm
+- **Gia sư**: trang chủ có nút **"Xem bài làm"**; form ghi buổi dạy có link **"Xem câu sai →"** dưới bằng chứng mỗi bài đã tick (mở tab mới, không mất lựa chọn đang nhập).
+- **Trang "Bài làm của {con}"**: mỗi bài một thẻ — mức hệ thống, số câu, kiểm tra gần nhất, **lỗi hay gặp** (mã lỗi ≥ 2 lần, ví dụ "E10 × 2"), mức gia sư đề xuất gần nhất. Bấm một bài → các câu đã làm, mới nhất trước, mặc định **chỉ câu sai** ↔ "Tất cả": loại (luyện tập/kiểm tra/ôn), giờ, thời gian làm, đề + hình, **con trả lời gì**, **đáp án đúng**, mã lỗi + lời nhắc trong nội dung, nhãn **"Lần sau làm đúng"**, lời giải (gập sẵn). Chỉ xem.
+- **Phụ huynh**: "Tổng quan" → **"Xem bài làm"** cạnh tên con — cùng trang (dùng lại cho S4).
+- Quyền: gia sư chỉ thấy khi **đang được gán**; hết gán → 404; học sinh không vào được.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **37** test quy tắc/nội dung (thêm 6 cho trang bài làm: lỗi hay gặp, lọc, "lần sau làm đúng", trắc nghiệm hiện nội dung phương án, câu bỏ trống, chữ con gõ không bị hiểu thành công thức/HTML) + **49** test RLS: qua.
+- `./e2e/run.sh`: **83/83** (thêm 11): gia sư thấy đúng 3 câu sai, con trả lời 225 / đáp án 15 / lời nhắc "Còn bước lấy căn bậc hai", "E10 × 2", "Bạn đề xuất M3", "Lần sau làm đúng", "Tất cả (11)", mã bài lạ → quay về danh sách, link từ form mở tab mới, hết gán → 404; phụ huynh mở được; học sinh bị chặn. Sau đó chỉ sửa cỡ hình (CSS) — lint + build qua, e2e chưa chạy lại.
+
+### Phụ huynh cần làm (khoảng 10 phút)
+1. Merge **PR #4** trước (nếu chưa). Không có SQL.
+2. Thử preview: đăng nhập gia sư → **Xem bài làm** → chọn bài → thấy câu sai của con; vào **Ghi buổi dạy**, tick một bài → "Xem câu sai →".
+3. Đăng nhập phụ huynh → Tổng quan → **Xem bài làm**.
+4. Merge PR. Phần B (giao bài về nhà, SQL 0007) làm tiếp sau.
+
+### Ghi chú kỹ thuật (cho phiên sau)
+- `StudentWork` (`src/components/work/student-work.tsx`) là server component nhận client RLS của người gọi; lọc qua search params, không có state phía trình duyệt. Logic thuần ở `src/lib/learning/work.ts`.
+- Câu trả lời con gõ luôn được escape (không qua `texToHtml`); trắc nghiệm lưu số thứ tự → hiện nội dung phương án.
+- `RightTriangleAltitude` có sẵn `max-w-xs`: muốn nhỏ hơn thì bọc bằng div có độ rộng (class truyền vào không thắng).
 
 ---
 

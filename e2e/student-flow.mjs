@@ -137,6 +137,10 @@ await page.goto(`${BASE}/student`);
 ok("today: htl-1 shows M4", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M4").count()) === 1);
 await page.screenshot({ path: "e2e/out/student/9-today-m4.png", fullPage: true });
 
+const [{ id: sid }] = await sql(`select id from public.students where full_name = 'Hạnh Nguyên'`);
+await page.goto(`${BASE}/tutor/${sid}/work`);
+ok("student: tutor work page not reachable", !page.url().includes("/tutor/"), page.url());
+
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage(); await dp.goto(`${BASE}/student`); await dp.screenshot({ path: "e2e/out/student/8-today-dark.png", fullPage: true });
 ok("no browser errors", errors.length === 0, errors.join(" | "));

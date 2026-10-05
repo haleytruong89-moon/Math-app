@@ -127,7 +127,7 @@ function Fields({ studentId, today, minDate, units }: { studentId: string; today
                     </span>
                   </span>
                 </label>
-                {on && <Evidence u={u} level={levels[u.id]} onLevel={(l) => setLevels((m) => ({ ...m, [u.id]: l }))} />}
+                {on && <Evidence u={u} studentId={studentId} level={levels[u.id]} onLevel={(l) => setLevels((m) => ({ ...m, [u.id]: l }))} />}
               </li>
             );
           })}
@@ -153,7 +153,7 @@ function Fields({ studentId, today, minDate, units }: { studentId: string; today
   );
 }
 
-function Evidence({ u, level, onLevel }: { u: UnitEvidence; level: number | undefined; onLevel: (l: number) => void }) {
+function Evidence({ u, studentId, level, onLevel }: { u: UnitEvidence; studentId: string; level: number | undefined; onLevel: (l: number) => void }) {
   const facts = [
     u.lastExit ? `Kiểm tra gần nhất ${u.lastExit}` : "Chưa làm bài kiểm tra",
     u.practiceRate !== null ? `5 câu luyện gần nhất đúng ${Math.round(u.practiceRate * 100)}%` : null,
@@ -175,6 +175,15 @@ function Evidence({ u, level, onLevel }: { u: UnitEvidence; level: number | unde
         </span>
       </div>
       <p className="mt-2 text-sm text-muted">{facts.join(" · ")}</p>
+      {/* New tab, so the ticks and levels chosen so far are not lost. */}
+      <a
+        href={`/tutor/${studentId}/work?unit=${u.id}`}
+        target="_blank"
+        rel="noopener"
+        className="mt-1 inline-block text-sm text-accent hover:underline"
+      >
+        Xem câu sai →
+      </a>
 
       <fieldset className="mt-3">
         <legend className="text-sm">Mức bạn đề xuất</legend>

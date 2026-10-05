@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 
@@ -46,6 +47,9 @@ export default async function ParentHome() {
             <span className={`font-mono text-xs ${s.consent_at ? "text-good" : "text-warn"}`}>
               {s.consent_at ? "Đã đồng ý dùng app" : "Chưa xác nhận đồng ý (D18)"}
             </span>
+            <Link href={`/parent/students/${s.id}/work`} className="text-sm text-accent hover:underline">
+              Xem bài làm
+            </Link>
           </li>
         ))}
         {!students?.length && <li className="px-4 py-3 text-sm text-muted">Chưa có học sinh.</li>}
