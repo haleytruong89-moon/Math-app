@@ -50,7 +50,7 @@
 ## 3. Các lát cắt
 
 Thứ tự **chốt lại 05/10/2026** (review kiến trúc lộ trình, LT1–LT12 trong `docs/SPEC.md` §0): pilot bắt đầu **thứ Hai 12/10/2026**
-với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại chạy **song song** với pilot. Học xong 50 KU trước **31/03/2027**
+với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại chạy **song song** với pilot. Học xong 40 KU lõi trước **31/03/2027**
 (`docs/CURRICULUM.md` §3). S3 và công cụ gia sư đã merge, S4 đang ở PR #11.
 
 | # | Lát | Nội dung | Trạng thái | Cần xong |
@@ -67,21 +67,21 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |
 | 9 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot (PR #8) | ⬜ phụ huynh | **12/10** |
 | 10 | **C1…C10** | Soạn nội dung 10 đợt theo `docs/CURRICULUM.md` H6 (nháp + kiểm tra độc lập) | ⬜ | theo bảng H6 |
-| 11 | **S5** | Hình học C1 kéo hình, C2 sắp xếp bước, C3 hai cột | ⬜ xét lại trước GĐ3 (01/2027) | — |
+| 11 | **S5** | Hình học C1 kéo hình, C2 sắp xếp bước, C3 hai cột | ⬜ thiết kế ~11/2026, code 12/2026 (Track C từ 23/11, LT18) | 31/12 |
 
 ### S6a — Bộ lộ trình (curriculum engine)
 
-**Mục tiêu:** app đi theo lộ trình 50 KU thay vì thứ tự file. Chỉ làm phần cần để đợt 1 lên app tuần 2.
+**Mục tiêu:** app đi theo lộ trình 48 KU thay vì thứ tự file. Chỉ làm phần cần để đợt 1 lên app tuần 2.
 
 | Phần | Thiết kế |
 |---|---|
-| `content/curriculum.json` (LT1) | `{ start: "2026-10-12", learnBy: "2027-03-31", modules: [{ id, title, domains }], units: [{ id, module, title, track: "A"\|"B"\|"C", seq, prereq: [], examWeight: number\|"indirect", grading: "full"\|"scaffolded"\|"partial"\|"tutor", testOut: bool, batch: 0–10 }] }`. H+Q thuộc track A. Đủ 50 KU kể cả KU chưa có file; `title` dùng cho KU/module chưa có file (bản đồ, danh sách phụ huynh). Giá trị: xem "Quyết định chi tiết" bên dưới. |
-| Kiểm tra (`npm test`) | 50 id duy nhất, khớp bảng trong CURRICULUM.md; `seq` duy nhất **trong mỗi track**; tiên quyết tồn tại, không vòng, có `seq` nhỏ hơn; module tồn tại; mọi file KU có trong curriculum; `testOut` chỉ cho track B hoặc module `backfill-*`. |
+| `content/curriculum.json` (LT1) | `{ start: "2026-10-12", learnBy: "2027-03-31", modules: [{ id, title, domains }], units: [{ id, module, title, track: "A"\|"B"\|"C", priority: "P0"\|"P1"\|"P2", seq, prereq: [], examWeight: number\|"indirect", grading: "full"\|"scaffolded"\|"partial"\|"tutor", testOut: bool, batch: 0–10 }] }`. H+Q thuộc track A. Đủ 48 KU kể cả KU chưa có file; `title` dùng cho KU/module chưa có file (bản đồ, danh sách phụ huynh). Giá trị: xem "Quyết định chi tiết" bên dưới. |
+| Kiểm tra (`npm test`) | 48 id duy nhất, khớp bảng trong CURRICULUM.md; `seq` duy nhất **trong mỗi track**; tiên quyết tồn tại, không vòng, có `seq` nhỏ hơn; module tồn tại; mọi file KU có trong curriculum; `testOut` chỉ cho track B hoặc module `backfill-*`. |
 | Schema | `estMinutes` ≤ 90; `module.json`: `domains: string[]` nhận `A–Q`, `F0–F3` (giữ đọc được `domain` cũ). Theo `docs/CONTENT_STANDARD.md` §8: `level` thêm **L3**; trường tuỳ chọn `source`, `recognition`, `hints` (3 dòng, câu luyện) (câu), `review` (đáp án sai, phải là KU tiên quyết); test kiểm phân bổ 3/3/2 (luyện) và 2/3/3 (kho kiểm tra), ≥ 1 câu nhận dạng — **chỉ áp với KU mới**; htl-1/2 được miễn đến khi chuẩn hoá xong. |
 | Kho kiểm tra (LT13) | Kho 8 câu, mỗi lượt rút 5 (1 L1 + 2 L2 + 2 L3), ưu tiên câu chưa gặp (dựa trên `attempts`), thứ tự xáo; trang học render bộ đã rút, máy chủ kiểm lượt nộp đúng 5 câu thuộc kho và đúng phân bổ. KU còn kho 5 câu (htl) → dùng cả 5. Không đổi DB. |
 | Registry | Script `npm run content:index` sinh `src/lib/content/registry.generated.ts` (import tĩnh mọi JSON); test báo lỗi nếu file sinh ra cũ. Bỏ sửa tay `index.ts`. |
 | Mở khoá (LT2) | `src/lib/learning/sequence.ts` (hàm thuần, unit test): KU mở khi mọi tiên quyết ≥ M3, hoặc có dòng mở tay. KU chưa `approved` hoặc chưa có file → "Sắp có". |
-| Gợi ý bài mới (LT3) | `suggestNew(state)`: trong KU đã mở, đã duyệt, chưa bắt đầu — chọn 1 của track A và 1 của ô B/C, xếp theo **`batch` nhỏ nhất → track B trước C → `seq`**. Như vậy f3-dongdang (đợt 5) chỉ được gợi ý sau các bài B đợt ≤ 5, đúng ý GĐ2. Không gợi ý khi đã có **2 KU đang học** (đã xem lời giải mẫu, < M3, chưa vào lịch ôn). Con chọn 1 trong 2. |
+| Gợi ý bài mới (LT3) | `suggestNew(state)`: trong KU đã mở, đã duyệt, chưa bắt đầu, không phải P2 bị chặn — chọn 1 của track A và 1 của ô B/C, xếp theo **`batch` nhỏ nhất → track B trước C → `seq`**. Như vậy f3-dongdang, j-coban (đợt 4) được gợi ý sau các bài B đợt ≤ 3, đúng ý GĐ2 (Track C từ tuần 7). Không gợi ý khi đã có **2 KU đang học** (đã xem lời giải mẫu, < M3, chưa vào lịch ôn). Con chọn 1 trong 2. |
 | Kiểm tra vượt (LT4) | Nút "Làm bài kiểm tra luôn" trên thẻ gợi ý khi `testOut` và chưa thử. Một lần/KU. Đạt (≥ 80%, không lặp mã lỗi) → M3 + lịch ôn D+1 dù chưa xem lời giải mẫu. Chưa đạt → học bình thường; lượt này **không tính** vào mastery. `rules.ts`: M1+ khi xem lời giải mẫu **hoặc** qua kiểm tra vượt; `lastExitRun` bỏ qua lượt vượt không đạt. |
 | Giới hạn ôn (LT8) | `RULES.maxUnitsPerReview = 5`; phiên ôn lấy 5 bài quá hạn lâu nhất; số quá hạn cho phụ huynh vẫn đếm tất cả. |
 | Bản đồ tiến độ (LT9) | Nhóm track → module; module đang học mở sẵn, module khác 1 dòng + thanh tiến độ (`<details>`). KU "Sắp có" hiện mờ. Kiểu nút cây 🌱🌿🌳⭐ làm ở lát UX. |
@@ -94,9 +94,10 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | Chỗ phải đoán | Mặc định |
 |---|---|
 | Nhánh gốc | Tách từ `main`. Nếu PR #10 (tài liệu này) chưa merge thì **xếp chồng trên `p1-curriculum-design`** như các PR trước. S6a không phụ thuộc PR #11 (S4). |
-| `seq` | Thứ tự trong track (duy nhất trong track, lặp giữa các track là bình thường), đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-phantram, g-honhop, h-bdt, hq-amgm, hq-doanhthu, hq-hinhhoc, hq-nangcao. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, j-coban, j-cung, k-goiintiep, k-tugiacnt, l-tieptuyen, l-kethop, m-vitri, n-ngoainoi, o-chungminh, o-dongdang, o-nangcao. |
+| `seq` | Thứ tự trong track (duy nhất trong track, lặp giữa các track là bình thường), đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, g-chuyendong, g-nangsuat, g-phantram, g-honhop, hq-amgm, hq-doanhthu, hq-hinhhoc, *(P2)* e-giaodiem. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, *(P2)* i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, j-coban, k-goiintiep, k-tugiacnt, l-tieptuyen, o-chungminh, o-dongdang, l-kethop, o-nangcao, *(P2)* j-cung, m-vitri, n-ngoainoi. (Sửa 06/10, LT17–LT18: 48 KU.) |
 | `batch` | Theo bảng H6 trong CURRICULUM.md; htl-1, htl-2 = **0** (đã có). |
 | `testOut` | `true` cho mọi KU track B (kể cả htl-1/2) và f1-hdt, f1-pnt, f1-tgon, f1-qd, f3-dongdang; còn lại `false`. |
+| KU P2 (LT17) | Thêm trường `priority` (P0/P1/P2). KU P2 **không được gợi ý** cho đến khi mọi KU P0/P1 cùng track đạt M3, hoặc phụ huynh mở tay. Bản đồ hiện nhóm "Học thêm khi dư thời gian". |
 | `title`, `domains`, thời lượng | KU/module đã có file: file là chuẩn (test bắt `domains` trong curriculum = `module.json`); (test bắt `title` trong curriculum = file). `estMinutes` chỉ lấy từ file; số phút trong CURRICULUM.md là ước tính lập kế hoạch. `order` trong file KU giữ nguyên cho thứ tự trong module; `seq` chỉ dùng để gợi ý bài. |
 | Mức dùng để mở khoá | Mức hệ thống ≥ M3 **hoặc** mở tay. Khi S4 (PR #11) merge, S4b đổi sang "mức hiển thị cuối" (phụ huynh chốt nếu mới hơn). |
 | 3 trạng thái chưa học | 🔒 **Khoá** (tiên quyết chưa đạt) · ○ **Chưa bắt đầu** (đã mở, M0) · **Sắp có** (chưa có bài đã duyệt, hiện mờ). 🔒 chỉ dùng cho "Khoá". |
@@ -111,7 +112,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 - e2e: kiểm tra vượt bài đầu track B đạt → M3 + lịch ôn; không đạt → vào luồng học, mastery không đổi; không thử lần 2 được.
 - e2e: 7 bài đến hạn → phiên ôn chỉ có 5 bài; ngày hôm sau còn 2.
 - e2e: phụ huynh mở khoá tay một bài đang khoá → học sinh thấy bài đó trong gợi ý.
-- Bản đồ 50 KU trên điện thoại 390px không cuộn quá 2 màn khi chỉ 1 module mở.
+- Bản đồ 48 KU trên điện thoại 390px không cuộn quá 2 màn khi chỉ 1 module mở.
 
 ### S6b — Loại câu nhiều bước, hình SVG, nhãn gia sư
 
@@ -150,14 +151,14 @@ Thiết kế mặc định (đổi được khi review):
 - Thiếu mức cho KU đã tick → không lưu, báo rõ KU nào. Lưu xong → "Đã lưu lúc HH:MM", form trống lại; danh sách 5 buổi gần nhất **của chính gia sư này**.
 - Bảng mới: `teaching_sessions` (học sinh, gia sư, ngày dạy, ghi chú) và `tutor_proposals` (buổi dạy, KU, mức 0–4). RLS: gia sư đọc **buổi của mình** (lịch sử gia sư cũ tách biệt, D3); phụ huynh đọc mọi buổi của con; học sinh không đọc. Ghi qua server action, yêu cầu gán **đang hoạt động**.
 - Nghiệm thu thêm: gia sư bị khoá hoặc hết gán → không ghi được; e2e đo thao tác ghi 1 buổi 2 KU ≤ 10 lần chạm.
-- Bổ sung 05/10 (làm trong S6a): danh sách 50 KU **nhóm theo module + ô tìm**; KU có nhãn "cần gia sư xác nhận" (LT6) đứng đầu nhóm; đề xuất mức của gia sư cho các KU này là bằng chứng chính cho phần chứng minh trên giấy.
+- Bổ sung 05/10 (làm trong S6a): danh sách 48 KU **nhóm theo module + ô tìm**; KU có nhãn "cần gia sư xác nhận" (LT6) đứng đầu nhóm; đề xuất mức của gia sư cho các KU này là bằng chứng chính cho phần chứng minh trên giấy.
 
 ### S4 — Phụ huynh "Tổng quan" (§2.7, mockup phụ huynh)
 - 3 con số đầu trang (render lần đầu): KU đạt M3+/tổng KU đã duyệt · lượt ôn quá hạn · cờ lệch chưa chốt.
 - Cờ lệch: đề xuất **mới nhất** của gia sư cho một KU lệch ≥ 1 bậc so với mức hệ thống, và chưa có mức phụ huynh chốt mới hơn đề xuất đó → "Cần chú ý" hiện cả hai mức + bằng chứng + nút "Xem & chốt mức". Chốt → bảng `parent_confirmations` (học sinh, KU, mức, lúc chốt); cờ biến mất.
 - Mức hiển thị cuối cùng của KU = phụ huynh chốt (nếu mới hơn mọi thay đổi khác) ?? mức hệ thống; ô "chưa đủ dữ liệu" khi < 5 câu (D15).
 - Bảng màu theo domain/KU; tóm tắt tuần (số buổi học, bài kiểm tra, lượt ôn).
-- Bổ sung 05/10 (làm trong S4b, sau khi PR #11 merge): **tiến độ tới mốc** gate 8.5 (20 KU, hạn ~21/02/2027) và gate 9.5 (50 KU, hạn 31/03/2027) theo `docs/CURRICULUM.md` §4; KU trễ so với lịch §3.3 tô vàng; mở khoá tay cũng có ở đây.
+- Bổ sung 05/10 (làm trong S4b, sau khi PR #11 merge): **tiến độ tới mốc** 8.5 (KU bắt buộc vững ở `CURRICULUM.md` §4.1, hạn ~21/02/2027) và 9.5 (thêm o-nangcao, 2c chắc chắn, hạn 31/03/2027) theo `docs/CURRICULUM.md` §4; KU trễ so với lịch §3.3 tô vàng; mở khoá tay cũng có ở đây.
 - **Buổi dạy chưa ghi > 24h:** cần biết lịch dạy → mặc định thêm "ngày dạy trong tuần" vào phần gán gia sư (phụ huynh chọn, ví dụ T3, T5); ngày có lịch mà quá 24h chưa có buổi ghi → nhắc. *(Câu hỏi Q8 trong PROGRESS.)*
 
 ### S5

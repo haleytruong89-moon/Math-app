@@ -72,7 +72,7 @@
 | hq-hinhhoc | Tối ưu hình học: diện tích, thể tích, hộp cắt góc | 34 | 34 |
 | hq-nangcao | Tối ưu rời rạc & bài tổng hợp | 0 | 0 |
 
-**Nhận xét cho lộ trình** (chờ phụ huynh quyết, chưa đổi `CURRICULUM.md`):
+**Nhận xét cho lộ trình** — đã quyết 06/10 (LT17–LT18, `CURRICULUM.md` §2, §4):
 - Gần như mọi đề: c-cauphu, k-tugiacnt, c-coban/c-rutgon, b-xsuat, g-phantram (giá tiền, %, lãi), o-chungminh/o-dongdang.
 - **Hầu như không có:** parabol / giao điểm (e-giaodiem, f-parabol, f-hamso), tỉ số lượng giác (i-giaitgv, i-ungdung), vị trí tương đối và
   đường tròn ngoại/nội tiếp (m-vitri, n-ngoainoi), độ dài cung (j-cung). Các KU này vẫn có thể ra ở đề chính thức hoặc ở trường → giữ,

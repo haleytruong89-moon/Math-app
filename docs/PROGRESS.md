@@ -23,7 +23,7 @@
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
-| S5 — Hình học C1–C3 | — | ⬜ xét lại trước GĐ3 (01/2027) |
+| S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -33,6 +33,16 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 06/10/2026 — Điều chỉnh lộ trình theo đề thật (LT17–LT18)
+
+**Phụ huynh chốt (popup):** hạ 8 KU ít ra thi xuống P2 + gộp tối ưu 5 → 3 (LT17); hình học từ tuần 7 (LT18).
+Khung đề Hà Nội 2025/2026 xác nhận Bài 4 = 4đ, Bài 5 = 0,5đ (nguồn tham khảo, ghi trong `CURRICULUM.md` §4).
+**Đã làm:** `CURRICULUM.md` — 48 KU (40 lõi + 8 P2), ~77 giờ lõi, lịch 4 giai đoạn mới, mốc 8.5/9.5 tính lại, đợt nội dung đổi ngày;
+`P1_PLAN.md` — `seq` mới, trường `priority`, quy tắc gợi ý KU P2, S5 dời lên (thiết kế ~11/2026).
+**Lưu ý cho phiên S6a:** dùng `seq` và danh sách KU mới (48, không còn h-bdt, hq-nangcao).
 
 ---
 
