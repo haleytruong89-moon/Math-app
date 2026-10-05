@@ -79,9 +79,14 @@ class Query {
   private conflict = "";
   private ignoreDup = false;
   private one: "one" | "maybe" | null = null;
+  private headCount = false;
   constructor(private table: string, private uid: string | null) {}
   private p(v: unknown) { this.params.push(lit(v)); return `$${this.params.length}`; }
-  select(cols = "*") { if (this.op === "select") this.cols = cols; else this.returning = cols; return this; }
+  select(cols = "*", o: { count?: "exact"; head?: boolean } = {}) {
+    if (this.op === "select") this.cols = cols; else this.returning = cols;
+    if (o.head) this.headCount = true;
+    return this;
+  }
   insert(rows: Record<string, unknown> | Record<string, unknown>[]) { this.op = "insert"; this.payload = Array.isArray(rows) ? rows : [rows]; return this; }
   upsert(row: Record<string, unknown>, o: { onConflict?: string; ignoreDuplicates?: boolean } = {}) {
     this.op = "upsert"; this.payload = [row]; this.conflict = o.onConflict ?? "id"; this.ignoreDup = !!o.ignoreDuplicates; return this;
@@ -98,6 +103,7 @@ class Query {
   private sql(): string {
     const w = this.where.length ? ` where ${this.where.join(" and ")}` : "";
     const t = `public.${this.table}`;
+    if (this.op === "select" && this.headCount) return `select count(*)::int as count from ${t}${w}`;
     if (this.op === "select") return `select ${this.cols} from ${t}${w}${this.orderBy}${this.lim}`;
     const ret = this.returning ? ` returning ${this.returning}` : "";
     if (this.op === "delete") return `delete from ${t}${w}${ret}`;
@@ -123,6 +129,7 @@ class Query {
         const r = await db.query<Record<string, unknown>>(sql, this.params);
         const types = new Map(r.fields.map((f) => [f.name, f.dataTypeID]));
         const rows = r.rows.map((row) => Object.fromEntries(Object.entries(row).map(([k, v]) => [k, norm(v, types.get(k) ?? 0)])));
+        if (this.headCount) return { data: null, count: rows[0]?.count ?? 0, error: null };
         if (this.one) {
           if (rows.length > 1 || (this.one === "one" && !rows.length)) return { data: null, error: { message: "not single", code: "PGRST116" } };
           return { data: rows[0] ?? null, error: null };
@@ -140,6 +147,45 @@ class Query {
 }
 
 
+/** Supabase auth.admin lookalike over auth.users (the parent "Tài khoản" page). */
+const authAdmin = {
+  async listUsers() {
+    const db = await e2eDb();
+    return locked(async () => {
+      await db.exec("reset role");
+      const r = await db.query<{ id: string; email: string }>("select id, email from auth.users");
+      return { data: { users: r.rows }, error: null };
+    });
+  },
+  async createUser(o: { email: string; app_metadata?: object; user_metadata?: object }) {
+    const db = await e2eDb();
+    return locked(async () => {
+      await db.exec("reset role");
+      try {
+        const r = await db.query<{ id: string; email: string }>(
+          "insert into auth.users (email, raw_app_meta_data, raw_user_meta_data) values ($1, $2, $3) returning id, email",
+          [o.email, JSON.stringify(o.app_metadata ?? {}), JSON.stringify(o.user_metadata ?? {})],
+        );
+        return { data: { user: r.rows[0] }, error: null };
+      } catch (e) {
+        const dup = String(e).includes("unique");
+        return { data: { user: null }, error: { status: dup ? 422 : 500, message: dup ? "A user with this email address has already been registered" : String(e) } };
+      }
+    });
+  },
+  async deleteUser(id: string) {
+    const db = await e2eDb();
+    return locked(async () => {
+      await db.exec("reset role");
+      await db.query("delete from auth.users where id = $1", [id]);
+      return { data: {}, error: null };
+    });
+  },
+  async updateUserById() {
+    return { data: {}, error: null };
+  },
+};
+
 export function fakeClient(uid: string | null) {
-  return { from: (t: string) => new Query(t, uid) } as never;
+  return { from: (t: string) => new Query(t, uid), auth: { admin: authAdmin } } as never;
 }
