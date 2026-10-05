@@ -35,6 +35,19 @@
 
 ---
 
+## 05/10/2026 (tối) — Chuẩn soạn nội dung KU (LT13–LT16)
+
+**Phụ huynh chốt (popup):** kho kiểm tra 8 câu, mỗi lượt rút 5 (LT13); luyện tập 3 L1 + 3 L2 + 2 L3, có câu nhận dạng (LT14);
+L1–L2 tự soạn, L3 lấy/chuyển thể từ 68 đề + đề Hà Nội, ghi nguồn từng câu (LT15); đáp án sai do hổng nền có link "Ôn lại" (LT16).
+
+**Đã làm:** `docs/CONTENT_STANDARD.md` — khung KU, khung lý thuyết, cấp câu, bảng gắn mã lỗi E01–E15 (khi nào dùng / không dùng, ví dụ),
+cách viết phản hồi, quy ước số và nguồn, quy trình kiểm tra 5 bước + phiếu duyệt 20 phút cho phụ huynh, thay đổi app cần (đưa vào S6a/S6b),
+chuẩn hoá htl-1/2. CLAUDE.md trỏ tới file này.
+
+**Lưu ý:** file PDF 68 đề không đưa vào GitHub (sách có bản quyền). Việc tiếp theo đề xuất: lập `docs/SOURCE_INDEX.md` (đề số, bài, dạng → KU).
+
+---
+
 ## 05/10/2026 — Review kiến trúc lộ trình + chốt LT1–LT12 (nhánh `p1-curriculum-design`)
 
 **Kết luận review:** curriculum đã rõ *học gì*, nhưng app chưa đủ để code 50 KU (chỉ chạy 1 module theo thứ tự file, 2 loại câu, 1 hình cố định). Trang review: `https://claude.ai/artifact/HuDrqkHFP1jRPZGC7rLrss`.

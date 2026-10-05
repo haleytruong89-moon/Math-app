@@ -173,7 +173,7 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 
 ### 3.4 Estimation per KU (cách tính chi tiết)
 
-Mỗi KU gồm: theory → worked example → faded example → 8 practice → 5 exit test.
+Mỗi KU gồm: theory → worked example → faded example → 8 practice → 5 exit test (rút từ kho 8 câu, LT13). Chuẩn soạn: `docs/CONTENT_STANDARD.md`.
 
 | Mức khó | KUs | First pass | 3 vòng ôn | Retry (30%) | Tổng/KU |
 |---------|-----|-----------|-----------|-------------|---------|
@@ -418,8 +418,8 @@ Per D14 + SPEC.md §0:
 - Exact item content (problems, solutions, distractors) — that's the content creation work
 - Source mapping to 68-đề PDF — deferred until PDF is read (157 pages)
 - AI tutor prompts (D9) — separate design doc
-- Error taxonomy E01–E15 mapping per KU — deferred to content creation phase
-- Hint ladder H0–H6 per item — deferred to content creation phase
+- Cách gắn mã lỗi E01–E15, cấp câu, nguồn, kiểm tra: `docs/CONTENT_STANDARD.md` (LT13–LT16)
+- Hint ladder H0–H6 — dành cho AI giảng bài (D9), chưa dùng trong KU
 
 ---
 

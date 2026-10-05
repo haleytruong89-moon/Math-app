@@ -40,6 +40,10 @@
 | 05/10/2026 | **LT9 Progress map:** grouped **track → module**; only the module(s) in progress expanded, others collapsed to one row with a bar; plant badges unchanged | `docs/DESIGN.md` §9 |
 | 05/10/2026 | **LT10 Content QA:** Claude drafts per batch; each KU gets an **independent second solve + scripted answer recomputation** before the parent previews; tutor reviews the hard batches (C, E, G) | `docs/P1_PLAN.md` §1 |
 | 05/10/2026 | **LT11 Build order:** S3 + tutor tools are already merged and S4 is in PR #11, so the remaining order is S6a (curriculum engine) → student UX → S6b (item types + figures) → content batches, run **in parallel with the pilot** starting 12/10 (week 1 on htl-1/2 in the app + F1 with the tutor on paper) | `docs/P1_PLAN.md` §3 |
+| 05/10/2026 | **LT13 Exit pool:** each KU has **8 exit items (2 L1 + 3 L2 + 3 L3)**; every attempt draws **5 (1 L1 + 2 L2 + 2 L3)**, unseen items first; M3 threshold unchanged (≥ 4/5, no repeated error code) | `docs/CONTENT_STANDARD.md` §1 |
+| 05/10/2026 | **LT14 Item levels:** practice = **3 L1 + 3 L2 + 2 L3**, ≥ 1 recognition item ("which method?", E05); L4 (mixed, unlabeled) lives in the interleaved review, not in the KU | same §3 |
+| 05/10/2026 | **LT15 Sources:** L1–L2 written by Claude with clean numbers; L3 and exam-style items taken/adapted from the 68-exam book + Hà Nội papers with a per-item `source`; the book PDF is not committed to GitHub | same §6 |
+| 05/10/2026 | **LT16 Prerequisite links:** a wrong answer rooted in an earlier KU (E12, or E02/E03 with a backfill cause) carries `review: <KU id>`, shown as "Ôn lại: …"; chosen by the author, never by AI at runtime | same §5 |
 
 ## 1. Mục tiêu
 
