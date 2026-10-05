@@ -55,10 +55,10 @@ Thứ tự đã chốt 03/10/2026: **pilot sớm**. Nguyên bắt đầu dùng n
 | 1 | **S1** | Nội dung JSON + kiểm tra; KaTeX; xem trước nội dung (D16); luồng học 1 KU; `unit_progress`, `attempts` | ✅ merged | — |
 | 2 | **S2** | Mastery hệ thống; lịch ôn D+1/7/21 + duy trì 60 ngày; phiên ôn trộn; "Hôm nay cần làm"; mục tiêu tuần; bản đồ tiến độ | ✅ merged (PR #2) | — |
 | 3 | **S3** | Gia sư "Ghi buổi dạy" | ✅ merged (PR #3) | ✅ |
-| 3b | **S3b** | Công cụ gia sư: A "Bài làm của con" (không SQL) → B giao bài về nhà qua link Drive (SQL 0007) — spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` | 🟡 A: PR #5 · B: PR mới (SQL 0007) | ✅ |
+| 3b | **S3b** | Công cụ gia sư: A "Bài làm của con" (không SQL) → B giao bài về nhà qua link Drive (SQL 0007) — spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` | ✅ merged (PR #5, #7; SQL 0007 đã chạy) | ✅ |
 | 4 | **S4** | Phụ huynh "Tổng quan" | ⬜ | ✅ |
-| 5 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot | ⬜ | ❌ phụ huynh |
-| 6 | **S6** | Soạn KU còn lại (Ch.4–6 bài HTML + bổ sung bài tập), dạng nháp | ⬜ | ✅ soạn; ❌ duyệt (phụ huynh/gia sư) |
+| 5 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot | 🟡 bắt đầu 05/10 (tài khoản, D18, sao lưu xong) | ❌ phụ huynh |
+| 6 | **S6** | Soạn KU còn lại (Ch.4–6 bài HTML + bổ sung bài tập), dạng nháp — **chờ brainstorm danh sách bài lớp 8–9 + ưu tiên** trên claude.ai (`docs/CONTENT_BRIEF.md`) | ⬜ | ✅ soạn; ❌ duyệt (phụ huynh/gia sư) |
 | 7 | **S5** | Hình học C1 kéo hình, C2 sắp xếp bước (chấm theo đồ thị phụ thuộc), C3 hai cột | ⬜ sau khi pilot chạy | ✅ |
 
 ### S1 — tiêu chí nghiệm thu
