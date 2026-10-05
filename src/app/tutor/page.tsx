@@ -42,6 +42,12 @@ export default async function TutorHome() {
               >
                 Ghi buổi dạy
               </Link>
+              <Link
+                href={`/tutor/${s.id}/work`}
+                className="mt-2 block w-full rounded-lg border border-border px-4 py-2.5 text-center font-display text-sm font-semibold"
+              >
+                Xem bài làm
+              </Link>
             </li>
           );
         })}
