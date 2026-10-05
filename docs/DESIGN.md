@@ -42,9 +42,10 @@ Key choices
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
 | `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |
 | `/tutor/[studentId]/work`, `/parent/students/[studentId]/work` | tutor (assigned), parent | "Bài làm của con" (`StudentWork`): per-unit summary (level, answers, error codes seen ≥ 2×, latest proposal) → one unit's answers, wrong only by default (`?unit=…&all=1`): student answer, right answer, error code + content feedback, "lần sau làm đúng", solution. Read-only, RLS |
-| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → next new |
+| `/student` | student | D18 consent gate → greeting header with weekly ring (`HomeHeader`) → "Hôm nay cần làm" grouped: reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → next new |
 | `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only) |
-| `/student/review` | student | mixed review of all due units, interleaved |
+| `/student/review` | student | mixed review of all due units, interleaved; `QuestionFeedback` after each answer |
+| `/student/journey` | student | "Hành trình của con": summary (Đã vững / Đang học / Chưa bắt đầu) + vertical path per module, plant emoji per display level, next review, "bố mẹ chốt" |
 | `/api/cron/ping` | Vercel Cron | heartbeat upsert |
 
 ## 3. Data model (migrations in `supabase/migrations/`, applied by the parent in order)
@@ -119,6 +120,14 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 | `npm run test:content` | grading, content files, learning rules (node --test) |
 | `npm run test:db` | migrations + RLS on PGlite with a stubbed auth schema |
 | `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
+
+## 9. Student theme (05/10/2026)
+
+Spec `docs/superpowers/specs/2026-10-05-student-ux-design.md` (supersedes `docs/HANDOVER_STUDENT_UX.md`).
+- `.student-theme` (globals.css) overrides the tokens for everything inside the student layout — light cream/teal and a warm dark set; parent/tutor keep the default tokens.
+- Mastery emoji/gradients: `src/components/student/mastery.ts` (🌰 M0 "Chưa bắt đầu" … ⭐ M4 "Đã vững").
+- `QuestionFeedback` (practice + review only; faded steps and the exit test keep the old flow): correct → "Chính xác!" + session total + solution + level nudge (`masteryNudge`, real rules); wrong → "Gần đúng rồi!" (known mistake) / "Chưa đúng", error label (`errorLabel`, Vietnamese), "Con trả lời / Đáp án đúng", solution, only "Câu tiếp".
+- `checkAnswer`/`checkReview` return `answerHtml`, `correctHtml` (faded: only when the solution may show), `errorCode`, and practice `mastery` (real student only).
 
 ## 8. Gotchas
 

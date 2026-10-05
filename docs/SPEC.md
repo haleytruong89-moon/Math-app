@@ -25,6 +25,8 @@
 | 05/10/2026 | Review questions come from **practice items only**; reloading the review page resumes the unfinished run | `src/lib/learning/rules.ts` (`planReview`) |
 | 05/10/2026 | Tutor tools (T1–T5): homework is done on paper and corrected by the tutor next session, never counted in mastery or the weekly goal (D4 unchanged); task sheets/photos via **Google Drive links** (≤ 3, no file storage in the app); default due date today + 3; the student sees the tutor's correction note; "Bài làm của con" shows practice/exit/review only (no faded steps) | `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` |
 | 05/10/2026 | S4 (P1–P3): tutor schedule = fixed weekdays chosen when assigning (reminder when a scheduled day passes > 24h without a logged session); parent-confirmed level is **display only**, shown while the system level is unchanged since confirming; every confirmation is kept | `docs/superpowers/specs/2026-10-05-parent-overview-design.md` |
+| 05/10/2026 | **Student UX** (U1–U8, mockup approved): warm cream + teal theme on student routes only; greeting header with weekly ring on home only; journey page `/student/journey` (🌰 M0 → 🌱 → 🌿 → 🌳 → ⭐); feedback card after practice/review answers — **no "Thử lại"**, session total "Đúng x/y câu lượt này" (not a streak, D17), level nudge by the real rules, "Con trả lời / Đáp án đúng" | `docs/superpowers/specs/2026-10-05-student-ux-design.md` |
+| 05/10/2026 | Error names E01–E15 from master plan §26: English canonical, Vietnamese shown to the student | `src/lib/content/errors.ts` |
 | 03/10/2026 | Nightly scheduled build at 23:00 (Vietnam) for remaining slices; parent reviews, runs SQL and merges each morning | `docs/PROGRESS.md` |
 
 ## 1. Mục tiêu

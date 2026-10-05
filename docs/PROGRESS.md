@@ -12,6 +12,7 @@
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
 | S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: 🟡 PR mới (`p1-homework`, **SQL 0007**) |
+| Giao diện học sinh mới (U1–U8) | `p1-student-ux` | 🟡 PR mới, **không SQL**; xếp chồng trên PR #11 (merge #9 → #11 → PR này); đóng PR #6 |
 | S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR mới — **SQL 0008**; xếp chồng trên PR #9 (merge #9 trước) |
 | S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
@@ -23,6 +24,31 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 05/10/2026 — Giao diện học sinh mới (nhánh `p1-student-ux`)
+
+Spec `docs/superpowers/specs/2026-10-05-student-ux-design.md` (U1–U8, phụ huynh duyệt 05/10; thay handover PR #6). **Không có SQL.** Xếp chồng trên `p1-slice-4`.
+
+### Đã làm
+- **Theme ấm** (kem + teal, có bản tối) chỉ cho trang học sinh; phụ huynh/gia sư giữ giao diện cũ.
+- **Trang chủ**: header teal "Chào buổi sáng/chiều/tối" + tên + ngày + **vòng mục tiêu tuần**; "Hôm nay cần làm" chia nhóm Ôn lại → Bài về nhà → Đang học → Bài mới (emoji mức trên mỗi thẻ, nút teal); dải "x/y bài đạt M3+ · Xem hành trình →".
+- **Trang mới "Hành trình của con"** (`/student/journey`): 3 ô Đã vững / Đang học / Chưa bắt đầu, đường dọc 🌰 → 🌱 → 🌿 → 🌳 → ⭐, lịch ôn kế tiếp, "bố mẹ chốt".
+- **Thẻ sau mỗi câu luyện tập / ôn**: đúng → 🎉 "Chính xác!", "Đúng x/y câu lượt này" (tổng, không phải chuỗi), lời giải, gợi ý lên mức theo đúng quy tắc ("Làm thêm 4 câu luyện để hệ thống đánh giá lên M2", "Làm bài kiểm tra cuối để lên M3"…); sai → 💡 "Gần đúng rồi!"/"Chưa đúng", lời nhắc, nhãn lỗi tiếng Việt ("E10 — Sơ ý"), "Con trả lời / Đáp án đúng", lời giải, "Câu này sẽ quay lại cuối bài", **chỉ "Câu tiếp"** (không "Thử lại").
+- **Tên lỗi E01–E15** (master plan §26): tiếng Anh là chuẩn, con thấy tiếng Việt (`src/lib/content/errors.ts`).
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **62** test quy tắc/nội dung (thêm 5: tên lỗi, lời chào theo giờ VN, gợi ý lên mức mọi mức + ranh giới 5 câu/60%, câu khen, đếm phiên) + **78** RLS.
+- `./e2e/run.sh`: **121/121** (header + vòng; dải hành trình → trang Hành trình 0·0·2 với 🌰; câu luyện đúng → "Chính xác!", "Đúng 1/1 câu lượt này", gợi ý M2; ôn sai → "Con trả lời"/"Đáp án đúng", không có "Thử lại"; M3 🌳 + "Ôn D+1"; M4 ⭐; "bố mẹ chốt"; xem trước phụ huynh: "Chưa đúng" + "quay lại cuối bài", không gợi ý; nền tối đúng màu). Đã xem ảnh chụp sáng/tối.
+
+### Phụ huynh cần làm
+1. Merge theo thứ tự **#9 → #11** (sau khi chạy SQL 0008) → PR này. Không có SQL mới.
+2. Thử preview bằng tài khoản con: trang chủ, "Xem hành trình", làm vài câu luyện tập (đúng và sai).
+3. Đóng **PR #6** (handover đã gộp vào đây: `docs/HANDOVER_STUDENT_UX.md`).
+
+### Ghi chú
+- Remediation Router (master plan §27) mới có hướng xử lý cho 7/15 mã lỗi — **E03, E07, E11, E13, E14, E15** cần bổ sung trước khi làm tính năng đó.
 
 ---
 
