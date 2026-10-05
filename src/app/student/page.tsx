@@ -3,7 +3,7 @@ import Link from "next/link";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { ActionForm } from "@/components/action-form";
-import { dueReviews, loadStudentState, type StudentState, type UnitState } from "@/lib/learning/state";
+import { loadStudentState, todaysReview, type StudentState, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
 import { giveConsent, setHomeworkDone } from "./actions";
 import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
@@ -93,8 +93,9 @@ function Group({ kind, note, children }: { kind: keyof typeof GROUP; note?: stri
   );
 }
 
-function TodayCard({ title, level, note, minutes, href, cta }: {
+function TodayCard({ title, level, note, minutes, href, cta, extra }: {
   title: string; level: number; note: string; minutes: number; href: string; cta: string;
+  extra?: { href: string; label: string };
 }) {
   const m = masteryOf(level);
   return (
@@ -114,6 +115,11 @@ function TodayCard({ title, level, note, minutes, href, cta }: {
       <Link href={href} className="mt-3 block rounded-xl bg-accent px-4 py-2.5 text-center text-sm font-semibold text-on-accent">
         {cta}
       </Link>
+      {extra && (
+        <Link href={extra.href} className="mt-2 block rounded-xl border border-accent px-4 py-2 text-center text-sm font-semibold text-accent">
+          {extra.label}
+        </Link>
+      )}
     </li>
   );
 }
@@ -127,9 +133,10 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
     );
   }
 
-  const due = dueReviews(state);
-  const inProgress = state.units.filter((u) => u.workedViewed && u.mastery.level < 3 && !u.review);
-  const nextNew = state.units.find((u) => !u.workedViewed);
+  // LT8: at most 5 units, one session a day. LT3: up to 2 suggestions (track A + track B/C), none with 2 in progress.
+  const { units: due, later } = todaysReview(state);
+  const inProgress = state.units.filter((u) => u.inProgress);
+  const suggestions = state.suggestions;
   const questions = due.length * RULES.reviewItemsPerUnit;
   const overdue = due.filter((u) => daysBetween(u.review!.dueOn!, state.today) > 0).length;
 
@@ -137,7 +144,7 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
   const cards: React.ReactNode[] = [];
   if (due.length) {
     cards.push(
-      <Group key="g-review" kind="review" note={`${due.length} bài đến hạn`}>
+      <Group key="g-review" kind="review" note={`${due.length} bài đến hạn${later ? ` · còn ${later} bài, ôn ngày mai` : ""}`}>
         <TodayCard
           title={due.length === 1 ? due[0].unit.title : `Ôn lại ${due.length} bài`}
           level={Math.min(...due.map(levelOf))}
@@ -149,6 +156,12 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
       </Group>,
     );
   }
+  if (!due.length && later)
+    cards.push(
+      <Group key="g-review-later" kind="review" note={`Hôm nay con đã ôn xong. Còn ${later} bài, ôn ngày mai.`}>
+        {null}
+      </Group>,
+    );
   if (homework.length)
     cards.push(
       <Group key="g-homework" kind="homework">
@@ -171,17 +184,21 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
         ))}
       </Group>,
     );
-  if (nextNew)
+  if (suggestions.length)
     cards.push(
-      <Group key="g-new" kind="new">
-        <TodayCard
-          title={nextNew.unit.title}
-          level={levelOf(nextNew)}
-          note="Xem lời giải mẫu trước khi tự làm"
-          minutes={nextNew.unit.estMinutes}
-          href={`/student/learn/${nextNew.unit.id}`}
-          cta="Học bài mới"
-        />
+      <Group key="g-new" kind="new" note={suggestions.length > 1 ? "Chọn 1 bài" : undefined}>
+        {suggestions.map((u) => (
+          <TodayCard
+            key={u.unit.id}
+            title={u.unit.title}
+            level={levelOf(u)}
+            note="Xem lời giải mẫu trước khi tự làm"
+            minutes={u.unit.estMinutes}
+            href={`/student/learn/${u.unit.id}`}
+            cta="Học bài mới"
+            extra={u.entry?.testOut && !u.testout.tried ? { href: `/student/learn/${u.unit.id}?testout=1`, label: "Đã biết rồi? Làm bài kiểm tra luôn" } : undefined}
+          />
+        ))}
       </Group>,
     );
 

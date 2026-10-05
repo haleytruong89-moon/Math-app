@@ -3,8 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
-import { listModules } from "@/lib/content";
-import { loadStudentState, type UnitState } from "@/lib/learning/state";
+import { loadStudentState, type RoadmapNode, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
 import { practiceFirstTries } from "@/lib/learning/rules";
 import { dueLabel } from "@/lib/learning/homework";
@@ -15,7 +14,12 @@ export const metadata: Metadata = { title: "Hành trình của con — App Toán
 
 const STAGE = { 1: "D+1", 2: "D+7", 3: "D+21", 4: "duy trì" } as const;
 
-/** Mockup ProgressMap: summary strip + one vertical path per module (spec 2026-10-05 §3). */
+const TRACK = { A: "Lõi đại số", B: "Bài ghi điểm nhanh", C: "Hình học đường tròn" } as const;
+
+/**
+ * Mockup ProgressMap + LT9: summary strip, then track → module; only the module(s) in progress are
+ * expanded, the rest collapse to one row with a bar. 🔒 Khoá · 🌰 Chưa bắt đầu · "Sắp có" (no content yet).
+ */
 export default async function JourneyPage() {
   const user = await requireRole("student");
   const supabase = await createClient();
@@ -32,7 +36,16 @@ export default async function JourneyPage() {
     shown: displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }),
   }));
   const count = (f: (l: number) => boolean) => nodes.filter((n) => f(n.shown.level)).length;
-  const modules = listModules().filter((m) => nodes.some((n) => n.u.unit.module === m.id));
+  const shownOf = new Map(nodes.map((n) => [n.u.unit.id, n.shown]));
+  const titleOf = new Map(state.roadmap.map((n) => [n.entry.id, n.entry.title]));
+  // Expanded: modules with a KU in progress; if none anywhere, the module of the first suggestion.
+  const active = new Set(state.roadmap.filter((n) => n.state?.inProgress).map((n) => n.entry.module));
+  if (!active.size && state.suggestions[0]) active.add(state.suggestions[0].unit.module);
+  const tracks = (["A", "B", "C"] as const).map((t) => {
+    const inTrack = state.roadmap.filter((n) => n.entry.track === t).sort((a, b) => a.entry.seq - b.entry.seq);
+    const moduleIds = [...new Set(inTrack.map((n) => n.entry.module))];
+    return { t, modules: moduleIds.map((id) => ({ m: state.modules.find((x) => x.id === id)!, list: inTrack.filter((n) => n.entry.module === id) })) };
+  });
 
   return (
     <>
@@ -51,23 +64,63 @@ export default async function JourneyPage() {
         <Tile n={count((l) => l === 0)} label="Chưa bắt đầu" cls="bg-surface text-muted border border-border" />
       </div>
 
-      {modules.map((m) => {
-        const list = nodes.filter((n) => n.u.unit.module === m.id);
-        return (
-          <section key={m.id} className="mt-6" aria-label={m.title}>
-            <h2 className="text-sm font-semibold text-muted">{m.title}</h2>
-            <ol className="mt-3 flex flex-col">
-              {list.map(({ u, shown }, i) => (
-                <li key={u.unit.id} className="flex flex-col" data-testid={`node-${u.unit.id}`}>
-                  {i > 0 && <Connector from={list[i - 1].shown.level} to={shown.level} />}
-                  <Node u={u} level={shown.level} confirmed={shown.confirmed} today={state.today} />
-                </li>
-              ))}
-            </ol>
-          </section>
-        );
-      })}
+      {tracks.map(({ t, modules }) => (
+        <section key={t} className="mt-6" aria-label={TRACK[t]} data-testid={`track-${t}`}>
+          <h2 className="text-sm font-bold uppercase tracking-wide text-muted">{TRACK[t]}</h2>
+          <div className="mt-2 flex flex-col gap-2">
+            {modules.map(({ m, list }) => {
+              const done = list.filter((n) => (shownOf.get(n.entry.id)?.level ?? n.level) >= 3).length;
+              return (
+                <details key={m.id} open={active.has(m.id)} className="rounded-xl border border-border bg-surface px-3 py-2" data-testid={`module-${m.id}`}>
+                  <summary className="flex cursor-pointer items-center gap-3 py-1">
+                    <span className="min-w-0 flex-1 text-sm font-semibold">{m.title}</span>
+                    <span className="h-1.5 w-16 overflow-hidden rounded-full bg-border">
+                      <span className="block h-full rounded-full bg-accent" style={{ width: `${(done / list.length) * 100}%` }} />
+                    </span>
+                    <span className="font-mono text-[11px] text-muted">
+                      {done}/{list.length}
+                    </span>
+                  </summary>
+                  <ol className="mt-2 flex flex-col pb-1">
+                    {list.map((n, i) => {
+                      const shown = shownOf.get(n.entry.id);
+                      const level = shown?.level ?? n.level;
+                      return (
+                        <li key={n.entry.id} className="flex flex-col" data-testid={`node-${n.entry.id}`}>
+                          {i > 0 && <Connector from={list[i - 1].status === "open" ? (shownOf.get(list[i - 1].entry.id)?.level ?? 0) : 0} to={n.status === "open" ? level : 0} />}
+                          {n.status === "open" && n.state ? (
+                            <Node u={n.state} level={level} confirmed={!!shown?.confirmed} today={state.today} />
+                          ) : (
+                            <ClosedNode node={n} prereqTitles={n.entry.prereq.map((p) => titleOf.get(p) ?? p)} />
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </details>
+              );
+            })}
+          </div>
+        </section>
+      ))}
     </>
+  );
+}
+
+function ClosedNode({ node, prereqTitles }: { node: RoadmapNode; prereqTitles: string[] }) {
+  const locked = node.status === "locked";
+  return (
+    <div className="flex items-center gap-3.5 py-1 opacity-60">
+      <span aria-hidden className="grid size-16 shrink-0 place-items-center rounded-full border-[3px] border-dashed border-border bg-bg text-[26px]">
+        {locked ? "🔒" : "·"}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm font-semibold leading-snug">{node.entry.title}</span>
+        <span className="mt-1 block text-[11px] text-muted">
+          {locked ? `Khoá — cần đạt M3: ${prereqTitles.join(", ")}` : "Sắp có"}
+        </span>
+      </span>
+    </div>
   );
 }
 
