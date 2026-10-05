@@ -78,10 +78,18 @@ await page.screenshot({ path: "e2e/out/student/3-today-review-due.png", fullPage
 await page.getByRole("link", { name: "Bắt đầu ôn" }).click();
 await page.waitForURL(/review/);
 const seq = [];
+const asked = [];
+const practiceIds = new Set(Object.values(units).flatMap((u) => u.practice.map((it) => it.id)));
 for (let i = 0; i < 6; i++) {
+  if (i === 2) {
+    // F5 after a wrong htl-2 answer: the run resumes, the wrong answer still counts.
+    await page.reload();
+    ok("review: reload resumes at question 3/6", (await page.getByText("Câu 3/6").count()) === 1);
+  }
   const hdr = page.locator("[data-item]");
   const id = await hdr.getAttribute("data-item"); const unit = await hdr.getAttribute("data-unit");
   seq.push(unit);
+  asked.push(id);
   // htl-2: get 2 of 3 wrong (fail); htl-1: all right
   const wrong = unit === "htl-2" && seq.filter((u) => u === "htl-2").length <= 2;
   await answer(id, wrong);
@@ -92,6 +100,8 @@ for (let i = 0; i < 6; i++) {
 }
 ok("review: interleaved, never same unit twice in a row", seq.every((u, i) => i === 0 || u !== seq[i - 1]), seq.join(","));
 ok("review: 3 per unit", seq.filter((u) => u === "htl-1").length === 3 && seq.filter((u) => u === "htl-2").length === 3);
+ok("review: no question asked twice across the reload", new Set(asked).size === 6, asked.join(","));
+ok("review: questions only from practice (exit solutions stay unseen)", asked.every((id) => practiceIds.has(id)), asked.join(","));
 await page.getByRole("radio", { name: "Dễ, làm nhanh" }).click();
 ok("review: failed unit has no rating", (await page.getByRole("radio", { name: "Dễ, làm nhanh" }).count()) === 1);
 await page.screenshot({ path: "e2e/out/student/5-review-rate.png", fullPage: true });

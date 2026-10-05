@@ -44,7 +44,8 @@ export function parseSession(
   if (daysBetween(day.data, today) > SESSION_RULES.maxBackdateDays)
     return { ok: false, error: `Chỉ ghi được buổi dạy trong ${SESSION_RULES.maxBackdateDays} ngày gần nhất.` };
 
-  const note = typeof input.note === "string" ? input.note.trim() : "";
+  // Forms submit line breaks as CRLF while the textarea counts them as one character.
+  const note = typeof input.note === "string" ? input.note.replace(/\r\n?/g, "\n").trim() : "";
   if (note.length > SESSION_RULES.noteMax) return { ok: false, error: `Ghi chú tối đa ${SESSION_RULES.noteMax} ký tự.` };
 
   const ticked = [...new Set(input.units.map(String))];

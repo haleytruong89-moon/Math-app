@@ -2,8 +2,9 @@
 // Run: npm run test:db
 import { PGlite } from '@electric-sql/pglite';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 const db = new PGlite();
-const repo = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
+const repo = fileURLToPath(new URL('..', import.meta.url)).replace(/[\\/]$/, ''); // also works on Windows
 // --- Minimal stand-in for Supabase's auth schema and roles ---
 await db.exec(`
   create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;

@@ -105,6 +105,15 @@ await save().click();
 await page.locator("form [role=status]").filter({ hasText: "Đã lưu lúc" }).waitFor();
 ok("note-only session saved", (await counts()).s === 2);
 ok("home: last logged date shown", await page.goto(`${BASE}/tutor`).then(() => page.getByText(`buổi ghi gần nhất ${vnToday.slice(8)}/${vnToday.slice(5, 7)}`).count()) === 1);
+// A note with line breaks that the counter shows as 500/500 must save (the form sends CRLF).
+await page.goto(formUrl);
+await page.locator('textarea[name="note"]').fill(`${"x".repeat(49)}\n`.repeat(9) + "x".repeat(50));
+ok("note: multi-line 500/500 shown", (await page.getByText("500/500").count()) === 1);
+await save().click();
+await page.locator("form [role=status]").filter({ hasText: "Đã lưu lúc" }).waitFor({ timeout: 8000 }).catch(() => {});
+const long = await sql(`select char_length(note) as n, position(chr(13) in note) as cr from public.teaching_sessions where char_length(note) > 400`);
+ok("note: multi-line 500 chars saved, stored without CR", long.length === 1 && long[0].n === 500 && long[0].cr === 0, JSON.stringify(long));
+await sql(`delete from public.teaching_sessions where char_length(note) > 400`);
 
 // ---- dark mode, evidence open
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });

@@ -90,6 +90,9 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
 - Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.
+- Review questions come from **practice items only** (review shows solutions; exit-test items stay unseen until a retake).
+  Reloading `/student/review` resumes the latest unfinished run (`planReview`: review answers for a due unit with no
+  `review_log` row for that run), so answered questions count and aren't asked again.
 - Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;
   a session with no unit needs a note. The action (`src/app/tutor/actions.ts`) re-checks an active tutor profile and an
   active assignment with the admin client, inserts the session then the proposals, and deletes the session if the

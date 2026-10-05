@@ -8,9 +8,10 @@
 | Lát | Nhánh | Trạng thái |
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
-| S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | 🟡 PR #2 — chờ phụ huynh chạy SQL **0004 + 0005**, merge |
-| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | 🟡 PR mới (xếp chồng trên `p1-slice-2`) — chờ SQL **0006**, merge **sau** PR #2 |
-| S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo — **chỉ chạy khi PR #2 đã merge** (quy tắc: ≥ 2 PR lát chưa merge thì đêm sau không làm lát mới) |
+| S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
+| S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
+| Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
+| S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo |
 | S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
 
@@ -21,6 +22,38 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 05/10/2026 — Sửa 3 lỗi trước pilot (nhánh `p1-fixes`)
+
+Từ đợt review PR #2/#3 (phụ huynh đồng ý sửa điểm 1, 2, 4 trước pilot). **Không có SQL mới.**
+
+### Đã làm
+1. **Tải lại trang (F5) giữa lượt ôn không còn "xoá" câu sai.** Trước: mỗi lần mở trang là một lượt ôn mới với câu khác, câu sai cũ không bao giờ được tính → lịch ôn có thể không về D+1. Giờ: trang ôn **tiếp tục lượt đang dở** (lượt có câu trả lời nhưng chưa "Lưu kết quả ôn"): câu đã trả lời vẫn tính, không hỏi lại, các câu còn lại giữ nguyên ("Câu 3/6"). Bài mới đến hạn trong lúc đó được nhập vào cùng lượt.
+2. **Câu ôn chỉ lấy từ phần luyện tập** (mỗi bài 8 câu), không lấy câu bài kiểm tra nữa — vì lượt ôn hiện lời giải sau mỗi câu, con có thể xem trước đáp án rồi làm lại bài kiểm tra. Máy chủ cũng từ chối chấm câu kiểm tra trong lượt ôn.
+3. **Ghi chú có xuống dòng**: ô ghi chú hiện 500/500 nhưng máy chủ báo quá dài (trình duyệt gửi mỗi lần xuống dòng thành 2 ký tự). Giờ máy chủ đếm như ô nhập; ghi chú lưu với xuống dòng chuẩn.
+- Phụ: test RLS (`npm run test:db`) chạy được cả trên Windows.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **31** test quy tắc/nội dung (thêm 2 cho tiếp tục lượt ôn, 1 cho ghi chú xuống dòng) + **49** test RLS: qua.
+- `./e2e/run.sh` (chạy trong container Playwright Linux): **72/72** — thêm: F5 sau câu sai → tiếp ở "Câu 3/6", không câu nào hỏi lại, câu sai vẫn tính (htl-2 vẫn về D+1, đúng 1/3); mọi câu ôn thuộc phần luyện tập; gia sư gõ ghi chú 9 dòng hiện 500/500 → lưu được, DB lưu đúng 500 ký tự, không có ``.
+
+### Phụ huynh cần làm (khoảng 10 phút)
+1. Không có SQL.
+2. Thử preview (tài khoản học sinh có bài đến hạn ôn): làm 1 câu sai → bấm F5 → vẫn ở câu tiếp theo, không được làm lại câu sai. Làm hết → kết quả tính cả câu sai đó.
+3. Tài khoản gia sư: gõ ghi chú nhiều dòng tới 500/500 → Lưu được.
+4. Merge PR.
+
+### Câu hỏi cho phụ huynh
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q12 | Bài kiểm tra làm lại dùng **đúng 5 câu cũ**, và sau khi nộp con đã thấy lời giải → lần làm lại dễ đạt M3 do nhớ đáp án. Có cần thêm bộ câu kiểm tra thứ 2 (đổi số) cho mỗi bài? | Chưa làm — đưa vào S6 (soạn nội dung) |
+
+### Ghi chú kỹ thuật (cho phiên sau)
+- `planReview` (rules.ts): lượt "dở" = có câu `mode = review` cho bài đang đến hạn mà chưa có dòng `review_log (run_id, unit_id)`; chọn lượt mới nhất. Bỏ câu của chính lượt đó khi chọn câu còn lại → ra đúng bộ câu ban đầu.
+- e2e trên Windows: `./e2e/run.sh` cần Linux; chạy trong `mcr.microsoft.com/playwright:v1.63.0-noble`, **bỏ `.env.local`** (có env thì proxy chuyển hướng vòng lặp), symlink Chromium vào `/opt/pw-browsers/chromium`.
+- Còn lại từ review (chưa sửa, ít gặp): điểm 3 (mastery chỉ đọc 5.000 câu trả lời cũ nhất — 2 tuần pilot chưa chạm), điểm 5 (buổi dạy + đề xuất ghi bằng 2 lệnh riêng), bấm Lưu 2 lần tạo 2 buổi trùng.
 
 ---
 
