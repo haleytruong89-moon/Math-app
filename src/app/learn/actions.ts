@@ -12,6 +12,7 @@ import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
 import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
+import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 
 // Grading always happens here, never in the browser. A student's answers are recorded;
 // a parent previewing content (D16) gets the same grading but nothing is written.
@@ -60,15 +61,19 @@ const DENIED = { ok: false as const, message: "Không mở được bài này." 
 /** Mastery of one unit right after a practice answer (feeds the student's level nudge). */
 async function practiceMastery(studentId: string, unitId: string) {
   const admin = createAdminClient();
-  const [rows, p, q] = await Promise.all([
+  const [rows, p, q, c] = await Promise.all([
     admin.from("attempts").select("item_id, mode, correct, error_code, exit_run, created_at").eq("student_id", studentId).eq("unit_id", unitId).order("created_at", { ascending: true }),
     progress(studentId, unitId),
     admin.from("review_queue").select("completed_at").eq("student_id", studentId).eq("unit_id", unitId).maybeSingle(),
+    admin.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", studentId).eq("unit_id", unitId),
   ]);
+  if (rows.error || q.error) return undefined; // no nudge rather than a wrong one
   const attempts = (rows.data ?? []) as AttemptRow[];
   const m = systemMastery({ workedViewed: !!p?.worked_viewed_at, attempts, reviewsCompleted: !!q.data?.completed_at });
   const recent = practiceFirstTries(attempts).slice(-RULES.practiceWindow);
-  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter((a) => a.correct).length };
+  const conf = latestByUnit((c.data ?? []) as ConfirmationRow[]).get(unitId);
+  const confirmed = displayLevel(m.level, conf, { attempts, workedViewed: !!p?.worked_viewed_at, reviewsCompleted: !!q.data?.completed_at }).confirmed;
+  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter((a) => a.correct).length, confirmed };
 }
 const SAVE_FAILED = { ok: false as const, message: "Chưa lưu được câu trả lời. Kiểm tra mạng rồi thử lại." };
 

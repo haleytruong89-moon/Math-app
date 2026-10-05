@@ -41,7 +41,7 @@ export type CheckResult =
       correctHtml?: string;
       errorCode?: string | null;
       /** Practice, real student only: mastery right after this answer (for the level nudge). */
-      mastery?: { level: number; practiceCount: number; practiceRight: number };
+      mastery?: { level: number; practiceCount: number; practiceRight: number; confirmed: boolean };
     };
 
 export type ExitResult =

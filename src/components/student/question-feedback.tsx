@@ -2,7 +2,7 @@
 
 import type { CheckResult } from "@/lib/content/public";
 import { errorLabel } from "@/lib/content/errors";
-import { masteryNudge, praise } from "@/lib/learning/student-ux";
+import { practiceNudge, praise } from "@/lib/learning/student-ux";
 import { Rich } from "@/components/lesson/rich";
 import { PrimaryButton } from "@/components/lesson/parts";
 import { masteryOf } from "./mastery";
@@ -27,7 +27,7 @@ export function QuestionFeedback({ result, mode, tally, index, requeued = false,
       ✅ Đúng {tally.right}/{tally.total} câu lượt này
     </span>
   );
-  const nudge = mode === "practice" && result.mastery ? masteryNudge(result.mastery) : null;
+  const nudge = mode === "practice" && result.mastery ? practiceNudge(result.mastery, result.mastery.confirmed) : null;
   const label = errorLabel(result.errorCode);
 
   return (

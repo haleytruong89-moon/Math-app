@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { PRAISE, greeting, masteryNudge, praise, sessionTally } from "./student-ux.ts";
+import { PRAISE, greeting, masteryNudge, practiceNudge, praise, sessionTally } from "./student-ux.ts";
 
 const vn = (h: number) => new Date(`2026-10-05T${String(h).padStart(2, "0")}:30:00+07:00`);
 
@@ -25,4 +25,9 @@ test("praise cycles; session tally counts every graded answer", () => {
   assert.notEqual(praise(0), praise(1));
   assert.deepEqual(sessionTally([true, false, true]), { right: 2, total: 3 });
   assert.deepEqual(sessionTally([]), { right: 0, total: 0 });
+});
+
+test("fix: no level nudge while a parent-confirmed level is in effect (display only, P2)", () => {
+  assert.equal(practiceNudge({ level: 1, practiceCount: 2, practiceRight: 2 }, true), null);
+  assert.equal(practiceNudge({ level: 1, practiceCount: 2, practiceRight: 2 }, false)?.text, "Làm thêm 3 câu luyện để hệ thống đánh giá lên M2");
 });

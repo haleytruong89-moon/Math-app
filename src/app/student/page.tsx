@@ -109,9 +109,7 @@ function TodayCard({ title, level, note, minutes, href, cta }: {
             {note} · ~{minutes} phút
           </span>
         </span>
-        <span className="font-mono text-[11px] font-semibold" style={{ color: m.ring }}>
-          M{level}
-        </span>
+        <span className="font-mono text-[11px] font-semibold text-muted">M{level}</span>
       </div>
       <Link href={href} className="mt-3 block rounded-xl bg-accent px-4 py-2.5 text-center text-sm font-semibold text-on-accent">
         {cta}

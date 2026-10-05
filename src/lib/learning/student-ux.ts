@@ -25,6 +25,14 @@ export function masteryNudge(m: NudgeInput): { text: string; progress?: { done: 
   return { text: "Đã vững — giữ phong độ khi ôn nhé" };
 }
 
+/**
+ * The nudge shown after a practice answer — none while a parent-confirmed level is in effect: the
+ * confirmation is display only (P2) and would otherwise contradict the system-level nudge.
+ */
+export function practiceNudge(m: NudgeInput, confirmedInEffect: boolean): ReturnType<typeof masteryNudge> | null {
+  return confirmedInEffect ? null : masteryNudge(m);
+}
+
 export const PRAISE = ["Giỏi lắm!", "Làm tốt lắm!", "Chuẩn rồi!"] as const;
 
 export function praise(i: number): string {
