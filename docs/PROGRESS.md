@@ -28,6 +28,26 @@
 
 ---
 
+## 05/10/2026 — Công cụ tài khoản (nhánh `p1-account-tools`)
+
+Sau sự cố tài khoản học sinh hôm 05/10 (hồ sơ thừa "nguyen1607", không có tài khoản đăng nhập nào gắn với hồ sơ — phải xoá bằng SQL). **Không có SQL mới.**
+
+### Đã làm
+- **Tài khoản → mục "Học sinh"**: mỗi hồ sơ một dòng — lớp, gia sư đang dạy, **email đăng nhập đang gắn** hoặc cảnh báo "Chưa có tài khoản đăng nhập — tạo tài khoản cho …" (bấm vào: form tạo tài khoản chọn sẵn vai trò Học sinh + hồ sơ đó).
+- **Sửa** họ tên / lớp. **Xoá hồ sơ**: hiện trước những gì sẽ mất ("Sẽ xoá vĩnh viễn: 37 câu đã làm, 2 buổi dạy, tài khoản đăng nhập"), phải **gõ lại họ tên** (không phân biệt hoa/thường, khoảng trắng; phân biệt dấu); xoá cả bài làm, lịch ôn, buổi dạy, bài về nhà và tài khoản đăng nhập của hồ sơ đó.
+- Form tạo tài khoản: ghi chú email "dùng để đăng nhập, không phải tên người dùng; app không gửi thư — có thể dùng tenban+nguyen@gmail.com"; "Thêm học sinh" ghi rõ đây là bước 1.
+- Gia sư vẫn chỉ **khoá** (không xoá) để giữ lịch sử dạy (D3); tài khoản phụ huynh không xoá được.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **48** test quy tắc/nội dung (thêm 2: so khớp họ tên khi xoá, kể cả tiếng Việt dạng tách dấu; dòng "sẽ xoá…") + **65** test RLS: qua.
+- `./e2e/run.sh`: **106/106** (thêm 10, luồng phụ huynh mới `e2e/accounts-flow.mjs`): danh sách hiện email + gia sư; hồ sơ mới bị đánh dấu chưa có tài khoản → link chọn sẵn hồ sơ → tạo tài khoản → DB gắn đúng; sửa tên + lớp; xoá: hiện "2 câu đã làm, tài khoản đăng nhập", gõ sai tên bị chặn, gõ đúng (khác hoa/thường) → hồ sơ, bài làm, tài khoản đăng nhập biến mất, hồ sơ khác còn nguyên. DB giả e2e có thêm `auth.admin` (tạo/xoá/liệt kê) và đếm `count: "exact", head: true`.
+
+### Phụ huynh cần làm
+1. Không có SQL. Thử preview: Tài khoản → mục Học sinh → thấy "Hanh Nguyen" kèm email đăng nhập và gia sư. (Đừng thử nút Xoá trên hồ sơ thật — preview dùng database thật.)
+2. Merge.
+
+---
+
 ## 05/10/2026 — S3b phần B: Giao bài về nhà (nhánh `p1-homework`)
 
 Theo spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` (T1–T4). **Có SQL mới: `0007`.** Nhánh xếp chồng trên `p1-tutor-tools` (PR #5) → merge #4 → #5 → PR này.
