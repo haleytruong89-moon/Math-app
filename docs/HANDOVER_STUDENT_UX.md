@@ -110,7 +110,7 @@ Emoji mapping (MASTERY_EMOJI constant):
   M4 → ⭐ (gold gradient #FEF3C7 → #FDE68A, border #F59E0B)
 
 Status text per level:
-  M0: "Chưa mở" (gray, italic)
+  M0: "Chưa mở" (gray, italic) — *cập nhật 05/10: tách 3 trạng thái, xem P1_PLAN S6a "Quyết định chi tiết": 🔒 Khoá / ○ Chưa bắt đầu / Sắp có*
   M1: "Đang học" or "Chưa đủ dữ liệu ({n} câu)" if < 5 answers
   M2: progress bar ({correct}/{total} practice accuracy) + e.g. "3/5 đúng"
   M3: review date if exists ("Ôn D+1 ngày mai")
@@ -132,7 +132,7 @@ Connector lines:
 - `review?.dueOn` (ngày ôn kế tiếp)
 - `workedViewed` (đã xem lời giải mẫu)
 
-Không cần thêm query hay thay đổi `loadStudentState()`.
+Không cần thêm query hay thay đổi `loadStudentState()`. *(Cập nhật 05/10: S6a đổi `loadStudentState()` để nạp đủ 50 KU từ `curriculum.json` + trạng thái khoá; lát UX dùng dữ liệu đó, không tự query thêm.)*
 
 ### 3.4 Today List (`src/app/student/page.tsx` → `TodayList`, `TodayCard`)
 
@@ -141,7 +141,7 @@ Không cần thêm query hay thay đổi `loadStudentState()`.
 - Badge colors giữ nguyên logic nhưng dùng student-theme tokens.
 - CTA button dùng teal accent thay vì ink-blue.
 
-**Data source:** Giữ nguyên hoàn toàn. Logic `dueReviews()`, `inProgress`, `nextNew` không đổi.
+**Data source:** *(Cập nhật 05/10)* S6a thay `nextNew` bằng `suggestNew()` (1 bài Track A + 1 bài Track B/C) và giới hạn 5 bài/phiên ôn; lát UX chỉ đổi giao diện các thẻ này.
 
 ### 3.5 Question Feedback — **component mới**
 

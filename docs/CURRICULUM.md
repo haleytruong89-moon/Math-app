@@ -19,7 +19,7 @@ Thay vì 4 giai đoạn tuần tự, chương trình tổ chức thành **2 trac
 
 ```
 Track A ─── Lõi đại số (prerequisite chain, nặng)
-│ F1 → C → D → E → (F parabol) → G → H+Q
+│ F1 → C → D → E → G → H+Q
 │
 ├── Track B ─── Quick wins (independent, nhẹ, 100% gradable)
 │   A + B + P + I (song song với Track A từ ngày 1)
@@ -38,7 +38,7 @@ Track A ─── Lõi đại số (prerequisite chain, nặng)
 | Gradability mù mờ cho scaffolded items | Track B 100% gradable → motivation sớm |
 | 8 tuần toàn F1+C → chán | Track B chen vào giữ nhịp |
 
-### Weekly learning pattern (D20: 4 buổi/tuần)
+### Weekly learning pattern (SPEC §0: 4 buổi/tuần)
 
 | Buổi | Nội dung | Track |
 |------|----------|-------|
@@ -90,8 +90,8 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 | 25 | p-trunon | hinh-khoi | Hình trụ & hình nón: công thức | 9 | — | P0 | 0.5 | full | 25 | master-plan §20 | P1+P2: Sxq, Stp, V. Numeric. Áp dụng công thức |
 | 26 | p-cau | hinh-khoi | Hình cầu & hình bán cầu | 9 | p-trunon | P1 | 0.25 | full | 25 | master-plan §20 | P3+P4: S=4πR², V=4/3πR³. Phân biệt cong/toàn phần |
 | 27 | p-ghep | hinh-khoi | Hình ghép, thể tích còn lại & vật liệu | 9 | p-trunon, p-cau | P0 | 0.5 | full | 35 | master-plan §20 | P5–P10: ghép hình, khoét, sơn, đổi đơn vị. Numeric |
-| — | htl-1 | he-thuc-luong | Hệ thức lượng cơ bản | 9 | — | P0 | 0.5 | full | 30 | existing | ĐÃ CÓ — approved 02/10 |
-| — | htl-2 | he-thuc-luong | Ứng dụng hệ thức lượng | 9 | htl-1 | P0 | 0.5 | full | 35 | existing | ĐÃ CÓ — approved 02/10 |
+| — | htl-1 | he-thuc-luong | Bốn hệ thức lượng: hiểu và nhớ | 9 | — | P0 | 0.5 | full | 20 | existing | ĐÃ CÓ — approved 02/10 |
+| — | htl-2 | he-thuc-luong | Tính độ dài bằng hệ thức lượng | 9 | htl-1 | P0 | 0.5 | full | 25 | existing | ĐÃ CÓ — approved 02/10. Tiêu đề + thời lượng lấy theo file nội dung |
 | 28 | i-giaitgv | he-thuc-luong | Giải tam giác vuông | 9 | htl-1 | P0 | 0.25 | full | 30 | master-plan §13 | I2–I5: sin/cos/tan, máy tính, độ/phút. Numeric |
 | 29 | i-ungdung | he-thuc-luong | Ứng dụng TSLG: góc nâng/hạ & bài thực tế | 9 | i-giaitgv | P1 | 0.5 | full | 35 | master-plan §13 | I6–I8: chiều cao, khoảng cách, nhiều bước. Numeric |
 | 30 | f-hamso | ham-so | Hàm số bậc nhất & mặt phẳng Oxy | 9 | — | P1 | 0.25 | full | 30 | master-plan §10 | F1+F2: vẽ, đọc tọa độ, tìm hệ số. MCQ+numeric |
@@ -319,7 +319,7 @@ Thứ tự xen kẽ Track A và Track B để giữ motivation và interleaving 
 | 5 | f1-tgon | A | backfill-dai-so | Thu gọn đa thức & phân thức | f1-hdt, f1-pnt | scaffolded | 1.0 |
 | 6 | a-bieudo | B | thong-ke | Biểu đồ & khai thác dữ liệu | a-tanso | full | 0.5 |
 | 7 | f1-qd | A | backfill-dai-so | Quy đồng & điều kiện xác định | f1-tgon | scaffolded | indirect |
-| 8 | b-xsuat | B | xac-suat | Xác suất cổ điển & ứng dụng | b-phepthu | full | 0.5 |
+| 8 | b-xsuat | B | xac-suat | Xác suất cổ điển & một bước | b-phepthu | full | 0.5 |
 | 9 | c-dkxd | A | can-thuc | Điều kiện xác định biểu thức căn | f1-qd | full | 0.25 |
 | 10 | p-trunon | B | hinh-khoi | Hình trụ & hình nón: công thức | — | full | 0.5 |
 

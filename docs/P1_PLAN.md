@@ -74,7 +74,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 
 | Phần | Thiết kế |
 |---|---|
-| `content/curriculum.json` (LT1) | `{ start, learnBy, units: [{ id, module, track: "A"\|"B"\|"C", seq, prereq: [], examWeight: number\|"indirect", grading: "full"\|"scaffolded"\|"partial"\|"tutor", testOut: bool, batch: 1–10 }] }`. H+Q thuộc track A. Đủ 50 KU kể cả KU chưa có file. |
+| `content/curriculum.json` (LT1) | `{ start: "2026-10-12", learnBy: "2027-03-31", modules: [{ id, title, domains }], units: [{ id, module, title, track: "A"\|"B"\|"C", seq, prereq: [], examWeight: number\|"indirect", grading: "full"\|"scaffolded"\|"partial"\|"tutor", testOut: bool, batch: 0–10 }] }`. H+Q thuộc track A. Đủ 50 KU kể cả KU chưa có file; `title` dùng cho KU/module chưa có file (bản đồ, danh sách phụ huynh). Giá trị: xem "Quyết định chi tiết" bên dưới. |
 | Kiểm tra (`npm test`) | 50 id duy nhất, khớp bảng trong CURRICULUM.md; `seq` duy nhất; tiên quyết tồn tại, không vòng, có `seq` nhỏ hơn; module tồn tại; mọi file KU có trong curriculum; `testOut` chỉ cho track B hoặc module `backfill-*`. |
 | Schema | `estMinutes` ≤ 90; `module.json`: `domains: string[]` nhận `A–Q`, `F0–F3` (giữ đọc được `domain` cũ). |
 | Registry | Script `npm run content:index` sinh `src/lib/content/registry.generated.ts` (import tĩnh mọi JSON); test báo lỗi nếu file sinh ra cũ. Bỏ sửa tay `index.ts`. |
@@ -87,12 +87,28 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | Phụ huynh | `/parent/content` nhóm theo đợt (batch) + trạng thái Nháp/Đã duyệt/Chưa soạn; trong trang 1 KU: nút **"Mở khoá cho con"** khi KU đang khoá. |
 | Migration **0009** | `unit_unlocks (student_id, unit_id, unlocked_by, unlocked_at)` + `unit_progress.testout_run uuid`, `testout_at timestamptz`. Chỉ thêm; RLS đọc như bảng học khác; ghi qua server action (mở tay: chỉ phụ huynh). GRANT `service_role`. Test PGlite. |
 
+**Quyết định chi tiết S6a** (bổ sung 05/10 sau bridge test — agent mới đọc repo và liệt kê chỗ phải đoán; đây là mặc định, phụ huynh đổi được):
+
+| Chỗ phải đoán | Mặc định |
+|---|---|
+| Nhánh gốc | Tách từ `main`. Nếu PR #10 (tài liệu này) chưa merge thì **xếp chồng trên `p1-curriculum-design`** như các PR trước. S6a không phụ thuộc PR #11 (S4). |
+| `seq` | Thứ tự trong track, đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-phantram, g-honhop, h-bdt, hq-amgm, hq-doanhthu, hq-hinhhoc, hq-nangcao. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, j-coban, j-cung, k-goiintiep, k-tugiacnt, l-tieptuyen, l-kethop, m-vitri, n-ngoainoi, o-chungminh, o-dongdang, o-nangcao. |
+| `batch` | Theo bảng H6 trong CURRICULUM.md; htl-1, htl-2 = **0** (đã có). |
+| `testOut` | `true` cho mọi KU track B (kể cả htl-1/2) và f1-hdt, f1-pnt, f1-tgon, f1-qd, f3-dongdang; còn lại `false`. |
+| `title`, thời lượng | KU đã có file: file là chuẩn (test bắt `title` trong curriculum = file). `estMinutes` chỉ lấy từ file; số phút trong CURRICULUM.md là ước tính lập kế hoạch. `order` trong file KU giữ nguyên cho thứ tự trong module; `seq` chỉ dùng để gợi ý bài. |
+| Mức dùng để mở khoá | Mức hệ thống ≥ M3 **hoặc** mở tay. Khi S4 (PR #11) merge, S4b đổi sang "mức hiển thị cuối" (phụ huynh chốt nếu mới hơn). |
+| 3 trạng thái chưa học | 🔒 **Khoá** (tiên quyết chưa đạt) · ○ **Chưa bắt đầu** (đã mở, M0) · **Sắp có** (chưa có bài đã duyệt, hiện mờ). 🔒 chỉ dùng cho "Khoá". |
+| Kiểm tra vượt không đạt | KU chuyển sang "Đang học" ngay (tính vào giới hạn 2 bài), mở ở lời giải mẫu. Câu trả lời của lượt đó **không** tính vào mastery và số "câu đã làm", nhưng lượt nộp vẫn tính **một buổi học** cho mục tiêu tuần. |
+| Giới hạn ôn | 1 phiên/ngày, tối đa 5 bài; bài còn lại hiện "Còn N bài, ôn ngày mai". Phiên đang dở mở lại giữ nguyên kế hoạch cũ (không vượt 5). |
+| "Mở khoá cho con" | Nút theo từng học sinh mà phụ huynh quản lý (D11); hiện chỉ có Nguyên → 1 nút. |
+| Nội dung cho e2e | KU giả trong `e2e/fixtures/content/` (đã duyệt, 7+ KU đủ để test gợi ý, mở khoá, kiểm tra vượt, giới hạn ôn). `e2e/run.sh` sinh registry **kèm fixtures** rồi hoàn nguyên như bản vá hiện có; CI chặn commit registry có fixtures. Không cần phụ huynh duyệt nội dung thật để chạy nghiệm thu. |
+
 **Nghiệm thu S6a:**
 - `npm test` bắt được: thiếu KU, tiên quyết sai/vòng, file KU không có trong curriculum, registry cũ.
-- e2e: học sinh mới chỉ thấy 2 gợi ý (f1-hdt + a-tanso khi cả hai đã duyệt); xong f1-hdt đến M3 → f1-pnt mở; đang học 2 bài → không còn gợi ý mới.
-- e2e: kiểm tra vượt a-tanso đạt → M3 + lịch ôn; không đạt → vào luồng học, mastery không đổi; không thử lần 2 được.
+- e2e (trên KU giả trong fixtures): học sinh mới chỉ thấy 2 gợi ý (bài đầu track A + bài đầu track B); bài đầu track A đạt M3 → bài kế mở; đang học 2 bài → không còn gợi ý mới.
+- e2e: kiểm tra vượt bài đầu track B đạt → M3 + lịch ôn; không đạt → vào luồng học, mastery không đổi; không thử lần 2 được.
 - e2e: 7 bài đến hạn → phiên ôn chỉ có 5 bài; ngày hôm sau còn 2.
-- e2e: phụ huynh mở khoá tay f1-pnt → học sinh thấy f1-pnt trong gợi ý.
+- e2e: phụ huynh mở khoá tay một bài đang khoá → học sinh thấy bài đó trong gợi ý.
 - Bản đồ 50 KU trên điện thoại 390px không cuộn quá 2 màn khi chỉ 1 module mở.
 
 ### S6b — Loại câu nhiều bước, hình SVG, nhãn gia sư
