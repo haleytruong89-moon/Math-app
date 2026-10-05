@@ -32,7 +32,7 @@ ok("today: only next new unit listed", (await page.getByRole("link", { name: "H�
 ok("today: journey teaser 0/2", (await page.getByTestId("journey-teaser").getByText("0/2 bài đạt M3+").count()) === 1);
 await page.getByTestId("journey-teaser").click();
 await page.waitForURL(/\/student\/journey$/);
-ok("journey: 2 units at M0 🌰 'Chưa bắt đầu'", (await page.getByTestId("node-htl-1").getByText("M0 — Chưa bắt đầu").count()) === 1 && (await page.getByTestId("node-htl-2").getByText("🌰").count()) === 1);
+ok("journey: htl-1 open 🌰, htl-2 locked 🔒 (needs htl-1 at M3)", (await page.getByTestId("node-htl-1").getByText("M0 — Chưa bắt đầu").count()) === 1 && (await page.getByTestId("node-htl-2").getByText(/Khoá — cần đạt M3/).count()) === 1);
 ok("journey: summary 0 · 0 · 2", (await page.getByTestId("journey-summary").innerText()).replace(/\s+/g, " ").includes("0 Đã vững 0 Đang học 2 Chưa bắt đầu"));
 await page.screenshot({ path: "e2e/out/student/1b-journey-start.png", fullPage: true });
 await page.goto(`${BASE}/student`);
@@ -142,7 +142,8 @@ await page.goBack();
 await page.goto(`${BASE}/student`);
 ok("today: review card gone", (await page.getByRole("link", { name: "Bắt đầu ôn" }).count()) === 0);
 await page.screenshot({ path: "e2e/out/student/7-today-end.png", fullPage: true });
-// ---- Q5: passing D+21 → maintenance every 60 days, M4
+// ---- Q5: passing D+21 → maintenance every 60 days, M4 (next day: one review session a day, LT8)
+await sql(`update public.review_log set created_at = now() - interval '1 day'`);
 await sql(`update public.review_queue set stage = 3, due_on = '${vnToday}' where unit_id = 'htl-1'`);
 await page.goto(`${BASE}/student/review`);
 for (let i = 0; i < 3; i++) {

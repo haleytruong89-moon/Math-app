@@ -1,0 +1,147 @@
+{
+  "start": "2026-10-12",
+  "learnBy": "2027-03-31",
+  "modules": [
+    {
+      "id": "fx-alg",
+      "title": "Đại số thử",
+      "domains": [
+        "C"
+      ]
+    },
+    {
+      "id": "backfill-fx",
+      "title": "Bù lỗ hổng thử",
+      "domains": [
+        "F1"
+      ]
+    },
+    {
+      "id": "fx-quick",
+      "title": "Ghi điểm thử",
+      "domains": [
+        "A"
+      ]
+    },
+    {
+      "id": "fx-geo",
+      "title": "Hình học thử",
+      "domains": [
+        "J"
+      ]
+    },
+    {
+      "id": "fx-later",
+      "title": "Chưa soạn thử",
+      "domains": [
+        "Q"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "fz-1",
+      "module": "backfill-fx",
+      "title": "Bù lỗ hổng thử 1",
+      "track": "A",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "fa-1",
+      "module": "fx-alg",
+      "title": "Đại số thử 1",
+      "track": "A",
+      "seq": 20,
+      "prereq": [
+        "fz-1"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 1
+    },
+    {
+      "id": "fa-2",
+      "module": "fx-alg",
+      "title": "Đại số thử 2",
+      "track": "A",
+      "seq": 30,
+      "prereq": [
+        "fa-1"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 1
+    },
+    {
+      "id": "fb-1",
+      "module": "fx-quick",
+      "title": "Ghi điểm thử 1",
+      "track": "B",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "fb-2",
+      "module": "fx-quick",
+      "title": "Ghi điểm thử 2",
+      "track": "B",
+      "seq": 20,
+      "prereq": [
+        "fb-1"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 1
+    },
+    {
+      "id": "fb-3",
+      "module": "fx-quick",
+      "title": "Ghi điểm thử 3",
+      "track": "B",
+      "seq": 30,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": true,
+      "batch": 2
+    },
+    {
+      "id": "fc-1",
+      "module": "fx-geo",
+      "title": "Hình học thử 1",
+      "track": "C",
+      "seq": 10,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 1
+    },
+    {
+      "id": "fl-1",
+      "module": "fx-later",
+      "title": "Bài chưa soạn thử",
+      "track": "A",
+      "seq": 40,
+      "prereq": [
+        "fa-2"
+      ],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 9
+    }
+  ]
+}

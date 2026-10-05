@@ -40,10 +40,13 @@ export function LessonPlayer({
   const [workedViewed, setWorkedViewed] = useState(initial.workedViewed);
   const [fadedDone, setFadedDone] = useState(initial.fadedDone);
   const [stage, setStage] = useState<Stage>(initial.fadedDone ? "practice" : initial.workedViewed ? "faded" : "learn");
+  // Held in state: after submitting, the server re-renders this page as "already tried" (prop → false),
+  // which must not swap the result the student is reading for the normal lesson.
+  const [testOutMode, setTestOutMode] = useState(testOut);
 
   const unlocked = (s: Stage) => s === "learn" || (s === "faded" ? workedViewed : fadedDone);
 
-  if (testOut) {
+  if (testOutMode) {
     return (
       <div>
         <p className="font-mono text-xs text-muted">{unit.moduleTitle}</p>
@@ -53,7 +56,7 @@ export function LessonPlayer({
           Chưa đạt cũng không sao — con học bài như bình thường. Chỉ được làm <b>một lần</b>.
         </p>
         <div className="mt-6">
-          <ExitStage unit={unit} backHref={backHref} testOut />
+          <ExitStage unit={unit} backHref={backHref} testOut onStartLearning={() => setTestOutMode(false)} />
         </div>
       </div>
     );
@@ -376,7 +379,17 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
 
 // ---------------------------------------------------------------------
 
-function ExitStage({ unit, backHref, testOut = false }: { unit: PublicUnit; backHref: string; testOut?: boolean }) {
+function ExitStage({
+  unit,
+  backHref,
+  testOut = false,
+  onStartLearning,
+}: {
+  unit: PublicUnit;
+  backHref: string;
+  testOut?: boolean;
+  onStartLearning?: () => void;
+}) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<Extract<ExitResult, { ok: true }> | null>(null);
   const { pending, error, run } = useAction();
@@ -439,7 +452,7 @@ function ExitStage({ unit, backHref, testOut = false }: { unit: PublicUnit; back
           );
         })}
         {result.testOut && !result.testOut.passed && (
-          <Link href={`/student/learn/${unit.id}`} className="rounded-lg bg-accent px-4 py-3 text-center font-display font-bold text-on-accent">
+          <Link href={`/student/learn/${unit.id}`} onClick={onStartLearning} className="rounded-lg bg-accent px-4 py-3 text-center font-display font-bold text-on-accent">
             Bắt đầu học bài này
           </Link>
         )}
