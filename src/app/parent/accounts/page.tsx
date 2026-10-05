@@ -7,10 +7,13 @@ import {
   assignTutor,
   createAccount,
   createStudent,
+  deleteStudent,
   endAssignment,
   resetPassword,
   setAccountLocked,
+  updateStudent,
 } from "./actions";
+import { deleteImpact } from "@/lib/accounts/rules";
 
 export const metadata: Metadata = { title: "Tài khoản — App Toán" };
 
@@ -18,8 +21,10 @@ const ROLE_LABEL: Record<string, string> = { parent: "Phụ huynh", tutor: "Gia 
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" });
 
-export default async function AccountsPage() {
+export default async function AccountsPage(props: PageProps<"/parent/accounts">) {
   await requireRole("parent");
+  const sp = await props.searchParams;
+  const linkFor = typeof sp.student === "string" ? sp.student : "";
   const supabase = await createClient();
 
   const [{ data: profiles }, { data: students }, { data: assignments }, users] = await Promise.all([
@@ -37,6 +42,25 @@ export default async function AccountsPage() {
   const studentName = new Map((students ?? []).map((s) => [s.id, s.full_name]));
   const tutors = (profiles ?? []).filter((p) => p.role === "tutor" && p.is_active);
   const studentsWithoutLogin = (students ?? []).filter((s) => !s.profile_id);
+  const preselect = studentsWithoutLogin.some((s) => s.id === linkFor) ? linkFor : "";
+
+  // What a delete would remove, per student (the parent reads these through RLS).
+  const count = async (table: string, studentId: string) =>
+    (await supabase.from(table).select("*", { count: "exact", head: true }).eq("student_id", studentId)).count ?? 0;
+  const impact = new Map(
+    await Promise.all(
+      (students ?? []).map(async (s) => {
+        const [attempts, sessions, homework] = await Promise.all([
+          count("attempts", s.id),
+          count("teaching_sessions", s.id),
+          count("homework", s.id),
+        ]);
+        return [s.id, deleteImpact({ attempts, sessions, homework, hasLogin: !!s.profile_id })] as const;
+      }),
+    ),
+  );
+  const tutorsOf = (studentId: string) =>
+    (assignments ?? []).filter((a) => a.student_id === studentId && !a.ended_at).map((a) => nameOf.get(a.tutor_id) ?? "?");
 
   return (
     <div className="flex flex-col gap-10">
@@ -97,13 +121,75 @@ export default async function AccountsPage() {
         </div>
       </section>
 
+      <section aria-label="Học sinh">
+        <h2 className="font-display text-xl font-bold">Học sinh</h2>
+        <p className="mt-2 text-sm text-muted">
+          Mỗi học sinh có <b>hồ sơ</b> (tên, lớp, bài làm) và <b>tài khoản đăng nhập</b> (email + mật khẩu) gắn với hồ sơ đó.
+        </p>
+        <ul className="mt-4 divide-y divide-border rounded-xl border border-border bg-surface">
+          {(students ?? []).map((s) => {
+            const tutorNames = tutorsOf(s.id);
+            return (
+              <li key={s.id} className="flex flex-col gap-3 px-4 py-3.5" data-testid={`student-${s.id}`}>
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <span>
+                    <b>{s.full_name}</b> <span className="text-sm text-muted">· lớp {s.grade}</span>
+                  </span>
+                  <span className="text-sm text-muted">{tutorNames.length ? `Gia sư: ${tutorNames.join(", ")}` : "Chưa có gia sư"}</span>
+                </div>
+                {s.profile_id ? (
+                  <p className="font-mono text-xs">Đăng nhập: {emailOf.get(s.profile_id) ?? "?"}</p>
+                ) : (
+                  <p className="text-sm text-warn">
+                    Chưa có tài khoản đăng nhập —{" "}
+                    <a href={`?student=${s.id}#tao-tai-khoan`} className="text-accent underline">
+                      tạo tài khoản cho {s.full_name}
+                    </a>
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <details>
+                    <summary className="cursor-pointer text-accent">Sửa</summary>
+                    <ActionForm action={updateStudent} submitLabel="Lưu" variant="quiet" className="mt-2 flex flex-wrap items-end gap-2">
+                      <input type="hidden" name="studentId" value={s.id} />
+                      <label className={`${labelClass} min-w-48`}>
+                        Họ tên
+                        <input name="fullName" required maxLength={80} defaultValue={s.full_name} className={inputClass} />
+                      </label>
+                      <label className={`${labelClass} w-20`}>
+                        Lớp
+                        <input name="grade" type="number" min={1} max={12} required defaultValue={s.grade} className={inputClass} />
+                      </label>
+                    </ActionForm>
+                  </details>
+                  <details>
+                    <summary className="cursor-pointer text-warn">Xoá hồ sơ</summary>
+                    <ActionForm action={deleteStudent} submitLabel="Xoá vĩnh viễn" variant="warn" className="mt-2 flex flex-col gap-2">
+                      <input type="hidden" name="studentId" value={s.id} />
+                      <p className="text-sm">{impact.get(s.id)} Không hoàn tác được.</p>
+                      <label className={labelClass}>
+                        Gõ lại họ tên “{s.full_name}” để xác nhận
+                        <input name="confirmName" required autoComplete="off" className={inputClass} />
+                      </label>
+                    </ActionForm>
+                  </details>
+                </div>
+              </li>
+            );
+          })}
+          {!students?.length && (
+            <li className="px-4 py-3.5 text-sm text-muted">Chưa có học sinh — thêm hồ sơ ở mục “Thêm học sinh” bên dưới.</li>
+          )}
+        </ul>
+      </section>
+
       <div className="grid gap-6 md:grid-cols-2">
-        <section className="rounded-xl border border-border bg-surface p-5">
+        <section id="tao-tai-khoan" className="rounded-xl border border-border bg-surface p-5">
           <h2 className="font-display text-base font-semibold">Tạo tài khoản mới</h2>
           <ActionForm action={createAccount} submitLabel="Tạo tài khoản" className="mt-4 flex flex-col gap-3">
             <label className={labelClass}>
               Vai trò
-              <select name="role" className={inputClass} defaultValue="tutor">
+              <select name="role" className={inputClass} defaultValue={preselect ? "student" : "tutor"}>
                 <option value="tutor">Gia sư</option>
                 <option value="student">Học sinh</option>
               </select>
@@ -115,19 +201,25 @@ export default async function AccountsPage() {
             <label className={labelClass}>
               Email đăng nhập
               <input name="email" type="email" required placeholder="vd: co.trang@gmail.com" className={inputClass} autoComplete="off" />
+              <span className="text-xs text-muted">
+                Dùng để đăng nhập (không phải tên người dùng). App không gửi thư tới email này — có thể dùng dạng tenban+nguyen@gmail.com.
+              </span>
             </label>
             <label className={labelClass}>
               Mật khẩu ban đầu
               <input name="password" type="text" required minLength={10} placeholder="≥ 10 ký tự" className={inputClass} autoComplete="off" />
             </label>
             <label className={labelClass}>
-              Gắn với học sinh (chỉ khi tạo tài khoản học sinh)
-              <select name="studentId" className={inputClass} defaultValue="">
+              Gắn với hồ sơ học sinh (bắt buộc khi tạo tài khoản học sinh)
+              <select name="studentId" className={inputClass} defaultValue={preselect}>
                 <option value="">—</option>
                 {studentsWithoutLogin.map((s) => (
                   <option key={s.id} value={s.id}>{s.full_name}</option>
                 ))}
               </select>
+              {!studentsWithoutLogin.length && (
+                <span className="text-xs text-muted">Mọi hồ sơ đều đã có tài khoản. Tạo hồ sơ mới ở mục “Thêm học sinh” trước.</span>
+              )}
             </label>
           </ActionForm>
         </section>
@@ -178,7 +270,7 @@ export default async function AccountsPage() {
 
         <section className="rounded-xl border border-border bg-surface p-5 md:col-span-2">
           <h2 className="font-display text-base font-semibold">Thêm học sinh</h2>
-          <p className="mt-1 text-sm text-muted">Dùng khi bắt đầu cho An dùng app (D11).</p>
+          <p className="mt-1 text-sm text-muted">Bước 1 khi cho một học sinh dùng app: tạo hồ sơ ở đây, rồi tạo tài khoản đăng nhập gắn với hồ sơ đó.</p>
           <ActionForm action={createStudent} submitLabel="Thêm" className="mt-4 flex flex-wrap items-end gap-3">
             <label className={`${labelClass} min-w-56 flex-1`}>
               Họ tên

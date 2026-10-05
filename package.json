@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:db": "node supabase/tests/rls.test.mjs",
-    "test:content": "node --test src/lib/content/*.test.ts src/lib/learning/*.test.ts",
+    "test:content": "node --test src/lib/content/*.test.ts src/lib/learning/*.test.ts src/lib/accounts/*.test.ts",
     "test": "npm run test:content && npm run test:db"
   },
   "dependencies": {
