@@ -156,6 +156,8 @@ check('homework must match its session tutor', await bad(hwIns(`(select id from 
 check('homework task 1–300 chars', await bad(hwIns(`tutor_id, '', '{}', current_date`)) && await bad(hwIns(`tutor_id, repeat('x', 301), '{}', current_date`)), true);
 check('homework links: at most 3', await bad(hwIns(`tutor_id, 'x', array['https://a','https://b','https://c','https://d'], current_date`)), true);
 check('homework links: https only', await bad(hwIns(`tutor_id, 'x', array['http://drive.google.com/x'], current_date`)) && await bad(hwIns(`tutor_id, 'x', array['javascript:alert(1)'], current_date`)), true);
+check('homework links: no null elements', await bad(hwIns(`tutor_id, 'x', array[null]::text[], current_date`)), true);
+check('homework_links_ok has a fixed search_path', (await db.query(`select proconfig from pg_proc where proname = 'homework_links_ok'`)).rows[0].proconfig, ['search_path=""']);
 check('review note needs reviewed_at', await bad(`update public.homework set review_note = 'x' where task = 'bài mới'`), true);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);

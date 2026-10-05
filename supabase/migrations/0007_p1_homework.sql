@@ -4,8 +4,8 @@
 -- Clients may only SELECT (RLS); writes go through server actions with service_role.
 
 create function public.homework_links_ok(l text[]) returns boolean
-  language sql immutable
-  as $$ select coalesce(bool_and(x ~ '^https://[^[:space:]]+$' and char_length(x) <= 500), true) from unnest(l) as x $$;
+  language sql immutable set search_path = ''
+  as $$ select coalesce(bool_and(x is not null and x ~ '^https://[^[:space:]]+$' and char_length(x) <= 500), true) from unnest(l) as x $$;
 
 create table public.homework (
   id uuid primary key default gen_random_uuid(),
