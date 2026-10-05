@@ -7,7 +7,9 @@ import { checkReview, finishReview } from "@/app/learn/actions";
 import { RightTriangleAltitude } from "./figure";
 import { FORMAT_HINT, ItemInput } from "./item-input";
 import { Rich } from "./rich";
-import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
+import { Card, ErrorLine, PrimaryButton, useAction, useStartTime } from "./parts";
+import { QuestionFeedback } from "@/components/student/question-feedback";
+import { sessionTally } from "@/lib/learning/student-ux";
 
 const STAGE_LABEL = { 1: "D+1", 2: "D+7", 3: "D+21", 4: "duy trì" } as const;
 
@@ -46,6 +48,7 @@ export function ReviewPlayer({
   const [ratings, setRatings] = useState<Record<string, "easy" | "normal">>({});
   const [summary, setSummary] = useState<Extract<ReviewSummary, { ok: true }> | null>(null);
   const [hint, setHint] = useState<string | null>(null);
+  const [results, setResults] = useState<boolean[]>([]); // this session only (U2)
   const { pending, error, run } = useAction();
   const startedAtRef = useStartTime();
 
@@ -64,6 +67,7 @@ export function ReviewPlayer({
         return;
       }
       setResult(r);
+      setResults((x) => [...x, r.correct]);
       setScore((s) => {
         const u = s[q.unitId] ?? { correct: 0, total: 0 };
         return { ...s, [q.unitId]: { correct: u.correct + (r.correct ? 1 : 0), total: u.total + 1 } };
@@ -177,11 +181,15 @@ export function ReviewPlayer({
         {hasFigure && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
         <Rich as="div" html={q.item.promptHtml} className="mt-2 leading-relaxed" />
         <ItemInput key={`${q.item.id}-${pos}`} item={q.item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
-        {result && <Feedback result={result} />}
         {result ? (
-          <PrimaryButton className="mt-4 w-full" onClick={next}>
-            {pos + 1 < questions.length ? "Câu tiếp" : "Xem kết quả"}
-          </PrimaryButton>
+          <QuestionFeedback
+            result={result}
+            mode="review"
+            tally={sessionTally(results)}
+            index={results.length - 1}
+            nextLabel={pos + 1 < questions.length ? "Câu tiếp" : "Xem kết quả"}
+            onNext={next}
+          />
         ) : (
           <PrimaryButton className="mt-4 w-full" disabled={pending} onClick={check}>
             {pending ? "Đang chấm…" : "Kiểm tra"}

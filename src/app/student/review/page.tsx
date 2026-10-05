@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { publicItem } from "@/lib/content";
-import { dueReviews, loadStudentState } from "@/lib/learning/state";
+import { dueReviews, loadStudentState, todaysReview } from "@/lib/learning/state";
 import { planReview } from "@/lib/learning/rules";
 import { ReviewPlayer } from "@/components/lesson/review-player";
 
@@ -23,11 +23,15 @@ export default async function ReviewPage() {
     supabase.from("review_log").select("run_id, unit_id").eq("student_id", me.id),
   ]);
   if (log.error) console.error("ReviewPage review_log", log.error.message);
-  const due = dueReviews(state);
+  const scored = new Set((log.data ?? []).map((r) => `${r.run_id}|${r.unit_id}`));
+  const asPlan = (us: ReturnType<typeof dueReviews>) => us.map((u) => ({ unitId: u.unit.id, pool: u.unit.practice, attempts: u.attempts }));
+  // LT8: an unfinished run keeps its units; otherwise the 5 most overdue, one session a day.
+  const open = planReview(asPlan(dueReviews(state)), scored);
+  const { units: due, later } = todaysReview(state, open.runId ? [...new Set(open.answered.map((a) => a.unitId))] : []);
   if (!due.length) {
     return (
       <div className="rounded-xl border border-border bg-surface p-4">
-        <p>Hôm nay không có bài nào đến hạn ôn.</p>
+        <p>{later ? `Hôm nay con đã ôn xong rồi. Còn ${later} bài, ôn ngày mai nhé.` : "Hôm nay không có bài nào đến hạn ôn."}</p>
         <Link href="/student" className="mt-3 inline-block text-accent hover:underline">
           ← Về trang chính
         </Link>
@@ -37,10 +41,7 @@ export default async function ReviewPage() {
 
   // Review questions come from practice only: exit-test solutions must stay unseen
   // until the student retakes the test. Reloading resumes the unfinished run.
-  const plan = planReview(
-    due.map((u) => ({ unitId: u.unit.id, pool: u.unit.practice, attempts: u.attempts })),
-    new Set((log.data ?? []).map((r) => `${r.run_id}|${r.unit_id}`)),
-  );
+  const plan = planReview(asPlan(due), scored);
   const title = new Map(due.map((u) => [u.unit.id, u.unit.title]));
 
   return (

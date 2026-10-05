@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { listModules } from "@/lib/content";
+import { curriculum } from "@/lib/content";
 import { vnDate } from "@/lib/learning/rules";
 import { parseSession } from "@/lib/learning/session";
 import { parseHomework, readHomeworkForm, reviewNote } from "@/lib/learning/homework";
@@ -37,7 +37,7 @@ const NOT_ASSIGNED = "Bạn không còn được phân công dạy học sinh n�
 export async function saveTeachingSession(_p: SaveSessionState, fd: FormData): Promise<SaveSessionState> {
   const tutor = await requireRole("tutor");
 
-  const units = new Map(listModules().flatMap((m) => m.unitList.map((u) => [u.id, u.title] as const)));
+  const units = new Map(curriculum().units.map((u) => [u.id, u.title] as const)); // S6a: every roadmap KU
   const ticked = fd.getAll("unit");
   const levels: Record<string, unknown> = {};
   for (const id of ticked) levels[String(id)] = fd.get(`level:${String(id)}`);

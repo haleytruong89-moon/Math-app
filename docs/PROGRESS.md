@@ -12,12 +12,13 @@
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot · S3b công cụ gia sư + bài về nhà | `p1-fixes`, `p1-tutor-tools`, `p1-homework` | ✅ Merged 05/10 (PR #4, #5, #7) — SQL 0007 |
 | Tài khoản: danh sách, đổi tên, xoá | `p1-account-tools` | ✅ Merged 05/10 (PR #9) |
-| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **chờ chạy SQL 0008** rồi merge |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | ✅ Merged 05/10 (qua PR #13), SQL 0008 đã chạy |
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
-| Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | 🟡 PR #10 |
-| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
-| UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
+| Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | ✅ Merged 05/10 (PR #10) |
+| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
+| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8) | `p1-slice-6a2` | ⬜ **Tiếp theo**, trước khi soạn đợt 1 |
+| UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
@@ -33,6 +34,27 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 05/10/2026 — S6a Bộ lộ trình (nhánh `p1-slice-6a`)
+
+**Phụ huynh cần làm:** merge theo thứ tự **#11 (sau SQL 0008) → #12 → #10 → PR S6a**; trước khi merge S6a chạy **SQL 0009** (`supabase/migrations/0009_p1_curriculum.sql`: bảng `unit_unlocks` + 2 cột kiểm tra vượt trong `unit_progress`). Chỉ thêm, không sửa dữ liệu cũ.
+
+**Đã làm:**
+- `content/curriculum.json` 50 KU / 17 module (LT1); test bắt: thiếu KU, tiên quyết sai/vòng, file không có trong lộ trình, title/domains lệch, registry cũ.
+- Registry sinh tự động (`npm run content:index`) thay danh sách import tay.
+- Mở khoá khi tiên quyết đạt M3 hoặc phụ huynh mở tay (LT2); gợi ý 1 bài track A + 1 bài B/C, tối đa 2 bài đang học (LT3); kiểm tra vượt 1 lần cho track B + bù nền (LT4); ôn tối đa 5 bài, 1 phiên/ngày (LT8); bản đồ nhóm track → module, 🔒 / 🌰 / "Sắp có" (LT9).
+- Gia sư: 50 KU nhóm theo module + ô tìm, "cần gia sư xác nhận" đứng đầu. Phụ huynh: nội dung theo đợt + "Chưa soạn", nút "Mở khoá cho con".
+- e2e trên KU giả (`e2e/fixtures/content`); các luồng cũ vẫn chạy trên nội dung thật.
+
+**Thay đổi phụ huynh nên biết:** htl-2 giờ **khoá** cho đến khi htl-1 đạt M3 (tiên quyết theo CURRICULUM.md). Muốn con làm htl-2 trước: vào Nội dung → htl-2 → "Mở khoá cho con".
+
+**Quyết định khi làm (mặc định, đổi được):** R1 bài đã bắt đầu không bao giờ khoá lại; R2 xếp chồng trên #12; R3 e2e S6a dùng registry riêng của fixtures. Ghi trong `docs/SPEC.md` §0.
+
+**Kiểm tra:** lint, `npm test` (73 + 88 RLS), build, `./e2e/run.sh` 148 PASS.
+
+**Review cuối (đã sửa 2 điểm quan trọng):** mức phụ huynh chốt không còn bị mất sau khi qua kiểm tra vượt; hai lần nộp kiểm tra vượt cùng lúc chỉ giữ một. **Để sau (nhỏ):** phiên ôn bắt đầu 23:55 xong 00:05 tính cho ngày hôm sau; giới hạn 5 bài/1 phiên chỉ chặn ở trang (không ở action); `e2e/run.sh` khôi phục registry bằng git checkout (mất bản chưa commit); trang Nội dung tải toàn bộ trạng thái từng con; đề xuất của gia sư cho KU chưa có bài hiện mã thay vì tên và không lên cờ cho phụ huynh; xoá hồ sơ phụ huynh xoá luôn các bài đã mở tay chưa học; phiên ôn mở lại chỉ giữ các bài đã có câu trả lời.
 
 ---
 
@@ -111,6 +133,62 @@ chuẩn hoá htl-1/2. CLAUDE.md trỏ tới file này.
 **Scope:** Chỉ thay đổi UI student routes — không sửa server logic, DB schema, hay parent/tutor routes.
 
 **Claude Code cần làm:** Đọc `docs/HANDOVER_STUDENT_UX.md` → implement theo thứ tự đề xuất (§8 trong handover).
+
+---
+
+## 05/10/2026 — Giao diện học sinh mới (nhánh `p1-student-ux`)
+
+Spec `docs/superpowers/specs/2026-10-05-student-ux-design.md` (U1–U8, phụ huynh duyệt 05/10; thay handover PR #6). **Không có SQL.** Xếp chồng trên `p1-slice-4`.
+
+### Đã làm
+- **Theme ấm** (kem + teal, có bản tối) chỉ cho trang học sinh; phụ huynh/gia sư giữ giao diện cũ.
+- **Trang chủ**: header teal "Chào buổi sáng/chiều/tối" + tên + ngày + **vòng mục tiêu tuần**; "Hôm nay cần làm" chia nhóm Ôn lại → Bài về nhà → Đang học → Bài mới (emoji mức trên mỗi thẻ, nút teal); dải "x/y bài đạt M3+ · Xem hành trình →".
+- **Trang mới "Hành trình của con"** (`/student/journey`): 3 ô Đã vững / Đang học / Chưa bắt đầu, đường dọc 🌰 → 🌱 → 🌿 → 🌳 → ⭐, lịch ôn kế tiếp, "bố mẹ chốt".
+- **Thẻ sau mỗi câu luyện tập / ôn**: đúng → 🎉 "Chính xác!", "Đúng x/y câu lượt này" (tổng, không phải chuỗi), lời giải, gợi ý lên mức theo đúng quy tắc ("Làm thêm 4 câu luyện để hệ thống đánh giá lên M2", "Làm bài kiểm tra cuối để lên M3"…); sai → 💡 "Gần đúng rồi!"/"Chưa đúng", lời nhắc, nhãn lỗi tiếng Việt ("E10 — Sơ ý"), "Con trả lời / Đáp án đúng", lời giải, "Câu này sẽ quay lại cuối bài", **chỉ "Câu tiếp"** (không "Thử lại").
+- **Tên lỗi E01–E15** (master plan §26): tiếng Anh là chuẩn, con thấy tiếng Việt (`src/lib/content/errors.ts`).
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **62** test quy tắc/nội dung (thêm 5: tên lỗi, lời chào theo giờ VN, gợi ý lên mức mọi mức + ranh giới 5 câu/60%, câu khen, đếm phiên) + **78** RLS.
+- `./e2e/run.sh`: **121/121** (header + vòng; dải hành trình → trang Hành trình 0·0·2 với 🌰; câu luyện đúng → "Chính xác!", "Đúng 1/1 câu lượt này", gợi ý M2; ôn sai → "Con trả lời"/"Đáp án đúng", không có "Thử lại"; M3 🌳 + "Ôn D+1"; M4 ⭐; "bố mẹ chốt"; xem trước phụ huynh: "Chưa đúng" + "quay lại cuối bài", không gợi ý; nền tối đúng màu). Đã xem ảnh chụp sáng/tối.
+
+### Phụ huynh cần làm
+1. Merge theo thứ tự **#9 → #11** (sau khi chạy SQL 0008) → PR này. Không có SQL mới.
+2. Thử preview bằng tài khoản con: trang chủ, "Xem hành trình", làm vài câu luyện tập (đúng và sai).
+3. Đóng **PR #6** (handover đã gộp vào đây: `docs/HANDOVER_STUDENT_UX.md`).
+
+### Ghi chú
+- Remediation Router (master plan §27) mới có hướng xử lý cho 7/15 mã lỗi — **E03, E07, E11, E13, E14, E15** cần bổ sung trước khi làm tính năng đó.
+
+---
+
+## 05/10/2026 — S4: Phụ huynh "Tổng quan" (nhánh `p1-slice-4`)
+
+Spec `docs/superpowers/specs/2026-10-05-parent-overview-design.md` (P1–P3, phụ huynh duyệt 05/10). **Có SQL mới: `0008`.** Nhánh xếp chồng trên `p1-account-tools` (PR #9) vì cùng sửa trang Tài khoản → merge #9 trước.
+
+**Chỉnh so với spec lúc lập kế hoạch:** mức bố mẹ chốt hiện **cho tới khi mức hệ thống đổi** (bỏ điều kiện "mới hơn đề xuất" — học sinh không đọc được đề xuất của gia sư). Gia sư đề xuất lại mà vẫn lệch → cờ lệch hiện lại.
+
+**Sửa sau review độc lập (3 điểm):** nhắc buổi chưa ghi chỉ trong **7 ngày** (bằng giới hạn ghi trễ — trước là 14, có nhắc không xoá được); gia sư đề xuất **trùng** mức bố mẹ đã chốt thì không bật cờ; mức hệ thống **đã đổi sau khi chốt** (kể cả đổi rồi quay lại) thì mức chốt hết hiệu lực hẳn.
+
+### Đã làm
+- **Tổng quan** (mỗi học sinh): 3 con số (bài đạt M3+ / tổng, bài ôn quá hạn, cờ lệch cần chốt) → **"Cần chú ý"**: cờ lệch (gia sư đề xuất M3 · hệ thống M1 + bằng chứng + ghi chú buổi dạy + "Xem bài làm" + **"Chốt mức"** M0–M4 có ghi chú) và **buổi dạy chưa ghi** (ngày dạy theo lịch đã qua > 24h, 14 ngày gần nhất) → **các bài** (mức hiển thị, "bố mẹ chốt", "ôn quá hạn") → **tuần này** (buổi học /4, bài kiểm tra, lượt ôn, buổi dạy đã ghi, bài về nhà giao/xong/chữa).
+- **Tài khoản**: chọn ngày dạy T2…CN khi gán gia sư; "Lịch: T3, T5 · Sửa lịch" cho phân công đang hoạt động. Chưa đặt lịch → Tổng quan nhắc đặt lịch.
+- Mức bố mẹ chốt hiện ở: bản đồ tiến độ của con ("bố mẹ chốt"), bằng chứng trong form gia sư ("Bố mẹ chốt M3 (05/10)"), "Bài làm của con". Lịch ôn, "Hôm nay cần làm" và quy tắc mức **không đổi** (P2).
+- SQL 0008: bảng `parent_confirmations` (giữ mọi lần chốt, chụp mức hệ thống lúc chốt), cột `tutor_assignments.weekdays` (DB chặn ngày sai/trùng).
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **54** test quy tắc/nội dung (thêm 6: ngày trong tuần, mức hiển thị, cờ lệch — kể cả đề xuất lại sau khi chốt, buổi chưa ghi — hôm nay chưa nhắc/trước ngày gán không nhắc/gia sư khác không tính, tóm tắt tuần) + **78** test RLS (thêm 13).
+- `./e2e/run.sh`: **115/115** (thêm 9): Tổng quan 0/2 · 0 · 1 cờ → chốt M3 có ghi chú → DB lưu kèm mức hệ thống, 1/2, hết cờ, "bố mẹ chốt"; nhắc ngày dạy hôm qua → ghi buổi → hết nhắc; sửa lịch → DB [2,5]; con thấy "bố mẹ chốt" trên bản đồ.
+
+### Phụ huynh cần làm (khoảng 15 phút)
+1. Merge **PR #9** trước (nếu chưa).
+2. **Chạy SQL** `supabase/migrations/0008_p1_parent_overview.sql` → "Success. No rows returned".
+3. Tài khoản → Lịch sử phân công → **Sửa lịch** → tick ngày gia sư dạy → Lưu lịch.
+4. Thử preview: Tổng quan → xem 3 con số, "Cần chú ý", "Các bài", "Tuần này". (Có cờ lệch thật thì có thể chốt luôn — đó là dữ liệu thật.)
+5. Merge PR.
+
+### Ghi chú kỹ thuật
+- Quy tắc thuần ở `src/lib/learning/overview.ts`; `StudentOverview` (`src/components/parent/student-overview.tsx`) đọc qua RLS của phụ huynh.
+- `parentOwnsStudent` chuyển sang `src/lib/parent.ts` (server-only), dùng chung cho `/parent` và Tài khoản.
 
 ---
 

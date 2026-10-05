@@ -36,15 +36,16 @@ Key choices
 |---|---|---|
 | `/login` | public | email + password |
 | `/` | any | redirect to the role's home |
-| `/parent` | parent | overview (P0 shell; real numbers in S4) |
+| `/parent` | parent | "Tổng quan" per student (`StudentOverview`): 3 numbers (M3+ by display level, overdue reviews, open flags), "Cần chú ý" (tutor/system mismatch flags + "Chốt mức"; missed sessions by weekly schedule, last 7 days = backdate limit, up to yesterday), unit map (display level, "bố mẹ chốt"), this week's summary |
 | `/parent/accounts` | parent | create/lock accounts, reset password, tutor assignment; **students**: profile list (login email or "chưa có tài khoản", tutors), rename/grade, delete (type the name again; cascades all learning data + deletes the linked login), "tạo tài khoản cho …" preselects the profile (`?student=`) |
-| `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
+| `/parent/content`, `/parent/content/[unitId]` | parent | the 50-KU roadmap grouped by content batch (Nháp / Đã duyệt / Chưa soạn) + preview that records nothing (D16); on a KU page, "Mở khoá cho con" per child for whom it is locked (`unlockUnit`) |
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
-| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |
+| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all 50 roadmap KUs grouped by module, search box, "cần gia sư xác nhận" first, "chưa có bài trên app" label) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |
 | `/tutor/[studentId]/work`, `/parent/students/[studentId]/work` | tutor (assigned), parent | "Bài làm của con" (`StudentWork`): per-unit summary (level, answers, error codes seen ≥ 2×, latest proposal) → one unit's answers, wrong only by default (`?unit=…&all=1`): student answer, right answer, error code + content feedback, "lần sau làm đúng", solution. Read-only, RLS |
-| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → next new |
-| `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only) |
-| `/student/review` | student | mixed review of all due units, interleaved |
+| `/student` | student | D18 consent gate → greeting header with weekly ring (`HomeHeader`) → "Hôm nay cần làm" grouped: reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → "Bài mới": up to 2 suggestions (LT3) with "Đã biết rồi? Làm bài kiểm tra luôn" on test-out KUs (LT4) |
+| `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only; locked → back to `/student`); `?testout=1` on a test-out KU not yet started = exit test only, once |
+| `/student/review` | student | mixed review of the ≤ 5 most overdue units (LT8), interleaved, one session per day; an unfinished run resumes with its own units; `QuestionFeedback` after each answer |
+| `/student/journey` | student | "Hành trình của con": summary (Đã vững / Đang học / Chưa bắt đầu) + track A/B/C → one collapsible module each (open = work in progress, else the first suggestion's module); node: plant emoji per display level, next review, "bố mẹ chốt", 🔒 "Khoá — cần đạt M3: …" or "Sắp có" |
 | `/api/cron/ping` | Vercel Cron | heartbeat upsert |
 
 ## 3. Data model (migrations in `supabase/migrations/`, applied by the parent in order)
@@ -53,15 +54,17 @@ Key choices
 |---|---|---|
 | `profiles` (0001) | role, display name, active flag per auth user | trigger + parent actions |
 | `students` (0001) | learner records; `profile_id` links a login; `consent_at` (D18) | parent / consent action |
-| `parent_students`, `tutor_assignments` (0001) | who may see which student; ended assignments keep history (D3) | parent actions |
+| `parent_students`, `tutor_assignments` (0001; `weekdays` 0008) | who may see which student; ended assignments keep history (D3); `weekdays` 1–7 = teaching days for the missed-session reminder | parent actions |
 | `heartbeat` (0001) | keep-alive row | cron |
-| `unit_progress` (0003) | per student × unit: worked example viewed, faded done | learn actions |
+| `unit_progress` (0003; `testout_run`, `testout_at` 0009) | per student × unit: worked example viewed, faded done; the one test-out run (both null or both set) | learn actions |
 | `attempts` (0003) | every graded answer: mode faded/practice/exit/review, correct, error code, duration, run id | learn actions |
 | `review_queue` (0004, 0005) | next review per unit: stage 1/2/3 = D+1/7/21, 4 = maintenance (60 days); `completed_at` = M4 | learn actions |
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
 | `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
 | `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
 | `homework` (0007) | homework given in a session: unit (or "Khác"), task ≤ 300, 0–3 `https://` links (Drive), due date, student `done_at`, tutor `reviewed_at` + note; composite FK to the session. RLS: parent, own active tutor, the student. Never graded, not in mastery/weekly goal | `saveTeachingSession`, `reviewHomework`, `setHomeworkDone` |
+| `unit_unlocks` (0009) | manual unlock per student × KU (LT2): `unlocked_by`, `unlocked_at`, unique pair. RLS read: parent, active tutor, the student | `unlockUnit` (parent) |
+| `parent_confirmations` (0008) | parent's confirmed level per unit (D8): level, `system_level` snapshot, proposal session, note. Display only — shown while the system level equals the snapshot. RLS: parent, active tutor, the student | `confirmLevel` |
 
 RLS read rule for learning tables: `is_parent_of(student) or is_active_tutor_of(student) or is_self_student(student)`
 (security-definer helpers in 0001). **Every new table needs explicit GRANTs to `service_role`** (Supabase no longer
@@ -74,7 +77,8 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 
 ## 4. Content
 
-- Files: `content/<module>/module.json` + one `<unit>.json` per knowledge unit; registered in `src/lib/content/index.ts`.
+- Roadmap: `content/curriculum.json` (LT1) — 17 modules, 50 KUs `{id, module, title, track A/B/C, seq, prereq, examWeight, grading, testOut, batch}`; zod schema + `checkCurriculum` in `src/lib/content/curriculum.ts` (ids, per-track seq, prereqs exist / acyclic / earlier in the same track, testOut only track B or `backfill-*`, every file listed with matching title/domains).
+- Files: `content/<module>/module.json` (`domains`, legacy `domain` accepted) + one `<unit>.json` per knowledge unit. **Registry:** `npm run content:index` regenerates `src/lib/content/registry.generated.ts` (static imports of every file + the curriculum); `npm test` fails when it is stale, CI fails if it points at `e2e/fixtures`. A KU in the curriculum without an approved file is "Sắp có".
 - Schema: `src/lib/content/schema.ts` (zod). Unit = theory, worked example (steps + "why"), faded example
   (text steps + blanks that are items), practice items, exit items, optional figure.
 - Items: `mcq` (options, correct index, per-option mistakes) or `numeric` (exact answer like `27/5`, `2√3`,
@@ -95,6 +99,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 - Review questions come from **practice items only** (review shows solutions; exit-test items stay unseen until a retake).
   Reloading `/student/review` resumes the latest unfinished run (`planReview`: review answers for a due unit with no
   `review_log` row for that run), so answered questions count and aren't asked again.
+- Sequencing (`src/lib/learning/sequence.ts`, pure, unit-tested): status open / locked / comingSoon — open when every prerequisite is at **system** M3, manually unlocked, or already started (never re-locked); in progress = started, below M3, not in review; `suggestNew` = none at 2 in progress, else first open track-A KU + first open B/C KU (batch → track → seq); `splitTestOut` keeps the test-out run's answers out of mastery (pass still gives M3 + D+1, `workedViewed || testoutPassed`); `selectReviewUnits` = open run's units first, else the 5 most overdue. `loadStudentState` returns `roadmap`, `modules`, `suggestions`, `reviewedToday`; `todaysReview` = today's units + how many wait.
 - Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;
   a session with no unit needs a note. The action (`src/app/tutor/actions.ts`) re-checks an active tutor profile and an
   active assignment with the admin client, inserts the session then the proposals, and deletes the session if the
@@ -117,50 +122,16 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 |---|---|
 | `npm run test:content` | grading, content files, learning rules (node --test) |
 | `npm run test:db` | migrations + RLS on PGlite with a stubbed auth schema |
-| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
+| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor) + S6a curriculum flows on a **fixture registry** (`e2e/fixtures/content`, built by `make-fixtures.mjs`; run.sh regenerates the registry with `--fixtures` and restores it): suggestions, unlock, test-out pass/fail/once, 2-in-progress cap, manual unlock, 5-unit review + next day. Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
 
-## 9. Student theme (approved 05/10/2026)
+## 9. Student theme (05/10/2026)
 
-> Mockup: `https://claude.ai/artifact/LNFSgD23tfTxRb3Yi7vWbJ` (3 artboards).
-> Full handover: `docs/HANDOVER_STUDENT_UX.md`.
-
-Student routes use a **warm teal engagement theme** instead of the default ink-blue admin theme.
-Parent and tutor routes keep the original theme unchanged.
-
-**Scoping:** A `.student-theme` CSS class on the student layout overrides the design tokens
-in `globals.css` for student routes only. No changes to parent/tutor routes.
-
-| Token | Default (admin) | Student theme |
-|---|---|---|
-| `--bg` | `#eef2f5` | `#FFF8F0` (warm cream) |
-| `--accent` | `#2454a6` | `#0D9488` (teal-600) |
-| `--accent-soft` | `#e5edf7` | `#CCFBF1` (teal-100) |
-| `--good` | `#1f7a4d` | `#059669` (emerald-600) |
-| `--good-soft` | `#e1f2e8` | `#D1FAE5` (emerald-100) |
-| `--warn` | `#9a6a1e` | `#D97706` (amber-600) |
-| `--warn-soft` | `#f6ecd9` | `#FEF3C7` (amber-100) |
-
-**Mastery badges:** Emoji plant metaphor replaces `M{n}` text in colored circles.
-
-| Level | Emoji | Node gradient | Border |
-|---|---|---|---|
-| M0 | 🔒 | gray, dashed, opacity 0.5 | `#D1D5DB` |
-| M1 | 🌱 | `#EDE9FE` → `#DDD6FE` | `#8B5CF6` |
-| M2 | 🌿 | `#DBEAFE` → `#BFDBFE` | `#2563EB` |
-| M3 | 🌳 | `#CCFBF1` → `#99F6E4` | `#0D9488` |
-| M4 | ⭐ | `#FEF3C7` → `#FDE68A` | `#F59E0B` |
-
-**Key components changed:**
-- `WeeklyGoal`: linear bar → SVG circle ring (stroke-dasharray/dashoffset).
-- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors. **Updated 05/10 (LT9):** with 50 KUs the map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a progress bar (structure built in S6a, plant styling in the UX slice).
-- `QuestionFeedback` (new): 2-state card — correct (green gradient, 🎉, session-only correct count, mastery nudge) and wrong (yellow gradient, 💡, side-by-side comparison, error tag, encouragement).
-- Student layout: teal gradient header with greeting.
-
-**D17 compliance:** Session correct count in QuestionFeedback is client-side `useState` only — not stored,
-not persistent, not a streak. No leaderboards anywhere.
-
-**No DB changes:** All data for the new components comes from existing `loadStudentState()`, `dueReviews()`,
-`systemMastery()`, and grading response data.
+Spec `docs/superpowers/specs/2026-10-05-student-ux-design.md` (supersedes `docs/HANDOVER_STUDENT_UX.md`).
+- `.student-theme` (globals.css) overrides the tokens for everything inside the student layout — light cream/teal and a warm dark set; parent/tutor keep the default tokens.
+- Mastery emoji/gradients: `src/components/student/mastery.ts` (🌰 M0 "Chưa bắt đầu" … ⭐ M4 "Đã vững").
+- `QuestionFeedback` (practice + review only; faded steps and the exit test keep the old flow): correct → "Chính xác!" + session total + solution + level nudge (`masteryNudge`, real rules); wrong → "Gần đúng rồi!" (known mistake) / "Chưa đúng", error label (`errorLabel`, Vietnamese), "Con trả lời / Đáp án đúng", solution, only "Câu tiếp".
+- `checkAnswer`/`checkReview` return `answerHtml`, `correctHtml` (faded: only when the solution may show), `errorCode`, and practice `mastery` (real student only).
+- **LT9 (05/10):** with 50 KUs the journey map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a bar; KUs without approved content show "Sắp có" (built in S6a).
 
 ## 8. Gotchas
 

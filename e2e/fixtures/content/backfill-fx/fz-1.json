@@ -1,0 +1,127 @@
+{
+  "id": "fz-1",
+  "module": "backfill-fx",
+  "order": 1,
+  "title": "Bù lỗ hổng thử 1",
+  "status": "approved",
+  "approvedOn": "2026-10-05",
+  "estMinutes": 10,
+  "theory": [
+    "Lý thuyết thử của Bù lỗ hổng thử 1."
+  ],
+  "worked": {
+    "problem": "Bài mẫu thử.",
+    "steps": [
+      {
+        "text": "Bước 1."
+      },
+      {
+        "text": "Bước 2."
+      }
+    ],
+    "selfExplain": "Vì sao?"
+  },
+  "faded": {
+    "problem": "Bài điền bước thử.",
+    "steps": [
+      {
+        "text": "Bước đầu."
+      },
+      {
+        "prompt": "Điền số 7.",
+        "item": {
+          "id": "fz-1-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Câu thử: nhập số $7$.",
+          "answer": "7",
+          "solution": "Đáp án là $7$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "fz-1-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $1$.",
+      "answer": "1",
+      "solution": "Đáp án là $1$."
+    },
+    {
+      "id": "fz-1-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $2$.",
+      "answer": "2",
+      "solution": "Đáp án là $2$."
+    },
+    {
+      "id": "fz-1-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $3$.",
+      "answer": "3",
+      "solution": "Đáp án là $3$."
+    },
+    {
+      "id": "fz-1-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$."
+    },
+    {
+      "id": "fz-1-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "fz-1-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $1$.",
+      "answer": "1",
+      "solution": "Đáp án là $1$."
+    },
+    {
+      "id": "fz-1-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $2$.",
+      "answer": "2",
+      "solution": "Đáp án là $2$."
+    },
+    {
+      "id": "fz-1-x3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $3$.",
+      "answer": "3",
+      "solution": "Đáp án là $3$."
+    },
+    {
+      "id": "fz-1-x4",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$."
+    },
+    {
+      "id": "fz-1-x5",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$."
+    }
+  ]
+}

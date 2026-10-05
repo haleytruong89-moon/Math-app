@@ -1,0 +1,12 @@
+{
+  "id": "fx-quick",
+  "title": "Ghi điểm thử",
+  "domains": [
+    "A"
+  ],
+  "units": [
+    "fb-1",
+    "fb-2",
+    "fb-3"
+  ]
+}
