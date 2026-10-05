@@ -115,6 +115,36 @@ const long = await sql(`select char_length(note) as n, position(chr(13) in note)
 ok("note: multi-line 500 chars saved, stored without CR", long.length === 1 && long[0].n === 500 && long[0].cr === 0, JSON.stringify(long));
 await sql(`delete from public.teaching_sessions where char_length(note) > 400`);
 
+// ---- "Bài làm của con": wrong answers with what the student typed
+await sql(`
+  update public.attempts set answer = '0', error_code = 'E08' where item_id = 'htl-1-p3';
+  update public.attempts set answer = '225', error_code = 'E10' where item_id = 'htl-1-x4';
+  update public.attempts set answer = '144', error_code = 'E10' where item_id = 'htl-1-x5';
+  insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct)
+    select id, 'htl-1', 'htl-1-p3', 'practice', '1', true from public.students where full_name = 'Hạnh Nguyên';`);
+await page.goto(`${BASE}/tutor`);
+await page.getByRole("link", { name: "Xem bài làm" }).click();
+await page.waitForURL(/\/work$/);
+const workUrl = page.url();
+ok("work: unit list with common error E10 × 2", (await page.getByTestId("work-summary-htl-1").getByText("E10 × 2").count()) === 1);
+ok("work: tutor's own proposal shown", (await page.getByTestId("work-summary-htl-1").getByText(/Bạn đề xuất M3/).count()) === 1);
+await page.getByTestId("work-summary-htl-1").click();
+await page.waitForURL(/unit=htl-1/);
+ok("work: wrong-only by default (3)", (await page.getByTestId("work-entry").count()) === 3 && (await page.getByRole("link", { name: "Chỉ câu sai (3)" }).count()) === 1);
+const x4 = page.locator('[data-testid=work-entry][data-item="htl-1-x4"]');
+ok("work: student answer + right answer + feedback", (await x4.getByText("225").count()) >= 1 && (await x4.getByText("15").count()) >= 1 && (await x4.getByText(/Còn bước lấy căn bậc hai/).count()) === 1);
+ok("work: 'Lần sau làm đúng' on p3", (await page.locator('[data-testid=work-entry][data-item="htl-1-p3"]').getByText("Lần sau làm đúng").count()) === 1);
+await page.screenshot({ path: `${shots}/6-work-wrong.png`, fullPage: true });
+await page.getByRole("link", { name: /^Tất cả \(/ }).click();
+await page.waitForURL(/all=1/);
+ok("work: 'Tất cả' shows 11", (await page.getByTestId("work-entry").count()) === 11);
+await page.goto(`${workUrl}?unit=../../etc`);
+ok("work: unknown unit falls back to the list", (await page.getByTestId("work-summary-htl-1").count()) === 1);
+await page.goto(formUrl);
+await unitBox("htl-1").check();
+const evLink = page.getByRole("link", { name: "Xem câu sai →" });
+ok("form: evidence links to wrong answers in a new tab", (await evLink.getAttribute("href"))?.endsWith("/work?unit=htl-1") && (await evLink.getAttribute("target")) === "_blank");
+
 // ---- dark mode, evidence open
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage();
@@ -134,6 +164,7 @@ ok("ended assignment: still 2 sessions", (await counts()).s === 2);
 await page.goto(`${BASE}/tutor`);
 ok("ended assignment: student gone from home", (await page.getByText("Hạnh Nguyên").count()) === 0);
 ok("ended assignment: form URL is 404", (await page.goto(formUrl)).status() === 404);
+ok("ended assignment: work URL is 404", (await page.goto(workUrl)).status() === 404);
 await sql(`update public.tutor_assignments set ended_at = null`);
 await page.goto(formUrl);
 await unitBox("htl-1").check(); await level("htl-1", 2).click();

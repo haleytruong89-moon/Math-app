@@ -164,7 +164,12 @@ function Entry({ e, figure }: { e: WorkEntry; figure: boolean }) {
         <span>{meta}</span>
         {e.laterCorrect && <span className="rounded-full bg-accent-soft px-2 py-0.5 text-accent">Lần sau làm đúng</span>}
       </div>
-      {figure && <RightTriangleAltitude className="my-2 max-w-45" />}
+      {/* Wrapper sets the size: the figure's own max-w-xs would win over a passed max-w class. */}
+      {figure && (
+        <div className="mx-auto my-2 w-40">
+          <RightTriangleAltitude />
+        </div>
+      )}
       <Rich as="div" html={e.promptHtml} className="mt-2 leading-relaxed" />
       <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
         <dt className="text-muted">Con trả lời</dt>
