@@ -39,7 +39,7 @@ export function findItem(unit: Unit, itemId: string, mode: ItemMode): Item | nul
         ? unit.practice
         : mode === "exit"
           ? unit.exit
-          : [...unit.practice, ...unit.exit]; // review draws from both pools
+          : unit.practice; // review: practice only, so exit-test solutions stay unseen until a retake
   return pool.find((i) => i.id === itemId) ?? null;
 }
 

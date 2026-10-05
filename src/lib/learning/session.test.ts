@@ -44,6 +44,10 @@ test("no unit ticked needs a note", () => {
 test("note ≤ 500 characters; unknown unit and bad student refused", () => {
   assert.equal(parseSession({ ...base, note: "x".repeat(501) }, today, units).ok, false);
   assert.equal(parseSession({ ...base, note: "x".repeat(500) }, today, units).ok, true);
+  // The textarea shows 500/500 for 491 letters + 9 line breaks; the form sends them as CRLF.
+  const crlf = parseSession({ ...base, note: `${"x".repeat(49)}\r\n`.repeat(9) + "x".repeat(50) }, today, units);
+  assert.equal(crlf.ok && crlf.value.note?.length, 500);
+  assert.equal(crlf.ok && crlf.value.note?.includes("\r"), false);
   assert.equal(parseSession({ ...base, units: ["nope"], levels: { nope: "1" } }, today, units).ok, false);
   assert.equal(parseSession({ ...base, studentId: "x" }, today, units).ok, false);
 });

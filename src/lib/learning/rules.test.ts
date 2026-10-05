@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  addDays, afterReview, firstReview, interleave, pickReviewItems, reviewPassed,
+  addDays, afterReview, firstReview, interleave, pickReviewItems, planReview, reviewPassed,
   studyDaysThisWeek, systemMastery, vnDate, weekStart, type AttemptRow,
 } from "./rules.ts";
 
@@ -98,6 +98,36 @@ test("review picks least recently answered items, never-answered first", () => {
   const pool = [{ id: "x1" }, { id: "x2" }, { id: "x3" }, { id: "x4" }];
   const seen = [a({ item_id: "x1", created_at: at("2026-10-01") }), a({ item_id: "x2", created_at: at("2026-10-03") })];
   assert.deepEqual(pickReviewItems(pool, seen, 3).map((i) => i.id), ["x3", "x4", "x1"]);
+});
+
+test("reloading the review page resumes the unfinished run: same questions, wrong answers still count", () => {
+  const pool = ["p1", "p2", "p3", "p4", "p5"].map((id) => ({ id }));
+  const before = [a({ item_id: "p1", created_at: at("2026-10-01") }), a({ item_id: "p2", created_at: at("2026-10-02") })];
+  const fresh = planReview([{ unitId: "u", pool, attempts: before }], new Set());
+  assert.equal(fresh.runId, null);
+  assert.deepEqual(fresh.remaining.map((q) => q.item.id), ["p3", "p4", "p5"]);
+
+  // Answered p3 wrong, then pressed F5.
+  const wrong = a({ item_id: "p3", mode: "review", correct: false, exit_run: "run-1", created_at: at("2026-10-05", 9) });
+  const resumed = planReview([{ unitId: "u", pool, attempts: [...before, wrong] }], new Set());
+  assert.equal(resumed.runId, "run-1");
+  assert.deepEqual(resumed.answered, [{ unitId: "u", itemId: "p3", correct: false }]);
+  assert.deepEqual(resumed.remaining.map((q) => q.item.id), ["p4", "p5"]);
+
+  // Once the run is scored, the next review starts a new run.
+  const next = planReview([{ unitId: "u", pool, attempts: [...before, wrong] }], new Set(["run-1|u"]));
+  assert.equal(next.runId, null);
+  assert.equal(next.answered.length, 0);
+  assert.equal(next.remaining.length, 3);
+});
+
+test("a resumed run with every question answered has nothing left to ask for that unit", () => {
+  const pool = ["p1", "p2", "p3", "p4"].map((id) => ({ id }));
+  const run = ["p1", "p2", "p3"].map((item_id, i) => a({ item_id, mode: "review", exit_run: "r", created_at: at("2026-10-05", 9 + i) }));
+  const plan = planReview([{ unitId: "u", pool, attempts: run }, { unitId: "v", pool: [{ id: "q1" }], attempts: [] }], new Set());
+  assert.equal(plan.runId, "r");
+  assert.equal(plan.answered.length, 3);
+  assert.deepEqual(plan.remaining.map((q) => `${q.unitId}:${q.item.id}`), ["v:q1"]); // a newly due unit joins the run
 });
 
 test("weekly goal counts study days in the current week (Mon–Sun), never streaks", () => {
