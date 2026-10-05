@@ -55,7 +55,7 @@ for (const scheme of ["light", "dark"]) {
     await input().fill(a);
     await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
     await page.getByRole("button", { name: "Câu tiếp" }).waitFor();
-    if (a === "1,732") { ok("practice: rounded √3 rejected", (await page.getByText("Chưa đúng.").count()) === 1); await page.screenshot({ path: `${shots}/5-practice-wrong.png`, fullPage: true }); }
+    if (a === "1,732") { ok("practice: rounded √3 rejected, comes back, no nudge in preview", (await page.getByText("Chưa đúng", { exact: true }).count()) === 1 && (await page.getByText("Câu này sẽ quay lại cuối bài.").count()) === 1 && (await page.getByTestId("mastery-nudge").count()) === 0); await page.screenshot({ path: `${shots}/5-practice-wrong.png`, fullPage: true }); }
     await page.getByRole("button", { name: "Câu tiếp" }).click();
   }
   ok("practice: wrong item comes back", (await page.getByText("làm lại câu sai").count()) === 1);

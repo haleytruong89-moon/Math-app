@@ -27,8 +27,15 @@ await sql(`delete from public.review_log; delete from public.review_queue; delet
 await page.goto(`${BASE}/student`);
 await page.screenshot({ path: "e2e/out/student/1-today-start.png", fullPage: true });
 ok("today: goal 0/4", (await page.getByText("0/4 buổi").count()) === 1);
-ok("today: 2 chips M0 'chưa đủ dữ liệu'", (await page.getByText("chưa đủ dữ liệu").count()) === 2);
+ok("today: greeting header + ring", (await page.getByRole("progressbar", { name: "Mục tiêu tuần" }).count()) === 1 && (await page.getByText(/^Chào buổi (sáng|chiều|tối)$/).count()) === 1);
 ok("today: only next new unit listed", (await page.getByRole("link", { name: "Học bài mới" }).count()) === 1);
+ok("today: journey teaser 0/2", (await page.getByTestId("journey-teaser").getByText("0/2 bài đạt M3+").count()) === 1);
+await page.getByTestId("journey-teaser").click();
+await page.waitForURL(/\/student\/journey$/);
+ok("journey: 2 units at M0 🌰 'Chưa bắt đầu'", (await page.getByTestId("node-htl-1").getByText("M0 — Chưa bắt đầu").count()) === 1 && (await page.getByTestId("node-htl-2").getByText("🌰").count()) === 1);
+ok("journey: summary 0 · 0 · 2", (await page.getByTestId("journey-summary").innerText()).replace(/\s+/g, " ").includes("0 Đã vững 0 Đang học 2 Chưa bắt đầu"));
+await page.screenshot({ path: "e2e/out/student/1b-journey-start.png", fullPage: true });
+await page.goto(`${BASE}/student`);
 
 // ---- learn htl-1 fully
 await page.getByRole("link", { name: "Học bài mới" }).click();
@@ -42,9 +49,15 @@ for (const id of ["htl-1-f1", "htl-1-f2", "htl-1-f3"]) {
   await page.waitForTimeout(600);
 }
 await page.getByRole("button", { name: "Sang phần luyện tập" }).click();
-for (const it of units["htl-1"].practice) {
+for (const [i, it] of units["htl-1"].practice.entries()) {
   await answer(it.id);
   await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
+  if (i === 0) {
+    const fb = page.getByTestId("question-feedback");
+    await fb.waitFor();
+    ok("practice right: celebration + session tally + nudge", (await fb.getByText("Chính xác!").count()) === 1 && (await fb.getByText("Đúng 1/1 câu lượt này").count()) === 1 && (await fb.getByTestId("mastery-nudge").getByText(/Làm thêm 4 câu luyện/).count()) === 1);
+    await page.screenshot({ path: "e2e/out/student/1c-practice-right.png", fullPage: true });
+  }
   await page.getByRole("button", { name: "Câu tiếp" }).click();
 }
 await page.getByRole("button", { name: "Làm bài kiểm tra" }).click();
@@ -62,7 +75,9 @@ ok("db: queue htl-1 stage 1 due tomorrow", q1[0]?.stage === 1 && q1[0]?.due_on =
 
 await page.goto(`${BASE}/student`);
 ok("today: goal 1/4 after exit", (await page.getByText("1/4 buổi").count()) === 1);
-ok("today: htl-1 shows M3", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M3").count()) === 1);
+await page.goto(`${BASE}/student/journey`);
+ok("journey: htl-1 shows M3 🌳 + next review", (await page.getByTestId("node-htl-1").getByText("M3 — Đạt").count()) === 1 && (await page.getByTestId("node-htl-1").getByText(/Ôn D\+1/).count()) === 1);
+await page.goto(`${BASE}/student`);
 ok("today: no review card yet", (await page.getByRole("link", { name: "Bắt đầu ôn" }).count()) === 0);
 await page.screenshot({ path: "e2e/out/student/2-today-after-m3.png", fullPage: true });
 
@@ -78,6 +93,7 @@ await page.screenshot({ path: "e2e/out/student/3-today-review-due.png", fullPage
 await page.getByRole("link", { name: "Bắt đầu ôn" }).click();
 await page.waitForURL(/review/);
 const seq = [];
+let sawWrong = false;
 const asked = [];
 const practiceIds = new Set(Object.values(units).flatMap((u) => u.practice.map((it) => it.id)));
 for (let i = 0; i < 6; i++) {
@@ -95,6 +111,13 @@ for (let i = 0; i < 6; i++) {
   await answer(id, wrong);
   await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
   if (i === 0) await page.screenshot({ path: "e2e/out/student/4-review-q1.png", fullPage: true });
+  if (wrong && !sawWrong) {
+    sawWrong = true;
+    const fb = page.getByTestId("question-feedback");
+    await fb.waitFor();
+    ok("review wrong: answer vs right answer, no retry button", (await fb.getByText("Con trả lời").count()) === 1 && (await fb.getByText("Đáp án đúng").count()) === 1 && (await page.getByRole("button", { name: /Thử lại/ }).count()) === 0);
+    await page.screenshot({ path: "e2e/out/student/4b-review-wrong.png", fullPage: true });
+  }
   try { await page.getByRole("button", { name: /Câu tiếp|Xem kết quả/ }).click({ timeout: 8000 }); }
   catch (e) { await page.screenshot({ path: "e2e/out/student/fail.png", fullPage: true }); console.log("FAIL at", i, id, unit, await page.locator("[role=alert]").allTextContents()); throw e; }
 }
@@ -134,14 +157,17 @@ ok("review: maintenance message after D+21", (await page.getByText(/Ôn duy trì
 const m = await sql(`select stage, due_on::text, completed_at is not null as done from public.review_queue where unit_id = 'htl-1'`);
 ok("db: D+21 passed → stage 4, +60 days, completed", m[0].stage === 4 && m[0].due_on === add(vnToday, 60) && m[0].done === true, JSON.stringify(m));
 await page.goto(`${BASE}/student`);
-ok("today: htl-1 shows M4", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M4").count()) === 1);
+await page.goto(`${BASE}/student/journey`);
+ok("journey: htl-1 shows M4 ⭐", (await page.getByTestId("node-htl-1").getByText("M4 — Đã vững").count()) === 1 && (await page.getByTestId("node-htl-1").getByText("⭐").count()) === 1);
+await page.goto(`${BASE}/student`);
 await page.screenshot({ path: "e2e/out/student/9-today-m4.png", fullPage: true });
 
 // ---- parent-confirmed level shows on the student's map (S4); htl-2 is M1 here
 await sql(`insert into public.parent_confirmations (student_id, parent_id, unit_id, level, system_level)
   select id, '00000000-0000-0000-0000-00000000e2e0', 'htl-2', 3, 1 from public.students where full_name = 'Hạnh Nguyên'`);
-await page.goto(`${BASE}/student`);
-ok("student map: parent-confirmed level with label", (await page.locator("[role=listitem]").filter({ hasText: "Tính độ dài" }).getByText(/bố mẹ chốt/).count()) === 1);
+await page.goto(`${BASE}/student/journey`);
+ok("student map: parent-confirmed level with label", (await page.getByTestId("node-htl-2").getByText(/bố mẹ chốt/).count()) === 1);
+await page.screenshot({ path: "e2e/out/student/9b-journey.png", fullPage: true });
 
 // ---- homework from the tutor (part B)
 await page.goto(`${BASE}/student`);
@@ -175,6 +201,8 @@ ok("student: tutor work page not reachable", !page.url().includes("/tutor/"), pa
 
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage(); await dp.goto(`${BASE}/student`); await dp.screenshot({ path: "e2e/out/student/8-today-dark.png", fullPage: true });
+await dp.goto(`${BASE}/student/journey`); await dp.screenshot({ path: "e2e/out/student/8b-journey-dark.png", fullPage: true });
+ok("dark: student theme background", (await dp.evaluate(() => getComputedStyle(document.querySelector(".student-theme")).backgroundColor)) === "rgb(26, 22, 19)");
 ok("no browser errors", errors.length === 0, errors.join(" | "));
 await browser.close();
 console.log(res.join("\n"));
