@@ -37,7 +37,7 @@ Key choices
 | `/login` | public | email + password |
 | `/` | any | redirect to the role's home |
 | `/parent` | parent | overview (P0 shell; real numbers in S4) |
-| `/parent/accounts` | parent | create/lock accounts, reset password, students, tutor assignment |
+| `/parent/accounts` | parent | create/lock accounts, reset password, tutor assignment; **students**: profile list (login email or "chưa có tài khoản", tutors), rename/grade, delete (type the name again; cascades all learning data + deletes the linked login), "tạo tài khoản cho …" preselects the profile (`?student=`) |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
 | `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
 | `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |

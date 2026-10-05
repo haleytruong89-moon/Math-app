@@ -11,17 +11,17 @@
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot · S3b công cụ gia sư + bài về nhà | `p1-fixes`, `p1-tutor-tools`, `p1-homework` | ✅ Merged 05/10 (PR #4, #5, #7) — SQL 0007 |
-| Tài khoản: danh sách, đổi tên, xoá | `p1-account-tools` | 🟡 PR #9 |
-| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **SQL 0008**; merge sau PR #9 |
-| Docs — Content brief + checklist pilot | `p1-content-brief` | 🟡 PR #8 |
-| Docs — Student UX handover | `p1-student-ux-handover` | 🟡 PR #6 |
+| Tài khoản: danh sách, đổi tên, xoá | `p1-account-tools` | ✅ Merged 05/10 (PR #9) |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **chờ chạy SQL 0008** rồi merge |
+| Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
+| Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
 | Docs — Lộ trình 50 KU + quyết định LT1–LT12 | `p1-curriculum-design` | 🟡 PR #10 |
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
-| UX — Giao diện học sinh | `p1-student-ux` | ⬜ 18/10 |
+| UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
-| S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh, bắt đầu **12/10/2026** |
+| S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
 | S5 — Hình học C1–C3 | — | ⬜ xét lại trước GĐ3 (01/2027) |
 
 ### Câu hỏi đang mở
@@ -84,6 +84,26 @@
 **Scope:** Chỉ thay đổi UI student routes — không sửa server logic, DB schema, hay parent/tutor routes.
 
 **Claude Code cần làm:** Đọc `docs/HANDOVER_STUDENT_UX.md` → implement theo thứ tự đề xuất (§8 trong handover).
+
+---
+
+## 05/10/2026 — Công cụ tài khoản (nhánh `p1-account-tools`)
+
+Sau sự cố tài khoản học sinh hôm 05/10 (hồ sơ thừa "nguyen1607", không có tài khoản đăng nhập nào gắn với hồ sơ — phải xoá bằng SQL). **Không có SQL mới.**
+
+### Đã làm
+- **Tài khoản → mục "Học sinh"**: mỗi hồ sơ một dòng — lớp, gia sư đang dạy, **email đăng nhập đang gắn** hoặc cảnh báo "Chưa có tài khoản đăng nhập — tạo tài khoản cho …" (bấm vào: form tạo tài khoản chọn sẵn vai trò Học sinh + hồ sơ đó).
+- **Sửa** họ tên / lớp. **Xoá hồ sơ**: hiện trước những gì sẽ mất ("Sẽ xoá vĩnh viễn: 37 câu đã làm, 2 buổi dạy, tài khoản đăng nhập"), phải **gõ lại họ tên** (không phân biệt hoa/thường, khoảng trắng; phân biệt dấu); xoá cả bài làm, lịch ôn, buổi dạy, bài về nhà và tài khoản đăng nhập của hồ sơ đó.
+- Form tạo tài khoản: ghi chú email "dùng để đăng nhập, không phải tên người dùng; app không gửi thư — có thể dùng tenban+nguyen@gmail.com"; "Thêm học sinh" ghi rõ đây là bước 1.
+- Gia sư vẫn chỉ **khoá** (không xoá) để giữ lịch sử dạy (D3); tài khoản phụ huynh không xoá được.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **48** test quy tắc/nội dung (thêm 2: so khớp họ tên khi xoá, kể cả tiếng Việt dạng tách dấu; dòng "sẽ xoá…") + **65** test RLS: qua.
+- `./e2e/run.sh`: **106/106** (thêm 10, luồng phụ huynh mới `e2e/accounts-flow.mjs`): danh sách hiện email + gia sư; hồ sơ mới bị đánh dấu chưa có tài khoản → link chọn sẵn hồ sơ → tạo tài khoản → DB gắn đúng; sửa tên + lớp; xoá: hiện "2 câu đã làm, tài khoản đăng nhập", gõ sai tên bị chặn, gõ đúng (khác hoa/thường) → hồ sơ, bài làm, tài khoản đăng nhập biến mất, hồ sơ khác còn nguyên. DB giả e2e có thêm `auth.admin` (tạo/xoá/liệt kê) và đếm `count: "exact", head: true`.
+
+### Phụ huynh cần làm
+1. Không có SQL. Thử preview: Tài khoản → mục Học sinh → thấy "Hanh Nguyen" kèm email đăng nhập và gia sư. (Đừng thử nút Xoá trên hồ sơ thật — preview dùng database thật.)
+2. Merge.
 
 ---
 

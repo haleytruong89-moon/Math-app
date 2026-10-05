@@ -5,6 +5,7 @@ import { z } from "zod";
 import { requireRole } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { ActionState } from "@/components/action-form";
+import { nameMatches } from "@/lib/accounts/rules";
 
 // Every action: (1) requireRole('parent') — redirects anyone else,
 // (2) validate input, (3) check the parent owns the target, (4) write with the admin client.
@@ -191,6 +192,56 @@ export async function createStudent(_p: ActionState, fd: FormData): Promise<Acti
 
   revalidatePath(PAGE);
   return { ok: `Đã thêm ${parsed.data.fullName}.` };
+}
+
+const UpdateStudent = CreateStudent.extend({ studentId: Uuid });
+
+/** Rename a student profile or change the grade; learning data is untouched. */
+export async function updateStudent(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const parsed = UpdateStudent.safeParse({ studentId: fd.get("studentId"), fullName: fd.get("fullName"), grade: fd.get("grade") });
+  if (!parsed.success) return fail(parsed.error.issues[0].message);
+  const v = parsed.data;
+  if (!(await parentOwnsStudent(parent.id, v.studentId))) return fail("Không tìm thấy học sinh.");
+
+  const { error } = await createAdminClient().from("students").update({ full_name: v.fullName, grade: v.grade }).eq("id", v.studentId);
+  if (error) return fail("Chưa lưu được, thử lại sau.");
+  revalidatePath(PAGE);
+  return { ok: "Đã lưu." };
+}
+
+/**
+ * Delete a student profile and everything attached to it (attempts, reviews, sessions,
+ * homework cascade in the DB), plus its login account. The parent must type the name again.
+ */
+export async function deleteStudent(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const id = Uuid.safeParse(fd.get("studentId"));
+  if (!id.success) return fail("Không tìm thấy học sinh.");
+  if (!(await parentOwnsStudent(parent.id, id.data))) return fail("Không tìm thấy học sinh.");
+
+  const admin = createAdminClient();
+  const { data: s } = await admin.from("students").select("full_name, profile_id").eq("id", id.data).maybeSingle();
+  if (!s) return fail("Không tìm thấy học sinh.");
+  if (!nameMatches(fd.get("confirmName"), s.full_name as string)) return fail(`Gõ đúng họ tên “${s.full_name}” để xác nhận xoá.`);
+
+  const { error } = await admin.from("students").delete().eq("id", id.data);
+  if (error) {
+    console.error("deleteStudent", error.message);
+    return fail("Chưa xoá được, thử lại sau.");
+  }
+  // Only ever delete a *student* login (never a parent/tutor account linked by mistake).
+  const login = s.profile_id ? await managedProfile(s.profile_id as string) : null;
+  if (login?.role === "student") {
+    const { error: authError } = await admin.auth.admin.deleteUser(login.id as string);
+    if (authError) {
+      console.error("deleteStudent login", authError.message);
+      revalidatePath(PAGE);
+      return fail("Đã xoá hồ sơ, nhưng chưa xoá được tài khoản đăng nhập. Khoá tài khoản đó ở bảng trên.");
+    }
+  }
+  revalidatePath(PAGE);
+  return { ok: `Đã xoá ${s.full_name}.` };
 }
 
 // ---------------------------------------------------------------------
