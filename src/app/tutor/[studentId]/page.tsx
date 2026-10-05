@@ -8,6 +8,9 @@ import { addDays, vnDate } from "@/lib/learning/rules";
 import { SESSION_RULES } from "@/lib/learning/session";
 import { loadStudentState } from "@/lib/learning/state";
 import { SessionForm, type UnitEvidence } from "@/components/tutor/session-form";
+import { ActionForm } from "@/components/action-form";
+import { HOMEWORK_RULES, dueLabel } from "@/lib/learning/homework";
+import { reviewHomework } from "@/app/tutor/actions";
 
 export const metadata: Metadata = { title: "Ghi buổi dạy — App Toán" };
 
@@ -24,7 +27,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
   const { data: student } = await supabase.from("students").select("id, full_name").eq("id", studentId).maybeSingle();
   if (!student) notFound();
 
-  const [state, sessions] = await Promise.all([
+  const [state, sessions, openHw] = await Promise.all([
     loadStudentState(supabase, student.id, { includeDrafts: true }),
     supabase
       .from("teaching_sessions")
@@ -33,6 +36,15 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       .eq("tutor_id", tutor.id)
       .order("created_at", { ascending: false })
       .limit(5),
+    // RLS: only homework this tutor gave, while still assigned.
+    supabase
+      .from("homework")
+      .select("id, unit_id, task, due_on, done_at")
+      .eq("student_id", student.id)
+      .eq("tutor_id", tutor.id)
+      .is("reviewed_at", null)
+      .order("due_on", { ascending: true })
+      .limit(20),
   ]);
   const ids = (sessions.data ?? []).map((s) => s.id as string);
   const { data: proposals } = ids.length
@@ -62,7 +74,38 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       <h1 className="mt-2 font-display text-2xl font-bold">Ghi buổi dạy</h1>
       <p className="mt-1 text-muted">{student.full_name}</p>
 
-      <SessionForm studentId={student.id} today={today} minDate={addDays(today, -SESSION_RULES.maxBackdateDays)} units={units} />
+      {!!openHw.data?.length && (
+        <section className="mt-5" aria-label="Bài đã giao chưa chữa">
+          <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-muted">Bài đã giao chưa chữa</h2>
+          <ul className="mt-2 flex flex-col gap-2">
+            {openHw.data.map((h) => (
+              <li key={h.id} className="rounded-xl border border-border bg-surface p-3.5 text-sm" data-testid="open-homework">
+                <p className="whitespace-pre-line">{h.task}</p>
+                <p className="mt-1 font-mono text-xs text-muted">
+                  {h.unit_id ? `${getUnit(h.unit_id)?.unit.title ?? h.unit_id} · ` : ""}
+                  {dueLabel(h.due_on as string, today)} ·{" "}
+                  {h.done_at ? <span className="text-good">Con đã báo xong ({ddmm(vnDate(h.done_at as string))})</span> : "Con chưa báo xong"}
+                </p>
+                <ActionForm action={reviewHomework} submitLabel="Đã chữa" variant="quiet" className="mt-2 flex flex-col gap-2">
+                  <input type="hidden" name="homeworkId" value={h.id} />
+                  <textarea
+                    name="reviewNote"
+                    rows={2}
+                    maxLength={HOMEWORK_RULES.reviewNoteMax}
+                    placeholder="Nhận xét cho con (không bắt buộc)"
+                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-base text-ink"
+                  />
+                </ActionForm>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <SessionForm studentId={student.id} today={today} minDate={addDays(today, -SESSION_RULES.maxBackdateDays)} units={units}
+        defaultDue={addDays(today, HOMEWORK_RULES.defaultDueDays)}
+        maxDue={addDays(today, HOMEWORK_RULES.dueMaxDays)}
+      />
 
       <h2 className="mt-8 font-display text-sm font-semibold uppercase tracking-wide text-muted">Buổi bạn đã ghi gần đây</h2>
       <ul className="mt-3 flex flex-col gap-2" aria-label="Buổi đã ghi">

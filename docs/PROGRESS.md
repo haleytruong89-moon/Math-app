@@ -11,7 +11,7 @@
 | S2 — Mastery + lịch ôn + "Hôm nay cần làm" (+ ôn duy trì, docs) | `p1-slice-2` | ✅ Merged 03/10 (PR #2), SQL 0004 + 0005 đã chạy |
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot (review PR #2/#3) | `p1-fixes` | 🟡 PR mới — **không có SQL**, thử preview rồi merge |
-| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: ⬜ |
+| S3b — Công cụ gia sư (spec 05/10) | `p1-tutor-tools` | 🟡 A "Bài làm của con": PR mới, **không SQL** (xếp chồng trên `p1-fixes` — merge PR #4 trước) · B giao bài về nhà: 🟡 PR mới (`p1-homework`, **SQL 0007**) |
 | S4 — Phụ huynh "Tổng quan" | — | ⬜ Tiếp theo |
 | S7 — Pilot (tài khoản Nguyên) | — | ⬜ phụ huynh — có thể bắt đầu sau khi merge S3 |
 | S6 — Soạn KU còn lại · S5 — Hình học C1–C3 | — | ⬜ S5 sau khi pilot chạy |
@@ -23,6 +23,38 @@
 | Q9 | Buổi dạy không tick bài nào (ví dụ chữa đề ở trường, chủ đề chưa có trong app): cho lưu nếu có ghi chú? | Có — đang làm vậy |
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
+
+---
+
+## 05/10/2026 — S3b phần B: Giao bài về nhà (nhánh `p1-homework`)
+
+Theo spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` (T1–T4). **Có SQL mới: `0007`.** Nhánh xếp chồng trên `p1-tutor-tools` (PR #5) → merge #4 → #5 → PR này.
+
+### Đã làm
+- **Gia sư, form "Ghi buổi dạy"**: mục **"+ Giao bài về nhà"** (tối đa 5 bài/buổi) — cho phần (bài đã tick hoặc "Khác"), yêu cầu ≤ 300 ký tự, 0–3 link (chỉ `https://`; link không phải Google Drive thì nhắc nhưng vẫn lưu), hạn mặc định **hôm nay + 3** (từ ngày dạy đến tối đa 30 ngày). Lưu cùng buổi dạy trong một lần bấm; lỗi thì không lưu gì.
+- **Đầu form: "Bài đã giao chưa chữa"** — yêu cầu, hạn, con đã báo xong chưa; nút **"Đã chữa"** + nhận xét (≤ 300 ký tự), không cần lưu buổi mới.
+- **Học sinh, "Hôm nay cần làm"**: thẻ **"Bài về nhà của thầy/cô"** ngay sau thẻ ôn — yêu cầu, link "Mở đề ↗" (tab mới), hạn ("hạn thứ Năm 08/10" / "quá hạn" màu nhẹ), nút **"Con làm xong rồi"** (bấm lại để bỏ). Sau khi gia sư chữa: "Thầy/cô đã chữa" + nhận xét, ẩn sau 7 ngày. **Không chấm, không tính mức M, không tính mục tiêu tuần.**
+- **Bảng mới `homework`** (migration 0007): gắn với buổi dạy (đúng học sinh + gia sư của buổi). RLS: phụ huynh đọc hết; gia sư chỉ đọc bài **mình giao**, khi còn được gán; học sinh đọc bài của mình. Mọi thao tác ghi qua máy chủ.
+
+### Đã tự kiểm
+- `npm run lint`, `npm run build`: qua. `npm test`: **45** test quy tắc/nội dung (thêm 8: đọc form, bỏ qua dòng trống, báo lỗi nêu đúng "Bài về nhà N", link `http://`/`javascript:`/có dấu cách bị chặn, hạn ngoài khoảng, nhận xét xuống dòng, nhãn hạn tiếng Việt, ẩn sau 7 ngày) + **63** test RLS (thêm 14 cho bảng `homework`): qua.
+- `./e2e/run.sh`: **96/96** (thêm 13): gia sư giao bài (hạn mặc định +3, có link mà thiếu yêu cầu → bị chặn, link lạ → nhắc), DB lưu đúng; thấy "Con chưa báo xong" → "Con đã báo xong" → "Đã chữa" + nhận xét → biến khỏi danh sách; học sinh thấy thẻ, link mở tab mới, bấm xong → DB ghi, **mục tiêu tuần không đổi**, sau khi chữa thấy nhận xét và hết nút, quá 7 ngày thì ẩn.
+
+### Phụ huynh cần làm (khoảng 15 phút)
+1. Merge **PR #4**, rồi **PR #5** (nếu chưa).
+2. **Chạy SQL** `supabase/migrations/0007_p1_homework.sql` trên Supabase → "Success. No rows returned".
+3. Thử preview: gia sư → Ghi buổi dạy → tick bài, chọn mức → **+ Giao bài về nhà** (dán link Drive để chế độ "Bất kỳ ai có đường liên kết") → Lưu. Học sinh → thấy thẻ, mở link, **Con làm xong rồi**. Gia sư mở lại form → "Con đã báo xong" → ghi nhận xét → **Đã chữa**. Học sinh thấy nhận xét.
+4. Merge PR.
+
+### Quyết định cho giao diện học sinh (handover `p1-student-ux-handover`, phụ huynh chốt 05/10)
+- **Bỏ nút "Thử lại"** khi làm sai: chỉ "Câu tiếp" (luyện tập chấm 1 lần, câu sai quay lại cuối bài; lượt ôn không làm lại được). Phần điền bước vẫn thử lại như cũ.
+- Đếm câu trong phiên: **"Đúng x/y câu lượt này"** — không đếm "liên tiếp" (tránh cơ chế chuỗi, D17).
+- Thứ tự: phần B (bài về nhà) trước, giao diện học sinh sau. Các điểm khác của handover cần chỉnh khi lên kế hoạch: gợi ý lên mức theo đúng quy tắc M2/M3/M4; so sánh chỉ "con trả lời / đáp án đúng" (app không có các bước làm); cần bảng tên lỗi E01–E15; server trả thêm dữ liệu sau khi chấm (không đổi DB); M0 "Chưa bắt đầu" thay vì 🔒 "Chưa mở"; header không ghim cố định; thêm bộ màu tối.
+
+### Ghi chú kỹ thuật (cho phiên sau)
+- Form gửi bài về nhà dạng `hw.<i>.unit|task|link|due` (`readHomeworkForm`); quy tắc thuần ở `src/lib/learning/homework.ts`.
+- Buổi dạy vẫn cần ít nhất 1 bài đã tick hoặc ghi chú — chỉ giao bài về nhà thôi thì chưa lưu được.
+- `activeAssignment()` trong `src/app/tutor/actions.ts` dùng chung cho lưu buổi và "Đã chữa".
 
 ---
 

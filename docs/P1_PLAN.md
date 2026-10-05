@@ -55,7 +55,7 @@ Thứ tự đã chốt 03/10/2026: **pilot sớm**. Nguyên bắt đầu dùng n
 | 1 | **S1** | Nội dung JSON + kiểm tra; KaTeX; xem trước nội dung (D16); luồng học 1 KU; `unit_progress`, `attempts` | ✅ merged | — |
 | 2 | **S2** | Mastery hệ thống; lịch ôn D+1/7/21 + duy trì 60 ngày; phiên ôn trộn; "Hôm nay cần làm"; mục tiêu tuần; bản đồ tiến độ | ✅ merged (PR #2) | — |
 | 3 | **S3** | Gia sư "Ghi buổi dạy" | ✅ merged (PR #3) | ✅ |
-| 3b | **S3b** | Công cụ gia sư: A "Bài làm của con" (không SQL) → B giao bài về nhà qua link Drive (SQL 0007) — spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` | 🟡 A: PR · B: ⬜ | ✅ |
+| 3b | **S3b** | Công cụ gia sư: A "Bài làm của con" (không SQL) → B giao bài về nhà qua link Drive (SQL 0007) — spec `docs/superpowers/specs/2026-10-05-tutor-tools-design.md` | 🟡 A: PR #5 · B: PR mới (SQL 0007) | ✅ |
 | 4 | **S4** | Phụ huynh "Tổng quan" | ⬜ | ✅ |
 | 5 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot | ⬜ | ❌ phụ huynh |
 | 6 | **S6** | Soạn KU còn lại (Ch.4–6 bài HTML + bổ sung bài tập), dạng nháp | ⬜ | ✅ soạn; ❌ duyệt (phụ huynh/gia sư) |

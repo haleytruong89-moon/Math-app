@@ -2,6 +2,7 @@
 
 import { startTransition, useActionState, useState } from "react";
 import { saveTeachingSession, type SaveSessionState } from "@/app/tutor/actions";
+import { HomeworkFields } from "./homework-fields";
 
 /** What the tutor sees for one unit before proposing a level (§2.7: evidence first). */
 export type UnitEvidence = {
@@ -28,7 +29,9 @@ const LEVEL_HINT = [
 ] as const;
 const NOTE_MAX = 500;
 
-export function SessionForm(props: { studentId: string; today: string; minDate: string; units: UnitEvidence[] }) {
+type FormProps = { studentId: string; today: string; minDate: string; units: UnitEvidence[]; defaultDue: string; maxDue: string };
+
+export function SessionForm(props: FormProps) {
   const [state, formAction, pending] = useActionState<SaveSessionState, FormData>(async (prev, fd) => {
     // Block an empty proposal before the round trip; the server checks again.
     const missing = fd
@@ -73,7 +76,7 @@ export function SessionForm(props: { studentId: string; today: string; minDate: 
   );
 }
 
-function Fields({ studentId, today, minDate, units }: { studentId: string; today: string; minDate: string; units: UnitEvidence[] }) {
+function Fields({ studentId, today, minDate, units, defaultDue, maxDue }: FormProps) {
   const [ticked, setTicked] = useState<Set<string>>(new Set());
   const [note, setNote] = useState("");
   const [day, setDay] = useState(today);
@@ -149,6 +152,13 @@ function Fields({ studentId, today, minDate, units }: { studentId: string; today
           className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-base text-ink"
         />
       </label>
+
+      <HomeworkFields
+        units={units.filter((u) => ticked.has(u.id)).map((u) => ({ id: u.id, title: u.title }))}
+        defaultDue={defaultDue < day ? day : defaultDue}
+        minDue={day}
+        maxDue={maxDue}
+      />
     </>
   );
 }
