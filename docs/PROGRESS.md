@@ -12,13 +12,15 @@
 | S3 — Gia sư "Ghi buổi dạy" | `p1-slice-3` | ✅ Merged 03/10 (PR #3), SQL 0006 đã chạy |
 | Sửa lỗi trước pilot · S3b công cụ gia sư + bài về nhà | `p1-fixes`, `p1-tutor-tools`, `p1-homework` | ✅ Merged 05/10 (PR #4, #5, #7) — SQL 0007 |
 | Tài khoản: danh sách, đổi tên, xoá | `p1-account-tools` | ✅ Merged 05/10 (PR #9) |
-| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **chờ chạy SQL 0008** rồi merge |
+| S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | ✅ Merged 05/10 (qua PR #13), SQL 0008 đã chạy |
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
-| Docs — Lộ trình 50 KU + quyết định LT1–LT12 | `p1-curriculum-design` | 🟡 PR #10 |
-| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | 🟡 PR mới (xếp chồng trên #12) — **chờ SQL 0009**, merge sau #11 → #12 → #10 |
-| UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
-| S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
+| Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | ✅ Merged 05/10 (PR #10) |
+| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
+| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8) | `p1-slice-6a2` | ⬜ **Tiếp theo**, trước khi soạn đợt 1 |
+| UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
+| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
+| S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
@@ -53,6 +55,32 @@
 **Kiểm tra:** lint, `npm test` (73 + 88 RLS), build, `./e2e/run.sh` 148 PASS.
 
 **Review cuối (đã sửa 2 điểm quan trọng):** mức phụ huynh chốt không còn bị mất sau khi qua kiểm tra vượt; hai lần nộp kiểm tra vượt cùng lúc chỉ giữ một. **Để sau (nhỏ):** phiên ôn bắt đầu 23:55 xong 00:05 tính cho ngày hôm sau; giới hạn 5 bài/1 phiên chỉ chặn ở trang (không ở action); `e2e/run.sh` khôi phục registry bằng git checkout (mất bản chưa commit); trang Nội dung tải toàn bộ trạng thái từng con; đề xuất của gia sư cho KU chưa có bài hiện mã thay vì tên và không lên cờ cho phụ huynh; xoá hồ sơ phụ huynh xoá luôn các bài đã mở tay chưa học; phiên ôn mở lại chỉ giữ các bài đã có câu trả lời.
+
+---
+
+## 05/10/2026 (tối) — Thiết kế AI trong app (AI1–AI4)
+
+**Phụ huynh chốt (popup):** bật AI cho con sau 3–4 tuần pilot (~09/11) (AI1); gợi ý H1–H3 viết sẵn trong nội dung, AI chỉ cho câu hỏi tự do (AI2);
+AI hỗ trợ phụ huynh/gia sư: báo cáo tuần, tóm tắt trước buổi, tóm tắt hội thoại AI (AI3); trần $10/tháng (AI4).
+
+**Đã làm:** `docs/AI_TUTOR.md` — phương pháp dạy, AI làm/không làm, luồng gợi ý H1→H6, 5 lớp chống dạy sai (viết sẵn trước, bám nội dung đã duyệt,
+máy chủ soát số/đáp án, bộ test từ lỗi thật + chấm lại khi đổi, nút "AI nói sai?"), hỗ trợ phụ huynh/gia sư, chi phí, quyền riêng tư, lịch.
+`CONTENT_STANDARD.md`: mọi câu luyện có `hints` H1–H3 từ đợt 1. `P1_PLAN.md`: gợi ý trong S6b (migration 0010), lát **S8** AI (0011).
+
+**Phụ huynh cần làm trước S8 (~26/10):** tạo tài khoản Anthropic Console, đặt giới hạn chi $10, tự dán khoá API vào Vercel (không gửi qua chat).
+
+---
+
+## 05/10/2026 (tối) — Chuẩn soạn nội dung KU (LT13–LT16)
+
+**Phụ huynh chốt (popup):** kho kiểm tra 8 câu, mỗi lượt rút 5 (LT13); luyện tập 3 L1 + 3 L2 + 2 L3, có câu nhận dạng (LT14);
+L1–L2 tự soạn, L3 lấy/chuyển thể từ 68 đề + đề Hà Nội, ghi nguồn từng câu (LT15); đáp án sai do hổng nền có link "Ôn lại" (LT16).
+
+**Đã làm:** `docs/CONTENT_STANDARD.md` — khung KU, khung lý thuyết, cấp câu, bảng gắn mã lỗi E01–E15 (khi nào dùng / không dùng, ví dụ),
+cách viết phản hồi, quy ước số và nguồn, quy trình kiểm tra 5 bước + phiếu duyệt 20 phút cho phụ huynh, thay đổi app cần (đưa vào S6a/S6b),
+chuẩn hoá htl-1/2. CLAUDE.md trỏ tới file này.
+
+**Lưu ý:** file PDF 68 đề không đưa vào GitHub (sách có bản quyền). Việc tiếp theo đề xuất: lập `docs/SOURCE_INDEX.md` (đề số, bài, dạng → KU).
 
 ---
 

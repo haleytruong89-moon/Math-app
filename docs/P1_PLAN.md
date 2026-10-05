@@ -60,9 +60,10 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 3 | **S3** | Gia sư "Ghi buổi dạy" | ✅ merged (PR #3) | — |
 | 3b | **S3b** | Công cụ gia sư: "Bài làm của con" + giao bài về nhà qua link Drive (SQL 0007) | ✅ merged (PR #4, #5, #7) | — |
 | 4 | **S4** | Phụ huynh "Tổng quan" (SQL 0008) | 🟡 PR #11, xếp chồng trên PR #9 | trước 12/10 |
-| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | 🟡 PR `p1-slice-6a` — chờ SQL 0009, merge sau #11 → #12 | 16/10 (để đợt 1 lên app tuần 2) |
-| 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | 🟡 PR #12 | 18/10 |
+| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ✅ Merged 05/10 (PR #13) | 16/10 (để đợt 1 lên app tuần 2) |
+| 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | ✅ Merged 05/10 (qua PR #13) | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | ⬜ | 23/10 (để đợt 2 lên app tuần 3) |
+| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration 0011) | ⬜ code 26/10 – 06/11; bật ~09/11 sau khi đạt bộ test | 06/11 |
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |
 | 9 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot (PR #8) | ⬜ phụ huynh | **12/10** |
 | 10 | **C1…C10** | Soạn nội dung 10 đợt theo `docs/CURRICULUM.md` H6 (nháp + kiểm tra độc lập) | ⬜ | theo bảng H6 |
@@ -76,7 +77,8 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 |---|---|
 | `content/curriculum.json` (LT1) | `{ start: "2026-10-12", learnBy: "2027-03-31", modules: [{ id, title, domains }], units: [{ id, module, title, track: "A"\|"B"\|"C", seq, prereq: [], examWeight: number\|"indirect", grading: "full"\|"scaffolded"\|"partial"\|"tutor", testOut: bool, batch: 0–10 }] }`. H+Q thuộc track A. Đủ 50 KU kể cả KU chưa có file; `title` dùng cho KU/module chưa có file (bản đồ, danh sách phụ huynh). Giá trị: xem "Quyết định chi tiết" bên dưới. |
 | Kiểm tra (`npm test`) | 50 id duy nhất, khớp bảng trong CURRICULUM.md; `seq` duy nhất **trong mỗi track**; tiên quyết tồn tại, không vòng, có `seq` nhỏ hơn; module tồn tại; mọi file KU có trong curriculum; `testOut` chỉ cho track B hoặc module `backfill-*`. |
-| Schema | `estMinutes` ≤ 90; `module.json`: `domains: string[]` nhận `A–Q`, `F0–F3` (giữ đọc được `domain` cũ). |
+| Schema | `estMinutes` ≤ 90; `module.json`: `domains: string[]` nhận `A–Q`, `F0–F3` (giữ đọc được `domain` cũ). Theo `docs/CONTENT_STANDARD.md` §8: `level` thêm **L3**; trường tuỳ chọn `source`, `recognition`, `hints` (3 dòng, câu luyện) (câu), `review` (đáp án sai, phải là KU tiên quyết); test kiểm phân bổ 3/3/2 (luyện) và 2/3/3 (kho kiểm tra), ≥ 1 câu nhận dạng — **chỉ áp với KU mới**; htl-1/2 được miễn đến khi chuẩn hoá xong. |
+| Kho kiểm tra (LT13) | Kho 8 câu, mỗi lượt rút 5 (1 L1 + 2 L2 + 2 L3), ưu tiên câu chưa gặp (dựa trên `attempts`), thứ tự xáo; trang học render bộ đã rút, máy chủ kiểm lượt nộp đúng 5 câu thuộc kho và đúng phân bổ. KU còn kho 5 câu (htl) → dùng cả 5. Không đổi DB. |
 | Registry | Script `npm run content:index` sinh `src/lib/content/registry.generated.ts` (import tĩnh mọi JSON); test báo lỗi nếu file sinh ra cũ. Bỏ sửa tay `index.ts`. |
 | Mở khoá (LT2) | `src/lib/learning/sequence.ts` (hàm thuần, unit test): KU mở khi mọi tiên quyết ≥ M3, hoặc có dòng mở tay. KU chưa `approved` hoặc chưa có file → "Sắp có". |
 | Gợi ý bài mới (LT3) | `suggestNew(state)`: trong KU đã mở, đã duyệt, chưa bắt đầu — chọn 1 của track A và 1 của ô B/C, xếp theo **`batch` nhỏ nhất → track B trước C → `seq`**. Như vậy f3-dongdang (đợt 5) chỉ được gợi ý sau các bài B đợt ≤ 5, đúng ý GĐ2. Không gợi ý khi đã có **2 KU đang học** (đã xem lời giải mẫu, < M3, chưa vào lịch ôn). Con chọn 1 trong 2. |
@@ -118,6 +120,8 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | Item `steps` (LT5) | `{ id, type: "steps", level, prompt (đề chung), steps: [{ prompt, item: mcq\|numeric }] (2–5), solution }`. Id bước = `<item id>-s<n>`. |
 | Chấm | Luyện tập: làm từng bước, sai bước nào hiện gợi ý / mã lỗi bước đó rồi làm tiếp. Kiểm tra: nộp cả chuỗi, không phản hồi đến khi nộp. Ghi **1 dòng `attempts`**: `correct` = đúng hết, `error_code` = bước sai đầu tiên, `answer` = các đáp án nối bằng `|` (≤ 200 ký tự). Không đổi DB. |
 | Ôn tập | Câu `steps` là một câu trong pool; phiên ôn lấy nguyên chuỗi. |
+| Gợi ý H1–H3 (AI2) | Luyện tập: nút "Gợi ý" mở lần lượt H1→H3. Câu trả lời sau H2+ ghi `hint_level`, không tính đúng lần đầu cho M2, quay lại cuối phiên như câu sai. Phiên ôn: gợi ý chỉ mở sau khi đã trả lời. Kiểm tra: không có. **Migration 0010**: `attempts.hint_level smallint` (0–3). |
+| Link ôn nền (LT16) | Phản hồi sai có `review` → hiện "Ôn lại: <tên KU>" mở KU đó ở chế độ xem lại (lý thuyết + lời giải mẫu), không đổi tiến độ. |
 | Hình (LT7) | `figure` ở unit hoặc từng câu: `{ svg, alt }` (giữ enum cũ). Test: chỉ cho phép thẻ `svg g path line polyline polygon circle ellipse rect text tspan defs marker title`, không `script`, `on*`, `href` ngoài, `style` có `url(`; màu chỉ `currentColor` hoặc `var(--…)`; viewBox bắt buộc; ≤ 20 KB. Render server-side. |
 | Nhãn gia sư (LT6) | KU `grading` partial/tutor: nhãn "Cần gia sư xác nhận" trên thẻ học, bản đồ, trang phụ huynh. Mức hệ thống không đổi cách tính; mức cuối do gia sư đề xuất (S3) + phụ huynh chốt (S4). |
 
@@ -127,7 +131,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 
 | Tuần | Nguyên | Claude | Phụ huynh |
 |---|---|---|---|
-| 0 (05–11/10) | — | S6a; soạn đợt 1 (f1-hdt, f1-pnt, a-tanso, b-phepthu) + kiểm tra độc lập | Merge PR #9 → #11 (chạy SQL 0008), #8, #6, #10; nói chuyện D18; tạo tài khoản Nguyên; gia sư bắt đầu ghi buổi dạy |
+| 0 (05–11/10) | — | S6a; soạn đợt 1 (f1-hdt, f1-pnt, a-tanso, b-phepthu) theo `docs/CONTENT_STANDARD.md` + chuẩn hoá htl-1/2 + kiểm tra độc lập | Merge PR #9 → #11 (chạy SQL 0008), #8, #6, #10; nói chuyện D18; tạo tài khoản Nguyên; gia sư bắt đầu ghi buổi dạy |
 | 1 (12–18/10) | htl-1/2 trên app; F1 với gia sư | UX; S6b; soạn đợt 2 | Chạy SQL 0009, merge S6a; duyệt đợt 1 trước 18/10 |
 | 2 (19–25/10) | Đợt 1 trên app (kiểm tra vượt a-tanso, b-phepthu nếu đã biết) | S4b; soạn đợt 3 | Merge UX, S6b; duyệt đợt 2 trước 25/10 |
 | 3 (26/10–01/11) | Đợt 2 (f1-tgon, f1-qd có câu nhiều bước) | Soạn đợt 4 (gia sư soát căn thức) | Merge S4b |
