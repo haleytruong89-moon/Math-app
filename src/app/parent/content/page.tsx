@@ -20,7 +20,7 @@ export default async function ContentPage() {
       {modules.map((m) => (
         <section key={m.id} className="mt-8">
           <h2 className="font-display text-base font-semibold">
-            {m.title} <span className="font-mono text-xs font-normal text-muted">· domain {m.domain}</span>
+            {m.title} <span className="font-mono text-xs font-normal text-muted">· mạch {m.domains.join(", ")}</span>
           </h2>
           <ul className="mt-3 divide-y divide-border rounded-xl border border-border bg-surface">
             {m.unitList.map((u) => (
