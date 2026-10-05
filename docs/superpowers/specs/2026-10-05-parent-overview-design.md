@@ -41,8 +41,10 @@ từ ngày bắt đầu phân công, đã qua **hơn 24h** (tức ngày đó ≤
 Không có mục nào → "Không có gì cần chú ý."
 
 ### 3. Mức hiển thị của một bài
-`hiển thị = mức phụ huynh chốt` nếu lần chốt mới nhất **mới hơn đề xuất mới nhất** và **mức hệ thống hiện tại
-bằng mức hệ thống lúc chốt** (con chưa làm gì làm mức đổi); ngược lại `= mức hệ thống`. Có nhãn "bố mẹ chốt" khi dùng mức chốt.
+`hiển thị = mức phụ huynh chốt` (lần chốt mới nhất của bài) nếu **mức hệ thống hiện tại bằng mức hệ thống lúc chốt**
+(con chưa làm gì làm mức đổi); ngược lại `= mức hệ thống`. Có nhãn "bố mẹ chốt" khi dùng mức chốt.
+(Chỉnh 05/10 khi lập kế hoạch: bỏ điều kiện "mới hơn đề xuất mới nhất" — học sinh không đọc được `tutor_proposals` (RLS),
+nên quy tắc phải tính được ở mọi màn hình. Đề xuất mới lệch với mức đã chốt vẫn bật lại **cờ lệch** ở mục 2.)
 Áp dụng ở: Tổng quan, trang gia sư (bằng chứng + "Bài làm của con"), bản đồ tiến độ của con.
 
 ### 4. Bản đồ các bài
