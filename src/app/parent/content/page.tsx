@@ -5,7 +5,7 @@ import { curriculum, getUnit } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Nội dung — App Toán" };
 
-// S6a: the 50-KU roadmap grouped by content batch (CURRICULUM.md H6), with Nháp / Đã duyệt / Chưa soạn.
+// S6a: the 48-KU roadmap grouped by content batch (CURRICULUM.md H6), with Nháp / Đã duyệt / Chưa soạn.
 export default async function ContentPage() {
   await requireRole("parent");
   const { units, modules } = curriculum();

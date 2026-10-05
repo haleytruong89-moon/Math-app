@@ -1,4 +1,4 @@
-// The 50-KU roadmap (LT1, docs/CURRICULUM.md). Pure module (no Next/React imports) so `node --test` loads it.
+// The 48-KU roadmap (LT1, LT17; docs/CURRICULUM.md). Pure module (no Next/React imports) so `node --test` loads it.
 import { z } from "zod";
 
 const Id = z.string().regex(/^[a-z0-9-]+$/);
