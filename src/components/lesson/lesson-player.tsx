@@ -9,6 +9,8 @@ import { RightTriangleAltitude } from "./figure";
 import { FORMAT_HINT, ItemInput } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
+import { QuestionFeedback } from "@/components/student/question-feedback";
+import { sessionTally } from "@/lib/learning/student-ux";
 
 // One knowledge unit, in the order fixed by §3.5:
 // worked example (must be viewed in full) → faded example → practice L1→L2 → exit test.
@@ -263,6 +265,8 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
   const [result, setResult] = useState<Extract<CheckResult, { understood: true }> | null>(null);
   const [firstTry, setFirstTry] = useState<Record<string, boolean>>({});
   const [hint, setHint] = useState<string | null>(null);
+  const [results, setResults] = useState<boolean[]>([]); // this session only (U2)
+  const [requeued, setRequeued] = useState(false);
   const { pending, error, run } = useAction();
   const startedAtRef = useStartTime();
 
@@ -286,7 +290,10 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
         return;
       }
       setResult(r);
-      if (!(item.id in firstTry)) {
+      setResults((x) => [...x, r.correct]);
+      const first = !(item.id in firstTry);
+      setRequeued(first && !r.correct);
+      if (first) {
         setFirstTry((f) => ({ ...f, [item.id]: r.correct }));
         if (!r.correct) setQueue((q) => [...q, item]);
       }
@@ -328,11 +335,16 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
-      {result && <Feedback result={result} />}
       {result ? (
-        <PrimaryButton className="mt-4 w-full" onClick={next}>
-          Câu tiếp
-        </PrimaryButton>
+        <QuestionFeedback
+          result={result}
+          mode="practice"
+          tally={sessionTally(results)}
+          index={results.length - 1}
+          requeued={requeued}
+          nextLabel="Câu tiếp theo"
+          onNext={next}
+        />
       ) : (
         <PrimaryButton className="mt-4 w-full" disabled={pending} onClick={check}>
           {pending ? "Đang chấm…" : "Kiểm tra"}

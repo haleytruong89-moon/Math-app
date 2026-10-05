@@ -8,11 +8,13 @@ import { RULES, daysBetween } from "@/lib/learning/rules";
 import { giveConsent, setHomeworkDone } from "./actions";
 import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
+import { HomeHeader } from "@/components/student/home-header";
+import { masteryOf } from "@/components/student/mastery";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
-// Mockup "Hôm nay cần làm" (§2.7): weekly goal, progress map, then today's list —
-// reviews first, then units in progress, then the next new unit. No streaks (D17).
+// Mockup "Hôm nay cần làm" (§2.7, student UX 2026-10-05): greeting header with the weekly ring,
+// grouped list (reviews → homework → in progress → next new unit), journey teaser. No streaks (D17).
 export default async function StudentHome() {
   const user = await requireRole("student");
   const supabase = await createClient();
@@ -35,90 +37,90 @@ export default async function StudentHome() {
   const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
   const homework = studentHomework((open.data ?? []) as HomeworkRow[], (recent.data ?? []) as HomeworkRow[], new Date());
-  const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric", timeZone: "Asia/Ho_Chi_Minh" });
+  const shown = new Map(
+    state.units.map((u) => [
+      u.unit.id,
+      displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).level,
+    ]),
+  );
+  const m3 = [...shown.values()].filter((l) => l >= 3).length;
   return (
     <>
-      <div className="flex items-baseline justify-between">
-        <h1 className="font-display text-2xl font-bold">Chào {user.displayName}</h1>
-        <span className="font-mono text-xs text-muted">{today}</span>
-      </div>
-      <WeeklyGoal days={state.studyDays} />
-      <ProgressMap units={state.units} confs={confs} />
-      <h2 className="mt-8 font-display text-base font-semibold">Hôm nay cần làm</h2>
-      <TodayList state={state} homework={homework} />
+      <HomeHeader name={user.displayName} days={state.studyDays} now={new Date()} />
+      <h2 className="mt-6 text-base font-semibold">Hôm nay cần làm</h2>
+      <TodayList state={state} homework={homework} shown={shown} />
+      {state.units.length > 0 && <JourneyTeaser m3={m3} total={state.units.length} />}
     </>
   );
 }
 
-function WeeklyGoal({ days }: { days: number }) {
-  const goal = RULES.weeklyGoalDays;
-  const pct = Math.min(100, Math.round((days / goal) * 100));
+function JourneyTeaser({ m3, total }: { m3: number; total: number }) {
   return (
-    <div className="mt-5 rounded-xl border border-border bg-surface p-4">
-      <div className="flex justify-between text-sm">
-        <span>Mục tiêu tuần này</span>
-        <span className="font-mono tabular-nums">
-          {Math.min(days, goal)}/{goal} buổi{days > goal ? ` (+${days - goal})` : ""}
+    <Link href="/student/journey" className="mt-5 flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-4 py-3.5" data-testid="journey-teaser">
+      <span className="flex flex-1 items-center gap-1.5">
+        <span aria-hidden>🌱</span>
+        <span className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-border">
+          <span className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${total ? (m3 / total) * 100 : 0}%`, background: "linear-gradient(90deg,#34D399,#0D9488)" }} />
+        </span>
+        <span aria-hidden>⭐</span>
+      </span>
+      <span className="text-right">
+        <span className="block text-xs font-semibold">
+          {m3}/{total} bài đạt M3+
+        </span>
+        <span className="block text-[11px] font-medium text-accent">Xem hành trình →</span>
+      </span>
+    </Link>
+  );
+}
+
+const GROUP = {
+  review: { label: "Ôn lại", cls: "bg-warn-soft text-warn" },
+  homework: { label: "Bài về nhà", cls: "bg-good-soft text-good" },
+  progress: { label: "Đang học", cls: "bg-accent-soft text-accent" },
+  new: { label: "Bài mới", cls: "bg-[#DBEAFE] text-[#1D4ED8]" },
+} as const;
+
+function Group({ kind, note, children }: { kind: keyof typeof GROUP; note?: string; children: React.ReactNode }) {
+  return (
+    <section className="mt-3" aria-label={GROUP[kind].label}>
+      <div className="mb-2 flex items-center gap-1.5">
+        <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${GROUP[kind].cls}`}>{GROUP[kind].label}</span>
+        {note && <span className="text-xs text-muted">{note}</span>}
+      </div>
+      <ul className="flex flex-col gap-2">{children}</ul>
+    </section>
+  );
+}
+
+function TodayCard({ title, level, note, minutes, href, cta }: {
+  title: string; level: number; note: string; minutes: number; href: string; cta: string;
+}) {
+  const m = masteryOf(level);
+  return (
+    <li className="rounded-2xl border border-border bg-surface p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+      <div className="flex items-center gap-3">
+        <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-xl text-lg" style={{ background: `linear-gradient(135deg,${m.from},${m.to})` }}>
+          {m.emoji}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold leading-snug">{title}</span>
+          <span className="block text-xs text-muted">
+            {note} · ~{minutes} phút
+          </span>
+        </span>
+        <span className="font-mono text-[11px] font-semibold" style={{ color: m.ring }}>
+          M{level}
         </span>
       </div>
-      <div className="mt-2 h-2 overflow-hidden rounded-full bg-accent-soft" role="progressbar" aria-valuenow={days} aria-valuemin={0} aria-valuemax={goal} aria-label="Mục tiêu tuần">
-        <div className="h-full rounded-full bg-accent" style={{ width: `${pct}%` }} />
-      </div>
-    </div>
-  );
-}
-
-const LEVEL_BG = ["bg-m0", "bg-m1", "bg-m2", "bg-m3", "bg-m4"] as const;
-
-function ProgressMap({ units, confs }: { units: UnitState[]; confs: Map<string, ConfirmationRow> }) {
-  if (!units.length) return null;
-  return (
-    <div className="mt-4 grid grid-cols-2 gap-2" role="list" aria-label="Bản đồ tiến độ">
-      {units.map((u) => {
-        // Display only (S4, P2): the parent's level while the system level is unchanged.
-        const shown = displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed });
-        return (
-          <div key={u.unit.id} role="listitem" className="flex items-center gap-2.5 rounded-xl border border-border bg-surface p-2.5">
-            <span
-              className={`grid size-9 shrink-0 place-items-center rounded-full font-mono text-xs font-medium ${LEVEL_BG[shown.level]} ${shown.level >= 2 ? "text-on-accent" : "text-ink"}`}
-            >
-              M{shown.level}
-            </span>
-            <span className="min-w-0 text-sm leading-tight">
-              {u.unit.title}
-              <span className="block font-mono text-[11px] text-muted">
-                {u.mastery.enoughData ? `${u.mastery.answers} câu đã làm` : "chưa đủ dữ liệu"}
-                {shown.confirmed && " · bố mẹ chốt"}
-              </span>
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function TodayCard({ title, badge, badgeCls, note, minutes, href, cta }: {
-  title: string; badge: string; badgeCls: string; note: string; minutes: number; href: string; cta: string;
-}) {
-  return (
-    <li className="rounded-xl border border-border bg-surface p-4">
-      <div className="flex items-start justify-between gap-3">
-        <p className="font-display font-semibold leading-snug">{title}</p>
-        <span className={`shrink-0 rounded-full px-2.5 py-0.5 font-mono text-xs ${badgeCls}`}>{badge}</span>
-      </div>
-      <p className="mt-1 text-sm text-muted">{note}</p>
-      <div className="mt-3 flex items-center justify-between">
-        <span className="font-mono text-xs text-muted">~{minutes} phút</span>
-        <Link href={href} className="rounded-lg bg-accent px-4 py-2 font-display text-sm font-bold text-on-accent">
-          {cta}
-        </Link>
-      </div>
+      <Link href={href} className="mt-3 block rounded-xl bg-accent px-4 py-2.5 text-center text-sm font-semibold text-on-accent">
+        {cta}
+      </Link>
     </li>
   );
 }
 
-function TodayList({ state, homework }: { state: StudentState; homework: HomeworkRow[] }) {
+function TodayList({ state, homework, shown }: { state: StudentState; homework: HomeworkRow[]; shown: Map<string, number> }) {
   if (!state.units.length) {
     return (
       <div className="mt-3 rounded-xl border border-dashed border-border bg-surface p-4 text-sm text-muted">
@@ -133,50 +135,57 @@ function TodayList({ state, homework }: { state: StudentState; homework: Homewor
   const questions = due.length * RULES.reviewItemsPerUnit;
   const overdue = due.filter((u) => daysBetween(u.review!.dueOn!, state.today) > 0).length;
 
+  const levelOf = (u: UnitState) => shown.get(u.unit.id) ?? u.mastery.level;
   const cards: React.ReactNode[] = [];
   if (due.length) {
     cards.push(
-      <TodayCard
-        key="review"
-        title={due.length === 1 ? due[0].unit.title : `Ôn lại ${due.length} bài`}
-        badge="Ôn lại"
-        badgeCls="bg-accent-soft text-accent"
-        note={`${questions} câu${due.length > 1 ? `, trộn ${due.map((u) => `“${u.unit.title}”`).join(", ")}` : ""}${overdue ? ` · ${overdue} bài quá hạn` : ""}`}
-        minutes={Math.ceil(questions * 1.5)}
-        href="/student/review"
-        cta="Bắt đầu ôn"
-      />,
+      <Group key="g-review" kind="review" note={`${due.length} bài đến hạn`}>
+        <TodayCard
+          title={due.length === 1 ? due[0].unit.title : `Ôn lại ${due.length} bài`}
+          level={Math.min(...due.map(levelOf))}
+          note={`${questions} câu${due.length > 1 ? `, trộn ${due.map((u) => `“${u.unit.title}”`).join(", ")}` : ""}${overdue ? ` · ${overdue} bài quá hạn` : ""}`}
+          minutes={Math.ceil(questions * 1.5)}
+          href="/student/review"
+          cta="Bắt đầu ôn"
+        />
+      </Group>,
     );
   }
-  for (const h of homework) cards.push(<HomeworkCard key={h.id} h={h} today={state.today} />);
-  for (const u of inProgress) {
+  if (homework.length)
     cards.push(
-      <TodayCard
-        key={u.unit.id}
-        title={u.unit.title}
-        badge="Đang học"
-        badgeCls="bg-m1 text-ink"
-        note={!u.fadedDone ? "Tiếp tục phần điền bước" : u.mastery.lastExit ? "Làm lại luyện tập rồi kiểm tra lại" : "Luyện tập rồi làm bài kiểm tra"}
-        minutes={u.unit.estMinutes}
-        href={`/student/learn/${u.unit.id}`}
-        cta="Học tiếp"
-      />,
+      <Group key="g-homework" kind="homework">
+        {homework.map((h) => <HomeworkCard key={h.id} h={h} today={state.today} />)}
+      </Group>,
     );
-  }
-  if (nextNew) {
+  if (inProgress.length)
     cards.push(
-      <TodayCard
-        key={nextNew.unit.id}
-        title={nextNew.unit.title}
-        badge="Bài mới"
-        badgeCls="bg-warn-soft text-warn"
-        note="Xem lời giải mẫu trước khi tự làm"
-        minutes={nextNew.unit.estMinutes}
-        href={`/student/learn/${nextNew.unit.id}`}
-        cta="Học bài mới"
-      />,
+      <Group key="g-progress" kind="progress">
+        {inProgress.map((u) => (
+          <TodayCard
+            key={u.unit.id}
+            title={u.unit.title}
+            level={levelOf(u)}
+            note={!u.fadedDone ? "Tiếp tục phần điền bước" : u.mastery.lastExit ? "Làm lại luyện tập rồi kiểm tra lại" : "Luyện tập rồi làm bài kiểm tra"}
+            minutes={u.unit.estMinutes}
+            href={`/student/learn/${u.unit.id}`}
+            cta="Học tiếp"
+          />
+        ))}
+      </Group>,
     );
-  }
+  if (nextNew)
+    cards.push(
+      <Group key="g-new" kind="new">
+        <TodayCard
+          title={nextNew.unit.title}
+          level={levelOf(nextNew)}
+          note="Xem lời giải mẫu trước khi tự làm"
+          minutes={nextNew.unit.estMinutes}
+          href={`/student/learn/${nextNew.unit.id}`}
+          cta="Học bài mới"
+        />
+      </Group>,
+    );
 
   if (!cards.length) {
     const upcoming = state.units
@@ -190,7 +199,7 @@ function TodayList({ state, homework }: { state: StudentState; homework: Homewor
       </div>
     );
   }
-  return <ul className="mt-3 flex flex-col gap-3">{cards}</ul>;
+  return <div>{cards}</div>;
 }
 
 function HomeworkCard({ h, today }: { h: HomeworkRow; today: string }) {
