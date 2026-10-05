@@ -6,6 +6,8 @@ import { requireRole } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { ActionState } from "@/components/action-form";
 import { nameMatches } from "@/lib/accounts/rules";
+import { parseWeekdays } from "@/lib/learning/overview";
+import { parentOwnsStudent } from "@/lib/parent";
 
 // Every action: (1) requireRole('parent') — redirects anyone else,
 // (2) validate input, (3) check the parent owns the target, (4) write with the admin client.
@@ -18,17 +20,6 @@ const Uuid = z.uuid();
 
 function fail(message: string): ActionState {
   return { error: message };
-}
-
-async function parentOwnsStudent(parentId: string, studentId: string) {
-  const admin = createAdminClient();
-  const { data } = await admin
-    .from("parent_students")
-    .select("student_id")
-    .eq("parent_id", parentId)
-    .eq("student_id", studentId)
-    .maybeSingle();
-  return Boolean(data);
 }
 
 /** Only tutor/student accounts are managed here — never another parent. */
@@ -251,6 +242,8 @@ export async function assignTutor(_p: ActionState, fd: FormData): Promise<Action
   const tutorId = Uuid.safeParse(fd.get("tutorId"));
   const studentId = Uuid.safeParse(fd.get("studentId"));
   if (!tutorId.success || !studentId.success) return fail("Chọn gia sư và học sinh.");
+  const weekdays = parseWeekdays(fd.getAll("weekday"));
+  if (!weekdays) return fail("Ngày dạy không hợp lệ.");
   if (!(await parentOwnsStudent(parent.id, studentId.data))) return fail("Không tìm thấy học sinh.");
 
   const admin = createAdminClient();
@@ -263,7 +256,7 @@ export async function assignTutor(_p: ActionState, fd: FormData): Promise<Action
 
   const { error } = await admin
     .from("tutor_assignments")
-    .insert({ tutor_id: tutorId.data, student_id: studentId.data });
+    .insert({ tutor_id: tutorId.data, student_id: studentId.data, weekdays });
   if (error) {
     return fail(error.code === "23505" ? "Gia sư này đang dạy học sinh này rồi." : "Không gán được.");
   }
@@ -291,4 +284,22 @@ export async function endAssignment(_p: ActionState, fd: FormData): Promise<Acti
     .is("ended_at", null);
   revalidatePath(PAGE);
   return { ok: "Đã kết thúc." };
+}
+
+/** Edit the weekly teaching days of an active assignment (S4 "buổi dạy chưa ghi"). */
+export async function setAssignmentWeekdays(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const id = Uuid.safeParse(fd.get("assignmentId"));
+  const weekdays = parseWeekdays(fd.getAll("weekday"));
+  if (!id.success) return fail("Không hợp lệ.");
+  if (!weekdays) return fail("Ngày dạy không hợp lệ.");
+
+  const admin = createAdminClient();
+  const { data: a } = await admin.from("tutor_assignments").select("student_id").eq("id", id.data).is("ended_at", null).maybeSingle();
+  if (!a || !(await parentOwnsStudent(parent.id, a.student_id as string))) return fail("Không tìm thấy.");
+  const { error } = await admin.from("tutor_assignments").update({ weekdays }).eq("id", id.data);
+  if (error) return fail("Chưa lưu được, thử lại sau.");
+  revalidatePath(PAGE);
+  revalidatePath("/parent");
+  return { ok: "Đã lưu lịch." };
 }
