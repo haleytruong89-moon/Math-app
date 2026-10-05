@@ -2,7 +2,7 @@
 
 > How the app is actually put together. Product rules live in `docs/SPEC.md`; the slice plan in
 > `docs/P1_PLAN.md`; status in `docs/PROGRESS.md`. Update this file in the same PR as any change
-> to routes, tables, auth or content format. Last updated: 05/10/2026 (after student UX approval).
+> to routes, tables, auth or content format. Last updated: 05/10/2026 (slice 3 + tutor tools + student UX approval).
 
 ## 1. Architecture
 
@@ -39,8 +39,10 @@ Key choices
 | `/parent` | parent | overview (P0 shell; real numbers in S4) |
 | `/parent/accounts` | parent | create/lock accounts, reset password, students, tutor assignment |
 | `/parent/content`, `/parent/content/[unitId]` | parent | content list + preview that records nothing (D16) |
-| `/tutor` | tutor | shell (S3: "Ghi buổi dạy") |
-| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → in progress → next new |
+| `/tutor` | tutor | assigned students (RLS) + date of the last session this tutor logged |
+| `/tutor/[studentId]` | tutor | "Ghi buổi dạy": date → tick units (all units, drafts included) → evidence (+ "Xem câu sai →", new tab) → level M0–M4 → note → "Giao bài về nhà" rows → save; "Bài đã giao chưa chữa" + "Đã chữa" (note) on top; last 5 own sessions |
+| `/tutor/[studentId]/work`, `/parent/students/[studentId]/work` | tutor (assigned), parent | "Bài làm của con" (`StudentWork`): per-unit summary (level, answers, error codes seen ≥ 2×, latest proposal) → one unit's answers, wrong only by default (`?unit=…&all=1`): student answer, right answer, error code + content feedback, "lần sau làm đúng", solution. Read-only, RLS |
+| `/student` | student | D18 consent gate → "Hôm nay cần làm": weekly goal, progress map, reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → next new |
 | `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only) |
 | `/student/review` | student | mixed review of all due units, interleaved |
 | `/api/cron/ping` | Vercel Cron | heartbeat upsert |
@@ -57,13 +59,18 @@ Key choices
 | `attempts` (0003) | every graded answer: mode faded/practice/exit/review, correct, error code, duration, run id | learn actions |
 | `review_queue` (0004, 0005) | next review per unit: stage 1/2/3 = D+1/7/21, 4 = maintenance (60 days); `completed_at` = M4 | learn actions |
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
+| `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
+| `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
+| `homework` (0007) | homework given in a session: unit (or "Khác"), task ≤ 300, 0–3 `https://` links (Drive), due date, student `done_at`, tutor `reviewed_at` + note; composite FK to the session. RLS: parent, own active tutor, the student. Never graded, not in mastery/weekly goal | `saveTeachingSession`, `reviewHomework`, `setHomeworkDone` |
 
 RLS read rule for learning tables: `is_parent_of(student) or is_active_tutor_of(student) or is_self_student(student)`
 (security-definer helpers in 0001). **Every new table needs explicit GRANTs to `service_role`** (Supabase no longer
 grants them automatically — this broke account creation once, see 0002).
 
-Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.ts`). Tutor-proposed and
-parent-confirmed levels arrive in S3/S4.
+Teaching tables read rule: `is_parent_of(student) or (tutor_id = auth.uid() and is_active_tutor_of(student))` —
+a tutor sees only their own sessions and only while assigned (D3); students don't read them.
+
+Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.ts`). Parent-confirmed levels arrive in S4.
 
 ## 4. Content
 
@@ -85,6 +92,13 @@ parent-confirmed levels arrive in S3/S4.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
 - Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.
+- Review questions come from **practice items only** (review shows solutions; exit-test items stay unseen until a retake).
+  Reloading `/student/review` resumes the latest unfinished run (`planReview`: review answers for a due unit with no
+  `review_log` row for that run), so answered questions count and aren't asked again.
+- Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;
+  a session with no unit needs a note. The action (`src/app/tutor/actions.ts`) re-checks an active tutor profile and an
+  active assignment with the admin client, inserts the session then the proposals, and deletes the session if the
+  proposals fail.
 
 ## 6. Operations
 
@@ -103,7 +117,7 @@ parent-confirmed levels arrive in S3/S4.
 |---|---|
 | `npm run test:content` | grading, content files, learning rules (node --test) |
 | `npm run test:db` | migrations + RLS on PGlite with a stubbed auth schema |
-| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
+| `./e2e/run.sh` | real browser (Playwright, preinstalled Chromium) against the dev server with PGlite instead of Supabase: parent preview flow + student flow (learn → exit → review scheduling → interleaved review → maintenance) + tutor flow (evidence, missing level, save, guards, ended/locked tutor). Temporarily patches `dal.ts`, `supabase/server.ts`, `supabase/admin.ts`, `next.config.ts` and reverts on exit. |
 
 ## 9. Student theme (approved 05/10/2026)
 
@@ -138,7 +152,7 @@ in `globals.css` for student routes only. No changes to parent/tutor routes.
 
 **Key components changed:**
 - `WeeklyGoal`: linear bar → SVG circle ring (stroke-dasharray/dashoffset).
-- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors. **Updated 05/10 (Q9):** with 50 KUs the map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a progress bar (structure built in S6a, plant styling in the UX slice).
+- `ProgressMap`: 2-col grid → vertical path map with emoji nodes and gradient connectors. **Updated 05/10 (LT9):** with 50 KUs the map is grouped track → module; only the module(s) in progress are expanded, the rest collapse to one row with a progress bar (structure built in S6a, plant styling in the UX slice).
 - `QuestionFeedback` (new): 2-state card — correct (green gradient, 🎉, session-only correct count, mastery nudge) and wrong (yellow gradient, 💡, side-by-side comparison, error tag, encouragement).
 - Student layout: teal gradient header with greeting.
 
@@ -153,4 +167,6 @@ not persistent, not a streak. No leaderboards anywhere.
 - Next 16: `proxy.ts` not middleware; async `params`; ESLint CLI; read `node_modules/next/dist/docs/` before using an API.
 - React compiler lint: no `Date.now()` during render; refs must be named `…Ref` to be mutated in handlers.
 - Don't `revalidatePath` in an action whose page would re-render into a different state mid-flow (`finishReview`).
+- Forms whose save can be refused must not use `<form action>`: React resets the form after the action and wipes
+  the user's choices. `SessionForm` submits via `onSubmit` + `startTransition(formAction)` and remounts on success.
 - Vietnam dates come from `vnDate()`; never compare against `new Date().toISOString().slice(0,10)` (UTC).

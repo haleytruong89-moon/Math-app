@@ -20,18 +20,29 @@ function formatDate(iso: string) {
 export function ReviewPlayer({
   runId,
   questions,
+  answered,
   units,
   hasFigure,
 }: {
   runId: string;
   questions: ReviewQuestion[];
+  /** Answers already given in this run before a reload; they count and aren't asked again. */
+  answered: { unitId: string; correct: boolean }[];
   units: { id: string; title: string; stage: 1 | 2 | 3 | 4 }[];
   hasFigure: boolean;
 }) {
   const [pos, setPos] = useState(0);
   const [value, setValue] = useState("");
   const [result, setResult] = useState<Extract<CheckResult, { understood: true }> | null>(null);
-  const [score, setScore] = useState<Record<string, { correct: number; total: number }>>({});
+  const [score, setScore] = useState(() => {
+    const s: Record<string, { correct: number; total: number }> = {};
+    for (const a of answered) {
+      const u = (s[a.unitId] ??= { correct: 0, total: 0 });
+      u.total += 1;
+      if (a.correct) u.correct += 1;
+    }
+    return s;
+  });
   const [ratings, setRatings] = useState<Record<string, "easy" | "normal">>({});
   const [summary, setSummary] = useState<Extract<ReviewSummary, { ok: true }> | null>(null);
   const [hint, setHint] = useState<string | null>(null);
@@ -159,7 +170,7 @@ export function ReviewPlayer({
       <Card>
         <div className="flex items-center justify-between font-mono text-xs text-muted" data-unit={q.unitId} data-item={q.item.id}>
           <span>
-            Câu {pos + 1}/{questions.length}
+            Câu {answered.length + pos + 1}/{answered.length + questions.length}
           </span>
           <span className="truncate pl-3">{q.unitTitle}</span>
         </div>

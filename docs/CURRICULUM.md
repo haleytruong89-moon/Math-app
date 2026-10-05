@@ -3,7 +3,7 @@
 > **Source of truth:** This file lives in the repo and is the canonical reference for content creation order,
 > KU definitions, and time estimates.
 > Approved: 05/10/2026 (curriculum structure + time estimates confirmed by parent).
-> Revised 05/10/2026 after the design review (decisions Q1–Q12 in `docs/SPEC.md` §0): timeline compressed to
+> Revised 05/10/2026 after the design review (decisions LT1–LT12 in `docs/SPEC.md` §0): timeline compressed to
 > **12/10/2026 → 31/03/2027**, Track C starts earlier, table data fixed. The machine-readable copy of §2
 > will live in `content/curriculum.json` (S6a); when both exist, the JSON is what the app uses and `npm test` keeps them in sync.
 > Upstream: `deliverables/PROJECT_HOC_TOAN_LOP9_6_THANG_MASTER.md` (master plan, 51 sections, domains A–Q + F0–F3).
@@ -48,7 +48,7 @@ Track A ─── Lõi đại số (prerequisite chain, nặng)
 | 4 | Ôn trộn A + B (interleaving, D14) | Mixed |
 
 Cuối tuần có thể thêm buổi 5 để tăng tốc, đặc biệt ở GĐ 3–4 khi nội dung nặng hơn.
-Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App gợi ý 1 bài Track A + 1 bài Track B/C đã mở khoá, con chọn (Q3).
+Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App gợi ý 1 bài Track A + 1 bài Track B/C đã mở khoá, con chọn (LT3).
 
 ---
 
@@ -225,8 +225,8 @@ App grading capabilities: MCQ (2–6 options) và single exact numeric. **KHÔNG
 | Mức | Ý nghĩa | KU count | KUs |
 |---|---|---|---|
 | **full** | Mọi câu là MCQ / đáp số → app tự chấm | 26 | f1-hdt, f1-pnt, c-dkxd, c-coban, c-truccan, d-ptbh, d-nhamnghiem, e-viete, g-phantram, a-tanso, a-bieudo, b-phepthu, b-xsuat, b-haib, p-trunon, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol, j-coban, j-cung, m-vitri |
-| **scaffolded** | Dùng câu nhiều bước (item type `steps`, Q5) → app tự chấm hết | 4 | f1-tgon, f1-qd, c-rutgon, c-cauphu |
-| **partial** | App chấm phần MCQ/đáp số/nhiều bước; phần chứng minh / tập nghiệm làm trên giấy với gia sư → nhãn "cần gia sư xác nhận" (Q6) | 15 | d-thamso, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-honhop, f3-dongdang, k-goiintiep, k-tugiacnt, l-tieptuyen, n-ngoainoi, h-bdt, hq-amgm, hq-doanhthu, hq-hinhhoc |
+| **scaffolded** | Dùng câu nhiều bước (item type `steps`, LT5) → app tự chấm hết | 4 | f1-tgon, f1-qd, c-rutgon, c-cauphu |
+| **partial** | App chấm phần MCQ/đáp số/nhiều bước; phần chứng minh / tập nghiệm làm trên giấy với gia sư → nhãn "cần gia sư xác nhận" (LT6) | 15 | d-thamso, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-honhop, f3-dongdang, k-goiintiep, k-tugiacnt, l-tieptuyen, n-ngoainoi, h-bdt, hq-amgm, hq-doanhthu, hq-hinhhoc |
 | **tutor** | App chỉ có phần nhận dạng / bước then chốt; kỹ năng chính (chứng minh tự do) gia sư chấm trên giấy | 5 | l-kethop, o-chungminh, o-dongdang, o-nangcao, hq-nangcao |
 
 **30/50 KU (60%) app tự chấm toàn bộ** (full + scaffolded). 20 KU có phần gia sư: mức trong app tính trên phần tự chấm,
@@ -243,7 +243,7 @@ Step 3: Dạng rút gọn → MCQ: chọn kết quả rút gọn
 Step 4: Tính giá trị → Numeric: nhập đáp số
 ```
 
-→ Mỗi bước tự chấm. Cả chuỗi tính là **1 câu**: đúng khi đúng hết; mã lỗi lấy ở bước sai đầu tiên; khi luyện tập sai bước nào được gợi ý ngay bước đó; khi ôn lấy cả chuỗi (Q5).
+→ Mỗi bước tự chấm. Cả chuỗi tính là **1 câu**: đúng khi đúng hết; mã lỗi lấy ở bước sai đầu tiên; khi luyện tập sai bước nào được gợi ý ngay bước đó; khi ôn lấy cả chuỗi (LT5).
 
 ---
 
@@ -270,7 +270,7 @@ F0 (số học nền) và F2 (PT bậc nhất) giả định đã biết — kh�
 2. J đường tròn cơ bản → K góc / tứ giác nội tiếp → L tiếp tuyến (GĐ3, tuần 14–19) — **đủ gate 8.5 câu 4b**
 3. L kết hợp, M/N vị trí tương đối + ngoại/nội tiếp, O nâng cao (GĐ4, tuần 20–25)
 
-Chứng minh viết tự do làm trên giấy với gia sư (Q6); app luyện nhận dạng, tính góc/độ dài, bước then chốt.
+Chứng minh viết tự do làm trên giấy với gia sư (LT6); app luyện nhận dạng, tính góc/độ dài, bước then chốt.
 
 ### H4. Những KU nào app chấm được 100%?
 
@@ -279,7 +279,7 @@ Chứng minh viết tự do làm trên giấy với gia sư (Q6); app luyện nh
 
 ### H5. Giải pháp cho KUs "partial"?
 
-**Trả lời (chốt Q5, Q6):**
+**Trả lời (chốt LT5, LT6):**
 1. **Câu nhiều bước** — f1-tgon, f1-qd, c-rutgon, c-cauphu và phần lập PT của g-chuyendong, g-nangsuat.
 2. **Hybrid** — app chấm phần MCQ/đáp số; phần chứng minh/tập nghiệm làm trên giấy, KU gắn nhãn "cần gia sư xác nhận". 15 KU partial.
 3. **Gia sư là chính** — 5 KU tutor; app chỉ giữ phần nhận dạng. Không có chụp ảnh bài làm trong P1.
@@ -287,7 +287,7 @@ Chứng minh viết tự do làm trên giấy với gia sư (Q6); app luyện nh
 ### H6. Thứ tự tạo content? (lịch nén, duyệt xong trước ngày ở cột cuối)
 
 **Nguyên tắc:** (1) chuỗi tiên quyết, (2) trọng số đề, (3) loại chấm. Nội dung phải **được duyệt trước khi cần học ít nhất 1–2 tuần**.
-Mỗi KU qua kiểm tra độc lập (agent thứ hai giải lại + script tính lại đáp số) trước khi tới phụ huynh; gia sư soát đợt có C, E, G (Q10).
+Mỗi KU qua kiểm tra độc lập (agent thứ hai giải lại + script tính lại đáp số) trước khi tới phụ huynh; gia sư soát đợt có C, E, G (LT10).
 
 | Đợt | KUs | Cần cho | Duyệt xong trước |
 |------|------|-------|-----|
@@ -373,9 +373,9 @@ Mỗi KU = 1 file `content/<module>/<unit-id>.json` theo schema thật (`src/lib
 
 Thay đổi schema trong S6a/S6b (xem `docs/P1_PLAN.md`):
 - `estMinutes` tối đa 60 → **90** (8 KU dài 65–75 phút chia làm 2 buổi; tiến độ giữa các buổi đã được lưu).
-- `figure` từ enum cố định → thêm dạng **SVG inline** (Q7), đặt được ở unit hoặc từng câu.
-- Item type mới **`steps`** (Q5).
-- Track, thứ tự, tiên quyết, trọng số đề, loại chấm, cờ "cần gia sư xác nhận" **không** nằm trong file KU mà trong `content/curriculum.json` (Q1).
+- `figure` từ enum cố định → thêm dạng **SVG inline** (LT7), đặt được ở unit hoặc từng câu.
+- Item type mới **`steps`** (LT5).
+- Track, thứ tự, tiên quyết, trọng số đề, loại chấm, cờ "cần gia sư xác nhận" **không** nằm trong file KU mà trong `content/curriculum.json` (LT1).
 - Module: `domain` (1 chữ A–Q) → `domains` cho phép `F1`, `F3` và nhiều domain (`["H","Q"]`, `["M","N"]`).
 
 ### 9.2 KU per-item format (app capabilities)
@@ -401,7 +401,7 @@ Per D14 + SPEC.md §0:
 - Fail → back to D+1
 - Pass + "easy" → next interval ×1.5
 - After D+21: maintenance review every 60 days until exam
-- Tối đa 5 bài/phiên ôn, bài quá hạn lâu nhất trước (Q8)
+- Tối đa 5 bài/phiên ôn, bài quá hạn lâu nhất trước (LT8)
 
 ### 9.4 Mastery levels (confirmed in SPEC.md §0)
 
@@ -410,8 +410,8 @@ Per D14 + SPEC.md §0:
 - **M2:** ≥60% last 5 practice first-tries
 - **M3:** ≥80% exit test, no error code repeated ≥ 2
 - **M4:** M3 + passed D+21 review
-- **Kiểm tra vượt (Q4):** với Track B và nhóm bù nền F1/F3, làm thẳng bài kiểm tra 1 lần; ≥ 80% và không lặp mã lỗi → M3 + lịch ôn D+1; chưa đạt → học bình thường
-- **Mở khoá (Q2):** mọi bài tiên quyết đạt M3, hoặc phụ huynh mở tay
+- **Kiểm tra vượt (LT4):** với Track B và nhóm bù nền F1/F3, làm thẳng bài kiểm tra 1 lần; ≥ 80% và không lặp mã lỗi → M3 + lịch ôn D+1; chưa đạt → học bình thường
+- **Mở khoá (LT2):** mọi bài tiên quyết đạt M3, hoặc phụ huynh mở tay
 
 ### 9.5 What this document does NOT cover
 
@@ -428,4 +428,4 @@ Per D14 + SPEC.md §0:
 | Date | Change |
 |---|---|
 | 05/10/2026 | Initial version: 2-track structure, 50 KUs, time estimates, H1–H6. Approved by parent. |
-| 05/10/2026 | Design review (Q1–Q12): timeline 12/10/2026 → 31/03/2027; f3-dongdang to GĐ2, Track C from GĐ3; 13 rows given their missing examWeight; gradability counts reconciled (26/4/15/5, 60% fully auto); content batches re-dated; §9 matches the real schema + planned changes. |
+| 05/10/2026 | Design review (LT1–LT12): timeline 12/10/2026 → 31/03/2027; f3-dongdang to GĐ2, Track C from GĐ3; 13 rows given their missing examWeight; gradability counts reconciled (26/4/15/5, 60% fully auto); content batches re-dated; §9 matches the real schema + planned changes. |

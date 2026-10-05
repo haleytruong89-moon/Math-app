@@ -5,7 +5,8 @@ import { createClient } from "@/lib/supabase/server";
 import { ActionForm } from "@/components/action-form";
 import { dueReviews, loadStudentState, type StudentState, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
-import { giveConsent } from "./actions";
+import { giveConsent, setHomeworkDone } from "./actions";
+import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -23,7 +24,14 @@ export default async function StudentHome() {
   // Acceptance criterion (§2.7): no way past this screen until consent is recorded.
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
-  const state = await loadStudentState(supabase, me.id);
+  const cols = "id, task, links, due_on, done_at, reviewed_at, review_note";
+  const [state, open, recent] = await Promise.all([
+    loadStudentState(supabase, me.id),
+    supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
+    supabase.from("homework").select(cols).eq("student_id", me.id).order("created_at", { ascending: false }).limit(20),
+  ]);
+  for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
+  const homework = studentHomework((open.data ?? []) as HomeworkRow[], (recent.data ?? []) as HomeworkRow[], new Date());
   const today = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "numeric", timeZone: "Asia/Ho_Chi_Minh" });
   return (
     <>
@@ -34,7 +42,7 @@ export default async function StudentHome() {
       <WeeklyGoal days={state.studyDays} />
       <ProgressMap units={state.units} />
       <h2 className="mt-8 font-display text-base font-semibold">Hôm nay cần làm</h2>
-      <TodayList state={state} />
+      <TodayList state={state} homework={homework} />
     </>
   );
 }
@@ -102,7 +110,7 @@ function TodayCard({ title, badge, badgeCls, note, minutes, href, cta }: {
   );
 }
 
-function TodayList({ state }: { state: StudentState }) {
+function TodayList({ state, homework }: { state: StudentState; homework: HomeworkRow[] }) {
   if (!state.units.length) {
     return (
       <div className="mt-3 rounded-xl border border-dashed border-border bg-surface p-4 text-sm text-muted">
@@ -132,6 +140,7 @@ function TodayList({ state }: { state: StudentState }) {
       />,
     );
   }
+  for (const h of homework) cards.push(<HomeworkCard key={h.id} h={h} today={state.today} />);
   for (const u of inProgress) {
     cards.push(
       <TodayCard
@@ -174,6 +183,48 @@ function TodayList({ state }: { state: StudentState }) {
     );
   }
   return <ul className="mt-3 flex flex-col gap-3">{cards}</ul>;
+}
+
+function HomeworkCard({ h, today }: { h: HomeworkRow; today: string }) {
+  const due = dueLabel(h.due_on, today);
+  const late = !h.done_at && !h.reviewed_at && due.startsWith("quá hạn");
+  return (
+    <li className="rounded-xl border border-border bg-surface p-4" data-testid="homework-card">
+      <div className="flex items-start justify-between gap-3">
+        <p className="font-display font-semibold leading-snug">Bài về nhà của thầy/cô</p>
+        <span className="shrink-0 rounded-full bg-accent-soft px-2.5 py-0.5 font-mono text-xs text-accent">
+          {h.reviewed_at ? "Đã chữa" : h.done_at ? "Con đã làm xong" : "Bài về nhà"}
+        </span>
+      </div>
+      <p className="mt-1 whitespace-pre-line">{h.task}</p>
+      {h.links.length > 0 && (
+        <p className="mt-2 flex flex-wrap gap-3 text-sm">
+          {h.links.map((l, i) => (
+            <a key={l + i} href={l} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              Mở đề{h.links.length > 1 ? ` ${i + 1}` : ""} ↗
+            </a>
+          ))}
+        </p>
+      )}
+      <p className={`mt-2 font-mono text-xs ${late ? "text-warn" : "text-muted"}`}>{due}</p>
+      {h.reviewed_at ? (
+        <p className="mt-2 text-sm">
+          <b className="text-good">Thầy/cô đã chữa</b>
+          {h.review_note && <span className="whitespace-pre-line">: “{h.review_note}”</span>}
+        </p>
+      ) : (
+        <ActionForm
+          action={setHomeworkDone}
+          submitLabel={h.done_at ? "Bỏ đánh dấu xong" : "Con làm xong rồi"}
+          variant={h.done_at ? "quiet" : "primary"}
+          className="mt-3"
+        >
+          <input type="hidden" name="homeworkId" value={h.id} />
+          <input type="hidden" name="done" value={h.done_at ? "0" : "1"} />
+        </ActionForm>
+      )}
+    </li>
+  );
 }
 
 function ConsentScreen({ name }: { name: string }) {

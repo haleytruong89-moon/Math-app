@@ -151,7 +151,7 @@ export function interleave<T>(groups: T[][]): T[] {
 }
 
 /** Least recently answered items first (never-answered before anything else), keeping content order on ties. */
-export function pickReviewItems<T extends { id: string }>(pool: T[], attempts: AttemptRow[], n = RULES.reviewItemsPerUnit): T[] {
+export function pickReviewItems<T extends { id: string }>(pool: T[], attempts: AttemptRow[], n: number = RULES.reviewItemsPerUnit): T[] {
   const last = new Map<string, string>();
   for (const a of attempts) if ((last.get(a.item_id) ?? "") < a.created_at) last.set(a.item_id, a.created_at);
   return pool
@@ -159,6 +159,56 @@ export function pickReviewItems<T extends { id: string }>(pool: T[], attempts: A
     .sort((a, b) => a.t.localeCompare(b.t) || a.i - b.i)
     .slice(0, n)
     .map((x) => x.item);
+}
+
+export type ReviewPlanUnit<T> = { unitId: string; pool: T[]; attempts: AttemptRow[] };
+
+export type ReviewPlan<T> = {
+  /** Unfinished run to resume, or null to start a new one. */
+  runId: string | null;
+  /** First answers already given in that run, oldest first. */
+  answered: { unitId: string; itemId: string; correct: boolean }[];
+  /** Questions still to ask, interleaved across units (D14). */
+  remaining: { unitId: string; item: T }[];
+};
+
+/**
+ * Build today's review session. A run is unfinished while it has review answers for a
+ * due unit but no review_log row for that unit (`scored` holds "runId|unitId").
+ * Reloading the page resumes the latest unfinished run, so a wrong answer still counts
+ * and the questions don't change; the run's own answers are left out when picking the
+ * rest, which gives back the set the run started with.
+ */
+export function planReview<T extends { id: string }>(units: ReviewPlanUnit<T>[], scored: Set<string>): ReviewPlan<T> {
+  let latest: AttemptRow | null = null;
+  for (const u of units)
+    for (const a of u.attempts)
+      if (a.mode === "review" && a.exit_run && !scored.has(`${a.exit_run}|${u.unitId}`) && (!latest || a.created_at > latest.created_at))
+        latest = a;
+  const runId = latest?.exit_run ?? null;
+
+  const answered: (ReviewPlan<T>["answered"][number] & { at: string })[] = [];
+  const groups = units.map((u) => {
+    const inRun = u.attempts.filter((a) => a.mode === "review" && runId !== null && a.exit_run === runId);
+    const done = new Set<string>();
+    for (const a of [...inRun].sort((x, y) => x.created_at.localeCompare(y.created_at))) {
+      if (done.has(a.item_id)) continue;
+      done.add(a.item_id);
+      answered.push({ unitId: u.unitId, itemId: a.item_id, correct: a.correct, at: a.created_at });
+    }
+    const others = u.attempts.filter((a) => !inRun.includes(a));
+    const pool = u.pool.filter((it) => !done.has(it.id));
+    const n = Math.max(0, RULES.reviewItemsPerUnit - done.size);
+    return pickReviewItems(pool, others, n).map((item) => ({ unitId: u.unitId, item }));
+  });
+
+  return {
+    runId,
+    answered: answered
+      .sort((x, y) => x.at.localeCompare(y.at))
+      .map((a) => ({ unitId: a.unitId, itemId: a.itemId, correct: a.correct })),
+    remaining: interleave(groups),
+  };
 }
 
 // ---------- weekly goal (D17: goal, never streaks) ----------

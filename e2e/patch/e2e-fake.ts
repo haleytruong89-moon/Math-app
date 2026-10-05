@@ -6,6 +6,12 @@ import path from "node:path";
 
 export const STUDENT_UID = "00000000-0000-0000-0000-00000000e2e1";
 export const PARENT_UID = "00000000-0000-0000-0000-00000000e2e0";
+export const TUTOR_UID = "00000000-0000-0000-0000-00000000e2e2";
+export const E2E_USERS = {
+  parent: { id: PARENT_UID, role: "parent", displayName: "Phụ huynh" },
+  student: { id: STUDENT_UID, role: "student", displayName: "Nguyên" },
+  tutor: { id: TUTOR_UID, role: "tutor", displayName: "Cô Trang" },
+} as const;
 
 type G = { __e2eDb?: Promise<PGlite>; __e2eLock?: Promise<unknown> };
 const g = globalThis as G;
@@ -29,6 +35,10 @@ async function init() {
     insert into auth.users (id, email, raw_app_meta_data, raw_user_meta_data) values
       ('${STUDENT_UID}', 's@e2e', '{"role":"student"}', '{"display_name":"Nguyên"}');
     update public.students set profile_id = '${STUDENT_UID}', consent_at = now() where full_name = 'Hạnh Nguyên';
+    insert into auth.users (id, email, raw_app_meta_data, raw_user_meta_data) values
+      ('${TUTOR_UID}', 't@e2e', '{"role":"tutor"}', '{"display_name":"Cô Trang"}');
+    insert into public.tutor_assignments (tutor_id, student_id) select '${TUTOR_UID}', id from public.students where full_name = 'Hạnh Nguyên';
+    insert into public.students (full_name, grade) values ('Đăng An', 6); -- not assigned to the tutor
   `);
   return db;
 }
@@ -58,7 +68,7 @@ function norm(v: unknown, type: number): unknown {
 const lit = (v: unknown) => v;
 
 class Query {
-  private op: "select" | "insert" | "update" | "upsert" = "select";
+  private op: "select" | "insert" | "update" | "upsert" | "delete" = "select";
   private cols = "*";
   private returning: string | null = null;
   private where: string[] = [];
@@ -77,6 +87,7 @@ class Query {
     this.op = "upsert"; this.payload = [row]; this.conflict = o.onConflict ?? "id"; this.ignoreDup = !!o.ignoreDuplicates; return this;
   }
   update(obj: Record<string, unknown>) { this.op = "update"; this.payload = [obj]; return this; }
+  delete() { this.op = "delete"; return this; }
   eq(c: string, v: unknown) { this.where.push(`${c} = ${this.p(v)}`); return this; }
   is(c: string, v: null) { this.where.push(`${c} is ${v === null ? "null" : String(v)}`); return this; }
   in(c: string, arr: unknown[]) { this.where.push(`${c} = any(${this.p(arr)})`); return this; }
@@ -89,6 +100,7 @@ class Query {
     const t = `public.${this.table}`;
     if (this.op === "select") return `select ${this.cols} from ${t}${w}${this.orderBy}${this.lim}`;
     const ret = this.returning ? ` returning ${this.returning}` : "";
+    if (this.op === "delete") return `delete from ${t}${w}${ret}`;
     if (this.op === "update") {
       const sets = Object.entries(this.payload[0]).map(([k, v]) => `${k} = ${this.p(v)}`).join(", ");
       return `update ${t} set ${sets}${w}${ret}`;

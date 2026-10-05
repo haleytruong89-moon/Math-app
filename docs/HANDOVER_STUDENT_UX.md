@@ -87,6 +87,10 @@ Center text: "{days}/{goal}" (IBM Plex Mono, bold)
 
 ### 3.3 Progress Map (`src/app/student/page.tsx` → `ProgressMap`)
 
+> **Cập nhật 05/10/2026 (LT9, `docs/SPEC.md` §0):** với 50 KU, bản đồ **nhóm theo track → module**; chỉ module đang học
+> mở sẵn, module khác thu gọn 1 dòng + thanh tiến độ. Cấu trúc nhóm làm trong S6a; lát UX áp kiểu nút cây, màu, đường nối
+> dưới đây **bên trong từng module**. KU chưa có nội dung hiện mờ "Sắp có".
+
 **Hiện tại:** 2-column grid, `M{level}` text in colored circles.
 
 **Thay đổi sang vertical path map:**

@@ -6,7 +6,7 @@ import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { publicItem } from "@/lib/content";
 import { dueReviews, loadStudentState } from "@/lib/learning/state";
-import { interleave, pickReviewItems } from "@/lib/learning/rules";
+import { planReview } from "@/lib/learning/rules";
 import { ReviewPlayer } from "@/components/lesson/review-player";
 
 export const metadata: Metadata = { title: "Ôn lại — App Toán" };
@@ -18,7 +18,12 @@ export default async function ReviewPage() {
   const { data: me } = await supabase.from("students").select("id, consent_at").eq("profile_id", user.id).maybeSingle();
   if (!me?.consent_at) redirect("/student");
 
-  const due = dueReviews(await loadStudentState(supabase, me.id));
+  const [state, log] = await Promise.all([
+    loadStudentState(supabase, me.id),
+    supabase.from("review_log").select("run_id, unit_id").eq("student_id", me.id),
+  ]);
+  if (log.error) console.error("ReviewPage review_log", log.error.message);
+  const due = dueReviews(state);
   if (!due.length) {
     return (
       <div className="rounded-xl border border-border bg-surface p-4">
@@ -30,20 +35,19 @@ export default async function ReviewPage() {
     );
   }
 
-  const questions = interleave(
-    due.map((u) =>
-      pickReviewItems([...u.unit.practice, ...u.unit.exit], u.attempts).map((it) => ({
-        unitId: u.unit.id,
-        unitTitle: u.unit.title,
-        item: publicItem(it),
-      })),
-    ),
+  // Review questions come from practice only: exit-test solutions must stay unseen
+  // until the student retakes the test. Reloading resumes the unfinished run.
+  const plan = planReview(
+    due.map((u) => ({ unitId: u.unit.id, pool: u.unit.practice, attempts: u.attempts })),
+    new Set((log.data ?? []).map((r) => `${r.run_id}|${r.unit_id}`)),
   );
+  const title = new Map(due.map((u) => [u.unit.id, u.unit.title]));
 
   return (
     <ReviewPlayer
-      runId={randomUUID()}
-      questions={questions}
+      runId={plan.runId ?? randomUUID()}
+      questions={plan.remaining.map((q) => ({ unitId: q.unitId, unitTitle: title.get(q.unitId)!, item: publicItem(q.item) }))}
+      answered={plan.answered.map(({ unitId, correct }) => ({ unitId, correct }))}
       units={due.map((u) => ({ id: u.unit.id, title: u.unit.title, stage: u.review!.stage }))}
       hasFigure={due.some((u) => u.unit.figure === "right-triangle-altitude")}
     />

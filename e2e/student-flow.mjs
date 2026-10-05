@@ -78,10 +78,18 @@ await page.screenshot({ path: "e2e/out/student/3-today-review-due.png", fullPage
 await page.getByRole("link", { name: "Bắt đầu ôn" }).click();
 await page.waitForURL(/review/);
 const seq = [];
+const asked = [];
+const practiceIds = new Set(Object.values(units).flatMap((u) => u.practice.map((it) => it.id)));
 for (let i = 0; i < 6; i++) {
+  if (i === 2) {
+    // F5 after a wrong htl-2 answer: the run resumes, the wrong answer still counts.
+    await page.reload();
+    ok("review: reload resumes at question 3/6", (await page.getByText("Câu 3/6").count()) === 1);
+  }
   const hdr = page.locator("[data-item]");
   const id = await hdr.getAttribute("data-item"); const unit = await hdr.getAttribute("data-unit");
   seq.push(unit);
+  asked.push(id);
   // htl-2: get 2 of 3 wrong (fail); htl-1: all right
   const wrong = unit === "htl-2" && seq.filter((u) => u === "htl-2").length <= 2;
   await answer(id, wrong);
@@ -92,6 +100,8 @@ for (let i = 0; i < 6; i++) {
 }
 ok("review: interleaved, never same unit twice in a row", seq.every((u, i) => i === 0 || u !== seq[i - 1]), seq.join(","));
 ok("review: 3 per unit", seq.filter((u) => u === "htl-1").length === 3 && seq.filter((u) => u === "htl-2").length === 3);
+ok("review: no question asked twice across the reload", new Set(asked).size === 6, asked.join(","));
+ok("review: questions only from practice (exit solutions stay unseen)", asked.every((id) => practiceIds.has(id)), asked.join(","));
 await page.getByRole("radio", { name: "Dễ, làm nhanh" }).click();
 ok("review: failed unit has no rating", (await page.getByRole("radio", { name: "Dễ, làm nhanh" }).count()) === 1);
 await page.screenshot({ path: "e2e/out/student/5-review-rate.png", fullPage: true });
@@ -126,6 +136,36 @@ ok("db: D+21 passed → stage 4, +60 days, completed", m[0].stage === 4 && m[0].
 await page.goto(`${BASE}/student`);
 ok("today: htl-1 shows M4", (await page.locator("[role=listitem]").filter({ hasText: "Bốn hệ thức" }).getByText("M4").count()) === 1);
 await page.screenshot({ path: "e2e/out/student/9-today-m4.png", fullPage: true });
+
+// ---- homework from the tutor (part B)
+await page.goto(`${BASE}/student`);
+const goalBefore = await page.getByRole("progressbar").getAttribute("aria-valuenow");
+await sql(`
+  insert into public.teaching_sessions (student_id, tutor_id, taught_on)
+    select a.student_id, a.tutor_id, current_date from public.tutor_assignments a join public.students s on s.id = a.student_id
+    where s.full_name = 'Hạnh Nguyên' and a.ended_at is null limit 1;
+  insert into public.homework (session_id, student_id, tutor_id, unit_id, task, links, due_on)
+    select id, student_id, tutor_id, 'htl-1', 'Làm bài 3, 5 trang 72 SGK', array['https://drive.google.com/file/d/abc/view'], current_date + 3
+    from public.teaching_sessions order by created_at desc limit 1;`);
+await page.goto(`${BASE}/student`);
+const hwCard = page.getByTestId("homework-card");
+ok("homework: card on today's list", (await hwCard.count()) === 1 && (await hwCard.getByText("Làm bài 3, 5 trang 72 SGK").count()) === 1);
+ok("homework: Drive link opens in a new tab", (await hwCard.getByRole("link", { name: /Mở đề/ }).getAttribute("target")) === "_blank");
+await page.screenshot({ path: "e2e/out/student/10-homework.png", fullPage: true });
+await hwCard.getByRole("button", { name: "Con làm xong rồi" }).click();
+await hwCard.getByRole("button", { name: "Bỏ đánh dấu xong" }).waitFor();
+ok("db: homework done_at set", (await sql(`select done_at is not null d from public.homework`))[0].d === true);
+ok("homework: weekly goal unchanged", (await page.getByRole("progressbar").getAttribute("aria-valuenow")) === goalBefore);
+await sql(`update public.homework set reviewed_at = now(), review_note = 'Bài 5 sai dấu.'`);
+await page.reload();
+ok("homework: tutor's note shown, no buttons", (await hwCard.getByText(/Thầy\/cô đã chữa/).count()) === 1 && (await hwCard.getByText(/Bài 5 sai dấu/).count()) === 1 && (await hwCard.getByRole("button").count()) === 0);
+await sql(`update public.homework set reviewed_at = now() - interval '8 days'`);
+await page.reload();
+ok("homework: hidden 7 days after correction", (await page.getByTestId("homework-card").count()) === 0);
+
+const [{ id: sid }] = await sql(`select id from public.students where full_name = 'Hạnh Nguyên'`);
+await page.goto(`${BASE}/tutor/${sid}/work`);
+ok("student: tutor work page not reachable", !page.url().includes("/tutor/"), page.url());
 
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage(); await dp.goto(`${BASE}/student`); await dp.screenshot({ path: "e2e/out/student/8-today-dark.png", fullPage: true });
