@@ -22,6 +22,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0004_p1_review_queue.sql`, 'ut
 await db.exec(fs.readFileSync(`${repo}/migrations/0005_p1_maintenance_review.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0006_p1_teaching_sessions.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0007_p1_homework.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0008_p1_parent_overview.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -159,7 +160,29 @@ check('homework links: https only', await bad(hwIns(`tutor_id, 'x', array['http:
 check('homework links: no null elements', await bad(hwIns(`tutor_id, 'x', array[null]::text[], current_date`)), true);
 check('homework_links_ok has a fixed search_path', (await db.query(`select proconfig from pg_proc where proname = 'homework_links_ok'`)).rows[0].proconfig, ['search_path=""']);
 check('review note needs reviewed_at', await bad(`update public.homework set review_note = 'x' where task = 'bài mới'`), true);
+// 0008: parent_confirmations + tutor_assignments.weekdays (S4)
+await db.exec(`set role service_role`);
+const pc = await db.query(`
+  insert into public.parent_confirmations (student_id, parent_id, unit_id, level, system_level, note)
+  select s.id, (select p.id from public.profiles p where p.role = 'parent' limit 1), 'htl-1', 3, 1, 'đã kiểm tra trên lớp'
+  from public.students s where s.full_name='Hạnh Nguyên'`).then(()=>true, e=>{console.error(e.message); return false;});
+await db.exec(`reset role`);
+check('service_role can write parent_confirmations', pc, true);
+check('parent sees confirmations of child', (await as('me@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 1);
+check('active tutor sees confirmations', (await as('trang@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 1);
+check('ended tutor sees no confirmations', (await as('old@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);
+check('student sees own confirmations', (await as('nguyen@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 1);
+check('other student sees none', (await as('an@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);
+check('parent cannot write confirmations directly', isErr(await as('me@example.com',`insert into public.parent_confirmations (student_id, parent_id, unit_id, level, system_level) select id, auth.uid(), 'htl-2', 2, 0 from public.students`)), true);
+const badPc = (cols) => db.query(`insert into public.parent_confirmations (student_id, parent_id, unit_id, level, system_level, note) select s.id, (select id from auth.users where email='me@example.com'), ${cols} from public.students s where s.full_name='Hạnh Nguyên'`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr);
+check('confirmation level 0–4 and note ≤ 300', await badPc(`'htl-1', 5, 0, null`) && await badPc(`'htl-1', 2, 0, repeat('x', 301)`), true);
+check('weekdays default empty', (await db.query(`select weekdays from public.tutor_assignments limit 1`)).rows[0].weekdays, []);
+const badWd = (arr) => db.query(`update public.tutor_assignments set weekdays = ${arr} where ended_at is null`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr);
+check('weekdays 1–7, unique, not null', await badWd(`'{0}'`) && await badWd(`'{8}'`) && await badWd(`'{2,2}'`) && await badWd(`array[null]::smallint[]`), true);
+check('weekdays valid set accepted', await db.query(`update public.tutor_assignments set weekdays = '{2,4}' where ended_at is null`).then(()=>true, ()=>false), true);
+check('weekdays_ok has a fixed search_path', (await db.query(`select proconfig from pg_proc where proname = 'weekdays_ok'`)).rows[0].proconfig, ['search_path=""']);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);
+check('locked tutor sees no confirmations', (await as('trang@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);
