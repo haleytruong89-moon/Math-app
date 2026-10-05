@@ -145,6 +145,40 @@ await unitBox("htl-1").check();
 const evLink = page.getByRole("link", { name: "Xem câu sai →" });
 ok("form: evidence links to wrong answers in a new tab", (await evLink.getAttribute("href"))?.endsWith("/work?unit=htl-1") && (await evLink.getAttribute("target")) === "_blank");
 
+// ---- homework (part B): give it with the session, see the student's "done", mark corrected
+await page.goto(formUrl);
+await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await page.getByRole("button", { name: "+ Giao bài về nhà" }).click();
+ok("homework: due defaults to today + 3", (await page.locator('input[name="hw.0.due"]').inputValue()) === add(vnToday, 3));
+await page.locator('input[name="hw.0.link"]').fill("https://drive.google.com/file/d/abc/view");
+await save().click();
+await page.locator("form [role=alert]").waitFor();
+ok("homework: link without a task refused", (await page.locator("form [role=alert]").innerText()).includes("ghi yêu cầu"));
+await page.locator('select[name="hw.0.unit"]').selectOption("htl-1");
+await page.locator('textarea[name="hw.0.task"]').fill("Làm bài 3, 5 trang 72 SGK");
+await page.getByRole("button", { name: "+ thêm link" }).click();
+await page.locator('input[name="hw.0.link"]').nth(1).fill("https://example.com/de.pdf");
+ok("homework: non-Drive link warned", (await page.getByText(/không phải link Google Drive/).count()) === 1);
+await page.locator('input[name="hw.0.link"]').nth(1).fill("");
+await page.screenshot({ path: `${shots}/7-homework-form.png`, fullPage: true });
+await save().click();
+await page.locator("form [role=status]").filter({ hasText: "giao 1 bài về nhà" }).waitFor();
+const hwRows = await sql(`select h.unit_id, h.links, h.due_on::text due from public.homework h`);
+ok("db: homework saved with the session", hwRows.length === 1 && hwRows[0].unit_id === "htl-1" && hwRows[0].links.length === 1 && hwRows[0].due === add(vnToday, 3), JSON.stringify(hwRows));
+await page.reload();
+const openHw = page.getByTestId("open-homework");
+ok("homework: listed as not done yet", (await openHw.count()) === 1 && (await openHw.getByText("Con chưa báo xong").count()) === 1);
+await sql(`update public.homework set done_at = now()`);
+await page.reload();
+ok("homework: shows the student's 'done'", (await openHw.getByText(/Con đã báo xong/).count()) === 1);
+await openHw.locator('textarea[name="reviewNote"]').fill("Bài 5 sai dấu, đã chữa.");
+await openHw.getByRole("button", { name: "Đã chữa" }).click();
+await openHw.waitFor({ state: "detached" });
+const rv = await sql(`select reviewed_at is not null r, review_note from public.homework`);
+ok("db: homework corrected with note", rv[0].r === true && rv[0].review_note === "Bài 5 sai dấu, đã chữa.", JSON.stringify(rv));
+// keep the later session counts (2) unchanged: the cascade removes the proposal and homework too
+await sql(`delete from public.teaching_sessions where id in (select session_id from public.homework)`);
+
 // ---- dark mode, evidence open
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage();
