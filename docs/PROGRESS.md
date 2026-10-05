@@ -15,10 +15,11 @@
 | S4 — Phụ huynh "Tổng quan" | `p1-slice-4` | 🟡 PR #11 — **chờ chạy SQL 0008** rồi merge |
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
-| Docs — Lộ trình 50 KU + quyết định LT1–LT12 | `p1-curriculum-design` | 🟡 PR #10 |
+| Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | 🟡 PR #10 |
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
 | UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
-| S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
+| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
+| S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
@@ -32,6 +33,19 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 05/10/2026 (tối) — Thiết kế AI trong app (AI1–AI4)
+
+**Phụ huynh chốt (popup):** bật AI cho con sau 3–4 tuần pilot (~09/11) (AI1); gợi ý H1–H3 viết sẵn trong nội dung, AI chỉ cho câu hỏi tự do (AI2);
+AI hỗ trợ phụ huynh/gia sư: báo cáo tuần, tóm tắt trước buổi, tóm tắt hội thoại AI (AI3); trần $10/tháng (AI4).
+
+**Đã làm:** `docs/AI_TUTOR.md` — phương pháp dạy, AI làm/không làm, luồng gợi ý H1→H6, 5 lớp chống dạy sai (viết sẵn trước, bám nội dung đã duyệt,
+máy chủ soát số/đáp án, bộ test từ lỗi thật + chấm lại khi đổi, nút "AI nói sai?"), hỗ trợ phụ huynh/gia sư, chi phí, quyền riêng tư, lịch.
+`CONTENT_STANDARD.md`: mọi câu luyện có `hints` H1–H3 từ đợt 1. `P1_PLAN.md`: gợi ý trong S6b (migration 0010), lát **S8** AI (0011).
+
+**Phụ huynh cần làm trước S8 (~26/10):** tạo tài khoản Anthropic Console, đặt giới hạn chi $10, tự dán khoá API vào Vercel (không gửi qua chat).
 
 ---
 

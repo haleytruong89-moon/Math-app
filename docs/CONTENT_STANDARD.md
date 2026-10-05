@@ -1,6 +1,6 @@
 # Chuẩn soạn nội dung KU — App Toán
 
-> Duyệt 05/10/2026 (quyết định LT13–LT16 trong `docs/SPEC.md` §0). Áp dụng cho **mọi KU mới** (đợt 1–10 trong
+> Duyệt 05/10/2026 (quyết định LT13–LT16, AI2 trong `docs/SPEC.md` §0). Áp dụng cho **mọi KU mới** (đợt 1–10 trong
 > `docs/CURRICULUM.md` H6) và cho việc chuẩn hoá lại htl-1, htl-2. Phiên soạn bài đọc file này + `docs/CURRICULUM.md`
 > (dòng của KU) + `src/lib/content/schema.ts` trước khi viết. Bài mẫu đã duyệt: `content/he-thuc-luong/htl-2.json`
 > (đúng cấu trúc, nhưng mã lỗi và cấp câu phải sửa theo §4, §3 — xem §9).
@@ -38,6 +38,10 @@
 
 - **Câu nhận dạng (≥ 1 trong luyện tập, đánh dấu `recognition: true`)**: trắc nghiệm "Bài này nên làm bằng cách nào / bước đầu tiên là gì?",
   phương án nhiễu là các cách của KU lân cận. Sai → mã **E05**.
+- **Gợi ý viết sẵn H1–H3 (AI2) — bắt buộc cho mọi câu luyện tập** (trường `hints`, đúng 3 dòng, mỗi dòng ≤ 25 chữ, không chứa đáp số):
+  H1 *Mục tiêu* ("Đề hỏi gì? Cần tìm $BH$."), H2 *Nhận dạng* ("Có cạnh huyền và hình chiếu → hệ thức nào?"),
+  H3 *Công cụ* ("Dùng $AB^2 = BH \cdot BC$."). H4–H5 do AI hỏi tiếp (`docs/AI_TUTOR.md`); H6 là `solution` đã có.
+  Câu kiểm tra **không** có gợi ý.
 - **Điểm yếu GV đã chỉ ra phải có câu luyện riêng**: thu gọn chưa đến tận cùng (f1-tgon, f1-qd, c-rutgon: phương án nhiễu = dạng
   *chưa rút gọn hết*, mã E11), hằng đẳng thức (f1-hdt), đồng dạng (f3-dongdang), trình bày thiếu kết luận (bước "Kết luận" là chỗ trống
   trong ≥ 1 bài khuyết của mỗi KU đại số).
@@ -88,10 +92,10 @@ Số đáp án nhiễu: trắc nghiệm 4 phương án → **≥ 2 phương án 
 
 | Bước | Ai | Đạt khi |
 |---|---|---|
-| 1. `npm test` | máy | Schema, ID, đáp án đọc được, nhiễu ≠ đáp án, TeX, SVG, `review` hợp lệ, đủ 3/3/2 và 2/3/3, ≥ 1 câu nhận dạng, ≥ 1 câu có `source` trong kho kiểm tra |
+| 1. `npm test` | máy | Schema, ID, đáp án đọc được, nhiễu ≠ đáp án, TeX, SVG, `review` hợp lệ, mỗi câu luyện có 3 `hints` không chứa đáp số, đủ 3/3/2 và 2/3/3, ≥ 1 câu nhận dạng, ≥ 1 câu có `source` trong kho kiểm tra |
 | 2. Giải độc lập | agent thứ hai, **không xem đáp án** | Giải hết câu luyện + kiểm tra + chỗ trống; mọi đáp số trùng file. Lệch → sửa, ghi lý do |
 | 3. Tính lại nhiễu | script (Python/sympy) trong phiên soạn | Mỗi đáp án nhiễu tái tạo được bằng đúng lỗi đã ghi |
-| 4. Soát sư phạm | người soạn | Phản hồi ≤ 2 câu, không lộ đáp số; bước cuối "Kết luận:"; câu luyện tự đứng được |
+| 4. Soát sư phạm | người soạn | Phản hồi ≤ 2 câu, không lộ đáp số; gợi ý đi từ chung → cụ thể, H3 chưa làm hộ phép tính; bước cuối "Kết luận:"; câu luyện tự đứng được |
 | 5. Gia sư | gia sư | Chỉ đợt có C, E, G |
 
 Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
@@ -104,12 +108,13 @@ Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
 
 | Thay đổi | Lát |
 |---|---|
-| `level` thêm **L3**; trường tuỳ chọn `source` (câu), `recognition` (câu), `review` (đáp án sai); test kiểm phân bổ cấp | S6a (để đợt 1 dùng được ngay) |
+| `level` thêm **L3**; trường tuỳ chọn `source` (câu), `recognition` (câu), `review` (đáp án sai), `hints` (3 dòng, câu luyện); test kiểm phân bổ cấp | S6a (để đợt 1 dùng được ngay) |
+| Nút "Gợi ý" H1→H3 khi luyện tập, ghi `hint_level` (migration 0010) | S6b |
 | Kho kiểm tra 8 câu, mỗi lượt rút 5 theo cấp, ưu tiên câu chưa gặp; máy chủ kiểm lượt nộp đúng bộ đã rút | S6a |
 | Hiện link "Ôn lại: …" trong phản hồi sai | S6b |
 
 ## 9. Chuẩn hoá htl-1, htl-2 (đợt 1)
 
-Đã duyệt nhưng chưa theo chuẩn: thêm 2 câu L3 vào luyện tập (đổi 2 câu L2 hiện có), thêm 3 câu vào kho kiểm tra, sửa mã lỗi
+Đã duyệt nhưng chưa theo chuẩn: thêm `hints` H1–H3 cho 8 câu luyện, thêm 2 câu L3 vào luyện tập (đổi 2 câu L2 hiện có), thêm 3 câu vào kho kiểm tra, sửa mã lỗi
 (ví dụ htl-2 "quên bình phương" đang là E10 → **E03**; "tính ngược công thức" đang là E06 → **E03**), thêm bước "Kết luận:". Sau khi sửa,
 phụ huynh duyệt lại (trạng thái giữ `approved` để con không bị gián đoạn; thay đổi đi qua PR như mọi nội dung).
