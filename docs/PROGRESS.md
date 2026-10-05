@@ -16,7 +16,7 @@
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
 | Docs — Lộ trình 50 KU + quyết định LT1–LT12 | `p1-curriculum-design` | 🟡 PR #10 |
-| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ⬜ **Tiếp theo**, cần xong 16/10 |
+| S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | 🟡 PR mới (xếp chồng trên #12) — **chờ SQL 0009**, merge sau #11 → #12 → #10 |
 | UX — Giao diện học sinh | `p1-student-ux` | 🟡 PR #12 (xếp chồng trên #11; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG | `p1-slice-6b` | ⬜ 23/10 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
@@ -32,6 +32,25 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 05/10/2026 — S6a Bộ lộ trình (nhánh `p1-slice-6a`)
+
+**Phụ huynh cần làm:** merge theo thứ tự **#11 (sau SQL 0008) → #12 → #10 → PR S6a**; trước khi merge S6a chạy **SQL 0009** (`supabase/migrations/0009_p1_curriculum.sql`: bảng `unit_unlocks` + 2 cột kiểm tra vượt trong `unit_progress`). Chỉ thêm, không sửa dữ liệu cũ.
+
+**Đã làm:**
+- `content/curriculum.json` 50 KU / 17 module (LT1); test bắt: thiếu KU, tiên quyết sai/vòng, file không có trong lộ trình, title/domains lệch, registry cũ.
+- Registry sinh tự động (`npm run content:index`) thay danh sách import tay.
+- Mở khoá khi tiên quyết đạt M3 hoặc phụ huynh mở tay (LT2); gợi ý 1 bài track A + 1 bài B/C, tối đa 2 bài đang học (LT3); kiểm tra vượt 1 lần cho track B + bù nền (LT4); ôn tối đa 5 bài, 1 phiên/ngày (LT8); bản đồ nhóm track → module, 🔒 / 🌰 / "Sắp có" (LT9).
+- Gia sư: 50 KU nhóm theo module + ô tìm, "cần gia sư xác nhận" đứng đầu. Phụ huynh: nội dung theo đợt + "Chưa soạn", nút "Mở khoá cho con".
+- e2e trên KU giả (`e2e/fixtures/content`); các luồng cũ vẫn chạy trên nội dung thật.
+
+**Thay đổi phụ huynh nên biết:** htl-2 giờ **khoá** cho đến khi htl-1 đạt M3 (tiên quyết theo CURRICULUM.md). Muốn con làm htl-2 trước: vào Nội dung → htl-2 → "Mở khoá cho con".
+
+**Quyết định khi làm (mặc định, đổi được):** R1 bài đã bắt đầu không bao giờ khoá lại; R2 xếp chồng trên #12; R3 e2e S6a dùng registry riêng của fixtures. Ghi trong `docs/SPEC.md` §0.
+
+**Kiểm tra:** lint, `npm test` (72 + 88 RLS), build, `./e2e/run.sh` — kết quả ở mô tả PR.
 
 ---
 

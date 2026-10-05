@@ -60,7 +60,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 3 | **S3** | Gia sư "Ghi buổi dạy" | ✅ merged (PR #3) | — |
 | 3b | **S3b** | Công cụ gia sư: "Bài làm của con" + giao bài về nhà qua link Drive (SQL 0007) | ✅ merged (PR #4, #5, #7) | — |
 | 4 | **S4** | Phụ huynh "Tổng quan" (SQL 0008) | 🟡 PR #11, xếp chồng trên PR #9 | trước 12/10 |
-| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ⬜ **tiếp theo** | 16/10 (để đợt 1 lên app tuần 2) |
+| 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | 🟡 PR `p1-slice-6a` — chờ SQL 0009, merge sau #11 → #12 | 16/10 (để đợt 1 lên app tuần 2) |
 | 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | 🟡 PR #12 | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | ⬜ | 23/10 (để đợt 2 lên app tuần 3) |
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |
@@ -91,7 +91,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 
 | Chỗ phải đoán | Mặc định |
 |---|---|
-| Nhánh gốc | Tách từ `main`. Nếu PR #10 (tài liệu này) chưa merge thì **xếp chồng trên `p1-curriculum-design`** như các PR trước. S6a không phụ thuộc PR #11 (S4). |
+| Nhánh gốc | Tách từ `main`. Nếu PR #10 (tài liệu này) chưa merge thì **xếp chồng trên `p1-curriculum-design`** như các PR trước. S6a không phụ thuộc PR #11 (S4). **Đã đổi khi làm (R2):** xếp chồng trên `p1-student-ux` (PR #12) vì S6a làm lại trang chủ + Hành trình của PR đó → thứ tự merge #11 → #12 → #10 → S6a. |
 | `seq` | Thứ tự trong track (duy nhất trong track, lặp giữa các track là bình thường), đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-phantram, g-honhop, h-bdt, hq-amgm, hq-doanhthu, hq-hinhhoc, hq-nangcao. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, j-coban, j-cung, k-goiintiep, k-tugiacnt, l-tieptuyen, l-kethop, m-vitri, n-ngoainoi, o-chungminh, o-dongdang, o-nangcao. |
 | `batch` | Theo bảng H6 trong CURRICULUM.md; htl-1, htl-2 = **0** (đã có). |
 | `testOut` | `true` cho mọi KU track B (kể cả htl-1/2) và f1-hdt, f1-pnt, f1-tgon, f1-qd, f3-dongdang; còn lại `false`. |
