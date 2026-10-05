@@ -42,6 +42,19 @@ ok("after pass: fb-2 offered (prerequisite at M3)", /Ghi điểm thử 2/.test(a
 await page.goto(`${BASE}/student/learn/fb-1?testout=1`);
 ok("test-out only once: normal lesson, not the test", (await page.getByText("Kiểm tra vượt:").count()) === 0);
 
+// ---- 2b. two tabs submit the test-out of fb-3 at the same moment → only one run is kept
+const tabs = [page, await page.context().newPage()];
+for (const t of tabs) {
+  await t.goto(`${BASE}/student/learn/fb-3?testout=1`);
+  for (let n = 1; n <= 5; n++) await t.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill(String(n));
+}
+await Promise.all(tabs.map((t) => t.getByRole("button", { name: "Nộp bài" }).click()));
+await Promise.all(tabs.map((t) => t.waitForFunction(() => document.querySelector("[data-testid=testout-result], [role=alert]"), null, { timeout: 15000 })));
+const results = await Promise.all(tabs.map((t) => t.getByTestId("testout-result").count()));
+const exits = (await sql(`select count(*)::int c from public.attempts where unit_id = 'fb-3' and mode = 'exit'`))[0].c;
+ok("test-out race: one tab wins, the other is refused, one run saved", results[0] + results[1] === 1 && exits === 5, JSON.stringify({ results, exits }));
+await tabs[1].close();
+
 // ---- 3. test-out fz-1 failed → learning as usual, mastery unchanged, counted as in progress
 await page.goto(`${BASE}/student`);
 await newCards().filter({ hasText: "Bù lỗ hổng thử 1" }).getByRole("link", { name: /Làm bài kiểm tra luôn/ }).click();

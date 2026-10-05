@@ -81,7 +81,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
       practiceRate: u?.mastery.practiceRate ?? null,
       lastActive: last ? ddmm(vnDate(last.created_at)) : null,
       confirmed:
-        u && c && displayLevel(u.mastery.level, c, { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).confirmed
+        u && c && displayLevel(u.mastery.level, c, u.history).confirmed
           ? `M${c.level} (${ddmm(vnDate(c.created_at))})`
           : null,
     };

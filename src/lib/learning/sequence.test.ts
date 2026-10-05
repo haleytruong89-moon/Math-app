@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { isInProgress, selectReviewUnits, splitTestOut, suggestNew, unitStatus, type SeqUnit } from "./sequence.ts";
+import { displayLevel } from "./overview.ts";
+import { isInProgress, masteryHistory, selectReviewUnits, splitTestOut, suggestNew, unitStatus, type SeqUnit } from "./sequence.ts";
 import type { AttemptRow } from "./rules.ts";
 
 const U = (id: string, p: Partial<SeqUnit> = {}): SeqUnit => ({
@@ -52,4 +53,17 @@ test("review session: at most 5 units, most overdue first; an unfinished run kee
   assert.deepEqual(selectReviewUnits(due, []), ["u0", "u2", "u4", "u5", "u1"]);
   assert.deepEqual(selectReviewUnits(due, ["u3"]), ["u3", "u0", "u2", "u4", "u5"]);
   assert.deepEqual(selectReviewUnits(due.slice(0, 2), []), ["u0", "u1"]);
+});
+
+test("mastery history: a passed test-out replays as learnt (a parent confirmation survives the next review); a failed one is left out", () => {
+  const at = (i: number) => `2026-10-0${i}T00:00:00Z`;
+  const exit = (run: string, correct: boolean, day: number): AttemptRow[] =>
+    [1, 2, 3, 4, 5].map((n) => ({ item_id: `u-x${n}`, mode: "exit", correct, error_code: null, exit_run: run, created_at: at(day) }) as AttemptRow);
+  const passed = masteryHistory([...exit("t", true, 1), { item_id: "u-p1", mode: "review", correct: true, error_code: null, exit_run: null, created_at: at(3) } as AttemptRow], "t", false, false);
+  assert.equal(passed.workedViewed, true);
+  const conf = { unit_id: "u", level: 3, system_level: 3, created_at: at(2) };
+  assert.equal(displayLevel(3, conf, passed).confirmed, true);
+  const failed = masteryHistory(exit("t", false, 1), "t", false, false);
+  assert.deepEqual([failed.workedViewed, failed.attempts.length], [false, 0]);
+  assert.equal(masteryHistory(exit("e", true, 1), null, true, true).attempts.length, 5);
 });

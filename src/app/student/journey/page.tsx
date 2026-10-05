@@ -33,7 +33,7 @@ export default async function JourneyPage() {
   const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   const nodes = state.units.map((u) => ({
     u,
-    shown: displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }),
+    shown: displayLevel(u.mastery.level, confs.get(u.unit.id), u.history),
   }));
   const count = (f: (l: number) => boolean) => nodes.filter((n) => f(n.shown.level)).length;
   const shownOf = new Map(nodes.map((n) => [n.u.unit.id, n.shown]));

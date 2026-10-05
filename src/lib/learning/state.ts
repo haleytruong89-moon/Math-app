@@ -4,7 +4,7 @@ import { curriculum, listModules } from "@/lib/content";
 import type { Unit } from "@/lib/content/schema";
 import type { CurriculumModule, CurriculumUnit } from "@/lib/content/curriculum";
 import { studyDaysThisWeek, systemMastery, vnDate, type AttemptRow, type Mastery, type Stage } from "./rules";
-import { isInProgress, selectReviewUnits, splitTestOut, suggestNew, unitStatus, type SeqUnit, type UnitStatus } from "./sequence";
+import { isInProgress, masteryHistory, selectReviewUnits, suggestNew, unitStatus, type SeqUnit, type UnitStatus } from "./sequence";
 
 export type UnitState = {
   unit: Unit;
@@ -14,6 +14,8 @@ export type UnitState = {
   mastery: Mastery;
   review: { stage: Stage; dueOn: string | null; completed: boolean } | null;
   attempts: AttemptRow[];
+  /** What mastery is computed from (test-out applied) — pass this to displayLevel, not the raw attempts. */
+  history: { attempts: AttemptRow[]; workedViewed: boolean; reviewsCompleted: boolean };
   /** S6a: roadmap entry (null only if a file is missing from curriculum.json, which tests forbid). */
   entry: CurriculumUnit | null;
   status: UnitStatus;
@@ -84,22 +86,23 @@ export async function loadStudentState(
         const rows = byUnit.get(unit.id) ?? [];
         const review = r ? { stage: r.stage as Stage, dueOn: r.due_on as string | null, completed: !!r.completed_at } : null;
         // LT4: a failed test-out run doesn't count; a passed one counts as having learnt the unit.
-        const split = splitTestOut(rows, (p?.testout_run as string | null) ?? null);
         const workedViewed = !!p?.worked_viewed_at;
+        const history = masteryHistory(rows, (p?.testout_run as string | null) ?? null, workedViewed, !!review?.completed);
         const tried = !!p?.testout_at;
         return {
           unit,
           moduleTitle: m.title,
           workedViewed,
           fadedDone: !!p?.faded_done_at,
-          mastery: systemMastery({ workedViewed: workedViewed || split.passed === true, attempts: split.counted, reviewsCompleted: !!review?.completed }),
+          mastery: systemMastery(history),
           review,
           attempts: rows,
+          history,
           entry: entryOf.get(unit.id) ?? null,
           status: "open" as UnitStatus,
           started: workedViewed || tried || !!review,
           inProgress: false,
-          testout: { tried, passed: split.passed },
+          testout: { tried, passed: history.testoutPassed },
         };
       }),
   );

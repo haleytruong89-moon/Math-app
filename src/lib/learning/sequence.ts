@@ -58,6 +58,20 @@ export function splitTestOut(attempts: AttemptRow[], testoutRun: string | null):
   return { counted: passed ? attempts : attempts.filter((a) => a.exit_run !== testoutRun), passed };
 }
 
+/**
+ * The answer history mastery is computed from, test-out applied (LT4). Every replay of mastery
+ * (displayLevel, nudges) must use this, not the raw rows, or it disagrees with the system level.
+ */
+export function masteryHistory(
+  attempts: AttemptRow[],
+  testoutRun: string | null,
+  workedViewed: boolean,
+  reviewsCompleted: boolean,
+): { attempts: AttemptRow[]; workedViewed: boolean; reviewsCompleted: boolean; testoutPassed: boolean | null } {
+  const split = splitTestOut(attempts, testoutRun);
+  return { attempts: split.counted, workedViewed: workedViewed || split.passed === true, reviewsCompleted, testoutPassed: split.passed };
+}
+
 /** LT8: units for today's session — an unfinished run keeps its units, then the most overdue, at most 5. */
 export function selectReviewUnits(due: { unitId: string; dueOn: string }[], openRunUnits: string[], cap: number = RULES.maxUnitsPerReview): string[] {
   const keep = due.filter((d) => openRunUnits.includes(d.unitId)).map((d) => d.unitId);

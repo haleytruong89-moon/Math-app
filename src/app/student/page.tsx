@@ -40,7 +40,7 @@ export default async function StudentHome() {
   const shown = new Map(
     state.units.map((u) => [
       u.unit.id,
-      displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }).level,
+      displayLevel(u.mastery.level, confs.get(u.unit.id), u.history).level,
     ]),
   );
   const m3 = [...shown.values()].filter((l) => l >= 3).length;

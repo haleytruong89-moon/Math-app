@@ -50,7 +50,9 @@
 
 **Quyết định khi làm (mặc định, đổi được):** R1 bài đã bắt đầu không bao giờ khoá lại; R2 xếp chồng trên #12; R3 e2e S6a dùng registry riêng của fixtures. Ghi trong `docs/SPEC.md` §0.
 
-**Kiểm tra:** lint, `npm test` (72 + 88 RLS), build, `./e2e/run.sh` — kết quả ở mô tả PR.
+**Kiểm tra:** lint, `npm test` (73 + 88 RLS), build, `./e2e/run.sh` 148 PASS.
+
+**Review cuối (đã sửa 2 điểm quan trọng):** mức phụ huynh chốt không còn bị mất sau khi qua kiểm tra vượt; hai lần nộp kiểm tra vượt cùng lúc chỉ giữ một. **Để sau (nhỏ):** phiên ôn bắt đầu 23:55 xong 00:05 tính cho ngày hôm sau; giới hạn 5 bài/1 phiên chỉ chặn ở trang (không ở action); `e2e/run.sh` khôi phục registry bằng git checkout (mất bản chưa commit); trang Nội dung tải toàn bộ trạng thái từng con; đề xuất của gia sư cho KU chưa có bài hiện mã thay vì tên và không lên cờ cho phụ huynh; xoá hồ sơ phụ huynh xoá luôn các bài đã mở tay chưa học; phiên ôn mở lại chỉ giữ các bài đã có câu trả lời.
 
 ---
 

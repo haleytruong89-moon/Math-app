@@ -33,7 +33,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
   const tutorName = new Map((profiles.data ?? []).map((p) => [p.id as string, p.display_name as string]));
   const sessionNote = new Map((sessions.data ?? []).map((s) => [s.id as string, s.note as string | null]));
   const confs = latestByUnit((confirmations.data ?? []) as ConfirmationRow[]);
-  const units = state.units.map((u) => ({ u, shown: displayLevel(u.mastery.level, confs.get(u.unit.id), { attempts: u.attempts, workedViewed: u.workedViewed, reviewsCompleted: !!u.review?.completed }) }));
+  const units = state.units.map((u) => ({ u, shown: displayLevel(u.mastery.level, confs.get(u.unit.id), u.history) }));
   const flags = mismatchFlags(
     units.map(({ u, shown }) => ({ id: u.unit.id, system: u.mastery.level, confirmedLevel: shown.confirmed ? shown.level : null })),
     (proposals.data ?? []) as ProposalRow[],
