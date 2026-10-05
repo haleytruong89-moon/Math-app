@@ -29,7 +29,20 @@ export type PublicUnit = {
 export type CheckResult =
   | { ok: false; message: string }
   | { ok: true; understood: false }
-  | { ok: true; understood: true; correct: boolean; feedbackHtml?: string; solutionHtml?: string };
+  | {
+      ok: true;
+      understood: true;
+      correct: boolean;
+      feedbackHtml?: string;
+      solutionHtml?: string;
+      /** What the student entered (escaped / MCQ option text). */
+      answerHtml?: string;
+      /** The right answer — only when the solution may be shown (faded steps keep their reveal rule). */
+      correctHtml?: string;
+      errorCode?: string | null;
+      /** Practice, real student only: mastery right after this answer (for the level nudge). */
+      mastery?: { level: number; practiceCount: number; practiceRight: number };
+    };
 
 export type ExitResult =
   | { ok: false; message: string }

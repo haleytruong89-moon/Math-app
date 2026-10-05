@@ -10,7 +10,8 @@ import { fadedItems, findItem, getUnit } from "@/lib/content";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
-import { afterReview, exitReachesM3, firstReview, lastExitRun, reviewPassed, vnDate, type Rating, type Stage } from "@/lib/learning/rules";
+import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
+import { answerHtml, correctHtml } from "@/lib/learning/work";
 
 // Grading always happens here, never in the browser. A student's answers are recorded;
 // a parent previewing content (D16) gets the same grading but nothing is written.
@@ -55,6 +56,20 @@ async function progress(studentId: string, unitId: string) {
 }
 
 const DENIED = { ok: false as const, message: "Không mở được bài này." };
+
+/** Mastery of one unit right after a practice answer (feeds the student's level nudge). */
+async function practiceMastery(studentId: string, unitId: string) {
+  const admin = createAdminClient();
+  const [rows, p, q] = await Promise.all([
+    admin.from("attempts").select("item_id, mode, correct, error_code, exit_run, created_at").eq("student_id", studentId).eq("unit_id", unitId).order("created_at", { ascending: true }),
+    progress(studentId, unitId),
+    admin.from("review_queue").select("completed_at").eq("student_id", studentId).eq("unit_id", unitId).maybeSingle(),
+  ]);
+  const attempts = (rows.data ?? []) as AttemptRow[];
+  const m = systemMastery({ workedViewed: !!p?.worked_viewed_at, attempts, reviewsCompleted: !!q.data?.completed_at });
+  const recent = practiceFirstTries(attempts).slice(-RULES.practiceWindow);
+  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter((a) => a.correct).length };
+}
 const SAVE_FAILED = { ok: false as const, message: "Chưa lưu được câu trả lời. Kiểm tra mạng rồi thử lại." };
 
 // ---------------------------------------------------------------------
@@ -137,6 +152,10 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     correct: g.correct,
     feedbackHtml: g.feedback ? texToHtml(g.feedback) : undefined,
     solutionHtml: showSolution ? texToHtml(item.solution) : undefined,
+    answerHtml: answerHtml(item, v.answer),
+    correctHtml: showSolution ? correctHtml(item) : undefined,
+    errorCode: g.correct ? null : (g.errorCode ?? null),
+    mastery: who.kind === "student" && v.mode === "practice" ? await practiceMastery(who.studentId, v.unitId) : undefined,
   };
 }
 
@@ -307,6 +326,9 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
     correct: g.correct,
     feedbackHtml: g.feedback ? texToHtml(g.feedback) : undefined,
     solutionHtml: texToHtml(item.solution),
+    answerHtml: answerHtml(item, v.answer),
+    correctHtml: correctHtml(item),
+    errorCode: g.correct ? null : (g.errorCode ?? null),
   };
 }
 
