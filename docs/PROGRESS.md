@@ -46,6 +46,12 @@
 - `npm test` kiểm chuẩn: luyện 3/3/2 có câu nhận dạng (sai = E05), mỗi câu luyện 3 gợi ý ≤ 25 chữ không lộ đáp số, kho kiểm tra 2/3/3 có câu ghi nguồn, `review` phải là bài tiên quyết. htl-1/2 tạm miễn tới khi chuẩn hoá (§9).
 - **Kho kiểm tra 8 câu, mỗi lượt rút 5** (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp rồi câu gặp lâu nhất; máy chủ rút lại khi nộp và từ chối bộ khác (ví dụ tab cũ). Phụ huynh xem trước thấy đủ 8 câu.
 
+**Review (đã sửa):** (1) quan trọng nhất — khi con có > 1000 câu trả lời, API Supabase chỉ trả 1000 dòng nên trang thấy lịch sử cũ, rút sai bộ và con không nộp được nữa; mức M cũng bị tính thiếu. Giờ đọc theo trang + trang và máy chủ dùng chung một truy vấn; e2e giả lập giới hạn 1000 dòng và có 1100 câu trả lời. (2) Màn kết quả sau khi nộp thiếu câu (trang rút bộ mới) — giờ giữ bộ đã làm. (3) Mã E12 bắt buộc có `review`.
+
+**Quyết định:** hai lần nộp đúng cùng một lúc (hai tab, bấm đúng cùng giây) vẫn có thể lưu 2 lượt — không giúp gian lận M3 (mỗi lượt phải đúng bộ đã rút, chỉ lượt cuối tính), chỉ làm lượt sau rút bộ khác; chặn hẳn cần ràng buộc DB, để sau nếu thấy xảy ra.
+
+**Để sau (nhỏ):** câu nhận dạng không có `mistakes` vẫn qua kiểm E05, chưa kiểm "≥ 2 phương án sai có mistakes"; kiểm gợi ý lộ đáp số không nhận dạng TeX (`2sqrt{3}`, `rac{}{}`) và không kiểm câu trắc nghiệm; đếm chữ tính cả ký hiệu TeX; danh sách Nội dung ghi "8 câu kiểm tra" thay vì "kho 8, mỗi lượt 5"; sau 2 lượt con đã xem lời giải cả 8 câu (giống bộ 5 cố định trước đây).
+
 **Kiểm tra:** lint, `npm test`, build, `./e2e/run.sh` — xem mô tả PR.
 
 ---

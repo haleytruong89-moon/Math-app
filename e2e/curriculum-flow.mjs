@@ -82,6 +82,9 @@ ok("2 in progress: no 'Bài mới'", (await page.getByRole("region", { name: "B�
 // ---- 5b. LT13: fc-1 has a bank of 8 → 5 shown (1 L1 + 2 L2 + 2 L3); a stale tab is refused; the next run takes the 3 unseen
 // fixture levels: x1–x2 L1, x3–x5 L2, x6–x8 L3; each prompt says "nhập số n" for item xn
 await sql(`update public.unit_progress set faded_done_at = now() where unit_id = 'fc-1'`);
+// 1100 older answers elsewhere: more than one API page (1000 rows), so a capped read would miss the newest ones
+await sql(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, created_at)
+  select ${ME}, 'fb-3', 'fb-3-p1', 'practice', '1', true, now() - interval '30 days' + n * interval '1 second' from generate_series(1, 1100) n`);
 const openExit = async (t) => {
   await t.goto(`${BASE}/student/learn/fc-1`);
   await t.getByRole("navigation", { name: "Các phần của bài" }).getByRole("button", { name: /Kiểm tra/ }).click();
@@ -106,6 +109,8 @@ ok("exit bank: same draw in a second tab", JSON.stringify(await shownItems(tabB)
 for (let n = 1; n <= 5; n++) await page.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill("9");
 await page.getByRole("button", { name: "Nộp bài" }).click();
 await waitOrExplain(page.getByText("Kết quả bài kiểm tra"));
+await page.waitForTimeout(1500); // let the post-submit re-render land
+ok("exit bank: the result lists all 5 answered items", (await page.getByText("Con trả lời:").count()) === 5, String(await page.getByText("Con trả lời:").count()));
 for (let n = 1; n <= 5; n++) await tabB.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill("9");
 await tabB.getByRole("button", { name: "Nộp bài" }).click();
 await tabB.getByText(/Bộ câu kiểm tra đã đổi/).waitFor({ timeout: 15000 });

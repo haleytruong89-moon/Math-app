@@ -79,3 +79,7 @@ for (const dir of fs.readdirSync(root)) {
     });
   }
 }
+
+test("standard: an E12 mistake must carry a review link (CONTENT_STANDARD §4)", () => {
+  assert.match(issues((u) => { delete (u.practice[7] as unknown as { mistakes: { review?: string }[] }).mistakes[0].review; }).join(), /k-p8.*E12.*review/);
+});

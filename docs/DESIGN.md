@@ -95,7 +95,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
   decimals of irrational answers; unreadable input → "format hint", not counted.
 - Practice: one graded try per item, wrong items return once at the end. Faded blanks: retry until right,
   solution after the 2nd wrong try. Exit test: no feedback until submitted; blanks count as wrong.
-  Exit bank (LT13, `src/lib/learning/exit-draw.ts`): a run shows 5 of the bank (1 L1 + 2 L2 + 2 L3), unseen first, then seen longest ago, seeded by student + unit + number of past runs; the learn page sends only those, `submitExit` re-draws and refuses another set. Banks ≤ 5 are used whole; the parent preview gets the whole bank with a note.
+  Exit bank (LT13, `src/lib/learning/exit-draw.ts`): a run shows 5 of the bank (1 L1 + 2 L2 + 2 L3), unseen first, then seen longest ago, seeded by student + unit + number of past runs; the learn page sends only those, `submitExit` re-draws and refuses another set; both read the history with `exitHistory` (one unit, exit answers only). The exit stage keeps the set it opened with, so the result still lists the answered items after the post-submit re-render. `loadStudentState` reads attempts in pages of 1000 (Supabase API "Max rows"); the e2e fake applies the same cap. Banks ≤ 5 are used whole; the parent preview gets the whole bank with a note.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
 - Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.

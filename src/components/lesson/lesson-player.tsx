@@ -11,6 +11,7 @@ import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
 import { QuestionFeedback } from "@/components/student/question-feedback";
 import { sessionTally } from "@/lib/learning/student-ux";
+import { RULES } from "@/lib/learning/rules";
 
 // One knowledge unit, in the order fixed by §3.5:
 // worked example (must be viewed in full) → faded example → practice L1→L2 → exit test.
@@ -390,14 +391,17 @@ function ExitStage({
   testOut?: boolean;
   onStartLearning?: () => void;
 }) {
+  // Held from when the stage opens: after submitting, the page re-draws the next run (LT13), and the
+  // result must still list the items that were answered.
+  const [exit] = useState(unit.exit);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<Extract<ExitResult, { ok: true }> | null>(null);
   const { pending, error, run } = useAction();
   const startedAtRef = useStartTime();
 
-  const unanswered = unit.exit.filter((i) => !answers[i.id]?.trim()).length;
+  const unanswered = exit.filter((i) => !answers[i.id]?.trim()).length;
   // Format check only (no answers in the browser): don't let a typo cost a test point.
-  const unreadable = unit.exit.flatMap((it, i) =>
+  const unreadable = exit.flatMap((it, i) =>
     it.type === "numeric" && answers[it.id]?.trim() && parseAnswer(answers[it.id]) === null ? [i + 1] : [],
   );
 
@@ -405,7 +409,7 @@ function ExitStage({
     run(async () => {
       if (unreadable.length) return `Câu ${unreadable.join(", ")}: ${FORMAT_HINT.charAt(0).toLowerCase()}${FORMAT_HINT.slice(1)}`;
       if (unanswered && !window.confirm(`Còn ${unanswered} câu chưa làm. Câu bỏ trống tính là sai. Vẫn nộp bài?`)) return;
-      const r = await submitExit({ unitId: unit.id, answers, items: unit.exit.map((i) => i.id), durationMs: Date.now() - startedAtRef.current, testOut });
+      const r = await submitExit({ unitId: unit.id, answers, items: exit.map((i) => i.id), durationMs: Date.now() - startedAtRef.current, testOut });
       if (!r.ok) return r.message;
       setResult(r);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -433,9 +437,8 @@ function ExitStage({
                 : "Xem lại các câu sai bên dưới, rồi làm lại phần luyện tập nhé."}
           </p>
         </Card>
-        {unit.exit.map((it, i) => {
-          const r = result.items.find((x) => x.id === it.id);
-          if (!r) return null;
+        {exit.map((it, i) => {
+          const r = result.items.find((x) => x.id === it.id)!;
           return (
             <Card key={it.id}>
               <p className="font-mono text-xs text-muted">Câu {i + 1}</p>
@@ -467,16 +470,16 @@ function ExitStage({
   return (
     <div className="flex flex-col gap-4">
       <p className="rounded-lg border border-border bg-accent-soft px-3 py-2 text-sm">
-        <b>Bài kiểm tra cuối:</b> {unit.exit.length} câu, tự làm, không có gợi ý và không hỏi AI. Nộp bài xong mới xem đáp án.
+        <b>Bài kiểm tra cuối:</b> {exit.length} câu, tự làm, không có gợi ý và không hỏi AI. Nộp bài xong mới xem đáp án.
       </p>
-      {unit.exit.length > 5 && (
+      {exit.length > RULES.exitDraw.size && (
         // Only the parent preview gets the whole bank; a student gets this run's 5 (LT13).
         <p className="rounded-lg border border-warn bg-warn-soft px-3 py-2 text-sm text-warn" data-testid="exit-bank-note">
-          Xem trước: kho {unit.exit.length} câu — mỗi lượt con được rút 5 (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp.
+          Xem trước: kho {exit.length} câu — mỗi lượt con được rút 5 (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp.
         </p>
       )}
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
-      {unit.exit.map((it, i) => (
+      {exit.map((it, i) => (
         <Card key={it.id}>
           <p className="font-mono text-xs text-muted">Câu {i + 1}</p>
           <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />

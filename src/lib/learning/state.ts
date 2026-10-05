@@ -42,6 +42,39 @@ export type StudentState = {
 };
 
 /**
+ * Every answer of a student, oldest first. Read in pages: the API returns at most "Max rows"
+ * (1000 by default on Supabase) per request, and a silent cut would drop the newest answers.
+ */
+async function allAttempts(supabase: SupabaseClient, studentId: string) {
+  const PAGE = 1000;
+  const rows: unknown[] = [];
+  for (let from = 0; from < 50 * PAGE; from += PAGE) { // 50 000 answers ≈ years of use; never loop forever
+    const r = await supabase
+      .from("attempts")
+      .select("unit_id, item_id, mode, correct, error_code, exit_run, created_at")
+      .eq("student_id", studentId)
+      .order("created_at", { ascending: true })
+      .order("id", { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (r.error) return { data: rows.length ? rows : null, error: r.error };
+    rows.push(...(r.data ?? []));
+    if ((r.data ?? []).length < PAGE) return { data: rows, error: null };
+  }
+  return { data: rows, error: null };
+}
+
+/** LT13: this student's exit answers on one unit — what the exit draw is computed from (page and submitExit). */
+export async function exitHistory(supabase: SupabaseClient, studentId: string, unitId: string) {
+  const { data, error } = await supabase
+    .from("attempts")
+    .select("item_id, mode, correct, error_code, exit_run, created_at")
+    .eq("student_id", studentId)
+    .eq("unit_id", unitId)
+    .eq("mode", "exit");
+  return error ? null : ((data ?? []) as AttemptRow[]);
+}
+
+/**
  * Everything the screens need about one student, read through RLS with the caller's
  * client (works for the student, their parent, and an assigned tutor).
  * Tutors pass includeDrafts: they teach the school programme, so every unit can be logged.
@@ -53,12 +86,7 @@ export async function loadStudentState(
 ): Promise<StudentState> {
   const [progress, attempts, queue, unlocks, lastReview] = await Promise.all([
     supabase.from("unit_progress").select("unit_id, worked_viewed_at, faded_done_at, testout_run, testout_at").eq("student_id", studentId),
-    supabase
-      .from("attempts")
-      .select("unit_id, item_id, mode, correct, error_code, exit_run, created_at")
-      .eq("student_id", studentId)
-      .order("created_at", { ascending: true })
-      .limit(5000),
+    allAttempts(supabase, studentId),
     supabase.from("review_queue").select("unit_id, stage, due_on, completed_at").eq("student_id", studentId),
     supabase.from("unit_unlocks").select("unit_id").eq("student_id", studentId),
     supabase.from("review_log").select("created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(1),

@@ -96,15 +96,21 @@ class Query {
   eq(c: string, v: unknown) { this.where.push(`${c} = ${this.p(v)}`); return this; }
   is(c: string, v: null) { this.where.push(`${c} is ${v === null ? "null" : String(v)}`); return this; }
   in(c: string, arr: unknown[]) { this.where.push(`${c} = any(${this.p(arr)})`); return this; }
-  order(c: string, o: { ascending?: boolean } = {}) { this.orderBy = ` order by ${c} ${o.ascending === false ? "desc" : "asc"}`; return this; }
+  order(c: string, o: { ascending?: boolean } = {}) { this.orderBy += `${this.orderBy ? "," : " order by"} ${c} ${o.ascending === false ? "desc" : "asc"}`; return this; }
   limit(n: number) { this.lim = ` limit ${n}`; return this; }
+  range(from: number, to: number) { this.lim = ` limit ${to - from + 1} offset ${from}`; return this; }
   maybeSingle() { this.one = "maybe"; return this; }
   single() { this.one = "one"; return this; }
   private sql(): string {
     const w = this.where.length ? ` where ${this.where.join(" and ")}` : "";
     const t = `public.${this.table}`;
     if (this.op === "select" && this.headCount) return `select count(*)::int as count from ${t}${w}`;
-    if (this.op === "select") return `select ${this.cols} from ${t}${w}${this.orderBy}${this.lim}`;
+    if (this.op === "select") {
+      // Like Supabase's API "Max rows" (1000 by default): a response never has more rows, whatever the limit.
+      const m = this.lim.match(/limit (\d+)(.*)/);
+      const lim = m ? ` limit ${Math.min(Number(m[1]), 1000)}${m[2]}` : " limit 1000";
+      return `select ${this.cols} from ${t}${w}${this.orderBy}${lim}`;
+    }
     const ret = this.returning ? ` returning ${this.returning}` : "";
     if (this.op === "delete") return `delete from ${t}${w}${ret}`;
     if (this.op === "update") {

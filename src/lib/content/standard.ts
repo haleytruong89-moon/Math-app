@@ -40,6 +40,7 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
   for (const it of all)
     for (const m of mistakesOf(it))
       if (m.review && !prereqs.has(m.review)) out.push(`${it.id}: review "${m.review}" không phải bài tiên quyết của ${u.id}`);
+      else if (m.code === "E12" && !m.review && !STANDARD_EXEMPT.has(u.id)) out.push(`${it.id}: mã E12 (hổng nền) cần review tới bài nền`);
   if (STANDARD_EXEMPT.has(u.id)) return out;
 
   const p = levels(u.practice);

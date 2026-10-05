@@ -13,7 +13,7 @@ import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/publi
 import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
-import { loadStudentState } from "@/lib/learning/state";
+import { exitHistory, loadStudentState } from "@/lib/learning/state";
 import { masteryHistory } from "@/lib/learning/sequence";
 import { exitDrawFor } from "@/lib/learning/exit-draw";
 
@@ -256,14 +256,9 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
   const bankIds = new Set(found.unit.exit.map((i) => i.id));
   if (v.items.some((id) => !bankIds.has(id)) || new Set(v.items).size !== v.items.length) return DENIED;
   if (who.kind === "student") {
-    const { data: past, error: pErr } = await createAdminClient()
-      .from("attempts")
-      .select("item_id, mode, correct, error_code, exit_run, created_at")
-      .eq("student_id", who.studentId)
-      .eq("unit_id", v.unitId)
-      .eq("mode", "exit");
-    if (pErr) return SAVE_FAILED;
-    const drawn = exitDrawFor(who.studentId, found.unit, (past ?? []) as AttemptRow[]);
+    const past = await exitHistory(createAdminClient(), who.studentId, v.unitId);
+    if (!past) return SAVE_FAILED;
+    const drawn = exitDrawFor(who.studentId, found.unit, past);
     if (drawn.length !== v.items.length || drawn.some((id) => !v.items.includes(id)))
       return { ok: false, message: "Bộ câu kiểm tra đã đổi (có thể con vừa nộp ở tab khác). Tải lại trang để làm bộ mới nhé." };
   }
