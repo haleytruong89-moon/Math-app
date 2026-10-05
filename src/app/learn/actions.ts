@@ -13,6 +13,13 @@ import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/publi
 import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
+import { loadStudentState } from "@/lib/learning/state";
+
+/** S6a (LT2): a locked KU can't be started; returns the unit's roadmap state for a student. */
+async function roadmapState(studentId: string, unitId: string) {
+  const st = await loadStudentState(createAdminClient(), studentId);
+  return st.units.find((u) => u.unit.id === unitId) ?? null;
+}
 
 // Grading always happens here, never in the browser. A student's answers are recorded;
 // a parent previewing content (D16) gets the same grading but nothing is written.
@@ -84,6 +91,8 @@ export async function markWorkedViewed(unitIdRaw: string): Promise<{ ok: boolean
   const unitId = UnitId.safeParse(unitIdRaw);
   if (!who || !unitId.success || !loadUnit(who, unitId.data)) return DENIED;
   if (who.kind === "preview") return { ok: true };
+  const rs = await roadmapState(who.studentId, unitId.data);
+  if (rs?.status === "locked") return { ok: false, message: "Bài này chưa mở — con cần đạt M3 ở bài trước." };
 
   const { error } = await createAdminClient()
     .from("unit_progress")
@@ -94,6 +103,15 @@ export async function markWorkedViewed(unitIdRaw: string): Promise<{ ok: boolean
   if (error) {
     console.error("markWorkedViewed", error.message);
     return SAVE_FAILED;
+  }
+  if (rs?.testout.tried && !rs.workedViewed) {
+    // The row exists from a failed test-out (upsert above ignored it): record the worked example now.
+    await createAdminClient()
+      .from("unit_progress")
+      .update({ worked_viewed_at: new Date().toISOString() })
+      .eq("student_id", who.studentId)
+      .eq("unit_id", unitId.data)
+      .is("worked_viewed_at", null);
   }
   revalidatePath("/student");
   return { ok: true };
@@ -206,6 +224,8 @@ const ExitInput = z.object({
   unitId: UnitId,
   answers: z.record(UnitId, Answer),
   durationMs: Duration,
+  /** LT4: the exit test taken directly, once per KU (track B / backfill only). */
+  testOut: z.boolean().optional(),
 });
 
 export async function submitExit(input: z.input<typeof ExitInput>): Promise<ExitResult> {
@@ -217,8 +237,14 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
   if (!found) return DENIED;
 
   if (who.kind === "student") {
-    const p = await progress(who.studentId, v.unitId);
-    if (!p?.faded_done_at) return { ok: false, message: "Con cần học xong các phần trước rồi mới làm bài kiểm tra." };
+    if (v.testOut) {
+      const rs = await roadmapState(who.studentId, v.unitId);
+      if (!rs || !rs.entry?.testOut || rs.status !== "open" || rs.started)
+        return { ok: false, message: "Bài này không làm kiểm tra vượt được (chỉ một lần, trước khi học)." };
+    } else {
+      const p = await progress(who.studentId, v.unitId);
+      if (!p?.faded_done_at) return { ok: false, message: "Con cần học xong các phần trước rồi mới làm bài kiểm tra." };
+    }
   }
 
   let nextReviewOn: string | undefined;
@@ -250,6 +276,12 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       console.error("submitExit insert", error.message);
       return SAVE_FAILED;
     }
+    if (v.testOut) {
+      const { error: tErr } = await createAdminClient()
+        .from("unit_progress")
+        .upsert({ student_id: who.studentId, unit_id: v.unitId, testout_run: run, testout_at: new Date().toISOString() }, { onConflict: "student_id,unit_id" });
+      if (tErr) console.error("submitExit testout", tErr.message);
+    }
     // Reaching M3 the first time starts the D+1/D+7/D+21 review cycle (D14).
     const exitScore = lastExitRun(graded.map((r) => ({ item_id: r.item.id, mode: "exit", correct: r.correct, error_code: r.errorCode ?? null, exit_run: run, created_at: new Date().toISOString() })));
     if (exitScore && exitReachesM3(exitScore)) {
@@ -279,6 +311,8 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       solutionHtml: texToHtml(r.item.solution),
     })),
     nextReviewOn,
+    // Passed = it reached M3 and started the review cycle (a test-out KU has no review row before).
+    testOut: v.testOut ? { passed: !!nextReviewOn } : undefined,
   };
 }
 

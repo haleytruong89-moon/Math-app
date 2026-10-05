@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { getUnit } from "@/lib/content";
+import { curriculumUnit, getUnit } from "@/lib/content";
 import { reviewNote } from "@/lib/learning/homework";
 import { latestByUnit, type ProposalRow } from "@/lib/learning/overview";
 import { loadStudentState } from "@/lib/learning/state";
@@ -46,4 +46,23 @@ export async function confirmLevel(_p: ActionState, fd: FormData): Promise<Actio
   }
   revalidatePath("/parent");
   return { ok: `Đã chốt M${level}.` };
+}
+
+/** LT2: "Mở khoá cho con" — the parent opens a locked KU by hand. */
+export async function unlockUnit(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const studentId = z.uuid().safeParse(fd.get("studentId"));
+  const unitId = String(fd.get("unitId") ?? "");
+  if (!studentId.success || !curriculumUnit(unitId)) return { error: "Không tìm thấy bài này." };
+  if (!(await parentOwnsStudent(parent.id, studentId.data))) return { error: "Không tìm thấy học sinh." };
+  const { error } = await createAdminClient()
+    .from("unit_unlocks")
+    .upsert({ student_id: studentId.data, unit_id: unitId, unlocked_by: parent.id }, { onConflict: "student_id,unit_id", ignoreDuplicates: true });
+  if (error) {
+    console.error("unlockUnit", error.message);
+    return { error: "Chưa lưu được, thử lại sau." };
+  }
+  revalidatePath("/parent/content");
+  revalidatePath(`/parent/content/${unitId}`);
+  return { ok: "Đã mở khoá cho con." };
 }

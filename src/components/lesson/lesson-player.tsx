@@ -28,17 +28,36 @@ export function LessonPlayer({
   mode,
   initial,
   backHref,
+  testOut = false,
 }: {
   unit: PublicUnit;
   mode: "student" | "preview";
   initial: { workedViewed: boolean; fadedDone: boolean };
   backHref: string;
+  /** LT4: the exit test taken directly, once (track B / backfill KUs). */
+  testOut?: boolean;
 }) {
   const [workedViewed, setWorkedViewed] = useState(initial.workedViewed);
   const [fadedDone, setFadedDone] = useState(initial.fadedDone);
   const [stage, setStage] = useState<Stage>(initial.fadedDone ? "practice" : initial.workedViewed ? "faded" : "learn");
 
   const unlocked = (s: Stage) => s === "learn" || (s === "faded" ? workedViewed : fadedDone);
+
+  if (testOut) {
+    return (
+      <div>
+        <p className="font-mono text-xs text-muted">{unit.moduleTitle}</p>
+        <h1 className="mt-1 font-display text-2xl font-bold">{unit.title}</h1>
+        <p className="mt-3 rounded-lg border border-border bg-surface px-3 py-2 text-sm">
+          <b>Kiểm tra vượt:</b> nếu con đã biết bài này, làm luôn bài kiểm tra. Đạt từ 80% là xong bài, hẹn ôn lại ngày mai.
+          Chưa đạt cũng không sao — con học bài như bình thường. Chỉ được làm <b>một lần</b>.
+        </p>
+        <div className="mt-6">
+          <ExitStage unit={unit} backHref={backHref} testOut />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -357,7 +376,7 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
 
 // ---------------------------------------------------------------------
 
-function ExitStage({ unit, backHref }: { unit: PublicUnit; backHref: string }) {
+function ExitStage({ unit, backHref, testOut = false }: { unit: PublicUnit; backHref: string; testOut?: boolean }) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<Extract<ExitResult, { ok: true }> | null>(null);
   const { pending, error, run } = useAction();
@@ -373,7 +392,7 @@ function ExitStage({ unit, backHref }: { unit: PublicUnit; backHref: string }) {
     run(async () => {
       if (unreadable.length) return `Câu ${unreadable.join(", ")}: ${FORMAT_HINT.charAt(0).toLowerCase()}${FORMAT_HINT.slice(1)}`;
       if (unanswered && !window.confirm(`Còn ${unanswered} câu chưa làm. Câu bỏ trống tính là sai. Vẫn nộp bài?`)) return;
-      const r = await submitExit({ unitId: unit.id, answers, durationMs: Date.now() - startedAtRef.current });
+      const r = await submitExit({ unitId: unit.id, answers, durationMs: Date.now() - startedAtRef.current, testOut });
       if (!r.ok) return r.message;
       setResult(r);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -388,6 +407,11 @@ function ExitStage({ unit, backHref }: { unit: PublicUnit; backHref: string }) {
           <p className="mt-2 font-display text-3xl font-bold tabular-nums">
             {result.score}/{result.total} <span className="text-base font-normal text-muted">({pct}%)</span>
           </p>
+          {result.testOut && (
+            <p className="mt-2 font-semibold" data-testid="testout-result">
+              {result.testOut.passed ? "Con đã qua kiểm tra vượt — bài này xong rồi!" : "Chưa qua kiểm tra vượt — không sao, con học bài này từ lời giải mẫu nhé."}
+            </p>
+          )}
           <p className="mt-1 text-sm text-muted">
             {result.nextReviewOn
               ? "Tốt lắm! Bài này đã được hẹn ôn lại vào ngày mai để nhớ lâu."
@@ -414,6 +438,11 @@ function ExitStage({ unit, backHref }: { unit: PublicUnit; backHref: string }) {
             </Card>
           );
         })}
+        {result.testOut && !result.testOut.passed && (
+          <Link href={`/student/learn/${unit.id}`} className="rounded-lg bg-accent px-4 py-3 text-center font-display font-bold text-on-accent">
+            Bắt đầu học bài này
+          </Link>
+        )}
         <Link href={backHref} className="rounded-lg border border-border bg-surface px-4 py-3 text-center font-display font-semibold">
           Về trang chính
         </Link>

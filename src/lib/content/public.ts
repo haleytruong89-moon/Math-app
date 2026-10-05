@@ -51,6 +51,8 @@ export type ExitResult =
       score: number;
       total: number;
       items: { id: string; correct: boolean; answer: string; feedbackHtml?: string; solutionHtml: string }[];
+      /** LT4: set when this was a test-out attempt. */
+      testOut?: { passed: boolean };
       /** Set when this result reached M3 and the first review (D+1) was scheduled. */
       nextReviewOn?: string;
     };
