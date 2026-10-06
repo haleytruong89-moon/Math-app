@@ -10,6 +10,7 @@ const errors = []; page.on("pageerror", (e) => errors.push(e.message));
 
 await page.goto(`${BASE}/parent/content`);
 ok("content: grouped by batch", (await page.getByTestId("batch-1").count()) === 1 && (await page.getByTestId("batch-9").getByText("Chưa soạn", { exact: true }).count()) === 1);
+ok("content: P2 KUs in their own group (LT17)", (await page.getByTestId("extra").getByText("Học thêm thử").count()) === 1 && (await page.getByTestId("batch-1").getByText("Học thêm thử").count()) === 0);
 await page.goto(`${BASE}/parent/content/fa-2`);
 const box = page.getByTestId("unlock-box");
 ok("unit page: locked for the child → unlock offered", (await box.count()) === 1);

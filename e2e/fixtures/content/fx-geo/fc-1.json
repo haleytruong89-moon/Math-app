@@ -102,7 +102,7 @@
     {
       "id": "fc-1-x3",
       "type": "numeric",
-      "level": "L1",
+      "level": "L2",
       "prompt": "Câu thử: nhập số $3$.",
       "answer": "3",
       "solution": "Đáp án là $3$."
@@ -110,7 +110,7 @@
     {
       "id": "fc-1-x4",
       "type": "numeric",
-      "level": "L1",
+      "level": "L2",
       "prompt": "Câu thử: nhập số $4$.",
       "answer": "4",
       "solution": "Đáp án là $4$."
@@ -118,10 +118,34 @@
     {
       "id": "fc-1-x5",
       "type": "numeric",
-      "level": "L1",
+      "level": "L2",
       "prompt": "Câu thử: nhập số $5$.",
       "answer": "5",
       "solution": "Đáp án là $5$."
+    },
+    {
+      "id": "fc-1-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Câu thử: nhập số $6$.",
+      "answer": "6",
+      "solution": "Đáp án là $6$."
+    },
+    {
+      "id": "fc-1-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Câu thử: nhập số $7$.",
+      "answer": "7",
+      "solution": "Đáp án là $7$."
+    },
+    {
+      "id": "fc-1-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Câu thử: nhập số $8$.",
+      "answer": "8",
+      "solution": "Đáp án là $8$."
     }
   ]
 }

@@ -13,8 +13,9 @@ import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/publi
 import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
-import { loadStudentState } from "@/lib/learning/state";
+import { exitHistory, loadStudentState } from "@/lib/learning/state";
 import { masteryHistory } from "@/lib/learning/sequence";
+import { exitDrawFor } from "@/lib/learning/exit-draw";
 
 /** S6a (LT2): a locked KU can't be started; returns the unit's roadmap state for a student. */
 async function roadmapState(studentId: string, unitId: string) {
@@ -224,6 +225,8 @@ export async function completeFaded(unitIdRaw: string): Promise<{ ok: boolean; m
 const ExitInput = z.object({
   unitId: UnitId,
   answers: z.record(UnitId, Answer),
+  /** LT13: the drawn items the student was shown (re-drawn and checked on the server). */
+  items: z.array(UnitId).min(1).max(20),
   durationMs: Duration,
   /** LT4: the exit test taken directly, once per KU (track B / backfill only). */
   testOut: z.boolean().optional(),
@@ -248,9 +251,22 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
     }
   }
 
+  // LT13: a student answers the 5 items drawn for this run — the server draws again and must agree.
+  // The parent preview may answer any items of the bank.
+  const bankIds = new Set(found.unit.exit.map((i) => i.id));
+  if (v.items.some((id) => !bankIds.has(id)) || new Set(v.items).size !== v.items.length) return DENIED;
+  if (who.kind === "student") {
+    const past = await exitHistory(createAdminClient(), who.studentId, v.unitId);
+    if (!past) return SAVE_FAILED;
+    const drawn = exitDrawFor(who.studentId, found.unit, past);
+    if (drawn.length !== v.items.length || drawn.some((id) => !v.items.includes(id)))
+      return { ok: false, message: "Bộ câu kiểm tra đã đổi (có thể con vừa nộp ở tab khác). Tải lại trang để làm bộ mới nhé." };
+  }
+
   let nextReviewOn: string | undefined;
   // Unanswered or unreadable answers count as wrong in a test.
-  const graded = found.unit.exit.map((item) => {
+  const shown = new Set(v.items);
+  const graded = found.unit.exit.filter((item) => shown.has(item.id)).map((item) => {
     const answer = (v.answers[item.id] ?? "").trim();
     const g = gradeItem(item, answer);
     return { item, answer, correct: g.understood && g.correct, errorCode: g.errorCode, feedback: g.feedback };

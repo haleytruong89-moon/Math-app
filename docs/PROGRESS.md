@@ -18,7 +18,7 @@
 | Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | ✅ Merged 05/10 (PR #10) |
 | Docs + data — chỉ mục 68 đề, LT17–LT18 (48 KU), `curriculum.json` cập nhật | `p1-curriculum-design` | 🟡 PR #14 — không SQL |
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
-| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8); trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | ⬜ **Tiếp theo**, trước khi soạn đợt 1 |
+| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8); trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | 🟡 PR #15 (xếp chồng trên #14) — không SQL; merge **#14 → #15** |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
@@ -35,6 +35,35 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+| Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
+| Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 06/10/2026 — LT17 trong S6a+ (nhánh `p1-slice-6a2`, PR #15)
+
+**Phụ huynh cần làm:** merge **PR #14 trước, rồi PR #15** (#15 xếp chồng trên #14, xem Q13). Không SQL.
+
+**Đã làm:** trường `priority` (P0/P1/P2) trong `content/curriculum.json` + schema, test khớp cột priority của CURRICULUM.md; bài lõi không được phụ thuộc bài P2; KU P2 chỉ được gợi ý khi mọi KU P0/P1 cùng track đạt M3 (kể cả bài lõi chưa soạn — Q14) hoặc phụ huynh mở tay; nhóm **"Học thêm khi dư thời gian"** cuối bản đồ Hành trình và cuối trang Nội dung.
+
+---
+
+## 05/10/2026 — S6a+ Schema theo chuẩn nội dung (nhánh `p1-slice-6a2`)
+
+**Phụ huynh cần làm:** merge PR (không có SQL). Sau đó Claude soạn đợt 1 theo chuẩn.
+
+**Đã làm (CONTENT_STANDARD §8):**
+- Câu hỏi có cấp **L3** và các trường `source`, `recognition`, `hints` (3 dòng), `review` (ở đáp án sai). Chưa hiện cho con — nút Gợi ý và link "Ôn lại" làm ở S6b.
+- `npm test` kiểm chuẩn: luyện 3/3/2 có câu nhận dạng (sai = E05), mỗi câu luyện 3 gợi ý ≤ 25 chữ không lộ đáp số, kho kiểm tra 2/3/3 có câu ghi nguồn, `review` phải là bài tiên quyết. htl-1/2 tạm miễn tới khi chuẩn hoá (§9).
+- **Kho kiểm tra 8 câu, mỗi lượt rút 5** (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp rồi câu gặp lâu nhất; máy chủ rút lại khi nộp và từ chối bộ khác (ví dụ tab cũ). Phụ huynh xem trước thấy đủ 8 câu.
+
+**Review (đã sửa):** (1) quan trọng nhất — khi con có > 1000 câu trả lời, API Supabase chỉ trả 1000 dòng nên trang thấy lịch sử cũ, rút sai bộ và con không nộp được nữa; mức M cũng bị tính thiếu. Giờ đọc theo trang + trang và máy chủ dùng chung một truy vấn; e2e giả lập giới hạn 1000 dòng và có 1100 câu trả lời. (2) Màn kết quả sau khi nộp thiếu câu (trang rút bộ mới) — giờ giữ bộ đã làm. (3) Mã E12 bắt buộc có `review`.
+
+**Quyết định:** hai lần nộp đúng cùng một lúc (hai tab, bấm đúng cùng giây) vẫn có thể lưu 2 lượt — không giúp gian lận M3 (mỗi lượt phải đúng bộ đã rút, chỉ lượt cuối tính), chỉ làm lượt sau rút bộ khác; chặn hẳn cần ràng buộc DB, để sau nếu thấy xảy ra.
+
+**Để sau (nhỏ):** câu nhận dạng không có `mistakes` vẫn qua kiểm E05, chưa kiểm "≥ 2 phương án sai có mistakes"; kiểm gợi ý lộ đáp số không nhận dạng TeX (`2sqrt{3}`, `rac{}{}`) và không kiểm câu trắc nghiệm; đếm chữ tính cả ký hiệu TeX; danh sách Nội dung ghi "8 câu kiểm tra" thay vì "kho 8, mỗi lượt 5"; sau 2 lượt con đã xem lời giải cả 8 câu (giống bộ 5 cố định trước đây).
+
+**Kiểm tra:** lint, `npm test`, build, `./e2e/run.sh` — xem mô tả PR.
 
 ---
 

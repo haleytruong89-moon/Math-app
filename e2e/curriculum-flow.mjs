@@ -24,6 +24,7 @@ await page.screenshot({ path: `${shots}/1-home.png`, fullPage: true });
 await page.goto(`${BASE}/student/journey`);
 ok("journey: locked 🔒 and coming soon", (await page.getByTestId("node-fa-1").getByText(/Khoá — cần đạt M3/).count()) === 1 && (await page.getByTestId("node-fl-1").getByText("Sắp có").count()) === 1);
 ok("journey: only the active module expanded", (await page.getByTestId("module-backfill-fx").getAttribute("open")) !== null && (await page.getByTestId("module-fx-geo").getAttribute("open")) === null);
+ok("journey: P2 KU in 'Học thêm khi dư thời gian', not in its track (LT17)", (await page.getByTestId("track-extra").getByTestId("node-fc-9").count()) === 1 && (await page.getByTestId("track-C").getByTestId("node-fc-9").count()) === 0);
 await page.screenshot({ path: `${shots}/2-journey.png`, fullPage: true });
 
 // ---- 2. test-out fb-1 passed → M3 + review D+1; fb-2 unlocks; no second test-out
@@ -78,6 +79,48 @@ ok("manual unlock: fa-2 offered although fa-1 is not M3", /Đại số thử 2/.
 await sql(`insert into public.unit_progress (student_id, unit_id, worked_viewed_at) select ${ME}, 'fc-1', now()`);
 await page.goto(`${BASE}/student`);
 ok("2 in progress: no 'Bài mới'", (await page.getByRole("region", { name: "Bài mới" }).count()) === 0);
+
+// ---- 5b. LT13: fc-1 has a bank of 8 → 5 shown (1 L1 + 2 L2 + 2 L3); a stale tab is refused; the next run takes the 3 unseen
+// fixture levels: x1–x2 L1, x3–x5 L2, x6–x8 L3; each prompt says "nhập số n" for item xn
+await sql(`update public.unit_progress set faded_done_at = now() where unit_id = 'fc-1'`);
+// 1100 older answers elsewhere: more than one API page (1000 rows), so a capped read would miss the newest ones
+await sql(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, created_at)
+  select ${ME}, 'fb-3', 'fb-3-p1', 'practice', '1', true, now() - interval '30 days' + n * interval '1 second' from generate_series(1, 1100) n`);
+const openExit = async (t) => {
+  await t.goto(`${BASE}/student/learn/fc-1`);
+  await t.getByRole("navigation", { name: "Các phần của bài" }).getByRole("button", { name: /Kiểm tra/ }).click();
+  await t.getByRole("button", { name: "Nộp bài" }).waitFor();
+};
+const shownItems = async (t) => {
+  const out = [];
+  for (let n = 1; n <= 8; n++) {
+    const sec = t.locator("section").filter({ hasText: `Câu ${n}` });
+    if (!(await sec.count())) break;
+    out.push(Number((await sec.first().innerText()).match(/nhập số\s*(\d)/)[1]));
+  }
+  return out;
+};
+const lvl = (ns) => [ns.filter((n) => n <= 2).length, ns.filter((n) => n >= 3 && n <= 5).length, ns.filter((n) => n >= 6).length];
+const tabB = await page.context().newPage();
+await openExit(page);
+await openExit(tabB);
+const run1 = await shownItems(page);
+ok("exit bank: 5 of 8 shown, 1 L1 + 2 L2 + 2 L3", run1.length === 5 && JSON.stringify(lvl(run1)) === "[1,2,2]", JSON.stringify(run1));
+ok("exit bank: same draw in a second tab", JSON.stringify(await shownItems(tabB)) === JSON.stringify(run1));
+for (let n = 1; n <= 5; n++) await page.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill("9");
+await page.getByRole("button", { name: "Nộp bài" }).click();
+await waitOrExplain(page.getByText("Kết quả bài kiểm tra"));
+await page.waitForTimeout(1500); // let the post-submit re-render land
+ok("exit bank: the result lists all 5 answered items", (await page.getByText("Con trả lời:").count()) === 5, String(await page.getByText("Con trả lời:").count()));
+for (let n = 1; n <= 5; n++) await tabB.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill("9");
+await tabB.getByRole("button", { name: "Nộp bài" }).click();
+await tabB.getByText(/Bộ câu kiểm tra đã đổi/).waitFor({ timeout: 15000 });
+ok("exit bank: the stale tab is refused, only one run saved", (await sql(`select count(*)::int c from public.attempts where unit_id = 'fc-1' and mode = 'exit'`))[0].c === 5);
+await tabB.close();
+await openExit(page);
+const run2 = await shownItems(page);
+const unseen = [1, 2, 3, 4, 5, 6, 7, 8].filter((n) => !run1.includes(n));
+ok("exit bank: next run takes the 3 unseen items, same level mix", unseen.every((n) => run2.includes(n)) && JSON.stringify(lvl(run2)) === "[1,2,2]", JSON.stringify({ run1, run2 }));
 
 // ---- 6. track A first KU reaches M3 → the next one opens
 await sql(`update public.unit_progress set worked_viewed_at = now(), faded_done_at = now() where unit_id = 'fz-1';
