@@ -1,0 +1,11 @@
+{
+  "id": "backfill-dai-so",
+  "title": "Bù lỗ hổng đại số lớp 7–8",
+  "domains": [
+    "F1"
+  ],
+  "units": [
+    "f1-hdt",
+    "f1-pnt"
+  ]
+}
