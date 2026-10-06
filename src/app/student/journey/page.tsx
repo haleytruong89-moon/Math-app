@@ -38,14 +38,51 @@ export default async function JourneyPage() {
   const count = (f: (l: number) => boolean) => nodes.filter((n) => f(n.shown.level)).length;
   const shownOf = new Map(nodes.map((n) => [n.u.unit.id, n.shown]));
   const titleOf = new Map(state.roadmap.map((n) => [n.entry.id, n.entry.title]));
-  // Expanded: modules with a KU in progress; if none anywhere, the module of the first suggestion.
-  const active = new Set(state.roadmap.filter((n) => n.state?.inProgress).map((n) => n.entry.module));
-  if (!active.size && state.suggestions[0]) active.add(state.suggestions[0].unit.module);
-  const tracks = (["A", "B", "C"] as const).map((t) => {
-    const inTrack = state.roadmap.filter((n) => n.entry.track === t).sort((a, b) => a.entry.seq - b.entry.seq);
-    const moduleIds = [...new Set(inTrack.map((n) => n.entry.module))];
-    return { t, modules: moduleIds.map((id) => ({ m: state.modules.find((x) => x.id === id)!, list: inTrack.filter((n) => n.entry.module === id) })) };
-  });
+  // Expanded: groups with a KU in progress; if none anywhere, the group of the first suggestion.
+  const active = new Set(state.roadmap.filter((n) => n.state?.inProgress).map((n) => n.entry.id));
+  if (!active.size && state.suggestions[0]) active.add(state.suggestions[0].unit.id);
+  const byModule = (nodes: RoadmapNode[]) =>
+    [...new Set(nodes.map((n) => n.entry.module))].map((id) => ({ m: state.modules.find((x) => x.id === id)!, list: nodes.filter((n) => n.entry.module === id) }));
+  const bySeq = (a: RoadmapNode, b: RoadmapNode) => a.entry.seq - b.entry.seq;
+  const tracks = (["A", "B", "C"] as const).map((t) => ({
+    t,
+    modules: byModule(state.roadmap.filter((n) => n.entry.track === t && n.entry.priority !== "P2").sort(bySeq)),
+  }));
+  // LT17: rarely-tested KUs come after the core, in their own group.
+  const extra = byModule(state.roadmap.filter((n) => n.entry.priority === "P2").sort((a, b) => a.entry.track.localeCompare(b.entry.track) || bySeq(a, b)));
+  const moduleBlock = ({ m, list }: { m: (typeof state.modules)[number]; list: RoadmapNode[] }, testId: string) => {
+    const done = list.filter((n) => (shownOf.get(n.entry.id)?.level ?? n.level) >= 3).length;
+    const open = list.some((n) => active.has(n.entry.id));
+    return (
+      <details key={testId} open={open} className="rounded-xl border border-border bg-surface px-3 py-2" data-testid={testId}>
+        <summary className="flex cursor-pointer items-center gap-3 py-1">
+          <span className="min-w-0 flex-1 text-sm font-semibold">{m.title}</span>
+          <span className="h-1.5 w-16 overflow-hidden rounded-full bg-border">
+            <span className="block h-full rounded-full bg-accent" style={{ width: `${(done / list.length) * 100}%` }} />
+          </span>
+          <span className="font-mono text-[11px] text-muted">
+            {done}/{list.length}
+          </span>
+        </summary>
+        <ol className="mt-2 flex flex-col pb-1">
+          {list.map((n, i) => {
+            const shown = shownOf.get(n.entry.id);
+            const level = shown?.level ?? n.level;
+            return (
+              <li key={n.entry.id} className="flex flex-col" data-testid={`node-${n.entry.id}`}>
+                {i > 0 && <Connector from={list[i - 1].status === "open" ? (shownOf.get(list[i - 1].entry.id)?.level ?? 0) : 0} to={n.status === "open" ? level : 0} />}
+                {n.status === "open" && n.state ? (
+                  <Node u={n.state} level={level} confirmed={!!shown?.confirmed} today={state.today} />
+                ) : (
+                  <ClosedNode node={n} prereqTitles={n.entry.prereq.map((p) => titleOf.get(p) ?? p)} />
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </details>
+    );
+  };
 
   return (
     <>
@@ -68,41 +105,26 @@ export default async function JourneyPage() {
         <section key={t} className="mt-6" aria-label={TRACK[t]} data-testid={`track-${t}`}>
           <h2 className="text-sm font-bold uppercase tracking-wide text-muted">{TRACK[t]}</h2>
           <div className="mt-2 flex flex-col gap-2">
-            {modules.map(({ m, list }) => {
-              const done = list.filter((n) => (shownOf.get(n.entry.id)?.level ?? n.level) >= 3).length;
-              return (
-                <details key={m.id} open={active.has(m.id)} className="rounded-xl border border-border bg-surface px-3 py-2" data-testid={`module-${m.id}`}>
-                  <summary className="flex cursor-pointer items-center gap-3 py-1">
-                    <span className="min-w-0 flex-1 text-sm font-semibold">{m.title}</span>
-                    <span className="h-1.5 w-16 overflow-hidden rounded-full bg-border">
-                      <span className="block h-full rounded-full bg-accent" style={{ width: `${(done / list.length) * 100}%` }} />
-                    </span>
-                    <span className="font-mono text-[11px] text-muted">
-                      {done}/{list.length}
-                    </span>
-                  </summary>
-                  <ol className="mt-2 flex flex-col pb-1">
-                    {list.map((n, i) => {
-                      const shown = shownOf.get(n.entry.id);
-                      const level = shown?.level ?? n.level;
-                      return (
-                        <li key={n.entry.id} className="flex flex-col" data-testid={`node-${n.entry.id}`}>
-                          {i > 0 && <Connector from={list[i - 1].status === "open" ? (shownOf.get(list[i - 1].entry.id)?.level ?? 0) : 0} to={n.status === "open" ? level : 0} />}
-                          {n.status === "open" && n.state ? (
-                            <Node u={n.state} level={level} confirmed={!!shown?.confirmed} today={state.today} />
-                          ) : (
-                            <ClosedNode node={n} prereqTitles={n.entry.prereq.map((p) => titleOf.get(p) ?? p)} />
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </details>
-              );
-            })}
+            {modules.map((g) => moduleBlock(g, `module-${g.m.id}`))}
           </div>
         </section>
       ))}
+
+      {extra.length > 0 && (
+        // One collapsed row unless a KU in it is active, so the map stays within 2 screens.
+        <details
+          className="mt-6"
+          aria-label="Học thêm khi dư thời gian"
+          data-testid="track-extra"
+          open={extra.some((g) => g.list.some((n) => active.has(n.entry.id)))}
+        >
+          <summary className="cursor-pointer text-sm font-bold uppercase tracking-wide text-muted">
+            Học thêm khi dư thời gian · {extra.reduce((k, g) => k + g.list.length, 0)} bài
+          </summary>
+          <p className="mt-1 text-xs text-muted">Ít ra trong đề thi — mở sau khi con vững các bài chính.</p>
+          <div className="mt-2 flex flex-col gap-2">{extra.map((g) => moduleBlock(g, `extra-${g.m.id}`))}</div>
+        </details>
+      )}
     </>
   );
 }

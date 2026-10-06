@@ -35,6 +35,16 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+| Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
+| Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 06/10/2026 — LT17 trong S6a+ (nhánh `p1-slice-6a2`, PR #15)
+
+**Phụ huynh cần làm:** merge **PR #14 trước, rồi PR #15** (#15 xếp chồng trên #14, xem Q13). Không SQL.
+
+**Đã làm:** trường `priority` (P0/P1/P2) trong `content/curriculum.json` + schema, test khớp cột priority của CURRICULUM.md; bài lõi không được phụ thuộc bài P2; KU P2 chỉ được gợi ý khi mọi KU P0/P1 cùng track đạt M3 (kể cả bài lõi chưa soạn — Q14) hoặc phụ huynh mở tay; nhóm **"Học thêm khi dư thời gian"** cuối bản đồ Hành trình và cuối trang Nội dung.
 
 ---
 

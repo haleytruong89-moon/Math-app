@@ -49,7 +49,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "fa-1",
@@ -63,7 +64,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "fa-2",
@@ -77,7 +79,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "fb-1",
@@ -89,7 +92,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "fb-2",
@@ -103,7 +107,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "fb-3",
@@ -115,7 +120,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 2
+      "batch": 2,
+      "priority": "P0"
     },
     {
       "id": "fc-1",
@@ -127,7 +133,21 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
+    },
+    {
+      "id": "fc-9",
+      "module": "fx-geo",
+      "title": "Học thêm thử",
+      "track": "C",
+      "seq": 5,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 1,
+      "priority": "P2"
     },
     {
       "id": "fl-1",
@@ -141,7 +161,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 9
+      "batch": 9,
+      "priority": "P0"
     }
   ]
 }

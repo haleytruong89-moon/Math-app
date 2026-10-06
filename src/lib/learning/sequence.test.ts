@@ -6,7 +6,7 @@ import type { AttemptRow } from "./rules.ts";
 
 const U = (id: string, p: Partial<SeqUnit> = {}): SeqUnit => ({
   id, track: "A", seq: 10, batch: 1, prereq: [], testOut: false, hasContent: true,
-  level: 0, started: false, manualUnlock: false, testoutTried: false, inReview: false, ...p,
+  level: 0, started: false, manualUnlock: false, testoutTried: false, inReview: false, priority: "P0", ...p,
 });
 const map = (us: SeqUnit[]) => new Map(us.map((u) => [u.id, u]));
 
@@ -66,4 +66,15 @@ test("mastery history: a passed test-out replays as learnt (a parent confirmatio
   const failed = masteryHistory(exit("t", false, 1), "t", false, false);
   assert.deepEqual([failed.workedViewed, failed.attempts.length], [false, 0]);
   assert.equal(masteryHistory(exit("e", true, 1), null, true, true).attempts.length, 5);
+});
+
+test("LT17: a P2 KU is suggested only once every P0/P1 KU of its track is at M3, or when unlocked by hand", () => {
+  const core = U("b1", { track: "B", seq: 10, level: 2, started: true, inReview: true });
+  const p2 = U("b9", { track: "B", seq: 5, priority: "P2" });
+  const otherTrack = U("c1", { track: "C", seq: 10, level: 0 }); // not started: doesn't block track B
+  assert.deepEqual(suggestNew([core, p2]).map((u) => u.id), []);
+  assert.deepEqual(suggestNew([{ ...core, level: 3 }, p2, otherTrack]).map((u) => u.id), ["b9"]);
+  assert.deepEqual(suggestNew([core, { ...p2, manualUnlock: true }]).map((u) => u.id), ["b9"]);
+  // P1 counts as core; core KUs without content ("Sắp có") still have to be learnt first.
+  assert.deepEqual(suggestNew([{ ...core, level: 3 }, U("b2", { track: "B", seq: 20, priority: "P1", hasContent: false }), p2]).map((u) => u.id), []);
 });

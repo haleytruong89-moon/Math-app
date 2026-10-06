@@ -135,7 +135,8 @@
       "examWeight": "indirect",
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "f1-pnt",
@@ -149,7 +150,8 @@
       "examWeight": "indirect",
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "f1-tgon",
@@ -164,7 +166,8 @@
       "examWeight": 1,
       "grading": "scaffolded",
       "testOut": true,
-      "batch": 2
+      "batch": 2,
+      "priority": "P0"
     },
     {
       "id": "f1-qd",
@@ -178,7 +181,8 @@
       "examWeight": "indirect",
       "grading": "scaffolded",
       "testOut": true,
-      "batch": 2
+      "batch": 2,
+      "priority": "P0"
     },
     {
       "id": "c-dkxd",
@@ -192,7 +196,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 3
+      "batch": 3,
+      "priority": "P0"
     },
     {
       "id": "c-coban",
@@ -206,7 +211,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4
+      "batch": 4,
+      "priority": "P0"
     },
     {
       "id": "c-truccan",
@@ -220,7 +226,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4
+      "batch": 4,
+      "priority": "P0"
     },
     {
       "id": "c-rutgon",
@@ -234,7 +241,8 @@
       "examWeight": 1,
       "grading": "scaffolded",
       "testOut": false,
-      "batch": 5
+      "batch": 5,
+      "priority": "P0"
     },
     {
       "id": "c-cauphu",
@@ -248,7 +256,8 @@
       "examWeight": 0.5,
       "grading": "scaffolded",
       "testOut": false,
-      "batch": 5
+      "batch": 5,
+      "priority": "P0"
     },
     {
       "id": "d-ptbh",
@@ -262,7 +271,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 6
+      "batch": 6,
+      "priority": "P0"
     },
     {
       "id": "d-nhamnghiem",
@@ -276,7 +286,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 6
+      "batch": 6,
+      "priority": "P1"
     },
     {
       "id": "d-thamso",
@@ -290,7 +301,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 6
+      "batch": 6,
+      "priority": "P0"
     },
     {
       "id": "e-viete",
@@ -304,7 +316,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 7
+      "batch": 7,
+      "priority": "P0"
     },
     {
       "id": "e-vietets",
@@ -319,7 +332,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 7
+      "batch": 7,
+      "priority": "P0"
     },
     {
       "id": "g-chuyendong",
@@ -333,7 +347,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 8
+      "batch": 8,
+      "priority": "P0"
     },
     {
       "id": "g-nangsuat",
@@ -347,7 +362,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 8
+      "batch": 8,
+      "priority": "P0"
     },
     {
       "id": "g-phantram",
@@ -361,7 +377,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 8
+      "batch": 8,
+      "priority": "P1"
     },
     {
       "id": "g-honhop",
@@ -375,7 +392,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 8
+      "batch": 8,
+      "priority": "P1"
     },
     {
       "id": "hq-amgm",
@@ -389,7 +407,8 @@
       "examWeight": 0.25,
       "grading": "partial",
       "testOut": false,
-      "batch": 9
+      "batch": 9,
+      "priority": "P1"
     },
     {
       "id": "hq-doanhthu",
@@ -404,7 +423,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P0"
     },
     {
       "id": "hq-hinhhoc",
@@ -418,7 +438,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P0"
     },
     {
       "id": "e-giaodiem",
@@ -432,7 +453,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "a-tanso",
@@ -444,7 +466,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "b-phepthu",
@@ -456,7 +479,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 1
+      "batch": 1,
+      "priority": "P0"
     },
     {
       "id": "a-bieudo",
@@ -470,7 +494,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 2
+      "batch": 2,
+      "priority": "P0"
     },
     {
       "id": "b-xsuat",
@@ -484,7 +509,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 2
+      "batch": 2,
+      "priority": "P0"
     },
     {
       "id": "p-trunon",
@@ -496,7 +522,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 3
+      "batch": 3,
+      "priority": "P0"
     },
     {
       "id": "b-haib",
@@ -510,7 +537,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 3
+      "batch": 3,
+      "priority": "P1"
     },
     {
       "id": "p-cau",
@@ -524,7 +552,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": true,
-      "batch": 3
+      "batch": 3,
+      "priority": "P1"
     },
     {
       "id": "p-ghep",
@@ -539,7 +568,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 3
+      "batch": 3,
+      "priority": "P0"
     },
     {
       "id": "htl-1",
@@ -551,7 +581,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 0
+      "batch": 0,
+      "priority": "P0"
     },
     {
       "id": "htl-2",
@@ -565,7 +596,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 0
+      "batch": 0,
+      "priority": "P0"
     },
     {
       "id": "i-giaitgv",
@@ -579,7 +611,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": true,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "i-ungdung",
@@ -593,7 +626,8 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": true,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "f-hamso",
@@ -605,7 +639,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": true,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "f-parabol",
@@ -619,7 +654,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": true,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "f3-dongdang",
@@ -631,7 +667,8 @@
       "examWeight": "indirect",
       "grading": "partial",
       "testOut": true,
-      "batch": 4
+      "batch": 4,
+      "priority": "P0"
     },
     {
       "id": "j-coban",
@@ -643,7 +680,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4
+      "batch": 4,
+      "priority": "P0"
     },
     {
       "id": "k-goiintiep",
@@ -657,7 +695,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 5
+      "batch": 5,
+      "priority": "P0"
     },
     {
       "id": "k-tugiacnt",
@@ -671,7 +710,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 5
+      "batch": 5,
+      "priority": "P0"
     },
     {
       "id": "l-tieptuyen",
@@ -685,7 +725,8 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 6
+      "batch": 6,
+      "priority": "P0"
     },
     {
       "id": "o-chungminh",
@@ -700,7 +741,8 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 7
+      "batch": 7,
+      "priority": "P1"
     },
     {
       "id": "o-dongdang",
@@ -715,7 +757,8 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 7
+      "batch": 7,
+      "priority": "P1"
     },
     {
       "id": "l-kethop",
@@ -730,7 +773,8 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 9
+      "batch": 9,
+      "priority": "P1"
     },
     {
       "id": "o-nangcao",
@@ -744,7 +788,8 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 9
+      "batch": 9,
+      "priority": "P1"
     },
     {
       "id": "j-cung",
@@ -758,7 +803,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "m-vitri",
@@ -772,7 +818,8 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     },
     {
       "id": "n-ngoainoi",
@@ -786,7 +833,8 @@
       "examWeight": 0.25,
       "grading": "partial",
       "testOut": false,
-      "batch": 10
+      "batch": 10,
+      "priority": "P2"
     }
   ]
 }

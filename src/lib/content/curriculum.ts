@@ -20,6 +20,7 @@ export const CurriculumUnit = z
     grading: z.enum(["full", "scaffolded", "partial", "tutor"]),
     testOut: z.boolean(), // LT4
     batch: z.number().int().min(0).max(10), // content batch (CURRICULUM.md H6)
+    priority: z.enum(["P0", "P1", "P2"]), // LT17: P2 = "Học thêm khi dư thời gian", suggested after the track's core
   })
   .strict();
 export const Curriculum = z
@@ -40,6 +41,10 @@ export function checkCurriculum(c: Curriculum, files: FileModule[]): string[] {
     if (byId.has(u.id)) errs.push(`${u.id}: id trùng`);
     byId.set(u.id, u);
   }
+  // LT17: P2 waits for the core, so the core must never wait for a P2 KU.
+  for (const u of c.units)
+    if (u.priority !== "P2")
+      for (const p of u.prereq) if (byId.get(p)?.priority === "P2") errs.push(`${u.id}: bài lõi ${u.priority} phụ thuộc bài P2 ${p}`);
   const mods = new Map(c.modules.map((m) => [m.id, m]));
   if (mods.size !== c.modules.length) errs.push("module id trùng");
 

@@ -5,12 +5,20 @@ import { curriculum, getUnit } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Nội dung — App Toán" };
 
-// S6a: the 48-KU roadmap grouped by content batch (CURRICULUM.md H6), with Nháp / Đã duyệt / Chưa soạn.
+// S6a: the 48-KU roadmap grouped by content batch, P2 KUs last (LT17) (CURRICULUM.md H6), with Nháp / Đã duyệt / Chưa soạn.
 export default async function ContentPage() {
   await requireRole("parent");
   const { units, modules } = curriculum();
   const moduleTitle = new Map(modules.map((m) => [m.id, m.title]));
-  const batches = [...new Set(units.map((u) => u.batch))].sort((a, b) => a - b);
+  const byTrackSeq = (x: (typeof units)[number], y: (typeof units)[number]) => x.track.localeCompare(y.track) || x.seq - y.seq;
+  const core = units.filter((u) => u.priority !== "P2");
+  // Core KUs by content batch; LT17's P2 KUs in their own group at the end.
+  const groups = [
+    ...[...new Set(core.map((u) => u.batch))]
+      .sort((a, b) => a - b)
+      .map((b) => ({ key: `batch-${b}`, title: b === 0 ? "Đợt 0 — đã có" : `Đợt ${b}`, list: core.filter((u) => u.batch === b).sort(byTrackSeq) })),
+    { key: "extra", title: "Học thêm khi dư thời gian (P2 — ít ra trong đề)", list: units.filter((u) => u.priority === "P2").sort(byTrackSeq) },
+  ].filter((g) => g.list.length);
 
   return (
     <>
@@ -20,11 +28,10 @@ export default async function ContentPage() {
         Claude <i>&ldquo;duyệt bài …&rdquo;</i>; chỗ nào sai thì ghi lại để sửa. Học sinh chỉ thấy bài <b>Đã duyệt</b>.
       </p>
 
-      {batches.map((b) => {
-        const list = units.filter((u) => u.batch === b).sort((x, y) => x.track.localeCompare(y.track) || x.seq - y.seq);
+      {groups.map(({ key, title, list }) => {
         return (
-          <section key={b} className="mt-8" data-testid={`batch-${b}`}>
-            <h2 className="font-display text-base font-semibold">{b === 0 ? "Đợt 0 — đã có" : `Đợt ${b}`}</h2>
+          <section key={key} className="mt-8" data-testid={key}>
+            <h2 className="font-display text-base font-semibold">{title}</h2>
             <ul className="mt-3 divide-y divide-border rounded-xl border border-border bg-surface">
               {list.map((c) => {
                 const found = getUnit(c.id);

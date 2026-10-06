@@ -63,3 +63,13 @@ test("generated registry is up to date (run `npm run content:index`)", async () 
   const onDisk = fs.readFileSync(OUT, "utf8").replace(/\r\n/g, "\n");
   assert.equal(onDisk, render("content"), "src/lib/content/registry.generated.ts is stale or was generated from fixtures");
 });
+
+test("LT17: each KU's priority matches CURRICULUM.md; no core (P0/P1) KU depends on a P2 KU", () => {
+  const md = fs.readFileSync(path.join(repo, "docs/CURRICULUM.md"), "utf8");
+  const sec = md.slice(md.indexOf("## 2. Bảng KU đầy đủ"), md.indexOf("## 3."));
+  const doc = new Map(sec.split("\n").filter((l) => /^\| (\d+|—) \| [a-z0-9-]+ \|/.test(l)).map((l) => [l.split("|")[2].trim(), l.split("|")[7].trim()]));
+  for (const u of curriculum.units) assert.equal(u.priority, doc.get(u.id), `${u.id} priority`);
+  const c = structuredClone(curriculum);
+  c.units.find((u) => u.priority === "P0")!.prereq.push(c.units.find((u) => u.priority === "P2")!.id);
+  assert.match(checkCurriculum(c, files()).join(), /phụ thuộc bài P2/);
+});

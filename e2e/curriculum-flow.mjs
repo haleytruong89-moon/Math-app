@@ -24,6 +24,7 @@ await page.screenshot({ path: `${shots}/1-home.png`, fullPage: true });
 await page.goto(`${BASE}/student/journey`);
 ok("journey: locked 🔒 and coming soon", (await page.getByTestId("node-fa-1").getByText(/Khoá — cần đạt M3/).count()) === 1 && (await page.getByTestId("node-fl-1").getByText("Sắp có").count()) === 1);
 ok("journey: only the active module expanded", (await page.getByTestId("module-backfill-fx").getAttribute("open")) !== null && (await page.getByTestId("module-fx-geo").getAttribute("open")) === null);
+ok("journey: P2 KU in 'Học thêm khi dư thời gian', not in its track (LT17)", (await page.getByTestId("track-extra").getByTestId("node-fc-9").count()) === 1 && (await page.getByTestId("track-C").getByTestId("node-fc-9").count()) === 0);
 await page.screenshot({ path: `${shots}/2-journey.png`, fullPage: true });
 
 // ---- 2. test-out fb-1 passed → M3 + review D+1; fb-2 unlocks; no second test-out

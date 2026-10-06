@@ -142,7 +142,7 @@ export async function loadStudentState(
     return {
       id: e.id, track: e.track, seq: e.seq, batch: e.batch, prereq: e.prereq, testOut: e.testOut,
       hasContent: !!u, level: u?.mastery.level ?? 0, started: !!u?.started, manualUnlock: unlocked.has(e.id),
-      testoutTried: !!u?.testout.tried, inReview: !!u?.review,
+      testoutTried: !!u?.testout.tried, inReview: !!u?.review, priority: e.priority,
     };
   });
   const seqById = new Map(seq.map((x) => [x.id, x]));

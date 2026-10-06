@@ -15,6 +15,7 @@ export type SeqUnit = {
   manualUnlock: boolean;
   testoutTried: boolean;
   inReview: boolean;
+  priority: "P0" | "P1" | "P2"; // LT17
 };
 
 export type UnitStatus = "comingSoon" | "locked" | "open";
@@ -35,12 +36,14 @@ const byBatchTrackSeq = (a: SeqUnit, b: SeqUnit) => a.batch - b.batch || a.track
 
 /**
  * LT3: one open, not-started KU from track A and one from track B/C (batch → B before C → seq).
- * Nothing while 2 KUs are in progress.
+ * Nothing while 2 KUs are in progress. P2 KUs only after the track's core (LT17).
  */
 export function suggestNew(units: SeqUnit[]): SeqUnit[] {
   if (units.filter(isInProgress).length >= RULES.maxInProgress) return [];
   const byId = new Map(units.map((u) => [u.id, u]));
-  const fresh = units.filter((u) => !u.started && unitStatus(u, byId) === "open");
+  // LT17: a P2 KU waits until every core (P0/P1) KU of its track is at M3 — or the parent unlocked it.
+  const coreDone = (track: SeqUnit["track"]) => units.every((u) => u.track !== track || u.priority === "P2" || u.level >= 3);
+  const fresh = units.filter((u) => !u.started && unitStatus(u, byId) === "open" && (u.priority !== "P2" || u.manualUnlock || coreDone(u.track)));
   const a = fresh.filter((u) => u.track === "A").sort(byBatchSeq)[0];
   const bc = fresh.filter((u) => u.track !== "A").sort(byBatchTrackSeq)[0];
   return [a, bc].filter((x): x is SeqUnit => !!x);
