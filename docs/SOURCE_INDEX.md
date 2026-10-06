@@ -4,6 +4,9 @@
 > theo `docs/CONTENT_STANDARD.md` §6 (LT15). File PDF **không** đưa vào GitHub (sách có bản quyền) — xem mục 4 để lấy đề gốc.
 > Phân loại câu → KU làm tự động theo từ khoá rồi soát mẫu; trích đề dưới đây là **tóm tắt ngắn**, mất dấu căn/phân số khi
 > trích chữ — khi chuyển thể câu nào, phải mở đúng trang để đọc đề đầy đủ. Sai loại → sửa trực tiếp trong file này.
+>
+> ⚠️ **Đề 57–68 để dành cho thi thử** (từ ~01/2027, mỗi tháng một đề) — **không** lấy làm câu nội dung, kể cả chuyển thể.
+> Các dòng Đề 57–68 dưới đây chỉ để thống kê tần suất. Chốt 06/10/2026.
 
 ## 1. Cấu trúc đề (cả 68 đề cùng khung, 120 phút)
 

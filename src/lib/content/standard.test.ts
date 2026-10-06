@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Curriculum, ancestors } from "./curriculum.ts";
 import { Unit } from "./schema.ts";
-import { STANDARD_EXEMPT, checkStandard } from "./standard.ts";
+import { checkStandard } from "./standard.ts";
 
 const H = ["Đề hỏi gì?", "Đây là dạng nào?", "Dùng công thức nào?"];
 const num = (id: string, level: string, n: number, extra: Record<string, unknown> = {}) => ({ id, type: "numeric", level, prompt: `Tính ${n}.`, answer: String(n), solution: `Bằng $${n}$.`, ...extra });
@@ -59,13 +59,6 @@ test("standard: a 'review' link must point to a prerequisite (direct or indirect
   assert.match(issues((u) => { (u.practice[7] as unknown as { mistakes: { review: string }[] }).mistakes[0].review = "other"; }).join(), /review "other"/);
 });
 
-test("standard: exempt units (htl-1/2 until batch 1 normalises them) still need valid review links", () => {
-  const u = Unit.parse({ ...good(), id: "htl-1", practice: good().practice.map((i) => ({ ...i, id: i.id.replace("k-", "htl-1-") })), exit: good().exit.map((i) => ({ ...i, id: i.id.replace("k-", "htl-1-") })), faded: { ...good().faded, steps: [{ text: "Bước." }, { prompt: "Điền.", item: num("htl-1-f1", "L1", 7) }] } });
-  assert.ok(STANDARD_EXEMPT.has("htl-1"));
-  assert.deepEqual(checkStandard({ ...u, practice: u.practice.slice(0, 4) }, new Set()).filter((m) => !m.includes("review")), []);
-  assert.match(checkStandard(u, new Set()).join(), /review "base"/);
-});
-
 // Every real content file.
 const root = path.resolve(import.meta.dirname, "../../../content");
 const curriculum = Curriculum.parse(JSON.parse(fs.readFileSync(path.join(root, "curriculum.json"), "utf8")));
@@ -82,4 +75,12 @@ for (const dir of fs.readdirSync(root)) {
 
 test("standard: an E12 mistake must carry a review link (CONTENT_STANDARD §4)", () => {
   assert.match(issues((u) => { delete (u.practice[7] as unknown as { mistakes: { review?: string }[] }).mistakes[0].review; }).join(), /k-p8.*E12.*review/);
+});
+
+test("standard: exams 57–68 are reserved for mock tests — no item may come from them (CONTENT_STANDARD §6)", () => {
+  for (const d of [57, 62, 68])
+    assert.match(issues((u) => { (u.exit[5] as Record<string, unknown>).source = `68 đề – Đề ${d}, Bài 1.2 (chuyển thể)`; }).join(), new RegExp(`k-x6.*Đề ${d}`));
+  assert.match(issues((u) => { (u.practice[6] as Record<string, unknown>).source = "68 đề – Đề 60"; }).join(), /k-p7.*thi thử/);
+  for (const d of [1, 5, 56, 156])
+    assert.deepEqual(issues((u) => { (u.exit[5] as Record<string, unknown>).source = `68 đề – Đề ${d}, Bài 1`; }), []);
 });

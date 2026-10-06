@@ -1,0 +1,358 @@
+{
+  "id": "f1-hdt",
+  "module": "backfill-dai-so",
+  "order": 1,
+  "title": "7 hằng đẳng thức đáng nhớ",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** nhân đa thức với đa thức và quy tắc bỏ dấu ngoặc, ví dụ $-(a-b)=-a+b$.",
+    "**Ba hằng đẳng thức bậc hai** (đúng với mọi số, chữ hay biểu thức $A$, $B$): $(A+B)^2=A^2+2AB+B^2$; $(A-B)^2=A^2-2AB+B^2$; $A^2-B^2=(A-B)(A+B)$.",
+    "**Bốn hằng đẳng thức bậc ba:** $(A+B)^3=A^3+3A^2B+3AB^2+B^3$; $(A-B)^3=A^3-3A^2B+3AB^2-B^3$; $A^3+B^3=(A+B)(A^2-AB+B^2)$; $A^3-B^3=(A-B)(A^2+AB+B^2)$.",
+    "**Vì sao:** $(A+B)^2$ là diện tích hình vuông cạnh $A+B$. Hình vuông đó gồm hai hình vuông $A^2$, $B^2$ và hai hình chữ nhật $AB$ — chính là hạng tử giữa $2AB$.",
+    "**Bẫy hay gặp:** $(A-B)^2 \\ne A^2-B^2$ vì thiếu hạng tử giữa. Thử với $A=5$, $B=2$: $(5-2)^2=9$ còn $5^2-2^2=21$. Nhớ bình phương cả hệ số: $(2x)^2=4x^2$, không phải $2x^2$.",
+    "**Nhận dạng:** ba hạng tử dạng $A^2 \\pm 2AB + B^2$ → một bình phương; hai bình phương trừ nhau → $(A-B)(A+B)$; số gần số tròn ($99^2$, $51 \\cdot 49$) → tính nhanh. Tổng $A^2+B^2$ **không** viết được thành tích. Có $\\sqrt{x}$ thì coi $A=\\sqrt{x}$: $x-9=(\\sqrt{x})^2-3^2$ khi $x \\ge 0$."
+  ],
+  "worked": {
+    "problem": "Khai triển $(2x-3)^2$.",
+    "steps": [
+      { "text": "Nhận dạng: đây là $(A-B)^2$ với $A=2x$, $B=3$.", "why": "Xác định $A$, $B$ trước (kể cả hệ số), rồi mới thay vào công thức." },
+      { "text": "Viết công thức: $(A-B)^2=A^2-2AB+B^2$.", "why": "Hạng tử giữa luôn có hệ số $2$ và mang dấu của phép trừ trong ngoặc." },
+      { "text": "Thay vào: $(2x)^2-2 \\cdot 2x \\cdot 3+3^2=4x^2-12x+9$.", "why": "Bình phương cả hệ số: $(2x)^2=4x^2$." },
+      { "text": "Kết luận: $(2x-3)^2=4x^2-12x+9$.", "why": "Thử nhanh tại $x=1$: vế trái $(2-3)^2=1$, vế phải $4-12+9=1$." }
+    ],
+    "selfExplain": "Vì sao hạng tử giữa là $-12x$ chứ không phải $-6x$? Hạng tử $2AB$ gồm những thừa số nào?"
+  },
+  "faded": {
+    "problem": "Phân tích $4x^2-25$ thành nhân tử.",
+    "steps": [
+      { "text": "$4x^2-25$ là hiệu của hai bình phương. Ta tìm $A$, $B$ để $4x^2-25=A^2-B^2$." },
+      {
+        "prompt": "Tìm $A$ và $B$.",
+        "item": {
+          "id": "f1-hdt-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Với $4x^2-25=A^2-B^2$ thì:",
+          "options": ["$A=2x$, $B=5$", "$A=4x$, $B=25$", "$A=2x$, $B=25$", "$A=x$, $B=5$"],
+          "correct": 0,
+          "mistakes": {
+            "1": { "code": "E04", "feedback": "Con lấy $A^2$ làm $A$. $A$ là biểu thức mà bình phương lên được $4x^2$." },
+            "2": { "code": "E04", "feedback": "$B$ cũng phải lấy căn: $B^2=25$." },
+            "3": { "code": "E10", "feedback": "Con bỏ sót hệ số $4$: $x^2 \\ne 4x^2$." }
+          },
+          "solution": "$4x^2=(2x)^2$ và $25=5^2$, nên $A=2x$, $B=5$."
+        }
+      },
+      {
+        "prompt": "Áp dụng hằng đẳng thức hiệu hai bình phương.",
+        "item": {
+          "id": "f1-hdt-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Áp dụng $A^2-B^2=(A-B)(A+B)$, ta được $4x^2-25=$",
+          "options": ["$(2x-25)(2x+25)$", "$(2x-5)(2x+5)$", "$(4x-5)(4x+5)$", "$(2x-5)^2$"],
+          "correct": 1,
+          "mistakes": {
+            "0": { "code": "E04", "feedback": "$B$ là căn bậc hai của $25$, không phải $25$." },
+            "2": { "code": "E04", "feedback": "$A$ là căn bậc hai của $4x^2$, không phải $4x$." },
+            "3": { "code": "E03", "feedback": "Con nhầm với bình phương một hiệu. Hiệu hai bình phương là $(A-B)(A+B)$." }
+          },
+          "solution": "$4x^2-25=(2x)^2-5^2=(2x-5)(2x+5)$."
+        }
+      },
+      { "text": "Kiểm tra bằng cách nhân lại: $(2x-5)(2x+5)=4x^2+10x-10x-25=4x^2-25$. Đúng." },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "f1-hdt-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào trình bày đầy đủ?",
+          "options": ["$(2x-5)(2x+5)$", "Kết luận: $4x^2-25=4x^2+10x-10x-25$.", "Kết luận: $4x^2-25=(2x-5)(2x+5)$."],
+          "correct": 2,
+          "mistakes": {
+            "0": { "code": "E11", "feedback": "Thiếu kết luận: phải viết rõ biểu thức ban đầu bằng tích nào." },
+            "1": { "code": "E11", "feedback": "Đây mới là bước nhân lại để kiểm tra, chưa phải dạng tích." }
+          },
+          "solution": "Kết luận phải nêu biểu thức đề cho bằng dạng tích cuối cùng."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "f1-hdt-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính nhanh $101^2$.",
+      "hints": [
+        "Đề hỏi gì? Tính $101^2$ mà không nhân tay.",
+        "Viết $101$ thành số tròn cộng một số nhỏ → bình phương một tổng.",
+        "Dùng $(A+B)^2=A^2+2AB+B^2$ với $A=100$, $B=1$."
+      ],
+      "answer": "10201",
+      "mistakes": [
+        { "answer": "10001", "code": "E03", "feedback": "Con bỏ mất hạng tử giữa: $(A+B)^2=A^2+2AB+B^2$." },
+        { "answer": "10101", "code": "E03", "feedback": "Hạng tử giữa là $2AB$: con quên nhân đôi." }
+      ],
+      "solution": "$101^2=(100+1)^2=100^2+2 \\cdot 100 \\cdot 1+1^2=10000+200+1=10201$."
+    },
+    {
+      "id": "f1-hdt-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Khai triển $(x+4)^2$.",
+      "hints": [
+        "Đề cho $(x+4)^2$, cần viết thành tổng các hạng tử.",
+        "Đây là bình phương một tổng với $A=x$, $B=4$.",
+        "Dùng $(A+B)^2=A^2+2AB+B^2$, tính từng hạng tử."
+      ],
+      "options": ["$x^2+8x+16$", "$x^2+4x+16$", "$x^2+8x+4$", "$x^2+16$"],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E03", "feedback": "Hạng tử giữa là $2AB$: con quên nhân đôi." },
+        "2": { "code": "E03", "feedback": "Hạng tử cuối là $B^2$: con chưa bình phương $4$." },
+        "3": { "code": "E03", "feedback": "Con bỏ mất hạng tử giữa: $(A+B)^2=A^2+2AB+B^2$." }
+      },
+      "solution": "$(x+4)^2=x^2+2 \\cdot x \\cdot 4+4^2=x^2+8x+16$."
+    },
+    {
+      "id": "f1-hdt-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Muốn tính nhanh $99^2$ mà không nhân tay, cách hợp lý nhất là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách làm, chưa cần tính ra số.",
+        "$99$ gần số tròn nào? Viết $99$ thành hiệu được không?",
+        "Chọn cách đưa về một hằng đẳng thức bình phương."
+      ],
+      "options": [
+        "Viết $99^2=(99+1)(99-1)$",
+        "Đặt nhân tử chung $99$ rồi rút gọn",
+        "Viết $99=100-1$ rồi dùng $(A-B)^2=A^2-2AB+B^2$",
+        "Quy đồng rồi cộng các phân số"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": { "code": "E05", "feedback": "$(99+1)(99-1)$ bằng $99^2-1$, chưa phải $99^2$." },
+        "1": { "code": "E05", "feedback": "Đặt nhân tử chung dùng để phân tích, không giúp tính nhanh một bình phương." },
+        "3": { "code": "E05", "feedback": "Bài không có phân số. $99$ gần số tròn $100$ → nghĩ tới bình phương một hiệu." }
+      },
+      "solution": "$99=100-1$ nên $99^2=(100-1)^2=10000-200+1=9801$."
+    },
+    {
+      "id": "f1-hdt-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Tính nhanh $51 \\cdot 49$.",
+      "hints": [
+        "Đề hỏi gì? Tính tích hai số mà không nhân tay.",
+        "Hai thừa số cách đều số tròn $50$ → dạng $(A+B)(A-B)$.",
+        "Viết $51=50+1$, $49=50-1$ rồi dùng $A^2-B^2$."
+      ],
+      "answer": "2499",
+      "mistakes": [
+        { "answer": "2500", "code": "E03", "feedback": "Con quên trừ $B^2$: $(A+B)(A-B)=A^2-B^2$." },
+        { "answer": "2501", "code": "E02", "feedback": "Sai dấu: hiệu hai bình phương là $A^2-B^2$, không phải $A^2+B^2$." }
+      ],
+      "solution": "$51 \\cdot 49=(50+1)(50-1)=50^2-1^2=2500-1=2499$."
+    },
+    {
+      "id": "f1-hdt-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $x+y=7$ và $xy=10$. Tính $x^2+y^2$.",
+      "hints": [
+        "Biết tổng và tích của $x$, $y$; cần tổng các bình phương.",
+        "Bình phương của tổng $(x+y)^2$ chứa $x^2+y^2$ và một hạng tử nữa.",
+        "Khai triển $(x+y)^2$ rồi chuyển hạng tử $2xy$ sang vế kia."
+      ],
+      "answer": "29",
+      "mistakes": [
+        { "answer": "49", "code": "E03", "feedback": "$(x+y)^2$ không bằng $x^2+y^2$: còn hạng tử $2xy$." },
+        { "answer": "69", "code": "E02", "feedback": "Sai dấu khi chuyển vế: $x^2+y^2=(x+y)^2-2xy$." },
+        { "answer": "39", "code": "E03", "feedback": "Hạng tử giữa là $2xy$, không phải $xy$." }
+      ],
+      "solution": "$(x+y)^2=x^2+2xy+y^2$ nên $x^2+y^2=(x+y)^2-2xy=49-20=29$."
+    },
+    {
+      "id": "f1-hdt-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Khai triển $(2x-3y)^2$.",
+      "hints": ["Cần khai triển bình phương của một hiệu.", "Xác định $A=2x$, $B=3y$, kể cả hệ số.", "Dùng $(A-B)^2=A^2-2AB+B^2$ và bình phương cả hệ số."],
+      "options": ["$4x^2-12xy+9y^2$", "$2x^2-12xy+3y^2$", "$4x^2-6xy+9y^2$", "$4x^2+12xy+9y^2$"],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E04", "feedback": "Bình phương cả hệ số: $(2x)^2=4x^2$, $(3y)^2=9y^2$." },
+        "2": { "code": "E03", "feedback": "Hạng tử giữa là $2AB=2 \\cdot 2x \\cdot 3y$: con quên nhân đôi." },
+        "3": { "code": "E02", "feedback": "Sai dấu hạng tử giữa: bình phương một hiệu có $-2AB$." }
+      },
+      "solution": "$(2x-3y)^2=(2x)^2-2 \\cdot 2x \\cdot 3y+(3y)^2=4x^2-12xy+9y^2$."
+    },
+    {
+      "id": "f1-hdt-p7",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 0$, biểu thức $x-4\\sqrt{x}+4$ bằng:",
+      "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-4$ (ĐKXĐ $x \\ne 4$) ở Đề 1, 2, 3 (chuyển thể)",
+      "hints": [
+        "Cần viết biểu thức thành một bình phương, với $x \\ge 0$.",
+        "Coi $A=\\sqrt{x}$ thì $x=A^2$. Ba hạng tử, dấu trừ ở giữa → dạng nào?",
+        "Tìm $B$ từ $B^2=4$, rồi kiểm tra hạng tử $2AB$."
+      ],
+      "options": ["$(\\sqrt{x}+2)^2$", "$(x-2)^2$", "$(\\sqrt{x}-2)^2$", "$(\\sqrt{x}-4)^2$"],
+      "correct": 2,
+      "mistakes": {
+        "0": { "code": "E02", "feedback": "Sai dấu: hạng tử giữa $-4\\sqrt{x}$ mang dấu trừ nên là bình phương một hiệu." },
+        "1": { "code": "E04", "feedback": "Con nhầm $\\sqrt{x}$ với $x$: $(x-2)^2$ có $x^2$, đề chỉ có $x=(\\sqrt{x})^2$." },
+        "3": { "code": "E03", "feedback": "$B^2=4$ nên $B$ không phải $4$. Hạng tử giữa là $2AB$." }
+      },
+      "solution": "Coi $A=\\sqrt{x}$, $B=2$: $x-4\\sqrt{x}+4=(\\sqrt{x})^2-2 \\cdot \\sqrt{x} \\cdot 2+2^2=(\\sqrt{x}-2)^2$."
+    },
+    {
+      "id": "f1-hdt-p8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 0$, $x \\ne 9$, rút gọn đến tận cùng $\\dfrac{x-9}{\\sqrt{x}+3}$.",
+      "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-9$ (ĐKXĐ $x \\ne 9$) ở Đề 5, 6, 7 (chuyển thể)",
+      "hints": [
+        "Cần rút gọn phân thức, đến khi không còn nhân tử chung.",
+        "Tử $x-9$ là hiệu hai bình phương khi coi $x=(\\sqrt{x})^2$.",
+        "Phân tích $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$ rồi chia cả tử và mẫu."
+      ],
+      "options": ["$x-3$", "$\\dfrac{(\\sqrt{x}-3)(\\sqrt{x}+3)}{\\sqrt{x}+3}$", "$\\sqrt{x}+3$", "$\\sqrt{x}-3$"],
+      "correct": 3,
+      "mistakes": {
+        "0": { "code": "E04", "feedback": "Con nhầm $\\sqrt{x}$ với $x$. Viết $x-9=(\\sqrt{x})^2-3^2$." },
+        "1": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." },
+        "2": { "code": "E03", "feedback": "$x-9$ là hiệu hai bình phương $(\\sqrt{x}-3)(\\sqrt{x}+3)$, không phải $(\\sqrt{x}+3)^2$." }
+      },
+      "solution": "$x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$, nên $\\dfrac{x-9}{\\sqrt{x}+3}=\\sqrt{x}-3$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "f1-hdt-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính nhanh $98^2$.",
+      "answer": "9604",
+      "mistakes": [
+        { "answer": "9996", "code": "E03", "feedback": "Con nhầm $(A-B)^2$ với $A^2-B^2$: còn hạng tử $-2AB$." },
+        { "answer": "10404", "code": "E02", "feedback": "Sai dấu hạng tử giữa: bình phương một hiệu có $-2AB$." }
+      ],
+      "solution": "$98^2=(100-2)^2=10000-400+4=9604$."
+    },
+    {
+      "id": "f1-hdt-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Khai triển $(x-5)^2$.",
+      "options": ["$x^2+10x+25$", "$x^2-10x+25$", "$x^2-5x+25$", "$x^2-25$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E02", "feedback": "Sai dấu: bình phương một hiệu có $-2AB$." },
+        "2": { "code": "E03", "feedback": "Hạng tử giữa là $2AB$: con quên nhân đôi." },
+        "3": { "code": "E03", "feedback": "Con bỏ mất hạng tử giữa: $(A-B)^2=A^2-2AB+B^2$." }
+      },
+      "solution": "$(x-5)^2=x^2-2 \\cdot x \\cdot 5+5^2=x^2-10x+25$."
+    },
+    {
+      "id": "f1-hdt-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Biểu thức $x^2-10x+25$ viết được thành:",
+      "options": ["$(x-5)^2$", "$(x+5)^2$", "$(x-5)(x+5)$", "$(x-10)^2$"],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E02", "feedback": "Sai dấu: hạng tử giữa mang dấu trừ nên là bình phương một hiệu." },
+        "2": { "code": "E03", "feedback": "$(x-5)(x+5)=x^2-25$, không có hạng tử $-10x$." },
+        "3": { "code": "E03", "feedback": "Con lấy hệ số giữa làm $B$. $B$ là số có $B^2=25$, còn hạng tử giữa là $2AB$." }
+      },
+      "solution": "$x^2-10x+25=x^2-2 \\cdot x \\cdot 5+5^2=(x-5)^2$."
+    },
+    {
+      "id": "f1-hdt-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Tính nhanh $75^2-25^2$.",
+      "answer": "5000",
+      "mistakes": [
+        { "answer": "2500", "code": "E03", "feedback": "$A^2-B^2=(A-B)(A+B)$, không phải $(A-B)^2$." },
+        { "answer": "6250", "code": "E02", "feedback": "Sai dấu: đề là hiệu $75^2-25^2$, không phải tổng." }
+      ],
+      "solution": "$75^2-25^2=(75-25)(75+25)=50 \\cdot 100=5000$."
+    },
+    {
+      "id": "f1-hdt-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Biết $a-b=3$ và $ab=5$. Tính $a^2+b^2$.",
+      "answer": "19",
+      "mistakes": [
+        { "answer": "9", "code": "E03", "feedback": "$(a-b)^2$ không bằng $a^2+b^2$: còn hạng tử $-2ab$." },
+        { "answer": "-1", "code": "E02", "feedback": "Sai dấu khi chuyển vế: $a^2+b^2=(a-b)^2+2ab$." },
+        { "answer": "14", "code": "E03", "feedback": "Hạng tử giữa là $2ab$, không phải $ab$." }
+      ],
+      "solution": "$(a-b)^2=a^2-2ab+b^2$ nên $a^2+b^2=(a-b)^2+2ab=9+10=19$."
+    },
+    {
+      "id": "f1-hdt-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 0$, $x \\ne 4$, rút gọn đến tận cùng $\\dfrac{x-4}{\\sqrt{x}-2}$.",
+      "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-4$ (ĐKXĐ $x \\ne 4$) ở Đề 1, 2, 3 (chuyển thể)",
+      "options": ["$\\sqrt{x}-2$", "$x+2$", "$\\dfrac{(\\sqrt{x}-2)(\\sqrt{x}+2)}{\\sqrt{x}-2}$", "$\\sqrt{x}+2$"],
+      "correct": 3,
+      "mistakes": {
+        "0": { "code": "E03", "feedback": "$x-4$ là hiệu hai bình phương $(\\sqrt{x}-2)(\\sqrt{x}+2)$, không phải $(\\sqrt{x}-2)^2$." },
+        "1": { "code": "E04", "feedback": "Con nhầm $\\sqrt{x}$ với $x$. Viết $x-4=(\\sqrt{x})^2-2^2$." },
+        "2": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." }
+      },
+      "solution": "$x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$, nên $\\dfrac{x-4}{\\sqrt{x}-2}=\\sqrt{x}+2$."
+    },
+    {
+      "id": "f1-hdt-x7",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 0$, $x \\ne 1$, rút gọn đến tận cùng $\\dfrac{x-1}{x+2\\sqrt{x}+1}$.",
+      "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-1$ (ĐKXĐ $x \\ne 1$) ở Đề 11, 12, 18, 19 (chuyển thể)",
+      "options": [
+        "$\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+1}$",
+        "$\\dfrac{(\\sqrt{x}-1)(\\sqrt{x}+1)}{(\\sqrt{x}+1)^2}$",
+        "$\\sqrt{x}-1$",
+        "$\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." },
+        "2": { "code": "E03", "feedback": "Mẫu $x+2\\sqrt{x}+1$ là một bình phương $(\\sqrt{x}+1)^2$, không phải $\\sqrt{x}+1$." },
+        "3": { "code": "E02", "feedback": "Sai dấu: hạng tử giữa $+2\\sqrt{x}$ cho bình phương một tổng." }
+      },
+      "solution": "$x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$ và $x+2\\sqrt{x}+1=(\\sqrt{x}+1)^2$, nên phân thức bằng $\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+1}$."
+    },
+    {
+      "id": "f1-hdt-x8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 0$, $x \\ne 9$, rút gọn đến tận cùng $\\dfrac{x+6\\sqrt{x}+9}{x-9}$.",
+      "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-9$ (ĐKXĐ $x \\ne 9$) ở Đề 5, 6, 7 (chuyển thể)",
+      "options": [
+        "$\\dfrac{\\sqrt{x}+3}{\\sqrt{x}-3}$",
+        "$\\dfrac{(\\sqrt{x}+3)^2}{(\\sqrt{x}-3)(\\sqrt{x}+3)}$",
+        "$\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+3}$",
+        "$\\dfrac{x+3}{x-3}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." },
+        "2": { "code": "E02", "feedback": "Sai dấu: tử có $+6\\sqrt{x}$ nên là $(\\sqrt{x}+3)^2$." },
+        "3": { "code": "E04", "feedback": "Con nhầm $\\sqrt{x}$ với $x$: tử là $(\\sqrt{x})^2+2 \\cdot 3\\sqrt{x}+3^2$." }
+      },
+      "solution": "$x+6\\sqrt{x}+9=(\\sqrt{x}+3)^2$ và $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$, nên phân thức bằng $\\dfrac{\\sqrt{x}+3}{\\sqrt{x}-3}$."
+    }
+  ]
+}

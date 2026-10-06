@@ -1,0 +1,359 @@
+{
+  "id": "b-phepthu",
+  "module": "xac-suat",
+  "order": 1,
+  "title": "Phép thử & không gian mẫu",
+  "status": "draft",
+  "estMinutes": 40,
+  "theory": [
+    "**Cần nhớ trước:** không cần bài nào trước; chỉ cần liệt kê có thứ tự (từ nhỏ đến lớn) và viết tập hợp bằng dấu $\\{\\ \\}$.",
+    "**Khái niệm:** **phép thử ngẫu nhiên** là việc làm mà không đoán trước được kết quả (gieo xúc xắc, rút thẻ). **Không gian mẫu** $\\Omega$ là tập hợp **tất cả** kết quả có thể; $n(\\Omega)$ là số phần tử. **Biến cố** $A$ là một tập con của $\\Omega$; mỗi phần tử của $A$ là một kết quả **thuận lợi** cho $A$.",
+    "**Vì sao:** đếm đúng $n(\\Omega)$ và số kết quả thuận lợi là bước đầu của mọi bài xác suất ở bài sau, $P(A)=\\dfrac{n(A)}{n(\\Omega)}$. Sai không gian mẫu là sai cả bài.",
+    "**Bẫy hay gặp:** lấy **cùng lúc** 2 quả từ 4 quả thì $\\{1;2\\}$ và $\\{2;1\\}$ là **một** kết quả, nên có $6$ kết quả chứ không phải $12$. Ngược lại, gieo xúc xắc **hai lần** thì $(1;2)$ khác $(2;1)$. “Ít nhất một” khác “đúng một”.",
+    "**Nhận dạng:** “cùng lúc”, “chọn 2 bạn” → cặp không thứ tự, không lặp. “Lần lượt, không hoàn lại” → có thứ tự, không lặp. “Có hoàn lại”, “gieo hai lần”, “hai túi” → có thứ tự, được lặp. Bài chỉ hỏi liệt kê, đếm thì **chưa** cần tính xác suất.",
+    "**Thẻ liệt kê:** ghi rõ có thứ tự hay không, có lặp hay không. Liệt kê bằng bảng (hàng = lần 1, cột = lần 2) hoặc sơ đồ cây. Cặp không thứ tự: viết số nhỏ trước để không đếm trùng."
+  ],
+  "worked": {
+    "problem": "Hộp có 4 quả bóng ghi số $1$, $2$, $3$, $4$. Lấy ngẫu nhiên **cùng lúc** 2 quả. Viết không gian mẫu và liệt kê các kết quả thuận lợi cho biến cố $D$: “Có ít nhất một quả ghi số chẵn”.",
+    "steps": [
+      {
+        "text": "Nhận dạng: lấy cùng lúc → mỗi kết quả là một cặp không thứ tự, $\\{1;2\\}$ cũng là $\\{2;1\\}$.",
+        "why": "Quyết định có thứ tự hay không trước khi liệt kê, nếu không sẽ đếm trùng."
+      },
+      {
+        "text": "Liệt kê, số nhỏ đứng trước: $\\Omega=\\{\\{1;2\\},\\{1;3\\},\\{1;4\\},$ $\\{2;3\\},\\{2;4\\},\\{3;4\\}\\}$, nên $n(\\Omega)=6$.",
+        "why": "Đi lần lượt: cặp bắt đầu bằng $1$, rồi bằng $2$, rồi bằng $3$ — không bỏ sót, không lặp."
+      },
+      {
+        "text": "Cặp nào có ít nhất một số chẵn ($2$ hoặc $4$)? Chỉ có $\\{1;3\\}$ là không có. Vậy các kết quả thuận lợi là $\\{1;2\\},\\{1;4\\},\\{2;3\\},\\{2;4\\},\\{3;4\\}$.",
+        "why": "“Ít nhất một” → dễ hơn nếu tìm các cặp **không** thỏa rồi bỏ đi."
+      },
+      { "text": "Kết luận: $n(\\Omega)=6$; có $5$ kết quả thuận lợi cho $D$.", "why": "Kết luận nêu đủ không gian mẫu và các kết quả thuận lợi mà đề hỏi." }
+    ],
+    "selfExplain": "Vì sao không gian mẫu chỉ có $6$ kết quả mà không phải $4 \\cdot 3=12$?"
+  },
+  "faded": {
+    "problem": "An tung một đồng xu (S: sấp, N: ngửa) hai lần liên tiếp. Viết không gian mẫu và đếm số kết quả thuận lợi cho biến cố $A$: “Hai lần tung xuất hiện hai mặt khác nhau”.",
+    "steps": [
+      { "text": "Tung hai lần liên tiếp → kết quả là cặp có thứ tự (lần 1, lần 2), được lặp lại mặt." },
+      {
+        "prompt": "Viết không gian mẫu.",
+        "item": {
+          "id": "b-phepthu-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Không gian mẫu là:",
+          "options": ["$\\{S; N\\}$", "$\\{SS; SN; NN\\}$", "$\\{SS; SN; NS; NN\\}$", "$\\{SN; NS\\}$"],
+          "correct": 2,
+          "mistakes": {
+            "0": { "code": "E07", "feedback": "Đây là kết quả của **một** lần tung. Mỗi kết quả gồm cả hai lần." },
+            "1": { "code": "E07", "feedback": "$SN$ (sấp trước) khác $NS$ (ngửa trước): tung hai lần là có thứ tự." },
+            "3": { "code": "E07", "feedback": "Đây mới là các kết quả của biến cố $A$, chưa phải tất cả kết quả." }
+          },
+          "solution": "Lần 1 có $2$ khả năng, lần 2 có $2$ khả năng: $\\Omega=\\{SS; SN; NS; NN\\}$."
+        }
+      },
+      { "text": "$A$ xảy ra khi hai lần khác mặt: sấp rồi ngửa, hoặc ngửa rồi sấp." },
+      {
+        "prompt": "Đếm số kết quả thuận lợi cho $A$.",
+        "item": {
+          "id": "b-phepthu-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Có bao nhiêu kết quả thuận lợi cho $A$?",
+          "answer": "2",
+          "mistakes": [{ "answer": "1", "code": "E07", "feedback": "$SN$ và $NS$ là hai kết quả khác nhau vì có thứ tự." }],
+          "solution": "Các kết quả thuận lợi: $SN$, $NS$ → $2$ kết quả."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "b-phepthu-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $\\Omega=\\{SS; SN; NS; NN\\}$, $n(\\Omega)=4$; có $2$ kết quả thuận lợi cho $A$ là $SN$, $NS$.",
+            "Kết luận: $\\Omega=\\{SS; SN; NN\\}$; có $1$ kết quả thuận lợi cho $A$.",
+            "Kết luận: có $2$ kết quả."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": { "code": "E07", "feedback": "$SN$ và $NS$ là hai kết quả khác nhau." },
+            "2": { "code": "E11", "feedback": "Thiếu: chưa nêu không gian mẫu và đó là kết quả thuận lợi cho biến cố nào." }
+          },
+          "solution": "$\\Omega$ có $4$ kết quả; $A=\\{SN; NS\\}$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "b-phepthu-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Hộp có các thẻ ghi số $5; 6; 7; \\dots; 24$, mỗi số một thẻ. Rút ngẫu nhiên một thẻ. Không gian mẫu có bao nhiêu phần tử?",
+      "hints": ["Đề hỏi số phần tử của không gian mẫu.", "Mỗi thẻ là một kết quả → đếm số thẻ.", "Số các số nguyên từ $a$ đến $b$ là $b-a+1$."],
+      "answer": "20",
+      "mistakes": [{ "answer": "19", "code": "E01", "feedback": "Đếm số nguyên từ $5$ đến $24$: lấy $24-5$ rồi cộng thêm $1$." }],
+      "solution": "Các số từ $5$ đến $24$: $24-5+1=20$ số, nên $n(\\Omega)=20$."
+    },
+    {
+      "id": "b-phepthu-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Gieo một con xúc xắc. Biến cố $A$: “Số chấm xuất hiện là số nguyên tố”. Các kết quả thuận lợi cho $A$ là:",
+      "hints": [
+        "Đề hỏi những kết quả nào làm $A$ xảy ra.",
+        "Viết $\\Omega$ trước, rồi chọn phần tử thỏa điều kiện.",
+        "Số nguyên tố có đúng hai ước là $1$ và chính nó."
+      ],
+      "options": ["$\\{2; 3; 5; 7\\}$", "$\\{3; 5\\}$", "$\\{2; 3; 5\\}$", "$\\{1; 2; 3; 5\\}$"],
+      "correct": 2,
+      "mistakes": {
+        "0": { "code": "E07", "feedback": "Xúc xắc chỉ có từ $1$ đến $6$ chấm: $7$ không nằm trong $\\Omega$." },
+        "1": { "code": "E04", "feedback": "$2$ là số nguyên tố (số nguyên tố chẵn duy nhất)." },
+        "3": { "code": "E04", "feedback": "$1$ không phải số nguyên tố: số nguyên tố có đúng hai ước." }
+      },
+      "solution": "Trong $\\{1;2;3;4;5;6\\}$, các số nguyên tố là $2$, $3$, $5$."
+    },
+    {
+      "id": "b-phepthu-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề: “Chọn ngẫu nhiên **cùng lúc** 2 bạn trong 4 bạn An, Bình, Chi, Dũng.” Khi liệt kê không gian mẫu, cách đúng là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách liệt kê, chưa cần đếm.",
+        "Từ khoá “cùng lúc” cho biết điều gì về thứ tự?",
+        "Hỏi: hai bạn có được chọn trước sau không? Có chọn trùng không?"
+      ],
+      "options": [
+        "Liệt kê cặp có thứ tự: (An; Bình) khác (Bình; An)",
+        "Liệt kê cả cặp lặp như (An; An)",
+        "Không cần liệt kê, tính ngay xác suất bằng $\\dfrac{1}{4}$",
+        "Liệt kê cặp không thứ tự: {An; Bình} và {Bình; An} là một kết quả"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": { "code": "E05", "feedback": "“Cùng lúc” thì không có bạn nào được chọn trước, nên không có thứ tự." },
+        "1": { "code": "E05", "feedback": "Một bạn không thể được chọn hai lần." },
+        "2": { "code": "E05", "feedback": "Đề yêu cầu không gian mẫu; tính xác suất là bài sau và cũng cần $n(\\Omega)$ trước." }
+      },
+      "solution": "Chọn cùng lúc → cặp không thứ tự, không lặp: có $6$ kết quả."
+    },
+    {
+      "id": "b-phepthu-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Đội văn nghệ có 5 bạn. Cô chọn ngẫu nhiên 2 bạn để hát song ca. Không gian mẫu có bao nhiêu phần tử?",
+      "hints": [
+        "Đề hỏi số cách chọn ra một cặp bạn.",
+        "Chọn 2 bạn hát cùng nhau → cặp có thứ tự không? Có lặp không?",
+        "Đánh số các bạn, liệt kê cặp với số nhỏ đứng trước rồi đếm."
+      ],
+      "answer": "10",
+      "mistakes": [
+        { "answer": "20", "code": "E07", "feedback": "Hai bạn hát cùng nhau, không có thứ tự: mỗi cặp chỉ đếm một lần." },
+        { "answer": "25", "code": "E07", "feedback": "Không chọn một bạn hai lần, và cặp không có thứ tự." }
+      ],
+      "solution": "Gọi 5 bạn là $1;2;3;4;5$. Liệt kê cặp, số nhỏ trước: $4+3+2+1=10$ cặp."
+    },
+    {
+      "id": "b-phepthu-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Bình tung một đồng xu ba lần liên tiếp. Biến cố $A$: “Mặt sấp xuất hiện đúng một lần”. Các kết quả thuận lợi cho $A$ là:",
+      "hints": ["Đề hỏi các kết quả có đúng một mặt sấp.", "Mỗi kết quả là dãy 3 chữ cái có thứ tự.", "Xét lần sấp nằm ở vị trí 1, 2 hoặc 3."],
+      "options": ["$SSN$, $SNS$, $NSS$", "$SNN$, $NSN$, $NNS$", "$SNN$", "$SNN$, $NSN$, $NNS$, $NNN$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E10", "feedback": "Đây là các kết quả có đúng một mặt **ngửa**. Đọc lại đề." },
+        "2": { "code": "E07", "feedback": "Lần sấp có thể là lần 1, lần 2 hoặc lần 3." },
+        "3": { "code": "E04", "feedback": "$NNN$ không có mặt sấp nào: “đúng một lần” khác “nhiều nhất một lần”." }
+      },
+      "solution": "Sấp ở đúng một trong ba lần: $SNN$, $NSN$, $NNS$."
+    },
+    {
+      "id": "b-phepthu-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Gieo một con xúc xắc hai lần liên tiếp. Không gian mẫu có bao nhiêu phần tử?",
+      "hints": ["Đề hỏi số kết quả của hai lần gieo.", "Hai lần gieo → cặp có thứ tự, được lặp.", "Lập bảng: hàng là lần 1, cột là lần 2, đếm số ô."],
+      "answer": "36",
+      "mistakes": [
+        { "answer": "12", "code": "E07", "feedback": "Mỗi kết quả là một cặp (lần 1; lần 2): lập bảng 6 hàng, 6 cột." },
+        { "answer": "21", "code": "E07", "feedback": "$(1;2)$ khác $(2;1)$ vì hai lần gieo có thứ tự." }
+      ],
+      "solution": "Lần 1 có $6$ kết quả, mỗi kết quả ghép với $6$ kết quả lần 2: $6 \\cdot 6=36$."
+    },
+    {
+      "id": "b-phepthu-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Túi có 5 viên bi ghi số $1$ đến $5$. Lấy ngẫu nhiên cùng lúc 2 viên. Có bao nhiêu kết quả thuận lợi cho biến cố $D$: “Trong 2 viên lấy ra có ít nhất 1 viên ghi số chẵn”?",
+      "source": "68 đề – Đề 41, Bài 1.3 (chuyển thể: 5 viên bi thay vì 4, hỏi số kết quả thuận lợi cho “ít nhất 1 viên ghi số chẵn”)",
+      "hints": [
+        "Đề hỏi số kết quả có ít nhất một viên ghi số chẵn.",
+        "Lấy cùng lúc → cặp không thứ tự. “Ít nhất một” → xét trường hợp ngược lại.",
+        "Đếm $n(\\Omega)$, trừ đi số cặp toàn số lẻ."
+      ],
+      "answer": "7",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "“Ít nhất 1 viên chẵn” gồm cả trường hợp **cả hai** viên đều chẵn."
+        },
+        {
+          "answer": "14",
+          "code": "E07",
+          "feedback": "Lấy cùng lúc thì $\\{1;2\\}$ và $\\{2;1\\}$ là một kết quả."
+        }
+      ],
+      "solution": "$n(\\Omega)=10$. Cặp không có số chẵn chỉ gồm $1;3;5$: $\\{1;3\\},\\{1;5\\},\\{3;5\\}$. Vậy có $10-3=7$ kết quả thuận lợi."
+    },
+    {
+      "id": "b-phepthu-p8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Một đĩa tròn chia thành 6 phần bằng nhau ghi các số $1; 2; 3; 4; 5; 6$. Quay kim một lần. $A$: “Kim chỉ vào ô ghi số **không** là ước của $6$”. $A$ là tập con nào của không gian mẫu?",
+      "source": "68 đề – Đề 39, Bài 1.1 (chuyển thể: biến cố “không là ước của 6”, chọn tập con)",
+      "hints": [
+        "Đề hỏi những kết quả nào thuận lợi cho $A$.",
+        "Mỗi ô là một kết quả; tìm các ước của $6$ trước.",
+        "Lấy các số từ $1$ đến $6$ rồi bỏ đi các ước của $6$."
+      ],
+      "options": [
+        "$\\{1; 2; 3; 6\\}$",
+        "$\\{4; 5\\}$",
+        "$\\{5\\}$",
+        "$\\{4; 5; 6\\}$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Đây là các ước của $6$, tức biến cố đối của $A$."
+        },
+        "2": {
+          "code": "E10",
+          "feedback": "Con bỏ sót một số. Xét lại từng ô từ $1$ đến $6$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$6$ là ước của chính nó, nên không thuộc $A$."
+        }
+      },
+      "solution": "Ước của $6$ trong các số $1$ đến $6$: $1; 2; 3; 6$. Các số còn lại: $A=\\{4; 5\\}$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "b-phepthu-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Viết ngẫu nhiên một số tự nhiên có hai chữ số. Không gian mẫu có bao nhiêu phần tử?",
+      "answer": "90",
+      "mistakes": [
+        { "answer": "99", "code": "E01", "feedback": "Số có hai chữ số bắt đầu từ $10$, không phải từ $1$." },
+        { "answer": "89", "code": "E01", "feedback": "Từ $10$ đến $99$ có $99-10+1$ số." }
+      ],
+      "solution": "Các số từ $10$ đến $99$: $99-10+1=90$ số."
+    },
+    {
+      "id": "b-phepthu-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Rút ngẫu nhiên một thẻ trong các thẻ ghi số $1$ đến $10$. Biến cố $A$: “Số trên thẻ chia hết cho 3”. Các kết quả thuận lợi cho $A$ là:",
+      "options": ["$\\{3; 6; 9; 12\\}$", "$\\{0; 3; 6; 9\\}$", "$\\{3; 6; 9\\}$", "$\\{3; 6\\}$"],
+      "correct": 2,
+      "mistakes": {
+        "0": { "code": "E07", "feedback": "$12$ không có trong các thẻ, không thuộc $\\Omega$." },
+        "1": { "code": "E07", "feedback": "Không có thẻ số $0$, nên $0$ không thuộc $\\Omega$." },
+        "3": { "code": "E10", "feedback": "Con bỏ sót một số. Kiểm tra lại đến hết $10$." }
+      },
+      "solution": "Trong $1$ đến $10$, các số chia hết cho $3$ là $3$, $6$, $9$."
+    },
+    {
+      "id": "b-phepthu-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Có 4 thẻ ghi $1$, $2$, $3$, $4$. Rút lần lượt 2 thẻ **không hoàn lại**, thẻ đầu làm chữ số hàng chục, thẻ sau làm hàng đơn vị. Có bao nhiêu số được tạo thành?",
+      "answer": "12",
+      "mistakes": [
+        { "answer": "16", "code": "E07", "feedback": "Không hoàn lại thì không có số hai chữ số giống nhau như $11$." },
+        { "answer": "6", "code": "E07", "feedback": "$13$ và $31$ là hai số khác nhau: có thứ tự." }
+      ],
+      "solution": "Hàng chục có $4$ cách, hàng đơn vị còn $3$ cách: $4 \\cdot 3=12$ số."
+    },
+    {
+      "id": "b-phepthu-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Gieo một con xúc xắc hai lần liên tiếp. Có bao nhiêu kết quả thuận lợi cho biến cố “Tổng số chấm hai lần bằng $7$”?",
+      "answer": "6",
+      "mistakes": [{ "answer": "3", "code": "E07", "feedback": "$(1;6)$ và $(6;1)$ là hai kết quả khác nhau vì hai lần gieo có thứ tự." }],
+      "solution": "$(1;6),(2;5),(3;4),(4;3),(5;2),(6;1)$ → $6$ kết quả."
+    },
+    {
+      "id": "b-phepthu-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Tung một đồng xu hai lần liên tiếp. Biến cố $B$: “Có ít nhất một lần xuất hiện mặt ngửa”. Các kết quả thuận lợi cho $B$ là:",
+      "options": ["$SN$, $NN$", "$SN$, $NS$, $NN$", "$NN$", "$SN$, $NS$"],
+      "correct": 1,
+      "mistakes": {
+        "0": { "code": "E07", "feedback": "$SN$ và $NS$ là hai kết quả khác nhau." },
+        "2": { "code": "E04", "feedback": "“Ít nhất một lần” không có nghĩa là cả hai lần." },
+        "3": { "code": "E04", "feedback": "“Ít nhất một lần” gồm cả trường hợp hai lần đều ngửa." }
+      },
+      "solution": "$\\Omega=\\{SS;SN;NS;NN\\}$; chỉ $SS$ không có mặt ngửa, nên $B=\\{SN;NS;NN\\}$."
+    },
+    {
+      "id": "b-phepthu-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hai túi I và II, mỗi túi có 3 thẻ ghi $1$; $4$; $5$. Rút ngẫu nhiên từ mỗi túi một thẻ, ghép thành số có hai chữ số (thẻ túi I là hàng chục). Có bao nhiêu kết quả thuận lợi cho biến cố “Số tạo thành chia hết cho 3”?",
+      "source": "68 đề – Đề 39, Bài 1.2 (chuyển thể: đổi số trên thẻ, hỏi số kết quả thuận lợi)",
+      "answer": "4",
+      "mistakes": [{ "answer": "2", "code": "E07", "feedback": "$15$ và $51$ là hai số khác nhau, và hai túi có thể cho hai thẻ cùng số." }],
+      "solution": "$\\Omega$ gồm $9$ số: $11, 14, 15, 41, 44, 45, 51, 54, 55$. Chia hết cho $3$ (tổng chữ số chia hết cho $3$): $15, 45, 51, 54$ → $4$ kết quả."
+    },
+    {
+      "id": "b-phepthu-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Câu lạc bộ có 5 bạn: 2 nam (An, Bình) và 3 nữ (Chi, Dung, Hoa). Chọn ngẫu nhiên 2 bạn. Có bao nhiêu kết quả thuận lợi cho biến cố “Trong 2 bạn được chọn có đúng một bạn nam”?",
+      "source": "68 đề – Đề 31, Bài 1.2 (chuyển thể: hỏi số kết quả thuận lợi cho “đúng một bạn nam”)",
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "7",
+          "code": "E04",
+          "feedback": "“Đúng một bạn nam” không gồm cặp An – Bình (hai bạn nam)."
+        },
+        {
+          "answer": "12",
+          "code": "E07",
+          "feedback": "Chọn 2 bạn cùng lúc: cặp An – Chi và Chi – An là một."
+        }
+      ],
+      "solution": "Mỗi bạn nam ghép với một trong 3 bạn nữ: $2 \\cdot 3=6$ kết quả."
+    },
+    {
+      "id": "b-phepthu-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hộp có 24 viên bi ghi các số $1; 2; \\dots; 24$. Lấy ngẫu nhiên một viên. Có bao nhiêu kết quả thuận lợi cho biến cố “Số trên viên bi chia $7$ dư $1$”?",
+      "source": "68 đề – Đề 44, Bài 1.2 (chuyển thể: 24 viên, hỏi số kết quả thuận lợi)",
+      "answer": "4",
+      "mistakes": [
+        { "answer": "3", "code": "E04", "feedback": "$1$ chia $7$ được $0$, dư $1$: số $1$ cũng thỏa." },
+        { "answer": "5", "code": "E07", "feedback": "$29$ lớn hơn $24$, không có trong hộp." }
+      ],
+      "solution": "Các số chia $7$ dư $1$ trong $1$ đến $24$: $1, 8, 15, 22$ → $4$ kết quả."
+    }
+  ]
+}

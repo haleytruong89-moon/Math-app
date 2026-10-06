@@ -82,6 +82,7 @@ Số đáp án nhiễu: trắc nghiệm 4 phương án → **≥ 2 phương án 
 - **L3 và câu dạng đề thi**: lấy hoặc chuyển thể từ **68 đề luyện thi** + đề Hà Nội các năm; ghi `source` cho từng câu (ví dụ
   `"68 đề – Đề 12, Bài 2c (chuyển thể)"`). Câu nhiều ý → tách thành câu đáp số / trắc nghiệm / câu nhiều bước (`steps`).
   File PDF 68 đề **không** đưa vào GitHub (sách có bản quyền); dùng chỉ mục nguồn `docs/SOURCE_INDEX.md` và file gốc trong Project hub.
+  **Chỉ dùng Đề 1–56.** Đề 57–68 (12 đề) để dành nguyên vẹn cho thi thử từ ~01/2027, kể cả không chuyển thể (phụ huynh chốt 06/10/2026).
 - Số vô tỉ để dạng căn (`2√3`); chỉ hỏi số làm tròn khi đề ghi "làm tròn đến …" (đáp án là số thập phân).
 - Dấu thập phân **phẩy** trong đề; TeX trong `$…$`; đơn vị ghi ở trường `unit`.
 - Câu `steps` (sau S6b): 2–5 bước, mỗi bước **một quyết định** (ĐKXĐ → phân tích mẫu → kết quả rút gọn → giá trị); bước rút gọn luôn có

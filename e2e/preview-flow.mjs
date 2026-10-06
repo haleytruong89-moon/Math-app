@@ -3,6 +3,7 @@ import { chromium } from "playwright";
 const BASE = process.env.BASE ?? "http://localhost:3101";
 const shots = "e2e/out/preview";
 import fs from "node:fs"; fs.mkdirSync(shots, { recursive: true });
+const htl2 = JSON.parse(fs.readFileSync("content/he-thuc-luong/htl-2.json", "utf8"));
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 const results = [];
 const ok = (name, cond) => { results.push(`${cond ? "PASS" : "FAIL"} ${name}`); };
@@ -16,7 +17,7 @@ for (const scheme of ["light", "dark"]) {
   if (scheme === "dark") { await ctx.close(); continue; }
   ok("content list shows 2 approved units", (await page.getByText(/^Đã duyệt \d/).count()) === 2);
 
-  await page.getByRole("link", { name: "Xem trước →" }).nth(1).click();
+  await page.locator('a[href$="/htl-2"]').filter({ hasText: "Xem trước" }).click();
   await page.waitForURL(/htl-2/);
   ok("katex rendered", (await page.locator(".katex").count()) > 5);
   ok("faded locked at start", await page.getByRole("button", { name: /Điền bước/ }).isDisabled());
@@ -49,39 +50,40 @@ for (const scheme of ["light", "dark"]) {
   await page.screenshot({ path: `${shots}/4-faded-done.png`, fullPage: true });
   await page.getByRole("button", { name: "Sang phần luyện tập" }).click();
 
-  // practice
-  const answers = ["10", "12", "9", "16", "3,6", "60/13", "4", "1,732"];
-  for (const a of answers) {
-    await input().fill(a);
+  // practice (driven by the content file; the last item is answered with a rounded value first)
+  const last = htl2.practice.length - 1;
+  for (const [i, it] of htl2.practice.entries()) {
+    if (it.type === "mcq") await page.getByRole("radio").nth(it.correct).check();
+    else await input().fill(i === last ? "6,708" : it.answer);
     await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
     await page.getByRole("button", { name: "Câu tiếp" }).waitFor();
-    if (a === "1,732") { ok("practice: rounded √3 rejected, comes back, no nudge in preview", (await page.getByText("Chưa đúng", { exact: true }).count()) === 1 && (await page.getByText("Câu này sẽ quay lại cuối bài.").count()) === 1 && (await page.getByTestId("mastery-nudge").count()) === 0); await page.screenshot({ path: `${shots}/5-practice-wrong.png`, fullPage: true }); }
+    if (i === last) { ok("practice: rounded 3√5 rejected, comes back, no nudge in preview", (await page.getByText("Chưa đúng", { exact: true }).count()) === 1 && (await page.getByText("Câu này sẽ quay lại cuối bài.").count()) === 1 && (await page.getByTestId("mastery-nudge").count()) === 0); await page.screenshot({ path: `${shots}/5-practice-wrong.png`, fullPage: true }); }
     await page.getByRole("button", { name: "Câu tiếp" }).click();
   }
   ok("practice: wrong item comes back", (await page.getByText("làm lại câu sai").count()) === 1);
-  await input().fill("√3");
+  await input().fill(htl2.practice[last].answer);
   await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
   await page.getByRole("button", { name: "Câu tiếp" }).click();
   ok("practice summary 7/8", (await page.getByText("7/8").count()) === 1);
   await page.getByRole("button", { name: "Làm bài kiểm tra" }).click();
 
-  // exit
-  const inputs = page.getByLabel("Đáp số");
+  // exit: the preview shows the whole bank (8); all right except x1 (64 = AB², not AB)
+  const card = (i) => page.locator("section").filter({ hasText: `Câu ${i + 1}` });
+  ok("exit: preview shows the 8-item bank", (await page.getByTestId("exit-bank-note").count()) === 1);
   ok("exit: no feedback before submit", (await page.getByText("Lời giải:").count()) === 0);
-  await inputs.nth(0).fill("abc");
-  await inputs.nth(1).fill("4");
-  await inputs.nth(2).fill("2,4");
-  await inputs.nth(3).fill("√27");
-  await page.getByRole("radio").nth(1).check();
+  for (const [i, it] of htl2.exit.entries()) {
+    if (it.type === "mcq") await card(i).getByRole("radio").nth(it.correct).check();
+    else await card(i).getByLabel("Đáp số").fill(i === 0 ? "abc" : it.answer);
+  }
   await page.getByRole("button", { name: "Nộp bài" }).click();
   await page.getByText(/Câu 1: chưa đọc được/).waitFor();
   ok("exit: unreadable answer blocks submit", true);
-  await inputs.nth(0).fill("64");
+  await card(0).getByLabel("Đáp số").fill("64");
   await page.screenshot({ path: `${shots}/6-exit-filled.png`, fullPage: true });
   await page.getByRole("button", { name: "Nộp bài" }).click();
   await page.getByText("Kết quả bài kiểm tra").waitFor();
-  ok("exit: score 4/5", (await page.getByText("4/5").count()) >= 1);
-  ok("exit: E10 feedback for 64", (await page.getByText("là $AB^2$").count()) === 0 && (await page.getByText(/Còn bước lấy căn bậc hai/).count()) >= 1);
+  ok("exit: score 7/8", (await page.getByText("7/8").count()) >= 1);
+  ok("exit: E11 feedback for 64", (await page.getByText("là $AB^2$").count()) === 0 && (await page.getByText(/Còn bước lấy căn bậc hai/).count()) >= 1);
   await page.screenshot({ path: `${shots}/7-exit-result.png`, fullPage: true });
   ok("no browser errors", errors.length === 0); if (errors.length) console.log(errors);
   await ctx.close();
