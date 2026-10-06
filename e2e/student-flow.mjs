@@ -61,9 +61,10 @@ for (const [i, it] of units["htl-1"].practice.entries()) {
   await page.getByRole("button", { name: "Câu tiếp" }).click();
 }
 await page.getByRole("button", { name: "Làm bài kiểm tra" }).click();
-for (const [i, it] of units["htl-1"].exit.entries()) {
+// the exit shows this run's draw from the 8-item bank (LT13): answer each card by its item id
+for (let i = 0; i < 5; i++) {
   const card = page.locator("section").filter({ hasText: `Câu ${i + 1}` });
-  const k = key[it.id];
+  const k = key[await card.locator("[data-item]").getAttribute("data-item")];
   if (k.mcq !== undefined) await card.getByRole("radio").nth(k.mcq).check(); else await card.getByLabel("Đáp số").fill(k.num);
 }
 await page.getByRole("button", { name: "Nộp bài" }).click();

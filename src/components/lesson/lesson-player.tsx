@@ -481,7 +481,9 @@ function ExitStage({
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
       {exit.map((it, i) => (
         <Card key={it.id}>
-          <p className="font-mono text-xs text-muted">Câu {i + 1}</p>
+          <p className="font-mono text-xs text-muted" data-item={it.id}>
+            Câu {i + 1}
+          </p>
           <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
           <ItemInput item={it} value={answers[it.id] ?? ""} onChange={(v) => setAnswers((a) => ({ ...a, [it.id]: v }))} disabled={pending} />
         </Card>
