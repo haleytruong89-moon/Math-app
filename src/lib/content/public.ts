@@ -1,13 +1,20 @@
 // What the browser is allowed to see: rendered HTML, never answers, solutions or mistake maps.
 // Grading happens on the server (src/app/learn/actions.ts).
 
+export type PublicFigure = { svg: string; alt: string }; // svg passed checkSvg (whitelist, theme colours)
+
 export type PublicItem = {
   id: string;
-  type: "mcq" | "numeric";
+  type: "mcq" | "numeric" | "steps";
   level: "L1" | "L2" | "L3";
   promptHtml: string;
   optionsHtml?: string[];
   unit?: string;
+  /** LT5: the steps of a multi-step item, each one answer box. */
+  steps?: { promptHtml: string; item: PublicItem }[];
+  figure?: PublicFigure;
+  /** AI2: pre-written hints H1–H3 — practice items only (never exit; review gets them after answering). */
+  hintsHtml?: string[];
 };
 
 export type PublicFadedStep = { kind: "text"; html: string } | { kind: "blank"; promptHtml: string; item: PublicItem };
@@ -19,6 +26,7 @@ export type PublicUnit = {
   status: "draft" | "approved";
   estMinutes: number;
   figure?: "right-triangle-altitude";
+  figureSvg?: PublicFigure;
   theoryHtml: string[];
   worked: { problemHtml: string; steps: { html: string; whyHtml?: string }[]; selfExplainHtml: string };
   faded: { problemHtml: string; steps: PublicFadedStep[] };

@@ -1,7 +1,7 @@
 // "Bài làm của con" view model for tutors and the parent (spec 2026-10-05, part A).
 // Pure, so `node --test` covers it. Faded steps are never shown (T5).
 import type { Item } from "../content/schema.ts";
-import { gradeItem } from "../content/grade.ts";
+import { STEP_SEPARATOR, gradeItem } from "../content/grade.ts";
 import { texToHtml } from "../content/tex.ts";
 import type { AttemptRow } from "./rules.ts";
 
@@ -42,6 +42,10 @@ export function commonErrors(attempts: AttemptRow[], min = 2): { code: string; c
 
 /** What the student entered: escaped text, or the chosen MCQ option rendered. */
 export function answerHtml(item: Item, raw: string): string {
+  if (item.type === "steps") {
+    const parts = raw.split(STEP_SEPARATOR);
+    return item.steps.map((st, i) => `Bước ${i + 1}: ${answerHtml(st.item, parts[i] ?? "")}`).join(" · ");
+  }
   const answer = raw.trim();
   if (!answer) return "(bỏ trống)";
   if (item.type === "mcq") {
@@ -52,6 +56,7 @@ export function answerHtml(item: Item, raw: string): string {
 }
 
 export function correctHtml(item: Item): string {
+  if (item.type === "steps") return item.steps.map((st, i) => `Bước ${i + 1}: ${correctHtml(st.item)}`).join(" · ");
   return item.type === "mcq" ? texToHtml(item.options[item.correct]) : texToHtml(item.unit ? `${item.answer} ${item.unit}` : item.answer);
 }
 

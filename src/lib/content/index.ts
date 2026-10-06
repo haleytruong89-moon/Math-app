@@ -55,7 +55,8 @@ export function fadedItems(unit: Unit): Item[] {
   return unit.faded.steps.flatMap((s) => ("item" in s ? [s.item] : []));
 }
 
-export function publicItem(it: Item): PublicItem {
+/** Whitelist of what the browser sees — never answers, mistakes, solutions, sources or review links. */
+export function publicItem(it: Item, opts: { hints?: boolean } = {}): PublicItem {
   return {
     id: it.id,
     type: it.type,
@@ -63,6 +64,9 @@ export function publicItem(it: Item): PublicItem {
     promptHtml: texToHtml(it.prompt),
     optionsHtml: it.type === "mcq" ? it.options.map(texToHtml) : undefined,
     unit: it.type === "numeric" ? it.unit : undefined,
+    steps: it.type === "steps" ? it.steps.map((st) => ({ promptHtml: texToHtml(st.prompt), item: publicItem(st.item) })) : undefined,
+    figure: it.figure,
+    hintsHtml: opts.hints && it.hints ? it.hints.map(texToHtml) : undefined,
   };
 }
 
@@ -73,7 +77,8 @@ export function toPublicUnit(unit: Unit, module: Module): PublicUnit {
     title: unit.title,
     status: unit.status,
     estMinutes: unit.estMinutes,
-    figure: unit.figure,
+    figure: typeof unit.figure === "string" ? unit.figure : undefined,
+    figureSvg: unit.figure && typeof unit.figure !== "string" ? unit.figure : undefined,
     theoryHtml: unit.theory.map(texToHtml),
     worked: {
       problemHtml: texToHtml(unit.worked.problem),
@@ -88,7 +93,7 @@ export function toPublicUnit(unit: Unit, module: Module): PublicUnit {
           : { kind: "text" as const, html: texToHtml(s.text) },
       ),
     },
-    practice: unit.practice.map(publicItem),
-    exit: unit.exit.map(publicItem),
+    practice: unit.practice.map((it) => publicItem(it, { hints: true })),
+    exit: unit.exit.map((it) => publicItem(it)),
   };
 }
