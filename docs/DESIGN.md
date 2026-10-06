@@ -44,6 +44,7 @@ Key choices
 | `/tutor/[studentId]/work`, `/parent/students/[studentId]/work` | tutor (assigned), parent | "Bài làm của con" (`StudentWork`): per-unit summary (level, answers, error codes seen ≥ 2×, latest proposal) → one unit's answers, wrong only by default (`?unit=…&all=1`): student answer, right answer, error code + content feedback, "lần sau làm đúng", solution. Read-only, RLS |
 | `/student` | student | D18 consent gate → greeting header with weekly ring (`HomeHeader`) → "Hôm nay cần làm" grouped: reviews → homework cards (open, and corrected ones for 7 days; "Con làm xong rồi") → in progress → "Bài mới": up to 2 suggestions (LT3) with "Đã biết rồi? Làm bài kiểm tra luôn" on test-out KUs (LT4) |
 | `/student/learn/[unitId]` | student | worked example → faded → practice → exit test (approved units only; locked → back to `/student`); `?testout=1` on a test-out KU not yet started = exit test only, once |
+| `/student/recap/[unitId]` | student | LT16 "Ôn lại": read-only theory + worked example of an approved KU, opened in a new tab from a wrong answer's link; records nothing |
 | `/student/review` | student | mixed review of the ≤ 5 most overdue units (LT8), interleaved, one session per day; an unfinished run resumes with its own units; `QuestionFeedback` after each answer |
 | `/student/journey` | student | "Hành trình của con": summary (Đã vững / Đang học / Chưa bắt đầu) + track A/B/C (core KUs) → one collapsible module each, then "Học thêm khi dư thời gian" (P2 KUs by module) (open = work in progress, else the first suggestion's module); node: plant emoji per display level, next review, "bố mẹ chốt", 🔒 "Khoá — cần đạt M3: …" or "Sắp có" |
 | `/api/cron/ping` | Vercel Cron | heartbeat upsert |
@@ -58,6 +59,7 @@ Key choices
 | `heartbeat` (0001) | keep-alive row | cron |
 | `unit_progress` (0003; `testout_run`, `testout_at` 0009) | per student × unit: worked example viewed, faded done; the one test-out run (both null or both set) | learn actions |
 | `attempts` (0003) | every graded answer: mode faded/practice/exit/review, correct, error code, duration, run id | learn actions |
+| `attempts.hint_level` (0010) | AI2: highest pre-written hint opened before a practice answer, 0–3 (default 0); right after H2+ is not right first time (`rightUnaided`) | `checkAnswer` |
 | `review_queue` (0004, 0005) | next review per unit: stage 1/2/3 = D+1/7/21, 4 = maintenance (60 days); `completed_at` = M4 | learn actions |
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
 | `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
@@ -81,8 +83,8 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 - Files: `content/<module>/module.json` (`domains`, legacy `domain` accepted) + one `<unit>.json` per knowledge unit. **Registry:** `npm run content:index` regenerates `src/lib/content/registry.generated.ts` (static imports of every file + the curriculum); `npm test` fails when it is stale, CI fails if it points at `e2e/fixtures`. A KU in the curriculum without an approved file is "Sắp có".
 - Schema: `src/lib/content/schema.ts` (zod). Unit = theory, worked example (steps + "why"), faded example
   (text steps + blanks that are items), practice items, exit items, optional figure.
-- Items: `mcq` (options, correct index, per-option mistakes) or `numeric` (exact answer like `27/5`, `2√3`,
-  typical wrong answers with error codes E01–E15). IDs are prefixed with the unit id. Levels L1–L3.
+- Items: `mcq` (options, correct index, per-option mistakes), `numeric` (exact answer like `27/5`, `2√3`, typical wrong answers), or `steps` (S6b, LT5: shared stem + 2–5 mcq/numeric steps, ids `<item>-s<n>`; one question — right only if every step is, error code / feedback / review of the first wrong step; answer = step answers joined by `|`). Figures (LT7): unit or item `figure` = the built-in drawing or `{ svg, alt }` checked by `src/lib/content/svg.ts` and rendered inline (`SvgFigure`).
+  Error codes E01–E15. IDs are prefixed with the unit id. Levels L1–L3.
 - Authoring fields (CONTENT_STANDARD, S6a+): item `source`, `recognition: true`, `hints` (exactly 3), mistake `review` (a prerequisite KU id). They stay on the server — `publicItem` is a whitelist; hints and "Ôn lại" links are shown from S6b.
 - `src/lib/content/standard.ts` (`checkStandard`, run on every file by `npm test`): practice 3 L1 + 3 L2 + 2 L3 with ≥ 1 recognition MCQ (wrong options E05), 3 hints per practice item (≤ 25 words, no answer of 2+ characters as a token), exit bank 2 L1 + 3 L2 + 3 L3 without hints and with ≥ 1 `source`, `review` ∈ prerequisites (`ancestors`). `STANDARD_EXEMPT` = htl-1, htl-2 until batch 1.
 - Text: plain Vietnamese with `$…$` TeX and `**bold**`, rendered server-side by `texToHtml` (KaTeX, throws on bad TeX).
@@ -103,6 +105,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
   Reloading `/student/review` resumes the latest unfinished run (`planReview`: review answers for a due unit with no
   `review_log` row for that run), so answered questions count and aren't asked again.
 - Sequencing (`src/lib/learning/sequence.ts`, pure, unit-tested): status open / locked / comingSoon — open when every prerequisite is at **system** M3, manually unlocked, or already started (never re-locked); in progress = started, below M3, not in review; `suggestNew` = none at 2 in progress, else first open track-A KU + first open B/C KU (batch → track → seq); a **P2** KU (LT17, `priority` in curriculum.json) only once every P0/P1 KU of its track is at system M3, or after a manual unlock — and no core KU may depend on a P2 KU (`checkCurriculum`); `splitTestOut` keeps the test-out run's answers out of mastery (pass still gives M3 + D+1, `workedViewed || testoutPassed`); `selectReviewUnits` = open run's units first, else the 5 most overdue. `loadStudentState` returns `roadmap`, `modules`, `suggestions`, `reviewedToday`; `todaysReview` = today's units + how many wait.
+- S6b practice: hint box H1→H3 (H2+ → requeued, `hint_level`), multi-step items step by step (`checkAnswer({ step })` grades one step, records nothing; "Hoàn thành câu" records the whole item), "Ôn lại: …" links (new tab), SVG figures. Exit / review take a multi-step item at once (`StepsInput`); review shows hints only after answering. Badge "Cần gia sư xác nhận" (LT6, `needsTutor`: grading partial/tutor) on home cards, the journey map and the parent's unit map.
 - Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;
   a session with no unit needs a note. The action (`src/app/tutor/actions.ts`) re-checks an active tutor profile and an
   active assignment with the admin client, inserts the session then the proposals, and deletes the session if the
