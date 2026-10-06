@@ -23,7 +23,8 @@
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
-| Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | 🟡 PR mới (xếp chồng trên #15) — không SQL; merge **#14 → #15 → PR này**; phụ huynh duyệt trước 18/10 |
+| Nội dung đợt 2–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
@@ -37,6 +38,40 @@
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+| Q15 | 68 đề **không có** câu hệ thức lượng → 5 câu L3 mỗi bài htl-1/2 là câu soạn mới (`source` ghi rõ "Soạn mới"). Giữ, hay phụ huynh gửi đề Hà Nội có hệ thức lượng để thay? | Giữ câu soạn mới; thay khi có đề |
+| Q16 | "Quên lấy căn" ($AB^2=36$ mà ghi $AB=36$): trước là E10 (ẩu), nay đổi **E11** (chưa hoàn thiện) vì lỗi lặp lại có hệ thống. Đồng ý? | E11 |
+| Q17 | Thời lượng tính theo chuẩn §1 ra **40–45′/KU** (CURRICULUM.md ước 20–40′). Cập nhật lịch theo số mới, hay rút bớt? | Giữ số mới; xem lại tổng giờ khi xong đợt 2 |
+
+---
+
+## 06/10/2026 — Nội dung đợt 1 (nhánh `p1-content-1`)
+
+**Phụ huynh cần làm:** merge **#14 → #15 → PR này** (PR này xếp chồng trên `p1-slice-6a2` vì main chưa có L3/hints/source). Không SQL.
+Duyệt trên preview: menu **Nội dung** → 4 bài *Nháp* + htl-1, htl-2; phiếu duyệt `CONTENT_STANDARD.md` §7 (~20′/KU). Nói "duyệt KU …" thì phiên sau đổi `status`.
+
+**Đã làm**
+- 4 KU mới ở trạng thái **draft**: `f1-hdt` (7 hằng đẳng thức), `f1-pnt` (phân tích thành nhân tử), `a-tanso` (tần số & tần số tương đối), `b-phepthu` (phép thử & không gian mẫu). Mỗi bài: lý thuyết theo khung §2, mẫu có bước "Kết luận:", bài khuyết 3 chỗ trống (KU đại số có chỗ trống "Kết luận"), luyện 8 câu 3/3/2 có câu nhận dạng và H1–H3, kho kiểm tra 8 câu 2/3/3. Module mới: `backfill-dai-so`, `thong-ke`, `xac-suat`.
+- **Chuẩn hoá htl-1, htl-2 (§9)**, `status` giữ `approved`: thêm H1–H3 cho mọi câu luyện; mỗi bài thêm 2 câu L3 luyện + 3 câu L3 kiểm tra (id mới, không dùng lại id cũ); htl-1-p7/p8 và htl-2-p7/p8 (L2) bỏ, htl-1-p4 và htl-2-p4 lên L2; thêm câu nhận dạng (htl-1-p5 đánh dấu nhận dạng, htl-2-p2 thay bằng htl-2-p11 "nên dùng hệ thức nào?"); thêm bước "Kết luận:".
+  Mã lỗi: quên bình phương / tính ngược sai E10, E06 → **E03** (+ `review: htl-1` ở htl-2); nhầm hình chiếu, nhầm cạnh E03 → **E08**; quên lấy căn E10 → **E11** (Q16); bỏ E09 (chỉ dùng cho bài chấm tay) → E08/E06; câu trắc nghiệm 4 phương án nay đủ ≥ 2 phương án sai có lời nhắc.
+- Bỏ miễn chuẩn của htl-1/2 trong `standard.ts` — giờ cả 6 bài qua đủ kiểm tra của `npm test`.
+- App: phương án đúng của câu trắc nghiệm mới được đặt ở vị trí khác nhau (app hiển thị theo thứ tự trong file). Ô "Câu n" của bài kiểm tra có `data-item` để e2e trả lời đúng bộ được rút; `preview-flow`, `student-flow` cập nhật theo nội dung mới (kho 8 câu, rút 5).
+
+**Nguồn câu L3 (LT15)**
+- Bản PDF trong Project đọc được dạng chữ nhưng **mất dấu căn, phân số** ở Bài 2. Câu L3 của f1-hdt, f1-pnt chuyển thể theo **mẫu số** của câu rút gọn (c-rutgon), suy ra từ ĐKXĐ in trong đề: $x \ne 4$ (Đề 1, 2, 3, 8, 13, 15, 17), $x \ne 9$ (Đề 5, 6, 7, 10, 16, 20), $x \ne 1$ (Đề 11, 12, 18, 19). Biểu thức là soạn lại theo mẫu đó, **chưa đối chiếu trang gốc** — `source` ghi "chuyển thể".
+- a-tanso, b-phepthu: chuyển thể từ đề đọc được đủ chữ, đổi số liệu — Đề 14, 44, 48, 62 (a-tanso); Đề 39, 44, 59, 65 (b-phepthu).
+- htl-1/2: Q15.
+
+**Kiểm tra trước khi tới phụ huynh (§7)**
+
+| Bước | Kết quả |
+|---|---|
+| 1. `npm test` | 94/94 qua (schema, 3/3/2, 2/3/3, nhận dạng E05, gợi ý ≤ 25 chữ không lộ đáp số, ≥ 1 câu kiểm tra có nguồn, `review` hợp lệ). Lint, build, `./e2e/run.sh` (156 PASS) qua |
+| 2. Giải độc lập | 2 agent chỉ nhận đề (không đáp án, không lời giải, không gợi ý) giải **113/113** câu (điền bước + luyện + kho kiểm tra của 6 bài): **113/113 khớp**. Agent góp ý, đã sửa: f1-pnt-p1, x1 thêm "đến tận cùng" (dạng đặt thiếu nhân tử chung cũng là phân tích đúng); a-tanso-p8 ghi rõ "dạng số thập phân"; a-tanso-x7 nêu cỡ mẫu 200. Không đổi đáp án nào |
+| 3. Tính lại nhiễu | Script Python/sympy đọc thẳng TeX trong file JSON: **81 câu** tính lại đáp án + từng đáp án nhiễu theo đúng lỗi đã ghi (vd f1-hdt-p5: 49 = $(x+y)^2$ quên $-2xy$ (E03), 69 = sai dấu (E02), 39 = thiếu hệ số 2 (E03)); dạng "chưa rút gọn hết" (E11) phải bằng đúng đáp án; số liệu thống kê đếm lại từ danh sách. **0 lệch**. Thử cố tình sửa sai 1 đáp án và 1 nhiễu → script bắt được cả hai. 32 câu khái niệm (chọn cách làm, chọn kết luận, chọn tập hợp chữ) không có phép tính → soát tay ở bước 4 |
+| 4. Soát sư phạm | Script soát: lý thuyết ≤ 80 chữ/đoạn, mẫu 3–5 bước kết thúc "Kết luận:", khuyết ≥ 2 chỗ trống, phản hồi ≤ 2 câu không lộ đáp số, trắc nghiệm 4 phương án có ≥ 2 nhiễu có mã → 0 vấn đề. Xem preview 390px: sửa 1 đoạn in đậm chứa TeX bị lỗi hiển thị (a-tanso) và tập $\Omega$ tràn ngang (b-phepthu) |
+| 5. Gia sư | Không cần — đợt 1 không có KU mạch C, E, G |
+
+**Để ý khi duyệt:** thời lượng 40–45′/KU (Q17); f1-hdt/f1-pnt dùng $\sqrt{x}$ ở câu L3 (lấy từ dạng rút gọn lớp 9) — nếu con chưa học căn bậc hai ở trường thì báo để đổi; câu L3 a-tanso-x8 cố ý cho số người giảm mà tỉ lệ tăng (bẫy so tần số với tần số tương đối).
 
 ---
 
