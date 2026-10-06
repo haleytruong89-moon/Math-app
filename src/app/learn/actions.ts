@@ -10,7 +10,7 @@ import { fadedItems, findItem, getUnit } from "@/lib/content";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
-import { afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
+import { rightUnaided, afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { exitHistory, loadStudentState } from "@/lib/learning/state";
@@ -82,7 +82,7 @@ async function practiceMastery(studentId: string, unitId: string) {
   const recent = practiceFirstTries(history.attempts).slice(-RULES.practiceWindow);
   const conf = latestByUnit((c.data ?? []) as ConfirmationRow[]).get(unitId);
   const confirmed = displayLevel(m.level, conf, history).confirmed;
-  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter((a) => a.correct).length, confirmed };
+  return { level: m.level, practiceCount: recent.length, practiceRight: recent.filter(rightUnaided).length, confirmed };
 }
 const SAVE_FAILED = { ok: false as const, message: "Chưa lưu được câu trả lời. Kiểm tra mạng rồi thử lại." };
 
@@ -166,6 +166,9 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     const stepItem = item.steps[v.step].item;
     const gs = gradeItem(stepItem, v.answer);
     if (!gs.understood) return { ok: true, understood: false };
+    // Practice items are the review pool: while this unit's review is due, a step check gives right / wrong
+    // and the feedback, but not the right value (so step checks can't feed answers into the review).
+    const reviewDue = who.kind === "student" && !!(await dueQueueRow(who.studentId, v.unitId));
     return {
       ok: true,
       understood: true,
@@ -173,7 +176,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
       feedbackHtml: gs.feedback ? texToHtml(gs.feedback) : undefined,
       answerHtml: answerHtml(stepItem, v.answer),
       // The right value of this step, so the student can carry on with the next one.
-      correctHtml: gs.correct ? undefined : correctHtml(stepItem),
+      correctHtml: gs.correct || reviewDue ? undefined : correctHtml(stepItem),
       errorCode: gs.correct ? null : (gs.errorCode ?? null),
       review: gs.correct ? undefined : reviewLink(who, gs.review),
     };
@@ -376,6 +379,7 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
       id: r.item.id,
       correct: r.correct,
       answer: r.answer,
+      answerHtml: answerHtml(r.item, r.answer),
       feedbackHtml: r.feedback ? texToHtml(r.feedback) : undefined,
       solutionHtml: texToHtml(r.item.solution),
     })),
@@ -411,7 +415,8 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
   const item = found && findItem(found.unit, v.itemId, "review");
   if (!item || !(await dueQueueRow(who.studentId, v.unitId))) return { ok: false, message: "Bài này chưa đến hạn ôn." };
 
-  const g = gradeItem(item, v.answer, { blanksWrong: item.type === "steps" });
+  // A typo in one step gets the format hint, like any other answer (not a wrong review).
+  const g = gradeItem(item, v.answer);
   if (!g.understood) return { ok: true, understood: false };
   const { error } = await createAdminClient().from("attempts").insert({
     student_id: who.studentId,

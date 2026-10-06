@@ -371,7 +371,10 @@ function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: 
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
       {item.type === "steps" && !result ? (
-        <StepsPractice key={`${item.id}-${pos}`} unitId={unit.id} item={item} recapHref={recapHref} pending={pending} onComplete={(answer) => check(answer)} />
+        <StepsPractice key={`${item.id}-${pos}`} unitId={unit.id} item={item} recapHref={recapHref} pending={pending} onComplete={(answer) => {
+            setValue(answer); // keep her step answers on screen under the result
+            check(answer);
+          }} />
       ) : (
         <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
       )}
@@ -562,7 +565,9 @@ function ExitStage({
               <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
               <p className="mt-2 text-sm">
                 Con trả lời:{" "}
-                {it.type === "mcq" && r.answer !== "" ? (
+                {r.answerHtml ? (
+                  <Rich html={r.answerHtml} />
+                ) : it.type === "mcq" && r.answer !== "" ? (
                   <Rich html={it.optionsHtml![Number(r.answer)] ?? r.answer} />
                 ) : (
                   <b className="font-mono">{r.answer || "(bỏ trống)"}</b>

@@ -5,7 +5,7 @@ import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { loadStudentState, type RoadmapNode, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
-import { practiceFirstTries } from "@/lib/learning/rules";
+import { practiceFirstTries, rightUnaided } from "@/lib/learning/rules";
 import { dueLabel } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { masteryOf } from "@/components/student/mastery";
@@ -169,8 +169,8 @@ function Connector({ from, to }: { from: number; to: number }) {
 
 function Node({ u, level, confirmed, today }: { u: UnitState; level: number; confirmed: boolean; today: string }) {
   const m = masteryOf(level);
-  const recent = practiceFirstTries(u.attempts).slice(-RULES.practiceWindow);
-  const right = recent.filter((a) => a.correct).length;
+  const recent = practiceFirstTries(u.history.attempts).slice(-RULES.practiceWindow);
+  const right = recent.filter(rightUnaided).length;
   let status: React.ReactNode = null;
   if (level === 0) status = "Chưa bắt đầu";
   else if (level === 1) status = u.mastery.enoughData ? "Mới bắt đầu" : `Chưa đủ dữ liệu (${u.mastery.answers} câu)`;

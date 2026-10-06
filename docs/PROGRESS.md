@@ -56,6 +56,8 @@
 
 **Quyết định khi làm:** ghi ở SPEC §0 ("S6b build rulings"); câu hỏi mở Q15–Q17.
 
+**Review (đã sửa):** kiểm tra từng bước không hiện giá trị đúng khi bài đang đến hạn ôn (câu luyện cũng là câu ôn); thẻ nhắc mức + thanh "x/5 đúng" trên bản đồ không tính câu trả lời sau H2+; gõ nhầm định dạng ở một bước khi ôn → nhắc định dạng thay vì tính sai; kết quả kiểm tra hiện đáp án từng bước (không phải chuỗi `a|b`); giữ đáp án các bước sau khi hoàn thành câu; trang "Bài làm" của gia sư có phản hồi cho câu nhiều bước. **Để sau (nhỏ):** id trong SVG có thể trùng khi bài và câu cùng có hình; kiểm SVG không so tên thẻ đóng; gợi ý câu nhiều bước chỉ kiểm đáp số bước cuối; hình ở từng bước con chưa hiển thị; luyện tập vẫn có thể dò từng bước rồi nộp đúng (cần devtools, chỉ ảnh hưởng dữ liệu của con).
+
 **Kiểm tra:** lint, `npm test`, build, `./e2e/run.sh` — xem mô tả PR.
 
 ---

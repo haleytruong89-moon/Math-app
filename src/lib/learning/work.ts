@@ -72,7 +72,8 @@ export function workEntries(
     if (opts.wrongOnly && a.correct) continue;
     const item = lookup(a.item_id);
     if (!item) continue;
-    const g = a.correct ? null : gradeItem(item, a.answer);
+    // Exit answers were graded with blanks / unreadable steps as wrong; grade the same way here.
+    const g = a.correct ? null : gradeItem(item, a.answer, { blanksWrong: a.mode === "exit" });
     out.push({
       key: `${a.item_id}|${a.created_at}`,
       itemId: a.item_id,

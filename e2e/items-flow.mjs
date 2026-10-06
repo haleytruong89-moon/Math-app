@@ -90,6 +90,17 @@ const x1 = await sql(`select correct, answer from public.attempts where item_id 
 ok("exit: the 2-step item graded right as one answer", x1.length === 1 && x1[0].correct === true && x1[0].answer === "1|2", JSON.stringify(x1));
 ok("exit: 5/5", (await page.getByText("5/5").count()) >= 1);
 
+ok("exit result: steps answer shown per step, not raw", (await page.getByText("Bước 1: 1 · Bước 2: 2").count()) === 1);
+
+// ---- while fs-1's review is due, a step check doesn't hand out the right value (practice = review pool)
+await sql(`delete from public.review_queue where unit_id = 'fs-1';
+  insert into public.review_queue (student_id, unit_id, stage, due_on) select ${ME}, 'fs-1', 1, current_date - 1;`);
+await page.goto(`${BASE}/student/learn/fs-1`);
+await page.getByRole("navigation", { name: "Các phần của bài" }).getByRole("button", { name: /Luyện tập/ }).click();
+await answerStep(1, "7");
+const fbDue = step(1).getByTestId("step-feedback");
+ok("review due: step check says wrong but not the right value", (await fbDue.getAttribute("data-correct")) === "false" && !/Giá trị đúng/.test(await fbDue.innerText()), await fbDue.innerText());
+
 ok("no browser errors", errors.length === 0, errors.join(" | "));
 await browser.close();
 console.log(res.join("\n"));
