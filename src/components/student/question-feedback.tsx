@@ -13,7 +13,7 @@ type Result = Extract<CheckResult, { understood: true }>;
  * Two-state card after a practice or review answer (spec 2026-10-05 §4). Only "Câu tiếp" — no retry (U1);
  * the count is a session total, never consecutive (U2).
  */
-export function QuestionFeedback({ result, mode, tally, index, requeued = false, nextLabel, onNext }: {
+export function QuestionFeedback({ result, mode, tally, index, requeued = false, nextLabel, onNext, recapHref = (id) => `/student/recap/${id}` }: {
   result: Result;
   mode: "practice" | "review";
   tally: { right: number; total: number };
@@ -21,6 +21,8 @@ export function QuestionFeedback({ result, mode, tally, index, requeued = false,
   requeued?: boolean;
   nextLabel: string;
   onNext: () => void;
+  /** LT16: where "Ôn lại" opens the earlier KU (the parent preview passes its own route). */
+  recapHref?: (unitId: string) => string;
 }) {
   const chip = (
     <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/60 px-3.5 py-1.5 text-[13px] font-semibold" data-testid="session-tally">
@@ -64,11 +66,36 @@ export function QuestionFeedback({ result, mode, tally, index, requeued = false,
         </div>
       )}
 
+      {result.review && (
+        <a
+          href={recapHref(result.review.unitId)}
+          target="_blank"
+          rel="noopener"
+          className="rounded-xl border border-accent bg-accent-soft px-4 py-3 text-sm font-semibold text-accent"
+          data-testid="review-link"
+        >
+          📖 Ôn lại: {result.review.title} ↗
+        </a>
+      )}
+
       {result.solutionHtml && (
         <div className="rounded-xl border border-border bg-surface p-4 text-sm">
           <p className="text-xs font-bold uppercase tracking-wide text-muted">Lời giải</p>
           <Rich as="div" html={result.solutionHtml} className="mt-2 leading-relaxed" />
         </div>
+      )}
+
+      {mode === "review" && result.hintsHtml && (
+        <details className="rounded-xl border border-border bg-surface px-4 py-3 text-sm" data-testid="review-hints">
+          <summary className="cursor-pointer font-semibold">💡 Xem gợi ý (để hiểu, không đổi kết quả)</summary>
+          <ol className="mt-2 flex flex-col gap-1.5">
+            {result.hintsHtml.map((h, i) => (
+              <li key={i}>
+                <span className="font-mono text-[11px] font-bold text-accent">H{i + 1}</span> <Rich html={h} />
+              </li>
+            ))}
+          </ol>
+        </details>
       )}
 
       {nudge && result.mastery && (

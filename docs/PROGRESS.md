@@ -20,7 +20,7 @@
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
 | S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8); trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | 🟡 PR #15 (xếp chồng trên #14) — không SQL; merge **#14 → #15** |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
-| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
+| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | 🟡 PR mới (xếp chồng trên #15) — **chờ SQL 0010**, merge sau #14 → #15 |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
@@ -36,7 +36,29 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
+| Q15 | Gợi ý gửi kèm câu luyện xuống trình duyệt, trình duyệt báo `hint_level` — con có thể "lách" (chỉ ảnh hưởng dữ liệu của con). Cần chặn ở máy chủ (gợi ý tải từng dòng qua server action)? | Chưa — tin trình duyệt; đổi nếu thấy cần |
+| Q16 | Link "Ôn lại" mở bài nền kể cả khi bài đó đang khoá với con (chỉ xem lý thuyết + lời giải mẫu, không ghi gì)? | Có — chỉ đọc, không ảnh hưởng mở khoá |
+| Q17 | Ô điền bước (faded) có dùng câu nhiều bước? | Không — chỉ trắc nghiệm / đáp số như cũ |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 06/10/2026 — S6b Câu nhiều bước, hình SVG, gợi ý, ôn nền, nhãn gia sư (nhánh `p1-slice-6b`)
+
+**Phụ huynh cần làm:** chạy **SQL 0010** (`supabase/migrations/0010_p1_hints.sql`: thêm cột `attempts.hint_level`, mặc định 0 — chỉ thêm) **trước khi merge** PR S6b; thứ tự merge **#14 → #15 → S6b** (S6b xếp chồng trên #15 vì dùng `hints`, `review` của S6a+).
+
+**Đã làm (P1_PLAN S6b, AI_TUTOR §3, CONTENT_STANDARD §8):**
+- Câu `steps` (LT5): luyện tập làm **từng bước** — sai bước nào hiện phản hồi + mã lỗi + giá trị đúng của bước đó để làm tiếp; cuối câu ghi **1 dòng** (đúng khi đúng hết, mã lỗi = bước sai đầu). Kiểm tra và ôn: nhập cả chuỗi một lần.
+- Gợi ý H1→H3 (AI2): nút "💡 Gợi ý" mở từng dòng; trả lời sau H2+ ghi `hint_level`, không tính "đúng ngay lần đầu" cho M2, câu quay lại cuối phiên. Kiểm tra: không gợi ý. Ôn: gợi ý chỉ sau khi trả lời.
+- Link "📖 Ôn lại: …" (LT16) ở phản hồi sai → trang xem lại bài nền (lý thuyết + lời giải mẫu) trong tab mới, không ghi gì.
+- Hình SVG (LT7) ở bài hoặc từng câu, kiểm chặt (test có SVG độc hại bị từ chối), theo màu theme sáng/tối.
+- Nhãn "Cần gia sư xác nhận" (LT6) trên thẻ học, bản đồ, bản đồ bài của phụ huynh.
+
+**Quyết định khi làm:** ghi ở SPEC §0 ("S6b build rulings"); câu hỏi mở Q15–Q17.
+
+**Review (đã sửa):** kiểm tra từng bước không hiện giá trị đúng khi bài đang đến hạn ôn (câu luyện cũng là câu ôn); thẻ nhắc mức + thanh "x/5 đúng" trên bản đồ không tính câu trả lời sau H2+; gõ nhầm định dạng ở một bước khi ôn → nhắc định dạng thay vì tính sai; kết quả kiểm tra hiện đáp án từng bước (không phải chuỗi `a|b`); giữ đáp án các bước sau khi hoàn thành câu; trang "Bài làm" của gia sư có phản hồi cho câu nhiều bước. **Để sau (nhỏ):** id trong SVG có thể trùng khi bài và câu cùng có hình; kiểm SVG không so tên thẻ đóng; gợi ý câu nhiều bước chỉ kiểm đáp số bước cuối; hình ở từng bước con chưa hiển thị; luyện tập vẫn có thể dò từng bước rồi nộp đúng (cần devtools, chỉ ảnh hưởng dữ liệu của con).
+
+**Kiểm tra:** lint, `npm test`, build, `./e2e/run.sh` — xem mô tả PR.
 
 ---
 

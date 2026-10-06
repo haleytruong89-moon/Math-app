@@ -150,6 +150,21 @@
       "priority": "P2"
     },
     {
+      "id": "fs-1",
+      "module": "fx-geo",
+      "title": "Nhiều bước thử",
+      "track": "C",
+      "seq": 20,
+      "prereq": [
+        "fc-1"
+      ],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 1,
+      "priority": "P0"
+    },
+    {
       "id": "fl-1",
       "module": "fx-later",
       "title": "Bài chưa soạn thử",

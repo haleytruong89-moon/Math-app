@@ -106,3 +106,8 @@ export function ancestors(c: Curriculum, id: string): Set<string> {
   }
   return out;
 }
+
+/** LT6: a KU with a part graded on paper by the tutor ("Cần gia sư xác nhận"). */
+export function needsTutor(u: { grading: CurriculumUnit["grading"] }): boolean {
+  return u.grading === "partial" || u.grading === "tutor";
+}

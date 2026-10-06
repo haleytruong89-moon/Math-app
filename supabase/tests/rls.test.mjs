@@ -24,6 +24,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0006_p1_teaching_sessions.sql`
 await db.exec(fs.readFileSync(`${repo}/migrations/0007_p1_homework.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0008_p1_parent_overview.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0009_p1_curriculum.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0010_p1_hints.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -201,6 +202,12 @@ check('nobody writes unlocks directly', isErr(await as('me@example.com',`insert 
 check('one unlock per student and unit', await db.query(`insert into public.unit_unlocks (student_id, unit_id, unlocked_by) select student_id, unit_id, unlocked_by from public.unit_unlocks`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
 check('test-out: run and time set together', await db.query(`update public.unit_progress set testout_at = null where unit_id = 'a-tanso'`).then(()=>'ok', e=>'ERROR '+e.message).then(isErr), true);
 check('student reads own test-out state', (await as('nguyen@example.com',`select (testout_run is not null) t from public.unit_progress where unit_id = 'a-tanso'`))[0]?.t, true);
+// 0010: attempts.hint_level (S6b, AI2)
+const hl = (v) => db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, hint_level) select id, 'htl-1', 'htl-1-p1', 'practice', '1', true, ${v} from public.students where full_name='Hạnh Nguyên'`).then(()=>'ok', e=>'ERROR '+e.message);
+check('hint_level 0–3 accepted', [await hl(0), await hl(3)], ['ok', 'ok']);
+check('hint_level outside 0–3 refused', [isErr(await hl(4)), isErr(await hl(-1))], [true, true]);
+check('hint_level defaults to 0 for older writers', (await db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct) select id, 'htl-1', 'htl-1-p2', 'practice', '1', true from public.students where full_name='Hạnh Nguyên' returning hint_level`)).rows[0].hint_level, 0);
+check('student reads own hint_level', (await as('nguyen@example.com',`select max(hint_level)::int m from public.attempts where item_id = 'htl-1-p1'`))[0]?.m, 3);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);

@@ -1,0 +1,232 @@
+{
+  "id": "fs-1",
+  "module": "fx-geo",
+  "order": 3,
+  "title": "Nhiều bước thử",
+  "status": "approved",
+  "approvedOn": "2026-10-05",
+  "estMinutes": 10,
+  "theory": [
+    "Lý thuyết thử của Nhiều bước thử."
+  ],
+  "worked": {
+    "problem": "Bài mẫu thử.",
+    "steps": [
+      {
+        "text": "Bước 1."
+      },
+      {
+        "text": "Bước 2."
+      }
+    ],
+    "selfExplain": "Vì sao?"
+  },
+  "faded": {
+    "problem": "Bài điền bước thử.",
+    "steps": [
+      {
+        "text": "Bước đầu."
+      },
+      {
+        "prompt": "Điền số 7.",
+        "item": {
+          "id": "fs-1-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Câu thử: nhập số $7$.",
+          "answer": "7",
+          "solution": "Đáp án là $7$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "fs-1-p1",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Câu nhiều bước thử (4 bước).",
+      "steps": [
+        {
+          "prompt": "Bước thử 1: nhập số $1$.",
+          "item": {
+            "id": "fs-1-p1-s1",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $1$.",
+            "answer": "1",
+            "solution": "Đáp án là $1$."
+          }
+        },
+        {
+          "prompt": "Bước thử 2: nhập số $2$.",
+          "item": {
+            "id": "fs-1-p1-s2",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $2$.",
+            "answer": "2",
+            "solution": "Đáp án là $2$.",
+            "mistakes": [
+              {
+                "answer": "99",
+                "code": "E11",
+                "feedback": "Bước này chưa rút gọn hết.",
+                "review": "fc-1"
+              }
+            ]
+          }
+        },
+        {
+          "prompt": "Bước thử 3: nhập số $3$.",
+          "item": {
+            "id": "fs-1-p1-s3",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $3$.",
+            "answer": "3",
+            "solution": "Đáp án là $3$."
+          }
+        },
+        {
+          "prompt": "Bước thử 4: nhập số $4$.",
+          "item": {
+            "id": "fs-1-p1-s4",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $4$.",
+            "answer": "4",
+            "solution": "Đáp án là $4$."
+          }
+        }
+      ],
+      "solution": "Lời giải câu nhiều bước.",
+      "hints": [
+        "Gợi ý một: đề hỏi gì?",
+        "Gợi ý hai: dạng nào?",
+        "Gợi ý ba: dùng công thức nào?"
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Tam giác thử"
+      }
+    },
+    {
+      "id": "fs-1-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $2$.",
+      "answer": "2",
+      "solution": "Đáp án là $2$.",
+      "hints": [
+        "Gợi ý một: đề hỏi gì?",
+        "Gợi ý hai: dạng nào?",
+        "Gợi ý ba: dùng công thức nào?"
+      ]
+    },
+    {
+      "id": "fs-1-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $3$.",
+      "answer": "3",
+      "solution": "Đáp án là $3$.",
+      "hints": [
+        "Gợi ý một: đề hỏi gì?",
+        "Gợi ý hai: dạng nào?",
+        "Gợi ý ba: dùng công thức nào?"
+      ]
+    },
+    {
+      "id": "fs-1-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$.",
+      "hints": [
+        "Gợi ý một: đề hỏi gì?",
+        "Gợi ý hai: dạng nào?",
+        "Gợi ý ba: dùng công thức nào?"
+      ]
+    },
+    {
+      "id": "fs-1-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$.",
+      "hints": [
+        "Gợi ý một: đề hỏi gì?",
+        "Gợi ý hai: dạng nào?",
+        "Gợi ý ba: dùng công thức nào?"
+      ]
+    }
+  ],
+  "exit": [
+    {
+      "id": "fs-1-x1",
+      "type": "steps",
+      "level": "L1",
+      "prompt": "Câu nhiều bước thử (2 bước).",
+      "steps": [
+        {
+          "prompt": "Bước thử 1: nhập số $1$.",
+          "item": {
+            "id": "fs-1-x1-s1",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $1$.",
+            "answer": "1",
+            "solution": "Đáp án là $1$."
+          }
+        },
+        {
+          "prompt": "Bước thử 2: nhập số $2$.",
+          "item": {
+            "id": "fs-1-x1-s2",
+            "type": "numeric",
+            "level": "L1",
+            "prompt": "Câu thử: nhập số $2$.",
+            "answer": "2",
+            "solution": "Đáp án là $2$."
+          }
+        }
+      ],
+      "solution": "Lời giải câu nhiều bước."
+    },
+    {
+      "id": "fs-1-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $2$.",
+      "answer": "2",
+      "solution": "Đáp án là $2$."
+    },
+    {
+      "id": "fs-1-x3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $3$.",
+      "answer": "3",
+      "solution": "Đáp án là $3$."
+    },
+    {
+      "id": "fs-1-x4",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$."
+    },
+    {
+      "id": "fs-1-x5",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$."
+    }
+  ]
+}

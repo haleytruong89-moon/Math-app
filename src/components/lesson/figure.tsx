@@ -27,3 +27,19 @@ export function RightTriangleAltitude({ className = "" }: { className?: string }
     </svg>
   );
 }
+
+/**
+ * LT7: an inline SVG from the content file. Safe to inject: the schema only accepts SVG that passed
+ * checkSvg (whitelisted tags/attributes, no scripts or external links, theme colours only).
+ */
+export function SvgFigure({ figure, className = "" }: { figure: { svg: string; alt: string }; className?: string }) {
+  return (
+    <div
+      role="img"
+      aria-label={figure.alt}
+      data-testid="svg-figure"
+      className={`mx-auto block w-full max-w-xs [&>svg]:h-auto [&>svg]:w-full ${className}`}
+      dangerouslySetInnerHTML={{ __html: figure.svg }}
+    />
+  );
+}

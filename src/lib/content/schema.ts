@@ -3,6 +3,7 @@
 // Pure module (no Next/React imports) so `node --test` can load it directly.
 import { z } from "zod";
 import { parseAnswer } from "./grade.ts";
+import { checkSvg } from "./svg.ts";
 
 const Id = z.string().regex(/^[a-z0-9-]+$/, "id: chỉ dùng a-z, 0-9, dấu gạch ngang");
 /** Text may contain inline TeX between $…$ and **bold**. */
@@ -13,7 +14,16 @@ export const Level = z.enum(["L1", "L2", "L3"]);
 /** LT16: a wrong answer rooted in an earlier KU links to it ("Ôn lại: …", shown from S6b). */
 const Mistake = z.object({ code: ErrorCode, feedback: Text, review: Id.optional() });
 
-/** CONTENT_STANDARD fields shared by both item types; none of them reaches the browser yet (see publicItem). */
+/** LT7: an inline SVG drawing (strict whitelist, theme colours) with its text alternative. */
+export const SvgFigure = z
+  .object({ svg: z.string(), alt: Text })
+  .strict()
+  .superRefine((f, ctx) => {
+    for (const msg of checkSvg(f.svg)) ctx.addIssue({ code: "custom", message: msg });
+  });
+export type SvgFigure = z.infer<typeof SvgFigure>;
+
+/** CONTENT_STANDARD fields shared by every item type; none of them reaches the browser yet (see publicItem). */
 const Authoring = {
   /** LT15: where an L3 / exam-style item comes from, e.g. "68 đề – Đề 12, Bài 2c (chuyển thể)". */
   source: Text.optional(),
@@ -21,6 +31,7 @@ const Authoring = {
   recognition: z.literal(true).optional(),
   /** AI2: pre-written hints H1 goal → H2 recognise → H3 tool (practice only). */
   hints: z.tuple([Text, Text, Text]).optional(),
+  figure: SvgFigure.optional(),
 };
 
 export const McqItem = z
@@ -74,16 +85,42 @@ export const NumericItem = z
     }
   });
 
-export const Item = z.discriminatedUnion("type", [McqItem, NumericItem]);
+/** One answer box: what a faded blank or a step of a multi-step item can be. */
+export const SimpleItem = z.discriminatedUnion("type", [McqItem, NumericItem]);
+export type SimpleItem = z.infer<typeof SimpleItem>;
+
+/**
+ * LT5: a shared stem and 2–5 steps, each one decision (mcq / numeric), counted as ONE question:
+ * right only if every step is; the error code is the first wrong step's. Step ids: <item id>-s<n>.
+ */
+export const StepsItem = z
+  .object({
+    id: Id,
+    type: z.literal("steps"),
+    level: Level,
+    prompt: Text,
+    ...Authoring,
+    steps: z.array(z.object({ prompt: Text, item: SimpleItem }).strict()).min(2).max(5),
+    solution: Text,
+  })
+  .strict()
+  .superRefine((it, ctx) => {
+    it.steps.forEach((st, i) => {
+      if (st.item.id !== `${it.id}-s${i + 1}`) ctx.addIssue({ code: "custom", message: `${it.id}: bước ${i + 1} phải có id "${it.id}-s${i + 1}"` });
+    });
+  });
+
+export const Item = z.union([SimpleItem, StepsItem]);
 export type Item = z.infer<typeof Item>;
 
 const WorkedStep = z.object({ text: Text, why: Text.optional() }).strict();
 const FadedStep = z.union([
   z.object({ text: Text }).strict(),
-  z.object({ prompt: Text, item: Item }).strict(),
+  z.object({ prompt: Text, item: SimpleItem }).strict(),
 ]);
 
-export const Figure = z.enum(["right-triangle-altitude"]);
+/** The built-in drawing (htl-1/2) or an inline SVG (LT7). */
+export const Figure = z.union([z.enum(["right-triangle-altitude"]), SvgFigure]);
 
 export const Unit = z
   .object({
@@ -107,8 +144,7 @@ export const Unit = z
     if (u.status === "approved" && !u.approvedOn) ctx.addIssue({ code: "custom", message: `${u.id}: approved cần approvedOn` });
     const ids = [
       ...u.faded.steps.flatMap((s) => ("item" in s ? [s.item.id] : [])),
-      ...u.practice.map((i) => i.id),
-      ...u.exit.map((i) => i.id),
+      ...[...u.practice, ...u.exit].flatMap((i) => [i.id, ...(i.type === "steps" ? i.steps.map((st) => st.item.id) : [])]),
     ];
     const seen = new Set<string>();
     for (const id of ids) {

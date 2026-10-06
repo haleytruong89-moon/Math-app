@@ -9,6 +9,7 @@ import { giveConsent, setHomeworkDone } from "./actions";
 import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { HomeHeader } from "@/components/student/home-header";
+import { needsTutor } from "@/lib/content/curriculum";
 import { masteryOf } from "@/components/student/mastery";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
@@ -93,9 +94,11 @@ function Group({ kind, note, children }: { kind: keyof typeof GROUP; note?: stri
   );
 }
 
-function TodayCard({ title, level, note, minutes, href, cta, extra }: {
+function TodayCard({ title, level, note, minutes, href, cta, extra, tutor }: {
   title: string; level: number; note: string; minutes: number; href: string; cta: string;
   extra?: { href: string; label: string };
+  /** LT6: part of this KU is checked on paper by the tutor. */
+  tutor?: boolean;
 }) {
   const m = masteryOf(level);
   return (
@@ -106,6 +109,7 @@ function TodayCard({ title, level, note, minutes, href, cta, extra }: {
         </span>
         <span className="min-w-0 flex-1">
           <span className="block text-sm font-semibold leading-snug">{title}</span>
+          {tutor && <span className="mt-0.5 inline-block rounded-md bg-warn-soft px-2 py-0.5 text-[11px] font-semibold text-warn" data-testid="tutor-badge">Cần gia sư xác nhận</span>}
           <span className="block text-xs text-muted">
             {note} · ~{minutes} phút
           </span>
@@ -180,6 +184,7 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
             minutes={u.unit.estMinutes}
             href={`/student/learn/${u.unit.id}`}
             cta="Học tiếp"
+            tutor={!!u.entry && needsTutor(u.entry)}
           />
         ))}
       </Group>,
@@ -196,6 +201,7 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
             minutes={u.unit.estMinutes}
             href={`/student/learn/${u.unit.id}`}
             cta="Học bài mới"
+            tutor={!!u.entry && needsTutor(u.entry)}
             extra={u.entry?.testOut && !u.testout.tried ? { href: `/student/learn/${u.unit.id}?testout=1`, label: "Đã biết rồi? Làm bài kiểm tra luôn" } : undefined}
           />
         ))}

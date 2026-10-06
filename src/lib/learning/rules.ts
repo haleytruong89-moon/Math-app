@@ -16,6 +16,7 @@ export const RULES = {
   practiceAnswersForStudyDay: 5,
   maxInProgress: 2, // LT3: no new suggestion beyond 2 KUs in progress
   maxUnitsPerReview: 5, // LT8: one session a day, at most 5 units (~15 questions)
+  hintCountsFrom: 2, // AI2: an answer after hint H2+ doesn't count as right first time (M2)
   exitDraw: { size: 5, quota: { L1: 1, L2: 2, L3: 2 } }, // LT13: 5 of the bank of 8, unseen first
 } as const;
 
@@ -28,6 +29,8 @@ export type AttemptRow = {
   error_code: string | null;
   exit_run: string | null;
   created_at: string; // ISO timestamp
+  /** AI2 (0010): highest pre-written hint seen before answering, 0–3. */
+  hint_level?: number | null;
 };
 
 // ---------- dates (Vietnam time; the app is used in Hà Nội) ----------
@@ -81,6 +84,11 @@ export function practiceFirstTries(attempts: AttemptRow[]): AttemptRow[] {
     });
 }
 
+/** A right answer without hint H2 or more (AI2) — what counts toward M2 and "lần đầu đúng". */
+export function rightUnaided(a: AttemptRow): boolean {
+  return a.correct && (a.hint_level ?? 0) < RULES.hintCountsFrom;
+}
+
 export function lastExitRun(attempts: AttemptRow[]): Mastery["lastExit"] {
   const exits = attempts.filter((a) => a.mode === "exit" && a.exit_run);
   if (!exits.length) return null;
@@ -99,7 +107,8 @@ export function exitReachesM3(exit: NonNullable<Mastery["lastExit"]>): boolean {
 export function systemMastery(input: { workedViewed: boolean; attempts: AttemptRow[]; reviewsCompleted: boolean }): Mastery {
   const answers = input.attempts.filter((a) => a.mode !== "faded").length;
   const recent = practiceFirstTries(input.attempts).slice(-RULES.practiceWindow);
-  const practiceRate = recent.length >= RULES.practiceWindow ? recent.filter((a) => a.correct).length / recent.length : null;
+  // AI2: right after hint H2+ isn't a right first try.
+  const practiceRate = recent.length >= RULES.practiceWindow ? recent.filter(rightUnaided).length / recent.length : null;
   const lastExit = lastExitRun(input.attempts);
 
   let level: Level = 0;
