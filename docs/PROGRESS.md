@@ -16,15 +16,16 @@
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
 | Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | ✅ Merged 05/10 (PR #10) |
+| Docs + data — chỉ mục 68 đề, LT17–LT18 (48 KU), `curriculum.json` cập nhật | `p1-curriculum-design` | 🟡 PR #14 — không SQL |
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
-| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8) | `p1-slice-6a2` | ⬜ **Tiếp theo**, trước khi soạn đợt 1 |
+| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8); trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | ⬜ **Tiếp theo**, trước khi soạn đợt 1 |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ⬜ 23/10 |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
-| S5 — Hình học C1–C3 | — | ⬜ xét lại trước GĐ3 (01/2027) |
+| S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -34,6 +35,28 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
+
+---
+
+## 06/10/2026 — Điều chỉnh lộ trình theo đề thật (LT17–LT18)
+
+**Phụ huynh chốt (popup):** hạ 8 KU ít ra thi xuống P2 + gộp tối ưu 5 → 3 (LT17); hình học từ tuần 7 (LT18).
+Khung đề Hà Nội 2025/2026 xác nhận Bài 4 = 4đ, Bài 5 = 0,5đ (nguồn tham khảo, ghi trong `CURRICULUM.md` §4).
+**Đã làm:** `CURRICULUM.md` — 48 KU (40 lõi + 8 P2), ~77 giờ lõi, lịch 4 giai đoạn mới, mốc 8.5/9.5 tính lại, đợt nội dung đổi ngày;
+`P1_PLAN.md` — `seq` mới, trường `priority`, quy tắc gợi ý KU P2, S5 dời lên (thiết kế ~11/2026).
+**S6a đã merge trước khi có LT17** (50 KU) → nhánh này cập nhật luôn `content/curriculum.json` (48 KU, `seq` + đợt mới, hq-amgm gộp h-bdt)
+và test (48) để `main` không đỏ. lint, `npm test` 73, build, e2e **148/148** qua. Không có SQL mới.
+**Còn lại cho Claude Code (gộp vào S6a+):** thêm trường `priority` vào `curriculum.json` + chặn gợi ý KU P2 đến khi P0/P1 cùng track đạt M3;
+nhóm "Học thêm khi dư thời gian" trên bản đồ và trang Nội dung (hiện 8 KU P2 tạm nằm ở đợt 10 và chưa có nội dung nên không được gợi ý).
+
+---
+
+## 05/10/2026 (đêm) — Chỉ mục nguồn 68 đề
+
+**Đã làm:** `docs/SOURCE_INDEX.md` — 68 đề → 914 câu, phân loại theo KU (tự động + soát mẫu), số trang, tóm tắt ngắn; bảng tần suất KU.
+**Phát hiện cần phụ huynh quyết (chưa sửa `CURRICULUM.md`):** (1) khung đề sách này: Bài 1 = 1,5đ, Bài 5 = **0,5đ**, Bài 4 = 4đ — khác §4.3;
+(2) parabol/giao điểm, tỉ số lượng giác, vị trí tương đối, ngoại/nội tiếp gần như không xuất hiện → cân nhắc hạ ưu tiên.
+**Phụ huynh cần làm:** tải file PDF 68 đề vào Project "STUDY BB" (Files) để phiên soạn bài đọc được đề gốc.
 
 ---
 

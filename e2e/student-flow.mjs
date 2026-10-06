@@ -78,7 +78,7 @@ ok("today: goal 1/4 after exit", (await page.getByText("1/4 buổi").count()) ==
 await page.goto(`${BASE}/student/journey`);
 ok("journey: htl-1 shows M3 🌳 + next review", (await page.getByTestId("node-htl-1").getByText("M3 — Đạt").count()) === 1 && (await page.getByTestId("node-htl-1").getByText(/Ôn D\+1/).count()) === 1);
 const mapHeight = await page.evaluate(() => document.documentElement.scrollHeight);
-ok("journey: 50-KU map ≤ 2 screens at 390px with one module open", mapHeight <= 2 * 844, `${mapHeight}px`);
+ok("journey: 48-KU map ≤ 2 screens at 390px with one module open", mapHeight <= 2 * 844, `${mapHeight}px`);
 await page.screenshot({ path: "e2e/out/student/1c-journey-50.png", fullPage: true });
 await page.goto(`${BASE}/student`);
 ok("today: no review card yet", (await page.getByRole("link", { name: "Bắt đầu ôn" }).count()) === 0);

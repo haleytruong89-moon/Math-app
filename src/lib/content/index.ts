@@ -10,7 +10,7 @@ import { CURRICULUM, MODULE_FILES } from "./registry.generated.ts";
 const MODULES = MODULE_FILES.map((f) => ({ module: Module.parse(f.module), units: f.units.map((u) => Unit.parse(u)) }));
 const ROADMAP = Curriculum.parse(CURRICULUM);
 
-/** The 50-KU roadmap (LT1), including KUs that have no content file yet. */
+/** The 48-KU roadmap (LT1, LT17), including KUs that have no content file yet. */
 export function curriculum(): { units: CurriculumUnit[]; modules: CurriculumModule[]; start: string; learnBy: string } {
   return ROADMAP;
 }
