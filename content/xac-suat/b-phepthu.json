@@ -192,44 +192,61 @@
       "id": "b-phepthu-p7",
       "type": "numeric",
       "level": "L3",
-      "prompt": "Hộp có 6 quả bóng ghi số $1$ đến $6$. Lấy ngẫu nhiên cùng lúc 2 quả. Có bao nhiêu kết quả thuận lợi cho biến cố $D$: “Trong 2 quả lấy ra có ít nhất 1 quả ghi số chẵn”?",
-      "source": "68 đề – Đề 59, Bài 1.2b (chuyển thể: 6 quả thay vì 5, hỏi số kết quả)",
+      "prompt": "Túi có 5 viên bi ghi số $1$ đến $5$. Lấy ngẫu nhiên cùng lúc 2 viên. Có bao nhiêu kết quả thuận lợi cho biến cố $D$: “Trong 2 viên lấy ra có ít nhất 1 viên ghi số chẵn”?",
+      "source": "68 đề – Đề 41, Bài 1.3 (chuyển thể: 5 viên bi thay vì 4, hỏi số kết quả thuận lợi cho “ít nhất 1 viên ghi số chẵn”)",
       "hints": [
-        "Đề hỏi số kết quả có ít nhất một quả chẵn.",
+        "Đề hỏi số kết quả có ít nhất một viên ghi số chẵn.",
         "Lấy cùng lúc → cặp không thứ tự. “Ít nhất một” → xét trường hợp ngược lại.",
         "Đếm $n(\\Omega)$, trừ đi số cặp toàn số lẻ."
       ],
-      "answer": "12",
+      "answer": "7",
       "mistakes": [
-        { "answer": "9", "code": "E04", "feedback": "“Ít nhất 1 quả chẵn” gồm cả trường hợp **cả hai** quả đều chẵn." },
-        { "answer": "24", "code": "E07", "feedback": "Lấy cùng lúc thì $\\{1;2\\}$ và $\\{2;1\\}$ là một kết quả." }
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "“Ít nhất 1 viên chẵn” gồm cả trường hợp **cả hai** viên đều chẵn."
+        },
+        {
+          "answer": "14",
+          "code": "E07",
+          "feedback": "Lấy cùng lúc thì $\\{1;2\\}$ và $\\{2;1\\}$ là một kết quả."
+        }
       ],
-      "solution": "$n(\\Omega)=15$. Cặp không có số chẵn chỉ gồm $1;3;5$: $\\{1;3\\},\\{1;5\\},\\{3;5\\}$. Vậy có $15-3=12$ kết quả thuận lợi."
+      "solution": "$n(\\Omega)=10$. Cặp không có số chẵn chỉ gồm $1;3;5$: $\\{1;3\\},\\{1;5\\},\\{3;5\\}$. Vậy có $10-3=7$ kết quả thuận lợi."
     },
     {
       "id": "b-phepthu-p8",
       "type": "mcq",
       "level": "L3",
-      "prompt": "Phần thưởng gồm: quạt điện, bàn học, nồi cơm điện, bộ cốc, máy sấy tóc, gối ôm, đèn bàn, ba lô. Mai được chọn ngẫu nhiên một món. $A$: “Mai chọn được đồ dùng điện”. $A$ là tập con nào của không gian mẫu?",
-      "source": "68 đề – Đề 65, Bài 1.1 (chuyển thể: đổi danh sách phần thưởng)",
+      "prompt": "Một đĩa tròn chia thành 6 phần bằng nhau ghi các số $1; 2; 3; 4; 5; 6$. Quay kim một lần. $A$: “Kim chỉ vào ô ghi số **không** là ước của $6$”. $A$ là tập con nào của không gian mẫu?",
+      "source": "68 đề – Đề 39, Bài 1.1 (chuyển thể: biến cố “không là ước của 6”, chọn tập con)",
       "hints": [
         "Đề hỏi những kết quả nào thuận lợi cho $A$.",
-        "Mỗi phần thưởng là một kết quả; xét từng món.",
-        "Giữ lại món cần cắm điện để dùng, kiểm tra không bỏ sót."
+        "Mỗi ô là một kết quả; tìm các ước của $6$ trước.",
+        "Lấy các số từ $1$ đến $6$ rồi bỏ đi các ước của $6$."
       ],
       "options": [
-        "{bàn học; bộ cốc; gối ôm; ba lô}",
-        "{quạt điện; nồi cơm điện; máy sấy tóc; đèn bàn}",
-        "{quạt điện; nồi cơm điện; máy sấy tóc}",
-        "{quạt điện; bàn học; nồi cơm điện; máy sấy tóc; đèn bàn}"
+        "$\\{1; 2; 3; 6\\}$",
+        "$\\{4; 5\\}$",
+        "$\\{5\\}$",
+        "$\\{4; 5; 6\\}$"
       ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E04", "feedback": "Đây là các món **không** dùng điện, tức biến cố đối của $A$." },
-        "2": { "code": "E10", "feedback": "Con bỏ sót một món dùng điện. Đọc lại từng phần thưởng." },
-        "3": { "code": "E10", "feedback": "Bàn học không dùng điện; đừng nhầm với đèn bàn." }
+        "0": {
+          "code": "E04",
+          "feedback": "Đây là các ước của $6$, tức biến cố đối của $A$."
+        },
+        "2": {
+          "code": "E10",
+          "feedback": "Con bỏ sót một số. Xét lại từng ô từ $1$ đến $6$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$6$ là ước của chính nó, nên không thuộc $A$."
+        }
       },
-      "solution": "Đồ dùng điện: quạt điện, nồi cơm điện, máy sấy tóc, đèn bàn."
+      "solution": "Ước của $6$ trong các số $1$ đến $6$: $1; 2; 3; 6$. Các số còn lại: $A=\\{4; 5\\}$."
     }
   ],
   "exit": [
@@ -308,14 +325,22 @@
       "id": "b-phepthu-x7",
       "type": "numeric",
       "level": "L3",
-      "prompt": "Đội có 5 bạn: 2 nữ (Hà, Lan) và 3 nam (Nam, Phong, Quân). Chọn ngẫu nhiên 2 bạn. Có bao nhiêu kết quả thuận lợi cho biến cố “Trong 2 bạn được chọn có đúng một bạn nữ”?",
-      "source": "68 đề – Đề 65, Bài 1.2 (chuyển thể: 5 bạn, biến cố “đúng một bạn nữ”)",
+      "prompt": "Câu lạc bộ có 5 bạn: 2 nam (An, Bình) và 3 nữ (Chi, Dung, Hoa). Chọn ngẫu nhiên 2 bạn. Có bao nhiêu kết quả thuận lợi cho biến cố “Trong 2 bạn được chọn có đúng một bạn nam”?",
+      "source": "68 đề – Đề 31, Bài 1.2 (chuyển thể: hỏi số kết quả thuận lợi cho “đúng một bạn nam”)",
       "answer": "6",
       "mistakes": [
-        { "answer": "7", "code": "E04", "feedback": "“Đúng một bạn nữ” không gồm cặp Hà – Lan (hai bạn nữ)." },
-        { "answer": "12", "code": "E07", "feedback": "Chọn 2 bạn cùng lúc: cặp Hà – Nam và Nam – Hà là một." }
+        {
+          "answer": "7",
+          "code": "E04",
+          "feedback": "“Đúng một bạn nam” không gồm cặp An – Bình (hai bạn nam)."
+        },
+        {
+          "answer": "12",
+          "code": "E07",
+          "feedback": "Chọn 2 bạn cùng lúc: cặp An – Chi và Chi – An là một."
+        }
       ],
-      "solution": "Mỗi bạn nữ ghép với một trong 3 bạn nam: $2 \\cdot 3=6$ kết quả."
+      "solution": "Mỗi bạn nam ghép với một trong 3 bạn nữ: $2 \\cdot 3=6$ kết quả."
     },
     {
       "id": "b-phepthu-x8",

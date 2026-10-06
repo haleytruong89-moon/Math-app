@@ -76,3 +76,11 @@ for (const dir of fs.readdirSync(root)) {
 test("standard: an E12 mistake must carry a review link (CONTENT_STANDARD §4)", () => {
   assert.match(issues((u) => { delete (u.practice[7] as unknown as { mistakes: { review?: string }[] }).mistakes[0].review; }).join(), /k-p8.*E12.*review/);
 });
+
+test("standard: exams 57–68 are reserved for mock tests — no item may come from them (CONTENT_STANDARD §6)", () => {
+  for (const d of [57, 62, 68])
+    assert.match(issues((u) => { (u.exit[5] as Record<string, unknown>).source = `68 đề – Đề ${d}, Bài 1.2 (chuyển thể)`; }).join(), new RegExp(`k-x6.*Đề ${d}`));
+  assert.match(issues((u) => { (u.practice[6] as Record<string, unknown>).source = "68 đề – Đề 60"; }).join(), /k-p7.*thi thử/);
+  for (const d of [1, 5, 56, 156])
+    assert.deepEqual(issues((u) => { (u.exit[5] as Record<string, unknown>).source = `68 đề – Đề ${d}, Bài 1`; }), []);
+});

@@ -49,8 +49,8 @@ Q17 không dùng ô điền bước cho câu nhiều bước · Q18 giữ câu L
 Q19 "quên lấy căn" = E11 · Q20 giữ thời lượng 40–45′/KU, xem lại tổng giờ sau đợt 2 (25/10); nếu vượt lịch 31/03 thì bớt câu L1.
 
 **Đề 57–68 để dành cho thi thử** (~01/2027, mỗi tháng một đề): nội dung chỉ lấy từ Đề 1–56 — đã ghi `CONTENT_STANDARD.md` §6 và đầu `SOURCE_INDEX.md`.
-⚠️ Đợt 1 đang dùng 4 câu từ đề để dành → **phải thay trước khi merge PR #17**: `b-phepthu-p7` (Đề 59), `b-phepthu-p8` (Đề 65),
-`b-phepthu-x7` (Đề 65), `a-tanso-x6` (Đề 62). Nên thêm kiểm tra trong `standard.ts`: `source` dạng "Đề 57"–"Đề 68" → lỗi.
+✅ Đã thay 4 câu từng lấy từ đề để dành bằng câu cùng dạng, cùng mức L, có gợi ý H1–H3 và mã lỗi: `b-phepthu-p7` Đề 59 → **Đề 41 · 1.3**, `b-phepthu-p8` Đề 65 → **Đề 39 · 1.1**,
+`b-phepthu-x7` Đề 65 → **Đề 31 · 1.2**, `a-tanso-x6` Đề 62 → **Đề 10 · 1.1** (đáp số + đáp án nhiễu tính lại bằng tay). `standard.ts` giờ báo lỗi nếu `source` có "Đề 57"–"Đề 68".
 
 **Bài kiểm tra đầu vào 11/10** (giấy, 90′, gia sư chấm) — tài liệu Claude Docs "Bài kiểm tra đầu vào Toán 9 — 11/10/2026" trong hub.
 Kết quả → bảng chốt theo KU (kiểm tra vượt / học từ đầu / học nhanh + mở khoá tay). Ghi nhận khi soạn: hệ phương trình **không có KU riêng**

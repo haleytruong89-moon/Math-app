@@ -5,6 +5,8 @@ import type { Item, Unit } from "./schema.ts";
 const PRACTICE = { L1: 3, L2: 3, L3: 2 };
 const EXIT_BANK = { L1: 2, L2: 3, L3: 3 };
 const MAX_HINT_WORDS = 25;
+/** CONTENT_STANDARD §6: exams 57–68 of the 68-exam book are kept untouched for mock tests (from ~01/2027). */
+const RESERVED_EXAM = /Đề\s*(5[7-9]|6[0-8])(?!\d)/;
 
 const levels = (items: Item[]) => ({
   L1: items.filter((i) => i.level === "L1").length,
@@ -39,6 +41,9 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
     for (const m of mistakesOf(it))
       if (m.review && !prereqs.has(m.review)) out.push(`${it.id}: review "${m.review}" không phải bài tiên quyết của ${u.id}`);
       else if (m.code === "E12" && !m.review) out.push(`${it.id}: mã E12 (hổng nền) cần review tới bài nền`);
+  for (const it of all.flatMap((x) => [x, ...(x.type === "steps" ? x.steps.map((st) => st.item) : [])]))
+    if (it.source && RESERVED_EXAM.test(it.source))
+      out.push(`${it.id}: source "${it.source}" — ${it.source.match(RESERVED_EXAM)![0]} để dành cho thi thử, chỉ dùng Đề 1–56`);
   const p = levels(u.practice);
   if (u.practice.length !== 8 || !same(p, PRACTICE)) out.push(`${u.id}: luyện tập cần 8 câu ${shape(PRACTICE)} (đang ${shape(p)})`);
   const rec = u.practice.filter((i) => i.recognition);

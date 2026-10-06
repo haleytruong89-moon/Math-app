@@ -306,15 +306,23 @@
       "id": "a-tanso-x6",
       "type": "numeric",
       "level": "L3",
-      "prompt": "Tuổi thọ (giờ) của 30 bóng đèn: $1150$ giờ: $3$ bóng; $1160$: $7$; $1170$: $12$; $1180$: $5$; $1190$: $3$. Số bóng có tuổi thọ từ $1160$ đến $1180$ giờ chiếm bao nhiêu phần trăm?",
-      "source": "68 đề – Đề 62, Bài 1.1b (chuyển thể: đổi số liệu, hỏi trực tiếp tỉ lệ)",
-      "answer": "80",
+      "prompt": "Thời gian chạy $100$ m của $40$ học sinh: $[12;13)$ giây: $6$ bạn; $[13;14)$: $14$; $[14;15)$: $12$; $[15;16)$: $8$. Số học sinh chạy hết **ít hơn** $14$ giây chiếm bao nhiêu phần trăm?",
+      "source": "68 đề – Đề 10, Bài 1.1 (chuyển thể: đổi số liệu, hỏi trực tiếp tỉ lệ)",
+      "answer": "50",
       "unit": "%",
       "mistakes": [
-        { "answer": "40", "code": "E04", "feedback": "“Từ $1160$ đến $1180$” gồm cả $1160$ và $1180$." },
-        { "answer": "24", "code": "E04", "feedback": "$24$ là số bóng. Đề hỏi phần trăm: chia cho cỡ mẫu." }
+        {
+          "answer": "35",
+          "code": "E04",
+          "feedback": "“Ít hơn $14$ giây” gồm cả nhóm $[12;13)$, không chỉ nhóm $[13;14)$."
+        },
+        {
+          "answer": "20",
+          "code": "E04",
+          "feedback": "$20$ là số học sinh. Đề hỏi phần trăm: chia cho cỡ mẫu."
+        }
       ],
-      "solution": "$7+12+5=24$ bóng; $\\dfrac{24}{30}=80\\%$."
+      "solution": "$6+14=20$ học sinh; $\\dfrac{20}{40}=50\\%$."
     },
     {
       "id": "a-tanso-x7",
