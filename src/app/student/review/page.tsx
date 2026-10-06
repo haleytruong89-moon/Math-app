@@ -47,7 +47,10 @@ export default async function ReviewPage() {
   return (
     <ReviewPlayer
       runId={plan.runId ?? randomUUID()}
-      questions={plan.remaining.map((q) => ({ unitId: q.unitId, unitTitle: title.get(q.unitId)!, item: publicItem(q.item) }))}
+      questions={plan.remaining.map((q) => {
+        const f = due.find((u) => u.unit.id === q.unitId)?.unit.figure;
+        return { unitId: q.unitId, unitTitle: title.get(q.unitId)!, item: publicItem(q.item), figure: f && typeof f !== "string" ? f : undefined };
+      })}
       answered={plan.answered.map(({ unitId, correct }) => ({ unitId, correct }))}
       units={due.map((u) => ({ id: u.unit.id, title: u.unit.title, stage: u.review!.stage }))}
       hasFigure={due.some((u) => u.unit.figure === "right-triangle-altitude")}

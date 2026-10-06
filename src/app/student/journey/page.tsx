@@ -9,6 +9,7 @@ import { practiceFirstTries } from "@/lib/learning/rules";
 import { dueLabel } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { masteryOf } from "@/components/student/mastery";
+import { needsTutor } from "@/lib/content/curriculum";
 
 export const metadata: Metadata = { title: "Hành trình của con — App Toán" };
 
@@ -203,6 +204,7 @@ function Node({ u, level, confirmed, today }: { u: UnitState; level: number; con
             M{level} — {m.label}
           </span>
           {confirmed && <span className="font-medium text-good">bố mẹ chốt</span>}
+          {u.entry && needsTutor(u.entry) && <span className="rounded-md bg-warn-soft px-2 py-0.5 text-[11px] font-semibold text-warn" data-testid="tutor-badge">Cần gia sư xác nhận</span>}
         </span>
         {status && <span className="mt-1 block text-[11px] text-muted">{status}</span>}
       </span>

@@ -5,6 +5,7 @@ import { ActionForm, inputClass, labelClass } from "@/components/action-form";
 import { confirmLevel } from "@/app/parent/actions";
 import { loadStudentState } from "@/lib/learning/state";
 import { RULES, vnDate, type AttemptRow, type Level } from "@/lib/learning/rules";
+import { needsTutor } from "@/lib/content/curriculum";
 import {
   displayLevel, isoWeekday, latestByUnit, mismatchFlags, missedSessions, weekSummary,
   type AssignmentRow, type ConfirmationRow, type ProposalRow,
@@ -136,6 +137,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
                 <span className="block font-mono text-[11px] text-muted">
                   {u.mastery.enoughData ? `${u.mastery.answers} câu đã làm` : "chưa đủ dữ liệu"}
                   {shown.confirmed && " · bố mẹ chốt"}
+                  {u.entry && needsTutor(u.entry) && <span className="text-warn" data-testid="tutor-badge"> · cần gia sư xác nhận</span>}
                   {u.review?.dueOn && u.review.dueOn < today && " · ôn quá hạn"}
                 </span>
               </span>

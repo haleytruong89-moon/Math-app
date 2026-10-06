@@ -72,7 +72,7 @@ export type ExitResult =
     };
 
 /** One question of a mixed review session (D14). */
-export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicItem };
+export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicItem; /** LT7: the unit's SVG figure */ figure?: PublicFigure };
 
 export type ReviewSummary =
   | { ok: false; message: string }
