@@ -38,12 +38,23 @@
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
-| Q15 | Gợi ý gửi kèm câu luyện xuống trình duyệt, trình duyệt báo `hint_level` — con có thể "lách" (chỉ ảnh hưởng dữ liệu của con). Cần chặn ở máy chủ (gợi ý tải từng dòng qua server action)? | Chưa — tin trình duyệt; đổi nếu thấy cần |
-| Q16 | Link "Ôn lại" mở bài nền kể cả khi bài đó đang khoá với con (chỉ xem lý thuyết + lời giải mẫu, không ghi gì)? | Có — chỉ đọc, không ảnh hưởng mở khoá |
-| Q17 | Ô điền bước (faded) có dùng câu nhiều bước? | Không — chỉ trắc nghiệm / đáp số như cũ |
-| Q18 | 68 đề **không có** câu hệ thức lượng → 5 câu L3 mỗi bài htl-1/2 là câu soạn mới (`source` ghi rõ "Soạn mới"). Giữ, hay phụ huynh gửi đề Hà Nội có hệ thức lượng để thay? | Giữ câu soạn mới; thay khi có đề |
-| Q19 | "Quên lấy căn" ($AB^2=36$ mà ghi $AB=36$): trước là E10 (ẩu), nay đổi **E11** (chưa hoàn thiện) vì lỗi lặp lại có hệ thống. Đồng ý? | E11 |
-| Q20 | Thời lượng tính theo chuẩn §1 ra **40–45′/KU** (CURRICULUM.md ước 20–40′). Cập nhật lịch theo số mới, hay rút bớt? | Giữ số mới; xem lại tổng giờ khi xong đợt 2 |
+
+---
+
+## 06/10/2026 — Phụ huynh chốt Q15–Q20; Đề 57–68 để dành thi thử; bài kiểm tra đầu vào
+
+**Phụ huynh chốt (06/10):** cả 6 câu theo mặc định —
+Q15 tin `hint_level` trình duyệt báo (chưa chặn ở máy chủ) · Q16 link "Ôn lại" mở được bài đang khoá, chỉ đọc ·
+Q17 không dùng ô điền bước cho câu nhiều bước · Q18 giữ câu L3 htl-1/2 soạn mới (thay khi có đề Hà Nội) ·
+Q19 "quên lấy căn" = E11 · Q20 giữ thời lượng 40–45′/KU, xem lại tổng giờ sau đợt 2 (25/10); nếu vượt lịch 31/03 thì bớt câu L1.
+
+**Đề 57–68 để dành cho thi thử** (~01/2027, mỗi tháng một đề): nội dung chỉ lấy từ Đề 1–56 — đã ghi `CONTENT_STANDARD.md` §6 và đầu `SOURCE_INDEX.md`.
+⚠️ Đợt 1 đang dùng 4 câu từ đề để dành → **phải thay trước khi merge PR #17**: `b-phepthu-p7` (Đề 59), `b-phepthu-p8` (Đề 65),
+`b-phepthu-x7` (Đề 65), `a-tanso-x6` (Đề 62). Nên thêm kiểm tra trong `standard.ts`: `source` dạng "Đề 57"–"Đề 68" → lỗi.
+
+**Bài kiểm tra đầu vào 11/10** (giấy, 90′, gia sư chấm) — tài liệu Claude Docs "Bài kiểm tra đầu vào Toán 9 — 11/10/2026" trong hub.
+Kết quả → bảng chốt theo KU (kiểm tra vượt / học từ đầu / học nhanh + mở khoá tay). Ghi nhận khi soạn: hệ phương trình **không có KU riêng**
+(dùng lại ở g-*); KU c-* là Track A nên không có kiểm tra vượt (LT4) — con đã học căn thức ở trường thì phụ huynh mở khoá tay (LT2).
 
 ---
 
