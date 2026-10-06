@@ -140,3 +140,11 @@ test("weekly goal counts study days in the current week (Mon–Sun), never strea
   ];
   assert.equal(studyDaysThisWeek(rows, "2026-10-08"), 3);
 });
+
+test("AI2: a practice answer given after hint H2+ isn't a right first try for M2 (H1 still counts)", () => {
+  const five = (hint: number) => [1, 2, 3, 4, 5].map((i) => a({ item_id: `h${hint}-${i}`, correct: true, hint_level: i <= 3 ? hint : 0 }));
+  assert.equal(systemMastery({ workedViewed: true, attempts: five(1), reviewsCompleted: false }).level, 2);
+  const m = systemMastery({ workedViewed: true, attempts: five(2), reviewsCompleted: false });
+  assert.equal(m.practiceRate, 0.4);
+  assert.equal(m.level, 1);
+});

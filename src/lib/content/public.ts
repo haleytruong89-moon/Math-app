@@ -1,13 +1,20 @@
 // What the browser is allowed to see: rendered HTML, never answers, solutions or mistake maps.
 // Grading happens on the server (src/app/learn/actions.ts).
 
+export type PublicFigure = { svg: string; alt: string }; // svg passed checkSvg (whitelist, theme colours)
+
 export type PublicItem = {
   id: string;
-  type: "mcq" | "numeric";
+  type: "mcq" | "numeric" | "steps";
   level: "L1" | "L2" | "L3";
   promptHtml: string;
   optionsHtml?: string[];
   unit?: string;
+  /** LT5: the steps of a multi-step item, each one answer box. */
+  steps?: { promptHtml: string; item: PublicItem }[];
+  figure?: PublicFigure;
+  /** AI2: pre-written hints H1–H3 — practice items only (never exit; review gets them after answering). */
+  hintsHtml?: string[];
 };
 
 export type PublicFadedStep = { kind: "text"; html: string } | { kind: "blank"; promptHtml: string; item: PublicItem };
@@ -19,6 +26,7 @@ export type PublicUnit = {
   status: "draft" | "approved";
   estMinutes: number;
   figure?: "right-triangle-altitude";
+  figureSvg?: PublicFigure;
   theoryHtml: string[];
   worked: { problemHtml: string; steps: { html: string; whyHtml?: string }[]; selfExplainHtml: string };
   faded: { problemHtml: string; steps: PublicFadedStep[] };
@@ -40,6 +48,12 @@ export type CheckResult =
       /** The right answer — only when the solution may be shown (faded steps keep their reveal rule). */
       correctHtml?: string;
       errorCode?: string | null;
+      /** LT5: right / wrong per step of a multi-step item. */
+      steps?: boolean[];
+      /** LT16: wrong because of an earlier KU → "Ôn lại: <title>" (read-only recap). */
+      review?: { unitId: string; title: string };
+      /** AI2: review only, after answering. */
+      hintsHtml?: string[];
       /** Practice, real student only: mastery right after this answer (for the level nudge). */
       mastery?: { level: number; practiceCount: number; practiceRight: number; confirmed: boolean };
     };
@@ -50,7 +64,7 @@ export type ExitResult =
       ok: true;
       score: number;
       total: number;
-      items: { id: string; correct: boolean; answer: string; feedbackHtml?: string; solutionHtml: string }[];
+      items: { id: string; correct: boolean; answer: string; answerHtml?: string; feedbackHtml?: string; solutionHtml: string }[];
       /** LT4: set when this was a test-out attempt. */
       testOut?: { passed: boolean };
       /** Set when this result reached M3 and the first review (D+1) was scheduled. */
@@ -58,7 +72,7 @@ export type ExitResult =
     };
 
 /** One question of a mixed review session (D14). */
-export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicItem };
+export type ReviewQuestion = { unitId: string; unitTitle: string; item: PublicItem; /** LT7: the unit's SVG figure */ figure?: PublicFigure };
 
 export type ReviewSummary =
   | { ok: false; message: string }

@@ -17,19 +17,37 @@ const unit = (id, module, order, title) => ({
   practice: [1, 2, 3, 4, 5].map((n) => item(`${id}-p${n}`, n, n > 3 ? "L2" : "L1")),
   exit: id === "fc-1" ? BANK8.map((lvl, i) => item(`${id}-x${i + 1}`, i + 1, lvl)) : [1, 2, 3, 4, 5].map((n) => item(`${id}-x${n}`, n)),
 });
+// fs-1 (S6b): a 4-step practice item (step 2 has a known mistake → E11 + "Ôn lại" fc-1), hints, an SVG figure,
+// a 2-step exit item, and "partial" grading for the tutor badge.
+const SVG = '<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><title>Tam giác thử</title><path d="M10 50 L90 50 L10 10 Z" fill="none" stroke="currentColor" stroke-width="2"/><text x="4" y="58" fill="var(--muted)">A</text></svg>';
+const HINTS = ["Gợi ý một: đề hỏi gì?", "Gợi ý hai: dạng nào?", "Gợi ý ba: dùng công thức nào?"];
+const stepsItem = (id, n, level, mistakeAt) => ({
+  id, type: "steps", level, prompt: `Câu nhiều bước thử (${n} bước).`,
+  steps: Array.from({ length: n }, (_, i) => ({
+    prompt: `Bước thử ${i + 1}: nhập số $${i + 1}$.`,
+    item: { ...item(`${id}-s${i + 1}`, i + 1), ...(i + 1 === mistakeAt ? { mistakes: [{ answer: "99", code: "E11", feedback: "Bước này chưa rút gọn hết.", review: "fc-1" }] } : {}) },
+  })),
+  solution: "Lời giải câu nhiều bước.",
+});
+const fs1 = () => {
+  const u = unit("fs-1", "fx-geo", 3, "Nhiều bước thử");
+  u.practice = [{ ...stepsItem("fs-1-p1", 4, "L2", 2), hints: HINTS, figure: { svg: SVG, alt: "Tam giác thử" } }, ...u.practice.slice(1).map((it) => ({ ...it, hints: HINTS }))];
+  u.exit = [stepsItem("fs-1-x1", 2, "L1", 0), ...u.exit.slice(1)];
+  return u;
+};
 const modules = [
   { id: "fx-alg", title: "Đại số thử", domains: ["C"], units: [["fa-1", "Đại số thử 1"], ["fa-2", "Đại số thử 2"]] },
   { id: "backfill-fx", title: "Bù lỗ hổng thử", domains: ["F1"], units: [["fz-1", "Bù lỗ hổng thử 1"]] },
   { id: "fx-quick", title: "Ghi điểm thử", domains: ["A"], units: [["fb-1", "Ghi điểm thử 1"], ["fb-2", "Ghi điểm thử 2"], ["fb-3", "Ghi điểm thử 3"]] },
-  { id: "fx-geo", title: "Hình học thử", domains: ["J"], units: [["fc-1", "Hình học thử 1"], ["fc-9", "Học thêm thử"]] },
+  { id: "fx-geo", title: "Hình học thử", domains: ["J"], units: [["fc-1", "Hình học thử 1"], ["fc-9", "Học thêm thử"], ["fs-1", "Nhiều bước thử"]] },
 ];
 fs.rmSync(root, { recursive: true, force: true });
 for (const m of modules) {
   fs.mkdirSync(path.join(root, m.id), { recursive: true });
   fs.writeFileSync(path.join(root, m.id, "module.json"), JSON.stringify({ id: m.id, title: m.title, domains: m.domains, units: m.units.map(([u]) => u) }, null, 2) + "\n");
-  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(unit(u, m.id, i + 1, t), null, 2) + "\n"));
+  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : unit(u, m.id, i + 1, t), null, 2) + "\n"));
 }
-const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0") => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading: "full", testOut, batch, priority });
+const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0", grading = "full") => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading, testOut, batch, priority });
 const curriculum = {
   start: "2026-10-12",
   learnBy: "2027-03-31",
@@ -43,6 +61,7 @@ const curriculum = {
     C("fb-3", "fx-quick", "Ghi điểm thử 3", "B", 30, 2, [], true),
     C("fc-1", "fx-geo", "Hình học thử 1", "C", 10, 1),
     C("fc-9", "fx-geo", "Học thêm thử", "C", 5, 1, [], false, "P2"), // LT17: lower seq than fc-1, still waits for it
+    C("fs-1", "fx-geo", "Nhiều bước thử", "C", 20, 1, ["fc-1"], false, "P0", "partial"), // S6b, locked until unlocked by hand
     C("fl-1", "fx-later", "Bài chưa soạn thử", "A", 40, 9, ["fa-2"]),
   ],
 };

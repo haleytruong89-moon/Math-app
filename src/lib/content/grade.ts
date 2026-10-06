@@ -53,10 +53,14 @@ export function sameValue(a: number, b: number): boolean {
   return Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(b));
 }
 
-type Mistake = { code: string; feedback: string };
-type GradableItem =
+type Mistake = { code: string; feedback: string; review?: string };
+type SimpleGradable =
   | { type: "mcq"; correct: number; options: string[]; mistakes?: Record<string, Mistake> }
   | { type: "numeric"; answer: string; mistakes?: (Mistake & { answer: string })[] };
+type GradableItem = SimpleGradable | { type: "steps"; steps: { item: SimpleGradable }[] };
+
+/** LT5: a multi-step answer is the step answers joined by "|". */
+export const STEP_SEPARATOR = "|";
 
 export type GradeResult = {
   /** false when the input could not be read at all (not counted as an attempt). */
@@ -64,16 +68,38 @@ export type GradeResult = {
   correct: boolean;
   errorCode?: string;
   feedback?: string;
+  /** LT16: the KU to revisit for this mistake (author-chosen). */
+  review?: string;
+  /** Multi-step items: right / wrong per step. */
+  steps?: boolean[];
 };
 
-export function gradeItem(item: GradableItem, raw: string): GradeResult {
+/**
+ * `blanksWrong` (exit test, review): an empty / unreadable step counts as a wrong step instead of
+ * making the whole answer unreadable.
+ */
+export function gradeItem(item: GradableItem, raw: string, opts: { blanksWrong?: boolean } = {}): GradeResult {
+  if (item.type === "steps") {
+    const parts = raw.split(STEP_SEPARATOR);
+    if (parts.length !== item.steps.length) return { understood: false, correct: false };
+    const each = item.steps.map((st, i) => gradeSimple(st.item, parts[i]));
+    if (!opts.blanksWrong && each.some((g) => !g.understood)) return { understood: false, correct: false };
+    const ok = each.map((g) => g.understood && g.correct);
+    const first = each.find((g) => !(g.understood && g.correct));
+    if (!first) return { understood: true, correct: true, steps: ok };
+    return { understood: true, correct: false, errorCode: first.errorCode, feedback: first.feedback, review: first.review, steps: ok };
+  }
+  return gradeSimple(item, raw);
+}
+
+function gradeSimple(item: SimpleGradable, raw: string): GradeResult {
   if (item.type === "mcq") {
     if (!/^\d$/.test(raw.trim())) return { understood: false, correct: false };
     const i = Number(raw.trim());
     if (i >= item.options.length) return { understood: false, correct: false };
     if (i === item.correct) return { understood: true, correct: true };
     const m = item.mistakes?.[String(i)];
-    return { understood: true, correct: false, errorCode: m?.code, feedback: m?.feedback };
+    return { understood: true, correct: false, errorCode: m?.code, feedback: m?.feedback, review: m?.review };
   }
   const v = parseAnswer(raw);
   if (v === null) return { understood: false, correct: false };
@@ -83,5 +109,5 @@ export function gradeItem(item: GradableItem, raw: string): GradeResult {
     const w = parseAnswer(x.answer);
     return w !== null && sameValue(v, w);
   });
-  return { understood: true, correct: false, errorCode: m?.code, feedback: m?.feedback };
+  return { understood: true, correct: false, errorCode: m?.code, feedback: m?.feedback, review: m?.review };
 }

@@ -5,10 +5,11 @@ import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { loadStudentState, type RoadmapNode, type UnitState } from "@/lib/learning/state";
 import { RULES, daysBetween } from "@/lib/learning/rules";
-import { practiceFirstTries } from "@/lib/learning/rules";
+import { practiceFirstTries, rightUnaided } from "@/lib/learning/rules";
 import { dueLabel } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { masteryOf } from "@/components/student/mastery";
+import { needsTutor } from "@/lib/content/curriculum";
 
 export const metadata: Metadata = { title: "Hành trình của con — App Toán" };
 
@@ -168,8 +169,8 @@ function Connector({ from, to }: { from: number; to: number }) {
 
 function Node({ u, level, confirmed, today }: { u: UnitState; level: number; confirmed: boolean; today: string }) {
   const m = masteryOf(level);
-  const recent = practiceFirstTries(u.attempts).slice(-RULES.practiceWindow);
-  const right = recent.filter((a) => a.correct).length;
+  const recent = practiceFirstTries(u.history.attempts).slice(-RULES.practiceWindow);
+  const right = recent.filter(rightUnaided).length;
   let status: React.ReactNode = null;
   if (level === 0) status = "Chưa bắt đầu";
   else if (level === 1) status = u.mastery.enoughData ? "Mới bắt đầu" : `Chưa đủ dữ liệu (${u.mastery.answers} câu)`;
@@ -203,6 +204,7 @@ function Node({ u, level, confirmed, today }: { u: UnitState; level: number; con
             M{level} — {m.label}
           </span>
           {confirmed && <span className="font-medium text-good">bố mẹ chốt</span>}
+          {u.entry && needsTutor(u.entry) && <span className="rounded-md bg-warn-soft px-2 py-0.5 text-[11px] font-semibold text-warn" data-testid="tutor-badge">Cần gia sư xác nhận</span>}
         </span>
         {status && <span className="mt-1 block text-[11px] text-muted">{status}</span>}
       </span>

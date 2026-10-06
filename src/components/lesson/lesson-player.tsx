@@ -5,13 +5,14 @@ import { useState } from "react";
 import type { CheckResult, ExitResult, PublicItem, PublicUnit } from "@/lib/content/public";
 import { checkAnswer, completeFaded, markWorkedViewed, submitExit } from "@/app/learn/actions";
 import { parseAnswer } from "@/lib/content/grade";
-import { RightTriangleAltitude } from "./figure";
-import { FORMAT_HINT, ItemInput } from "./item-input";
+import { RightTriangleAltitude, SvgFigure } from "./figure";
+import { FORMAT_HINT, HintBox, ItemInput, isBlank, unreadable as unreadableItem } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
 import { QuestionFeedback } from "@/components/student/question-feedback";
 import { sessionTally } from "@/lib/learning/student-ux";
 import { RULES } from "@/lib/learning/rules";
+import { errorLabel } from "@/lib/content/errors";
 
 // One knowledge unit, in the order fixed by §3.5:
 // worked example (must be viewed in full) → faded example → practice L1→L2 → exit test.
@@ -45,6 +46,8 @@ export function LessonPlayer({
   // which must not swap the result the student is reading for the normal lesson.
   const [testOutMode, setTestOutMode] = useState(testOut);
 
+  // LT16: "Ôn lại" opens the earlier KU read-only; the parent preview opens its own preview page.
+  const recapHref = (id: string) => (mode === "preview" ? `/parent/content/${id}` : `/student/recap/${id}`);
   const unlocked = (s: Stage) => s === "learn" || (s === "faded" ? workedViewed : fadedDone);
 
   if (testOutMode) {
@@ -122,7 +125,7 @@ export function LessonPlayer({
             }}
           />
         )}
-        {stage === "practice" && <PracticeStage unit={unit} onDone={() => setStage("exit")} />}
+        {stage === "practice" && <PracticeStage unit={unit} onDone={() => setStage("exit")} recapHref={recapHref} />}
         {stage === "exit" && <ExitStage unit={unit} backHref={backHref} />}
       </div>
     </div>
@@ -144,6 +147,7 @@ function LearnStage({ unit, alreadyViewed, onDone }: { unit: PublicUnit; already
       <Card>
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-muted">Lý thuyết</h2>
         {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-3" />}
+        {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-3" />}
         <ul className="mt-2 flex flex-col gap-2 leading-relaxed">
           {unit.theoryHtml.map((h, i) => (
             <li key={i}>
@@ -232,6 +236,7 @@ function FadedStage({ unit, alreadyDone, onDone }: { unit: PublicUnit; alreadyDo
   return (
     <div className="flex flex-col gap-4">
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude />}
+        {unit.figureSvg && <SvgFigure figure={unit.figureSvg} />}
       <Card>
         <Rich as="p" html={unit.faded.problemHtml} className="font-semibold" />
         <ol className="mt-3 flex flex-col gap-3">
@@ -280,7 +285,7 @@ function FadedStage({ unit, alreadyDone, onDone }: { unit: PublicUnit; alreadyDo
 
 // ---------------------------------------------------------------------
 
-function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void }) {
+function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: () => void; recapHref: (id: string) => string }) {
   // One graded try per item; items answered wrong come back once at the end.
   const [queue, setQueue] = useState<PublicItem[]>(unit.practice);
   const [pos, setPos] = useState(0);
@@ -290,22 +295,24 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
   const [hint, setHint] = useState<string | null>(null);
   const [results, setResults] = useState<boolean[]>([]); // this session only (U2)
   const [requeued, setRequeued] = useState(false);
+  const [hintLevel, setHintLevel] = useState(0); // AI2: highest hint opened for the current item
   const { pending, error, run } = useAction();
   const startedAtRef = useStartTime();
 
   const finished = pos >= queue.length;
   const item = queue[pos];
 
-  const check = () =>
+  const check = (answer: string = value) =>
     run(async () => {
-      if (!value.trim()) return "Con chưa trả lời.";
+      if (isBlank(item, answer)) return "Con chưa trả lời.";
       setHint(null);
       const r = await checkAnswer({
         unitId: unit.id,
         itemId: item.id,
         mode: "practice",
-        answer: value,
+        answer,
         durationMs: Date.now() - startedAtRef.current,
+        hintLevel,
       });
       if (!r.ok) return r.message;
       if (!r.understood) {
@@ -315,10 +322,12 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
       setResult(r);
       setResults((x) => [...x, r.correct]);
       const first = !(item.id in firstTry);
-      setRequeued(first && !r.correct);
+      // AI2: right after hint H2+ isn't "right first time" and comes back at the end like a wrong one.
+      const unaided = r.correct && hintLevel < 2;
+      setRequeued(first && !unaided);
       if (first) {
-        setFirstTry((f) => ({ ...f, [item.id]: r.correct }));
-        if (!r.correct) setQueue((q) => [...q, item]);
+        setFirstTry((f) => ({ ...f, [item.id]: unaided }));
+        if (!unaided) setQueue((q) => [...q, item]);
       }
     });
 
@@ -326,6 +335,7 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
     setPos(pos + 1);
     setValue("");
     setResult(null);
+    setHintLevel(0);
     startedAtRef.current = Date.now();
   };
 
@@ -356,8 +366,18 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
         <span>{item.level === "L1" ? "Cơ bản" : item.level === "L2" ? "Vận dụng" : "Nâng cao"}</span>
       </div>
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
+      {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-2 max-w-[220px]" />}
+      {item.figure && <SvgFigure figure={item.figure} className="my-2" />}
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
-      <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
+      {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
+      {item.type === "steps" && !result ? (
+        <StepsPractice key={`${item.id}-${pos}`} unitId={unit.id} item={item} recapHref={recapHref} pending={pending} onComplete={(answer) => {
+            setValue(answer); // keep her step answers on screen under the result
+            check(answer);
+          }} />
+      ) : (
+        <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
+      )}
       {result ? (
         <QuestionFeedback
           result={result}
@@ -367,11 +387,14 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
           requeued={requeued}
           nextLabel="Câu tiếp theo"
           onNext={next}
+          recapHref={recapHref}
         />
       ) : (
-        <PrimaryButton className="mt-4 w-full" disabled={pending} onClick={check}>
-          {pending ? "Đang chấm…" : "Kiểm tra"}
-        </PrimaryButton>
+        item.type !== "steps" && (
+          <PrimaryButton className="mt-4 w-full" disabled={pending} onClick={() => check()}>
+            {pending ? "Đang chấm…" : "Kiểm tra"}
+          </PrimaryButton>
+        )
       )}
       <ErrorLine text={hint ?? error} />
     </Card>
@@ -379,6 +402,105 @@ function PracticeStage({ unit, onDone }: { unit: PublicUnit; onDone: () => void 
 }
 
 // ---------------------------------------------------------------------
+
+/**
+ * LT5, practice: a multi-step item one step at a time. A wrong step shows its feedback (and error label)
+ * and the right value, then the student carries on; at the end the whole item is graded once and recorded.
+ */
+function StepsPractice({
+  unitId,
+  item,
+  recapHref,
+  pending: submitting,
+  onComplete,
+}: {
+  unitId: string;
+  item: PublicItem;
+  recapHref: (id: string) => string;
+  pending: boolean;
+  onComplete: (answer: string) => void;
+}) {
+  const steps = item.steps!;
+  const [k, setK] = useState(0);
+  const [parts, setParts] = useState<string[]>(steps.map(() => ""));
+  const [stepResults, setStepResults] = useState<(Extract<CheckResult, { understood: true }> | null)[]>(steps.map(() => null));
+  const [hint, setHint] = useState<string | null>(null);
+  const { pending, error, run } = useAction();
+  const startedAtRef = useStartTime();
+  const current = stepResults[k];
+
+  const checkStep = () =>
+    run(async () => {
+      if (!parts[k].trim()) return "Con chưa trả lời bước này.";
+      setHint(null);
+      const r = await checkAnswer({ unitId, itemId: item.id, mode: "practice", answer: parts[k], step: k, durationMs: Date.now() - startedAtRef.current });
+      if (!r.ok) return r.message;
+      if (!r.understood) {
+        setHint(FORMAT_HINT);
+        return;
+      }
+      setStepResults((x) => x.map((y, i) => (i === k ? r : y)));
+    });
+
+  return (
+    <ol className="mt-3 flex flex-col gap-3" data-testid="steps-practice">
+      {steps.slice(0, k + 1).map((st, i) => {
+        const r = stepResults[i];
+        return (
+          <li key={st.item.id} className="rounded-lg border border-border p-3" data-testid={`step-${i + 1}`}>
+            <p className="font-mono text-[11px] text-muted">
+              Bước {i + 1}/{steps.length}
+            </p>
+            <Rich as="div" html={st.promptHtml} className="mt-1 leading-relaxed" />
+            <ItemInput
+              item={st.item}
+              value={parts[i]}
+              onChange={(v) => setParts((x) => x.map((y, j) => (j === i ? v.replaceAll("|", "") : y)))}
+              disabled={!!r || pending}
+              onEnter={() => i === k && !r && checkStep()}
+            />
+            {r && (
+              <div className={`mt-2 rounded-lg px-3 py-2 text-sm ${r.correct ? "bg-good-soft text-good" : "bg-warn-soft text-warn"}`} data-testid="step-feedback" data-correct={r.correct}>
+                {r.correct ? (
+                  "✓ Đúng"
+                ) : (
+                  <>
+                    <b>{errorLabel(r.errorCode) ?? "Chưa đúng"}</b>
+                    {r.feedbackHtml && <Rich as="p" html={r.feedbackHtml} className="mt-0.5" />}
+                    {r.correctHtml && (
+                      <p className="mt-0.5">
+                        Giá trị đúng của bước này: <Rich html={r.correctHtml} /> — dùng nó để làm tiếp.
+                      </p>
+                    )}
+                    {r.review && (
+                      <a href={recapHref(r.review.unitId)} target="_blank" rel="noopener" className="mt-1 block font-semibold underline" data-testid="review-link">
+                        📖 Ôn lại: {r.review.title} ↗
+                      </a>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+          </li>
+        );
+      })}
+      {!current ? (
+        <PrimaryButton className="w-full" disabled={pending} onClick={checkStep}>
+          {pending ? "Đang chấm…" : "Kiểm tra bước này"}
+        </PrimaryButton>
+      ) : k < steps.length - 1 ? (
+        <PrimaryButton className="w-full" onClick={() => setK(k + 1)}>
+          Bước tiếp theo →
+        </PrimaryButton>
+      ) : (
+        <PrimaryButton className="w-full" disabled={submitting} onClick={() => onComplete(parts.join("|"))}>
+          {submitting ? "Đang chấm…" : "Hoàn thành câu"}
+        </PrimaryButton>
+      )}
+      <ErrorLine text={hint ?? error} />
+    </ol>
+  );
+}
 
 function ExitStage({
   unit,
@@ -399,11 +521,9 @@ function ExitStage({
   const { pending, error, run } = useAction();
   const startedAtRef = useStartTime();
 
-  const unanswered = exit.filter((i) => !answers[i.id]?.trim()).length;
+  const unanswered = exit.filter((i) => isBlank(i, answers[i.id] ?? "")).length;
   // Format check only (no answers in the browser): don't let a typo cost a test point.
-  const unreadable = exit.flatMap((it, i) =>
-    it.type === "numeric" && answers[it.id]?.trim() && parseAnswer(answers[it.id]) === null ? [i + 1] : [],
-  );
+  const unreadable = exit.flatMap((it, i) => (unreadableItem(it, answers[it.id] ?? "", parseAnswer) ? [i + 1] : []));
 
   const submit = () =>
     run(async () => {
@@ -445,7 +565,9 @@ function ExitStage({
               <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
               <p className="mt-2 text-sm">
                 Con trả lời:{" "}
-                {it.type === "mcq" && r.answer !== "" ? (
+                {r.answerHtml ? (
+                  <Rich html={r.answerHtml} />
+                ) : it.type === "mcq" && r.answer !== "" ? (
                   <Rich html={it.optionsHtml![Number(r.answer)] ?? r.answer} />
                 ) : (
                   <b className="font-mono">{r.answer || "(bỏ trống)"}</b>
@@ -479,11 +601,13 @@ function ExitStage({
         </p>
       )}
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
+        {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="max-w-[220px]" />}
       {exit.map((it, i) => (
         <Card key={it.id}>
           <p className="font-mono text-xs text-muted" data-item={it.id}>
             Câu {i + 1}
           </p>
+          {it.figure && <SvgFigure figure={it.figure} className="my-2" />}
           <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
           <ItemInput item={it} value={answers[it.id] ?? ""} onChange={(v) => setAnswers((a) => ({ ...a, [it.id]: v }))} disabled={pending} />
         </Card>

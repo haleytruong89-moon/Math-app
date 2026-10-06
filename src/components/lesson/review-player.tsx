@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import type { CheckResult, ReviewQuestion, ReviewSummary } from "@/lib/content/public";
 import { checkReview, finishReview } from "@/app/learn/actions";
-import { RightTriangleAltitude } from "./figure";
-import { FORMAT_HINT, ItemInput } from "./item-input";
+import { RightTriangleAltitude, SvgFigure } from "./figure";
+import { FORMAT_HINT, ItemInput, isBlank } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, PrimaryButton, useAction, useStartTime } from "./parts";
 import { QuestionFeedback } from "@/components/student/question-feedback";
@@ -58,7 +58,7 @@ export function ReviewPlayer({
 
   const check = () =>
     run(async () => {
-      if (!value.trim()) return "Con chưa trả lời.";
+      if (isBlank(q.item, value)) return "Con chưa trả lời.";
       setHint(null);
       const r = await checkReview({ runId, unitId: q.unitId, itemId: q.item.id, answer: value, durationMs: Date.now() - startedAtRef.current });
       if (!r.ok) return r.message;
@@ -179,6 +179,8 @@ export function ReviewPlayer({
           <span className="truncate pl-3">{q.unitTitle}</span>
         </div>
         {hasFigure && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
+        {q.figure && <SvgFigure figure={q.figure} className="my-2 max-w-[220px]" />}
+        {q.item.figure && <SvgFigure figure={q.item.figure} className="my-2" />}
         <Rich as="div" html={q.item.promptHtml} className="mt-2 leading-relaxed" />
         <ItemInput key={`${q.item.id}-${pos}`} item={q.item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
         {result ? (

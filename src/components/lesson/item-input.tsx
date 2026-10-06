@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { PublicItem } from "@/lib/content/public";
 import { Rich } from "./rich";
 
@@ -19,6 +19,8 @@ export function ItemInput({
   onEnter?: () => void;
 }) {
   const ref = useRef<HTMLInputElement>(null);
+
+  if (item.type === "steps") return <StepsInput item={item} value={value} onChange={onChange} disabled={disabled} />;
 
   if (item.type === "mcq") {
     return (
@@ -94,6 +96,85 @@ export function ItemInput({
           ))}
         </span>
       )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------
+// LT5: a multi-step item answered at once (exit test, review). Value = step answers joined by "|".
+
+const SEP = "|";
+export const stepParts = (item: PublicItem, value: string) => {
+  const n = item.steps?.length ?? 0;
+  const parts = value.split(SEP);
+  return Array.from({ length: n }, (_, i) => parts[i] ?? "");
+};
+
+/** Empty answer (for a multi-step item: any empty step). */
+export function isBlank(item: PublicItem, value: string): boolean {
+  return item.type === "steps" ? stepParts(item, value).some((p) => !p.trim()) : !value.trim();
+}
+
+/** Numeric boxes that can't be read (format check only — the grading happens on the server). */
+export function unreadable(item: PublicItem, value: string, parse: (s: string) => number | null): boolean {
+  if (item.type === "steps") return item.steps!.some((st, i) => unreadable(st.item, stepParts(item, value)[i], parse));
+  return item.type === "numeric" && !!value.trim() && parse(value) === null;
+}
+
+function StepsInput({ item, value, onChange, disabled }: { item: PublicItem; value: string; onChange: (v: string) => void; disabled?: boolean }) {
+  const parts = stepParts(item, value);
+  return (
+    <ol className="mt-3 flex flex-col gap-3" data-testid="steps-input">
+      {item.steps!.map((st, i) => (
+        <li key={st.item.id} className="rounded-lg border border-border p-3">
+          <p className="font-mono text-[11px] text-muted">Bước {i + 1}</p>
+          <Rich as="div" html={st.promptHtml} className="mt-1 leading-relaxed" />
+          <ItemInput
+            item={st.item}
+            value={parts[i]}
+            disabled={disabled}
+            onChange={(v) => onChange(parts.map((p, j) => (j === i ? v.replaceAll(SEP, "") : p)).join(SEP))}
+          />
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/**
+ * AI2: pre-written hints, opened one at a time (H1 goal → H2 recognise → H3 tool). `onLevel` reports the
+ * highest one opened; from H2 on, a right answer doesn't count as right first time.
+ */
+export function HintBox({ hintsHtml, onLevel, disabled }: { hintsHtml: string[]; onLevel?: (n: number) => void; disabled?: boolean }) {
+  const [shown, setShown] = useState(0);
+  const NAMES = ["Mục tiêu", "Nhận dạng", "Công cụ"];
+  return (
+    <div className="mt-3" data-testid="hints">
+      {shown > 0 && (
+        <ol className="flex flex-col gap-1.5">
+          {hintsHtml.slice(0, shown).map((h, i) => (
+            <li key={i} className="rounded-lg border border-border bg-accent-soft px-3 py-2 text-sm" data-testid={`hint-${i + 1}`}>
+              <span className="font-mono text-[11px] font-bold text-accent">
+                H{i + 1} · {NAMES[i]}
+              </span>
+              <Rich as="div" html={h} className="mt-0.5" />
+            </li>
+          ))}
+        </ol>
+      )}
+      {shown < hintsHtml.length && !disabled && (
+        <button
+          type="button"
+          onClick={() => {
+            setShown(shown + 1);
+            onLevel?.(shown + 1);
+          }}
+          className="mt-2 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm font-semibold"
+        >
+          {shown === 0 ? "💡 Gợi ý" : "Gợi ý tiếp"}
+        </button>
+      )}
+      {shown >= 2 && !disabled && <p className="mt-1 text-xs text-muted">Đã xem gợi ý H2: câu này sẽ quay lại cuối bài để con tự làm lại.</p>}
     </div>
   );
 }

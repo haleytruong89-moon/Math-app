@@ -27,6 +27,7 @@ export function hintRevealsAnswer(hint: string, answer: string): boolean {
 }
 
 function mistakesOf(it: Item): { code: string; review?: string }[] {
+  if (it.type === "steps") return it.steps.flatMap((st) => mistakesOf(st.item));
   return it.type === "mcq" ? Object.values(it.mistakes ?? {}) : (it.mistakes ?? []);
 }
 
@@ -52,7 +53,8 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
     }
     it.hints.forEach((h, i) => {
       if (h.split(/\s+/).filter(Boolean).length > MAX_HINT_WORDS) out.push(`${it.id}: gợi ý H${i + 1} quá 25 chữ`);
-      if (it.type === "numeric" && hintRevealsAnswer(h, it.answer)) out.push(`${it.id}: gợi ý H${i + 1} chứa đáp số`);
+      const answers = it.type === "numeric" ? [it.answer] : it.type === "steps" ? it.steps.flatMap((st) => (st.item.type === "numeric" ? [st.item.answer] : [])).slice(-1) : [];
+      if (answers.some((a) => hintRevealsAnswer(h, a))) out.push(`${it.id}: gợi ý H${i + 1} chứa đáp số`);
     });
   }
 

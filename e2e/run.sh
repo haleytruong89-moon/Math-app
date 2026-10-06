@@ -30,5 +30,6 @@ run parent 3104 e2e/overview-flow.mjs; e=$?
 node scripts/content-index.mjs --fixtures
 run student 3105 e2e/curriculum-flow.mjs; f=$?
 run parent 3106 e2e/curriculum-parent-flow.mjs; g=$?
+run student 3107 e2e/items-flow.mjs; h=$?
 node scripts/content-index.mjs
-exit $(( a || b || c || d || e || f || g ))
+exit $(( a || b || c || d || e || f || g || h ))

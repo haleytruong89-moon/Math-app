@@ -109,9 +109,9 @@ Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
 | Thay đổi | Lát |
 |---|---|
 | `level` thêm **L3**; trường tuỳ chọn `source` (câu), `recognition` (câu), `review` (đáp án sai), `hints` (3 dòng, câu luyện); test kiểm phân bổ cấp | ✅ S6a+ (PR `p1-slice-6a2`) |
-| Nút "Gợi ý" H1→H3 khi luyện tập, ghi `hint_level` (migration 0010) | S6b |
+| Nút "Gợi ý" H1→H3 khi luyện tập, ghi `hint_level` (migration 0010) | ✅ S6b (PR `p1-slice-6b`) |
 | Kho kiểm tra 8 câu, mỗi lượt rút 5 theo cấp, ưu tiên câu chưa gặp; máy chủ kiểm lượt nộp đúng bộ đã rút | ✅ S6a+ (PR `p1-slice-6a2`) |
-| Hiện link "Ôn lại: …" trong phản hồi sai | S6b |
+| Hiện link "Ôn lại: …" trong phản hồi sai | ✅ S6b (PR `p1-slice-6b`) |
 
 ## 9. Chuẩn hoá htl-1, htl-2 (đợt 1)
 

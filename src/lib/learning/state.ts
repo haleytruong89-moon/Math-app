@@ -51,7 +51,7 @@ async function allAttempts(supabase: SupabaseClient, studentId: string) {
   for (let from = 0; from < 50 * PAGE; from += PAGE) { // 50 000 answers ≈ years of use; never loop forever
     const r = await supabase
       .from("attempts")
-      .select("unit_id, item_id, mode, correct, error_code, exit_run, created_at")
+      .select("unit_id, item_id, mode, correct, error_code, exit_run, created_at, hint_level")
       .eq("student_id", studentId)
       .order("created_at", { ascending: true })
       .order("id", { ascending: true })
