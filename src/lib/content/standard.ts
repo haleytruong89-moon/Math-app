@@ -2,9 +2,6 @@
 // Pure module so `node --test` can load it.
 import type { Item, Unit } from "./schema.ts";
 
-/** Approved before the standard; normalised in batch 1 (CONTENT_STANDARD §9) — then remove them here. */
-export const STANDARD_EXEMPT = new Set(["htl-1", "htl-2"]);
-
 const PRACTICE = { L1: 3, L2: 3, L3: 2 };
 const EXIT_BANK = { L1: 2, L2: 3, L3: 3 };
 const MAX_HINT_WORDS = 25;
@@ -40,9 +37,7 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
   for (const it of all)
     for (const m of mistakesOf(it))
       if (m.review && !prereqs.has(m.review)) out.push(`${it.id}: review "${m.review}" không phải bài tiên quyết của ${u.id}`);
-      else if (m.code === "E12" && !m.review && !STANDARD_EXEMPT.has(u.id)) out.push(`${it.id}: mã E12 (hổng nền) cần review tới bài nền`);
-  if (STANDARD_EXEMPT.has(u.id)) return out;
-
+      else if (m.code === "E12" && !m.review) out.push(`${it.id}: mã E12 (hổng nền) cần review tới bài nền`);
   const p = levels(u.practice);
   if (u.practice.length !== 8 || !same(p, PRACTICE)) out.push(`${u.id}: luyện tập cần 8 câu ${shape(PRACTICE)} (đang ${shape(p)})`);
   const rec = u.practice.filter((i) => i.recognition);

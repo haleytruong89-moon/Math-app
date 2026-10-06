@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Curriculum, ancestors } from "./curriculum.ts";
 import { Unit } from "./schema.ts";
-import { STANDARD_EXEMPT, checkStandard } from "./standard.ts";
+import { checkStandard } from "./standard.ts";
 
 const H = ["Đề hỏi gì?", "Đây là dạng nào?", "Dùng công thức nào?"];
 const num = (id: string, level: string, n: number, extra: Record<string, unknown> = {}) => ({ id, type: "numeric", level, prompt: `Tính ${n}.`, answer: String(n), solution: `Bằng $${n}$.`, ...extra });
@@ -57,13 +57,6 @@ test("standard: exit bank is 2 L1 + 3 L2 + 3 L3 with at least one sourced item",
 
 test("standard: a 'review' link must point to a prerequisite (direct or indirect)", () => {
   assert.match(issues((u) => { (u.practice[7] as unknown as { mistakes: { review: string }[] }).mistakes[0].review = "other"; }).join(), /review "other"/);
-});
-
-test("standard: exempt units (htl-1/2 until batch 1 normalises them) still need valid review links", () => {
-  const u = Unit.parse({ ...good(), id: "htl-1", practice: good().practice.map((i) => ({ ...i, id: i.id.replace("k-", "htl-1-") })), exit: good().exit.map((i) => ({ ...i, id: i.id.replace("k-", "htl-1-") })), faded: { ...good().faded, steps: [{ text: "Bước." }, { prompt: "Điền.", item: num("htl-1-f1", "L1", 7) }] } });
-  assert.ok(STANDARD_EXEMPT.has("htl-1"));
-  assert.deepEqual(checkStandard({ ...u, practice: u.practice.slice(0, 4) }, new Set()).filter((m) => !m.includes("review")), []);
-  assert.match(checkStandard(u, new Set()).join(), /review "base"/);
 });
 
 // Every real content file.
