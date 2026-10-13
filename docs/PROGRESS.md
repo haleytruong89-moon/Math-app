@@ -53,6 +53,53 @@ Không đổi chức năng app, không SQL.
 
 ---
 
+## 13/10/2026 — Nội dung đợt 2 (nhánh `p1-content-2`)
+
+**Phụ huynh cần làm:** merge PR này (không SQL, không đổi app; nội dung đợt 1 đã ở main qua PR #17). Duyệt trên preview: menu **Nội dung** → 4 bài *Nháp* mới; phiếu duyệt `CONTENT_STANDARD.md` §7 (~20′/KU). Nói "duyệt KU …" thì phiên sau đổi `status`. Hạn duyệt theo H6: 25/10/2026. **Trước khi duyệt còn một việc:** bước 2 của §7 (agent thứ hai giải độc lập, không xem đáp án) **chưa làm** — phiên soạn chỉ có một agent; cần một phiên khác giải 4 bài (tổng 103 ô trả lời, gồm bước con) rồi so với file.
+
+**Đã làm**
+- 4 KU mới ở trạng thái **draft**, mỗi bài đủ khung §1: lý thuyết 6 đoạn (≤ 80 chữ), mẫu có "Kết luận:", bài khuyết 3–4 chỗ trống (KU đại số có chỗ trống "Kết luận" và chỗ trống ở bước quyết định), luyện 8 câu 3 L1 + 3 L2 + 2 L3 có câu nhận dạng (E05) và H1–H3, kho kiểm tra 8 câu 2/3/3.
+- `f1-tgon` (module `backfill-dai-so`, order 3, 50′) và `f1-qd` (order 4, 45′): mỗi bài 2 câu nhiều bước trong luyện tập (p6 L2, p7 L3) và 2 câu trong kho kiểm tra (x5 L2, x7 L3); bước rút gọn luôn có phương án "chưa rút gọn hết" (E11); bước điều kiện xác định có phương án thiếu một giá trị (E14). f1-qd có câu bẫy "giá trị bị loại sau khi rút gọn" (p7 s3, x6).
+- `a-bieudo` (module `thong-ke`, order 2, 40′): 13 hình SVG vẽ lại (cột, cột kép, cột liền nhau ghép nhóm, hình quạt) dùng token màu của theme, mỗi hình có `alt`; xem đủ ở preview sáng/tối.
+- `b-xsuat` (module `xac-suat`, order 2, 40′): xác suất cổ điển một bước, biến cố đối, hỏi ngược số phần tử, xác suất thực nghiệm.
+- `module.json` của 3 module thêm KU mới; chạy `npm run content:index` (registry sinh lại). Không đổi `curriculum.json` (đợt 2 đã ghi sẵn `batch: 2`), không đổi danh sách 48 KU, seq, track, priority.
+
+**Nguồn câu (LT15, chỉ Đề 1–56; không dùng Đề 57–68, `standard.ts` cũng chặn)**
+
+| KU | Câu có `source` | Từ 68 đề (Đề 1–56) | Soạn mới |
+|---|---|---|---|
+| f1-tgon | 5 (L3) | 0 | 5 — SOURCE_INDEX: 0 câu trong 68 đề; dạng "rút gọn có nhân tử đối nhau", "tử cần nhóm hạng tử", "hỏi ngược từ kết quả rút gọn" |
+| f1-qd | 5 (L3) | 0 | 5 — dạng "ĐKXĐ + rút gọn + thay số, bẫy giá trị bị loại", "đếm giá trị thỏa ĐKXĐ", "hỏi ngược sau quy đồng" |
+| a-bieudo | 7 | 7: Đề 21, 22, 23, 29, 38, 49, 56 | 0 (số liệu và hình soạn lại) |
+| b-xsuat | 11 | 11: Đề 10, 11, 14, 21, 25, 26, 29, 34, 42, 50, 53 | 0 |
+
+Đề gốc đọc từ bản PDF trong Project (chữ đọc được, **hình biểu đồ không đọc được**): với a-bieudo, hình và số liệu là soạn lại theo dạng đề, `source` ghi "chuyển thể: … vẽ lại, số liệu soạn lại". Câu b-xsuat, a-bieudo (Đề 49) chuyển thể từ đề đọc được chữ, đổi số liệu; vẫn **chưa đối chiếu lại trang gốc** từng câu.
+
+**Kiểm tra trước khi tới phụ huynh (§7)**
+
+| Bước | Kết quả |
+|---|---|
+| 1. `npm test` | 107/107 qua (có thêm kiểm tra cho 4 bài: schema, 3/3/2, 2/3/3, nhận dạng E05, gợi ý ≤ 25 chữ không lộ đáp số, ≥ 1 câu kiểm tra có nguồn, `review` hợp lệ, SVG hợp lệ). `npm run lint`, `npm run build` qua; `./e2e/run.sh` 175 PASS, 0 FAIL (không phải sửa kỳ vọng e2e) |
+| 2. Giải độc lập | **Chưa làm** (xem trên) |
+| 3. Tính lại nhiễu | Script Python/sympy ngoài repo: mỗi đáp án đúng và mỗi phương án nhiễu dạng biểu thức đọc thẳng từ TeX trong file rồi so với giá trị tính độc lập (mỗi nhiễu = đúng một lỗi đã ghi; nhiễu E11 phải bằng đáp án đúng, nhiễu mã khác phải khác); đáp số và nhiễu dạng số tính lại từ đề (đếm bằng liệt kê, `isprime`), ĐKXĐ bằng `solve`, câu hỏi ngược bằng giải phương trình, đồng nhất thức của lời giải mẫu. Thử cố tình sai 3 chỗ → script bắt đủ. **0 lệch** |
+| 4. Soát sư phạm | Script: lý thuyết ≤ 80 chữ/đoạn, mẫu 3–5 bước kết thúc "Kết luận:", khuyết 3–6 bước ≥ 2 chỗ trống, phản hồi ≤ 2 câu, trắc nghiệm ≥ 2 nhiễu có mã, tự đứng được → 0 vấn đề. Chụp hình a-bieudo bằng Chromium với CSS thật: cột, cột kép, hình quạt, cột liền nhau đều đúng số liệu và dễ đọc. Câu khái niệm không có phép tính (nhận dạng, chọn tập ĐKXĐ, mẫu chung, phát biểu hình quạt) soát tay |
+| 5. Gia sư | Không cần — đợt 2 không có KU mạch C, E, G |
+
+**Để ý khi duyệt**
+- Thời lượng `estMinutes`: f1-tgon 50′, f1-qd 45′ (đúng CURRICULUM), nhưng a-bieudo và b-xsuat để 40′ theo ước tính thật (CURRICULUM ghi 30′; Q20 đã chốt 40–45′/KU).
+- f1-tgon, f1-qd chỉ dùng đa thức/phân thức một biến, **không** có căn (khác f1-hdt/f1-pnt); L3 là dạng soạn mới nên có thể khó hơn đề thật — nếu Nguyên làm quá chậm thì bớt câu L3 hỏi ngược (f1-tgon x6, f1-qd x8).
+- a-bieudo: bài mẫu và bài khuyết chỉ mô tả số liệu bằng chữ (không hình): `figure` ở cấp bài lặp lại ở mọi câu luyện nên không dùng; hình đặt ở từng câu luyện/kiểm tra (xem Q21).
+- b-xsuat x2 (giá trị không thể là xác suất): cả ba đáp án nhiễu là xác suất hợp lệ, phản hồi nói rõ vì sao.
+
+### Câu hỏi mở mới
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q21 | Bài mẫu và bài khuyết của a-bieudo không hiện được biểu đồ (chỉ câu luyện/kiểm tra có `figure`). Có làm thêm cho bài mẫu / khuyết có hình riêng (thay đổi app, lát nhỏ)? | Không — mô tả số liệu bằng chữ, hình ở câu luyện |
+| Q22 | Hình biểu đồ trong 68 đề không trích được từ PDF: a-bieudo dùng hình/số liệu soạn lại theo dạng đề (ghi "vẽ lại, số liệu soạn lại"). Phụ huynh có muốn đối chiếu trang gốc Đề 21, 22, 23, 29, 38, 56 trước khi duyệt? | Không đối chiếu; giữ ghi chú nguồn như hiện tại |
+| Q23 | Bước 2 §7 (giải độc lập) chạy ở phiên nào, trước hay sau khi phụ huynh duyệt? | Trước khi phụ huynh duyệt — một phiên mới chỉ nhận đề, giải 103 ô và so với file |
+
+---
+
 ## 06/10/2026 — Phụ huynh chốt Q15–Q20; Đề 57–68 để dành thi thử; bài kiểm tra đầu vào
 
 **Phụ huynh chốt (06/10):** cả 6 câu theo mặc định —
