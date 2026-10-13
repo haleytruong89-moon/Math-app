@@ -6,6 +6,8 @@
   ],
   "units": [
     "f1-hdt",
-    "f1-pnt"
+    "f1-pnt",
+    "f1-tgon",
+    "f1-qd"
   ]
 }

@@ -1,0 +1,1020 @@
+{
+  "id": "f1-qd",
+  "module": "backfill-dai-so",
+  "order": 4,
+  "title": "Quy đồng & điều kiện xác định",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **thu gọn đa thức & phân thức** — phân tích tử và mẫu thành nhân tử, rút gọn đến tận cùng.",
+    "**Quy tắc:** *điều kiện xác định* (ĐKXĐ) của $\\dfrac{A}{B}$ là $B \\ne 0$; với nhiều phân thức, **mọi** mẫu đều khác $0$. *Quy đồng:* phân tích các mẫu thành nhân tử; mẫu chung gồm mọi nhân tử đã gặp, mỗi nhân tử lấy số mũ lớn nhất; nhân tử và mẫu mỗi phân thức với nhân tử phụ; rồi $\\dfrac{A}{C} \\pm \\dfrac{B}{C}=\\dfrac{A \\pm B}{C}$.",
+    "**Vì sao:** chỉ cộng, trừ được các phân thức cùng mẫu, như $\\dfrac12+\\dfrac13$ phải đưa về mẫu $6$. ĐKXĐ phải lấy từ mẫu **ban đầu**, vì sau khi rút gọn, giá trị bị loại có thể không còn dấu vết.",
+    "**Bẫy hay gặp:** $\\dfrac1x+\\dfrac1y \\ne \\dfrac{2}{x+y}$ (không cộng tử với tử, mẫu với mẫu). Trừ phân thức: $\\dfrac{A}{C}-\\dfrac{B+1}{C}=\\dfrac{A-B-1}{C}$, dấu $-$ đổi dấu cả tử. Phương trình $x^2=9$ cho **hai** giá trị, nên $x^2-9 \\ne 0$ nghĩa là $x \\ne 3$ và $x \\ne -3$.",
+    "**Nhận dạng:** “tìm điều kiện”, “xác định” → chỉ xét mẫu. Cộng, trừ phân thức → quy đồng. Nhân, chia phân thức → rút gọn, **không** quy đồng. Đề cho giá trị $x$ để thay vào → kiểm tra giá trị đó có thỏa ĐKXĐ không.",
+    "**Phiếu quy đồng:** (1) ĐKXĐ từ mọi mẫu; (2) phân tích các mẫu; (3) mẫu chung; (4) nhân tử phụ; (5) cộng hoặc trừ tử, bỏ ngoặc đúng dấu; (6) rút gọn; (7) viết **Kết luận** kèm điều kiện."
+  ],
+  "worked": {
+    "problem": "Thực hiện phép tính rồi rút gọn $A=\\dfrac{x}{x-2}-\\dfrac{4}{x^2-2x}$.",
+    "steps": [
+      {
+        "text": "ĐKXĐ: $x-2 \\ne 0$ và $x^2-2x \\ne 0$. Vì $x^2-2x=x(x-2)$ nên $x \\ne 2$ và $x \\ne 0$.",
+        "why": "Lấy điều kiện từ mọi mẫu, trước khi biến đổi."
+      },
+      {
+        "text": "Mẫu chung: $x^2-2x=x(x-2)$ đã chứa $x-2$, nên mẫu chung là $x(x-2)$.",
+        "why": "Chọn mẫu chung nhỏ nhất để phép tính gọn."
+      },
+      {
+        "text": "Quy đồng và trừ: $A=\\dfrac{x \\cdot x}{x(x-2)}-\\dfrac{4}{x(x-2)}=\\dfrac{x^2-4}{x(x-2)}$.",
+        "why": "Phân thức thứ nhất nhân cả tử và mẫu với nhân tử phụ $x$."
+      },
+      {
+        "text": "Rút gọn: $x^2-4=(x-2)(x+2)$, nên $A=\\dfrac{(x-2)(x+2)}{x(x-2)}=\\dfrac{x+2}{x}$.",
+        "why": "Tử và mẫu còn nhân tử chung $x-2$ nên chưa xong."
+      },
+      {
+        "text": "Kết luận: $A=\\dfrac{x+2}{x}$ với $x \\ne 0$ và $x \\ne 2$.",
+        "why": "Thử $x=1$: $\\dfrac{1}{-1}-\\dfrac{4}{-1}=3$ và $\\dfrac{1+2}{1}=3$."
+      }
+    ],
+    "selfExplain": "Kết quả cuối $\\dfrac{x+2}{x}$ không còn $x-2$ ở mẫu. Vì sao điều kiện $x \\ne 2$ vẫn phải ghi?"
+  },
+  "faded": {
+    "problem": "Thực hiện phép tính $B=\\dfrac{1}{x-1}-\\dfrac{2}{x+1}$.",
+    "steps": [
+      {
+        "prompt": "Tìm điều kiện xác định.",
+        "item": {
+          "id": "f1-qd-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Điều kiện xác định của $B$ là:",
+          "options": [
+            "$x \\ne 1$ và $x \\ne -1$",
+            "$x \\ne 1$",
+            "$x \\ne -1$",
+            "$x \\ne 2$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E14",
+              "feedback": "Con thiếu giá trị $x=-1$ làm mẫu $x+1$ bằng $0$."
+            },
+            "2": {
+              "code": "E14",
+              "feedback": "Con thiếu giá trị $x=1$ làm mẫu $x-1$ bằng $0$."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "$2$ là tử số; điều kiện chỉ xét các mẫu."
+            }
+          },
+          "solution": "$x-1 \\ne 0$ và $x+1 \\ne 0$, tức $x \\ne \\pm 1$."
+        }
+      },
+      {
+        "prompt": "Chọn mẫu chung.",
+        "item": {
+          "id": "f1-qd-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Mẫu chung của $\\dfrac{1}{x-1}$ và $\\dfrac{2}{x+1}$ là:",
+          "options": [
+            "$(x-1)(x+1)$",
+            "$x-1$",
+            "$x+1$",
+            "$(x-1)+(x+1)$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ chưa chứa $x+1$."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ chưa chứa $x-1$."
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
+            }
+          },
+          "solution": "Hai mẫu khác nhau, không có nhân tử chung: mẫu chung là $(x-1)(x+1)$."
+        }
+      },
+      {
+        "text": "Quy đồng: $B=\\dfrac{x+1}{(x-1)(x+1)}-\\dfrac{2(x-1)}{(x-1)(x+1)}=\\dfrac{(x+1)-2(x-1)}{(x-1)(x+1)}$."
+      },
+      {
+        "prompt": "Tính tử.",
+        "item": {
+          "id": "f1-qd-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Tử $(x+1)-2(x-1)$ bằng:",
+          "options": [
+            "$-x+3$",
+            "$-x-1$",
+            "$3x-1$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E02",
+              "feedback": "Con quên đổi dấu hạng tử $-1$: $-2(x-1)=-2x+2$."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Đề là hiệu hai biểu thức nhưng con lại cộng chúng."
+            }
+          },
+          "solution": "$(x+1)-2(x-1)=x+1-2x+2=-x+3$."
+        }
+      },
+      {
+        "text": "Tử $-x+3$ và mẫu $(x-1)(x+1)$ không có nhân tử chung, nên không rút gọn được."
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "f1-qd-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $B=\\dfrac{3-x}{(x-1)(x+1)}$ với $x \\ne \\pm 1$.",
+            "Kết luận: $B=\\dfrac{3-x}{(x-1)(x+1)}$.",
+            "Kết luận: $B=\\dfrac{-x-1}{(x-1)(x+1)}$ với $x \\ne \\pm 1$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Thiếu điều kiện $x \\ne \\pm 1$ trong kết luận."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Con quên đổi dấu hạng tử $-1$ khi bỏ ngoặc ở bước tính tử."
+            }
+          },
+          "solution": "$B=\\dfrac{3-x}{(x-1)(x+1)}$ với $x \\ne \\pm 1$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "f1-qd-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Điều kiện xác định của $\\dfrac{3}{x-5}$ là:",
+      "hints": [
+        "Đề hỏi giá trị $x$ làm phân thức vô nghĩa.",
+        "Phân thức có nghĩa khi nào? Chỉ cần xét phần nào?",
+        "Cho mẫu khác $0$ rồi giải."
+      ],
+      "options": [
+        "$x \\ne 5$",
+        "$x \\ne -5$",
+        "$x \\ne 3$",
+        "$x \\ne 0$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con chuyển vế sai dấu: $x-5=0$ khi $x=5$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "$3$ là tử số; điều kiện chỉ xét mẫu."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Mẫu là $x-5$, không phải $x$."
+        }
+      },
+      "solution": "$x-5 \\ne 0$ nên $x \\ne 5$."
+    },
+    {
+      "id": "f1-qd-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Mẫu chung (nhỏ nhất) của $\\dfrac{1}{x^2-1}$ và $\\dfrac{2}{x-1}$ là:",
+      "hints": [
+        "Cần tìm mẫu chung nhỏ nhất của hai phân thức.",
+        "Phân tích mẫu thành nhân tử; mẫu này có chứa mẫu kia không?",
+        "Phân tích $x^2-1$ rồi so với $x-1$."
+      ],
+      "options": [
+        "$x^2-1$",
+        "$x-1$",
+        "$x+1$",
+        "$(x-1)+(x^2-1)$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ không chia hết cho $x^2-1$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ không chia hết cho $x-1$."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
+        }
+      },
+      "solution": "$x^2-1=(x-1)(x+1)$ đã chia hết cho $x-1$, nên mẫu chung là $x^2-1$."
+    },
+    {
+      "id": "f1-qd-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Muốn tính $\\dfrac{2}{x}+\\dfrac{3}{x+1}$, nên bắt đầu bằng cách nào?",
+      "recognition": true,
+      "hints": [
+        "Đề là phép cộng hai phân thức.",
+        "Hai phân thức này đã cùng mẫu chưa?",
+        "Muốn cộng phân thức cần đưa chúng về dạng nào?"
+      ],
+      "options": [
+        "Tìm điều kiện xác định, rồi quy đồng mẫu",
+        "Nhân chéo hai phân thức",
+        "Bỏ nhân tử chung ở tử và mẫu",
+        "Cộng tử với tử, mẫu với mẫu"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E05",
+          "feedback": "Nhân chéo dùng khi so sánh hay giải phương trình, không dùng để cộng phân thức."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề là phép cộng hai phân thức khác mẫu; chưa có nhân tử chung để bỏ."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Không được cộng tử với tử, mẫu với mẫu; phải đưa về cùng mẫu trước."
+        }
+      },
+      "solution": "Cộng hai phân thức khác mẫu → tìm ĐKXĐ ($x \\ne 0$, $x \\ne -1$), quy đồng, rồi cộng tử."
+    },
+    {
+      "id": "f1-qd-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Tính $\\dfrac{2}{x}+\\dfrac{3}{x+1}$ (với $x \\ne 0$, $x \\ne -1$).",
+      "hints": [
+        "Cần cộng hai phân thức khác mẫu.",
+        "Mẫu chung là gì? Mỗi phân thức cần nhân thêm nhân tử phụ nào?",
+        "Quy đồng mẫu thành $x(x+1)$, cộng tử rồi gộp đồng dạng."
+      ],
+      "options": [
+        "$\\dfrac{5x+2}{x(x+1)}$",
+        "$\\dfrac{5}{2x+1}$",
+        "$\\dfrac{5x+1}{x(x+1)}$",
+        "$\\dfrac{2(x+1)+3x}{x(x+1)}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Cộng hai phân thức không phải cộng tử với tử, mẫu với mẫu."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Nhân tử phụ $x+1$ phải nhân với cả hai hạng tử khi nhân với $2$: $2(x+1)=2x+2$."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn: tử còn các hạng tử đồng dạng chưa gộp."
+        }
+      },
+      "solution": "$\\dfrac{2}{x}+\\dfrac{3}{x+1}=\\dfrac{2(x+1)+3x}{x(x+1)}=\\dfrac{5x+2}{x(x+1)}$."
+    },
+    {
+      "id": "f1-qd-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Điều kiện xác định của $A=\\dfrac{x}{x-1}+\\dfrac{2}{x^2-9}$ là:",
+      "hints": [
+        "Cần mọi giá trị $x$ làm một mẫu bằng $0$.",
+        "Phân thức này có mấy mẫu? Mẫu nào cho hai giá trị?",
+        "Giải riêng từng mẫu $\\ne 0$, rồi gộp các điều kiện lại."
+      ],
+      "options": [
+        "$x \\ne 1$ và $x \\ne \\pm 3$",
+        "$x \\ne 1$",
+        "$x \\ne 1$ và $x \\ne 3$",
+        "$x \\ne 1$ và $x \\ne 9$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E14",
+          "feedback": "Con quên mẫu thứ hai $x^2-9$; mọi mẫu đều phải khác $0$."
+        },
+        "2": {
+          "code": "E14",
+          "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Từ $x^2 \\ne 9$ không suy ra $x \\ne 9$; phải lấy căn bậc hai cả hai dấu."
+        }
+      },
+      "solution": "$x-1 \\ne 0$ và $x^2-9 \\ne 0$, tức $x \\ne 1$ và $x \\ne \\pm 3$."
+    },
+    {
+      "id": "f1-qd-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $B=\\dfrac{1}{x-1}+\\dfrac{x-3}{x^2-1}$. Thực hiện phép tính và rút gọn $B$.",
+      "hints": [
+        "Cần cộng hai phân thức rồi rút gọn kết quả.",
+        "Phân tích mẫu thứ hai để tìm mẫu chung, rồi quy đồng.",
+        "Sau khi cộng tử, phân tích tử và rút gọn nhân tử chung."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-qd-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $B$ là:",
+            "options": [
+              "$x \\ne 1$ và $x \\ne -1$",
+              "$x \\ne 1$",
+              "$x \\ne -1$",
+              "$x \\ne 1$ và $x \\ne 3$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-1$ làm mẫu $x^2-1$ bằng $0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=1$ làm mẫu $x-1$ bằng $0$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "$x-3$ là tử số; điều kiện chỉ xét các mẫu."
+              }
+            },
+            "solution": "$x-1 \\ne 0$ và $x^2-1 \\ne 0$, tức $x \\ne \\pm 1$."
+          }
+        },
+        {
+          "prompt": "Chọn mẫu chung.",
+          "item": {
+            "id": "f1-qd-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung của hai phân thức là:",
+            "options": [
+              "$x^2-1$",
+              "$x-1$",
+              "$x+1$",
+              "$(x-1)+(x^2-1)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ không chia hết cho $x^2-1$."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ không chia hết cho $x-1$."
+              },
+              "3": {
+                "code": "E03",
+                "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
+              }
+            },
+            "solution": "$x^2-1=(x-1)(x+1)$ chia hết cho $x-1$, nên mẫu chung là $x^2-1$."
+          }
+        },
+        {
+          "prompt": "Cộng tử.",
+          "item": {
+            "id": "f1-qd-p6-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Quy đồng, tử là $(x+1)+(x-3)$. Tử bằng:",
+            "options": [
+              "$2x-2$",
+              "$x-2$",
+              "$2x-4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $x+1$ của phân thức đầu nên tử chỉ còn $1+(x-3)$."
+              },
+              "2": {
+                "code": "E01",
+                "feedback": "Con tính nhầm hạng tử tự do khi cộng $1$ và $-3$."
+              }
+            },
+            "solution": "$(x+1)+(x-3)=2x-2$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "f1-qd-p6-s4",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Biết $x^2-1=(x-1)(x+1)$. Rút gọn $B$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2}{x+1}$",
+              "$\\dfrac{2x-2}{x^2-1}$",
+              "$\\dfrac{2}{x-1}$",
+              "$\\dfrac{x-2}{x^2-1}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử $2x-2=2(x-1)$ còn nhân tử chung với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung $x-1$, mẫu còn lại là $x+1$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $x+1$ của phân thức đầu, nên tử sai."
+              }
+            },
+            "solution": "$B=\\dfrac{(x+1)+(x-3)}{x^2-1}=\\dfrac{2(x-1)}{(x-1)(x+1)}=\\dfrac{2}{x+1}$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{(x+1)+(x-3)}{x^2-1}=\\dfrac{2x-2}{x^2-1}=\\dfrac{2(x-1)}{(x-1)(x+1)}=\\dfrac{2}{x+1}$ với $x \\ne \\pm 1$."
+    },
+    {
+      "id": "f1-qd-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{1}{x-2}-\\dfrac{4}{x^2-4}$. Rút gọn $P$ rồi tính $P$ tại $x=3$.",
+      "source": "Soạn mới (dạng Bài 2 đề thi: ĐKXĐ, rút gọn, thay số; bẫy giá trị $x$ bị loại)",
+      "hints": [
+        "Cần rút gọn $P$ rồi xét giá trị của $x$.",
+        "Mẫu chung là gì? Rút gọn xong có còn nhân tử chung không?",
+        "Tìm ĐKXĐ từ mẫu ban đầu, quy đồng, trừ, rút gọn rồi thay số."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-qd-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Điều kiện xác định của $P$ là:",
+            "options": [
+              "$x \\ne \\pm 2$",
+              "$x \\ne 2$",
+              "$x \\ne -2$",
+              "$x \\ne 4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-2$: phương trình $x^2=4$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=2$ làm mẫu $x-2$ bằng $0$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 4$ không suy ra $x \\ne 4$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$x-2 \\ne 0$ và $x^2-4 \\ne 0$, tức $x \\ne \\pm 2$."
+          }
+        },
+        {
+          "prompt": "Quy đồng, trừ và rút gọn.",
+          "item": {
+            "id": "f1-qd-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Biết $x^2-4=(x-2)(x+2)$. Rút gọn $P$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{1}{x+2}$",
+              "$\\dfrac{x-2}{x^2-4}$",
+              "$\\dfrac{1}{x-2}$",
+              "$\\dfrac{-3}{x^2-4}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử $x-2$ còn nhân tử chung với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung $x-2$, mẫu còn lại là $x+2$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $x+2$ của phân thức đầu, nên tử sai."
+              }
+            },
+            "solution": "$P=\\dfrac{(x+2)-4}{(x-2)(x+2)}=\\dfrac{x-2}{(x-2)(x+2)}=\\dfrac{1}{x+2}$."
+          }
+        },
+        {
+          "prompt": "Kiểm tra giá trị.",
+          "item": {
+            "id": "f1-qd-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Có thể thay $x=2$ vào $P$ không?",
+            "options": [
+              "Không, vì $x=2$ làm mẫu ban đầu bằng $0$",
+              "Có, vì kết quả rút gọn $\\dfrac{1}{x+2}$ vẫn xác định tại $x=2$",
+              "Có, vì tử $x-2$ bằng $0$ nên $P=0$",
+              "Không, vì $x=2$ làm tử bằng $0$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "ĐKXĐ phải xét theo mẫu ban đầu, trước khi rút gọn."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Tử bằng $0$ chỉ cho giá trị $0$ khi mẫu khác $0$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Điều làm biểu thức vô nghĩa là mẫu bằng $0$, không phải tử."
+              }
+            },
+            "solution": "$x=2$ vi phạm ĐKXĐ ($x-2=0$), nên không thay vào $P$ được."
+          }
+        },
+        {
+          "prompt": "Thay $x=3$.",
+          "item": {
+            "id": "f1-qd-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $P$ tại $x=3$.",
+            "answer": "1/5",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung, mẫu còn lại là $x+2$, không phải $x-2$."
+              },
+              {
+                "answer": "-3/5",
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ khi quy đồng, nên tử sai."
+              }
+            ],
+            "solution": "$P=\\dfrac{1}{3+2}=\\dfrac15$."
+          }
+        }
+      ],
+      "solution": "$P=\\dfrac{(x+2)-4}{(x-2)(x+2)}=\\dfrac{1}{x+2}$ với $x \\ne \\pm 2$. Giá trị $x=2$ bị loại; tại $x=3$: $\\dfrac15$."
+    },
+    {
+      "id": "f1-qd-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Có bao nhiêu số nguyên $x$ với $-3 \\le x \\le 3$ thỏa mãn điều kiện xác định của $\\dfrac{1}{x}+\\dfrac{2}{x^2-1}$?",
+      "source": "Soạn mới (dạng hỏi ngược / đếm giá trị thỏa ĐKXĐ)",
+      "hints": [
+        "Cần đếm số nguyên thỏa điều kiện xác định trong đoạn đã cho.",
+        "Tìm mọi giá trị làm một mẫu bằng $0$, rồi loại khỏi danh sách.",
+        "Hai mẫu cho tổng cộng bao nhiêu giá trị bị loại?"
+      ],
+      "answer": "4",
+      "mistakes": [
+        {
+          "answer": "5",
+          "code": "E14",
+          "feedback": "Con thiếu một giá trị làm mẫu $x^2-1$ bằng $0$: phương trình này có hai nghiệm."
+        },
+        {
+          "answer": "6",
+          "code": "E14",
+          "feedback": "Con chỉ loại giá trị làm mẫu $x$ bằng $0$, quên mẫu $x^2-1$."
+        }
+      ],
+      "solution": "Mẫu $x \\ne 0$ và $x^2-1 \\ne 0$ loại ba giá trị $0$, $1$, $-1$; còn $7-3=4$ số: $-3,-2,2,3$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "f1-qd-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Điều kiện xác định của $\\dfrac{x}{2x-6}$ là:",
+      "options": [
+        "$x \\ne 3$",
+        "$x \\ne -3$",
+        "$x \\ne 6$",
+        "$x \\ne 0$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con chuyển vế sai dấu: $2x-6=0$ khi $2x=6$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con quên chia cho $2$ sau khi chuyển vế."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$x$ ở tử không bị loại; điều kiện chỉ xét mẫu."
+        }
+      },
+      "solution": "$2x-6 \\ne 0$ nên $x \\ne 3$."
+    },
+    {
+      "id": "f1-qd-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Mẫu chung (nhỏ nhất) của $\\dfrac{1}{x-1}$ và $\\dfrac{3}{x+1}$ là:",
+      "options": [
+        "$(x-1)(x+1)$",
+        "$x-1$",
+        "$x+1$",
+        "$(x-1)+(x+1)$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ chưa chứa $x+1$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ chưa chứa $x-1$."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
+        }
+      },
+      "solution": "Hai mẫu khác nhau, không có nhân tử chung: mẫu chung là $(x-1)(x+1)$."
+    },
+    {
+      "id": "f1-qd-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Tính $\\dfrac{3}{x-1}-\\dfrac{2}{x+1}$ (với $x \\ne \\pm 1$).",
+      "options": [
+        "$\\dfrac{x+5}{x^2-1}$",
+        "$\\dfrac{x+1}{x^2-1}$",
+        "$\\dfrac{1}{x^2-1}$",
+        "$\\dfrac{3(x+1)-2(x-1)}{(x-1)(x+1)}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con quên đổi dấu hạng tử $-1$: $-2(x-1)=-2x+2$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con quên nhân tử phụ khi quy đồng, nên chỉ trừ $3-2$ ở tử."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn: tử còn các hạng tử đồng dạng chưa gộp."
+        }
+      },
+      "solution": "$\\dfrac{3(x+1)-2(x-1)}{(x-1)(x+1)}=\\dfrac{3x+3-2x+2}{x^2-1}=\\dfrac{x+5}{x^2-1}$."
+    },
+    {
+      "id": "f1-qd-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Điều kiện xác định của $\\dfrac{1}{x^2-x}+\\dfrac{2}{x+3}$ là:",
+      "options": [
+        "$x \\ne 0$, $x \\ne 1$ và $x \\ne -3$",
+        "$x \\ne 1$ và $x \\ne -3$",
+        "$x \\ne 0$ và $x \\ne -3$",
+        "$x \\ne 0$, $x \\ne 1$ và $x \\ne 3$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E14",
+          "feedback": "Con thiếu giá trị $x=0$: $x^2-x=x(x-1)$ bằng $0$ ở hai giá trị."
+        },
+        "2": {
+          "code": "E14",
+          "feedback": "Con thiếu giá trị $x=1$: $x^2-x=x(x-1)$ bằng $0$ ở hai giá trị."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Mẫu $x+3$ bằng $0$ khi $x=-3$, không phải $x=3$."
+        }
+      },
+      "solution": "$x^2-x=x(x-1) \\ne 0$ nên $x \\ne 0$, $x \\ne 1$; $x+3 \\ne 0$ nên $x \\ne -3$."
+    },
+    {
+      "id": "f1-qd-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $S=\\dfrac{3}{x}-\\dfrac{x+6}{x^2+2x}$. Rút gọn $S$ rồi tính $S$ tại $x=2$.",
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-qd-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $S$ là:",
+            "options": [
+              "$x \\ne 0$ và $x \\ne -2$",
+              "$x \\ne 0$",
+              "$x \\ne -2$",
+              "$x \\ne 0$ và $x \\ne 2$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-2$: $x^2+2x=x(x+2)$ bằng $0$ ở hai giá trị."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=0$ làm mẫu $x$ bằng $0$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Mẫu $x+2$ bằng $0$ khi $x=-2$, không phải $x=2$."
+              }
+            },
+            "solution": "$x \\ne 0$ và $x^2+2x=x(x+2) \\ne 0$, tức $x \\ne 0$ và $x \\ne -2$."
+          }
+        },
+        {
+          "prompt": "Tính tử.",
+          "item": {
+            "id": "f1-qd-x5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung là $x(x+2)$. Tử $3(x+2)-(x+6)$ bằng:",
+            "options": [
+              "$2x$",
+              "$2x+12$",
+              "$4x+12$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu hạng tử $6$ khi bỏ ngoặc có dấu $-$ phía trước."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Đề là hiệu hai phân thức nhưng con lại cộng tử."
+              }
+            },
+            "solution": "$3(x+2)-(x+6)=3x+6-x-6=2x$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "f1-qd-x5-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Rút gọn $S=\\dfrac{2x}{x(x+2)}$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2}{x+2}$",
+              "$\\dfrac{2x}{x(x+2)}$",
+              "$\\dfrac{2x}{x+2}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: còn nhân tử chung $x$ ở tử và mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con bỏ nhân tử $x$ ở mẫu nhưng quên bỏ ở tử."
+              }
+            },
+            "solution": "$S=\\dfrac{2x}{x(x+2)}=\\dfrac{2}{x+2}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=2$.",
+          "item": {
+            "id": "f1-qd-x5-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $S$ tại $x=2$.",
+            "answer": "1/2",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E02",
+                "feedback": "Con bỏ nhân tử $x$ ở mẫu nhưng quên bỏ ở tử."
+              },
+              {
+                "answer": "2",
+                "code": "E02",
+                "feedback": "Con quên đổi dấu hạng tử $6$ ở bước tính tử."
+              }
+            ],
+            "solution": "$S=\\dfrac{2}{2+2}=\\dfrac12$."
+          }
+        }
+      ],
+      "solution": "$S=\\dfrac{3(x+2)-(x+6)}{x(x+2)}=\\dfrac{2x}{x(x+2)}=\\dfrac{2}{x+2}$ với $x \\ne 0$, $x \\ne -2$. Tại $x=2$: $\\dfrac12$."
+    },
+    {
+      "id": "f1-qd-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Bạn An rút gọn $\\dfrac{x^2-1}{x-1}$ thành $x+1$ rồi kết luận: “biểu thức xác định với mọi $x$”. Nhận xét nào đúng?",
+      "source": "Soạn mới (bẫy ĐKXĐ sau khi rút gọn, thường gặp ở Bài 2 đề thi)",
+      "options": [
+        "Sai: điều kiện xác định lấy từ mẫu ban đầu, nên phải có $x \\ne 1$",
+        "Đúng: sau khi rút gọn không còn mẫu",
+        "Sai: phải có $x \\ne -1$",
+        "Sai: phải có $x \\ne \\pm 1$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Điều kiện xác định tính trước khi rút gọn, từ biểu thức đề cho."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Mẫu ban đầu là $x-1$, bằng $0$ khi $x=1$ chứ không phải $x=-1$."
+        },
+        "3": {
+          "code": "E14",
+          "feedback": "Mẫu ban đầu chỉ là $x-1$; $x^2-1$ là tử số, không xét."
+        }
+      },
+      "solution": "Mẫu ban đầu $x-1 \\ne 0$ nên $x \\ne 1$. Sau khi rút gọn, giá trị $x=1$ vẫn bị loại."
+    },
+    {
+      "id": "f1-qd-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $Q=\\dfrac{3}{x-3}-\\dfrac{18}{x^2-9}$. Rút gọn $Q$ rồi tính $Q$ tại $x=1$.",
+      "source": "Soạn mới (dạng Bài 2 đề thi: quy đồng, rút gọn, thay số)",
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-qd-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Điều kiện xác định của $Q$ là:",
+            "options": [
+              "$x \\ne \\pm 3$",
+              "$x \\ne 3$",
+              "$x \\ne -3$",
+              "$x \\ne 9$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=3$ làm mẫu $x-3$ bằng $0$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 9$ không suy ra $x \\ne 9$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$x-3 \\ne 0$ và $x^2-9 \\ne 0$, tức $x \\ne \\pm 3$."
+          }
+        },
+        {
+          "prompt": "Tính tử.",
+          "item": {
+            "id": "f1-qd-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Mẫu chung là $x^2-9$. Tử $3(x+3)-18$ bằng:",
+            "options": [
+              "$3x-9$",
+              "$3x-15$",
+              "$-15$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con nhân sai: $3(x+3)=3x+9$, nhân $3$ với cả hai hạng tử."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $x+3$ của phân thức đầu, nên tử chỉ còn $3-18$."
+              }
+            },
+            "solution": "$3(x+3)-18=3x+9-18=3x-9$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "f1-qd-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $Q=\\dfrac{3x-9}{x^2-9}$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{3}{x+3}$",
+              "$\\dfrac{3x-9}{x^2-9}$",
+              "$\\dfrac{3}{x-3}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử $3x-9=3(x-3)$ còn nhân tử chung với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung $x-3$, mẫu còn lại là $x+3$."
+              }
+            },
+            "solution": "$Q=\\dfrac{3(x-3)}{(x-3)(x+3)}=\\dfrac{3}{x+3}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=1$.",
+          "item": {
+            "id": "f1-qd-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $Q$ tại $x=1$.",
+            "answer": "3/4",
+            "mistakes": [
+              {
+                "answer": "-3/2",
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung, mẫu còn lại là $x+3$, không phải $x-3$."
+              },
+              {
+                "answer": "3/2",
+                "code": "E02",
+                "feedback": "Con nhân sai nhân tử phụ ở bước quy đồng: $3(x+3)=3x+9$."
+              }
+            ],
+            "solution": "$Q=\\dfrac{3}{1+3}=\\dfrac34$."
+          }
+        }
+      ],
+      "solution": "$Q=\\dfrac{3(x+3)-18}{x^2-9}=\\dfrac{3(x-3)}{(x-3)(x+3)}=\\dfrac{3}{x+3}$ với $x \\ne \\pm 3$. Tại $x=1$: $\\dfrac34$."
+    },
+    {
+      "id": "f1-qd-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Biết $\\dfrac{3}{x-2}+\\dfrac{a}{x+2}=\\dfrac{5x+2}{x^2-4}$ với mọi $x \\ne \\pm 2$. Tìm $a$.",
+      "source": "Soạn mới (dạng hỏi ngược sau khi quy đồng)",
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "5",
+          "code": "E04",
+          "feedback": "Con lấy $a$ bằng hệ số của $5x$, quên phần đóng góp của phân thức thứ nhất."
+        },
+        {
+          "answer": "-2",
+          "code": "E02",
+          "feedback": "Con nhân sai dấu: $a(x-2)=ax-2a$."
+        }
+      ],
+      "solution": "Quy đồng: $3(x+2)+a(x-2)=(3+a)x+6-2a$. So hệ số của $x$: $3+a=5$, suy ra $a=2$ (kiểm tra: $6-4=2$)."
+    }
+  ]
+}
