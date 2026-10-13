@@ -5,6 +5,8 @@
 
 ## Trạng thái nhanh
 
+> Việc kế tiếp cho từng phiên: `docs/HANDOFF.md`.
+
 | Lát | Nhánh | Trạng thái |
 |---|---|---|
 | S1 — Nội dung + luồng học 1 KU | `p1-slice-1` | ✅ Merged 02/10 (PR #1), SQL 0003 đã chạy |
@@ -16,16 +18,17 @@
 | Docs — Content brief + checklist pilot | `p1-content-brief` | ✅ Merged 05/10 (PR #8) |
 | Docs — Student UX handover | `p1-student-ux-handover` | ✖ Đóng (PR #6) — nội dung có trong PR #10 và PR #12 |
 | Docs — Lộ trình 50 KU, chuẩn nội dung, thiết kế AI (LT1–LT16, AI1–AI4) | `p1-curriculum-design` | ✅ Merged 05/10 (PR #10) |
-| Docs + data — chỉ mục 68 đề, LT17–LT18 (48 KU), `curriculum.json` cập nhật | `p1-curriculum-design` | 🟡 PR #14 — không SQL |
+| Docs + data — chỉ mục 68 đề, LT17–LT18 (48 KU), `curriculum.json` cập nhật | `p1-curriculum-design` | ✅ Merged 06/10 (PR #14) |
 | S6a — Bộ lộ trình (curriculum engine), SQL 0009 | `p1-slice-6a` | ✅ Merged 05/10 (PR #13, gộp luôn #11, #12), SQL 0009 đã chạy |
-| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5 (CONTENT_STANDARD §8); trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | 🟡 PR #15 (xếp chồng trên #14) — không SQL; merge **#14 → #15** |
+| S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5; trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | ✅ Merged 06/10 (PR #15), không SQL |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
-| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | 🟡 PR mới (xếp chồng trên #15) — **chờ SQL 0010**, merge sau #14 → #15 |
+| S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
-| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | 🟡 PR mới (xếp chồng trên #15) — không SQL; merge **#14 → #15 → PR này**; phụ huynh duyệt trước 18/10 |
-| Nội dung đợt 2–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
-| S7 — Pilot (tài khoản Nguyên) | — | 🟡 Tài khoản con + gia sư, D18, sao lưu xong 05/10; học chính thức từ **12/10/2026** |
+| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); 4 KU còn **draft — phụ huynh duyệt trước 18/10** |
+| Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2` | 🟡 PR #18 (13/10) — không SQL; bản nháp, chờ giải độc lập + phụ huynh duyệt trước 25/10 |
+| Nội dung đợt 3–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
 ### Câu hỏi đang mở
@@ -36,8 +39,17 @@
 | Q10 | Gia sư được ghi buổi dạy trễ tối đa bao nhiêu ngày? | 7 ngày (theo P1_PLAN) |
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
-| Q13 | Hướng dẫn 06/10 nói "main đã có PR #14" nhưng #14 **chưa merge** (còn mở). LT17 cần `curriculum.json` 48 KU của #14 | Đã xếp chồng PR #15 lên nhánh của #14 (không merge gì vào main) → merge **#14 trước, rồi #15** |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 13/10/2026 — Dọn tài liệu + quy tắc phối hợp hai phiên (nhánh `p1-hygiene`)
+
+Không đổi chức năng app, không SQL.
+- Sửa bảng "Trạng thái nhanh" (đang ghi #14–#17 là chờ merge trong khi đã merge 06/10); bỏ Q13 (đã xử lý: #14 merged).
+- `docs/HANDOFF.md` (việc kế tiếp cho từng phiên); `CLAUDE.md` thêm mục "Working with two Claude surfaces".
+- Test mới `src/lib/content/repo-rules.test.ts`: số migration không trùng; số câu hỏi mở `Q#` trong PROGRESS không trùng.
+- `docs/HUB_PJ_APP_TOAN_UPDATE.md`: bản nháp cập nhật `PJ_APP_TOAN.md` ở hub (LT1–LT18, AI1–AI4) — **phụ huynh commit vào hub**.
 
 ---
 
