@@ -1,0 +1,1005 @@
+{
+  "id": "f1-tgon",
+  "module": "backfill-dai-so",
+  "order": 3,
+  "title": "Thu gọn đa thức & phân thức",
+  "status": "draft",
+  "estMinutes": 50,
+  "theory": [
+    "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ** và bài **phân tích đa thức thành nhân tử** (đặt nhân tử chung, hằng đẳng thức, nhóm hạng tử).",
+    "**Quy tắc:** *thu gọn đa thức* là phá ngoặc, khai triển, rồi gộp các hạng tử đồng dạng; có dấu $-$ trước ngoặc thì đổi dấu **mọi** hạng tử trong ngoặc. *Rút gọn phân thức* là phân tích tử và mẫu thành nhân tử rồi bỏ nhân tử chung: $\\dfrac{AC}{BC}=\\dfrac{A}{B}$ với $C \\ne 0$. Mẫu thức luôn khác $0$.",
+    "**Vì sao:** gộp đồng dạng giống phép $3$ quả táo $+\\ 2$ quả táo. Chia cả tử và mẫu cho cùng một nhân tử khác $0$ không đổi giá trị phân thức, giống như $\\dfrac{6}{9}=\\dfrac{2}{3}$.",
+    "**Bẫy hay gặp:** $-(x-3)=-x+3$ (không phải $-x-3$). Chỉ bỏ được **nhân tử** chung, không bỏ hạng tử: $\\dfrac{x+2}{2} \\ne x+1$. Dừng giữa chừng: $\\dfrac{2x+4}{2}$ chưa xong, phải đến $x+2$. Hai nhân tử đối nhau cho kết quả $-1$: $\\dfrac{x-2}{2-x}=-1$.",
+    "**Nhận dạng:** đề có ngoặc, tích hoặc dấu $-$ trước ngoặc → khai triển rồi gộp. Đề là phân thức → phân tích tử và mẫu **trước**, rồi mới bỏ nhân tử chung. **Không** rút gọn được khi tử hoặc mẫu là tổng không phân tích được, ví dụ $\\dfrac{x+1}{x+2}$ đã tối giản.",
+    "**Phiếu rút gọn phân thức:** (1) điều kiện mẫu $\\ne 0$; (2) phân tích tử; (3) phân tích mẫu; (4) bỏ nhân tử chung, chú ý đổi dấu; (5) kiểm tra tử và mẫu còn nhân tử chung không; (6) viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Rút gọn $A=\\dfrac{x^2-2x}{x^2-4}$ (với $x \\ne 2$, $x \\ne -2$).",
+    "steps": [
+      {
+        "text": "Điều kiện: $x^2-4 \\ne 0$, tức $x \\ne 2$ và $x \\ne -2$ (đề đã cho).",
+        "why": "Phân thức chỉ có nghĩa khi mẫu khác $0$; ghi điều kiện trước khi biến đổi."
+      },
+      {
+        "text": "Phân tích tử: $x^2-2x=x(x-2)$.",
+        "why": "Đặt nhân tử chung $x$."
+      },
+      {
+        "text": "Phân tích mẫu: $x^2-4=(x-2)(x+2)$.",
+        "why": "Hai bình phương trừ nhau → hằng đẳng thức hiệu hai bình phương."
+      },
+      {
+        "text": "Bỏ nhân tử chung $x-2$ (khác $0$): $A=\\dfrac{x(x-2)}{(x-2)(x+2)}=\\dfrac{x}{x+2}$. Tử và mẫu không còn nhân tử chung.",
+        "why": "Kiểm tra tận cùng: $x$ và $x+2$ không có nhân tử chung."
+      },
+      {
+        "text": "Kết luận: $A=\\dfrac{x}{x+2}$ với $x \\ne 2$, $x \\ne -2$.",
+        "why": "Thử $x=1$: $\\dfrac{1-2}{1-4}=\\dfrac13$ và $\\dfrac{1}{1+2}=\\dfrac13$."
+      }
+    ],
+    "selfExplain": "Nếu dừng ở $\\dfrac{x(x-2)}{(x-2)(x+2)}$ thì bài còn thiếu gì? Vì sao không được “gạch” $x^2$ ở tử và mẫu?"
+  },
+  "faded": {
+    "problem": "Thu gọn $B=(x+2)^2-(x-1)(x+3)$.",
+    "steps": [
+      {
+        "text": "Khai triển: $(x+2)^2=x^2+4x+4$ và $(x-1)(x+3)=x^2+2x-3$."
+      },
+      {
+        "prompt": "Bỏ ngoặc có dấu $-$ phía trước.",
+        "item": {
+          "id": "f1-tgon-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Bỏ ngoặc có dấu $-$ phía trước: $-(x^2+2x-3)=$",
+          "options": [
+            "$-x^2-2x+3$",
+            "$-x^2-2x-3$",
+            "$-x^2+2x-3$",
+            "$x^2+2x-3$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E02",
+              "feedback": "Con quên đổi dấu hạng tử cuối: dấu $-$ trước ngoặc đổi dấu mọi hạng tử."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Con chỉ đổi dấu hạng tử đầu: dấu $-$ trước ngoặc đổi dấu mọi hạng tử."
+            },
+            "3": {
+              "code": "E02",
+              "feedback": "Con bỏ mất dấu $-$ trước ngoặc, nên không có hạng tử nào đổi dấu."
+            }
+          },
+          "solution": "$-(x^2+2x-3)=-x^2-2x+3$."
+        }
+      },
+      {
+        "text": "Gộp: $B=x^2+4x+4-x^2-2x+3$."
+      },
+      {
+        "prompt": "Gộp các hạng tử đồng dạng.",
+        "item": {
+          "id": "f1-tgon-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Sau khi gộp, hạng tử tự do (số không chứa $x$) của $B$ là:",
+          "answer": "7",
+          "mistakes": [
+            {
+              "answer": "1",
+              "code": "E02",
+              "feedback": "Dấu $-$ trước ngoặc làm $-3$ thành $+3$ rồi mới gộp với số hạng còn lại."
+            },
+            {
+              "answer": "4",
+              "code": "E10",
+              "feedback": "Con bỏ sót hạng tử $+3$ khi gộp."
+            }
+          ],
+          "solution": "Hạng tử tự do: $4+3=7$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "f1-tgon-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $B=2x+7$.",
+            "Kết luận: $B=x^2+4x+4-x^2-2x+3$.",
+            "Kết luận: $B=2x+1$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Chưa thu gọn: còn các hạng tử đồng dạng chưa gộp."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Con quên đổi dấu hạng tử $-3$ ở bước bỏ ngoặc."
+            }
+          },
+          "solution": "$B=2x+7$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "f1-tgon-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Thu gọn $(2x^2+3x)-(x^2-4x)$.",
+      "hints": [
+        "Cần thu gọn hiệu của hai đa thức.",
+        "Có dấu $-$ trước ngoặc → phá ngoặc thế nào?",
+        "Đổi dấu mọi hạng tử trong ngoặc, rồi gộp các hạng tử đồng dạng."
+      ],
+      "options": [
+        "$x^2+7x$",
+        "$x^2-x$",
+        "$3x^2-x$",
+        "$2x^2+3x-x^2+4x$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con quên đổi dấu hạng tử $-4x$: dấu $-$ trước ngoặc đổi dấu mọi hạng tử."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Đề là hiệu hai đa thức nhưng con lại cộng chúng."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn: các hạng tử đồng dạng chưa được gộp."
+        }
+      },
+      "solution": "$(2x^2+3x)-(x^2-4x)=2x^2+3x-x^2+4x=x^2+7x$."
+    },
+    {
+      "id": "f1-tgon-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Rút gọn $\\dfrac{4x+8}{4}$ đến tận cùng.",
+      "hints": [
+        "Cần rút gọn phân thức đến tận cùng.",
+        "Tử có nhân tử chung với mẫu không?",
+        "Đặt nhân tử chung ở tử rồi bỏ nhân tử chung với mẫu."
+      ],
+      "options": [
+        "$x+2$",
+        "$x+8$",
+        "$4x+2$",
+        "$\\dfrac{4(x+2)}{4}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con chỉ chia hạng tử đầu cho $4$; phải chia cả hai hạng tử."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con chỉ chia hạng tử sau cho $4$; phải chia cả hai hạng tử."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa đến tận cùng: còn nhân tử chung $4$ ở tử và mẫu."
+        }
+      },
+      "solution": "$\\dfrac{4x+8}{4}=\\dfrac{4(x+2)}{4}=x+2$."
+    },
+    {
+      "id": "f1-tgon-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Muốn rút gọn $\\dfrac{x^2-9}{x^2+3x}$, bước đầu tiên hợp lý là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách làm, chưa cần tính ra.",
+        "Rút gọn phân thức cần thấy nhân tử chung ở tử và mẫu.",
+        "Muốn thấy nhân tử chung, phải viết tử và mẫu thành dạng nào?"
+      ],
+      "options": [
+        "Phân tích tử và mẫu thành nhân tử",
+        "Gạch $x^2$ ở tử và mẫu",
+        "Quy đồng mẫu thức rồi cộng tử",
+        "Nhân chéo tử với mẫu"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E05",
+          "feedback": "Chỉ bỏ được nhân tử chung, không bỏ hạng tử; phải phân tích thành tích trước."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Quy đồng dùng khi cộng, trừ phân thức; ở đây chỉ có một phân thức."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Nhân chéo dùng khi so sánh hay giải phương trình, không dùng để rút gọn."
+        }
+      },
+      "solution": "$x^2-9=(x-3)(x+3)$ và $x^2+3x=x(x+3)$; phân tích xong mới thấy nhân tử chung $x+3$."
+    },
+    {
+      "id": "f1-tgon-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Thu gọn $(x+3)^2-(x-3)^2$.",
+      "hints": [
+        "Cần thu gọn hiệu hai bình phương của hai nhị thức.",
+        "Hai bình phương → khai triển bằng hằng đẳng thức nào?",
+        "Khai triển từng bình phương, bỏ ngoặc đổi dấu, rồi gộp đồng dạng."
+      ],
+      "options": [
+        "$12x$",
+        "$0$",
+        "$18$",
+        "$12x+18$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu hạng tử giữa: $(a \\pm b)^2=a^2 \\pm 2ab+b^2$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con quên đổi dấu hạng tử $-6x$ khi bỏ ngoặc có dấu $-$ phía trước."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con nhớ sai $(a-b)^2$: hạng tử cuối luôn là $+b^2$."
+        }
+      },
+      "solution": "$(x+3)^2-(x-3)^2=x^2+6x+9-x^2+6x-9=12x$."
+    },
+    {
+      "id": "f1-tgon-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\dfrac{x^2-x}{x^2-1}$ (với $x \\ne \\pm 1$).",
+      "hints": [
+        "Cần rút gọn phân thức đến tận cùng.",
+        "Tử có nhân tử chung; mẫu là hiệu hai bình phương.",
+        "Phân tích tử và mẫu thành nhân tử, rồi bỏ nhân tử chung."
+      ],
+      "options": [
+        "$\\dfrac{x}{x+1}$",
+        "$\\dfrac{x(x-1)}{(x-1)(x+1)}$",
+        "$\\dfrac{x}{x-1}$",
+        "$\\dfrac{1}{x+1}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x-1$."
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Mẫu $x^2-1$ là hiệu hai bình phương $(x-1)(x+1)$, không phải $(x-1)^2$.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $x$ ở tử: $x^2-x=x(x-1)$."
+        }
+      },
+      "solution": "$\\dfrac{x^2-x}{x^2-1}=\\dfrac{x(x-1)}{(x-1)(x+1)}=\\dfrac{x}{x+1}$."
+    },
+    {
+      "id": "f1-tgon-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $B=\\dfrac{x^2-6x+9}{x^2-9}$. Rút gọn $B$ rồi tính $B$ tại $x=5$.",
+      "hints": [
+        "Cần rút gọn $B$ trước, rồi mới thay $x=5$.",
+        "Tử và mẫu đều phân tích được bằng hằng đẳng thức.",
+        "Tìm điều kiện, phân tích tử và mẫu, bỏ nhân tử chung, rồi thay số."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định của $B$.",
+          "item": {
+            "id": "f1-tgon-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $B$ là:",
+            "options": [
+              "$x \\ne 3$",
+              "$x \\ne 3$ và $x \\ne -3$",
+              "$x \\ne -3$",
+              "$x \\ne 9$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=3$: phương trình $x^2=9$ có hai nghiệm."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 9$ không suy ra $x \\ne 9$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$x^2-9 \\ne 0 \\Leftrightarrow x \\ne \\pm 3$."
+          }
+        },
+        {
+          "prompt": "Phân tích tử.",
+          "item": {
+            "id": "f1-tgon-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Tử $x^2-6x+9$ phân tích thành:",
+            "options": [
+              "$(x+3)^2$",
+              "$(x-3)^2$",
+              "$(x-3)(x+3)$",
+              "$(x-9)^2$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E12",
+                "feedback": "Hạng tử giữa mang dấu $-$ nên là bình phương một hiệu.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E12",
+                "feedback": "$(x-3)(x+3)=x^2-9$, không có hạng tử $-6x$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E12",
+                "feedback": "$B$ là số có $B^2=9$, không phải $9$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$x^2-6x+9=(x-3)^2$."
+          }
+        },
+        {
+          "prompt": "Bỏ nhân tử chung.",
+          "item": {
+            "id": "f1-tgon-p6-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Biết $x^2-9=(x-3)(x+3)$. Sau khi bỏ nhân tử chung, $B$ bằng:",
+            "options": [
+              "$\\dfrac{(x-3)^2}{(x-3)(x+3)}$",
+              "$\\dfrac{x-3}{x+3}$",
+              "$\\dfrac{x+3}{x-3}$",
+              "$\\dfrac{-6x+9}{-9}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x-3$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con đặt ngược tử và mẫu sau khi bỏ nhân tử chung."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
+              }
+            },
+            "solution": "$B=\\dfrac{(x-3)^2}{(x-3)(x+3)}=\\dfrac{x-3}{x+3}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=5$.",
+          "item": {
+            "id": "f1-tgon-p6-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $B$ tại $x=5$.",
+            "answer": "1/4",
+            "mistakes": [
+              {
+                "answer": "4",
+                "code": "E02",
+                "feedback": "Con đặt ngược tử và mẫu sau khi rút gọn."
+              },
+              {
+                "answer": "7/3",
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung."
+              }
+            ],
+            "solution": "$B=\\dfrac{5-3}{5+3}=\\dfrac14$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{(x-3)^2}{(x-3)(x+3)}=\\dfrac{x-3}{x+3}$ với $x \\ne \\pm 3$. Tại $x=5$: $\\dfrac{2}{8}=\\dfrac14$."
+    },
+    {
+      "id": "f1-tgon-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $C=\\dfrac{x^2-2x}{4-x^2}$. Rút gọn $C$ rồi tính $C$ tại $x=1$.",
+      "source": "Soạn mới (dạng Bài 2 đề thi: rút gọn có hai nhân tử đối nhau, rồi thay số)",
+      "hints": [
+        "Cần rút gọn $C$, chú ý mẫu là $4-x^2$.",
+        "Tử và mẫu phân tích được; hai nhân tử có thể đối nhau.",
+        "Dùng $2-x=-(x-2)$ để bỏ nhân tử chung, rồi thay $x=1$."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-tgon-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Điều kiện xác định của $C$ là:",
+            "options": [
+              "$x \\ne 2$ và $x \\ne -2$",
+              "$x \\ne 2$",
+              "$x \\ne 0$ và $x \\ne 2$",
+              "$x \\ne 4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-2$: phương trình $x^2=4$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Điều kiện chỉ xét mẫu $4-x^2$, không xét tử."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 4$ không suy ra $x \\ne 4$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$4-x^2 \\ne 0 \\Leftrightarrow x \\ne \\pm 2$."
+          }
+        },
+        {
+          "prompt": "Phân tích mẫu.",
+          "item": {
+            "id": "f1-tgon-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phân tích mẫu $4-x^2$ thành nhân tử:",
+            "options": [
+              "$(2-x)(2+x)$",
+              "$(x-2)(x+2)$",
+              "$(2-x)^2$",
+              "$(4-x)(4+x)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Mẫu là $4-x^2$, khác $x^2-4$: hai biểu thức đối nhau."
+              },
+              "2": {
+                "code": "E12",
+                "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E12",
+                "feedback": "$B$ là số có $B^2=4$, không phải $4$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$4-x^2=2^2-x^2=(2-x)(2+x)$."
+          }
+        },
+        {
+          "prompt": "Bỏ nhân tử chung.",
+          "item": {
+            "id": "f1-tgon-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Tử là $x(x-2)$ và $2-x=-(x-2)$. Rút gọn $C$ đến tận cùng:",
+            "options": [
+              "$-\\dfrac{x}{x+2}$",
+              "$\\dfrac{x}{x+2}$",
+              "$\\dfrac{x(x-2)}{(2-x)(2+x)}$",
+              "$-\\dfrac{x}{2}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên dấu: $x-2$ và $2-x$ là hai số đối nhau, thương bằng $-1$."
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: còn cặp nhân tử đối nhau ở tử và mẫu."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
+              }
+            },
+            "solution": "$C=\\dfrac{x(x-2)}{(2-x)(2+x)}=\\dfrac{x(x-2)}{-(x-2)(2+x)}=-\\dfrac{x}{x+2}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=1$.",
+          "item": {
+            "id": "f1-tgon-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $C$ tại $x=1$.",
+            "answer": "-1/3",
+            "mistakes": [
+              {
+                "answer": "1/3",
+                "code": "E02",
+                "feedback": "Con quên dấu $-$ sau khi đổi dấu hai nhân tử đối nhau."
+              },
+              {
+                "answer": "-1/2",
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung."
+              }
+            ],
+            "solution": "$C=-\\dfrac{1}{1+2}=-\\dfrac13$."
+          }
+        }
+      ],
+      "solution": "$C=\\dfrac{x(x-2)}{(2-x)(2+x)}=-\\dfrac{x}{x+2}$ với $x \\ne \\pm 2$. Tại $x=1$: $-\\dfrac13$."
+    },
+    {
+      "id": "f1-tgon-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Rút gọn rồi tính giá trị của $P=\\dfrac{x^3-x}{x^2-2x+1}$ (với $x \\ne 1$) tại $x=3$.",
+      "source": "Soạn mới (dạng Bài 2 đề thi: tử phân tích nhiều bước, mẫu là bình phương một hiệu)",
+      "hints": [
+        "Cần rút gọn rồi thay $x=3$.",
+        "Tử: đặt nhân tử chung rồi dùng hằng đẳng thức; mẫu cũng là hằng đẳng thức.",
+        "Phân tích tử thành ba nhân tử, mẫu thành bình phương, rồi bỏ nhân tử chung."
+      ],
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "3",
+          "code": "E12",
+          "feedback": "Mẫu $x^2-2x+1$ là $(x-1)^2$, không phải $(x-1)(x+1)$.",
+          "review": "f1-hdt"
+        },
+        {
+          "answer": "2",
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $x$ ở tử: $x^3-x=x(x-1)(x+1)$."
+        }
+      ],
+      "solution": "$P=\\dfrac{x(x-1)(x+1)}{(x-1)^2}=\\dfrac{x(x+1)}{x-1}$. Tại $x=3$: $\\dfrac{3 \\cdot 4}{2}=6$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "f1-tgon-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Thu gọn $3(x-2)-2(x-3)$.",
+      "options": [
+        "$x$",
+        "$x-12$",
+        "$5x-12$",
+        "$3x-6-2x+6$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con nhân sai dấu: $-2(x-3)=-2x+6$, hạng tử $-3$ cũng đổi dấu."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Đề là hiệu hai biểu thức nhưng con lại cộng chúng."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn: các hạng tử đồng dạng chưa được gộp."
+        }
+      },
+      "solution": "$3(x-2)-2(x-3)=3x-6-2x+6=x$."
+    },
+    {
+      "id": "f1-tgon-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Rút gọn $\\dfrac{x^2-2x}{x}$ (với $x \\ne 0$).",
+      "options": [
+        "$x-2$",
+        "$-x$",
+        "$x^2-2$",
+        "$\\dfrac{x(x-2)}{x}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con chỉ chia hạng tử đầu cho $x$; phải chia cả hai hạng tử."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con chỉ chia hạng tử sau cho $x$; phải chia cả hai hạng tử."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa đến tận cùng: còn nhân tử chung $x$ ở tử và mẫu."
+        }
+      },
+      "solution": "$\\dfrac{x^2-2x}{x}=\\dfrac{x(x-2)}{x}=x-2$."
+    },
+    {
+      "id": "f1-tgon-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Thu gọn $(2x-1)^2-(2x+1)(2x-1)$.",
+      "options": [
+        "$-4x+2$",
+        "$0$",
+        "$-4x$",
+        "$4x^2-4x+1-4x^2+1$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu hạng tử giữa của $(a-b)^2=a^2-2ab+b^2$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con quên đổi dấu hạng tử $+1$ khi bỏ ngoặc có dấu $-$ phía trước."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn: các hạng tử đồng dạng chưa được gộp."
+        }
+      },
+      "solution": "$(2x-1)^2-(2x+1)(2x-1)=4x^2-4x+1-(4x^2-1)=-4x+2$."
+    },
+    {
+      "id": "f1-tgon-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\dfrac{x^2+6x+9}{x^2-9}$ (với $x \\ne \\pm 3$).",
+      "options": [
+        "$\\dfrac{x+3}{x-3}$",
+        "$\\dfrac{(x+3)^2}{(x-3)(x+3)}$",
+        "$\\dfrac{x-3}{x+3}$",
+        "$\\dfrac{6x+9}{-9}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x+3$."
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Hạng tử giữa mang dấu $+$ nên tử là bình phương một tổng.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
+        }
+      },
+      "solution": "$\\dfrac{x^2+6x+9}{x^2-9}=\\dfrac{(x+3)^2}{(x-3)(x+3)}=\\dfrac{x+3}{x-3}$."
+    },
+    {
+      "id": "f1-tgon-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $Q=\\dfrac{x^2-x-6}{x^2-4}$. Rút gọn $Q$ rồi tính $Q$ tại $x=5$.",
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-tgon-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $Q$ là:",
+            "options": [
+              "$x \\ne 2$ và $x \\ne -2$",
+              "$x \\ne 2$",
+              "$x \\ne 3$ và $x \\ne -2$",
+              "$x \\ne 4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-2$: phương trình $x^2=4$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Điều kiện chỉ xét mẫu, không xét tử."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 4$ không suy ra $x \\ne 4$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$x^2-4 \\ne 0 \\Leftrightarrow x \\ne \\pm 2$."
+          }
+        },
+        {
+          "prompt": "Phân tích tử.",
+          "item": {
+            "id": "f1-tgon-x5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Phân tích tử $x^2-x-6$:",
+            "options": [
+              "$(x-3)(x+2)$",
+              "$(x+3)(x-2)$",
+              "$(x-6)(x+1)$",
+              "$(x-3)(x-2)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Sai dấu: hai số phải có tổng $-1$ và tích $-6$."
+              },
+              "2": {
+                "code": "E01",
+                "feedback": "Tích đúng là $-6$ nhưng tổng hai số không bằng $-1$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Tích hai số phải là $-6$, con lấy tích dương."
+              }
+            },
+            "solution": "Hai số có tổng $-1$, tích $-6$ là $-3$ và $2$: $x^2-x-6=(x-3)(x+2)$."
+          }
+        },
+        {
+          "prompt": "Bỏ nhân tử chung.",
+          "item": {
+            "id": "f1-tgon-x5-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Biết $x^2-4=(x-2)(x+2)$. Rút gọn $Q$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{x-3}{x-2}$",
+              "$\\dfrac{(x-3)(x+2)}{(x-2)(x+2)}$",
+              "$\\dfrac{x-3}{x+2}$",
+              "$\\dfrac{x+6}{4}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x+2$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Sau khi bỏ $x+2$, mẫu còn lại là $x-2$, không phải $x+2$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
+              }
+            },
+            "solution": "$Q=\\dfrac{(x-3)(x+2)}{(x-2)(x+2)}=\\dfrac{x-3}{x-2}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=5$.",
+          "item": {
+            "id": "f1-tgon-x5-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $Q$ tại $x=5$.",
+            "answer": "2/3",
+            "mistakes": [
+              {
+                "answer": "2/7",
+                "code": "E02",
+                "feedback": "Sau khi bỏ nhân tử chung $x+2$, mẫu còn lại là $x-2$."
+              },
+              {
+                "answer": "11/4",
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung."
+              }
+            ],
+            "solution": "$Q=\\dfrac{5-3}{5-2}=\\dfrac23$."
+          }
+        }
+      ],
+      "solution": "$Q=\\dfrac{(x-3)(x+2)}{(x-2)(x+2)}=\\dfrac{x-3}{x-2}$. Tại $x=5$: $\\dfrac{2}{3}$."
+    },
+    {
+      "id": "f1-tgon-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Biết $\\dfrac{x^2-ax}{x^2-4}=\\dfrac{x}{x+2}$ với mọi $x \\ne \\pm 2$. Tìm $a$.",
+      "source": "Soạn mới (dạng hỏi ngược từ kết quả rút gọn Bài 2)",
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "-2",
+          "code": "E02",
+          "feedback": "Con sai dấu: tử là $x(x-a)$, hãy so nhân tử $x-a$ với nhân tử ở mẫu."
+        },
+        {
+          "answer": "4",
+          "code": "E04",
+          "feedback": "Con nhầm $a$ với số hạng tự do $-4$ của mẫu; hãy so sánh các nhân tử."
+        }
+      ],
+      "solution": "$\\dfrac{x(x-a)}{(x-2)(x+2)}=\\dfrac{x}{x+2}$ nên $x-a=x-2$, suy ra $a=2$."
+    },
+    {
+      "id": "f1-tgon-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $R=\\dfrac{x^2-3x}{9-x^2}$. Rút gọn $R$ rồi tính $R$ tại $x=1$.",
+      "source": "Soạn mới (dạng Bài 2 đề thi: rút gọn có hai nhân tử đối nhau, rồi thay số)",
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "f1-tgon-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Điều kiện xác định của $R$ là:",
+            "options": [
+              "$x \\ne 3$ và $x \\ne -3$",
+              "$x \\ne 3$",
+              "$x \\ne 0$ và $x \\ne 3$",
+              "$x \\ne 9$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Điều kiện chỉ xét mẫu $9-x^2$, không xét tử."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Từ $x^2 \\ne 9$ không suy ra $x \\ne 9$; phải lấy căn bậc hai cả hai dấu."
+              }
+            },
+            "solution": "$9-x^2 \\ne 0 \\Leftrightarrow x \\ne \\pm 3$."
+          }
+        },
+        {
+          "prompt": "Phân tích mẫu.",
+          "item": {
+            "id": "f1-tgon-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phân tích mẫu $9-x^2$ thành nhân tử:",
+            "options": [
+              "$(3-x)(3+x)$",
+              "$(x-3)(x+3)$",
+              "$(3-x)^2$",
+              "$(9-x)(9+x)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Mẫu là $9-x^2$, khác $x^2-9$: hai biểu thức đối nhau."
+              },
+              "2": {
+                "code": "E12",
+                "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E12",
+                "feedback": "$B$ là số có $B^2=9$, không phải $9$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$9-x^2=3^2-x^2=(3-x)(3+x)$."
+          }
+        },
+        {
+          "prompt": "Bỏ nhân tử chung.",
+          "item": {
+            "id": "f1-tgon-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Tử là $x(x-3)$ và $3-x=-(x-3)$. Rút gọn $R$ đến tận cùng:",
+            "options": [
+              "$-\\dfrac{x}{x+3}$",
+              "$\\dfrac{x}{x+3}$",
+              "$\\dfrac{x(x-3)}{(3-x)(3+x)}$",
+              "$-\\dfrac{x}{3}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên dấu: $x-3$ và $3-x$ là hai số đối nhau, thương bằng $-1$."
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: còn cặp nhân tử đối nhau ở tử và mẫu."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
+              }
+            },
+            "solution": "$R=\\dfrac{x(x-3)}{(3-x)(3+x)}=-\\dfrac{x}{x+3}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=1$.",
+          "item": {
+            "id": "f1-tgon-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $R$ tại $x=1$.",
+            "answer": "-1/4",
+            "mistakes": [
+              {
+                "answer": "1/4",
+                "code": "E02",
+                "feedback": "Con quên dấu $-$ sau khi đổi dấu hai nhân tử đối nhau."
+              },
+              {
+                "answer": "-1/3",
+                "code": "E02",
+                "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung."
+              }
+            ],
+            "solution": "$R=-\\dfrac{1}{1+3}=-\\dfrac14$."
+          }
+        }
+      ],
+      "solution": "$R=\\dfrac{x(x-3)}{(3-x)(3+x)}=-\\dfrac{x}{x+3}$ với $x \\ne \\pm 3$. Tại $x=1$: $-\\dfrac14$."
+    },
+    {
+      "id": "f1-tgon-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Rút gọn rồi tính giá trị của $\\dfrac{x^3+x^2-4x-4}{x^2-4}$ (với $x \\ne \\pm 2$) tại $x=5$.",
+      "source": "Soạn mới (dạng rút gọn cần nhóm hạng tử ở tử)",
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "1",
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử $x+1$ khi nhóm hạng tử ở tử."
+        },
+        {
+          "answer": "4",
+          "code": "E02",
+          "feedback": "Con nhóm sai dấu nên nhân tử còn lại là $x-1$."
+        }
+      ],
+      "solution": "Tử: $x^2(x+1)-4(x+1)=(x+1)(x^2-4)$, nên biểu thức bằng $x+1$. Tại $x=5$: $6$."
+    }
+  ]
+}

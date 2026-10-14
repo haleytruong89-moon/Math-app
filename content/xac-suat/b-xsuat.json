@@ -1,0 +1,554 @@
+{
+  "id": "b-xsuat",
+  "module": "xac-suat",
+  "order": 2,
+  "title": "Xác suất cổ điển & một bước",
+  "status": "draft",
+  "estMinutes": 40,
+  "theory": [
+    "**Cần nhớ trước:** bài **phép thử & không gian mẫu**: liệt kê không gian mẫu $\\Omega$ và đếm số kết quả thuận lợi cho biến cố.",
+    "**Công thức:** khi các kết quả **đồng khả năng**, $P(A)=\\dfrac{n(A)}{n(\\Omega)}$ và $0 \\le P(A) \\le 1$. Biến cố đối: $P(\\overline{A})=1-P(A)$. Xác suất thực nghiệm của $A$ là $\\dfrac{\\text{số lần } A \\text{ xảy ra}}{\\text{tổng số lần thử}}$.",
+    "**Vì sao:** các kết quả ngang cơ hội nên xác suất là **phần** của $\\Omega$ thuộc $A$, giống tần số tương đối. $P=0$ nếu $A$ không thể xảy ra, $P=1$ nếu chắc chắn xảy ra.",
+    "**Bẫy hay gặp:** số $1$ không là số nguyên tố cũng không là hợp số; số $0$ là số tự nhiên; “lớn hơn $19$ và nhỏ hơn $51$” gồm $20, \\dots, 50$ tức $31$ số, không phải $51-19$. Chia ngược $\\dfrac{n(\\Omega)}{n(A)}$ cho kết quả lớn hơn $1$ — vô lý với xác suất.",
+    "**Nhận dạng:** “tính xác suất của biến cố” → đếm $n(\\Omega)$ và $n(A)$. Có chữ “không”, “ít nhất một” → thử biến cố đối. Đề cho xác suất, hỏi số phần tử → viết $P=\\dfrac{n(A)}{n(\\Omega)}$ rồi giải ngược. **Không** dùng công thức này khi các kết quả không đồng khả năng (đĩa chia thành các phần không bằng nhau).",
+    "**Phiếu xác suất:** (1) mô tả phép thử, kiểm tra đồng khả năng; (2) $n(\\Omega)$; (3) liệt kê hoặc đếm $n(A)$; (4) $P(A)=\\dfrac{n(A)}{n(\\Omega)}$; (5) rút gọn phân số; (6) viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Hộp có $18$ thẻ ghi các số từ $1$ đến $18$. Rút ngẫu nhiên một thẻ. Tính xác suất của biến cố $A$: “Thẻ rút ra ghi số nguyên tố”.",
+    "steps": [
+      {
+        "text": "Phép thử: rút ngẫu nhiên một thẻ, $18$ thẻ ngang cơ hội. Vậy $n(\\Omega)=18$.",
+        "why": "Phải kiểm tra đồng khả năng trước khi dùng công thức."
+      },
+      {
+        "text": "Số nguyên tố từ $1$ đến $18$: $2, 3, 5, 7, 11, 13, 17$. Vậy $n(A)=7$.",
+        "why": "Số $1$ không là số nguyên tố nên không đếm."
+      },
+      {
+        "text": "Xác suất: $P(A)=\\dfrac{n(A)}{n(\\Omega)}=\\dfrac{7}{18}$.",
+        "why": "$7$ và $18$ không có ước chung lớn hơn $1$ nên phân số đã tối giản."
+      },
+      {
+        "text": "Kết luận: $P(A)=\\dfrac{7}{18}$.",
+        "why": "Kiểm tra: $0 \\le \\dfrac{7}{18} \\le 1$, hợp lý."
+      }
+    ],
+    "selfExplain": "Vì sao số $1$ không được tính vào các kết quả thuận lợi? Nếu tính nhầm thì xác suất sẽ là bao nhiêu?"
+  },
+  "faded": {
+    "problem": "Hộp có $15$ thẻ ghi các số từ $1$ đến $15$. Rút ngẫu nhiên một thẻ. Tính xác suất của biến cố $B$: “Số trên thẻ chia cho $3$ dư $1$”.",
+    "steps": [
+      {
+        "prompt": "Đếm số kết quả có thể.",
+        "item": {
+          "id": "b-xsuat-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Số kết quả có thể $n(\\Omega)$ là:",
+          "answer": "15",
+          "mistakes": [
+            {
+              "answer": "14",
+              "code": "E01",
+              "feedback": "Con đếm thiếu một thẻ: các số từ $1$ đến $15$ có đủ $15$ số."
+            },
+            {
+              "answer": "16",
+              "code": "E01",
+              "feedback": "Con đếm thừa một thẻ: các số từ $1$ đến $15$ chỉ có $15$ số."
+            }
+          ],
+          "solution": "Các số từ $1$ đến $15$: $n(\\Omega)=15$."
+        }
+      },
+      {
+        "prompt": "Đếm số kết quả thuận lợi.",
+        "item": {
+          "id": "b-xsuat-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Số kết quả thuận lợi $n(B)$ (các số chia $3$ dư $1$) là:",
+          "answer": "5",
+          "mistakes": [
+            {
+              "answer": "4",
+              "code": "E04",
+              "feedback": "$1=3 \\cdot 0+1$ nên số $1$ cũng chia $3$ dư $1$."
+            },
+            {
+              "answer": "6",
+              "code": "E10",
+              "feedback": "Con đếm thừa một số không chia $3$ dư $1$."
+            }
+          ],
+          "solution": "Các số: $1, 4, 7, 10, 13$, nên $n(B)=5$."
+        }
+      },
+      {
+        "text": "Xác suất: $P(B)=\\dfrac{n(B)}{n(\\Omega)}=\\dfrac{5}{15}$."
+      },
+      {
+        "prompt": "Rút gọn phân số.",
+        "item": {
+          "id": "b-xsuat-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Rút gọn $\\dfrac{5}{15}$ đến tận cùng:",
+          "options": [
+            "$\\dfrac13$",
+            "$\\dfrac{5}{15}$",
+            "$3$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Chưa rút gọn đến tận cùng: tử và mẫu cùng chia hết cho $5$."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Con chia ngược. Xác suất là $\\dfrac{n(B)}{n(\\Omega)}$ và không vượt quá $1$."
+            }
+          },
+          "solution": "$\\dfrac{5}{15}=\\dfrac13$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "b-xsuat-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: xác suất của biến cố $B$ là $\\dfrac13$.",
+            "Kết luận: $5$.",
+            "Kết luận: xác suất của biến cố $B$ là $\\dfrac{5}{15}$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Thiếu kết luận đầy đủ: $5$ là số kết quả thuận lợi, chưa phải xác suất."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "Chưa rút gọn đến tận cùng."
+            }
+          },
+          "solution": "$P(B)=\\dfrac13$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "b-xsuat-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Hộp có $20$ thẻ ghi các số từ $1$ đến $20$. Rút ngẫu nhiên một thẻ. Xác suất để thẻ ghi số chia hết cho $5$ là (ghi phân số tối giản):",
+      "hints": [
+        "Cần xác suất rút được thẻ chia hết cho $5$.",
+        "Đếm số kết quả thuận lợi và số kết quả có thể.",
+        "Dùng $P=\\dfrac{n(A)}{n(\\Omega)}$ rồi rút gọn."
+      ],
+      "answer": "1/5",
+      "mistakes": [
+        {
+          "answer": "4",
+          "code": "E04",
+          "feedback": "$4$ là số kết quả thuận lợi, chưa phải xác suất. Cần chia cho số kết quả có thể."
+        },
+        {
+          "answer": "5",
+          "code": "E03",
+          "feedback": "Con chia ngược. Xác suất là $\\dfrac{n(A)}{n(\\Omega)}$ và không vượt quá $1$."
+        }
+      ],
+      "solution": "$n(\\Omega)=20$; các số chia hết cho $5$: $5, 10, 15, 20$ nên $n(A)=4$. $P(A)=\\dfrac{4}{20}=\\dfrac15$."
+    },
+    {
+      "id": "b-xsuat-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Gieo một con xúc xắc cân đối một lần. Xác suất để số chấm xuất hiện lớn hơn $4$ là (ghi phân số tối giản):",
+      "hints": [
+        "Cần xác suất số chấm lớn hơn $4$.",
+        "Xúc xắc có mấy mặt? Những mặt nào thỏa điều kiện?",
+        "Đếm các mặt thỏa “lớn hơn $4$”, chia cho tổng số mặt."
+      ],
+      "answer": "1/3",
+      "mistakes": [
+        {
+          "answer": "1/2",
+          "code": "E04",
+          "feedback": "“Lớn hơn $4$” không gồm số $4$; chỉ gồm $5$ và $6$."
+        },
+        {
+          "answer": "1/6",
+          "code": "E10",
+          "feedback": "Con đếm thiếu một mặt thỏa điều kiện."
+        }
+      ],
+      "solution": "$n(\\Omega)=6$; số chấm lớn hơn $4$ là $5$ và $6$ nên $n(A)=2$. $P(A)=\\dfrac{2}{6}=\\dfrac13$."
+    },
+    {
+      "id": "b-xsuat-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Hộp có $12$ bi, trong đó $4$ bi đỏ. Rút ngẫu nhiên một bi. Đề hỏi xác suất để bi rút ra **không** đỏ. Cách làm nào hợp lý?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách làm, chưa cần tính.",
+        "Chữ “không” trong đề gợi ý đếm theo cách nào?",
+        "Có thể đếm trực tiếp hoặc dùng $P(\\overline{A})=1-P(A)$."
+      ],
+      "options": [
+        "Đếm số bi không đỏ rồi chia cho 12 (hoặc dùng 1 trừ xác suất bi đỏ)",
+        "Tính xác suất thực nghiệm bằng cách rút nhiều lần",
+        "Lập bảng hai chiều như bài xác suất hai bước",
+        "Lấy số bi đỏ chia cho số bi không đỏ"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E05",
+          "feedback": "Đề cho đủ số bi mỗi loại nên tính trực tiếp được; không cần thử nhiều lần."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề chỉ có một lần rút, nên không cần bảng hai chiều."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Xác suất luôn là số kết quả thuận lợi chia cho số kết quả có thể."
+        }
+      },
+      "solution": "Bi không đỏ: $12-4=8$, nên $P=\\dfrac{8}{12}=\\dfrac23$. Cũng có thể: $1-\\dfrac{4}{12}=\\dfrac23$."
+    },
+    {
+      "id": "b-xsuat-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Hộp có $20$ thẻ ghi các số từ $1$ đến $20$. Rút ngẫu nhiên một thẻ. Xác suất để thẻ ghi **hợp số** là:",
+      "source": "68 đề – Đề 25, Bài 1.2 (chuyển thể: 20 thẻ thay vì 25)",
+      "hints": [
+        "Cần xác suất thẻ ghi hợp số.",
+        "Hợp số là gì? Số $1$ có là hợp số không?",
+        "Đếm các số nguyên tố, loại số $1$, phần còn lại là hợp số."
+      ],
+      "options": [
+        "$\\dfrac{11}{20}$",
+        "$\\dfrac{3}{5}$",
+        "$\\dfrac{2}{5}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Con tính cả số $1$ là hợp số; số $1$ không là hợp số."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Con nhầm hợp số với số nguyên tố."
+        },
+        "3": {
+          "code": "E10",
+          "feedback": "Con đếm thiếu một hợp số; hãy liệt kê lần lượt từ $4$ đến $20$."
+        }
+      },
+      "solution": "Số nguyên tố: $2, 3, 5, 7, 11, 13, 17, 19$ ($8$ số); số $1$ không là hợp số. Hợp số: $20-8-1=11$. $P=\\dfrac{11}{20}$."
+    },
+    {
+      "id": "b-xsuat-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Túi có $40$ viên kẹo: $12$ viên vị bạc hà, $10$ viên vị cam, $8$ viên vị dâu, $6$ viên vị chanh và $4$ viên vị ổi. Lấy ngẫu nhiên một viên. Xác suất để được kẹo vị cam hoặc chanh là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 29, Bài 1.2 (chuyển thể: đổi số lượng từng vị)",
+      "hints": [
+        "Cần xác suất kẹo vị cam hoặc chanh.",
+        "“Hoặc” nghĩa là cộng các kết quả thuận lợi của hai vị.",
+        "Cộng số viên cam và số viên chanh, chia cho tổng số viên."
+      ],
+      "answer": "2/5",
+      "mistakes": [
+        {
+          "answer": "1/4",
+          "code": "E10",
+          "feedback": "Con chỉ tính một vị; “hoặc” nghĩa là cộng cả hai vị."
+        },
+        {
+          "answer": "3/5",
+          "code": "E04",
+          "feedback": "Con tính xác suất của biến cố đối (không phải cam, không phải chanh)."
+        }
+      ],
+      "solution": "Kẹo cam hoặc chanh: $10+6=16$ viên. $P=\\dfrac{16}{40}=\\dfrac25$."
+    },
+    {
+      "id": "b-xsuat-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Trong hộp có $40$ bóng đèn màu xanh, đỏ, vàng với số lượng theo tỉ lệ $1:3:4$. Lấy ngẫu nhiên một bóng. Xác suất để được bóng màu vàng hoặc xanh là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 21, Bài 1.2 (chuyển thể: tỉ lệ $1:3:4$, 40 bóng, hỏi vàng hoặc xanh)",
+      "hints": [
+        "Cần số bóng mỗi màu trước khi tính xác suất.",
+        "Tỉ lệ $1:3:4$ chia $40$ bóng thành mấy phần bằng nhau?",
+        "Tìm số bóng một phần, rồi cộng phần của hai màu cần tìm."
+      ],
+      "answer": "5/8",
+      "mistakes": [
+        {
+          "answer": "1/8",
+          "code": "E07",
+          "feedback": "Con coi tỉ lệ $1:4$ là số bóng; phải chia $40$ bóng theo tỉ lệ trước."
+        },
+        {
+          "answer": "7/8",
+          "code": "E10",
+          "feedback": "Con cộng nhầm màu: đề hỏi vàng và xanh, không phải đỏ và vàng."
+        }
+      ],
+      "solution": "$1+3+4=8$ phần, mỗi phần $5$ bóng: xanh $5$, đỏ $15$, vàng $20$. Vàng hoặc xanh: $25$ bóng, $P=\\dfrac{25}{40}=\\dfrac58$."
+    },
+    {
+      "id": "b-xsuat-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Viết ngẫu nhiên một số tự nhiên nhỏ hơn $40$. Xác suất để số đó là bội của $8$ là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 34, Bài 1.2 (chuyển thể: số nhỏ hơn 40, bội của 8)",
+      "hints": [
+        "Cần xác suất số viết ra là bội của $8$.",
+        "Số tự nhiên nhỏ hơn $40$ bắt đầu từ số nào? Số đó có là bội của $8$ không?",
+        "Liệt kê các bội của $8$ trong khoảng đó, nhớ đếm cả số $0$."
+      ],
+      "answer": "1/8",
+      "mistakes": [
+        {
+          "answer": "4/39",
+          "code": "E04",
+          "feedback": "Con quên số $0$: số $0$ là số tự nhiên và là bội của mọi số."
+        },
+        {
+          "answer": "1/10",
+          "code": "E10",
+          "feedback": "Con đếm số $0$ vào các kết quả có thể nhưng quên đếm vào các bội của $8$."
+        }
+      ],
+      "solution": "Các số tự nhiên nhỏ hơn $40$: $0, 1, \\dots, 39$ nên $n(\\Omega)=40$. Bội của $8$: $0, 8, 16, 24, 32$ nên $n(A)=5$. $P=\\dfrac{5}{40}=\\dfrac18$."
+    },
+    {
+      "id": "b-xsuat-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Trên một kệ có $40$ quả gồm cam và các loại quả khác. Nhân viên đặt thêm $8$ quả cam nữa lên kệ. Nếu khách chọn ngẫu nhiên $1$ quả thì xác suất chọn được quả cam là $50\\%$. Tính số quả cam ban đầu.",
+      "source": "68 đề – Đề 11, Bài 1.2 (chuyển thể: 40 quả, thêm 8 quả cam, xác suất 50%)",
+      "hints": [
+        "Cần số cam ban đầu trên kệ.",
+        "Sau khi thêm cam, cả tổng số quả và số cam đều đổi.",
+        "Lập $\\dfrac{\\text{số cam mới}}{\\text{tổng mới}}=0{,}5$, giải ra số cam mới rồi trừ số vừa thêm."
+      ],
+      "answer": "16",
+      "mistakes": [
+        {
+          "answer": "24",
+          "code": "E07",
+          "feedback": "Con tìm số cam sau khi đặt thêm nhưng quên trừ $8$ quả vừa thêm."
+        },
+        {
+          "answer": "12",
+          "code": "E07",
+          "feedback": "Sau khi đặt thêm, tổng số quả cũng tăng thêm $8$; con vẫn dùng tổng cũ."
+        }
+      ],
+      "solution": "Sau khi thêm: tổng $48$ quả, gọi số cam ban đầu là $x$ thì $\\dfrac{x+8}{48}=0{,}5$, nên $x+8=24$, suy ra $x=16$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "b-xsuat-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Gieo một con xúc xắc cân đối một lần. Xác suất để số chấm xuất hiện là số nguyên tố là (ghi phân số tối giản):",
+      "answer": "1/2",
+      "mistakes": [
+        {
+          "answer": "2/3",
+          "code": "E04",
+          "feedback": "Con tính cả số $1$ là số nguyên tố; số $1$ không là số nguyên tố."
+        },
+        {
+          "answer": "1/3",
+          "code": "E10",
+          "feedback": "Con đếm thiếu một mặt thỏa điều kiện."
+        }
+      ],
+      "solution": "Số nguyên tố trong $1, \\dots, 6$: $2, 3, 5$ nên $n(A)=3$. $P=\\dfrac{3}{6}=\\dfrac12$."
+    },
+    {
+      "id": "b-xsuat-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Giá trị nào dưới đây **không thể** là xác suất của một biến cố?",
+      "options": [
+        "$0$",
+        "$0{,}35$",
+        "$1$",
+        "$1{,}2$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Xác suất của biến cố không thể xảy ra bằng $0$, nên $0$ là giá trị hợp lệ."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Xác suất là số từ $0$ đến $1$, nên $0{,}35$ là giá trị hợp lệ."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Xác suất của biến cố chắc chắn xảy ra bằng $1$, nên $1$ là giá trị hợp lệ."
+        }
+      },
+      "solution": "Xác suất luôn thỏa $0 \\le P \\le 1$, nên $1{,}2$ không thể là xác suất."
+    },
+    {
+      "id": "b-xsuat-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Đĩa tròn chia thành $16$ phần bằng nhau, ghi các số $1; 2; \\dots; 16$. Quay kim một lần. Xác suất để kim chỉ vào số là **ước của $12$** là:",
+      "source": "68 đề – Đề 14, Bài 1.2 (chuyển thể: đĩa 16 phần, ước của 12)",
+      "options": [
+        "$\\dfrac{3}{8}$",
+        "$\\dfrac{5}{16}$",
+        "$\\dfrac{1}{16}$",
+        "$\\dfrac{6}{16}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E10",
+          "feedback": "Con bỏ sót số $1$: số $1$ là ước của mọi số."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Con nhầm ước với bội: ở đây cần các số chia hết $12$, không phải các số $12$ chia hết."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn đến tận cùng: tử và mẫu cùng chia hết cho $2$."
+        }
+      },
+      "solution": "Ước của $12$ trong $1, \\dots, 16$: $1, 2, 3, 4, 6, 12$ nên $n(A)=6$. $P=\\dfrac{6}{16}=\\dfrac38$."
+    },
+    {
+      "id": "b-xsuat-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Bảng số phiếu bình chọn cầu thủ xuất sắc nhất: Tâm $80$ phiếu, Thảo $140$ phiếu, Hà $100$ phiếu, Hải $80$ phiếu. Chọn ngẫu nhiên một phiếu. Xác suất để phiếu đó bình chọn cho cầu thủ có tên bắt đầu bằng chữ H là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 42, Bài 1.2 (chuyển thể: đổi tên cầu thủ, tỉ lệ thành số phiếu)",
+      "answer": "9/20",
+      "mistakes": [
+        {
+          "answer": "1/4",
+          "code": "E10",
+          "feedback": "Con chỉ tính một cầu thủ; có hai cầu thủ tên bắt đầu bằng chữ H."
+        },
+        {
+          "answer": "11/20",
+          "code": "E04",
+          "feedback": "Con tính xác suất của biến cố đối (tên không bắt đầu bằng chữ H)."
+        }
+      ],
+      "solution": "Tổng $80+140+100+80=400$ phiếu. Tên bắt đầu bằng H: Hà và Hải, $100+80=180$ phiếu. $P=\\dfrac{180}{400}=\\dfrac{9}{20}$."
+    },
+    {
+      "id": "b-xsuat-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Hộp có $25$ thẻ ghi các số từ $1$ đến $25$. Rút ngẫu nhiên một thẻ. Xác suất để số trên thẻ **lớn hơn $7$ và nhỏ hơn $20$** là (ghi phân số):",
+      "source": "68 đề – Đề 50, Bài 1.2 (chuyển thể: 25 thẻ, lớn hơn 7 và nhỏ hơn 20)",
+      "answer": "12/25",
+      "mistakes": [
+        {
+          "answer": "13/25",
+          "code": "E04",
+          "feedback": "Số các số nguyên trong khoảng không bằng hiệu hai đầu mút: $8, 9, \\dots, 19$."
+        },
+        {
+          "answer": "11/25",
+          "code": "E01",
+          "feedback": "Con đếm thiếu một số khi trừ; hãy liệt kê từ $8$ đến $19$."
+        }
+      ],
+      "solution": "Các số: $8, 9, \\dots, 19$ nên $n(A)=12$. $P=\\dfrac{12}{25}$."
+    },
+    {
+      "id": "b-xsuat-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hộp có $70$ thẻ ghi các số từ $1$ đến $70$. Rút ngẫu nhiên một thẻ. Xác suất để số trên thẻ có chữ số hàng chục gấp hai lần chữ số hàng đơn vị là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 53, Bài 1.2 (chuyển thể: thẻ từ 1 đến 70)",
+      "answer": "3/70",
+      "mistakes": [
+        {
+          "answer": "2/35",
+          "code": "E10",
+          "feedback": "Con đọc nhầm đề: đếm các số có chữ số hàng đơn vị gấp đôi chữ số hàng chục."
+        },
+        {
+          "answer": "1/35",
+          "code": "E10",
+          "feedback": "Con bỏ sót một số thỏa điều kiện; hãy liệt kê theo từng chữ số hàng đơn vị."
+        }
+      ],
+      "solution": "Các số: $21, 42, 63$ nên $n(A)=3$. $P=\\dfrac{3}{70}$."
+    },
+    {
+      "id": "b-xsuat-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Bạn Long có $n$ tấm thẻ cùng loại, đánh số từ $1$ đến $n$, rút ngẫu nhiên một tấm. Biết xác suất để rút được thẻ ghi số có một chữ số là $0{,}15$. Hỏi Long có bao nhiêu tấm thẻ?",
+      "source": "68 đề – Đề 10, Bài 1.2 (chuyển thể: xác suất $0{,}15$ thay vì $0{,}25$)",
+      "answer": "60",
+      "unit": "tấm thẻ",
+      "mistakes": [
+        {
+          "answer": "1,35",
+          "code": "E03",
+          "feedback": "Con nhân thay vì chia: $P=\\dfrac{9}{n}$ nên $n=\\dfrac{9}{P}$."
+        },
+        {
+          "answer": "6",
+          "code": "E01",
+          "feedback": "Con tính nhầm khi chia số thập phân; hãy đổi $0{,}15$ về phân số."
+        }
+      ],
+      "solution": "Các thẻ ghi số có một chữ số: $1, \\dots, 9$ nên $n(A)=9$. $P=\\dfrac{9}{n}=0{,}15$ nên $n=\\dfrac{9}{0{,}15}=60$."
+    },
+    {
+      "id": "b-xsuat-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hộp có $15$ viên bi xanh hoặc đỏ. Bạn Minh lấy ngẫu nhiên một viên, xem màu rồi trả lại; lặp $80$ lần thì được $48$ lần bi xanh. Dựa vào xác suất thực nghiệm, ước lượng số bi **đỏ** trong hộp.",
+      "source": "68 đề – Đề 26, Bài 1.1 (chuyển thể: 80 lần thử, 48 lần bi xanh, hộp 15 viên)",
+      "answer": "6",
+      "unit": "viên",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E10",
+          "feedback": "Con tính số bi xanh; đề hỏi số bi đỏ."
+        },
+        {
+          "answer": "32",
+          "code": "E04",
+          "feedback": "$32$ là số lần lấy được bi đỏ, chưa phải số bi đỏ trong hộp."
+        }
+      ],
+      "solution": "Xác suất thực nghiệm lấy bi xanh: $\\dfrac{48}{80}=\\dfrac35$. Bi xanh khoảng $15 \\cdot \\dfrac35=9$, nên bi đỏ khoảng $15-9=6$."
+    }
+  ]
+}
