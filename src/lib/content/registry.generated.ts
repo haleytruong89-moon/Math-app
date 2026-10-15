@@ -6,21 +6,30 @@ import m0u0 from "../../../content/backfill-dai-so/f1-hdt.json";
 import m0u1 from "../../../content/backfill-dai-so/f1-pnt.json";
 import m0u2 from "../../../content/backfill-dai-so/f1-tgon.json";
 import m0u3 from "../../../content/backfill-dai-so/f1-qd.json";
-import m1 from "../../../content/he-thuc-luong/module.json";
-import m1u0 from "../../../content/he-thuc-luong/htl-1.json";
-import m1u1 from "../../../content/he-thuc-luong/htl-2.json";
-import m2 from "../../../content/thong-ke/module.json";
-import m2u0 from "../../../content/thong-ke/a-tanso.json";
-import m2u1 from "../../../content/thong-ke/a-bieudo.json";
-import m3 from "../../../content/xac-suat/module.json";
-import m3u0 from "../../../content/xac-suat/b-phepthu.json";
-import m3u1 from "../../../content/xac-suat/b-xsuat.json";
+import m1 from "../../../content/can-thuc/module.json";
+import m1u0 from "../../../content/can-thuc/c-dkxd.json";
+import m2 from "../../../content/he-thuc-luong/module.json";
+import m2u0 from "../../../content/he-thuc-luong/htl-1.json";
+import m2u1 from "../../../content/he-thuc-luong/htl-2.json";
+import m3 from "../../../content/hinh-khoi/module.json";
+import m3u0 from "../../../content/hinh-khoi/p-trunon.json";
+import m3u1 from "../../../content/hinh-khoi/p-cau.json";
+import m3u2 from "../../../content/hinh-khoi/p-ghep.json";
+import m4 from "../../../content/thong-ke/module.json";
+import m4u0 from "../../../content/thong-ke/a-tanso.json";
+import m4u1 from "../../../content/thong-ke/a-bieudo.json";
+import m5 from "../../../content/xac-suat/module.json";
+import m5u0 from "../../../content/xac-suat/b-phepthu.json";
+import m5u1 from "../../../content/xac-suat/b-xsuat.json";
+import m5u2 from "../../../content/xac-suat/b-haib.json";
 
 export const CONTENT_SOURCE = "content";
 export const CURRICULUM: unknown = curriculum;
 export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m0, units: [m0u0, m0u1, m0u2, m0u3] },
-  { module: m1, units: [m1u0, m1u1] },
+  { module: m1, units: [m1u0] },
   { module: m2, units: [m2u0, m2u1] },
-  { module: m3, units: [m3u0, m3u1] },
+  { module: m3, units: [m3u0, m3u1, m3u2] },
+  { module: m4, units: [m4u0, m4u1] },
+  { module: m5, units: [m5u0, m5u1, m5u2] },
 ];
