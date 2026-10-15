@@ -95,13 +95,13 @@
           "level": "L1",
           "prompt": "Rút gọn $\\dfrac{5}{15}$ đến tận cùng:",
           "options": [
-            "$\\dfrac13$",
             "$\\dfrac{5}{15}$",
+            "$\\dfrac13$",
             "$3$"
           ],
-          "correct": 0,
+          "correct": 1,
           "mistakes": {
-            "1": {
+            "0": {
               "code": "E11",
               "feedback": "Chưa rút gọn đến tận cùng: tử và mẫu cùng chia hết cho $5$."
             },
@@ -238,18 +238,18 @@
         "Đếm các số nguyên tố, loại số $1$, phần còn lại là hợp số."
       ],
       "options": [
-        "$\\dfrac{11}{20}$",
         "$\\dfrac{3}{5}$",
         "$\\dfrac{2}{5}$",
+        "$\\dfrac{11}{20}$",
         "$\\dfrac{1}{2}$"
       ],
-      "correct": 0,
+      "correct": 2,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E04",
           "feedback": "Con tính cả số $1$ là hợp số; số $1$ không là hợp số."
         },
-        "2": {
+        "1": {
           "code": "E04",
           "feedback": "Con nhầm hợp số với số nguyên tố."
         },
@@ -394,10 +394,10 @@
       "options": [
         "$0$",
         "$0{,}35$",
-        "$1$",
-        "$1{,}2$"
+        "$1{,}2$",
+        "$1$"
       ],
-      "correct": 3,
+      "correct": 2,
       "mistakes": {
         "0": {
           "code": "E04",
@@ -407,7 +407,7 @@
           "code": "E04",
           "feedback": "Xác suất là số từ $0$ đến $1$, nên $0{,}35$ là giá trị hợp lệ."
         },
-        "2": {
+        "3": {
           "code": "E04",
           "feedback": "Xác suất của biến cố chắc chắn xảy ra bằng $1$, nên $1$ là giá trị hợp lệ."
         }
@@ -418,7 +418,7 @@
       "id": "b-xsuat-x3",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Đĩa tròn chia thành $16$ phần bằng nhau, ghi các số $1; 2; \\dots; 16$. Quay kim một lần. Xác suất để kim chỉ vào số là **ước của $12$** là:",
+      "prompt": "Đĩa tròn chia thành $16$ phần bằng nhau, ghi các số $1; 2; \\dots; 16$. Quay kim một lần. Xác suất để kim chỉ vào số là **ước của $12$** là (phân số tối giản):",
       "source": "68 đề – Đề 14, Bài 1.2 (chuyển thể: đĩa 16 phần, ước của 12)",
       "options": [
         "$\\dfrac{3}{8}$",

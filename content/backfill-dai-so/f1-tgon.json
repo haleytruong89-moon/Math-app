@@ -53,14 +53,14 @@
           "level": "L1",
           "prompt": "Bỏ ngoặc có dấu $-$ phía trước: $-(x^2+2x-3)=$",
           "options": [
-            "$-x^2-2x+3$",
             "$-x^2-2x-3$",
+            "$-x^2-2x+3$",
             "$-x^2+2x-3$",
             "$x^2+2x-3$"
           ],
-          "correct": 0,
+          "correct": 1,
           "mistakes": {
-            "1": {
+            "0": {
               "code": "E02",
               "feedback": "Con quên đổi dấu hạng tử cuối: dấu $-$ trước ngoặc đổi dấu mọi hạng tử."
             },
@@ -175,18 +175,18 @@
         "Đặt nhân tử chung ở tử rồi bỏ nhân tử chung với mẫu."
       ],
       "options": [
-        "$x+2$",
         "$x+8$",
         "$4x+2$",
+        "$x+2$",
         "$\\dfrac{4(x+2)}{4}$"
       ],
-      "correct": 0,
+      "correct": 2,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E02",
           "feedback": "Con chỉ chia hạng tử đầu cho $4$; phải chia cả hai hạng tử."
         },
-        "2": {
+        "1": {
           "code": "E02",
           "feedback": "Con chỉ chia hạng tử sau cho $4$; phải chia cả hai hạng tử."
         },
@@ -209,18 +209,18 @@
         "Muốn thấy nhân tử chung, phải viết tử và mẫu thành dạng nào?"
       ],
       "options": [
-        "Phân tích tử và mẫu thành nhân tử",
         "Gạch $x^2$ ở tử và mẫu",
         "Quy đồng mẫu thức rồi cộng tử",
+        "Phân tích tử và mẫu thành nhân tử",
         "Nhân chéo tử với mẫu"
       ],
-      "correct": 0,
+      "correct": 2,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E05",
           "feedback": "Chỉ bỏ được nhân tử chung, không bỏ hạng tử; phải phân tích thành tích trước."
         },
-        "2": {
+        "1": {
           "code": "E05",
           "feedback": "Quy đồng dùng khi cộng, trừ phân thức; ở đây chỉ có một phân thức."
         },
@@ -275,23 +275,23 @@
         "Phân tích tử và mẫu thành nhân tử, rồi bỏ nhân tử chung."
       ],
       "options": [
-        "$\\dfrac{x}{x+1}$",
         "$\\dfrac{x(x-1)}{(x-1)(x+1)}$",
         "$\\dfrac{x}{x-1}$",
-        "$\\dfrac{1}{x+1}$"
+        "$\\dfrac{1}{x+1}$",
+        "$\\dfrac{x}{x+1}$"
       ],
-      "correct": 0,
+      "correct": 3,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E11",
           "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x-1$."
         },
-        "2": {
+        "1": {
           "code": "E12",
           "feedback": "Mẫu $x^2-1$ là hiệu hai bình phương $(x-1)(x+1)$, không phải $(x-1)^2$.",
           "review": "f1-hdt"
         },
-        "3": {
+        "2": {
           "code": "E02",
           "feedback": "Con làm mất nhân tử chung $x$ ở tử: $x^2-x=x(x-1)$."
         }
@@ -383,21 +383,21 @@
             "prompt": "Biết $x^2-9=(x-3)(x+3)$. Sau khi bỏ nhân tử chung, $B$ bằng:",
             "options": [
               "$\\dfrac{(x-3)^2}{(x-3)(x+3)}$",
-              "$\\dfrac{x-3}{x+3}$",
               "$\\dfrac{x+3}{x-3}$",
-              "$\\dfrac{-6x+9}{-9}$"
+              "$\\dfrac{-6x+9}{-9}$",
+              "$\\dfrac{x-3}{x+3}$"
             ],
-            "correct": 1,
+            "correct": 3,
             "mistakes": {
               "0": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x-3$."
               },
-              "2": {
+              "1": {
                 "code": "E02",
                 "feedback": "Con đặt ngược tử và mẫu sau khi bỏ nhân tử chung."
               },
-              "3": {
+              "2": {
                 "code": "E02",
                 "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
               }
@@ -482,18 +482,18 @@
             "level": "L3",
             "prompt": "Phân tích mẫu $4-x^2$ thành nhân tử:",
             "options": [
-              "$(2-x)(2+x)$",
               "$(x-2)(x+2)$",
               "$(2-x)^2$",
+              "$(2-x)(2+x)$",
               "$(4-x)(4+x)$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E02",
                 "feedback": "Mẫu là $4-x^2$, khác $x^2-4$: hai biểu thức đối nhau."
               },
-              "2": {
+              "1": {
                 "code": "E12",
                 "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
                 "review": "f1-hdt"
@@ -515,18 +515,18 @@
             "level": "L3",
             "prompt": "Tử là $x(x-2)$ và $2-x=-(x-2)$. Rút gọn $C$ đến tận cùng:",
             "options": [
-              "$-\\dfrac{x}{x+2}$",
               "$\\dfrac{x}{x+2}$",
               "$\\dfrac{x(x-2)}{(2-x)(2+x)}$",
+              "$-\\dfrac{x}{x+2}$",
               "$-\\dfrac{x}{2}$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E02",
                 "feedback": "Con quên dấu: $x-2$ và $2-x$ là hai số đối nhau, thương bằng $-1$."
               },
-              "2": {
+              "1": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: còn cặp nhân tử đối nhau ở tử và mẫu."
               },
@@ -627,22 +627,22 @@
       "level": "L1",
       "prompt": "Rút gọn $\\dfrac{x^2-2x}{x}$ (với $x \\ne 0$).",
       "options": [
-        "$x-2$",
         "$-x$",
         "$x^2-2$",
-        "$\\dfrac{x(x-2)}{x}$"
+        "$\\dfrac{x(x-2)}{x}$",
+        "$x-2$"
       ],
-      "correct": 0,
+      "correct": 3,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E02",
           "feedback": "Con chỉ chia hạng tử đầu cho $x$; phải chia cả hai hạng tử."
         },
-        "2": {
+        "1": {
           "code": "E02",
           "feedback": "Con chỉ chia hạng tử sau cho $x$; phải chia cả hai hạng tử."
         },
-        "3": {
+        "2": {
           "code": "E11",
           "feedback": "Chưa đến tận cùng: còn nhân tử chung $x$ ở tử và mẫu."
         }
@@ -655,14 +655,14 @@
       "level": "L2",
       "prompt": "Thu gọn $(2x-1)^2-(2x+1)(2x-1)$.",
       "options": [
-        "$-4x+2$",
         "$0$",
+        "$-4x+2$",
         "$-4x$",
         "$4x^2-4x+1-4x^2+1$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E03",
           "feedback": "Con nhớ thiếu hạng tử giữa của $(a-b)^2=a^2-2ab+b^2$."
         },
@@ -683,14 +683,14 @@
       "level": "L2",
       "prompt": "Rút gọn $\\dfrac{x^2+6x+9}{x^2-9}$ (với $x \\ne \\pm 3$).",
       "options": [
-        "$\\dfrac{x+3}{x-3}$",
         "$\\dfrac{(x+3)^2}{(x-3)(x+3)}$",
+        "$\\dfrac{x+3}{x-3}$",
         "$\\dfrac{x-3}{x+3}$",
         "$\\dfrac{6x+9}{-9}$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E11",
           "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x+3$."
         },
@@ -720,22 +720,22 @@
             "level": "L2",
             "prompt": "Điều kiện xác định của $Q$ là:",
             "options": [
-              "$x \\ne 2$ và $x \\ne -2$",
               "$x \\ne 2$",
               "$x \\ne 3$ và $x \\ne -2$",
-              "$x \\ne 4$"
+              "$x \\ne 4$",
+              "$x \\ne 2$ và $x \\ne -2$"
             ],
-            "correct": 0,
+            "correct": 3,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=-2$: phương trình $x^2=4$ có hai nghiệm."
               },
-              "2": {
+              "1": {
                 "code": "E04",
                 "feedback": "Điều kiện chỉ xét mẫu, không xét tử."
               },
-              "3": {
+              "2": {
                 "code": "E04",
                 "feedback": "Từ $x^2 \\ne 4$ không suy ra $x \\ne 4$; phải lấy căn bậc hai cả hai dấu."
               }
@@ -782,18 +782,18 @@
             "level": "L2",
             "prompt": "Biết $x^2-4=(x-2)(x+2)$. Rút gọn $Q$ đến tận cùng:",
             "options": [
-              "$\\dfrac{x-3}{x-2}$",
               "$\\dfrac{(x-3)(x+2)}{(x-2)(x+2)}$",
               "$\\dfrac{x-3}{x+2}$",
+              "$\\dfrac{x-3}{x-2}$",
               "$\\dfrac{x+6}{4}$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $x+2$."
               },
-              "2": {
+              "1": {
                 "code": "E02",
                 "feedback": "Sau khi bỏ $x+2$, mẫu còn lại là $x-2$, không phải $x+2$."
               },
@@ -867,18 +867,18 @@
             "level": "L3",
             "prompt": "Điều kiện xác định của $R$ là:",
             "options": [
-              "$x \\ne 3$ và $x \\ne -3$",
               "$x \\ne 3$",
               "$x \\ne 0$ và $x \\ne 3$",
+              "$x \\ne 3$ và $x \\ne -3$",
               "$x \\ne 9$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
               },
-              "2": {
+              "1": {
                 "code": "E04",
                 "feedback": "Điều kiện chỉ xét mẫu $9-x^2$, không xét tử."
               },
@@ -931,22 +931,22 @@
             "level": "L3",
             "prompt": "Tử là $x(x-3)$ và $3-x=-(x-3)$. Rút gọn $R$ đến tận cùng:",
             "options": [
-              "$-\\dfrac{x}{x+3}$",
               "$\\dfrac{x}{x+3}$",
               "$\\dfrac{x(x-3)}{(3-x)(3+x)}$",
-              "$-\\dfrac{x}{3}$"
+              "$-\\dfrac{x}{3}$",
+              "$-\\dfrac{x}{x+3}$"
             ],
-            "correct": 0,
+            "correct": 3,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E02",
                 "feedback": "Con quên dấu: $x-3$ và $3-x$ là hai số đối nhau, thương bằng $-1$."
               },
-              "2": {
+              "1": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: còn cặp nhân tử đối nhau ở tử và mẫu."
               },
-              "3": {
+              "2": {
                 "code": "E02",
                 "feedback": "Con gạch $x^2$ ở tử và mẫu; chỉ được bỏ nhân tử chung, không bỏ hạng tử."
               }

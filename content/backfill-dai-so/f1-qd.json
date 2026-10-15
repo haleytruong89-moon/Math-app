@@ -50,14 +50,14 @@
           "level": "L1",
           "prompt": "Điều kiện xác định của $B$ là:",
           "options": [
-            "$x \\ne 1$ và $x \\ne -1$",
             "$x \\ne 1$",
+            "$x \\ne 1$ và $x \\ne -1$",
             "$x \\ne -1$",
             "$x \\ne 2$"
           ],
-          "correct": 0,
+          "correct": 1,
           "mistakes": {
-            "1": {
+            "0": {
               "code": "E14",
               "feedback": "Con thiếu giá trị $x=-1$ làm mẫu $x+1$ bằng $0$."
             },
@@ -81,22 +81,22 @@
           "level": "L1",
           "prompt": "Mẫu chung của $\\dfrac{1}{x-1}$ và $\\dfrac{2}{x+1}$ là:",
           "options": [
-            "$(x-1)(x+1)$",
             "$x-1$",
             "$x+1$",
-            "$(x-1)+(x+1)$"
+            "$(x-1)+(x+1)$",
+            "$(x-1)(x+1)$"
           ],
-          "correct": 0,
+          "correct": 3,
           "mistakes": {
-            "1": {
+            "0": {
               "code": "E04",
               "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ chưa chứa $x+1$."
             },
-            "2": {
+            "1": {
               "code": "E04",
               "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ chưa chứa $x-1$."
             },
-            "3": {
+            "2": {
               "code": "E03",
               "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
             }
@@ -144,17 +144,17 @@
           "level": "L1",
           "prompt": "Câu kết luận nào đúng và đầy đủ?",
           "options": [
-            "Kết luận: $B=\\dfrac{3-x}{(x-1)(x+1)}$ với $x \\ne \\pm 1$.",
             "Kết luận: $B=\\dfrac{3-x}{(x-1)(x+1)}$.",
-            "Kết luận: $B=\\dfrac{-x-1}{(x-1)(x+1)}$ với $x \\ne \\pm 1$."
+            "Kết luận: $B=\\dfrac{-x-1}{(x-1)(x+1)}$ với $x \\ne \\pm 1$.",
+            "Kết luận: $B=\\dfrac{3-x}{(x-1)(x+1)}$ với $x \\ne \\pm 1$."
           ],
-          "correct": 0,
+          "correct": 2,
           "mistakes": {
-            "1": {
+            "0": {
               "code": "E11",
               "feedback": "Thiếu điều kiện $x \\ne \\pm 1$ trong kết luận."
             },
-            "2": {
+            "1": {
               "code": "E02",
               "feedback": "Con quên đổi dấu hạng tử $-1$ khi bỏ ngoặc ở bước tính tử."
             }
@@ -176,18 +176,18 @@
         "Cho mẫu khác $0$ rồi giải."
       ],
       "options": [
-        "$x \\ne 5$",
         "$x \\ne -5$",
         "$x \\ne 3$",
+        "$x \\ne 5$",
         "$x \\ne 0$"
       ],
-      "correct": 0,
+      "correct": 2,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E02",
           "feedback": "Con chuyển vế sai dấu: $x-5=0$ khi $x=5$."
         },
-        "2": {
+        "1": {
           "code": "E04",
           "feedback": "$3$ là tử số; điều kiện chỉ xét mẫu."
         },
@@ -243,22 +243,22 @@
         "Muốn cộng phân thức cần đưa chúng về dạng nào?"
       ],
       "options": [
-        "Tìm điều kiện xác định, rồi quy đồng mẫu",
         "Nhân chéo hai phân thức",
         "Bỏ nhân tử chung ở tử và mẫu",
-        "Cộng tử với tử, mẫu với mẫu"
+        "Cộng tử với tử, mẫu với mẫu",
+        "Tìm điều kiện xác định, rồi quy đồng mẫu"
       ],
-      "correct": 0,
+      "correct": 3,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E05",
           "feedback": "Nhân chéo dùng khi so sánh hay giải phương trình, không dùng để cộng phân thức."
         },
-        "2": {
+        "1": {
           "code": "E05",
           "feedback": "Đề là phép cộng hai phân thức khác mẫu; chưa có nhân tử chung để bỏ."
         },
-        "3": {
+        "2": {
           "code": "E05",
           "feedback": "Không được cộng tử với tử, mẫu với mẫu; phải đưa về cùng mẫu trước."
         }
@@ -269,21 +269,21 @@
       "id": "f1-qd-p4",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Tính $\\dfrac{2}{x}+\\dfrac{3}{x+1}$ (với $x \\ne 0$, $x \\ne -1$).",
+      "prompt": "Tính và thu gọn $\\dfrac{2}{x}+\\dfrac{3}{x+1}$ (với $x \\ne 0$, $x \\ne -1$).",
       "hints": [
         "Cần cộng hai phân thức khác mẫu.",
         "Mẫu chung là gì? Mỗi phân thức cần nhân thêm nhân tử phụ nào?",
         "Quy đồng mẫu thành $x(x+1)$, cộng tử rồi gộp đồng dạng."
       ],
       "options": [
-        "$\\dfrac{5x+2}{x(x+1)}$",
         "$\\dfrac{5}{2x+1}$",
+        "$\\dfrac{5x+2}{x(x+1)}$",
         "$\\dfrac{5x+1}{x(x+1)}$",
         "$\\dfrac{2(x+1)+3x}{x(x+1)}$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E03",
           "feedback": "Cộng hai phân thức không phải cộng tử với tử, mẫu với mẫu."
         },
@@ -309,14 +309,14 @@
         "Giải riêng từng mẫu $\\ne 0$, rồi gộp các điều kiện lại."
       ],
       "options": [
-        "$x \\ne 1$ và $x \\ne \\pm 3$",
         "$x \\ne 1$",
+        "$x \\ne 1$ và $x \\ne \\pm 3$",
         "$x \\ne 1$ và $x \\ne 3$",
         "$x \\ne 1$ và $x \\ne 9$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E14",
           "feedback": "Con quên mẫu thứ hai $x^2-9$; mọi mẫu đều phải khác $0$."
         },
@@ -350,22 +350,22 @@
             "level": "L2",
             "prompt": "Điều kiện xác định của $B$ là:",
             "options": [
-              "$x \\ne 1$ và $x \\ne -1$",
               "$x \\ne 1$",
               "$x \\ne -1$",
-              "$x \\ne 1$ và $x \\ne 3$"
+              "$x \\ne 1$ và $x \\ne 3$",
+              "$x \\ne 1$ và $x \\ne -1$"
             ],
-            "correct": 0,
+            "correct": 3,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=-1$ làm mẫu $x^2-1$ bằng $0$."
               },
-              "2": {
+              "1": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=1$ làm mẫu $x-1$ bằng $0$."
               },
-              "3": {
+              "2": {
                 "code": "E04",
                 "feedback": "$x-3$ là tử số; điều kiện chỉ xét các mẫu."
               }
@@ -412,17 +412,17 @@
             "level": "L2",
             "prompt": "Quy đồng, tử là $(x+1)+(x-3)$. Tử bằng:",
             "options": [
-              "$2x-2$",
               "$x-2$",
-              "$2x-4$"
+              "$2x-4$",
+              "$2x-2$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E02",
                 "feedback": "Con quên nhân tử phụ $x+1$ của phân thức đầu nên tử chỉ còn $1+(x-3)$."
               },
-              "2": {
+              "1": {
                 "code": "E01",
                 "feedback": "Con tính nhầm hạng tử tự do khi cộng $1$ và $-3$."
               }
@@ -438,18 +438,18 @@
             "level": "L2",
             "prompt": "Biết $x^2-1=(x-1)(x+1)$. Rút gọn $B$ đến tận cùng:",
             "options": [
-              "$\\dfrac{2}{x+1}$",
               "$\\dfrac{2x-2}{x^2-1}$",
               "$\\dfrac{2}{x-1}$",
+              "$\\dfrac{2}{x+1}$",
               "$\\dfrac{x-2}{x^2-1}$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: tử $2x-2=2(x-1)$ còn nhân tử chung với mẫu."
               },
-              "2": {
+              "1": {
                 "code": "E02",
                 "feedback": "Sau khi bỏ nhân tử chung $x-1$, mẫu còn lại là $x+1$."
               },
@@ -515,22 +515,22 @@
             "level": "L3",
             "prompt": "Biết $x^2-4=(x-2)(x+2)$. Rút gọn $P$ đến tận cùng:",
             "options": [
-              "$\\dfrac{1}{x+2}$",
               "$\\dfrac{x-2}{x^2-4}$",
               "$\\dfrac{1}{x-2}$",
-              "$\\dfrac{-3}{x^2-4}$"
+              "$\\dfrac{-3}{x^2-4}$",
+              "$\\dfrac{1}{x+2}$"
             ],
-            "correct": 0,
+            "correct": 3,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E11",
                 "feedback": "Chưa đến tận cùng: tử $x-2$ còn nhân tử chung với mẫu."
               },
-              "2": {
+              "1": {
                 "code": "E02",
                 "feedback": "Sau khi bỏ nhân tử chung $x-2$, mẫu còn lại là $x+2$."
               },
-              "3": {
+              "2": {
                 "code": "E02",
                 "feedback": "Con quên nhân tử phụ $x+2$ của phân thức đầu, nên tử sai."
               }
@@ -546,14 +546,14 @@
             "level": "L3",
             "prompt": "Có thể thay $x=2$ vào $P$ không?",
             "options": [
-              "Không, vì $x=2$ làm mẫu ban đầu bằng $0$",
               "Có, vì kết quả rút gọn $\\dfrac{1}{x+2}$ vẫn xác định tại $x=2$",
+              "Không, vì $x=2$ làm mẫu ban đầu bằng $0$",
               "Có, vì tử $x-2$ bằng $0$ nên $P=0$",
               "Không, vì $x=2$ làm tử bằng $0$"
             ],
-            "correct": 0,
+            "correct": 1,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "ĐKXĐ phải xét theo mẫu ban đầu, trước khi rút gọn."
               },
@@ -629,14 +629,14 @@
       "level": "L1",
       "prompt": "Điều kiện xác định của $\\dfrac{x}{2x-6}$ là:",
       "options": [
-        "$x \\ne 3$",
         "$x \\ne -3$",
+        "$x \\ne 3$",
         "$x \\ne 6$",
         "$x \\ne 0$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E02",
           "feedback": "Con chuyển vế sai dấu: $2x-6=0$ khi $2x=6$."
         },
@@ -657,22 +657,22 @@
       "level": "L1",
       "prompt": "Mẫu chung (nhỏ nhất) của $\\dfrac{1}{x-1}$ và $\\dfrac{3}{x+1}$ là:",
       "options": [
-        "$(x-1)(x+1)$",
         "$x-1$",
         "$x+1$",
-        "$(x-1)+(x+1)$"
+        "$(x-1)+(x+1)$",
+        "$(x-1)(x+1)$"
       ],
-      "correct": 0,
+      "correct": 3,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E04",
           "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x-1$ chưa chứa $x+1$."
         },
-        "2": {
+        "1": {
           "code": "E04",
           "feedback": "Mẫu chung phải chia hết cho cả hai mẫu; $x+1$ chưa chứa $x-1$."
         },
-        "3": {
+        "2": {
           "code": "E03",
           "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
         }
@@ -683,7 +683,7 @@
       "id": "f1-qd-x3",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Tính $\\dfrac{3}{x-1}-\\dfrac{2}{x+1}$ (với $x \\ne \\pm 1$).",
+      "prompt": "Tính và thu gọn $\\dfrac{3}{x-1}-\\dfrac{2}{x+1}$ (với $x \\ne \\pm 1$).",
       "options": [
         "$\\dfrac{x+5}{x^2-1}$",
         "$\\dfrac{x+1}{x^2-1}$",
@@ -713,18 +713,18 @@
       "level": "L2",
       "prompt": "Điều kiện xác định của $\\dfrac{1}{x^2-x}+\\dfrac{2}{x+3}$ là:",
       "options": [
-        "$x \\ne 0$, $x \\ne 1$ và $x \\ne -3$",
         "$x \\ne 1$ và $x \\ne -3$",
         "$x \\ne 0$ và $x \\ne -3$",
+        "$x \\ne 0$, $x \\ne 1$ và $x \\ne -3$",
         "$x \\ne 0$, $x \\ne 1$ và $x \\ne 3$"
       ],
-      "correct": 0,
+      "correct": 2,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E14",
           "feedback": "Con thiếu giá trị $x=0$: $x^2-x=x(x-1)$ bằng $0$ ở hai giá trị."
         },
-        "2": {
+        "1": {
           "code": "E14",
           "feedback": "Con thiếu giá trị $x=1$: $x^2-x=x(x-1)$ bằng $0$ ở hai giá trị."
         },
@@ -749,18 +749,18 @@
             "level": "L2",
             "prompt": "Điều kiện xác định của $S$ là:",
             "options": [
-              "$x \\ne 0$ và $x \\ne -2$",
               "$x \\ne 0$",
               "$x \\ne -2$",
+              "$x \\ne 0$ và $x \\ne -2$",
               "$x \\ne 0$ và $x \\ne 2$"
             ],
-            "correct": 0,
+            "correct": 2,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=-2$: $x^2+2x=x(x+2)$ bằng $0$ ở hai giá trị."
               },
-              "2": {
+              "1": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=0$ làm mẫu $x$ bằng $0$."
               },
@@ -857,14 +857,14 @@
       "prompt": "Bạn An rút gọn $\\dfrac{x^2-1}{x-1}$ thành $x+1$ rồi kết luận: “biểu thức xác định với mọi $x$”. Nhận xét nào đúng?",
       "source": "Soạn mới (bẫy ĐKXĐ sau khi rút gọn, thường gặp ở Bài 2 đề thi)",
       "options": [
-        "Sai: điều kiện xác định lấy từ mẫu ban đầu, nên phải có $x \\ne 1$",
         "Đúng: sau khi rút gọn không còn mẫu",
+        "Sai: điều kiện xác định lấy từ mẫu ban đầu, nên phải có $x \\ne 1$",
         "Sai: phải có $x \\ne -1$",
         "Sai: phải có $x \\ne \\pm 1$"
       ],
-      "correct": 0,
+      "correct": 1,
       "mistakes": {
-        "1": {
+        "0": {
           "code": "E04",
           "feedback": "Điều kiện xác định tính trước khi rút gọn, từ biểu thức đề cho."
         },
@@ -894,14 +894,14 @@
             "level": "L3",
             "prompt": "Điều kiện xác định của $Q$ là:",
             "options": [
-              "$x \\ne \\pm 3$",
               "$x \\ne 3$",
+              "$x \\ne \\pm 3$",
               "$x \\ne -3$",
               "$x \\ne 9$"
             ],
-            "correct": 0,
+            "correct": 1,
             "mistakes": {
-              "1": {
+              "0": {
                 "code": "E14",
                 "feedback": "Con thiếu giá trị $x=-3$: phương trình $x^2=9$ có hai nghiệm."
               },

@@ -93,7 +93,7 @@ Số đáp án nhiễu: trắc nghiệm 4 phương án → **≥ 2 phương án 
 
 | Bước | Ai | Đạt khi |
 |---|---|---|
-| 1. `npm test` | máy | Schema, ID, đáp án đọc được, nhiễu ≠ đáp án, TeX, SVG, `review` hợp lệ, mỗi câu luyện có 3 `hints` không chứa đáp số, đủ 3/3/2 và 2/3/3, ≥ 1 câu nhận dạng, ≥ 1 câu có `source` trong kho kiểm tra |
+| 1. `npm test` | máy | Schema, ID, đáp án đọc được, nhiễu ≠ đáp án, TeX, SVG, `review` hợp lệ, mỗi câu luyện có 3 `hints` không chứa đáp số, đủ 3/3/2 và 2/3/3, ≥ 1 câu nhận dạng, ≥ 1 câu có `source` trong kho kiểm tra, đáp án đúng của trắc nghiệm không dồn > 60% vào một vị trí (app hiện phương án theo thứ tự trong file) |
 | 2. Giải độc lập | agent thứ hai, **không xem đáp án** | Giải hết câu luyện + kiểm tra + chỗ trống; mọi đáp số trùng file. Lệch → sửa, ghi lý do |
 | 3. Tính lại nhiễu | script (Python/sympy) trong phiên soạn | Mỗi đáp án nhiễu tái tạo được bằng đúng lỗi đã ghi |
 | 4. Soát sư phạm | người soạn | Phản hồi ≤ 2 câu, không lộ đáp số; gợi ý đi từ chung → cụ thể, H3 chưa làm hộ phép tính; bước cuối "Kết luận:"; câu luyện tự đứng được |
