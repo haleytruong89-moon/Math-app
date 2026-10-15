@@ -1,0 +1,607 @@
+{
+  "id": "c-dkxd",
+  "module": "can-thuc",
+  "order": 1,
+  "title": "Điều kiện xác định biểu thức căn",
+  "status": "draft",
+  "estMinutes": 42,
+  "theory": [
+    "**Cần nhớ trước:** bài **Quy đồng & điều kiện xác định** — phân thức $\\dfrac{A}{B}$ xác định khi $B \\ne 0$; có nhiều phân thức thì **mọi** mẫu đều khác $0$.",
+    "**Quy tắc:** $\\sqrt{A}$ xác định khi $A \\ge 0$. Căn nằm ở mẫu, như $\\dfrac{1}{\\sqrt{A}}$, cần cả $A \\ge 0$ lẫn $\\sqrt{A} \\ne 0$, tức $A>0$. Mẫu $\\sqrt x-a$ (với $a>0$): $\\sqrt x \\ne a \\iff x \\ne a^2$. Biểu thức có nhiều căn, nhiều mẫu: viết điều kiện cho **từng** chỗ rồi lấy phần chung.",
+    "**Vì sao:** không có số nào bình phương lên được số âm, nên căn bậc hai của số âm không có nghĩa; chia cho $0$ cũng không có nghĩa. Còn $\\sqrt{A^2}$ luôn xác định vì $A^2 \\ge 0$ với mọi giá trị.",
+    "**Bẫy hay gặp:** $\\sqrt x-3 \\ne 0$ cho $x \\ne 9$, **không** phải $x \\ne 3$. Mẫu $\\sqrt x+2 \\ge 2$ nên **không** thêm điều kiện. Mẫu $x-2$ (không có căn) cho $x \\ne 2$. $\\sqrt{-x}$ xác định khi $x \\le 0$, vì $-x$ chưa chắc âm. $\\sqrt{0}=0$ vẫn có nghĩa: căn không ở mẫu thì dùng $\\ge$, không dùng $>$.",
+    "**Nhận dạng:** “tìm điều kiện xác định”, “với giá trị nào thì … có nghĩa” → liệt kê mọi căn và mọi mẫu của biểu thức **ban đầu**, trước khi rút gọn. **Không** cần tìm lại khi đề đã ghi sẵn “với $x \\ge 0$, $x \\ne 4$”: chỉ kiểm tra giá trị thay vào có thỏa không.",
+    "**Thẻ ĐKXĐ căn thức** (dạng → điều kiện, $a>0$): $\\begin{array}{l|l} \\sqrt{A} & A \\ge 0 \\\\ \\dfrac{B}{A} & A \\ne 0 \\\\ \\dfrac{B}{\\sqrt{A}} & A>0 \\\\ \\dfrac{B}{\\sqrt x-a} & x \\ge 0,\\ x \\ne a^2 \\\\ \\dfrac{B}{\\sqrt x+a} & x \\ge 0 \\\\ \\dfrac{B}{x-\\sqrt x} & x>0,\\ x \\ne 1 \\\\ \\sqrt{A^2} & \\text{mọi } x \\end{array}$ **Mẫu chung hay gặp:** $x-a^2=(\\sqrt x-a)(\\sqrt x+a)$; $x-2a\\sqrt x+a^2=(\\sqrt x-a)^2$; $x-a\\sqrt x=\\sqrt x(\\sqrt x-a)$."
+  ],
+  "worked": {
+    "problem": "Tìm điều kiện xác định của $P=\\dfrac{\\sqrt x}{\\sqrt x+3}+\\dfrac{2\\sqrt x}{\\sqrt x-3}-\\dfrac{3x+9}{x-9}$.",
+    "steps": [
+      {
+        "text": "Căn: biểu thức có $\\sqrt x$, nên cần $x \\ge 0$.",
+        "why": "Mọi căn bậc hai đều cần số dưới căn không âm."
+      },
+      {
+        "text": "Mẫu $\\sqrt x+3$: với $x \\ge 0$ thì $\\sqrt x+3 \\ge 3>0$, luôn khác $0$, không thêm điều kiện.",
+        "why": "Số không âm cộng số dương thì dương."
+      },
+      {
+        "text": "Mẫu $\\sqrt x-3 \\ne 0 \\iff \\sqrt x \\ne 3 \\iff x \\ne 9$.",
+        "why": "Bình phương hai vế để ra giá trị $x$ bị loại."
+      },
+      {
+        "text": "Mẫu $x-9 \\ne 0 \\iff x \\ne 9$. Đây cũng là mẫu chung, vì $x-9=(\\sqrt x-3)(\\sqrt x+3)$.",
+        "why": "Điều kiện này trùng bước 3, không thêm giá trị mới."
+      },
+      {
+        "text": "Kết luận: ĐKXĐ của $P$ là $x \\ge 0$, $x \\ne 9$.",
+        "why": "Thử $x=0$: $P=0+0-\\dfrac{9}{-9}=1$, có nghĩa."
+      }
+    ],
+    "selfExplain": "Vì sao mẫu $\\sqrt x+3$ không cho thêm điều kiện nào, còn mẫu $\\sqrt x-3$ lại loại $x=9$?"
+  },
+  "faded": {
+    "problem": "Tìm điều kiện xác định của $Q=\\dfrac{3}{\\sqrt x}-\\dfrac{\\sqrt x+1}{\\sqrt x-4}$.",
+    "steps": [
+      {
+        "text": "Liệt kê: căn $\\sqrt x$; hai mẫu $\\sqrt x$ và $\\sqrt x-4$."
+      },
+      {
+        "prompt": "Điều kiện từ phân thức có căn ở mẫu.",
+        "item": {
+          "id": "c-dkxd-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Phân thức $\\dfrac{3}{\\sqrt x}$ xác định khi:",
+          "options": [
+            "$x \\ne 0$",
+            "$x \\ge 0$",
+            "$x>0$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E14",
+              "feedback": "Con mới xét mẫu khác $0$, quên số dưới căn không được âm."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "Tại $x=0$ mẫu $\\sqrt{0}=0$; căn nằm ở mẫu thì số dưới căn phải dương."
+            }
+          },
+          "solution": "Cần $x \\ge 0$ (căn) và $\\sqrt x \\ne 0$ (mẫu), tức $x>0$."
+        }
+      },
+      {
+        "prompt": "Điều kiện từ mẫu $\\sqrt x-4$.",
+        "item": {
+          "id": "c-dkxd-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Mẫu $\\sqrt x-4 \\ne 0$ khi:",
+          "options": [
+            "$x \\ne 16$",
+            "$x \\ne 4$",
+            "$x \\ne 2$",
+            "$x>16$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "Từ $\\sqrt x \\ne 4$ phải bình phương hai vế để tìm $x$ bị loại."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Con lấy căn của $4$, nhưng phải làm ngược lại: bình phương."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Mẫu chỉ cần khác $0$, không cần dương."
+            }
+          },
+          "solution": "$\\sqrt x \\ne 4 \\iff x \\ne 16$."
+        }
+      },
+      {
+        "prompt": "Kết luận.",
+        "item": {
+          "id": "c-dkxd-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Kết luận: ĐKXĐ của $Q$ là:",
+          "options": [
+            "$x \\ge 0$, $x \\ne 16$",
+            "$x>0$, $x \\ne 16$",
+            "$x>0$",
+            "$x>16$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E14",
+              "feedback": "Con quên mẫu $\\sqrt x$ của phân thức đầu: $x=0$ làm mẫu này bằng $0$.",
+              "review": "f1-qd"
+            },
+            "2": {
+              "code": "E14",
+              "feedback": "Con thiếu điều kiện từ mẫu $\\sqrt x-4$.",
+              "review": "f1-qd"
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Mẫu chỉ cần khác $0$; ví dụ $x=1$ vẫn làm $Q$ có nghĩa."
+            }
+          },
+          "solution": "Gộp $x>0$ và $x \\ne 16$: ĐKXĐ của $Q$ là $x>0$, $x \\ne 16$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "c-dkxd-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Biểu thức $\\sqrt{2x-6}$ xác định khi nào?",
+      "hints": [
+        "Đề hỏi: với $x$ nào thì căn này có nghĩa?",
+        "Căn bậc hai xác định khi biểu thức dưới căn thỏa điều gì?",
+        "Giải bất phương trình $2x-6 \\ge 0$."
+      ],
+      "options": [
+        "$x \\ge 3$",
+        "$x>3$",
+        "$x \\le 3$",
+        "$x \\ge -3$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Tại $x=3$ có $\\sqrt{0}=0$, vẫn xác định; dưới căn chỉ cần $\\ge 0$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Chia hai vế cho số dương $2$ thì giữ nguyên chiều bất đẳng thức."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Chuyển $-6$ sang vế kia phải đổi dấu thành $+6$."
+        }
+      },
+      "solution": "$2x-6 \\ge 0 \\iff 2x \\ge 6 \\iff x \\ge 3$."
+    },
+    {
+      "id": "c-dkxd-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Biểu thức $\\dfrac{1}{\\sqrt{x-5}}$ xác định khi nào?",
+      "hints": [
+        "Đề hỏi $x$ nào để biểu thức có nghĩa.",
+        "Căn nằm ở mẫu: cần điều kiện cho căn và cho mẫu.",
+        "Gộp hai điều kiện: số dưới căn phải $\\ge 0$ và khác $0$."
+      ],
+      "options": [
+        "$x \\ge 5$",
+        "$x \\ne 5$",
+        "$x>5$",
+        "$x>-5$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Tại $x=5$ mẫu bằng $\\sqrt{0}=0$; căn nằm ở mẫu thì số dưới căn phải dương."
+        },
+        "1": {
+          "code": "E14",
+          "feedback": "Con mới xét mẫu khác $0$, quên số dưới căn không được âm."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Chuyển $-5$ sang vế kia phải đổi dấu thành $+5$."
+        }
+      },
+      "solution": "Cần $x-5 \\ge 0$ (căn) và $\\sqrt{x-5} \\ne 0$ (mẫu), tức $x-5>0 \\iff x>5$."
+    },
+    {
+      "id": "c-dkxd-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề: «Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x-3}$. Tìm điều kiện xác định của $P$.» Bước đầu tiên nên làm gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi điều kiện để $P$ có nghĩa, chưa hỏi rút gọn hay tính giá trị.",
+        "Những chỗ nào trong $P$ có thể làm biểu thức vô nghĩa?",
+        "Có hai loại chỗ cần xét: dưới dấu căn và ở mẫu."
+      ],
+      "options": [
+        "Rút gọn $P$ trước, rồi xét mẫu của kết quả",
+        "Nhân cả tử và mẫu với $\\sqrt x+3$ để trục căn ở mẫu",
+        "Thay thử một giá trị, ví dụ $x=4$, vào $P$",
+        "Viết điều kiện: số dưới căn $\\ge 0$ và mẫu $\\ne 0$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "ĐKXĐ lấy từ biểu thức ban đầu; rút gọn trước có thể làm mất điều kiện."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Trục căn là bước biến đổi, không cho điều kiện; phải có ĐKXĐ trước khi biến đổi."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Thay số chỉ kiểm tra một giá trị, không tìm được mọi $x$ làm $P$ có nghĩa."
+        }
+      },
+      "solution": "Tìm ĐKXĐ → liệt kê mọi căn ($x \\ge 0$) và mọi mẫu ($\\sqrt x-3 \\ne 0$) trên biểu thức ban đầu."
+    },
+    {
+      "id": "c-dkxd-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Điều kiện xác định của $\\dfrac{2\\sqrt x}{\\sqrt x-5}$ là:",
+      "hints": [
+        "Đề hỏi điều kiện để biểu thức có nghĩa.",
+        "Có căn $\\sqrt x$ và có mẫu chứa căn: mỗi chỗ cho một điều kiện.",
+        "Viết $x \\ge 0$ và $\\sqrt x-5 \\ne 0$, rồi tìm $x$ bị loại."
+      ],
+      "options": [
+        "$x \\ge 0$, $x \\ne 5$",
+        "$x \\ge 0$, $x \\ne 25$",
+        "$x \\ne 25$",
+        "$x>25$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Từ $\\sqrt x \\ne 5$ phải bình phương hai vế để tìm $x$ bị loại."
+        },
+        "2": {
+          "code": "E14",
+          "feedback": "Con quên điều kiện của căn $\\sqrt x$: số dưới căn không được âm."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Mẫu chỉ cần khác $0$, không cần dương; ví dụ $x=4$ vẫn làm biểu thức có nghĩa."
+        }
+      },
+      "solution": "$x \\ge 0$ (căn) và $\\sqrt x \\ne 5 \\iff x \\ne 25$ (mẫu). ĐKXĐ: $x \\ge 0$, $x \\ne 25$."
+    },
+    {
+      "id": "c-dkxd-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Tìm giá trị nguyên nhỏ nhất của $x$ để biểu thức $\\dfrac{3}{\\sqrt{x+2}}$ xác định.",
+      "hints": [
+        "Cần tìm số nguyên nhỏ nhất thỏa điều kiện xác định.",
+        "Căn nằm ở mẫu: số dưới căn cần $\\ge 0$ hay $>0$?",
+        "Giải $x+2>0$ rồi chọn số nguyên nhỏ nhất thỏa."
+      ],
+      "answer": "-1",
+      "mistakes": [
+        {
+          "answer": "-2",
+          "code": "E14",
+          "feedback": "Tại $x=-2$ mẫu bằng $\\sqrt{0}=0$; căn nằm ở mẫu thì số dưới căn phải dương."
+        },
+        {
+          "answer": "3",
+          "code": "E02",
+          "feedback": "Chuyển $+2$ sang vế kia phải đổi dấu thành $-2$."
+        }
+      ],
+      "solution": "$x+2>0 \\iff x>-2$. Số nguyên nhỏ nhất lớn hơn $-2$ là $-1$."
+    },
+    {
+      "id": "c-dkxd-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Biểu thức $\\sqrt{-2x}$ xác định khi nào?",
+      "hints": [
+        "Đề hỏi $x$ nào để căn có nghĩa.",
+        "Biểu thức dưới căn $-2x$ cần thỏa điều gì?",
+        "Giải $-2x \\ge 0$; chia cho số âm thì đổi chiều."
+      ],
+      "options": [
+        "Không có giá trị nào của $x$",
+        "$x \\ge 0$",
+        "$x<0$",
+        "$x \\le 0$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "$-2x$ chưa chắc âm: với $x<0$ thì $-2x>0$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Chia hai vế của $-2x \\ge 0$ cho số âm $-2$ phải đổi chiều bất đẳng thức."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Tại $x=0$ có $\\sqrt{0}=0$, vẫn xác định; dưới căn (không nằm ở mẫu) chỉ cần $\\ge 0$."
+        }
+      },
+      "solution": "$-2x \\ge 0 \\iff x \\le 0$ (chia cho $-2<0$ nên đổi chiều)."
+    },
+    {
+      "id": "c-dkxd-p7",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho biểu thức $B=\\dfrac{2}{\\sqrt x-1}-\\dfrac{\\sqrt x-2}{x-\\sqrt x}$. Điều kiện xác định của $B$ là:",
+      "source": "68 đề – Đề 12, Bài 2 (chuyển thể: hỏi ĐKXĐ của biểu thức)",
+      "hints": [
+        "Đề hỏi điều kiện để $B$ có nghĩa.",
+        "Liệt kê căn và hai mẫu; mẫu $x-\\sqrt x$ phân tích thành nhân tử thế nào?",
+        "Đặt $\\sqrt x$ làm nhân tử chung, cho từng nhân tử khác $0$."
+      ],
+      "options": [
+        "$x \\ge 0$, $x \\ne 1$",
+        "$x>0$",
+        "$x>0$, $x \\ne 1$",
+        "$x>1$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Con thiếu một giá trị làm mẫu $x-\\sqrt x=\\sqrt x(\\sqrt x-1)$ bằng $0$: tích bằng $0$ khi một nhân tử bằng $0$.",
+          "review": "f1-qd"
+        },
+        "1": {
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện từ mẫu $\\sqrt x-1$.",
+          "review": "f1-qd"
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Mẫu chỉ cần khác $0$, không cần dương; ví dụ $x=\\dfrac14$ vẫn làm $B$ có nghĩa."
+        }
+      },
+      "solution": "$x \\ge 0$; $\\sqrt x-1 \\ne 0 \\iff x \\ne 1$; $x-\\sqrt x=\\sqrt x(\\sqrt x-1) \\ne 0 \\iff x \\ne 0$ và $x \\ne 1$. Gộp lại: $x>0$, $x \\ne 1$."
+    },
+    {
+      "id": "c-dkxd-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{x-1}{x-2}$ và $B=\\dfrac{\\sqrt x-2}{x-2\\sqrt x+1}+\\dfrac{2+\\sqrt x}{x-1}$. Có bao nhiêu số nguyên $x$ với $-2 \\le x \\le 9$ để cả $A$ và $B$ cùng xác định?",
+      "source": "68 đề – Đề 21, Bài 2 (chuyển thể: hỏi ĐKXĐ của biểu thức, đếm số nguyên)",
+      "hints": [
+        "Cần đếm số nguyên trong đoạn làm cả $A$ và $B$ có nghĩa.",
+        "Liệt kê: căn $\\sqrt x$ trong $B$, mẫu $x-2$, mẫu $x-2\\sqrt x+1$, mẫu $x-1$.",
+        "$x-2$ và $x-1$ không có căn; $x-2\\sqrt x+1$ là bình phương. Loại các giá trị bị cấm."
+      ],
+      "answer": "8",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện từ mẫu $x-2$ của $A$; mẫu này không có căn.",
+          "review": "f1-qd"
+        },
+        {
+          "answer": "10",
+          "code": "E14",
+          "feedback": "Con quên điều kiện $x \\ge 0$ của căn $\\sqrt x$ trong $B$."
+        }
+      ],
+      "solution": "Căn trong $B$: $x \\ge 0$. Mẫu của $A$: $x-2 \\ne 0 \\iff x \\ne 2$. Mẫu của $B$: $x-2\\sqrt x+1=(\\sqrt x-1)^2 \\ne 0 \\iff x \\ne 1$ và $x-1 \\ne 0 \\iff x \\ne 1$. Từ $0$ đến $9$ có $10$ số nguyên, bỏ $1$ và $2$ còn $8$ số."
+    }
+  ],
+  "exit": [
+    {
+      "id": "c-dkxd-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Biểu thức $\\sqrt{5-x}$ xác định khi nào?",
+      "options": [
+        "$x \\ge 5$",
+        "$x \\le 5$",
+        "$x<5$",
+        "$x \\ne 5$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Từ $-x \\ge -5$, nhân hai vế với $-1$ phải đổi chiều bất đẳng thức."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Tại $x=5$ có $\\sqrt{0}=0$, vẫn xác định; dưới căn chỉ cần $\\ge 0$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Căn không nằm ở mẫu; điều kiện của căn là số dưới căn không âm, không phải khác $0$."
+        }
+      },
+      "solution": "$5-x \\ge 0 \\iff x \\le 5$."
+    },
+    {
+      "id": "c-dkxd-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Biểu thức $\\sqrt{(x-2)^2}$ xác định khi nào?",
+      "options": [
+        "$x \\ge 2$",
+        "$x \\ne 2$",
+        "$x>2$",
+        "Với mọi $x$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Số dưới căn là $(x-2)^2$ chứ không phải $x-2$; hãy xét dấu của một bình phương."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Tại $x=2$ có $\\sqrt{0}=0$, vẫn xác định; căn này không nằm ở mẫu."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Con xét dấu của $x-2$, nhưng dưới căn là $(x-2)^2$."
+        }
+      },
+      "solution": "$(x-2)^2 \\ge 0$ với mọi $x$, nên $\\sqrt{(x-2)^2}$ luôn xác định."
+    },
+    {
+      "id": "c-dkxd-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Điều kiện xác định của $\\dfrac{\\sqrt x}{\\sqrt x+2}$ là:",
+      "options": [
+        "$x \\ge 0$",
+        "$x \\ge 0$, $x \\ne 4$",
+        "$x>0$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "$\\sqrt x+2 \\ge 2$ nên mẫu không bao giờ bằng $0$; $\\sqrt x=-2$ vô nghiệm."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Tử $\\sqrt x$ bằng $0$ không sao; chỉ mẫu mới phải khác $0$."
+        }
+      },
+      "solution": "Cần $x \\ge 0$. Khi đó $\\sqrt x+2 \\ge 2>0$, mẫu luôn khác $0$. ĐKXĐ: $x \\ge 0$."
+    },
+    {
+      "id": "c-dkxd-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Có bao nhiêu số nguyên $x$ để biểu thức $\\sqrt{x+3}+\\sqrt{4-x}$ xác định?",
+      "answer": "8",
+      "mistakes": [
+        {
+          "answer": "7",
+          "code": "E01",
+          "feedback": "Số các số nguyên từ $a$ đến $b$ (kể cả hai đầu) là $b-a+1$."
+        },
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "Dưới căn chỉ cần $\\ge 0$; hai đầu mút làm số dưới căn bằng $0$ vẫn được."
+        }
+      ],
+      "solution": "$x+3 \\ge 0$ và $4-x \\ge 0 \\iff -3 \\le x \\le 4$: có $4-(-3)+1=8$ số nguyên."
+    },
+    {
+      "id": "c-dkxd-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Điều kiện xác định của $\\sqrt{x-1}+\\dfrac{1}{x-3}$ là:",
+      "options": [
+        "$x \\ge 1$",
+        "$x \\ne 3$",
+        "$x \\ge 1$, $x \\ne 3$",
+        "$x>1$, $x \\ne 3$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Con quên mẫu $x-3$ phải khác $0$.",
+          "review": "f1-qd"
+        },
+        "1": {
+          "code": "E14",
+          "feedback": "Con quên điều kiện của căn $\\sqrt{x-1}$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Tại $x=1$ có $\\sqrt{0}=0$, vẫn xác định; dưới căn chỉ cần $\\ge 0$."
+        }
+      },
+      "solution": "$x-1 \\ge 0 \\iff x \\ge 1$; $x-3 \\ne 0 \\iff x \\ne 3$. Gộp: $x \\ge 1$, $x \\ne 3$."
+    },
+    {
+      "id": "c-dkxd-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho biểu thức $B=\\dfrac{3x}{x-3\\sqrt x+2}-\\dfrac{\\sqrt x+1}{\\sqrt x-2}+\\dfrac{\\sqrt x+2}{\\sqrt x-1}$. Điều kiện xác định của $B$ là:",
+      "source": "68 đề – Đề 47, Bài 2 (chuyển thể: hỏi ĐKXĐ của biểu thức)",
+      "options": [
+        "$x \\ge 0$, $x \\ne 1$, $x \\ne 2$",
+        "$x \\ge 0$, $x \\ne 1$, $x \\ne 4$",
+        "$x \\ge 0$, $x \\ne 4$",
+        "$x>0$, $x \\ne 1$, $x \\ne 4$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Từ $\\sqrt x \\ne 2$ phải bình phương hai vế để tìm $x$ bị loại."
+        },
+        "2": {
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện từ mẫu $\\sqrt x-1$.",
+          "review": "f1-qd"
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$x=0$ không làm mẫu nào bằng $0$; căn $\\sqrt x$ chỉ cần $x \\ge 0$."
+        }
+      },
+      "solution": "$x \\ge 0$; $x-3\\sqrt x+2=(\\sqrt x-1)(\\sqrt x-2)$; $\\sqrt x-1 \\ne 0 \\iff x \\ne 1$; $\\sqrt x-2 \\ne 0 \\iff x \\ne 4$."
+    },
+    {
+      "id": "c-dkxd-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x-1}{x-2\\sqrt x}$. Tìm giá trị nguyên nhỏ nhất của $x$ để $A$ xác định.",
+      "source": "68 đề – Đề 15, Bài 2 (chuyển thể: hỏi giá trị nguyên nhỏ nhất để biểu thức xác định)",
+      "answer": "1",
+      "mistakes": [
+        {
+          "answer": "0",
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện mẫu khác $0$: $x-2\\sqrt x=\\sqrt x(\\sqrt x-2)$ có hai giá trị làm nó bằng $0$.",
+          "review": "f1-qd"
+        },
+        {
+          "answer": "5",
+          "code": "E04",
+          "feedback": "Mẫu chỉ cần khác $0$, không cần dương."
+        }
+      ],
+      "solution": "$x \\ge 0$ và $x-2\\sqrt x=\\sqrt x(\\sqrt x-2) \\ne 0 \\iff x \\ne 0$, $x \\ne 4$. ĐKXĐ: $x>0$, $x \\ne 4$; số nguyên nhỏ nhất là $1$."
+    },
+    {
+      "id": "c-dkxd-x8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho biểu thức $B=\\dfrac{3\\sqrt x+1}{x+2\\sqrt x-3}-\\dfrac{2}{\\sqrt x+3}$. Điều kiện xác định của $B$ là:",
+      "source": "68 đề – Đề 41, Bài 2 (chuyển thể: hỏi ĐKXĐ của biểu thức)",
+      "options": [
+        "$x \\ge 0$, $x \\ne 1$, $x \\ne 9$",
+        "$x \\ne 1$",
+        "$x>0$, $x \\ne 1$",
+        "$x \\ge 0$, $x \\ne 1$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "$\\sqrt x+3>0$ với mọi $x \\ge 0$; phương trình $\\sqrt x=-3$ vô nghiệm."
+        },
+        "1": {
+          "code": "E14",
+          "feedback": "Con quên điều kiện của căn $\\sqrt x$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "$x=0$ không làm mẫu nào bằng $0$; căn $\\sqrt x$ chỉ cần $x \\ge 0$."
+        }
+      },
+      "solution": "$x \\ge 0$; $x+2\\sqrt x-3=(\\sqrt x-1)(\\sqrt x+3)$; $\\sqrt x-1 \\ne 0 \\iff x \\ne 1$; $\\sqrt x+3>0$ luôn đúng."
+    }
+  ]
+}

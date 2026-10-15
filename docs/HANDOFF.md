@@ -13,7 +13,8 @@
 |---|---|---|---|
 | Đợt 1: f1-hdt, f1-pnt, a-tanso, b-phepthu + chuẩn hoá htl-1/2 | `p1-content-1` | duyệt trước 18/10 | ✅ đã merge (PR #17); phụ huynh duyệt 15/10 (PR #20) |
 | Đợt 2: f1-tgon, f1-qd, a-bieudo, b-xsuat | `p1-content-2` | duyệt trước 25/10 | ✅ đã merge (PR #18); giải độc lập 103/103 + sửa; phụ huynh duyệt 15/10 (PR #20) |
-| Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | 08/11 | ⬜ chưa bắt đầu — có thể làm ngay (đợt 1 đã duyệt) |
+| Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | duyệt trước 08/11 | 🟡 PR mở 15/10, nháp; giải độc lập 109/109; c-dkxd chờ gia sư soát |
+| Đợt 4 | `p1-content-4` | theo `docs/CURRICULUM.md` §3 | ⬜ làm sau khi phụ huynh phản hồi đợt 3 |
 
 ## Phiên Code (VS Code / cloud)
 | Việc | Nhánh | Hạn | Điều kiện |
@@ -24,6 +25,7 @@
 
 ## Phụ huynh
 - [ ] Merge PR #20 (giải độc lập đợt 2 + duyệt 8 KU đợt 1–2, đã chốt 15/10).
+- [ ] Merge PR đợt 3 (`p1-content-3`), duyệt 5 bài trên preview; nhờ gia sư soát c-dkxd (danh sách trong PROGRESS 15/10).
 - [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).
 - [ ] Tạo khoá Anthropic API hạn mức 10 USD/tháng, dán vào Vercel (không dán vào chat) — trước 26/10.

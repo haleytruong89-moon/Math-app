@@ -1,0 +1,857 @@
+{
+  "id": "p-ghep",
+  "module": "hinh-khoi",
+  "order": 3,
+  "title": "Hình ghép, thể tích còn lại & vật liệu",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **Hình trụ & hình nón** ($V=\\pi r^2h$; $V_{\\text{nón}}=\\dfrac13\\pi r^2h$; $S_{xq}=2\\pi rh$; $S_{xq\\,\\text{nón}}=\\pi rl$, $l=\\sqrt{r^2+h^2}$) và bài **Hình cầu & bán cầu** ($V=\\dfrac43\\pi R^3$, $S=4\\pi R^2$; nửa cầu: $V=\\dfrac23\\pi R^3$, mặt cong $2\\pi R^2$).",
+    "**Quy tắc:** thể tích vật ghép $=$ **tổng** thể tích các khối; thể tích còn lại $=$ khối lớn **trừ** phần khoét. Diện tích cần sơn / vật liệu $=$ tổng các mặt **lộ ra**: mặt hai khối dán vào nhau không tính; khoét lỗ thì trừ miệng lỗ, cộng mặt trong lỗ. Nước dâng: $\\pi r^2 \\cdot \\Delta h = V_{\\text{vật chìm}}$. Đơn vị: $1$ lít $=1$ dm³ $=1000$ cm³; $1$ m³ $=1000$ lít.",
+    "**Vì sao:** thể tích là chỗ chiếm trong không gian nên ghép thì cộng, khoét thì trừ. Sơn chỉ phủ được mặt nhìn thấy; chỗ hai khối dán khít bị che kín. Vật chìm đẩy nước lên đúng bằng thể tích của nó, phần nước dâng là một hình trụ cùng đáy với cốc.",
+    "**Bẫy hay gặp:** dùng đường kính làm bán kính (kết quả thể tích gấp $8$ lần); cộng mặt tiếp giáp vào diện tích; quên trừ phần khoét; dùng cả mặt cầu $4\\pi R^2$ cho nửa cầu; đổi $1$ m³ thành $100$ lít; thay $\\pi\\approx3{,}14$ và làm tròn từng phần quá sớm.",
+    "**Nhận dạng:** “gồm … và …”, “phía trên là nửa hình cầu” → cộng; “khoét, khoan, đục” → trừ; “thả vào cốc nước” → nước dâng / tràn; “sơn, tôn, vật liệu” → diện tích mặt lộ ra; “bao nhiêu lít, bao nhiêu ngày, bao nhiêu tiền” → đổi đơn vị rồi chia / nhân. **Không** cần bài này khi vật chỉ là một khối: dùng thẳng công thức của bài trước.",
+    "**Phiếu bài thực tế:** (1) vẽ / tách vật thành các khối; (2) đổi đường kính ra bán kính; (3) lập bảng: khối – công thức – kết quả theo $\\pi$; (4) cộng hoặc trừ, liệt kê từng mặt lộ ra nếu tính diện tích; (5) đổi về đơn vị đề hỏi; (6) thay $\\pi\\approx3{,}14$ và làm tròn **ở bước cuối**; (7) viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Một kho chứa thóc gồm thân hình trụ đường kính đáy $6$ m, cao $8$ m và mái vòm là nửa hình cầu cùng đường kính $6$ m. Tính dung tích của kho (bỏ qua bề dày tường, lấy $\\pi\\approx3{,}14$) theo m³ và theo lít.",
+    "steps": [
+      {
+        "text": "Bán kính đáy: $r=6:2=3$ (m), dùng chung cho thân trụ và mái nửa cầu.",
+        "why": "Mọi công thức dùng bán kính; đề cho đường kính nên phải chia đôi trước."
+      },
+      {
+        "text": "Thể tích thân trụ: $V_1=\\pi r^2h=\\pi\\cdot3^2\\cdot8=72\\pi$ (m³).",
+        "why": "Thân là hình trụ có chiều cao $8$ m."
+      },
+      {
+        "text": "Thể tích mái: $V_2=\\dfrac12\\cdot\\dfrac43\\pi r^3=\\dfrac23\\pi\\cdot3^3=18\\pi$ (m³).",
+        "why": "Mái chỉ là nửa hình cầu nên lấy một nửa thể tích hình cầu."
+      },
+      {
+        "text": "Dung tích: $V=V_1+V_2=90\\pi\\approx90\\cdot3{,}14=282{,}6$ (m³) $=282\\,600$ lít.",
+        "why": "Giữ $\\pi$ đến cuối mới thay $3{,}14$ để không làm tròn sớm; $1$ m³ $=1000$ lít."
+      },
+      {
+        "text": "Kết luận: kho chứa được khoảng $282{,}6$ m³, tức $282\\,600$ lít thóc.",
+        "why": "Đề hỏi hai đơn vị nên trả lời đủ cả hai."
+      }
+    ],
+    "selfExplain": "Vì sao không cộng thêm gì cho mặt tròn chỗ thân trụ tiếp giáp mái vòm? Nếu dùng nhầm $6$ m làm bán kính thì dung tích tính ra gấp mấy lần?"
+  },
+  "faded": {
+    "problem": "Một mô hình cây bút chì gồm một hình trụ có đường kính đáy $6$ cm, cao $10$ cm và một hình nón cao $4$ cm có đáy trùng khít với đáy trên của hình trụ. Người ta sơn toàn bộ mặt ngoài của mô hình (kể cả đáy dưới). Tính diện tích cần sơn.",
+    "steps": [
+      {
+        "prompt": "Chọn các mặt cần sơn.",
+        "item": {
+          "id": "p-ghep-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Bề mặt cần sơn gồm những phần nào?",
+          "options": [
+            "Hai đáy hình trụ, mặt xung quanh hình trụ và mặt xung quanh hình nón",
+            "Mặt xung quanh hình trụ và mặt xung quanh hình nón",
+            "Đáy dưới của hình trụ, mặt xung quanh hình trụ và mặt xung quanh hình nón",
+            "Hai đáy hình trụ, đáy hình nón, mặt xung quanh hình trụ và hình nón"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E06",
+              "feedback": "Đáy trên của hình trụ bị đáy hình nón che kín nên không sơn."
+            },
+            "1": {
+              "code": "E06",
+              "feedback": "Đề yêu cầu sơn cả đáy dưới của hình trụ."
+            },
+            "3": {
+              "code": "E06",
+              "feedback": "Hai mặt dán khít vào nhau (đáy trên trụ và đáy nón) bị che, không sơn."
+            }
+          },
+          "solution": "Mặt lộ ra: đáy dưới hình trụ, mặt xung quanh hình trụ, mặt xung quanh hình nón. Mặt tiếp giáp trụ – nón bị che."
+        }
+      },
+      {
+        "text": "Bán kính đáy: $r=6:2=3$ (cm)."
+      },
+      {
+        "prompt": "Tính đường sinh của hình nón.",
+        "item": {
+          "id": "p-ghep-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Đường sinh $l$ của hình nón (bán kính $3$ cm, cao $4$ cm) là:",
+          "answer": "5",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "7",
+              "code": "E03",
+              "feedback": "Đường sinh tính bằng Pythagore $l=\\sqrt{r^2+h^2}$, không phải $r+h$.",
+              "review": "p-trunon"
+            },
+            {
+              "answer": "4",
+              "code": "E03",
+              "feedback": "$4$ cm là chiều cao; đường sinh là $l=\\sqrt{r^2+h^2}$.",
+              "review": "p-trunon"
+            },
+            {
+              "answer": "√52",
+              "code": "E08",
+              "feedback": "Đề cho **đường kính** $6$ cm; bán kính là $3$ cm."
+            }
+          ],
+          "solution": "$l=\\sqrt{3^2+4^2}=5$ (cm)."
+        }
+      },
+      {
+        "text": "Mặt xung quanh trụ: $2\\pi\\cdot3\\cdot10=60\\pi$; mặt xung quanh nón: $\\pi\\cdot3\\cdot5=15\\pi$; đáy dưới: $\\pi\\cdot3^2=9\\pi$ (cm²)."
+      },
+      {
+        "prompt": "Cộng các mặt.",
+        "item": {
+          "id": "p-ghep-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Diện tích cần sơn có dạng $k\\pi$ cm². Ghi $k$:",
+          "answer": "84",
+          "mistakes": [
+            {
+              "answer": "93",
+              "code": "E06",
+              "feedback": "Con cộng thêm mặt tròn chỗ trụ và nón dán vào nhau; mặt đó bị che."
+            },
+            {
+              "answer": "75",
+              "code": "E06",
+              "feedback": "Con quên đáy dưới của hình trụ."
+            }
+          ],
+          "solution": "$60\\pi+15\\pi+9\\pi=84\\pi$ (cm²)."
+        }
+      },
+      {
+        "text": "Kết luận: diện tích cần sơn là $84\\pi\\approx263{,}76$ cm² (lấy $\\pi\\approx3{,}14$)."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "p-ghep-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một vật gồm một hình trụ và một hình nón đặt khít lên đáy trên của hình trụ (như hình). Hai hình cùng có đường kính đáy $6$ cm; hình trụ cao $5$ cm, hình nón cao $4$ cm. Thể tích của vật có dạng $k\\pi$ cm³. Tìm $k$.",
+      "hints": [
+        "Cần thể tích cả vật, viết dưới dạng $k\\pi$.",
+        "Vật ghép từ hai khối nên thể tích vật bằng tổng thể tích hai khối.",
+        "Đổi đường kính ra bán kính, rồi dùng $\\pi r^2h$ và $\\dfrac13\\pi r^2h$."
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 230 236\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M62 126 L110 62 L158 126 L158 206 A48 12 0 0 1 62 206 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M62 126 L62 206 M158 126 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 0 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 1 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 A48 12 0 0 0 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 126 A48 12 0 0 1 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 L110 62 L158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"110\" y=\"232\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">6 cm</text><path d=\"M110 62 L110 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"116\" y=\"100\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M176 126 L176 206 M171 126 L181 126 M171 206 L181 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"184\" y=\"170\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">5 cm</text></svg>",
+        "alt": "Hình trụ đường kính đáy 6 cm, cao 5 cm; phía trên là hình nón cao 4 cm cùng đáy."
+      },
+      "answer": "57",
+      "mistakes": [
+        {
+          "answer": "228",
+          "code": "E08",
+          "feedback": "Đề cho **đường kính** $6$ cm; bán kính là $3$ cm."
+        },
+        {
+          "answer": "81",
+          "code": "E03",
+          "feedback": "Thể tích hình nón là $\\dfrac13\\pi r^2h$, con quên nhân $\\dfrac13$.",
+          "review": "p-trunon"
+        }
+      ],
+      "solution": "$r=3$ cm. Hình trụ: $\\pi\\cdot3^2\\cdot5=45\\pi$; hình nón: $\\dfrac13\\pi\\cdot3^2\\cdot4=12\\pi$. Thể tích vật: $57\\pi$ cm³, nên $k=57$."
+    },
+    {
+      "id": "p-ghep-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một khúc gỗ hình trụ có bán kính đáy $5$ cm, cao $10$ cm. Người ta khoan xuyên dọc theo trục một lỗ hình trụ bán kính $2$ cm, lỗ dài bằng chiều cao khúc gỗ. Thể tích phần gỗ còn lại có dạng $k\\pi$ cm³. Tìm $k$.",
+      "hints": [
+        "Cần thể tích phần gỗ còn lại sau khi khoan.",
+        "Khoét bỏ một khối thì thể tích còn lại bằng khối lớn trừ phần bị khoét.",
+        "Tính $\\pi r^2h$ cho khúc gỗ và cho lỗ, rồi lấy hiệu."
+      ],
+      "answer": "210",
+      "mistakes": [
+        {
+          "answer": "250",
+          "code": "E06",
+          "feedback": "Con quên trừ thể tích phần lỗ đã khoan."
+        },
+        {
+          "answer": "90",
+          "code": "E02",
+          "feedback": "Không lấy hiệu hai bán kính rồi mới bình phương: $5^2-2^2 \\ne (5-2)^2$."
+        }
+      ],
+      "solution": "Khúc gỗ: $\\pi\\cdot5^2\\cdot10=250\\pi$; lỗ: $\\pi\\cdot2^2\\cdot10=40\\pi$. Còn lại: $210\\pi$ cm³, nên $k=210$."
+    },
+    {
+      "id": "p-ghep-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một cốc hình trụ đang chứa nước. Thả một viên bi sắt hình cầu vào cốc, bi chìm hẳn và nước không tràn. Đề hỏi mực nước dâng thêm bao nhiêu xăng-ti-mét. Cách làm nào đúng?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách làm, chưa cần tính ra số.",
+        "Viên bi chìm hẳn chiếm chỗ một lượng nước bằng đại lượng nào của nó?",
+        "Phần nước dâng lên là một hình trụ có cùng đáy với cốc."
+      ],
+      "options": [
+        "Lấy thể tích cốc trừ thể tích viên bi",
+        "Tính thể tích viên bi rồi chia cho diện tích đáy cốc",
+        "Tính diện tích mặt cầu của viên bi rồi chia cho diện tích đáy cốc",
+        "Cộng đường kính viên bi vào chiều cao mực nước ban đầu"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đó là cách tính phần còn trống của cốc; nước dâng lên đúng bằng thể tích viên bi chiếm chỗ."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Nước bị đẩy lên theo **thể tích** viên bi, không theo diện tích bề mặt."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Nước không dâng bằng chiều cao viên bi; phần nước dâng là hình trụ có thể tích bằng thể tích bi."
+        }
+      },
+      "solution": "Phần nước dâng là hình trụ cùng đáy với cốc, thể tích bằng thể tích viên bi: $\\pi r^2\\cdot\\Delta h=V_{\\text{bi}}$, nên $\\Delta h=\\dfrac{V_{\\text{bi}}}{\\pi r^2}$."
+    },
+    {
+      "id": "p-ghep-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một vật trang trí gồm một hình trụ bán kính đáy $4$ cm, cao $10$ cm và một nửa hình cầu bán kính $4$ cm gắn khít lên đáy trên của hình trụ (như hình). Người ta sơn toàn bộ mặt ngoài của vật, kể cả đáy dưới. Diện tích cần sơn có dạng $k\\pi$ cm². Tìm $k$.",
+      "hints": [
+        "Cần tổng diện tích các mặt lộ ra ngoài của vật.",
+        "Mặt nào bị che khi hai khối gắn vào nhau? Mặt đó không sơn.",
+        "Cộng: xung quanh trụ $2\\pi rh$, mặt cong nửa cầu $2\\pi R^2$, đáy dưới $\\pi r^2$."
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 220 240\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 120 A36 36 0 0 1 136 120 L136 210 A36 9 0 0 1 64 210 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M64 120 L64 210 M136 120 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 0 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 1 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 9 0 0 0 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 120 A36 9 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 36 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M100 120 L100 84\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"105\" y=\"106\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M100 210 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"233\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">bán kính 4 cm</text><path d=\"M154 120 L154 210 M149 120 L159 120 M149 210 L159 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"162\" y=\"168\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">10 cm</text></svg>",
+        "alt": "Hình trụ bán kính 4 cm, cao 10 cm; phía trên là nửa hình cầu bán kính 4 cm."
+      },
+      "answer": "128",
+      "mistakes": [
+        {
+          "answer": "144",
+          "code": "E06",
+          "feedback": "Mặt tròn chỗ nửa cầu gắn vào hình trụ bị che kín, không sơn."
+        },
+        {
+          "answer": "160",
+          "code": "E03",
+          "feedback": "Nửa hình cầu chỉ có mặt cong bằng nửa mặt cầu: $2\\pi R^2$, không phải $4\\pi R^2$.",
+          "review": "p-cau"
+        },
+        {
+          "answer": "112",
+          "code": "E06",
+          "feedback": "Đề yêu cầu sơn cả đáy dưới của hình trụ."
+        }
+      ],
+      "solution": "Xung quanh trụ: $2\\pi\\cdot4\\cdot10=80\\pi$; mặt cong nửa cầu: $2\\pi\\cdot4^2=32\\pi$; đáy dưới: $\\pi\\cdot4^2=16\\pi$. Tổng $128\\pi$ cm², nên $k=128$."
+    },
+    {
+      "id": "p-ghep-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một cốc hình trụ có đường kính đáy $8$ cm, đang chứa nước. Thả vào cốc $3$ viên bi sắt hình cầu, mỗi viên bán kính $2$ cm; các viên bi chìm hẳn và nước không tràn. Mực nước trong cốc dâng thêm bao nhiêu xăng-ti-mét?",
+      "hints": [
+        "Cần chiều cao phần nước dâng thêm.",
+        "Phần nước dâng là hình trụ cùng đáy cốc, thể tích bằng tổng thể tích các viên bi.",
+        "Tính $3\\cdot\\dfrac43\\pi R^3$, rồi chia cho $\\pi r^2$ với $r$ là bán kính đáy cốc."
+      ],
+      "answer": "2",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "3/2",
+          "code": "E03",
+          "feedback": "Thể tích hình cầu là $\\dfrac43\\pi R^3$, con quên nhân $\\dfrac43$.",
+          "review": "p-cau"
+        },
+        {
+          "answer": "1/2",
+          "code": "E08",
+          "feedback": "Đề cho **đường kính** $8$ cm; bán kính là $4$ cm."
+        },
+        {
+          "answer": "2/3",
+          "code": "E10",
+          "feedback": "Có $3$ viên bi; con mới tính cho một viên."
+        }
+      ],
+      "solution": "Thể tích $3$ viên bi: $3\\cdot\\dfrac43\\pi\\cdot2^3=32\\pi$ cm³. Đáy cốc bán kính $4$ cm: $\\pi\\cdot4^2\\cdot\\Delta h=32\\pi$, nên $\\Delta h=2$ cm."
+    },
+    {
+      "id": "p-ghep-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một bể nước hình trụ có đường kính đáy $1{,}2$ m, chiều cao $1{,}5$ m, đang chứa đầy nước. Mỗi ngày gia đình dùng hết $120$ lít. Lấy $\\pi\\approx3{,}14$. Lượng nước trong bể đủ dùng tối đa bao nhiêu ngày trọn vẹn?",
+      "hints": [
+        "Cần số ngày dùng hết nước trong bể.",
+        "Tính thể tích bể, đổi m³ ra lít, rồi chia cho lượng dùng mỗi ngày.",
+        "Bán kính bằng nửa đường kính; $1$ m³ $=1000$ lít; số ngày lấy phần nguyên."
+      ],
+      "steps": [
+        {
+          "prompt": "Tính thể tích bể theo $\\pi$.",
+          "item": {
+            "id": "p-ghep-p6-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thể tích bể có dạng $k\\pi$ m³. Ghi $k$ (số thập phân):",
+            "answer": "0,54",
+            "mistakes": [
+              {
+                "answer": "2,16",
+                "code": "E08",
+                "feedback": "Đề cho **đường kính** $1{,}2$ m; bán kính là $0{,}6$ m."
+              },
+              {
+                "answer": "0,9",
+                "code": "E03",
+                "feedback": "Thể tích hình trụ là $\\pi r^2h$, con quên bình phương bán kính.",
+                "review": "p-trunon"
+              }
+            ],
+            "solution": "$r=0{,}6$ m; $V=\\pi\\cdot0{,}6^2\\cdot1{,}5=0{,}54\\pi$ m³."
+          }
+        },
+        {
+          "prompt": "Đổi ra lít.",
+          "item": {
+            "id": "p-ghep-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Lấy $\\pi\\approx3{,}14$. Thể tích bể bằng bao nhiêu lít? (làm tròn đến hàng phần mười)",
+            "answer": "1695,6",
+            "unit": "lít",
+            "mistakes": [
+              {
+                "answer": "169,6",
+                "code": "E14",
+                "feedback": "$1$ m³ $=1000$ lít, không phải $100$ lít."
+              },
+              {
+                "answer": "1,7",
+                "code": "E14",
+                "feedback": "Con chưa đổi m³ ra lít: $1$ m³ $=1000$ lít."
+              }
+            ],
+            "solution": "$0{,}54\\cdot3{,}14=1{,}6956$ m³ $=1695{,}6$ lít."
+          }
+        },
+        {
+          "prompt": "Tính số ngày.",
+          "item": {
+            "id": "p-ghep-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Mỗi ngày dùng $120$ lít. Số ngày trọn vẹn dùng được nhiều nhất là:",
+            "answer": "14",
+            "unit": "ngày",
+            "mistakes": [
+              {
+                "answer": "15",
+                "code": "E14",
+                "feedback": "Ngày thứ $15$ không còn đủ $120$ lít; số ngày trọn vẹn phải lấy phần nguyên."
+              },
+              {
+                "answer": "14,13",
+                "code": "E11",
+                "feedback": "Đề hỏi số ngày trọn vẹn, cần kết luận bằng một số nguyên."
+              }
+            ],
+            "solution": "$1695{,}6:120\\approx14{,}13$ nên dùng được $14$ ngày trọn vẹn."
+          }
+        }
+      ],
+      "solution": "$r=0{,}6$ m; $V=0{,}54\\pi\\approx1{,}6956$ m³ $=1695{,}6$ lít. $1695{,}6:120\\approx14{,}13$. Kết luận: dùng được tối đa $14$ ngày."
+    },
+    {
+      "id": "p-ghep-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một hộp kem hình trụ có đường kính đáy $12$ cm, chiều cao $21$ cm, đựng đầy kem. Kem được chia vào các bánh ốc quế: phần bánh là hình nón cao $10$ cm, đường kính miệng $6$ cm, bên trong đầy kem, phía trên có thêm một nửa hình cầu kem cùng đường kính $6$ cm (như hình). Hỏi chia được nhiều nhất bao nhiêu que kem đầy đủ?",
+      "source": "68 đề – Đề 4, Bài 4.1b (chuyển thể: hộp cao 21 cm, ốc quế cao 10 cm)",
+      "hints": [
+        "Cần số que kem đầy đủ chia được từ hộp.",
+        "Mỗi que gồm hai khối kem: hình nón và nửa hình cầu. So với thể tích hộp.",
+        "Số que bằng thể tích hộp chia thể tích một que, rồi lấy phần nguyên."
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 190 226\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M48 74 A42 42 0 0 1 132 74 L90 214 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M48 74 L90 214 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 0 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M48 74 A42 42 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"138\" y=\"78\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">6 cm</text><path d=\"M90 74 L90 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M34 74 L34 214 M30 74 L38 74 M30 214 L38 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"30\" y=\"148\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">10 cm</text></svg>",
+        "alt": "Bánh ốc quế hình nón cao 10 cm, đường kính miệng 6 cm, phía trên là nửa hình cầu kem."
+      },
+      "steps": [
+        {
+          "prompt": "Thể tích hộp kem.",
+          "item": {
+            "id": "p-ghep-p7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thể tích hộp kem có dạng $k\\pi$ cm³. Ghi $k$:",
+            "answer": "756",
+            "mistakes": [
+              {
+                "answer": "3024",
+                "code": "E08",
+                "feedback": "Đề cho **đường kính** $12$ cm; bán kính là $6$ cm."
+              }
+            ],
+            "solution": "$r=6$ cm; $V=\\pi\\cdot6^2\\cdot21=756\\pi$ cm³."
+          }
+        },
+        {
+          "prompt": "Thể tích kem một que.",
+          "item": {
+            "id": "p-ghep-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thể tích kem trong một que (phần nón và nửa cầu) có dạng $k\\pi$ cm³. Ghi $k$:",
+            "answer": "48",
+            "mistakes": [
+              {
+                "answer": "66",
+                "code": "E03",
+                "feedback": "Phía trên chỉ là **nửa** hình cầu: thể tích là $\\dfrac23\\pi R^3$.",
+                "review": "p-cau"
+              },
+              {
+                "answer": "30",
+                "code": "E06",
+                "feedback": "Con quên phần kem nửa hình cầu phía trên."
+              },
+              {
+                "answer": "108",
+                "code": "E03",
+                "feedback": "Thể tích hình nón là $\\dfrac13\\pi r^2h$, con quên nhân $\\dfrac13$.",
+                "review": "p-trunon"
+              }
+            ],
+            "solution": "Nón: $\\dfrac13\\pi\\cdot3^2\\cdot10=30\\pi$; nửa cầu: $\\dfrac23\\pi\\cdot3^3=18\\pi$. Một que: $48\\pi$ cm³."
+          }
+        },
+        {
+          "prompt": "Số que kem.",
+          "item": {
+            "id": "p-ghep-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số que kem đầy đủ chia được nhiều nhất là:",
+            "answer": "15",
+            "unit": "que",
+            "mistakes": [
+              {
+                "answer": "16",
+                "code": "E14",
+                "feedback": "Que thứ $16$ không đủ kem; số que đầy đủ phải lấy phần nguyên, không làm tròn lên."
+              },
+              {
+                "answer": "15,75",
+                "code": "E11",
+                "feedback": "Số que phải là số nguyên; cần kết luận số que đầy đủ."
+              }
+            ],
+            "solution": "$756\\pi:48\\pi=15{,}75$ nên chia được $15$ que đầy đủ."
+          }
+        }
+      ],
+      "solution": "Hộp: $756\\pi$ cm³; một que: $30\\pi+18\\pi=48\\pi$ cm³; $756:48=15{,}75$. Kết luận: chia được nhiều nhất $15$ que kem."
+    },
+    {
+      "id": "p-ghep-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Từ một khối gỗ hình trụ có đường kính đáy $20$ cm, chiều cao $30$ cm, người ta khoét ở chính giữa mặt trên một lỗ hình trụ đường kính $8$ cm, sâu $12$ cm (như hình). Sau đó sơn **toàn bộ** các mặt của khối gỗ còn lại, kể cả mặt trong lỗ. Lấy $\\pi\\approx3{,}14$.",
+      "source": "68 đề – Đề 49, Bài 4.1b (chuyển thể: trụ đường kính 20 cm, cao 30 cm; lỗ đường kính 8 cm, sâu 12 cm)",
+      "hints": [
+        "Cần diện tích mọi mặt lộ ra của khối gỗ sau khi khoét.",
+        "Khoét lỗ làm mất miệng lỗ ở mặt trên nhưng sinh thêm thành lỗ và đáy lỗ.",
+        "Liệt kê từng mặt, tính theo $\\pi$, cộng lại rồi mới thay $\\pi\\approx3{,}14$."
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 220 230\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 46 L50 196 A50 12 0 0 0 150 196 L150 46 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M50 46 L50 196 M150 46 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 0 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 1 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M50 46 A50 12 0 0 0 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 46 A50 12 0 0 1 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 0 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 1 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 L80 106 M120 46 L120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 0 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 1 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"30\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">8 cm</text><text x=\"100\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">12 cm</text><path d=\"M50 196 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"222\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">20 cm</text><path d=\"M164 46 L164 196 M159 46 L169 46 M159 196 L169 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"172\" y=\"124\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">30 cm</text></svg>",
+        "alt": "Khối trụ đường kính 20 cm, cao 30 cm; giữa mặt trên có lỗ hình trụ đường kính 8 cm, sâu 12 cm."
+      },
+      "steps": [
+        {
+          "prompt": "Chọn các mặt cần sơn.",
+          "item": {
+            "id": "p-ghep-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Bề mặt cần sơn gồm những phần nào?",
+            "options": [
+              "Mặt xung quanh, đáy dưới, mặt trên (đã trừ miệng lỗ) và mặt xung quanh lỗ",
+              "Mặt xung quanh, hai đáy của hình trụ lớn (không trừ miệng lỗ), mặt xung quanh lỗ và đáy lỗ",
+              "Mặt xung quanh và hai đáy của hình trụ lớn",
+              "Mặt xung quanh, đáy dưới, mặt trên (đã trừ miệng lỗ), mặt xung quanh lỗ và đáy lỗ"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Con quên đáy lỗ: lòng lỗ có một mặt đáy tròn cũng được sơn."
+              },
+              "1": {
+                "code": "E06",
+                "feedback": "Miệng lỗ đã bị khoét, không còn là mặt gỗ; phải trừ khỏi mặt trên."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Con quên các mặt bên trong lỗ: thành lỗ cũng lộ ra và được sơn."
+              }
+            },
+            "solution": "Mặt lộ ra: xung quanh, đáy dưới, mặt trên hình vành khuyên, thành lỗ và đáy lỗ."
+          }
+        },
+        {
+          "prompt": "Tổng diện tích theo $\\pi$.",
+          "item": {
+            "id": "p-ghep-p8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tổng diện tích cần sơn có dạng $k\\pi$ cm². Ghi $k$:",
+            "answer": "896",
+            "mistakes": [
+              {
+                "answer": "880",
+                "code": "E06",
+                "feedback": "Con quên đáy lỗ."
+              },
+              {
+                "answer": "800",
+                "code": "E06",
+                "feedback": "Con quên thành lỗ (mặt xung quanh lỗ)."
+              },
+              {
+                "answer": "992",
+                "code": "E08",
+                "feedback": "Đề cho **đường kính** $8$ cm; bán kính là $4$ cm."
+              }
+            ],
+            "solution": "$600\\pi+100\\pi+84\\pi+96\\pi+16\\pi=896\\pi$."
+          }
+        },
+        {
+          "prompt": "Thay $\\pi$ và làm tròn.",
+          "item": {
+            "id": "p-ghep-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Lấy $\\pi\\approx3{,}14$. Diện tích cần sơn (làm tròn đến hàng đơn vị) là:",
+            "answer": "2813",
+            "unit": "cm²",
+            "mistakes": [
+              {
+                "answer": "2814",
+                "code": "E15",
+                "feedback": "Làm tròn đến hàng đơn vị: chữ số hàng phần mười nhỏ hơn $5$ thì giữ nguyên hàng đơn vị."
+              }
+            ],
+            "solution": "$896\\cdot3{,}14=2813{,}44\\approx2813$ cm²."
+          }
+        }
+      ],
+      "solution": "Xung quanh: $2\\pi\\cdot10\\cdot30=600\\pi$; đáy dưới: $100\\pi$; mặt trên: $100\\pi-16\\pi=84\\pi$; thành lỗ: $2\\pi\\cdot4\\cdot12=96\\pi$; đáy lỗ: $16\\pi$. Tổng $896\\pi\\approx2813{,}44$. Kết luận: diện tích cần sơn khoảng $2813$ cm²."
+    }
+  ],
+  "exit": [
+    {
+      "id": "p-ghep-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một cây kem ốc quế gồm phần bánh hình nón bán kính đáy $3$ cm, cao $8$ cm (bên trong đầy kem) và phía trên là nửa hình cầu kem bán kính $3$ cm. Tổng thể tích kem là:",
+      "options": [
+        "$42\\pi$ cm³",
+        "$60\\pi$ cm³",
+        "$90\\pi$ cm³",
+        "$24\\pi$ cm³"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Phía trên chỉ là **nửa** hình cầu: thể tích là $\\dfrac23\\pi R^3$.",
+          "review": "p-cau"
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Thể tích hình nón là $\\dfrac13\\pi r^2h$, con quên nhân $\\dfrac13$.",
+          "review": "p-trunon"
+        },
+        "3": {
+          "code": "E06",
+          "feedback": "Con quên phần kem nửa hình cầu phía trên."
+        }
+      },
+      "solution": "Nón: $\\dfrac13\\pi\\cdot3^2\\cdot8=24\\pi$; nửa cầu: $\\dfrac23\\pi\\cdot3^3=18\\pi$. Tổng $42\\pi$ cm³."
+    },
+    {
+      "id": "p-ghep-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hộp sữa hình trụ có bán kính đáy $5$ cm, chiều cao $20$ cm. Lấy $\\pi\\approx3{,}14$. Hộp chứa được bao nhiêu lít sữa?",
+      "answer": "1,57",
+      "unit": "lít",
+      "mistakes": [
+        {
+          "answer": "15,7",
+          "code": "E14",
+          "feedback": "$1$ lít $=1$ dm³ $=1000$ cm³, không phải $100$ cm³."
+        },
+        {
+          "answer": "1570",
+          "code": "E14",
+          "feedback": "Con chưa đổi cm³ ra lít: $1$ lít $=1000$ cm³."
+        }
+      ],
+      "solution": "$V=\\pi\\cdot5^2\\cdot20=500\\pi\\approx1570$ cm³ $=1{,}57$ lít."
+    },
+    {
+      "id": "p-ghep-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một khối gỗ đặc hình hộp chữ nhật có kích thước $15$ cm, $10$ cm, $8$ cm. Trên mặt trên, người ta khoét một rãnh dạng nửa hình trụ đường kính $6$ cm, chạy suốt chiều dài $15$ cm (như hình). Lấy $\\pi\\approx3{,}14$. Thể tích khối gỗ còn lại là bao nhiêu cm³ (làm tròn đến hàng đơn vị)?",
+      "source": "68 đề – Đề 39, Bài 4.1a (chuyển thể: hộp 15 × 10 × 8 cm, rãnh đường kính 6 cm; số liệu ghi bằng chữ)",
+      "figure": {
+        "svg": "<svg viewBox=\"-30 0 300 232\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 96 L48 96 A42 42 0 0 0 132 96 L160 96 L160 208 L20 208 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M20 96 L48 96 A42 42 0 0 0 132 96 L160 96 L160 208 L20 208 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M20 96 L94 22 L122 22 M206 22 L234 22 L160 96\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 96 L122 22 M132 96 L206 22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M122 22 A42 42 0 0 0 206 22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M160 208 L234 134 L234 22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 96 L132 96\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"90\" y=\"116\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">6 cm</text><text x=\"90\" y=\"224\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">10 cm</text><text x=\"14\" y=\"156\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">8 cm</text><text x=\"204\" y=\"184\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">15 cm</text></svg>",
+        "alt": "Khối hộp chữ nhật 15 cm × 10 cm × 8 cm, mặt trên có rãnh nửa hình trụ đường kính 6 cm chạy theo chiều dài 15 cm."
+      },
+      "answer": "988",
+      "unit": "cm³",
+      "mistakes": [
+        {
+          "answer": "776",
+          "code": "E08",
+          "feedback": "Rãnh chỉ là **nửa** hình trụ: lấy một nửa của $\\pi r^2h$."
+        },
+        {
+          "answer": "352",
+          "code": "E08",
+          "feedback": "Đề cho **đường kính** $6$ cm; bán kính là $3$ cm."
+        },
+        {
+          "answer": "1200",
+          "code": "E06",
+          "feedback": "Con quên trừ phần gỗ bị khoét."
+        }
+      ],
+      "solution": "Hộp: $15\\cdot10\\cdot8=1200$ cm³; rãnh: $\\dfrac12\\pi\\cdot3^2\\cdot15=67{,}5\\pi\\approx211{,}95$ cm³. Còn lại: $988{,}05\\approx988$ cm³."
+    },
+    {
+      "id": "p-ghep-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một thùng nước bằng tôn gồm thân hình trụ có đáy, bán kính đáy $0{,}6$ m, cao $1$ m, và nắp là hình nón cao $0{,}8$ m cùng bán kính đáy (nắp không có đáy riêng). Diện tích tôn cần mua bằng diện tích thùng cộng thêm $10\\%$ hao hụt. Lấy $\\pi\\approx3{,}14$. Diện tích tôn cần mua là bao nhiêu m² (làm tròn đến hàng phần mười)?",
+      "source": "68 đề – Đề 45, Bài 4.1a (chuyển thể: số liệu ghi bằng chữ, thêm 10% hao hụt)",
+      "answer": "7,5",
+      "unit": "m²",
+      "mistakes": [
+        {
+          "answer": "6,8",
+          "code": "E06",
+          "feedback": "Con chưa cộng $10\\%$ hao hụt: tôn cần mua bằng $110\\%$ diện tích thùng."
+        },
+        {
+          "answer": "8,7",
+          "code": "E06",
+          "feedback": "Thân và nắp chung một mặt tròn; mặt đó không làm bằng tôn."
+        },
+        {
+          "answer": "7",
+          "code": "E03",
+          "feedback": "Diện tích xung quanh hình nón là $\\pi rl$ với $l$ là đường sinh, không phải chiều cao.",
+          "review": "p-trunon"
+        }
+      ],
+      "solution": "$l=\\sqrt{0{,}6^2+0{,}8^2}=1$ m. Đáy: $0{,}36\\pi$; thân: $2\\pi\\cdot0{,}6\\cdot1=1{,}2\\pi$; nắp: $\\pi\\cdot0{,}6\\cdot1=0{,}6\\pi$. Tổng $2{,}16\\pi\\approx6{,}7824$ m²; cộng $10\\%$: $7{,}46\\approx7{,}5$ m²."
+    },
+    {
+      "id": "p-ghep-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một ly hình trụ bán kính đáy $4$ cm, cao $12$ cm, đựng đầy nước. Thả vào ly $6$ viên bi đặc hình cầu, mỗi viên có đường kính $2$ cm; các viên bi chìm hẳn. Thể tích nước tràn ra ngoài có dạng $k\\pi$ cm³. Tìm $k$.",
+      "source": "68 đề – Đề 50, Bài 4.1b (chuyển thể: ly bán kính 4 cm, 6 viên bi đường kính 2 cm)",
+      "answer": "8",
+      "mistakes": [
+        {
+          "answer": "64",
+          "code": "E08",
+          "feedback": "Đề cho **đường kính** $2$ cm; bán kính là $1$ cm."
+        },
+        {
+          "answer": "184",
+          "code": "E06",
+          "feedback": "Nước tràn ra đúng bằng thể tích các viên bi, không phải phần nước còn lại trong ly."
+        },
+        {
+          "answer": "24",
+          "code": "E03",
+          "feedback": "Thể tích hình cầu là $\\dfrac43\\pi R^3$; $4\\pi R^2$ là diện tích mặt cầu.",
+          "review": "p-cau"
+        }
+      ],
+      "solution": "Bán kính bi $1$ cm. Thể tích $6$ viên: $6\\cdot\\dfrac43\\pi\\cdot1^3=8\\pi$ cm³ $=$ thể tích nước tràn, nên $k=8$."
+    },
+    {
+      "id": "p-ghep-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một kho chứa ngũ cốc gồm thân hình trụ đường kính đáy $8$ m, cao $10$ m và mái vòm là nửa hình cầu cùng đường kính $8$ m. Người ta sơn mặt trong của kho gồm tường và mái vòm (không sơn nền). Tiền công sơn là $30\\,000$ đồng/m². Lấy $\\pi\\approx3{,}14$.",
+      "source": "68 đề – Đề 18, Bài 4.1b (chuyển thể: kho đường kính 8 m, cao 10 m; không sơn nền)",
+      "steps": [
+        {
+          "prompt": "Diện tích cần sơn theo $\\pi$.",
+          "item": {
+            "id": "p-ghep-x6-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Diện tích cần sơn có dạng $k\\pi$ m². Ghi $k$:",
+            "answer": "112",
+            "mistakes": [
+              {
+                "answer": "128",
+                "code": "E06",
+                "feedback": "Giữa thân và mái không có vách ngăn; mặt tròn chỗ tiếp giáp không sơn."
+              },
+              {
+                "answer": "144",
+                "code": "E03",
+                "feedback": "Mái vòm là **nửa** hình cầu: diện tích mặt cong là $2\\pi R^2$.",
+                "review": "p-cau"
+              },
+              {
+                "answer": "288",
+                "code": "E08",
+                "feedback": "Đề cho **đường kính** $8$ m; bán kính là $4$ m."
+              }
+            ],
+            "solution": "Tường: $2\\pi\\cdot4\\cdot10=80\\pi$; mái: $2\\pi\\cdot4^2=32\\pi$. Tổng $112\\pi$ m²."
+          }
+        },
+        {
+          "prompt": "Tiền công.",
+          "item": {
+            "id": "p-ghep-x6-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tiền công sơn là bao nhiêu triệu đồng? (làm tròn đến hàng phần trăm)",
+            "answer": "10,55",
+            "unit": "triệu đồng",
+            "mistakes": [
+              {
+                "answer": "10,56",
+                "code": "E15",
+                "feedback": "Con làm tròn diện tích quá sớm; giữ nguyên kết quả rồi chỉ làm tròn ở bước cuối."
+              }
+            ],
+            "solution": "$112\\cdot3{,}14=351{,}68$ m²; $351{,}68\\cdot30\\,000=10\\,550\\,400$ đồng $\\approx10{,}55$ triệu đồng."
+          }
+        }
+      ],
+      "solution": "Diện tích sơn: $80\\pi+32\\pi=112\\pi\\approx351{,}68$ m². Tiền công: $351{,}68\\cdot30\\,000=10\\,550\\,400$ đồng. Kết luận: khoảng $10{,}55$ triệu đồng."
+    },
+    {
+      "id": "p-ghep-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một cốc hình trụ có đường kính đáy $20$ cm, cao $18$ cm; mực nước trong cốc cao $12$ cm. Thả một quả cầu kim loại bán kính $5$ cm vào cốc, quả cầu chìm hẳn và nước không tràn ra ngoài.",
+      "source": "68 đề – Đề 27, Bài 4.1b (chuyển thể: cốc đường kính 20 cm, quả cầu bán kính 5 cm)",
+      "steps": [
+        {
+          "prompt": "Thể tích quả cầu.",
+          "item": {
+            "id": "p-ghep-x7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thể tích quả cầu có dạng $k\\pi$ cm³. Ghi $k$ (phân số):",
+            "answer": "500/3",
+            "mistakes": [
+              {
+                "answer": "100",
+                "code": "E03",
+                "feedback": "Con dùng diện tích mặt cầu; thể tích là $\\dfrac43\\pi R^3$.",
+                "review": "p-cau"
+              },
+              {
+                "answer": "125",
+                "code": "E03",
+                "feedback": "Con quên nhân $\\dfrac43$ trong $V=\\dfrac43\\pi R^3$.",
+                "review": "p-cau"
+              }
+            ],
+            "solution": "$V=\\dfrac43\\pi\\cdot5^3=\\dfrac{500}{3}\\pi$ cm³."
+          }
+        },
+        {
+          "prompt": "Mực nước tăng thêm.",
+          "item": {
+            "id": "p-ghep-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Mực nước trong cốc **tăng thêm** bao nhiêu xăng-ti-mét? (làm tròn đến hàng phần trăm)",
+            "answer": "1,67",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "0,42",
+                "code": "E08",
+                "feedback": "Đề cho **đường kính** $20$ cm; bán kính là $10$ cm."
+              },
+              {
+                "answer": "13,67",
+                "code": "E10",
+                "feedback": "Đề hỏi mực nước **tăng thêm**, không hỏi mực nước mới."
+              }
+            ],
+            "solution": "$\\pi\\cdot10^2\\cdot\\Delta h=\\dfrac{500}{3}\\pi$ nên $\\Delta h=\\dfrac53\\approx1{,}67$ cm."
+          }
+        }
+      ],
+      "solution": "$V_{\\text{cầu}}=\\dfrac{500}{3}\\pi$ cm³; $\\pi\\cdot10^2\\cdot\\Delta h=\\dfrac{500}{3}\\pi$ nên $\\Delta h=\\dfrac53\\approx1{,}67$. Kết luận: mực nước tăng thêm khoảng $1{,}67$ cm."
+    },
+    {
+      "id": "p-ghep-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một thúng gạo có dạng nửa hình cầu đường kính $40$ cm, đựng gạo vun đầy: phần gạo vun lên trên miệng thúng có dạng hình nón cao $12$ cm, đáy trùng với miệng thúng. Mỗi ngày gia đình đong $4$ lon gạo; lon có dạng hình trụ bán kính đáy $4$ cm, cao $12$ cm, mỗi lần đong gạo chiếm $90\\%$ thể tích lon. Lượng gạo trong thúng đủ ăn nhiều nhất bao nhiêu ngày trọn vẹn?",
+      "source": "68 đề – Đề 53, Bài 4.1 (chuyển thể: thúng đường kính 40 cm, nón cao 12 cm, lon bán kính 4 cm)",
+      "answer": "10",
+      "unit": "ngày",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E06",
+          "feedback": "Mỗi lon chỉ đong được $90\\%$ thể tích lon, con đã tính đầy lon."
+        },
+        {
+          "answer": "7",
+          "code": "E06",
+          "feedback": "Con quên phần gạo vun lên hình nón phía trên miệng thúng."
+        },
+        {
+          "answer": "17",
+          "code": "E03",
+          "feedback": "Thúng là **nửa** hình cầu: thể tích là $\\dfrac23\\pi R^3$.",
+          "review": "p-cau"
+        }
+      ],
+      "solution": "Gạo: $\\dfrac23\\pi\\cdot20^3+\\dfrac13\\pi\\cdot20^2\\cdot12=\\dfrac{16000}{3}\\pi+1600\\pi=\\dfrac{20800}{3}\\pi$ cm³. Mỗi ngày: $4\\cdot0{,}9\\cdot\\pi\\cdot4^2\\cdot12=691{,}2\\pi$ cm³. $\\dfrac{20800}{3}:691{,}2\\approx10{,}03$, nên đủ ăn $10$ ngày."
+    }
+  ]
+}
