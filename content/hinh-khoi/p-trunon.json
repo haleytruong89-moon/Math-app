@@ -1,0 +1,636 @@
+{
+  "id": "p-trunon",
+  "module": "hinh-khoi",
+  "order": 1,
+  "title": "Hình trụ & hình nón: công thức",
+  "status": "draft",
+  "estMinutes": 44,
+  "figure": {
+    "svg": "<svg viewBox=\"0 0 320 175\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"80\" cy=\"30\" rx=\"50\" ry=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"30\" x2=\"30\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"130\" y1=\"30\" x2=\"130\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M30 140 A50 12 0 0 0 130 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M30 140 A50 12 0 0 1 130 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\" opacity=\"0.6\"/><line x1=\"80\" y1=\"30\" x2=\"80\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><line x1=\"80\" y1=\"140\" x2=\"130\" y2=\"140\" stroke=\"var(--accent)\" stroke-width=\"2\"/><text x=\"105\" y=\"135\" font-size=\"12\" text-anchor=\"middle\" fill=\"var(--accent)\">r</text><text x=\"86\" y=\"90\" font-size=\"12\" fill=\"currentColor\">h</text><text x=\"80\" y=\"170\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">Hình trụ</text><line x1=\"240\" y1=\"25\" x2=\"190\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"240\" y1=\"25\" x2=\"290\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M190 140 A50 12 0 0 0 290 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M190 140 A50 12 0 0 1 290 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\" opacity=\"0.6\"/><line x1=\"240\" y1=\"25\" x2=\"240\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M240 132 L248 132 L248 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><line x1=\"240\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"var(--accent)\" stroke-width=\"2\"/><text x=\"265\" y=\"135\" font-size=\"12\" text-anchor=\"middle\" fill=\"var(--accent)\">r</text><text x=\"230\" y=\"90\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">h</text><text x=\"274\" y=\"80\" font-size=\"12\" fill=\"var(--warn)\">l</text><text x=\"240\" y=\"170\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">Hình nón</text></svg>",
+    "alt": "Bên trái: hình trụ, bán kính đáy r, chiều cao h nối tâm hai đáy. Bên phải: hình nón, bán kính đáy r, chiều cao h từ đỉnh vuông góc với đáy, đường sinh l từ đỉnh tới mép đáy."
+  },
+  "theory": [
+    "**Cần nhớ trước:** hình tròn bán kính $r$ có chu vi $C=2\\pi r$ và diện tích $\\pi r^2$; định lý Pythagore. Bán kính bằng nửa đường kính: $r=\\dfrac d2$.",
+    "**Công thức** (bán kính đáy $r$, chiều cao $h$, cùng một đơn vị). **Hình trụ:** $S_{xq}=2\\pi rh$; $S_{tp}=2\\pi rh+2\\pi r^2$; $V=\\pi r^2h$. **Hình nón:** đường sinh $l=\\sqrt{r^2+h^2}$; $S_{xq}=\\pi rl$; $S_{tp}=\\pi rl+\\pi r^2$; $V=\\dfrac13\\pi r^2h$.",
+    "**Vì sao:** cắt dọc mặt xung quanh hình trụ rồi trải phẳng, được hình chữ nhật dài bằng chu vi đáy $2\\pi r$, rộng $h$. Đổ đầy nước vào hình nón rồi rót sang hình trụ cùng đáy, cùng chiều cao: rót $3$ lần mới đầy, nên thể tích nón bằng $\\dfrac13$ thể tích trụ.",
+    "**Bẫy hay gặp:** đề cho **đường kính** $10$ cm thì $r=5$ cm, không phải $10$. Quên $\\dfrac13$ thì thể tích nón gấp $3$ lần. $S_{xq}$ của nón dùng đường sinh $l$, không dùng $h$. Đổi đơn vị: $1$ lít $=1$ dm³ $=1000$ cm³; $1$ m³ $=1000$ lít; $1$ m² $=10\\,000$ cm².",
+    "**Nhận dạng:** “chứa được bao nhiêu nước, bao nhiêu lít, m³” → thể tích $V$. “Diện tích tôn, giấy, vải, inox để làm…” → diện tích, rồi **đếm số đáy**: hộp kín có $2$ đáy ($S_{tp}$); cốc, thùng không nắp có $1$ đáy; ống hút, ống nước, nón lá không có đáy ($S_{xq}$). **Không** áp một công thức cho vật ghép từ nhiều khối: tách từng khối (bài **hình ghép**).",
+    "**Phiếu bài thực tế:** (1) ghi $r$ (đổi từ đường kính hoặc chu vi), $h$, $l$; (2) đổi về cùng đơn vị; (3) chọn $S_{xq}$, $S_{tp}$ hay $V$, đếm số đáy; (4) giữ $\\pi$ đến cuối, chỉ thay $\\pi\\approx3{,}14$ khi đề yêu cầu; (5) đổi đơn vị đáp số, làm tròn đúng yêu cầu; (6) viết **Kết luận** có đơn vị."
+  ],
+  "worked": {
+    "problem": "Một chiếc phễu giấy dạng hình nón có đường kính miệng $12$ cm và chiều cao $8$ cm. Tính diện tích giấy làm phễu (mặt xung quanh, bỏ qua mép dán) và thể tích của phễu. Để kết quả dạng $k\\pi$.",
+    "steps": [
+      {
+        "text": "Đọc dữ kiện: đường kính $12$ cm nên bán kính $r=6$ cm; chiều cao $h=8$ cm.",
+        "why": "Mọi công thức đều dùng bán kính, không dùng đường kính."
+      },
+      {
+        "text": "Đường sinh: $l=\\sqrt{r^2+h^2}=\\sqrt{36+64}=\\sqrt{100}=10$ (cm).",
+        "why": "Bán kính, chiều cao, đường sinh tạo thành tam giác vuông; $l$ là cạnh huyền."
+      },
+      {
+        "text": "Diện tích xung quanh: $S_{xq}=\\pi rl=\\pi\\cdot6\\cdot10=60\\pi$ (cm²).",
+        "why": "Phễu không có đáy nên chỉ tính mặt xung quanh, và mặt này dùng $l$, không dùng $h$."
+      },
+      {
+        "text": "Thể tích: $V=\\dfrac13\\pi r^2h=\\dfrac13\\pi\\cdot36\\cdot8=96\\pi$ (cm³).",
+        "why": "Hình nón chỉ bằng $\\dfrac13$ hình trụ cùng đáy, cùng chiều cao."
+      },
+      {
+        "text": "Kết luận: diện tích giấy là $60\\pi\\approx188{,}4$ cm², thể tích phễu là $96\\pi\\approx301{,}44$ cm³ (lấy $\\pi\\approx3{,}14$)."
+      }
+    ],
+    "selfExplain": "Vì sao tính diện tích xung quanh dùng $l$ còn tính thể tích dùng $h$? Nếu quên $\\dfrac13$ thì thể tích sai gấp mấy lần?"
+  },
+  "faded": {
+    "problem": "Một hộp đựng chè hình trụ kín (có nắp và đáy) có đường kính đáy $8$ cm, chiều cao $12$ cm. Tính diện tích giấy làm vỏ hộp (bỏ qua mép dán), để kết quả dạng $k\\pi$ cm².",
+    "steps": [
+      {
+        "prompt": "Tìm bán kính đáy.",
+        "item": {
+          "id": "p-trunon-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Bán kính đáy $r$ của hộp là:",
+          "answer": "4",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "8",
+              "code": "E08",
+              "feedback": "Đề cho đường kính $8$ cm; bán kính bằng một nửa đường kính."
+            }
+          ],
+          "solution": "$r=\\dfrac82=4$ (cm)."
+        }
+      },
+      {
+        "prompt": "Chọn đại lượng cần tính.",
+        "item": {
+          "id": "p-trunon-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Hộp kín (có nắp và đáy). Diện tích giấy làm vỏ hộp được tính bằng:",
+          "options": [
+            "$S_{xq}=2\\pi rh$",
+            "$S_{tp}=2\\pi rh+2\\pi r^2$",
+            "$2\\pi rh+\\pi r^2$",
+            "$V=\\pi r^2h$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E04",
+              "feedback": "Con mới tính mặt xung quanh; hộp kín còn có nắp và đáy."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Con chỉ tính một đáy; hộp kín có cả nắp và đáy, tức hai hình tròn."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Đây là thể tích (cm³), không phải diện tích giấy."
+            }
+          },
+          "solution": "Vỏ hộp kín gồm mặt xung quanh và hai đáy: $S_{tp}=2\\pi rh+2\\pi r^2$."
+        }
+      },
+      {
+        "text": "Mặt xung quanh: $S_{xq}=2\\pi\\cdot4\\cdot12=96\\pi$ (cm²). Hai đáy: $2\\pi\\cdot4^2=32\\pi$ (cm²)."
+      },
+      {
+        "prompt": "Cộng lại.",
+        "item": {
+          "id": "p-trunon-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Diện tích giấy $S_{tp}=k\\pi$ cm². Ghi $k$:",
+          "answer": "128",
+          "mistakes": [
+            {
+              "answer": "96",
+              "code": "E04",
+              "feedback": "Con mới tính mặt xung quanh; còn phải cộng hai đáy."
+            },
+            {
+              "answer": "112",
+              "code": "E04",
+              "feedback": "Con chỉ cộng một đáy; hộp kín có hai đáy."
+            }
+          ],
+          "solution": "$S_{tp}=96\\pi+32\\pi=128\\pi$ (cm²), nên $k=128$."
+        }
+      },
+      {
+        "text": "Kết luận: diện tích giấy làm vỏ hộp là $128\\pi\\approx401{,}92$ cm² (lấy $\\pi\\approx3{,}14$)."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "p-trunon-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hình trụ có bán kính đáy $3$ cm và chiều cao $5$ cm. Thể tích hình trụ có dạng $k\\pi$ cm³. Ghi $k$.",
+      "hints": [
+        "Đề hỏi thể tích hình trụ, viết dạng $k\\pi$.",
+        "Thể tích bằng diện tích đáy nhân chiều cao. Đáy là hình gì?",
+        "Dùng $V=\\pi r^2h$, nhớ bình phương bán kính."
+      ],
+      "answer": "45",
+      "mistakes": [
+        {
+          "answer": "30",
+          "code": "E03",
+          "feedback": "Con dùng công thức diện tích xung quanh $2\\pi rh$. Thể tích hình trụ là $V=\\pi r^2h$."
+        },
+        {
+          "answer": "15",
+          "code": "E03",
+          "feedback": "Con quên bình phương bán kính: $V=\\pi r^2h$."
+        }
+      ],
+      "solution": "$V=\\pi\\cdot3^2\\cdot5=45\\pi$ (cm³), nên $k=45$."
+    },
+    {
+      "id": "p-trunon-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hình nón có bán kính đáy $5$ cm và chiều cao $12$ cm. Tính độ dài đường sinh $l$ của hình nón.",
+      "hints": [
+        "Cần độ dài đường sinh $l$ của hình nón.",
+        "Bán kính, chiều cao và đường sinh tạo thành tam giác vuông. Cạnh nào là cạnh huyền?",
+        "Dùng định lý Pythagore: $l=\\sqrt{r^2+h^2}$."
+      ],
+      "answer": "13",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "17",
+          "code": "E03",
+          "feedback": "Đường sinh không bằng $r+h$; nó là cạnh huyền nên $l=\\sqrt{r^2+h^2}$."
+        },
+        {
+          "answer": "√119",
+          "code": "E03",
+          "feedback": "Đường sinh là cạnh huyền nên phải **cộng** hai bình phương: $l^2=r^2+h^2$."
+        }
+      ],
+      "solution": "$l=\\sqrt{5^2+12^2}=\\sqrt{169}=13$ (cm)."
+    },
+    {
+      "id": "p-trunon-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Bác An cần tính diện tích tôn để gò một thùng đựng nước hình trụ **không có nắp** (có đáy), bán kính đáy $r$, chiều cao $h$. Bác nên dùng biểu thức nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi diện tích tôn, không hỏi lượng nước chứa được.",
+        "Thùng gồm những mặt nào? Có nắp không?",
+        "Đếm số hình tròn cần gò: thùng có đáy nhưng không có nắp."
+      ],
+      "options": [
+        "$V=\\pi r^2h$",
+        "$S_{tp}=2\\pi rh+2\\pi r^2$",
+        "$2\\pi rh+\\pi r^2$",
+        "$S_{xq}=2\\pi rh$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "$V$ là lượng nước thùng chứa được; đề hỏi diện tích tôn."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "$S_{tp}$ có hai đáy, nhưng thùng không có nắp."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$S_{xq}$ mới là thân thùng, còn thiếu phần đáy."
+        }
+      },
+      "solution": "Thùng gồm mặt xung quanh $2\\pi rh$ và một đáy $\\pi r^2$ (không có nắp): $S=2\\pi rh+\\pi r^2$."
+    },
+    {
+      "id": "p-trunon-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một chiếc mũ sinh nhật bằng giấy có dạng hình nón (không có đáy), đường kính vành mũ $18$ cm, chiều cao $12$ cm. Diện tích giấy làm mũ (bỏ qua mép dán) có dạng $k\\pi$ cm². Ghi $k$.",
+      "hints": [
+        "Cần diện tích mặt xung quanh của chiếc mũ hình nón.",
+        "Đề cho đường kính và chiều cao; công thức lại cần bán kính và đường sinh.",
+        "Lấy $r=\\dfrac d2$, tính $l=\\sqrt{r^2+h^2}$, rồi dùng $S_{xq}=\\pi rl$."
+      ],
+      "answer": "135",
+      "mistakes": [
+        {
+          "answer": "108",
+          "code": "E03",
+          "feedback": "Diện tích xung quanh hình nón dùng đường sinh: $S_{xq}=\\pi rl$, cần tính $l$ trước."
+        },
+        {
+          "answer": "216",
+          "code": "E04",
+          "feedback": "Mũ không có đáy nên chỉ tính mặt xung quanh."
+        },
+        {
+          "answer": "270",
+          "code": "E03",
+          "feedback": "Con nhớ nhầm sang công thức hình trụ; với hình nón $S_{xq}=\\pi rl$."
+        }
+      ],
+      "solution": "$r=9$ cm, $l=\\sqrt{9^2+12^2}=15$ cm, $S_{xq}=\\pi\\cdot9\\cdot15=135\\pi$ (cm²), nên $k=135$."
+    },
+    {
+      "id": "p-trunon-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một khúc gỗ hình trụ dài $2$ m, đường kính đáy $40$ cm. Lấy $\\pi\\approx3{,}14$, tính thể tích khúc gỗ theo mét khối (ghi số thập phân đúng, không làm tròn).",
+      "source": "68 đề – Đề 22, Bài 4.1a (chuyển thể: dài 2 m thay 1,5 m)",
+      "hints": [
+        "Cần thể tích khúc gỗ, đơn vị mét khối.",
+        "Đề dùng hai đơn vị khác nhau và cho đường kính. Cần đổi gì trước?",
+        "Đổi bán kính ra mét, rồi dùng $V=\\pi r^2h$ với $\\pi\\approx3{,}14$."
+      ],
+      "answer": "0,2512",
+      "unit": "m³",
+      "mistakes": [
+        {
+          "answer": "1,0048",
+          "code": "E08",
+          "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
+        },
+        {
+          "answer": "2512",
+          "code": "E14",
+          "feedback": "Con để bán kính theo cm nhưng chiều dài theo m. Đổi hết về mét trước khi tính."
+        },
+        {
+          "answer": "251200",
+          "code": "E14",
+          "feedback": "Đây là thể tích theo cm³; đề hỏi theo m³ ($1$ m³ $=1\\,000\\,000$ cm³)."
+        }
+      ],
+      "solution": "$r=20$ cm $=0{,}2$ m; $V=3{,}14\\cdot0{,}2^2\\cdot2=0{,}2512$ (m³)."
+    },
+    {
+      "id": "p-trunon-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một ống hút nhựa hình trụ, hở hai đầu, có đường kính $0{,}4$ cm và dài $18$ cm. Tổng diện tích nhựa của $100$ ống hút như vậy có dạng $k\\pi$ cm². Ghi $k$.",
+      "source": "68 đề – Đề 38, Bài 4.1 (chuyển thể: đáp số dạng $k\\pi$)",
+      "hints": [
+        "Cần tổng diện tích nhựa của $100$ ống hút.",
+        "Ống hút hở hai đầu thì gồm những mặt nào? Đề cho bán kính hay đường kính?",
+        "Tính $S_{xq}=2\\pi rh$ của một ống với $r=\\dfrac d2$, rồi nhân với số ống."
+      ],
+      "answer": "720",
+      "mistakes": [
+        {
+          "answer": "1440",
+          "code": "E08",
+          "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
+        },
+        {
+          "answer": "728",
+          "code": "E04",
+          "feedback": "Ống hút hở hai đầu nên không có đáy; chỉ tính mặt xung quanh."
+        },
+        {
+          "answer": "7,2",
+          "code": "E10",
+          "feedback": "Con mới tính cho một ống; đề hỏi $100$ ống."
+        }
+      ],
+      "solution": "$r=0{,}2$ cm; một ống: $2\\pi\\cdot0{,}2\\cdot18=7{,}2\\pi$ (cm²); $100$ ống: $720\\pi$ cm², nên $k=720$."
+    },
+    {
+      "id": "p-trunon-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Người ta gò mặt xung quanh của một thùng hình trụ từ một tấm tôn hình chữ nhật $1$ m × $2$ m: cạnh $1$ m thành chiều cao thùng, cạnh $2$ m uốn tròn thành vành đáy (bỏ qua mép nối và bề dày). Lấy $\\pi\\approx3{,}14$, thùng chứa đầy được bao nhiêu mét khối nước? (làm tròn đến chữ số thập phân thứ hai)",
+      "source": "68 đề – Đề 42, Bài 4.1a (hình vẽ ghi bằng chữ)",
+      "hints": [
+        "Cần thể tích thùng, đơn vị mét khối.",
+        "Cạnh tôn uốn thành vành đáy cho biết đại lượng nào của đường tròn đáy?",
+        "Từ $C=2\\pi r$ tìm $r$, rồi dùng $V=\\pi r^2h$."
+      ],
+      "answer": "0,32",
+      "unit": "m³",
+      "mistakes": [
+        {
+          "answer": "3,14",
+          "code": "E08",
+          "feedback": "Cạnh $2$ m là **chu vi** đáy, không phải đường kính. Tìm $r$ từ $C=2\\pi r$."
+        },
+        {
+          "answer": "12,56",
+          "code": "E08",
+          "feedback": "Cạnh $2$ m là chu vi đáy, không phải bán kính. Tìm $r$ từ $C=2\\pi r$."
+        },
+        {
+          "answer": "1,27",
+          "code": "E03",
+          "feedback": "Chu vi đường tròn là $C=2\\pi r$, không phải $\\pi r$."
+        }
+      ],
+      "solution": "Chu vi đáy là $2$ m nên $r=\\dfrac{2}{2\\cdot3{,}14}\\approx0{,}3185$ m. $V=3{,}14\\cdot r^2\\cdot1\\approx0{,}3185$ m³ $\\approx0{,}32$ m³."
+    },
+    {
+      "id": "p-trunon-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một đống cát dạng hình nón có chu vi đáy $18{,}84$ m và chiều cao $1{,}5$ m. Lấy $\\pi\\approx3{,}14$, tính thể tích đống cát (ghi số thập phân đúng, không làm tròn).",
+      "source": "68 đề – Đề 1, Bài 4.1a (chuyển thể: chu vi đáy 18,84 m, cao 1,5 m)",
+      "hints": [
+        "Cần thể tích đống cát hình nón.",
+        "Đề không cho bán kính mà cho chu vi đáy. Từ chu vi tìm được gì?",
+        "Tìm $r$ từ $C=2\\pi r$, rồi dùng $V=\\dfrac13\\pi r^2h$."
+      ],
+      "answer": "14,13",
+      "unit": "m³",
+      "mistakes": [
+        {
+          "answer": "42,39",
+          "code": "E03",
+          "feedback": "Thể tích hình nón có hệ số $\\dfrac13$: $V=\\dfrac13\\pi r^2h$."
+        },
+        {
+          "answer": "56,52",
+          "code": "E03",
+          "feedback": "Chu vi đáy là $C=2\\pi r$, nên $r=\\dfrac{C}{2\\pi}$, không phải $\\dfrac{C}{\\pi}$."
+        }
+      ],
+      "solution": "$r=\\dfrac{18{,}84}{2\\cdot3{,}14}=3$ m; $V=\\dfrac13\\cdot3{,}14\\cdot3^2\\cdot1{,}5=14{,}13$ (m³)."
+    }
+  ],
+  "exit": [
+    {
+      "id": "p-trunon-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hộp kem hình trụ có đường kính đáy $12$ cm, chiều cao $15$ cm. Thể tích hộp kem có dạng $k\\pi$ cm³. Ghi $k$.",
+      "source": "68 đề – Đề 4, Bài 4.1a (chuyển thể: đáp số dạng $k\\pi$)",
+      "answer": "540",
+      "mistakes": [
+        {
+          "answer": "2160",
+          "code": "E08",
+          "feedback": "Đề cho đường kính; bán kính bằng một nửa đường kính."
+        },
+        {
+          "answer": "180",
+          "code": "E03",
+          "feedback": "Hình trụ không có hệ số $\\dfrac13$; đó là công thức hình nón."
+        }
+      ],
+      "solution": "$r=6$ cm; $V=\\pi\\cdot6^2\\cdot15=540\\pi$ (cm³), nên $k=540$."
+    },
+    {
+      "id": "p-trunon-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một đường ống nối hai bể cá có dạng hình trụ, dài $30$ m, dung tích $1800$ m³. Tính diện tích đáy của đường ống.",
+      "source": "68 đề – Đề 44, Bài 4.1",
+      "answer": "60",
+      "unit": "m²",
+      "mistakes": [
+        {
+          "answer": "54000",
+          "code": "E03",
+          "feedback": "$V=S_{\\text{đáy}}\\cdot h$ nên $S_{\\text{đáy}}=\\dfrac{V}{h}$: phải chia, không nhân."
+        },
+        {
+          "answer": "1/60",
+          "code": "E03",
+          "feedback": "Con chia ngược: $S_{\\text{đáy}}=\\dfrac{V}{h}$."
+        }
+      ],
+      "solution": "$V=S_{\\text{đáy}}\\cdot h$ nên $S_{\\text{đáy}}=\\dfrac{1800}{30}=60$ (m²)."
+    },
+    {
+      "id": "p-trunon-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Vỏ một chiếc bánh ốc quế có dạng hình nón, đường kính miệng $6$ cm, chiều cao $12$ cm. Thể tích phần bên trong vỏ bánh (bỏ qua độ dày) có dạng $k\\pi$ cm³. Ghi $k$.",
+      "source": "68 đề – Đề 4, Bài 4.1b (chuyển thể: chỉ tính phần hình nón)",
+      "answer": "36",
+      "mistakes": [
+        {
+          "answer": "108",
+          "code": "E03",
+          "feedback": "Thể tích hình nón có hệ số $\\dfrac13$: $V=\\dfrac13\\pi r^2h$."
+        },
+        {
+          "answer": "144",
+          "code": "E08",
+          "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
+        }
+      ],
+      "solution": "$r=3$ cm; $V=\\dfrac13\\pi\\cdot3^2\\cdot12=36\\pi$ (cm³), nên $k=36$."
+    },
+    {
+      "id": "p-trunon-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một cốc nước hình trụ có diện tích đáy $28{,}26$ cm² và chiều cao $15$ cm. Cốc chứa được tối đa bao nhiêu lít nước? (ghi số thập phân đúng, không làm tròn)",
+      "source": "68 đề – Đề 40, Bài 4.1",
+      "answer": "0,4239",
+      "unit": "lít",
+      "mistakes": [
+        {
+          "answer": "423,9",
+          "code": "E14",
+          "feedback": "Đây là thể tích theo cm³; $1$ lít $=1000$ cm³."
+        },
+        {
+          "answer": "4,239",
+          "code": "E14",
+          "feedback": "$1$ lít $=1000$ cm³, không phải $100$ cm³."
+        }
+      ],
+      "solution": "$V=28{,}26\\cdot15=423{,}9$ cm³ $=0{,}4239$ lít."
+    },
+    {
+      "id": "p-trunon-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Một chiếc cốc thủy tinh hình trụ không có nắp, bán kính đáy $3$ cm, chiều cao $8$ cm (bỏ qua độ dày). Diện tích thủy tinh làm cốc là:",
+      "options": [
+        "$57\\pi$ cm²",
+        "$66\\pi$ cm²",
+        "$48\\pi$ cm²",
+        "$72\\pi$ cm²"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Cốc không có nắp nên chỉ có một đáy."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Con mới tính thân cốc; còn thiếu phần đáy."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Đây là thể tích $\\pi r^2h$ (cm³), không phải diện tích."
+        }
+      },
+      "solution": "Thân cốc: $2\\pi\\cdot3\\cdot8=48\\pi$; một đáy: $\\pi\\cdot3^2=9\\pi$. Tổng $57\\pi$ cm²."
+    },
+    {
+      "id": "p-trunon-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một chiếc ly có phần chứa nước dạng hình nón, bán kính miệng ly $4$ cm, độ dài đường sinh $10$ cm. Lấy $\\pi\\approx3{,}14$, tính thể tích phần chứa nước của ly (không làm tròn ở các bước trung gian; kết quả làm tròn đến hàng đơn vị).",
+      "source": "68 đề – Đề 11, Bài 4.1a (giữ số liệu, hình ghi bằng chữ)",
+      "answer": "153",
+      "unit": "cm³",
+      "mistakes": [
+        {
+          "answer": "167",
+          "code": "E04",
+          "feedback": "Đường sinh $l$ không phải chiều cao; tính $h=\\sqrt{l^2-r^2}$ trước."
+        },
+        {
+          "answer": "460",
+          "code": "E03",
+          "feedback": "Thể tích hình nón có hệ số $\\dfrac13$: $V=\\dfrac13\\pi r^2h$."
+        },
+        {
+          "answer": "180",
+          "code": "E03",
+          "feedback": "Đường sinh là cạnh huyền: $h^2=l^2-r^2$, phải trừ chứ không cộng."
+        }
+      ],
+      "solution": "$h=\\sqrt{10^2-4^2}=\\sqrt{84}\\approx9{,}165$ cm; $V=\\dfrac13\\cdot3{,}14\\cdot4^2\\cdot\\sqrt{84}\\approx153{,}5$ cm³ $\\approx153$ cm³."
+    },
+    {
+      "id": "p-trunon-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một téc nước inox hình trụ có nắp, bán kính đáy $60$ cm, chiều cao $220$ cm (bỏ qua bề dày, coi nắp phẳng).",
+      "source": "68 đề – Đề 16, Bài 4.1a, b (chuyển thể: diện tích dạng $k\\pi$)",
+      "steps": [
+        {
+          "prompt": "Chọn công thức tính diện tích inox.",
+          "item": {
+            "id": "p-trunon-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Diện tích inox cần để làm téc (có nắp) được tính bằng:",
+            "options": [
+              "$S_{xq}=2\\pi rh$",
+              "$2\\pi rh+\\pi r^2$",
+              "$V=\\pi r^2h$",
+              "$S_{tp}=2\\pi rh+2\\pi r^2$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Con mới tính thân téc; còn thiếu nắp và đáy."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Téc có nắp nên có hai đáy."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Đây là thể tích, không phải diện tích inox."
+              }
+            },
+            "solution": "Téc kín: mặt xung quanh và hai đáy, $S_{tp}=2\\pi rh+2\\pi r^2$."
+          }
+        },
+        {
+          "prompt": "Tính diện tích inox theo mét vuông.",
+          "item": {
+            "id": "p-trunon-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Diện tích inox có dạng $k\\pi$ m². Ghi $k$:",
+            "answer": "3,36",
+            "mistakes": [
+              {
+                "answer": "33600",
+                "code": "E14",
+                "feedback": "Con tính theo cm²; đề hỏi m², đổi $r$, $h$ ra mét trước."
+              },
+              {
+                "answer": "3",
+                "code": "E04",
+                "feedback": "Téc có nắp nên cần hai đáy; con mới tính một đáy."
+              },
+              {
+                "answer": "2,64",
+                "code": "E04",
+                "feedback": "Con mới tính thân téc; còn thiếu nắp và đáy."
+              }
+            ],
+            "solution": "$r=0{,}6$ m, $h=2{,}2$ m: $2\\pi\\cdot0{,}6\\cdot2{,}2+2\\pi\\cdot0{,}6^2=2{,}64\\pi+0{,}72\\pi=3{,}36\\pi$ (m²)."
+          }
+        },
+        {
+          "prompt": "Tính lượng nước téc chứa được.",
+          "item": {
+            "id": "p-trunon-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Lấy $\\pi\\approx3{,}14$. Téc chứa đầy được bao nhiêu lít nước? (làm tròn đến hàng đơn vị)",
+            "answer": "2487",
+            "unit": "lít",
+            "mistakes": [
+              {
+                "answer": "2486880",
+                "code": "E14",
+                "feedback": "Đây là số cm³; $1$ lít $=1000$ cm³."
+              },
+              {
+                "answer": "2",
+                "code": "E14",
+                "feedback": "Đây là số m³; $1$ m³ $=1000$ lít."
+              },
+              {
+                "answer": "8290",
+                "code": "E03",
+                "feedback": "Thể tích là $V=\\pi r^2h$; con dùng nhầm $2\\pi rh$."
+              }
+            ],
+            "solution": "$V=3{,}14\\cdot0{,}6^2\\cdot2{,}2=2{,}48688$ m³ $=2486{,}88$ lít $\\approx2487$ lít."
+          }
+        }
+      ],
+      "solution": "$r=0{,}6$ m, $h=2{,}2$ m. Diện tích inox: $S_{tp}=2{,}64\\pi+0{,}72\\pi=3{,}36\\pi$ m². Thể tích: $V=3{,}14\\cdot0{,}36\\cdot2{,}2=2{,}48688$ m³ $\\approx2487$ lít."
+    },
+    {
+      "id": "p-trunon-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Biết $1$ kg lá nón lợp được $6{,}13$ m² mặt nón (diện tích xung quanh). Mỗi chiếc nón lá là một hình nón có bán kính đáy $0{,}25$ m, chiều cao $0{,}3$ m. Lấy $\\pi\\approx3{,}14$, cần bao nhiêu kilôgam lá để làm $10$ chiếc nón? (làm tròn đến hàng phần mười)",
+      "source": "68 đề – Đề 34, Bài 4.1 (giữ số liệu, hình ghi bằng chữ)",
+      "answer": "0,5",
+      "unit": "kg",
+      "mistakes": [
+        {
+          "answer": "0,4",
+          "code": "E03",
+          "feedback": "Diện tích xung quanh hình nón dùng đường sinh: $S_{xq}=\\pi rl$ với $l=\\sqrt{r^2+h^2}$."
+        },
+        {
+          "answer": "0,8",
+          "code": "E04",
+          "feedback": "Nón lá không có đáy; chỉ tính diện tích xung quanh."
+        },
+        {
+          "answer": "18,8",
+          "code": "E07",
+          "feedback": "Mỗi kilôgam lá làm được $6{,}13$ m², nên số kg là tổng diện tích **chia** cho $6{,}13$."
+        }
+      ],
+      "solution": "$l=\\sqrt{0{,}25^2+0{,}3^2}=\\sqrt{0{,}1525}\\approx0{,}3905$ m. Một nón: $S_{xq}=3{,}14\\cdot0{,}25\\cdot0{,}3905\\approx0{,}3066$ m²; $10$ nón $\\approx3{,}066$ m². Số lá: $3{,}066:6{,}13\\approx0{,}5$ kg."
+    }
+  ]
+}

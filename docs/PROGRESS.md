@@ -27,7 +27,8 @@
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
-| Nội dung đợt 3–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | 🟡 PR mở 15/10 — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
+| Nội dung đợt 4–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
@@ -40,6 +41,47 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 15/10/2026 — Nội dung đợt 3 (nhánh `p1-content-3`)
+
+**Phụ huynh cần làm:** merge PR (không SQL, không đổi app — 5 bài đều **nháp**, con chưa thấy). Duyệt trên preview: menu **Nội dung** → 5 bài *Nháp*; nói "duyệt KU …". **c-dkxd thuộc mạch căn thức (C) → gia sư soát trước** (§7 bước 5, danh sách bên dưới).
+
+**Đã làm**
+- 5 KU draft đủ khung §1 (lý thuyết 6 đoạn, mẫu có "Kết luận:", khuyết ≥ 2 chỗ trống, luyện 3/3/2 có câu nhận dạng E05 + H1–H3, kho kiểm tra 2/3/3):
+  `p-trunon` (hinh-khoi, 44′), `p-cau` (hinh-khoi, 45′), `p-ghep` (hinh-khoi, 45′), `b-haib` (xac-suat, 45′), `c-dkxd` (can-thuc, 42′). Thời lượng theo công thức §1 (CURRICULUM ghi 25–35′; Q20: 40–45′/KU).
+- Module mới `hinh-khoi`, `can-thuc` (`module.json`), `xac-suat` thêm b-haib; registry sinh lại.
+- App không đọc được π → câu hình khối hỏi "dạng $k\pi$, ghi $k$" hoặc "lấy $\pi \approx 3{,}14$, làm tròn …" hoặc trắc nghiệm có π.
+- 8 hình SVG (p-trunon hình chung trụ/nón, p-cau x7, p-ghep p1/p4/p7/p8/x3, b-haib p8 vòng quay), màu theo theme, có `alt`.
+- c-dkxd: thẻ ĐKXĐ là bảng KaTeX `array` đầu tiên trong app — xem trên điện thoại có bị tràn ngang không.
+
+**Nguồn câu (chỉ Đề 1–56)**
+| KU | Từ 68 đề | Soạn mới |
+|---|---|---|
+| p-trunon | 11: Đề 1, 4 (2 câu), 11, 16, 22, 34, 38, 40, 42, 44 | mẫu, p1–p4, x5 |
+| p-cau | 7: Đề 5, 8, 17, 18, 30, 37, 50 | mẫu, khuyết, p1–p5, p7 (L3 tỉ lệ thể tích), x1, x2, x5 |
+| p-ghep | 8: Đề 4, 18, 27, 39, 45, 49, 50, 53 | mẫu, khuyết, p1–p6, x1, x2 |
+| b-haib | 11: Đề 7, 8, 18, 26 (2 câu), 28, 32, 36, 41, 46, 55 | mẫu, khuyết, p1, p3, p6, x2, x5 |
+| c-dkxd | 5: Đề 12, 15, 21, 41, 47 (Bài 2, đổi thành "tìm ĐKXĐ") | còn lại |
+
+Hình trong PDF không trích được: p-cau x7 (Đề 17), p-ghep x3 (Đề 39), x4 (Đề 45), b-haib p8 (Đề 28) dùng số liệu ghi bằng chữ / tự chọn, `source` có ghi. Bản text của PDF mất dấu căn → 5 biểu thức c-dkxd được **đối chiếu với ảnh trang PDF**: 4 đúng, **Đề 21 sai và đã sửa** ($A=\frac{x-1}{x-2}$ không có căn; mẫu thứ hai của $B$ là $x-1$).
+
+**Kiểm tra trước khi tới phụ huynh (§7)**
+| Bước | Kết quả |
+|---|---|
+| 1. `npm test` | 117/117 (gồm luật mới: đáp án đúng không dồn một vị trí). Lint, build qua; `./e2e/run.sh` 175 PASS |
+| 2. Giải độc lập | 3 agent mới chỉ nhận đề trắng (+ ảnh hình vẽ chụp bằng Chromium) giải **109/109 ô**: **109/109 khớp** (chấm bằng `gradeItem`). Góp ý đã sửa: p-trunon-x6 thêm "không làm tròn ở bước trung gian" (làm tròn $h$ sớm ra 154 thay vì 153); p-trunon-x8 viết lại câu "1 kg lá lợp được 6,13 m²"; p-cau-x6 "tức hai chữ số thập phân"; p-ghep-p7 nhãn "10 cm" nằm cạnh đường sinh → chuyển thành vạch đo chiều cao; b-haib-f3 thêm "phân số tối giản" ($\frac{4}{36}$ cũng bằng giá trị); b-haib-x6 phản hồi cho $\frac{7}{36}$ nêu cả hai nguyên nhân (quên thứ tự hoặc quên $1\cdot1$) |
+| 3. Tính lại nhiễu | Mỗi KU một script Python/sympy (liệt kê không gian mẫu, lưới số hữu tỉ cho ĐKXĐ, số hữu tỉ chính xác + làm tròn nửa lên): mọi đáp án và nhiễu tái tạo đúng lỗi đã ghi, **0 lệch**; thử cố tình sai → script bắt được. Chạy lại sau khi sửa: 0 lệch |
+| 4. Soát sư phạm | Phản hồi ≤ 2 câu không lộ đáp số; gợi ý chung → cụ thể, H3 không làm hộ; câu tự đứng được; xem lại 8 hình |
+| 5. Gia sư | **Cần cho c-dkxd**: bảng ĐKXĐ trong lý thuyết; p7, p8, x6, x7, x8 (từ đề thật, cần phân tích $x-3\sqrt x+2$, $x+2\sqrt x-3$, $x-2\sqrt x$); p6 ($\sqrt{-2x}$), x2 ($\sqrt{(x-2)^2}$); cách tách mã: dùng $>$ thay $\ge$ = E04, quên "mẫu ≠ 0"/quên $x \ge 0$ = E14 |
+
+**Để ý khi duyệt**
+- c-dkxd p8, x6, x8 cần phân tích mẫu chứa căn thành nhân tử — đi trước c-coban một chút; nếu con thấy quá khó thì đổi sang biểu thức mẫu đơn giản.
+- p-trunon x6, x8 (Đề 11, 34) giữ nguyên số liệu đề gốc; p-cau x7 bán kính 10/9 cm là tự chọn (hình Đề 17 không đọc được).
+- Mã "lấy đường kính làm bán kính": E08 khi đọc từ hình, E10 khi đề ghi bằng chữ; "làm tròn lên số ngày/số que trọn vẹn" sai = E14.
+- Bẫy quy trình: `./e2e/run.sh` khôi phục `registry.generated.ts` về bản đã commit khi kết thúc → nếu registry mới chưa commit thì bị mất (test "registry is up to date" bắt được). Commit registry **trước** khi chạy e2e.
+- `docs/SOURCE_INDEX.md`: Đề 2, 3, 53, 54 xếp ở b-haib thực ra là xác suất một bước (một lần rút, hai điều kiện) → nên chuyển sang b-xsuat khi sửa chỉ mục.
 
 ---
 

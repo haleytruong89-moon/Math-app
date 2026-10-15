@@ -1,0 +1,643 @@
+{
+  "id": "p-cau",
+  "module": "hinh-khoi",
+  "order": 2,
+  "title": "Hình cầu & hình bán cầu",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **Hình trụ & hình nón: công thức** — diện tích hình tròn $\\pi R^2$, chu vi đường tròn $2\\pi R$, đổi đơn vị thể tích ($1$ cm³ $=1$ ml, $1$ dm³ $=1$ lít).",
+    "**Công thức:** hình cầu bán kính $R$: diện tích mặt cầu $S=4\\pi R^2$, thể tích $V=\\dfrac43\\pi R^3$. Hình bán cầu (nửa hình cầu): mặt cong $2\\pi R^2$; mặt cong cộng mặt đáy tròn (toàn phần) $3\\pi R^2$; thể tích $\\dfrac23\\pi R^3$. **Điều kiện:** $R$ là **bán kính** (đường kính $d=2R$), mọi độ dài cùng một đơn vị.",
+    "**Vì sao:** mặt cầu rộng đúng bằng $4$ hình tròn lớn $\\pi R^2$. Hình cầu chiếm $\\dfrac23$ hình trụ vừa khít bao quanh nó (bán kính đáy $R$, cao $2R$): $\\dfrac23\\cdot\\pi R^2\\cdot 2R=\\dfrac43\\pi R^3$. Bán cầu là một nửa, nên mặt cong $2\\pi R^2$, thể tích $\\dfrac23\\pi R^3$; có thêm mặt đáy phẳng thì cộng $\\pi R^2$.",
+    "**Bẫy hay gặp:** (1) đề cho đường kính $10$ cm mà thay $R=10$ thay vì $R=5$; (2) quên $\\dfrac43$ hoặc dùng $R^2$ trong thể tích; (3) bán cầu: “mặt trong cái bát” chỉ là mặt cong $2\\pi R^2$, “khối đặc sơn toàn bộ” là $3\\pi R^2$; (4) bán kính gấp đôi thì diện tích gấp $4$, thể tích gấp $8$ — **không** phải gấp $2$.",
+    "**Nhận dạng:** quả bóng, viên bi, quả cầu → hình cầu; cái bát, gáo, mái vòm, “nửa hình cầu” → bán cầu. Hỏi bọc, sơn, lượng da/vỏ → diện tích; hỏi chứa được, nước dâng/tràn → thể tích. Cho chu vi đường tròn lớn → tìm $R$ từ $C=2\\pi R$. **Không** dùng các công thức này cho hình trụ, hình nón; vật ghép nhiều khối → bài hình ghép.",
+    "**Checklist bài thực tế:** (1) đề cho $d$ hay $R$? → viết ra $R$; (2) đổi cùng đơn vị (mm → cm; cm³ = ml; dm³ = lít); (3) chọn $S$ hay $V$, cầu hay bán cầu, mặt cong hay toàn phần; (4) giữ $\\pi$ đến cuối, chỉ làm tròn một lần; (5) viết **Kết luận** kèm đơn vị."
+  ],
+  "worked": {
+    "problem": "Một cái chậu dạng nửa hình cầu có đường kính miệng $30$ cm (bỏ qua độ dày). (a) Chậu chứa đầy được bao nhiêu lít nước? (b) Tính diện tích mặt trong của chậu. Lấy $\\pi\\approx 3{,}14$.",
+    "steps": [
+      {
+        "text": "Đường kính miệng chậu $30$ cm nên bán kính $R=30:2=15$ cm.",
+        "why": "Mọi công thức hình cầu dùng bán kính, không dùng đường kính."
+      },
+      {
+        "text": "Chậu là nửa hình cầu: $V=\\dfrac23\\pi R^3=\\dfrac23\\pi\\cdot 15^3=\\dfrac23\\pi\\cdot 3375=2250\\pi$ (cm³).",
+        "why": "Bán cầu bằng một nửa hình cầu: $\\dfrac12\\cdot\\dfrac43=\\dfrac23$."
+      },
+      {
+        "text": "Với $\\pi\\approx 3{,}14$: $V\\approx 2250\\cdot 3{,}14=7065$ cm³ $=7{,}065$ lít.",
+        "why": "$1000$ cm³ $=1$ dm³ $=1$ lít. Giữ $\\pi$ đến cuối rồi mới thay số."
+      },
+      {
+        "text": "Mặt trong của chậu chỉ là mặt cong: $S=2\\pi R^2=2\\pi\\cdot 225=450\\pi\\approx 1413$ (cm²).",
+        "why": "Miệng chậu để hở nên không cộng hình tròn đáy $\\pi R^2$."
+      },
+      {
+        "text": "Kết luận: chậu chứa đầy được khoảng $7{,}065$ lít nước; diện tích mặt trong của chậu là $450\\pi\\approx 1413$ cm²."
+      }
+    ],
+    "selfExplain": "Nếu đậy chậu bằng một nắp phẳng hình tròn thì tổng diện tích mặt cong và nắp tính bằng công thức nào? Vì sao không dùng $4\\pi R^2$?"
+  },
+  "faded": {
+    "problem": "Một quả bóng hình cầu có thể tích $972\\pi$ cm³. Tính diện tích bề mặt quả bóng.",
+    "steps": [
+      {
+        "text": "Thay vào công thức thể tích hình cầu: $\\dfrac43\\pi R^3=972\\pi$."
+      },
+      {
+        "prompt": "Giải ngược để tìm $R^3$.",
+        "item": {
+          "id": "p-cau-f1",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Từ $\\dfrac43\\pi R^3=972\\pi$, giá trị của $R^3$ là:",
+          "answer": "729",
+          "mistakes": [
+            {
+              "answer": "972",
+              "code": "E03",
+              "feedback": "Con quên hệ số $\\dfrac43$: phải chia cả hai vế cho $\\dfrac43\\pi$."
+            },
+            {
+              "answer": "1296",
+              "code": "E02",
+              "feedback": "Muốn bỏ $\\dfrac43$ phải nhân với $\\dfrac34$, không nhân với $\\dfrac43$."
+            }
+          ],
+          "solution": "Chia hai vế cho $\\pi$: $\\dfrac43 R^3=972$, nên $R^3=972\\cdot\\dfrac34=729$."
+        }
+      },
+      {
+        "prompt": "Tìm bán kính.",
+        "item": {
+          "id": "p-cau-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Từ giá trị $R^3$ vừa tìm, bán kính $R$ (cm) là:",
+          "answer": "9",
+          "mistakes": [
+            {
+              "answer": "243",
+              "code": "E04",
+              "feedback": "$R^3$ là $R\\cdot R\\cdot R$, không phải $3\\cdot R$: cần lấy căn bậc ba, không chia cho $3$."
+            },
+            {
+              "answer": "27",
+              "code": "E04",
+              "feedback": "Con lấy căn bậc hai; từ $R^3$ phải lấy căn bậc ba."
+            }
+          ],
+          "solution": "$R^3=729=9^3$ nên $R=9$ cm."
+        }
+      },
+      {
+        "prompt": "Tính diện tích mặt cầu.",
+        "item": {
+          "id": "p-cau-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Diện tích bề mặt quả bóng có dạng $k\\pi$ cm². Tìm $k$.",
+          "answer": "324",
+          "mistakes": [
+            {
+              "answer": "162",
+              "code": "E03",
+              "feedback": "$2\\pi R^2$ là mặt cong của nửa hình cầu; quả bóng là cả mặt cầu $4\\pi R^2$."
+            },
+            {
+              "answer": "81",
+              "code": "E03",
+              "feedback": "Con dùng $\\pi R^2$ của hình tròn; diện tích mặt cầu là $4\\pi R^2$."
+            },
+            {
+              "answer": "36",
+              "code": "E03",
+              "feedback": "Con quên bình phương bán kính: $S=4\\pi R^2$."
+            }
+          ],
+          "solution": "$S=4\\pi R^2=4\\pi\\cdot 81=324\\pi$ (cm²), nên $k=324$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "p-cau-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $R=9$ cm.",
+            "Kết luận: diện tích bề mặt quả bóng là $324\\pi$ cm³.",
+            "Kết luận: diện tích bề mặt quả bóng là $324\\pi$ cm² (khoảng $1017{,}36$ cm² với $\\pi\\approx 3{,}14$)."
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Thiếu kết luận: bán kính chỉ là bước trung gian, đề hỏi diện tích bề mặt."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "Sai đơn vị: diện tích đo bằng cm², còn cm³ là đơn vị thể tích."
+            }
+          },
+          "solution": "Đề hỏi diện tích nên kết luận nêu $S=324\\pi$ cm², đơn vị cm²."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "p-cau-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hình cầu có bán kính $R=5$ cm. Diện tích mặt cầu có dạng $k\\pi$ cm². Tìm $k$.",
+      "hints": [
+        "Cần diện tích mặt cầu, viết dưới dạng $k\\pi$.",
+        "Đề đã cho bán kính. Mặt cầu rộng bằng mấy hình tròn lớn?",
+        "Dùng $S=4\\pi R^2$ và giữ nguyên $\\pi$."
+      ],
+      "answer": "100",
+      "mistakes": [
+        {
+          "answer": "25",
+          "code": "E03",
+          "feedback": "Con dùng công thức hình tròn $\\pi R^2$; diện tích mặt cầu là $S=4\\pi R^2$."
+        },
+        {
+          "answer": "50",
+          "code": "E03",
+          "feedback": "$2\\pi R^2$ chỉ là mặt cong của **nửa** hình cầu; cả mặt cầu là $S=4\\pi R^2$."
+        },
+        {
+          "answer": "500/3",
+          "code": "E03",
+          "feedback": "Con dùng công thức thể tích $\\dfrac43\\pi R^3$; đề hỏi diện tích mặt cầu."
+        }
+      ],
+      "solution": "$S=4\\pi R^2=4\\pi\\cdot 5^2=100\\pi$ (cm²). Vậy $k=100$."
+    },
+    {
+      "id": "p-cau-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một quả cầu có **đường kính** $12$ cm. Thể tích quả cầu có dạng $k\\pi$ cm³. Tìm $k$.",
+      "hints": [
+        "Cần thể tích quả cầu dưới dạng $k\\pi$.",
+        "Đề cho đường kính hay bán kính? Công thức cần số nào?",
+        "Lấy $R=\\dfrac d2$, rồi dùng $V=\\dfrac43\\pi R^3$."
+      ],
+      "answer": "288",
+      "mistakes": [
+        {
+          "answer": "2304",
+          "code": "E10",
+          "feedback": "Con lấy đường kính làm bán kính; bán kính bằng nửa đường kính."
+        },
+        {
+          "answer": "216",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac43$ trong $V=\\dfrac43\\pi R^3$."
+        },
+        {
+          "answer": "48",
+          "code": "E03",
+          "feedback": "Thể tích dùng $R^3$, không phải $R^2$."
+        }
+      ],
+      "solution": "$R=12:2=6$ cm. $V=\\dfrac43\\pi\\cdot 6^3=\\dfrac43\\pi\\cdot 216=288\\pi$ (cm³). Vậy $k=288$."
+    },
+    {
+      "id": "p-cau-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Quả bóng bàn hình cầu có đường kính $40$ mm. Tính diện tích phần nhựa làm vỏ quả bóng theo cm².” Bước đầu tiên hợp lý là gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách bắt đầu, chưa cần tính.",
+        "Vật có dạng gì? Đề hỏi bề mặt hay khoảng không bên trong?",
+        "Kiểm tra đơn vị và bán kính trước, rồi chọn công thức đúng loại hình."
+      ],
+      "options": [
+        "Dùng diện tích xung quanh hình trụ $2\\pi Rh$ với $h=4$ cm",
+        "Đổi $40$ mm $=4$ cm, lấy $R=2$ cm rồi dùng $S=4\\pi R^2$",
+        "Dùng thể tích $V=\\dfrac43\\pi R^3$ vì đề hỏi lượng nhựa",
+        "Dùng diện tích xung quanh hình nón $\\pi Rl$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Quả bóng là hình cầu, không có chiều cao như hình trụ; dùng công thức mặt cầu."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Vỏ bóng là lớp mỏng phủ bề mặt nên đề hỏi diện tích, không hỏi thể tích."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Hình nón có đỉnh và đường sinh; quả bóng là hình cầu."
+        }
+      },
+      "solution": "Bóng là hình cầu, vỏ là bề mặt nên dùng $S=4\\pi R^2$. Trước hết đổi $40$ mm $=4$ cm và lấy $R=2$ cm."
+    },
+    {
+      "id": "p-cau-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một cái bát inox dạng nửa hình cầu có đường kính miệng bát $20$ cm (bỏ qua độ dày). Bát chứa đầy được bao nhiêu mililít nước? Lấy $\\pi\\approx 3{,}14$, làm tròn đến hàng đơn vị.",
+      "hints": [
+        "Cần thể tích bên trong bát, đổi ra mililít.",
+        "Bát là nửa hình cầu. Bán kính bằng bao nhiêu khi biết đường kính miệng?",
+        "Dùng $V=\\dfrac23\\pi R^3$; nhớ $1$ cm³ $=1$ ml."
+      ],
+      "answer": "2093",
+      "unit": "ml",
+      "mistakes": [
+        {
+          "answer": "16747",
+          "code": "E10",
+          "feedback": "Con lấy đường kính làm bán kính; miệng bát rộng $20$ cm thì bán kính bằng một nửa."
+        },
+        {
+          "answer": "4187",
+          "code": "E04",
+          "feedback": "Bát là **nửa** hình cầu nên thể tích là $\\dfrac23\\pi R^3$, không phải cả quả cầu."
+        },
+        {
+          "answer": "3140",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac23$ của thể tích bán cầu."
+        }
+      ],
+      "solution": "$R=10$ cm. $V=\\dfrac23\\pi R^3=\\dfrac23\\cdot 3{,}14\\cdot 1000\\approx 2093{,}33$ (cm³). Vì $1$ cm³ $=1$ ml nên bát chứa khoảng $2093$ ml."
+    },
+    {
+      "id": "p-cau-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một khối gỗ đặc dạng nửa hình cầu có bán kính $4$ cm. Người ta sơn **toàn bộ** bề mặt khối gỗ (mặt cong và mặt phẳng). Diện tích cần sơn có dạng $k\\pi$ cm². Tìm $k$.",
+      "hints": [
+        "Cần tổng diện tích mọi mặt của khối nửa hình cầu.",
+        "Khối có những mặt nào? Mặt cong bằng mấy phần mặt cầu?",
+        "Cộng mặt cong $2\\pi R^2$ với mặt đáy $\\pi R^2$."
+      ],
+      "answer": "48",
+      "mistakes": [
+        {
+          "answer": "32",
+          "code": "E04",
+          "feedback": "Con mới tính mặt cong; khối đặc còn mặt phẳng hình tròn $\\pi R^2$ cũng phải sơn."
+        },
+        {
+          "answer": "64",
+          "code": "E04",
+          "feedback": "$4\\pi R^2$ là cả mặt cầu; nửa hình cầu chỉ có một nửa mặt cong cộng mặt đáy."
+        },
+        {
+          "answer": "80",
+          "code": "E04",
+          "feedback": "Con lấy cả mặt cầu rồi cộng đáy; khối chỉ có **nửa** mặt cầu."
+        }
+      ],
+      "solution": "Mặt cong: $2\\pi R^2=32\\pi$; mặt đáy: $\\pi R^2=16\\pi$. Tổng $3\\pi R^2=48\\pi$ (cm²). Vậy $k=48$."
+    },
+    {
+      "id": "p-cau-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một quả bóng hình cầu có chu vi đường tròn lớn bằng $20\\pi$ cm. Tính diện tích bề mặt quả bóng.",
+      "source": "68 đề – Đề 30, Bài 4.1a (chuyển thể: chu vi $20\\pi$ cm, kết quả dạng $k\\pi$)",
+      "hints": [
+        "Cần diện tích mặt cầu, nhưng đề chưa cho bán kính.",
+        "Đường tròn lớn có bán kính bằng bán kính quả bóng. Chu vi liên hệ với $R$ thế nào?",
+        "Từ $C=2\\pi R$ tìm $R$, rồi dùng $S=4\\pi R^2$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tìm bán kính.",
+          "item": {
+            "id": "p-cau-p6-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Bán kính $R$ của quả bóng (cm) là:",
+            "answer": "10",
+            "mistakes": [
+              {
+                "answer": "20",
+                "code": "E03",
+                "feedback": "Chu vi đường tròn là $C=2\\pi R$, không phải $\\pi R$.",
+                "review": "p-trunon"
+              },
+              {
+                "answer": "2√5",
+                "code": "E03",
+                "feedback": "Con nhầm chu vi với diện tích hình tròn; chu vi là $C=2\\pi R$.",
+                "review": "p-trunon"
+              }
+            ],
+            "solution": "$2\\pi R=20\\pi$ nên $R=10$ cm."
+          }
+        },
+        {
+          "prompt": "Tính diện tích mặt cầu.",
+          "item": {
+            "id": "p-cau-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Diện tích bề mặt quả bóng có dạng $k\\pi$ cm². Tìm $k$.",
+            "answer": "400",
+            "mistakes": [
+              {
+                "answer": "100",
+                "code": "E03",
+                "feedback": "Con dùng $\\pi R^2$ của hình tròn; diện tích mặt cầu là $4\\pi R^2$."
+              },
+              {
+                "answer": "200",
+                "code": "E03",
+                "feedback": "$2\\pi R^2$ là mặt cong nửa hình cầu; quả bóng là cả mặt cầu."
+              }
+            ],
+            "solution": "$S=4\\pi\\cdot 10^2=400\\pi$ (cm²), nên $k=400$."
+          }
+        }
+      ],
+      "solution": "$2\\pi R=20\\pi\\Rightarrow R=10$ cm. $S=4\\pi R^2=4\\pi\\cdot 100=400\\pi$ (cm²)."
+    },
+    {
+      "id": "p-cau-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một quả bóng bay hình cầu được bơm thêm hơi, bán kính tăng từ $10$ cm lên $15$ cm. Thể tích quả bóng tăng gấp bao nhiêu lần? (ghi phân số tối giản)",
+      "hints": [
+        "Cần tỉ số thể tích sau khi bơm và trước khi bơm.",
+        "Lập tỉ số hai công thức thể tích; phần nào triệt tiêu?",
+        "Tỉ số thể tích bằng tỉ số bán kính mũ ba."
+      ],
+      "answer": "27/8",
+      "mistakes": [
+        {
+          "answer": "3/2",
+          "code": "E04",
+          "feedback": "Thể tích tỉ lệ với $R^3$ chứ không tỉ lệ với $R$; tỉ số bán kính phải lập phương."
+        },
+        {
+          "answer": "9/4",
+          "code": "E03",
+          "feedback": "Con bình phương tỉ số bán kính như với diện tích; thể tích dùng $R^3$."
+        }
+      ],
+      "solution": "$\\dfrac{V_2}{V_1}=\\dfrac{\\frac43\\pi\\cdot 15^3}{\\frac43\\pi\\cdot 10^3}=\\left(\\dfrac{15}{10}\\right)^3=\\dfrac{27}{8}$. Thể tích gấp $\\dfrac{27}{8}$ lần (khoảng $3{,}4$ lần)."
+    },
+    {
+      "id": "p-cau-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Anh Huy làm một mô hình Trái Đất dạng hình cầu có thể tích $4{,}5$ lít. Tính bán kính của mô hình theo xentimét. Lấy $\\pi\\approx 3{,}14$, làm tròn đến hàng đơn vị.",
+      "source": "68 đề – Đề 37, Bài 4.1a (chuyển thể: thể tích $4{,}5$ lít, tính bán kính theo cm)",
+      "hints": [
+        "Đề cho thể tích, cần tìm bán kính theo xentimét.",
+        "Đổi lít sang cm³ trước, rồi giải ngược công thức thể tích hình cầu.",
+        "Tính $R^3=\\dfrac{3V}{4\\pi}$, rồi lấy căn bậc ba bằng máy tính."
+      ],
+      "answer": "10",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "11",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac43$ khi giải ngược $V=\\dfrac43\\pi R^3$."
+        },
+        {
+          "answer": "12",
+          "code": "E02",
+          "feedback": "Giải ngược sai: muốn bỏ $\\dfrac43$ phải nhân với $\\dfrac34$, không nhân với $\\dfrac43$."
+        },
+        {
+          "answer": "1",
+          "code": "E14",
+          "feedback": "Con chưa đổi đơn vị: đổi lít ra cm³ trước thì bán kính mới tính bằng xentimét."
+        }
+      ],
+      "solution": "$4{,}5$ lít $=4500$ cm³. $R^3=\\dfrac{3V}{4\\pi}=\\dfrac{3\\cdot 4500}{4\\cdot 3{,}14}\\approx 1074{,}8$, nên $R\\approx 10{,}24$ cm. Làm tròn: $R\\approx 10$ cm."
+    }
+  ],
+  "exit": [
+    {
+      "id": "p-cau-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một hình cầu có đường kính $8$ cm. Diện tích mặt cầu có dạng $k\\pi$ cm². Tìm $k$.",
+      "answer": "64",
+      "mistakes": [
+        {
+          "answer": "256",
+          "code": "E10",
+          "feedback": "Con lấy đường kính làm bán kính; bán kính bằng nửa đường kính."
+        },
+        {
+          "answer": "16",
+          "code": "E03",
+          "feedback": "Con dùng $\\pi R^2$ của hình tròn; diện tích mặt cầu là $4\\pi R^2$."
+        },
+        {
+          "answer": "32",
+          "code": "E03",
+          "feedback": "$2\\pi R^2$ chỉ là mặt cong nửa hình cầu; cả mặt cầu là $4\\pi R^2$."
+        }
+      ],
+      "solution": "$R=4$ cm; $S=4\\pi\\cdot 4^2=64\\pi$ (cm²). Vậy $k=64$."
+    },
+    {
+      "id": "p-cau-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Thể tích của hình bán cầu có bán kính $9$ cm là:",
+      "options": [
+        "$972\\pi$ cm³",
+        "$54\\pi$ cm³",
+        "$162\\pi$ cm³",
+        "$486\\pi$ cm³"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Đây là thể tích cả hình cầu; bán cầu chỉ bằng một nửa."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Thể tích dùng $R^3$, không phải $R^2$."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "$2\\pi R^2$ là diện tích mặt cong, không phải thể tích."
+        }
+      },
+      "solution": "$V=\\dfrac23\\pi R^3=\\dfrac23\\pi\\cdot 729=486\\pi$ (cm³)."
+    },
+    {
+      "id": "p-cau-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một quả bóng bàn hình cầu có đường kính $40$ mm. Tính thể tích quả bóng theo cm³. Lấy $\\pi\\approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai.",
+      "source": "68 đề – Đề 8, Bài 4.1a",
+      "answer": "33,49",
+      "unit": "cm³",
+      "mistakes": [
+        {
+          "answer": "267,95",
+          "code": "E10",
+          "feedback": "Con lấy đường kính làm bán kính; bán kính bằng nửa đường kính."
+        },
+        {
+          "answer": "33493,33",
+          "code": "E14",
+          "feedback": "Con tính theo milimét nên ra mm³; đổi $40$ mm sang cm trước khi tính."
+        },
+        {
+          "answer": "25,12",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac43$ trong $V=\\dfrac43\\pi R^3$."
+        }
+      ],
+      "solution": "$40$ mm $=4$ cm nên $R=2$ cm. $V=\\dfrac43\\cdot 3{,}14\\cdot 2^3\\approx 33{,}49$ (cm³)."
+    },
+    {
+      "id": "p-cau-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Mái vòm của một nhà kho có dạng nửa hình cầu bán kính $5$ m. Người ta sơn mặt ngoài của mái vòm (mái không có đáy). Diện tích cần sơn có dạng $k\\pi$ m². Tìm $k$.",
+      "source": "68 đề – Đề 18, Bài 4.1b (chuyển thể: chỉ phần mái vòm, bán kính $5$ m, kết quả dạng $k\\pi$)",
+      "answer": "50",
+      "mistakes": [
+        {
+          "answer": "75",
+          "code": "E04",
+          "feedback": "Mái vòm không có đáy nên không cộng hình tròn $\\pi R^2$."
+        },
+        {
+          "answer": "100",
+          "code": "E04",
+          "feedback": "$4\\pi R^2$ là cả mặt cầu; mái vòm chỉ là một nửa."
+        },
+        {
+          "answer": "25",
+          "code": "E03",
+          "feedback": "Con dùng $\\pi R^2$ của hình tròn; mặt cong nửa hình cầu là $2\\pi R^2$."
+        }
+      ],
+      "solution": "Mặt cong nửa hình cầu: $2\\pi R^2=2\\pi\\cdot 25=50\\pi$ (m²). Vậy $k=50$."
+    },
+    {
+      "id": "p-cau-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một quả cầu có diện tích mặt cầu bằng $64\\pi$ cm². Thể tích quả cầu có dạng $k\\pi$ cm³. Tìm $k$ (ghi phân số tối giản nếu cần).",
+      "answer": "256/3",
+      "mistakes": [
+        {
+          "answer": "2048/3",
+          "code": "E03",
+          "feedback": "Diện tích mặt cầu là $4\\pi R^2$, không phải $\\pi R^2$; tìm lại bán kính."
+        },
+        {
+          "answer": "64",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac43$ trong $V=\\dfrac43\\pi R^3$."
+        },
+        {
+          "answer": "16384/3",
+          "code": "E02",
+          "feedback": "Con mới tìm được $R^2$, chưa khai căn để ra $R$."
+        }
+      ],
+      "solution": "$4\\pi R^2=64\\pi\\Rightarrow R^2=16\\Rightarrow R=4$ cm. $V=\\dfrac43\\pi\\cdot 64=\\dfrac{256}{3}\\pi$ (cm³). Vậy $k=\\dfrac{256}{3}$."
+    },
+    {
+      "id": "p-cau-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một quả dưa hấu dạng hình cầu có đường kính $25$ cm, phần vỏ dày $2$ cm. Coi phần ruột đỏ cũng là hình cầu đặc. Thể tích phần ruột chiếm bao nhiêu phần trăm thể tích cả quả? (làm tròn đến hàng phần trăm, tức hai chữ số thập phân)",
+      "source": "68 đề – Đề 5, Bài 4.1a",
+      "answer": "59,27",
+      "unit": "%",
+      "mistakes": [
+        {
+          "answer": "77,87",
+          "code": "E08",
+          "feedback": "Vỏ bao quanh cả hai phía nên đường kính ruột giảm hai lần độ dày vỏ."
+        },
+        {
+          "answer": "84",
+          "code": "E04",
+          "feedback": "Tỉ số thể tích bằng tỉ số bán kính **lập phương**, không bằng tỉ số bán kính."
+        },
+        {
+          "answer": "70,56",
+          "code": "E03",
+          "feedback": "Con bình phương tỉ số bán kính như diện tích; thể tích dùng $R^3$."
+        }
+      ],
+      "solution": "$R=12{,}5$ cm, bán kính ruột $r=12{,}5-2=10{,}5$ cm. Tỉ số thể tích ruột và cả quả: $\\left(\\dfrac{r}{R}\\right)^3=\\left(\\dfrac{10{,}5}{12{,}5}\\right)^3=0{,}84^3\\approx 0{,}5927$, tức khoảng $59{,}27\\%$."
+    },
+    {
+      "id": "p-cau-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một cái gáo nước bằng đất sét có dạng nửa hình cầu (hình vẽ là mặt cắt): bán kính mặt ngoài $10$ cm, bán kính lòng trong $9$ cm. Gáo chứa được tối đa bao nhiêu mililít nước? Lấy $\\pi\\approx 3{,}14$, làm tròn đến hàng phần trăm.",
+      "source": "68 đề – Đề 17, Bài 4.1a (chuyển thể: số liệu ghi bằng chữ, bán kính ngoài $10$ cm, trong $9$ cm)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 135\" role=\"img\" aria-label=\"Mặt cắt cái gáo nửa hình cầu\"><path d=\"M 20 20 A 100 100 0 0 0 220 20 L 210 20 A 90 90 0 0 1 30 20 Z\" fill=\"var(--m1)\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"20\" x2=\"210\" y2=\"20\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><circle cx=\"120\" cy=\"20\" r=\"2.5\" fill=\"currentColor\"/><text x=\"120\" y=\"13\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">O</text><line x1=\"120\" y1=\"20\" x2=\"190.7\" y2=\"90.7\" stroke=\"var(--accent)\" stroke-width=\"1.5\"/><text x=\"162\" y=\"50\" font-size=\"11\" fill=\"var(--accent)\">10 cm</text><line x1=\"120\" y1=\"20\" x2=\"56.4\" y2=\"83.6\" stroke=\"var(--warn)\" stroke-width=\"1.5\"/><text x=\"84\" y=\"48\" font-size=\"11\" text-anchor=\"end\" fill=\"var(--warn)\">9 cm</text></svg>",
+        "alt": "Mặt cắt cái gáo nửa hình cầu tâm O: bán kính mặt ngoài 10 cm, bán kính lòng trong 9 cm, miệng gáo hướng lên."
+      },
+      "answer": "1526,04",
+      "unit": "ml",
+      "mistakes": [
+        {
+          "answer": "2093,33",
+          "code": "E08",
+          "feedback": "Nước nằm trong lòng gáo nên dùng bán kính lòng trong, không dùng bán kính mặt ngoài."
+        },
+        {
+          "answer": "3052,08",
+          "code": "E04",
+          "feedback": "Gáo là **nửa** hình cầu nên thể tích là $\\dfrac23\\pi R^3$."
+        },
+        {
+          "answer": "567,29",
+          "code": "E07",
+          "feedback": "Con tính thể tích phần đất sét; đề hỏi lượng nước gáo chứa được."
+        }
+      ],
+      "solution": "Lòng gáo là nửa hình cầu bán kính $9$ cm: $V=\\dfrac23\\cdot 3{,}14\\cdot 9^3=\\dfrac23\\cdot 3{,}14\\cdot 729=1526{,}04$ (cm³) $=1526{,}04$ ml."
+    },
+    {
+      "id": "p-cau-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một ly hình trụ đựng đầy nước, bán kính đáy $5$ cm, cao $15$ cm. Người ta thả vào ly $5$ viên bi đặc hình cầu, mỗi viên có đường kính $3$ cm, các viên bi chìm hẳn trong nước. Thể tích nước tràn ra có dạng $k\\pi$ cm³. Tìm $k$.",
+      "source": "68 đề – Đề 50, Bài 4.1b (chuyển thể: kết quả dạng $k\\pi$)",
+      "answer": "22,5",
+      "mistakes": [
+        {
+          "answer": "180",
+          "code": "E10",
+          "feedback": "Con lấy đường kính viên bi làm bán kính; bán kính bằng nửa đường kính."
+        },
+        {
+          "answer": "4,5",
+          "code": "E10",
+          "feedback": "Con mới tính một viên bi; đề thả $5$ viên."
+        },
+        {
+          "answer": "16,875",
+          "code": "E03",
+          "feedback": "Con quên hệ số $\\dfrac43$ trong $V=\\dfrac43\\pi R^3$."
+        }
+      ],
+      "solution": "Nước tràn ra bằng tổng thể tích $5$ viên bi. $R=1{,}5$ cm, một viên: $\\dfrac43\\pi\\cdot 1{,}5^3=4{,}5\\pi$ (cm³). Năm viên: $22{,}5\\pi$ cm³. Vậy $k=22{,}5$."
+    }
+  ]
+}

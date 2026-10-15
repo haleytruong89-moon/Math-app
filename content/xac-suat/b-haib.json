@@ -1,0 +1,631 @@
+{
+  "id": "b-haib",
+  "module": "xac-suat",
+  "order": 3,
+  "title": "Xác suất hai bước & công cụ đếm",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **Xác suất cổ điển & một bước** ($P(A)=\\dfrac{n(A)}{n(\\Omega)}$, $P(\\overline{A})=1-P(A)$) và bài **phép thử & không gian mẫu** (cặp có thứ tự hay không thứ tự, có lặp hay không).",
+    "**Quy tắc nhân:** phép thử hai bước, bước 1 có $m$ kết quả, mỗi kết quả đó đi với $k$ kết quả của bước 2 thì $n(\\Omega)=m \\cdot k$. Lấy $2$ trong $n$ vật: **có hoàn lại** $n \\cdot n$; **lần lượt, không hoàn lại** $n(n-1)$; **cùng lúc** $\\dfrac{n(n-1)}{2}$. Xếp $3$ bạn vào $3$ ghế: $3 \\cdot 2 \\cdot 1=6$. Chỉ dùng $P=\\dfrac{n(A)}{n(\\Omega)}$ khi các kết quả **đồng khả năng**.",
+    "**Vì sao:** sơ đồ cây vẽ mỗi lựa chọn thành một nhánh; mỗi đường đi từ gốc tới lá là **một** kết quả, nên đếm lá là đếm $n(\\Omega)$. Bảng hai chiều (hàng là lần 1, cột là lần 2) là sơ đồ cây xếp gọn thành các ô.",
+    "**Bẫy hay gặp:** (1) mẫu đếm có thứ tự mà tử đếm không thứ tự, hoặc ngược lại — tử và mẫu phải **cùng một cách đếm**; (2) không hoàn lại mà vẫn đếm cặp $(2;2)$; (3) đã tính biến cố đối nhưng quên lấy $1$ trừ; (4) cộng $6+6$ thay vì nhân $6 \\cdot 6$; (5) chưa rút gọn phân số.",
+    "**Nhận dạng:** “gieo hai lần”, “hai hộp”, “có hoàn lại” → bảng hai chiều, có lặp. “Lần lượt, không hoàn lại”, “xếp chỗ” → sơ đồ cây, tầng sau ít hơn một nhánh. “Cùng lúc”, “đồng thời” → cặp không thứ tự, số nhỏ viết trước. “Ít nhất một” → biến cố đối. **Không** cần các công cụ này khi chỉ rút **một** lần.",
+    "**Thẻ xác suất hai bước:** (1) có thứ tự? có lặp? (2) vẽ cây hoặc bảng, tính $n(\\Omega)$; (3) đếm $n(A)$ **cùng cách** với mẫu, hoặc đếm biến cố đối; (4) $P(A)=\\dfrac{n(A)}{n(\\Omega)}$, rút gọn đến tối giản; (5) viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Hộp có $4$ thẻ ghi các số $1; 2; 3; 4$. Rút ngẫu nhiên lần lượt $2$ thẻ, thẻ rút lần đầu **không trả lại** hộp. Tính xác suất của biến cố $A$: “Tích hai số trên hai thẻ là số chẵn”.",
+    "steps": [
+      {
+        "text": "Nhận dạng: lần lượt, không trả lại → mỗi kết quả là cặp có thứ tự $(a;b)$ với $a \\ne b$. Sơ đồ cây: lần 1 có $4$ nhánh, mỗi nhánh còn $3$ nhánh con, nên $n(\\Omega)=4 \\cdot 3=12$.",
+        "why": "Không có cặp $(2;2)$ vì thẻ đã rút không còn trong hộp."
+      },
+      {
+        "text": "Tích chẵn khi có **ít nhất một** thẻ chẵn → xét biến cố đối $\\overline{A}$: “cả hai thẻ đều lẻ”. Các kết quả: $(1;3)$, $(3;1)$, nên $n(\\overline{A})=2$.",
+        "why": "Mẫu đã đếm có thứ tự nên $(1;3)$ và $(3;1)$ đều phải đếm."
+      },
+      {
+        "text": "$P(\\overline{A})=\\dfrac{2}{12}=\\dfrac16$, nên $P(A)=1-\\dfrac16=\\dfrac56$.",
+        "why": "“Ít nhất một” → đếm phần còn lại ít trường hợp hơn, rồi lấy $1$ trừ."
+      },
+      {
+        "text": "Kết luận: $P(A)=\\dfrac56$.",
+        "why": "Kiểm tra: $10$ trong $12$ cặp có thẻ chẵn, hợp lý."
+      }
+    ],
+    "selfExplain": "Nếu rút **có hoàn lại** thì $n(\\Omega)$ và số kết quả “cả hai thẻ đều lẻ” thay đổi thế nào?"
+  },
+  "faded": {
+    "problem": "Gieo một con xúc xắc cân đối hai lần liên tiếp. Tính xác suất của biến cố $B$: “Tổng số chấm của hai lần gieo bằng $9$”.",
+    "steps": [
+      {
+        "text": "Gieo hai lần → kết quả là cặp có thứ tự (lần 1; lần 2), được lặp. Lập bảng: hàng là lần 1, cột là lần 2."
+      },
+      {
+        "prompt": "Đếm số kết quả có thể.",
+        "item": {
+          "id": "b-haib-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Số kết quả có thể $n(\\Omega)$ là:",
+          "answer": "36",
+          "mistakes": [
+            {
+              "answer": "12",
+              "code": "E07",
+              "feedback": "Con cộng $6+6$; mỗi kết quả lần 1 đi với $6$ kết quả lần 2 nên bảng có $6 \\cdot 6$ ô."
+            },
+            {
+              "answer": "21",
+              "code": "E07",
+              "feedback": "$(3;6)$ khác $(6;3)$ vì hai lần gieo có thứ tự.",
+              "review": "b-phepthu"
+            }
+          ],
+          "solution": "Bảng $6$ hàng, $6$ cột: $n(\\Omega)=6 \\cdot 6=36$."
+        }
+      },
+      {
+        "prompt": "Đếm số kết quả thuận lợi.",
+        "item": {
+          "id": "b-haib-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Số kết quả thuận lợi $n(B)$ (tổng bằng $9$) là:",
+          "answer": "4",
+          "mistakes": [
+            {
+              "answer": "2",
+              "code": "E07",
+              "feedback": "Con mới đếm $(3;6)$ và $(4;5)$; hai lần gieo có thứ tự nên phải đếm cả cặp đảo."
+            }
+          ],
+          "solution": "Tổng bằng $9$: $(3;6)$, $(4;5)$, $(5;4)$, $(6;3)$, nên $n(B)=4$."
+        }
+      },
+      {
+        "prompt": "Rút gọn và viết kết luận.",
+        "item": {
+          "id": "b-haib-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ (xác suất ghi dạng phân số tối giản)?",
+          "options": [
+            "Kết luận: $P(B)=\\dfrac{4}{36}$.",
+            "Kết luận: $P(B)=\\dfrac19$.",
+            "Kết luận: $P(B)=\\dfrac{1}{18}$."
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Chưa rút gọn đến tận cùng: tử và mẫu cùng chia hết cho $4$."
+            },
+            "2": {
+              "code": "E07",
+              "feedback": "Con chỉ đếm $2$ cặp, bỏ các cặp đảo thứ tự như $(6;3)$."
+            }
+          },
+          "solution": "$P(B)=\\dfrac{4}{36}=\\dfrac19$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "b-haib-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tung một đồng xu cân đối rồi gieo một con xúc xắc cân đối. Xác suất để đồng xu ra mặt sấp **và** xúc xắc ra số chấm lớn hơn $4$ là (ghi phân số tối giản):",
+      "hints": [
+        "Cần xác suất để cả hai điều kiện cùng xảy ra.",
+        "Phép thử có hai bước; mỗi kết quả là một cặp (mặt xu; số chấm).",
+        "Vẽ sơ đồ cây: $2$ nhánh xu, mỗi nhánh có $6$ nhánh xúc xắc; đếm lá thỏa cả hai điều kiện."
+      ],
+      "answer": "1/6",
+      "mistakes": [
+        {
+          "answer": "1/4",
+          "code": "E07",
+          "feedback": "Con cộng $2+6$ kết quả; mỗi mặt đồng xu đi với $6$ mặt xúc xắc nên phải nhân."
+        },
+        {
+          "answer": "1/3",
+          "code": "E07",
+          "feedback": "Con chỉ tính xúc xắc, quên bước tung đồng xu: mỗi kết quả là cặp (mặt xu; số chấm)."
+        }
+      ],
+      "solution": "$n(\\Omega)=2 \\cdot 6=12$. Kết quả thuận lợi: $(S;5)$, $(S;6)$. $P=\\dfrac{2}{12}=\\dfrac16$."
+    },
+    {
+      "id": "b-haib-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một người lần lượt gieo hai con xúc xắc cân đối. Xác suất để cả hai con xúc xắc đều ra số chấm chẵn là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 46, Bài 1.2 (chuyển thể: chỉ hỏi xác suất)",
+      "hints": [
+        "Cần xác suất cả hai con đều ra số chẵn.",
+        "Lập bảng $6 \\times 6$: hàng là con thứ nhất, cột là con thứ hai.",
+        "Chọn các hàng chẵn và cột chẵn; số ô thỏa bằng số hàng nhân số cột."
+      ],
+      "answer": "1/4",
+      "mistakes": [
+        {
+          "answer": "1/6",
+          "code": "E07",
+          "feedback": "Con cộng $3+3$; mỗi số chẵn của con thứ nhất đi với $3$ số chẵn của con thứ hai nên phải nhân."
+        },
+        {
+          "answer": "2/7",
+          "code": "E07",
+          "feedback": "$(2;4)$ khác $(4;2)$ vì gieo lần lượt: không gian mẫu có $36$ kết quả chứ không phải $21$.",
+          "review": "b-phepthu"
+        }
+      ],
+      "solution": "$n(\\Omega)=6 \\cdot 6=36$. Mỗi con có $3$ số chẵn ($2; 4; 6$) nên có $3 \\cdot 3=9$ kết quả thuận lợi. $P=\\dfrac{9}{36}=\\dfrac14$."
+    },
+    {
+      "id": "b-haib-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề: “Túi có $5$ viên bi đánh số $1$ đến $5$. Lấy ngẫu nhiên lần lượt $2$ viên, viên lấy ra lần đầu **không trả lại** túi. Tính xác suất …”. Bước đầu tiên hợp lý là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi bước đầu tiên, chưa cần tính.",
+        "“Lần lượt” và “không trả lại” cho biết gì về thứ tự và việc lặp lại?",
+        "Lần 2 còn mấy viên trong túi? Cách nào thể hiện được điều đó?"
+      ],
+      "options": [
+        "Coi như lấy một viên: không gian mẫu có $5$ kết quả",
+        "Lập bảng $5 \\times 5$, giữ cả các ô như $(2;2)$",
+        "Vẽ sơ đồ cây: lần 1 có $5$ nhánh, mỗi nhánh có $4$ nhánh con",
+        "Lấy bi nhiều lần rồi tính xác suất thực nghiệm"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đề lấy hai viên nên mỗi kết quả là một cặp; cách một bước chỉ dùng khi lấy một viên."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Bảng có ô $(2;2)$ chỉ dùng khi có hoàn lại; ở đây viên đầu không trả lại."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đề cho đủ số bi nên tính trực tiếp được, không cần thử nhiều lần."
+        }
+      },
+      "solution": "Lần lượt → có thứ tự; không trả lại → lần 2 chỉ còn $4$ viên, không có cặp lặp. Sơ đồ cây cho $n(\\Omega)=5 \\cdot 4=20$."
+    },
+    {
+      "id": "b-haib-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Hộp có $4$ viên bi đỏ ghi số $1; 2; 3; 4$ và $2$ viên bi xanh ghi số $5; 6$, các viên bi cùng kích thước và khối lượng. Lấy ngẫu nhiên **đồng thời** $2$ viên. Xác suất để hai viên lấy ra **khác màu** là:",
+      "source": "68 đề – Đề 8, Bài 1.2 (chuyển thể: 4 bi đỏ, 2 bi xanh)",
+      "hints": [
+        "Cần xác suất hai viên khác màu.",
+        "“Đồng thời” → cặp không thứ tự, không lặp. Có bao nhiêu cặp như vậy?",
+        "Liệt kê cặp với số nhỏ trước; cặp khác màu là một bi đỏ ghép một bi xanh."
+      ],
+      "options": [
+        "$\\dfrac{4}{15}$",
+        "$\\dfrac{7}{15}$",
+        "$\\dfrac{4}{9}$",
+        "$\\dfrac{8}{15}$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Con đếm mẫu có thứ tự ($30$) nhưng đếm cặp khác màu không thứ tự; tử và mẫu phải cùng một cách đếm."
+        },
+        "1": {
+          "code": "E10",
+          "feedback": "Con tính xác suất hai viên **cùng** màu; đọc lại đề."
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Lấy đồng thời thì không viên nào được lấy hai lần; không gian mẫu không có cặp lặp.",
+          "review": "b-phepthu"
+        }
+      },
+      "solution": "Cặp không thứ tự từ $6$ viên: $5+4+3+2+1=15$. Cặp khác màu: mỗi bi đỏ ghép với một trong $2$ bi xanh: $4 \\cdot 2=8$. $P=\\dfrac{8}{15}$."
+    },
+    {
+      "id": "b-haib-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Ba bạn An, Bình, Chi được xếp ngẫu nhiên vào một hàng ghế có $3$ chỗ. Xác suất để An và Chi ngồi cạnh nhau là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 26, Bài 1.2 (chuyển thể: đặt tên các bạn)",
+      "hints": [
+        "Cần xác suất An và Chi ngồi cạnh nhau.",
+        "Xếp $3$ bạn vào $3$ ghế: vẽ sơ đồ cây ghế 1 → ghế 2 → ghế 3.",
+        "Liệt kê đủ các cách xếp, đếm cách có An, Chi kề nhau theo cả hai thứ tự."
+      ],
+      "answer": "2/3",
+      "mistakes": [
+        {
+          "answer": "1/3",
+          "code": "E07",
+          "feedback": "Con chỉ đếm An ngồi bên trái Chi; Chi ngồi bên trái An cũng là ngồi cạnh nhau."
+        },
+        {
+          "answer": "1/2",
+          "code": "E07",
+          "feedback": "“Cạnh nhau” và “không cạnh nhau” không đồng khả năng; phải liệt kê đủ các cách xếp."
+        }
+      ],
+      "solution": "Gọi A = An, B = Bình, C = Chi. Ghế 1 có $3$ cách, ghế 2 còn $2$, ghế 3 còn $1$: $n(\\Omega)=6$ (ABC, ACB, BAC, BCA, CAB, CBA). An, Chi cạnh nhau: ACB, CAB, BAC, BCA → $4$ cách. $P=\\dfrac46=\\dfrac23$."
+    },
+    {
+      "id": "b-haib-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Gieo một con xúc xắc cân đối hai lần. Xác suất để **ít nhất một** lần xuất hiện mặt $6$ chấm là (ghi phân số tối giản):",
+      "hints": [
+        "Cần xác suất có ít nhất một mặt $6$ chấm.",
+        "“Ít nhất một” → xét biến cố đối: không lần nào ra mặt $6$.",
+        "Đếm số cặp không có mặt $6$, rồi dùng $P(A)=1-P(\\overline{A})$."
+      ],
+      "answer": "11/36",
+      "mistakes": [
+        {
+          "answer": "1/3",
+          "code": "E07",
+          "feedback": "Con đếm ô $(6;6)$ hai lần: nó vừa thuộc hàng lần 1 ra $6$, vừa thuộc cột lần 2 ra $6$."
+        },
+        {
+          "answer": "25/36",
+          "code": "E06",
+          "feedback": "Đó là xác suất không lần nào ra mặt $6$; con quên lấy $1$ trừ đi.",
+          "review": "b-xsuat"
+        },
+        {
+          "answer": "5/18",
+          "code": "E04",
+          "feedback": "“Ít nhất một lần” gồm cả trường hợp hai lần đều ra mặt $6$."
+        }
+      ],
+      "solution": "$n(\\Omega)=36$. Biến cố đối “không lần nào ra $6$”: mỗi lần có $5$ cách nên có $5 \\cdot 5=25$ kết quả. $P=1-\\dfrac{25}{36}=\\dfrac{11}{36}$."
+    },
+    {
+      "id": "b-haib-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Ngăn kéo của Trung có một đôi tất trắng và một đôi tất đen, tức $4$ chiếc: T1, T2 (trắng) và Đ1, Đ2 (đen). Trung lấy ngẫu nhiên **lần lượt** $2$ chiếc, không hoàn lại. Tính xác suất để Trung lấy được hai chiếc **cùng màu**.",
+      "source": "68 đề – Đề 18, Bài 1.2 (chuyển thể: tách thành 3 bước)",
+      "hints": [
+        "Cần xác suất hai chiếc tất cùng màu.",
+        "Lần lượt, không hoàn lại → cặp có thứ tự, không lặp. Vẽ sơ đồ cây.",
+        "Tầng 1 có một nhánh cho mỗi chiếc, tầng 2 bỏ chiếc đã lấy; đếm lá cùng màu."
+      ],
+      "steps": [
+        {
+          "prompt": "Đếm không gian mẫu (có thứ tự: chiếc thứ nhất, chiếc thứ hai).",
+          "item": {
+            "id": "b-haib-p7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Không gian mẫu có bao nhiêu kết quả?",
+            "answer": "12",
+            "mistakes": [
+              {
+                "answer": "16",
+                "code": "E07",
+                "feedback": "Không hoàn lại nên không có cặp một chiếc lấy hai lần như (T1; T1)."
+              },
+              {
+                "answer": "6",
+                "code": "E07",
+                "feedback": "Bước này đếm có thứ tự: (T1; Đ1) và (Đ1; T1) là hai kết quả.",
+                "review": "b-phepthu"
+              }
+            ],
+            "solution": "Lần 1 có $4$ cách, lần 2 còn $3$ cách: $n(\\Omega)=4 \\cdot 3=12$."
+          }
+        },
+        {
+          "prompt": "Đếm kết quả thuận lợi.",
+          "item": {
+            "id": "b-haib-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Có bao nhiêu kết quả (có thứ tự) cho hai chiếc cùng màu?",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E07",
+                "feedback": "Mẫu đếm có thứ tự thì kết quả thuận lợi cũng đếm có thứ tự: (T1; T2) khác (T2; T1)."
+              },
+              {
+                "answer": "8",
+                "code": "E07",
+                "feedback": "Không hoàn lại nên không có cặp (T1; T1) hay (Đ2; Đ2)."
+              }
+            ],
+            "solution": "Cùng màu: (T1; T2), (T2; T1), (Đ1; Đ2), (Đ2; Đ1) → $4$ kết quả."
+          }
+        },
+        {
+          "prompt": "Tính xác suất.",
+          "item": {
+            "id": "b-haib-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Xác suất cần tìm (phân số tối giản) là:",
+            "options": [
+              "$\\dfrac13$",
+              "$\\dfrac{4}{12}$",
+              "$\\dfrac12$",
+              "$\\dfrac16$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa rút gọn đến tận cùng: tử và mẫu cùng chia hết cho $4$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Con cho phép lấy một chiếc hai lần; không hoàn lại thì không có cặp lặp."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Tử đếm không thứ tự nhưng mẫu đếm có thứ tự; phải cùng một cách đếm."
+              }
+            },
+            "solution": "$P=\\dfrac{4}{12}=\\dfrac13$."
+          }
+        }
+      ],
+      "solution": "Sơ đồ cây: $n(\\Omega)=4 \\cdot 3=12$. Cùng màu: (T1; T2), (T2; T1), (Đ1; Đ2), (Đ2; Đ1) → $4$ kết quả. $P=\\dfrac{4}{12}=\\dfrac13$."
+    },
+    {
+      "id": "b-haib-p8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Vòng quay may mắn (hình bên) chia thành $8$ phần bằng nhau: $2$ phần ghi “50K”, $1$ phần ghi “100K”, $5$ phần ghi “Chúc may mắn”. Mỗi khách quay liên tiếp $2$ lần. Xác suất để khách quay được “50K” **ít nhất một lần** là:",
+      "source": "68 đề – Đề 28, Bài 1.2 (chuyển thể: số liệu vòng quay ghi bằng chữ, hỏi “ít nhất một lần”)",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 320 200\"><path d=\"M 100 108 L 100.00 28.00 A 80 80 0 0 1 156.57 51.43 Z\" fill=\"var(--accent)\" fill-opacity=\"0.75\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"120.7\" y=\"62.1\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"currentColor\">50K</text><path d=\"M 100 108 L 156.57 51.43 A 80 80 0 0 1 180.00 108.00 Z\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"149.9\" y=\"85.3\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">Chúc</text><text x=\"149.9\" y=\"94.3\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">may mắn</text><path d=\"M 100 108 L 180.00 108.00 A 80 80 0 0 1 156.57 164.57 Z\" fill=\"var(--warn)\" fill-opacity=\"0.75\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"149.9\" y=\"132.7\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"currentColor\">100K</text><path d=\"M 100 108 L 156.57 164.57 A 80 80 0 0 1 100.00 188.00 Z\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"120.7\" y=\"155.9\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">Chúc</text><text x=\"120.7\" y=\"164.9\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">may mắn</text><path d=\"M 100 108 L 100.00 188.00 A 80 80 0 0 1 43.43 164.57 Z\" fill=\"var(--accent)\" fill-opacity=\"0.75\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"79.3\" y=\"161.9\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"currentColor\">50K</text><path d=\"M 100 108 L 43.43 164.57 A 80 80 0 0 1 20.00 108.00 Z\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"50.1\" y=\"126.7\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">Chúc</text><text x=\"50.1\" y=\"135.7\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">may mắn</text><path d=\"M 100 108 L 20.00 108.00 A 80 80 0 0 1 43.43 51.43 Z\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"50.1\" y=\"85.3\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">Chúc</text><text x=\"50.1\" y=\"94.3\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">may mắn</text><path d=\"M 100 108 L 43.43 51.43 A 80 80 0 0 1 100.00 28.00 Z\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"79.3\" y=\"56.1\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">Chúc</text><text x=\"79.3\" y=\"65.1\" font-size=\"8\" text-anchor=\"middle\" fill=\"currentColor\">may mắn</text><circle cx=\"100\" cy=\"108\" r=\"4\" fill=\"currentColor\"/><polygon points=\"92,8 108,8 100,26\" fill=\"currentColor\"/><rect x=\"190\" y=\"70\" width=\"12\" height=\"12\" fill=\"var(--accent)\" fill-opacity=\"0.75\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"208\" y=\"80\" font-size=\"10\" text-anchor=\"start\" fill=\"currentColor\">50K: 2 phần</text><rect x=\"190\" y=\"96\" width=\"12\" height=\"12\" fill=\"var(--warn)\" fill-opacity=\"0.75\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"208\" y=\"106\" font-size=\"10\" text-anchor=\"start\" fill=\"currentColor\">100K: 1 phần</text><rect x=\"190\" y=\"122\" width=\"12\" height=\"12\" fill=\"var(--surface)\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"208\" y=\"132\" font-size=\"10\" text-anchor=\"start\" fill=\"currentColor\">Chúc may mắn: 5 phần</text></svg>",
+        "alt": "Vòng quay tròn chia 8 phần bằng nhau: 2 phần ghi 50K đối diện nhau, 1 phần ghi 100K, 5 phần ghi Chúc may mắn; mũi tên chỉ ở trên cùng."
+      },
+      "hints": [
+        "Cần xác suất có ít nhất một lần được “50K”.",
+        "Mỗi kết quả là cặp (lần 1; lần 2) trên $8$ phần bằng nhau. “Ít nhất một” gợi ý gì?",
+        "Đếm số cặp mà cả hai lần đều **không** ra “50K”, rồi lấy $1$ trừ xác suất đó."
+      ],
+      "options": [
+        "$\\dfrac{9}{16}$",
+        "$\\dfrac{7}{16}$",
+        "$\\dfrac12$",
+        "$\\dfrac38$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E06",
+          "feedback": "Đó là xác suất không lần nào được “50K”; con quên lấy $1$ trừ đi.",
+          "review": "b-xsuat"
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Con cộng $\\dfrac28+\\dfrac28$ cho hai lần quay, nên trường hợp cả hai lần đều được “50K” bị đếm hai lần."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "“Ít nhất một lần” gồm cả trường hợp hai lần đều được “50K”."
+        }
+      },
+      "solution": "Mỗi lần quay có $8$ phần ngang cơ hội: $n(\\Omega)=8 \\cdot 8=64$. Không lần nào được “50K”: mỗi lần có $6$ phần, nên $6 \\cdot 6=36$ cặp. $P=1-\\dfrac{36}{64}=\\dfrac{28}{64}=\\dfrac{7}{16}$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "b-haib-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Có hai hộp, mỗi hộp chứa $5$ quả bóng đánh số $1$ đến $5$. Minh lấy ngẫu nhiên một quả ở hộp thứ nhất, Huy lấy ngẫu nhiên một quả ở hộp thứ hai. Xác suất để hai quả bóng có **cùng số** là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 36, Bài 1.2 (chuyển thể: mỗi hộp 5 quả)",
+      "answer": "1/5",
+      "mistakes": [
+        {
+          "answer": "1/2",
+          "code": "E07",
+          "feedback": "Con cộng $5+5$; mỗi quả của Minh đi với $5$ quả của Huy nên phải nhân."
+        },
+        {
+          "answer": "1/3",
+          "code": "E07",
+          "feedback": "Minh số $1$, Huy số $2$ khác với Minh số $2$, Huy số $1$: kết quả có thứ tự.",
+          "review": "b-phepthu"
+        }
+      ],
+      "solution": "$n(\\Omega)=5 \\cdot 5=25$. Cùng số: $(1;1), (2;2), \\dots, (5;5)$ → $5$ kết quả. $P=\\dfrac{5}{25}=\\dfrac15$."
+    },
+    {
+      "id": "b-haib-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Hộp có $6$ thẻ ghi số $1$ đến $6$. Rút một thẻ, ghi số rồi **trả thẻ lại** hộp, sau đó rút tiếp một thẻ. Không gian mẫu có bao nhiêu kết quả?",
+      "options": [
+        "$30$",
+        "$12$",
+        "$15$",
+        "$36$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Có trả lại nên lần 2 vẫn có $6$ thẻ, được rút lại thẻ cũ."
+        },
+        "1": {
+          "code": "E07",
+          "feedback": "Con cộng $6+6$; mỗi thẻ lần 1 đi với $6$ thẻ lần 2 nên phải nhân."
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Rút hai lần thì có thứ tự và có thể trùng thẻ; con đang đếm như lấy cùng lúc.",
+          "review": "b-phepthu"
+        }
+      },
+      "solution": "Có hoàn lại → mỗi lần có $6$ khả năng: $n(\\Omega)=6 \\cdot 6=36$."
+    },
+    {
+      "id": "b-haib-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Túi có $5$ viên bi đánh số $1; 2; 3; 4; 5$. Lấy ngẫu nhiên lần lượt $2$ viên, viên lấy ra lần đầu không trả lại túi. Xác suất để tổng hai số trên hai viên bi chia hết cho $3$ là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 32, Bài 1.2 (chuyển thể: 5 viên bi, tổng chia hết cho 3)",
+      "answer": "2/5",
+      "mistakes": [
+        {
+          "answer": "9/25",
+          "code": "E07",
+          "feedback": "Không trả lại nên không có cặp $(3;3)$; lần 2 chỉ còn $4$ viên."
+        },
+        {
+          "answer": "1/5",
+          "code": "E07",
+          "feedback": "Mẫu đếm có thứ tự thì tử cũng đếm có thứ tự: $(1;2)$ khác $(2;1)$."
+        }
+      ],
+      "solution": "$n(\\Omega)=5 \\cdot 4=20$. Tổng chia hết cho $3$: $(1;2), (2;1), (1;5), (5;1), (2;4), (4;2), (4;5), (5;4)$ → $8$ kết quả. $P=\\dfrac{8}{20}=\\dfrac25$."
+    },
+    {
+      "id": "b-haib-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Ba bạn Hà, Lan, Mai được xếp ngẫu nhiên vào một hàng ghế có $3$ chỗ. Xác suất để Hà và Mai **không** ngồi cạnh nhau là:",
+      "source": "68 đề – Đề 26, Bài 1.2 (chuyển thể: hỏi “không ngồi cạnh nhau”)",
+      "options": [
+        "$\\dfrac13$",
+        "$\\dfrac23$",
+        "$\\dfrac16$",
+        "$\\dfrac12$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Đó là xác suất Hà và Mai ngồi cạnh nhau, tức biến cố đối."
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Con chỉ đếm cách Hà ngồi đầu trái; Mai ngồi đầu trái, Hà ngồi đầu phải cũng thỏa."
+        },
+        "3": {
+          "code": "E07",
+          "feedback": "“Cạnh nhau” và “không cạnh nhau” không đồng khả năng; phải liệt kê đủ các cách xếp."
+        }
+      },
+      "solution": "$n(\\Omega)=3 \\cdot 2 \\cdot 1=6$. Hà và Mai không cạnh nhau khi Lan ngồi giữa: Hà – Lan – Mai, Mai – Lan – Hà → $2$ cách. $P=\\dfrac26=\\dfrac13$."
+    },
+    {
+      "id": "b-haib-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Tung hai đồng xu cân đối và gieo một con xúc xắc cân đối. Xác suất để hai đồng xu ra hai mặt **khác nhau** và xúc xắc ra số chấm là số nguyên tố là (ghi phân số tối giản):",
+      "answer": "1/4",
+      "mistakes": [
+        {
+          "answer": "1/6",
+          "code": "E07",
+          "feedback": "$SN$ và $NS$ là hai kết quả khác nhau: hai đồng xu cho $4$ kết quả chứ không phải $3$."
+        },
+        {
+          "answer": "1/8",
+          "code": "E07",
+          "feedback": "Con chỉ đếm $SN$, quên $NS$."
+        },
+        {
+          "answer": "1/3",
+          "code": "E04",
+          "feedback": "Số $1$ không là số nguyên tố."
+        }
+      ],
+      "solution": "Sơ đồ cây $3$ tầng: $n(\\Omega)=2 \\cdot 2 \\cdot 6=24$. Hai xu khác mặt: $SN$, $NS$; số nguyên tố: $2; 3; 5$. Thuận lợi: $2 \\cdot 3=6$. $P=\\dfrac{6}{24}=\\dfrac14$."
+    },
+    {
+      "id": "b-haib-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Gieo một con xúc xắc cân đối hai lần và ghi lại kết quả mỗi lần. Xác suất để **tích** các số chấm của hai lần gieo là một số chính phương là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 7, Bài 1.2",
+      "answer": "2/9",
+      "mistakes": [
+        {
+          "answer": "7/36",
+          "code": "E07",
+          "feedback": "Kiểm tra lại hai chỗ: $(1;4)$ và $(4;1)$ là hai kết quả khác nhau, và $1 \\cdot 1=1$ cũng là số chính phương."
+        },
+        {
+          "answer": "1/6",
+          "code": "E04",
+          "feedback": "Không chỉ cặp hai số bằng nhau: $1 \\cdot 4=4$ cũng là số chính phương."
+        }
+      ],
+      "solution": "$n(\\Omega)=36$. Tích là số chính phương: $(1;1), (2;2), (3;3), (4;4), (5;5), (6;6), (1;4), (4;1)$ → $8$ kết quả. $P=\\dfrac{8}{36}=\\dfrac29$."
+    },
+    {
+      "id": "b-haib-x7",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Túi có $5$ viên bi đánh số $1; 2; 3; 4; 5$. Lấy ngẫu nhiên **cùng một lúc** $2$ viên. Xác suất để tích hai số trên hai viên bi **lớn hơn $5$** là:",
+      "source": "68 đề – Đề 41, Bài 1.3 (chuyển thể: 5 viên bi, tích lớn hơn 5)",
+      "options": [
+        "$\\dfrac{3}{10}$",
+        "$\\dfrac{7}{10}$",
+        "$\\dfrac35$",
+        "$\\dfrac25$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Mẫu đếm có thứ tự nhưng tử đếm không thứ tự; phải cùng một cách đếm."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "“Lớn hơn $5$” không gồm tích bằng $5$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Đó là xác suất tích **không** lớn hơn $5$, tức biến cố đối."
+        }
+      },
+      "solution": "Cặp không thứ tự: $n(\\Omega)=10$. Tích không lớn hơn $5$: $\\{1;2\\}, \\{1;3\\}, \\{1;4\\}, \\{1;5\\}$ → $4$ cặp, nên có $10-4=6$ cặp thuận lợi. $P=\\dfrac{6}{10}=\\dfrac35$."
+    },
+    {
+      "id": "b-haib-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hộp có ba viên bi vàng ghi số $1; 2; 3$ và hai viên bi nâu ghi số $4; 5$, các viên bi cùng kích thước và khối lượng. Lấy ngẫu nhiên đồng thời hai viên bi. Xác suất để trong hai viên lấy ra có **ít nhất một** viên bi nâu là (ghi phân số tối giản):",
+      "source": "68 đề – Đề 55, Bài 1.2 (chuyển thể: hỏi “ít nhất một viên nâu”)",
+      "answer": "7/10",
+      "mistakes": [
+        {
+          "answer": "3/10",
+          "code": "E06",
+          "feedback": "Đó là xác suất cả hai viên đều vàng (biến cố đối); con quên lấy $1$ trừ đi.",
+          "review": "b-xsuat"
+        },
+        {
+          "answer": "3/5",
+          "code": "E04",
+          "feedback": "“Ít nhất một viên nâu” gồm cả trường hợp hai viên đều nâu."
+        },
+        {
+          "answer": "7/20",
+          "code": "E07",
+          "feedback": "Tử và mẫu phải cùng một cách đếm: con đếm mẫu có thứ tự nhưng tử không thứ tự."
+        }
+      ],
+      "solution": "Cặp không thứ tự: $n(\\Omega)=10$. Biến cố đối “cả hai viên vàng”: $\\{1;2\\}, \\{1;3\\}, \\{2;3\\}$ → $3$ cặp. $P=1-\\dfrac{3}{10}=\\dfrac{7}{10}$."
+    }
+  ]
+}
