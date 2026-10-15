@@ -25,8 +25,8 @@
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
-| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); 4 KU còn **draft — phụ huynh duyệt trước 18/10** |
-| Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa 15/10 (`p1-content-2-qa`, chờ merge); 4 KU còn **draft — phụ huynh duyệt trước 25/10** |
+| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
+| Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
@@ -43,9 +43,13 @@
 
 ---
 
-## 15/10/2026 — Giải độc lập nội dung đợt 2 (nhánh `p1-content-2-qa`)
+## 15/10/2026 — Giải độc lập đợt 2 + phụ huynh duyệt 8 KU (nhánh `p1-content-2-qa`, PR #20)
 
-**Phụ huynh cần làm:** merge PR này (không SQL, không đổi giao diện), rồi duyệt 4 bài đợt 2 như cũ (trước 25/10).
+**Phụ huynh cần làm:** merge PR #20 (không SQL). Sau khi merge, Nguyên thấy ngay 8 bài mới.
+
+**Phụ huynh duyệt 8 KU (15/10, trong chat: "duyệt luôn", chọn "cả 8 bài").** f1-hdt, f1-pnt, a-tanso, b-phepthu (đợt 1) và f1-tgon, f1-qd, a-bieudo, b-xsuat (đợt 2) đổi `status: approved`, `approvedOn: 2026-10-15`. Phụ huynh duyệt dựa trên kết quả giải độc lập (đợt 1: 113/113, đợt 2: 103/103), **chưa làm thử trên bản xem trước** → các mục 2–5 của phiếu duyệt (đọc có hiểu không, độ khó so với con, lời nhắc có giúp không, giống đề thật không) chuyển sang **theo dõi trong pilot**: câu nào con sai nhiều hoặc làm quá lâu thì gia sư/phụ huynh báo để sửa.
+
+**Thay đổi con nhìn thấy sau khi merge:** trang Hôm nay gợi ý **2 bài mới** (LT3: 1 Track A + 1 Track B/C) thay vì chỉ htl-1; Hành trình đếm **0/10 bài đạt M3+**; Tổng quan của phụ huynh đếm trên 10 bài. e2e cập nhật theo (5 kỳ vọng: số bài 2 → 10, 2 gợi ý bài mới, bấm đúng link htl-1).
 
 **Bước 2 §7 — giải độc lập (trả lời Q23: làm trước khi phụ huynh duyệt).** Script bỏ đáp án, nhiễu, lời giải, gợi ý khỏi 4 file → 4 đề trắng; hình a-bieudo chụp bằng Chromium với màu theme thật để agent đọc biểu đồ như con nhìn trên màn hình. Hai agent mới, chỉ được đọc đề trắng, giải **103/103 ô** (f1-tgon 31, f1-qd 32, a-bieudo 20, b-xsuat 20). Chấm bằng chính `gradeItem` của app: **103/103 khớp**, không đổi đáp án nào.
 
@@ -59,7 +63,7 @@
 
 **Góp ý giữ nguyên:** b-xsuat-p7 (đếm cả số 0 — đã có nhiễu 4/39 với phản hồi riêng); f1-tgon-x3, p5 (đề đã nói "thu gọn"/"rút gọn"); a-bieudo-p7 (con gõ "36,7%" thì app báo không đọc được và cho nhập lại, không chấm sai — ô đã có đơn vị % bên cạnh).
 
-**Kiểm tra:** `npm test` 110/110 (thêm 1 test cho luật vị trí đáp án), lint, build, `./e2e/run.sh`.
+**Kiểm tra:** `npm test` 110/110 (thêm 1 test cho luật vị trí đáp án), lint, build, `./e2e/run.sh` 175 PASS.
 
 ---
 

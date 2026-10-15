@@ -3,7 +3,8 @@
   "module": "backfill-dai-so",
   "order": 3,
   "title": "Thu gọn đa thức & phân thức",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ** và bài **phân tích đa thức thành nhân tử** (đặt nhân tử chung, hằng đẳng thức, nhóm hạng tử).",

@@ -11,9 +11,9 @@
 ## Phiên Nội dung (cloud, gắn Project)
 | Việc | Nhánh | Hạn | Trạng thái |
 |---|---|---|---|
-| Đợt 1: f1-hdt, f1-pnt, a-tanso, b-phepthu + chuẩn hoá htl-1/2 | `p1-content-1` | duyệt trước 18/10 | ✅ đã merge (PR #17); chờ phụ huynh duyệt |
-| Đợt 2: f1-tgon, f1-qd, a-bieudo, b-xsuat | `p1-content-2` | duyệt trước 25/10 | ✅ đã merge (PR #18); giải độc lập 103/103 + sửa (`p1-content-2-qa`); chờ phụ huynh duyệt |
-| Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | 08/11 | ⬜ chưa bắt đầu — làm sau khi phụ huynh phản hồi đợt 1 |
+| Đợt 1: f1-hdt, f1-pnt, a-tanso, b-phepthu + chuẩn hoá htl-1/2 | `p1-content-1` | duyệt trước 18/10 | ✅ đã merge (PR #17); phụ huynh duyệt 15/10 (PR #20) |
+| Đợt 2: f1-tgon, f1-qd, a-bieudo, b-xsuat | `p1-content-2` | duyệt trước 25/10 | ✅ đã merge (PR #18); giải độc lập 103/103 + sửa; phụ huynh duyệt 15/10 (PR #20) |
+| Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | 08/11 | ⬜ chưa bắt đầu — có thể làm ngay (đợt 1 đã duyệt) |
 
 ## Phiên Code (VS Code / cloud)
 | Việc | Nhánh | Hạn | Điều kiện |
@@ -23,8 +23,8 @@
 | S5 — Hình học C1–C3 | — | thiết kế ~11/2026 | Track C từ 23/11 (LT18) |
 
 ## Phụ huynh
-- [ ] Duyệt 4 KU đợt 1 (trước 18/10) rồi nói "duyệt KU …".
-- [ ] Merge PR `p1-content-2-qa` (giải độc lập đợt 2), rồi duyệt 4 KU đợt 2 (trước 25/10).
+- [ ] Merge PR #20 (giải độc lập đợt 2 + duyệt 8 KU đợt 1–2, đã chốt 15/10).
+- [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).
 - [ ] Tạo khoá Anthropic API hạn mức 10 USD/tháng, dán vào Vercel (không dán vào chat) — trước 26/10.
 - [ ] Cập nhật `claude/PJ_APP_TOAN.md` trong hub (bản nháp: `docs/HUB_PJ_APP_TOAN_UPDATE.md`).

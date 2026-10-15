@@ -3,7 +3,8 @@
   "module": "xac-suat",
   "order": 2,
   "title": "Xác suất cổ điển & một bước",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 40,
   "theory": [
     "**Cần nhớ trước:** bài **phép thử & không gian mẫu**: liệt kê không gian mẫu $\\Omega$ và đếm số kết quả thuận lợi cho biến cố.",

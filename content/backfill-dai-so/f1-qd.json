@@ -3,7 +3,8 @@
   "module": "backfill-dai-so",
   "order": 4,
   "title": "Quy đồng & điều kiện xác định",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **thu gọn đa thức & phân thức** — phân tích tử và mẫu thành nhân tử, rút gọn đến tận cùng.",

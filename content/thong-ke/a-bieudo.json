@@ -3,7 +3,8 @@
   "module": "thong-ke",
   "order": 2,
   "title": "Biểu đồ & khai thác dữ liệu",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 40,
   "theory": [
     "**Cần nhớ trước:** bài **tần số & tần số tương đối**: $f=\\dfrac{n}{N}$, tổng các tần số bằng cỡ mẫu $N$, nhóm $[a;b)$ lấy $a$, không lấy $b$.",
