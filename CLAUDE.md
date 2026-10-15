@@ -22,3 +22,11 @@ Web app helping Hạnh Nguyên (grade 9) learn math and prepare for the grade-10
 - Migration numbers are global across branches: check `supabase/migrations/` on `main` **and** open PRs before picking the next number.
 - One branch per slice (`p1-slice-N`), never push `main`; pushing a `p[0-9]-*` branch auto-opens a PR. The parent runs new SQL in Supabase and merges.
 - Before pushing: `npm run lint`, `npm test`, `npm run build`, `./e2e/run.sh` (browser + in-memory DB; patches auth temporarily and reverts itself).
+
+## Working with two Claude surfaces (claude.ai brainstorm ↔ Claude Code)
+- **Decisions live in the repo, not in chat.** A decision made on claude.ai is written into `docs/SPEC.md` §0 (or the topical doc) in the same turn, before any instruction goes to a Code session. If you find a rule only in a chat or a handoff message, ask for it to be written down.
+- **Check the real state before writing instructions:** branches, PRs, CI and migrations on GitHub (`git fetch`, `gh api`), never from memory. Do not say "main has X" without checking.
+- **One session = one branch = one folder.** Two sessions never share a working folder or push the same branch.
+- **Next work for each session is in `docs/HANDOFF.md`**; the parent only says "read HANDOFF". Update it when you finish.
+- **PROGRESS.md:** each session edits only its own dated section; the "Trạng thái nhanh" table is updated by whoever merges/changes a slice's status. Open-question numbers (`Q#`) are allocated from the highest number on `main` — check before adding.
+- Rules that were broken by hand are tests: reserved exams 57–68 (`standard.ts`), unique migration numbers and unique Q numbers (`repo-rules.test.ts`), 48 KUs (`curriculum.test.ts`).
