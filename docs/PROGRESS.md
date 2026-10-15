@@ -80,6 +80,7 @@ Hình trong PDF không trích được: p-cau x7 (Đề 17), p-ghep x3 (Đề 39
 - c-dkxd p8, x6, x8 cần phân tích mẫu chứa căn thành nhân tử — đi trước c-coban một chút; nếu con thấy quá khó thì đổi sang biểu thức mẫu đơn giản.
 - p-trunon x6, x8 (Đề 11, 34) giữ nguyên số liệu đề gốc; p-cau x7 bán kính 10/9 cm là tự chọn (hình Đề 17 không đọc được).
 - Mã "lấy đường kính làm bán kính": E08 khi đọc từ hình, E10 khi đề ghi bằng chữ; "làm tròn lên số ngày/số que trọn vẹn" sai = E14.
+- Bẫy quy trình: `./e2e/run.sh` khôi phục `registry.generated.ts` về bản đã commit khi kết thúc → nếu registry mới chưa commit thì bị mất (test "registry is up to date" bắt được). Commit registry **trước** khi chạy e2e.
 - `docs/SOURCE_INDEX.md`: Đề 2, 3, 53, 54 xếp ở b-haib thực ra là xác suất một bước (một lần rút, hai điều kiện) → nên chuyển sang b-xsuat khi sửa chỉ mục.
 
 ---
