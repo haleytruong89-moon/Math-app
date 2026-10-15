@@ -3,7 +3,8 @@
   "module": "thong-ke",
   "order": 1,
   "title": "Tần số & tần số tương đối",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** không cần bài nào trước; chỉ cần đếm cẩn thận và đổi phân số sang số thập phân, phần trăm.",
@@ -24,7 +25,10 @@
         "text": "Đếm từng nhóm (gạch mỗi số đã xếp): $[140;150)$ có $4$ giá trị, $[150;160)$ có $12$, $[160;170)$ có $4$.",
         "why": "Gạch số đã xếp giúp không bỏ sót và không đếm hai lần."
       },
-      { "text": "Kiểm tra: $4+12+4=20=N$.", "why": "Tổng các tần số phải bằng cỡ mẫu; lệch là đã xếp sai." },
+      {
+        "text": "Kiểm tra: $4+12+4=20=N$.",
+        "why": "Tổng các tần số phải bằng cỡ mẫu; lệch là đã xếp sai."
+      },
       {
         "text": "Tần số tương đối của nhóm $[150;160)$: $f=\\dfrac{12}{20}=0{,}6=60\\%$.",
         "why": "Chia tần số của nhóm cho cỡ mẫu $N$, không chia cho số nhóm."
@@ -39,7 +43,9 @@
   "faded": {
     "problem": "Thời gian chạy 100 m (giây) của 20 học sinh: 13{,}2; 14{,}5; 12{,}8; 13{,}0; 15{,}1; 14{,}0; 13{,}6; 12{,}5; 14{,}8; 13{,}9; 15{,}5; 13{,}3; 12{,}9; 14{,}2; 13{,}7; 15{,}0; 14{,}6; 13{,}1; 12{,}7; 14{,}9. Ghép thành các nhóm $[12;13)$, $[13;14)$, $[14;15)$, $[15;16)$. Tính tần số tương đối của nhóm $[13;14)$.",
     "steps": [
-      { "text": "Xếp từng giá trị vào nhóm theo quy ước $[a;b)$: lấy $a$, không lấy $b$." },
+      {
+        "text": "Xếp từng giá trị vào nhóm theo quy ước $[a;b)$: lấy $a$, không lấy $b$."
+      },
       {
         "prompt": "Đếm nhóm $[14;15)$.",
         "item": {
@@ -49,13 +55,23 @@
           "prompt": "Nhóm $[14;15)$ có bao nhiêu giá trị?",
           "answer": "6",
           "mistakes": [
-            { "answer": "7", "code": "E04", "feedback": "$15{,}0$ thuộc nhóm $[15;16)$: nhóm $[a;b)$ không lấy đầu mút phải." },
-            { "answer": "5", "code": "E04", "feedback": "$14{,}0$ thuộc nhóm $[14;15)$: nhóm $[a;b)$ lấy đầu mút trái." }
+            {
+              "answer": "7",
+              "code": "E04",
+              "feedback": "$15{,}0$ thuộc nhóm $[15;16)$: nhóm $[a;b)$ không lấy đầu mút phải."
+            },
+            {
+              "answer": "5",
+              "code": "E04",
+              "feedback": "$14{,}0$ thuộc nhóm $[14;15)$: nhóm $[a;b)$ lấy đầu mút trái."
+            }
           ],
           "solution": "Các giá trị $14{,}5$; $14{,}0$; $14{,}8$; $14{,}2$; $14{,}6$; $14{,}9$ → $6$ giá trị."
         }
       },
-      { "text": "Các nhóm còn lại có tần số $4$; $7$; $3$. Kiểm tra: $4+7+6+3=20=N$." },
+      {
+        "text": "Các nhóm còn lại có tần số $4$; $7$; $3$. Kiểm tra: $4+7+6+3=20=N$."
+      },
       {
         "prompt": "Tính tần số tương đối của nhóm $[13;14)$.",
         "item": {
@@ -65,8 +81,16 @@
           "prompt": "Nhóm $[13;14)$ có tần số $7$. Tần số tương đối $f$ của nhóm này là (ghi số thập phân):",
           "answer": "0,35",
           "mistakes": [
-            { "answer": "7", "code": "E04", "feedback": "$7$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." },
-            { "answer": "7/4", "code": "E04", "feedback": "Con chia cho số nhóm. Phải chia cho cỡ mẫu $N$." }
+            {
+              "answer": "7",
+              "code": "E04",
+              "feedback": "$7$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+            },
+            {
+              "answer": "7/4",
+              "code": "E04",
+              "feedback": "Con chia cho số nhóm. Phải chia cho cỡ mẫu $N$."
+            }
           ],
           "solution": "$f=\\dfrac{7}{20}=0{,}35$."
         }
@@ -85,8 +109,14 @@
           ],
           "correct": 0,
           "mistakes": {
-            "1": { "code": "E11", "feedback": "Thiếu kết luận đầy đủ: cần nói nhóm nào và chiếm bao nhiêu phần trăm." },
-            "2": { "code": "E04", "feedback": "$7$ là tần số. Kết luận cần tần số tương đối." }
+            "1": {
+              "code": "E11",
+              "feedback": "Thiếu kết luận đầy đủ: cần nói nhóm nào và chiếm bao nhiêu phần trăm."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "$7$ là tần số. Kết luận cần tần số tương đối."
+            }
           },
           "solution": "$f=0{,}35=35\\%$ cho nhóm $[13;14)$."
         }
@@ -106,8 +136,16 @@
       ],
       "answer": "1/4",
       "mistakes": [
-        { "answer": "10", "code": "E04", "feedback": "$10$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." },
-        { "answer": "4", "code": "E03", "feedback": "Con chia ngược: $f=\\dfrac{n}{N}$, tần số ở trên, cỡ mẫu ở dưới." }
+        {
+          "answer": "10",
+          "code": "E04",
+          "feedback": "$10$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+        },
+        {
+          "answer": "4",
+          "code": "E03",
+          "feedback": "Con chia ngược: $f=\\dfrac{n}{N}$, tần số ở trên, cỡ mẫu ở dưới."
+        }
       ],
       "solution": "$f=\\dfrac{10}{40}=\\dfrac{1}{4}=0{,}25=25\\%$."
     },
@@ -121,12 +159,26 @@
         "$15$ là đầu mút của hai nhóm → nhớ quy ước nửa khoảng.",
         "Nhóm $[a;b)$ gồm $a \\le x < b$: lấy $a$, không lấy $b$."
       ],
-      "options": ["$[10;15)$", "Không thuộc nhóm nào", "$[15;20)$", "Cả $[10;15)$ và $[15;20)$"],
+      "options": [
+        "$[10;15)$",
+        "Không thuộc nhóm nào",
+        "$[15;20)$",
+        "Cả $[10;15)$ và $[15;20)$"
+      ],
       "correct": 2,
       "mistakes": {
-        "0": { "code": "E04", "feedback": "Nhóm $[a;b)$ không lấy đầu mút phải, nên $15 \\notin [10;15)$." },
-        "1": { "code": "E04", "feedback": "Nhóm $[a;b)$ có lấy đầu mút trái." },
-        "3": { "code": "E04", "feedback": "Các nhóm không chồng nhau: mỗi giá trị thuộc đúng một nhóm." }
+        "0": {
+          "code": "E04",
+          "feedback": "Nhóm $[a;b)$ không lấy đầu mút phải, nên $15 \\notin [10;15)$."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Nhóm $[a;b)$ có lấy đầu mút trái."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Các nhóm không chồng nhau: mỗi giá trị thuộc đúng một nhóm."
+        }
       },
       "solution": "$15 \\le 15 < 20$ nên $15$ thuộc nhóm $[15;20)$."
     },
@@ -149,9 +201,18 @@
       ],
       "correct": 2,
       "mistakes": {
-        "0": { "code": "E05", "feedback": "Đề không có phép chọn ngẫu nhiên nào, đây là bài thống kê." },
-        "1": { "code": "E05", "feedback": "Tần số trả lời “bao nhiêu bạn”. Đề hỏi “bao nhiêu phần trăm”." },
-        "3": { "code": "E05", "feedback": "Cột cao nhất cho biết nhóm đông nhất, không phải phần trăm của nhóm $[8;9)$." }
+        "0": {
+          "code": "E05",
+          "feedback": "Đề không có phép chọn ngẫu nhiên nào, đây là bài thống kê."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Tần số trả lời “bao nhiêu bạn”. Đề hỏi “bao nhiêu phần trăm”."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Cột cao nhất cho biết nhóm đông nhất, không phải phần trăm của nhóm $[8;9)$."
+        }
       },
       "solution": "“Bao nhiêu phần trăm” → tần số tương đối của nhóm $[8;9)$."
     },
@@ -167,8 +228,16 @@
       ],
       "answer": "5",
       "mistakes": [
-        { "answer": "7", "code": "E04", "feedback": "Điểm $9$ thuộc nhóm $[9;11)$: nhóm $[a;b)$ không lấy đầu mút phải." },
-        { "answer": "3", "code": "E04", "feedback": "Điểm $7$ thuộc nhóm $[7;9)$: nhóm $[a;b)$ lấy đầu mút trái." }
+        {
+          "answer": "7",
+          "code": "E04",
+          "feedback": "Điểm $9$ thuộc nhóm $[9;11)$: nhóm $[a;b)$ không lấy đầu mút phải."
+        },
+        {
+          "answer": "3",
+          "code": "E04",
+          "feedback": "Điểm $7$ thuộc nhóm $[7;9)$: nhóm $[a;b)$ lấy đầu mút trái."
+        }
       ],
       "solution": "Nhóm $[7;9)$ gồm các điểm $7$; $8$; $8$; $7$; $8$ → tần số $5$."
     },
@@ -184,8 +253,16 @@
       ],
       "answer": "9/20",
       "mistakes": [
-        { "answer": "18", "code": "E04", "feedback": "$18$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." },
-        { "answer": "9/11", "code": "E04", "feedback": "Cỡ mẫu $N$ là tổng **tất cả** các tần số, kể cả nhóm đang xét." }
+        {
+          "answer": "18",
+          "code": "E04",
+          "feedback": "$18$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+        },
+        {
+          "answer": "9/11",
+          "code": "E04",
+          "feedback": "Cỡ mẫu $N$ là tổng **tất cả** các tần số, kể cả nhóm đang xét."
+        }
       ],
       "solution": "$N=8+18+14=40$, $f=\\dfrac{18}{40}=\\dfrac{9}{20}=0{,}45=45\\%$."
     },
@@ -201,8 +278,16 @@
       ],
       "answer": "14",
       "mistakes": [
-        { "answer": "28", "code": "E04", "feedback": "$28\\%$ là tần số tương đối, chưa phải số giá trị." },
-        { "answer": "1,4", "code": "E01", "feedback": "Tính lại phép nhân $50 \\cdot 0{,}28$, chú ý dấu phẩy." }
+        {
+          "answer": "28",
+          "code": "E04",
+          "feedback": "$28\\%$ là tần số tương đối, chưa phải số giá trị."
+        },
+        {
+          "answer": "1,4",
+          "code": "E01",
+          "feedback": "Tính lại phép nhân $50 \\cdot 0{,}28$, chú ý dấu phẩy."
+        }
       ],
       "solution": "$n=f \\cdot N=0{,}28 \\cdot 50=14$."
     },
@@ -219,9 +304,21 @@
       ],
       "answer": "1/5",
       "mistakes": [
-        { "answer": "7/30", "code": "E04", "feedback": "Giá trị $60$ thuộc nhóm $[60;70)$: nhóm $[a;b)$ không lấy đầu mút phải." },
-        { "answer": "1/6", "code": "E04", "feedback": "Giá trị $50$ thuộc nhóm $[50;60)$: nhóm $[a;b)$ lấy đầu mút trái." },
-        { "answer": "6", "code": "E04", "feedback": "Đó là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." }
+        {
+          "answer": "7/30",
+          "code": "E04",
+          "feedback": "Giá trị $60$ thuộc nhóm $[60;70)$: nhóm $[a;b)$ không lấy đầu mút phải."
+        },
+        {
+          "answer": "1/6",
+          "code": "E04",
+          "feedback": "Giá trị $50$ thuộc nhóm $[50;60)$: nhóm $[a;b)$ lấy đầu mút trái."
+        },
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "Đó là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+        }
       ],
       "solution": "Nhóm $[50;60)$ gồm $58$; $50$; $55$; $57$; $53$; $59$ → $n=6$. $f=\\dfrac{6}{30}=\\dfrac{1}{5}=20\\%$."
     },
@@ -238,8 +335,16 @@
       ],
       "answer": "0,3",
       "mistakes": [
-        { "answer": "0,33", "code": "E15", "feedback": "Đề yêu cầu làm tròn đến hàng **phần mười**, tức một chữ số sau dấu phẩy." },
-        { "answer": "14", "code": "E04", "feedback": "$14$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." }
+        {
+          "answer": "0,33",
+          "code": "E15",
+          "feedback": "Đề yêu cầu làm tròn đến hàng **phần mười**, tức một chữ số sau dấu phẩy."
+        },
+        {
+          "answer": "14",
+          "code": "E04",
+          "feedback": "$14$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+        }
       ],
       "solution": "$N=9+12+14+8=43$, $f=\\dfrac{14}{43} \\approx 0{,}326 \\approx 0{,}3$."
     }
@@ -251,7 +356,13 @@
       "level": "L1",
       "prompt": "Có $25$ học sinh, nhóm $[6;8)$ có $5$ học sinh. Tần số tương đối của nhóm này là (ghi phân số hoặc số thập phân):",
       "answer": "1/5",
-      "mistakes": [{ "answer": "5", "code": "E04", "feedback": "$5$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$." }],
+      "mistakes": [
+        {
+          "answer": "5",
+          "code": "E04",
+          "feedback": "$5$ là tần số $n$. Tần số tương đối là $\\dfrac{n}{N}$."
+        }
+      ],
       "solution": "$f=\\dfrac{5}{25}=\\dfrac{1}{5}=20\\%$."
     },
     {
@@ -259,11 +370,22 @@
       "type": "mcq",
       "level": "L1",
       "prompt": "Các nhóm là $[20;40)$, $[40;60)$, $[60;80)$. Giá trị $40$ thuộc nhóm nào?",
-      "options": ["$[60;80)$", "$[40;60)$", "Cả $[20;40)$ và $[40;60)$", "$[20;40)$"],
+      "options": [
+        "$[60;80)$",
+        "$[40;60)$",
+        "Cả $[20;40)$ và $[40;60)$",
+        "$[20;40)$"
+      ],
       "correct": 1,
       "mistakes": {
-        "2": { "code": "E04", "feedback": "Các nhóm không chồng nhau: mỗi giá trị thuộc đúng một nhóm." },
-        "3": { "code": "E04", "feedback": "Nhóm $[a;b)$ không lấy đầu mút phải, nên $40 \\notin [20;40)$." }
+        "2": {
+          "code": "E04",
+          "feedback": "Các nhóm không chồng nhau: mỗi giá trị thuộc đúng một nhóm."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Nhóm $[a;b)$ không lấy đầu mút phải, nên $40 \\notin [20;40)$."
+        }
       },
       "solution": "$40 \\le 40 < 60$ nên $40$ thuộc nhóm $[40;60)$."
     },
@@ -274,8 +396,16 @@
       "prompt": "Thời gian (phút) đi từ nhà đến trường của 12 bạn: 8; 12; 15; 10; 9; 15; 20; 11; 14; 5; 18; 13. Nhóm $[10;15)$ có tần số bằng bao nhiêu?",
       "answer": "5",
       "mistakes": [
-        { "answer": "7", "code": "E04", "feedback": "Giá trị $15$ không thuộc nhóm $[10;15)$: không lấy đầu mút phải." },
-        { "answer": "4", "code": "E04", "feedback": "Giá trị $10$ thuộc nhóm $[10;15)$: có lấy đầu mút trái." }
+        {
+          "answer": "7",
+          "code": "E04",
+          "feedback": "Giá trị $15$ không thuộc nhóm $[10;15)$: không lấy đầu mút phải."
+        },
+        {
+          "answer": "4",
+          "code": "E04",
+          "feedback": "Giá trị $10$ thuộc nhóm $[10;15)$: có lấy đầu mút trái."
+        }
       ],
       "solution": "Nhóm $[10;15)$ gồm $12$; $10$; $11$; $14$; $13$ → tần số $5$."
     },
@@ -286,7 +416,13 @@
       "prompt": "Bảng tần số tương đối có bốn nhóm: $12\\%$; $28\\%$; $35\\%$; $x\\%$. Tìm $x$.",
       "answer": "25",
       "unit": "%",
-      "mistakes": [{ "answer": "75", "code": "E11", "feedback": "Mới cộng ba nhóm đã biết. Tổng cả bốn nhóm phải bằng $100\\%$." }],
+      "mistakes": [
+        {
+          "answer": "75",
+          "code": "E11",
+          "feedback": "Mới cộng ba nhóm đã biết. Tổng cả bốn nhóm phải bằng $100\\%$."
+        }
+      ],
       "solution": "$x=100-(12+28+35)=25$."
     },
     {
@@ -294,11 +430,21 @@
       "type": "mcq",
       "level": "L2",
       "prompt": "Bảng tần số ghép nhóm có bốn nhóm với tần số $8$; $12$; $5$; $15$. Bảng tần số tương đối đúng là:",
-      "options": ["$25\\%$; $25\\%$; $25\\%$; $25\\%$", "$8\\%$; $12\\%$; $5\\%$; $15\\%$", "$20\\%$; $30\\%$; $12{,}5\\%$; $37{,}5\\%$"],
+      "options": [
+        "$25\\%$; $25\\%$; $25\\%$; $25\\%$",
+        "$8\\%$; $12\\%$; $5\\%$; $15\\%$",
+        "$20\\%$; $30\\%$; $12{,}5\\%$; $37{,}5\\%$"
+      ],
       "correct": 2,
       "mistakes": {
-        "0": { "code": "E04", "feedback": "Mỗi nhóm có số giá trị khác nhau, không chia đều cho số nhóm." },
-        "1": { "code": "E04", "feedback": "Tần số không phải là phần trăm. Tần số tương đối là $\\dfrac{n}{N}$." }
+        "0": {
+          "code": "E04",
+          "feedback": "Mỗi nhóm có số giá trị khác nhau, không chia đều cho số nhóm."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Tần số không phải là phần trăm. Tần số tương đối là $\\dfrac{n}{N}$."
+        }
       },
       "solution": "$N=8+12+5+15=40$: $\\dfrac{8}{40}=20\\%$, $\\dfrac{12}{40}=30\\%$, $\\dfrac{5}{40}=12{,}5\\%$, $\\dfrac{15}{40}=37{,}5\\%$."
     },
@@ -333,8 +479,16 @@
       "answer": "65",
       "unit": "%",
       "mistakes": [
-        { "answer": "30", "code": "E04", "feedback": "“Ít nhất $2$” gồm $2$, $3$, $4$ và $5$ ngoại ngữ, không chỉ đúng $2$." },
-        { "answer": "35", "code": "E04", "feedback": "Đó là tỉ lệ người chỉ dùng $1$ ngoại ngữ." }
+        {
+          "answer": "30",
+          "code": "E04",
+          "feedback": "“Ít nhất $2$” gồm $2$, $3$, $4$ và $5$ ngoại ngữ, không chỉ đúng $2$."
+        },
+        {
+          "answer": "35",
+          "code": "E04",
+          "feedback": "Đó là tỉ lệ người chỉ dùng $1$ ngoại ngữ."
+        }
       ],
       "solution": "$N=200$; $60+30+25+15=130$; $\\dfrac{130}{200}=65\\%$."
     },
@@ -352,9 +506,18 @@
       ],
       "correct": 0,
       "mistakes": {
-        "1": { "code": "E04", "feedback": "Tần số tương đối dùng để so sánh hai mẫu có cỡ khác nhau." },
-        "2": { "code": "E04", "feedback": "Năm nay cỡ mẫu là $200$, không phải $220$." },
-        "3": { "code": "E04", "feedback": "So sánh tỉ lệ phải dùng tần số tương đối, không dùng tần số khi cỡ mẫu khác nhau." }
+        "1": {
+          "code": "E04",
+          "feedback": "Tần số tương đối dùng để so sánh hai mẫu có cỡ khác nhau."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Năm nay cỡ mẫu là $200$, không phải $220$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "So sánh tỉ lệ phải dùng tần số tương đối, không dùng tần số khi cỡ mẫu khác nhau."
+        }
       },
       "solution": "Năm trước: $\\dfrac{72}{220} \\approx 32{,}7\\%$. Năm nay: $\\dfrac{70}{200}=35\\%$. Tỉ lệ tăng nên ý kiến đúng."
     }

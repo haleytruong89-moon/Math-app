@@ -3,7 +3,8 @@
   "module": "backfill-dai-so",
   "order": 2,
   "title": "Phân tích đa thức thành nhân tử",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-15",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ** và tính chất phân phối $a(b+c)=ab+ac$.",
@@ -20,16 +21,27 @@
         "text": "Đặt nhân tử chung $2x$: $2x^3-8x=2x(x^2-4)$.",
         "why": "Cả hai hạng tử đều chia hết cho $2$ và cho $x$; làm bước này trước để phần còn lại gọn hơn."
       },
-      { "text": "Nhận ra $x^2-4=x^2-2^2=(x-2)(x+2)$.", "why": "Hai bình phương trừ nhau → hằng đẳng thức hiệu hai bình phương." },
-      { "text": "Ghép lại: $2x(x^2-4)=2x(x-2)(x+2)$. Không nhân tử nào phân tích tiếp được.", "why": "Kiểm tra tận cùng: $2x$, $x-2$, $x+2$ đều là bậc nhất." },
-      { "text": "Kết luận: $2x^3-8x=2x(x-2)(x+2)$.", "why": "Thử tại $x=3$: vế trái $54-24=30$, vế phải $6 \\cdot 1 \\cdot 5=30$." }
+      {
+        "text": "Nhận ra $x^2-4=x^2-2^2=(x-2)(x+2)$.",
+        "why": "Hai bình phương trừ nhau → hằng đẳng thức hiệu hai bình phương."
+      },
+      {
+        "text": "Ghép lại: $2x(x^2-4)=2x(x-2)(x+2)$. Không nhân tử nào phân tích tiếp được.",
+        "why": "Kiểm tra tận cùng: $2x$, $x-2$, $x+2$ đều là bậc nhất."
+      },
+      {
+        "text": "Kết luận: $2x^3-8x=2x(x-2)(x+2)$.",
+        "why": "Thử tại $x=3$: vế trái $54-24=30$, vế phải $6 \\cdot 1 \\cdot 5=30$."
+      }
     ],
     "selfExplain": "Nếu dừng ở $2x(x^2-4)$ thì bài còn thiếu gì? Vì sao $x^2-4$ vẫn phân tích tiếp được?"
   },
   "faded": {
     "problem": "Phân tích $x^3-6x^2+9x$ thành nhân tử.",
     "steps": [
-      { "text": "Đặt nhân tử chung $x$: $x^3-6x^2+9x=x(x^2-6x+9)$." },
+      {
+        "text": "Đặt nhân tử chung $x$: $x^3-6x^2+9x=x(x^2-6x+9)$."
+      },
       {
         "prompt": "Chọn cách phân tích tiếp $x^2-6x+9$.",
         "item": {
@@ -37,12 +49,26 @@
           "type": "mcq",
           "level": "L1",
           "prompt": "Với $x^2-6x+9$, cách nhanh nhất là:",
-          "options": ["Đặt nhân tử chung $x$", "Hiệu hai bình phương", "Không phân tích được nữa", "Hằng đẳng thức bình phương một hiệu"],
+          "options": [
+            "Đặt nhân tử chung $x$",
+            "Hiệu hai bình phương",
+            "Không phân tích được nữa",
+            "Hằng đẳng thức bình phương một hiệu"
+          ],
           "correct": 3,
           "mistakes": {
-            "0": { "code": "E05", "feedback": "Hạng tử $9$ không chứa $x$, nên $x$ không phải nhân tử chung." },
-            "1": { "code": "E05", "feedback": "Có ba hạng tử, không phải hai bình phương trừ nhau." },
-            "2": { "code": "E11", "feedback": "Chưa đến tận cùng: $x^2-6x+9$ có dạng $A^2-2AB+B^2$." }
+            "0": {
+              "code": "E05",
+              "feedback": "Hạng tử $9$ không chứa $x$, nên $x$ không phải nhân tử chung."
+            },
+            "1": {
+              "code": "E05",
+              "feedback": "Có ba hạng tử, không phải hai bình phương trừ nhau."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "Chưa đến tận cùng: $x^2-6x+9$ có dạng $A^2-2AB+B^2$."
+            }
           },
           "solution": "$x^2-6x+9=x^2-2 \\cdot x \\cdot 3+3^2$: dạng $A^2-2AB+B^2$."
         }
@@ -54,17 +80,36 @@
           "type": "mcq",
           "level": "L1",
           "prompt": "$x^2-6x+9=$",
-          "options": ["$(x+3)^2$", "$(x-9)^2$", "$(x-3)^2$", "$(x-3)(x+3)$"],
+          "options": [
+            "$(x+3)^2$",
+            "$(x-9)^2$",
+            "$(x-3)^2$",
+            "$(x-3)(x+3)$"
+          ],
           "correct": 2,
           "mistakes": {
-            "0": { "code": "E12", "feedback": "Sai dấu hằng đẳng thức: hạng tử giữa trừ → bình phương một hiệu.", "review": "f1-hdt" },
-            "1": { "code": "E12", "feedback": "$B$ là số có $B^2=9$, không phải $9$.", "review": "f1-hdt" },
-            "3": { "code": "E12", "feedback": "$(x-3)(x+3)=x^2-9$, không có $-6x$.", "review": "f1-hdt" }
+            "0": {
+              "code": "E12",
+              "feedback": "Sai dấu hằng đẳng thức: hạng tử giữa trừ → bình phương một hiệu.",
+              "review": "f1-hdt"
+            },
+            "1": {
+              "code": "E12",
+              "feedback": "$B$ là số có $B^2=9$, không phải $9$.",
+              "review": "f1-hdt"
+            },
+            "3": {
+              "code": "E12",
+              "feedback": "$(x-3)(x+3)=x^2-9$, không có $-6x$.",
+              "review": "f1-hdt"
+            }
           },
           "solution": "$x^2-6x+9=(x-3)^2$."
         }
       },
-      { "text": "Nhân lại để thử: $x(x-3)^2=x(x^2-6x+9)=x^3-6x^2+9x$. Đúng." },
+      {
+        "text": "Nhân lại để thử: $x(x-3)^2=x(x^2-6x+9)=x^3-6x^2+9x$. Đúng."
+      },
       {
         "prompt": "Viết kết luận.",
         "item": {
@@ -72,11 +117,21 @@
           "type": "mcq",
           "level": "L1",
           "prompt": "Câu kết luận nào đúng và đầy đủ?",
-          "options": ["Kết luận: $x^3-6x^2+9x=x(x^2-6x+9)$.", "Kết luận: $x^3-6x^2+9x=x(x-3)^2$.", "Kết luận: $x^3-6x^2+9x=(x-3)^2$."],
+          "options": [
+            "Kết luận: $x^3-6x^2+9x=x(x^2-6x+9)$.",
+            "Kết luận: $x^3-6x^2+9x=x(x-3)^2$.",
+            "Kết luận: $x^3-6x^2+9x=(x-3)^2$."
+          ],
           "correct": 1,
           "mistakes": {
-            "0": { "code": "E11", "feedback": "Chưa phân tích đến tận cùng: $x^2-6x+9$ còn phân tích được." },
-            "2": { "code": "E10", "feedback": "Con làm mất nhân tử chung $x$ đã đặt ở bước đầu." }
+            "0": {
+              "code": "E11",
+              "feedback": "Chưa phân tích đến tận cùng: $x^2-6x+9$ còn phân tích được."
+            },
+            "2": {
+              "code": "E10",
+              "feedback": "Con làm mất nhân tử chung $x$ đã đặt ở bước đầu."
+            }
           },
           "solution": "$x^3-6x^2+9x=x(x-3)^2$."
         }
@@ -94,12 +149,26 @@
         "Hai hạng tử có chung cả hệ số lẫn biến → đặt nhân tử chung.",
         "Nhân tử chung lớn nhất gồm ƯCLN của $6$, $9$ và lũy thừa nhỏ nhất của $x$."
       ],
-      "options": ["$3x(2x-3)$", "$3(2x^2-3x)$", "$3x(2x+3)$", "$x(6x-9)$"],
+      "options": [
+        "$3x(2x-3)$",
+        "$3(2x^2-3x)$",
+        "$3x(2x+3)$",
+        "$x(6x-9)$"
+      ],
       "correct": 0,
       "mistakes": {
-        "1": { "code": "E11", "feedback": "Chưa đặt hết nhân tử chung: còn $x$ chung ở cả hai hạng tử." },
-        "2": { "code": "E02", "feedback": "Sai dấu: $-9x$ chia cho $3x$ được số âm." },
-        "3": { "code": "E11", "feedback": "Chưa đặt hết nhân tử chung: $6$ và $9$ còn chung thừa số $3$." }
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa đặt hết nhân tử chung: còn $x$ chung ở cả hai hạng tử."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Sai dấu: $-9x$ chia cho $3x$ được số âm."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa đặt hết nhân tử chung: $6$ và $9$ còn chung thừa số $3$."
+        }
       },
       "solution": "$6x^2$ và $9x$ cùng chia hết cho $3x$: $6x^2-9x=3x(2x-3)$."
     },
@@ -108,13 +177,33 @@
       "type": "mcq",
       "level": "L1",
       "prompt": "Phân tích $x^2-16$ thành nhân tử.",
-      "hints": ["Cần viết $x^2-16$ thành một tích.", "Hai bình phương trừ nhau → hằng đẳng thức nào?", "Viết $16=4^2$ rồi dùng $A^2-B^2=(A-B)(A+B)$."],
-      "options": ["$(x-16)(x+16)$", "$(x-8)(x+8)$", "$(x-4)(x+4)$", "$(x-4)^2$"],
+      "hints": [
+        "Cần viết $x^2-16$ thành một tích.",
+        "Hai bình phương trừ nhau → hằng đẳng thức nào?",
+        "Viết $16=4^2$ rồi dùng $A^2-B^2=(A-B)(A+B)$."
+      ],
+      "options": [
+        "$(x-16)(x+16)$",
+        "$(x-8)(x+8)$",
+        "$(x-4)(x+4)$",
+        "$(x-4)^2$"
+      ],
       "correct": 2,
       "mistakes": {
-        "0": { "code": "E12", "feedback": "$B$ là căn bậc hai của $16$, không phải $16$.", "review": "f1-hdt" },
-        "1": { "code": "E01", "feedback": "$B^2=16$ thì $B$ không phải $8$: $8^2=64$." },
-        "3": { "code": "E12", "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.", "review": "f1-hdt" }
+        "0": {
+          "code": "E12",
+          "feedback": "$B$ là căn bậc hai của $16$, không phải $16$.",
+          "review": "f1-hdt"
+        },
+        "1": {
+          "code": "E01",
+          "feedback": "$B^2=16$ thì $B$ không phải $8$: $8^2=64$."
+        },
+        "3": {
+          "code": "E12",
+          "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
+          "review": "f1-hdt"
+        }
       },
       "solution": "$x^2-16=x^2-4^2=(x-4)(x+4)$."
     },
@@ -137,9 +226,18 @@
       ],
       "correct": 2,
       "mistakes": {
-        "0": { "code": "E05", "feedback": "Hạng tử $6$ không chứa $x$, nên $x$ không phải nhân tử chung." },
-        "1": { "code": "E05", "feedback": "Đa thức có ba hạng tử và không có phép trừ hai bình phương." },
-        "3": { "code": "E05", "feedback": "$x^2+6$ không có nhân tử chung, nhóm như vậy không đi tiếp được." }
+        "0": {
+          "code": "E05",
+          "feedback": "Hạng tử $6$ không chứa $x$, nên $x$ không phải nhân tử chung."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Đa thức có ba hạng tử và không có phép trừ hai bình phương."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$x^2+6$ không có nhân tử chung, nhóm như vậy không đi tiếp được."
+        }
       },
       "solution": "Ba hạng tử dạng $x^2+bx+c$ → tách hạng tử: $2+3=5$, $2 \\cdot 3=6$, nên $x^2+5x+6=(x+2)(x+3)$."
     },
@@ -153,12 +251,26 @@
         "Dạng $x^2+bx+c$ → tách hạng tử: tìm hai số.",
         "Tìm hai số có tổng $-5$ và tích $6$, chú ý dấu."
       ],
-      "options": ["$(x+2)(x-3)$", "$(x-2)(x-3)$", "$(x+2)(x+3)$", "$(x-1)(x-6)$"],
+      "options": [
+        "$(x+2)(x-3)$",
+        "$(x-2)(x-3)$",
+        "$(x+2)(x+3)$",
+        "$(x-1)(x-6)$"
+      ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E02", "feedback": "Sai dấu: tích hai số phải là $+6$." },
-        "2": { "code": "E02", "feedback": "Sai dấu: tổng hai số phải là $-5$." },
-        "3": { "code": "E01", "feedback": "Tích đúng là $6$ nhưng tổng $(-1)+(-6)$ không bằng $-5$." }
+        "0": {
+          "code": "E02",
+          "feedback": "Sai dấu: tích hai số phải là $+6$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Sai dấu: tổng hai số phải là $-5$."
+        },
+        "3": {
+          "code": "E01",
+          "feedback": "Tích đúng là $6$ nhưng tổng $(-1)+(-6)$ không bằng $-5$."
+        }
       },
       "solution": "Hai số có tổng $-5$, tích $6$ là $-2$ và $-3$: $x^2-5x+6=(x-2)(x-3)$."
     },
@@ -172,11 +284,22 @@
         "Bốn hạng tử, không có nhân tử chung cho cả bốn → nhóm.",
         "Nhóm $(ax-ay)+(bx-by)$, đặt nhân tử chung mỗi nhóm."
       ],
-      "options": ["$(x+y)(a+b)$", "$(x-y)(a+b)$", "$(x+y)(a-b)$", "$(x-y)(a-b)$"],
+      "options": [
+        "$(x+y)(a+b)$",
+        "$(x-y)(a+b)$",
+        "$(x+y)(a-b)$",
+        "$(x-y)(a-b)$"
+      ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E02", "feedback": "Sai dấu khi đặt nhân tử chung: $ax-ay=a(x-y)$." },
-        "3": { "code": "E02", "feedback": "Sai dấu: $bx-by=b(x-y)$, nên nhân tử còn lại là $a+b$." }
+        "0": {
+          "code": "E02",
+          "feedback": "Sai dấu khi đặt nhân tử chung: $ax-ay=a(x-y)$."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Sai dấu: $bx-by=b(x-y)$, nên nhân tử còn lại là $a+b$."
+        }
       },
       "solution": "$ax-ay+bx-by=a(x-y)+b(x-y)=(x-y)(a+b)$."
     },
@@ -190,12 +313,28 @@
         "Ba hạng tử đầu là một bình phương → còn lại dạng hiệu hai bình phương.",
         "Nhóm $(x^2-6x+9)-y^2$, rồi dùng $A^2-B^2$ với $A=x-3$."
       ],
-      "options": ["$(x-3-y)(x-3+y)$", "$(x-3)^2-y^2$", "$(x+3-y)(x+3+y)$", "$(x-3-y)^2$"],
+      "options": [
+        "$(x-3-y)(x-3+y)$",
+        "$(x-3)^2-y^2$",
+        "$(x+3-y)(x+3+y)$",
+        "$(x-3-y)^2$"
+      ],
       "correct": 0,
       "mistakes": {
-        "1": { "code": "E11", "feedback": "Chưa xong: $(x-3)^2-y^2$ còn là hiệu hai bình phương." },
-        "2": { "code": "E12", "feedback": "Sai dấu: $x^2-6x+9=(x-3)^2$.", "review": "f1-hdt" },
-        "3": { "code": "E12", "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.", "review": "f1-hdt" }
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa xong: $(x-3)^2-y^2$ còn là hiệu hai bình phương."
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Sai dấu: $x^2-6x+9=(x-3)^2$.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E12",
+          "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
+          "review": "f1-hdt"
+        }
       },
       "solution": "$x^2-6x+9-y^2=(x-3)^2-y^2=(x-3-y)(x-3+y)$."
     },
@@ -218,9 +357,19 @@
       ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E12", "feedback": "Mẫu $x-9$ là hiệu hai bình phương $(\\sqrt{x}-3)(\\sqrt{x}+3)$, không phải $(\\sqrt{x}-3)^2$.", "review": "f1-hdt" },
-        "2": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." },
-        "3": { "code": "E02", "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-3\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-3)$." }
+        "0": {
+          "code": "E12",
+          "feedback": "Mẫu $x-9$ là hiệu hai bình phương $(\\sqrt{x}-3)(\\sqrt{x}+3)$, không phải $(\\sqrt{x}-3)^2$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-3\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-3)$."
+        }
       },
       "solution": "$x-3\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-3)$, $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$, nên phân thức bằng $\\dfrac{\\sqrt{x}}{\\sqrt{x}+3}$."
     },
@@ -237,8 +386,17 @@
       ],
       "answer": "3/5",
       "mistakes": [
-        { "answer": "3", "code": "E12", "feedback": "Mẫu $x-4$ là $(\\sqrt{x}-2)(\\sqrt{x}+2)$, không phải $(\\sqrt{x}-2)^2$.", "review": "f1-hdt" },
-        { "answer": "1/5", "code": "E02", "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-2\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-2)$." }
+        {
+          "answer": "3",
+          "code": "E12",
+          "feedback": "Mẫu $x-4$ là $(\\sqrt{x}-2)(\\sqrt{x}+2)$, không phải $(\\sqrt{x}-2)^2$.",
+          "review": "f1-hdt"
+        },
+        {
+          "answer": "1/5",
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-2\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-2)$."
+        }
       ],
       "solution": "$\\dfrac{x-2\\sqrt{x}}{x-4}=\\dfrac{\\sqrt{x}(\\sqrt{x}-2)}{(\\sqrt{x}-2)(\\sqrt{x}+2)}=\\dfrac{\\sqrt{x}}{\\sqrt{x}+2}$. Tại $x=9$: $\\dfrac{3}{3+2}=\\dfrac{3}{5}$."
     }
@@ -249,12 +407,26 @@
       "type": "mcq",
       "level": "L1",
       "prompt": "Phân tích $4x^2-12x$ thành nhân tử đến tận cùng.",
-      "options": ["$4x(x-3)$", "$4(x^2-3x)$", "$x(4x-12)$", "$4x(x+3)$"],
+      "options": [
+        "$4x(x-3)$",
+        "$4(x^2-3x)$",
+        "$x(4x-12)$",
+        "$4x(x+3)$"
+      ],
       "correct": 0,
       "mistakes": {
-        "1": { "code": "E11", "feedback": "Chưa đặt hết nhân tử chung: còn $x$ chung ở cả hai hạng tử." },
-        "2": { "code": "E11", "feedback": "Chưa đặt hết nhân tử chung: $4$ và $12$ còn chung thừa số $4$." },
-        "3": { "code": "E02", "feedback": "Sai dấu: $-12x$ chia cho $4x$ được số âm." }
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa đặt hết nhân tử chung: còn $x$ chung ở cả hai hạng tử."
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Chưa đặt hết nhân tử chung: $4$ và $12$ còn chung thừa số $4$."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Sai dấu: $-12x$ chia cho $4x$ được số âm."
+        }
       },
       "solution": "$4x^2-12x=4x(x-3)$."
     },
@@ -263,12 +435,29 @@
       "type": "mcq",
       "level": "L1",
       "prompt": "Phân tích $x^2+6x+9$ thành nhân tử.",
-      "options": ["$(x+3)^2$", "$(x+9)^2$", "$(x-3)^2$", "$(x-3)(x+3)$"],
+      "options": [
+        "$(x+3)^2$",
+        "$(x+9)^2$",
+        "$(x-3)^2$",
+        "$(x-3)(x+3)$"
+      ],
       "correct": 0,
       "mistakes": {
-        "1": { "code": "E12", "feedback": "$B$ là số có $B^2=9$, không phải $9$.", "review": "f1-hdt" },
-        "2": { "code": "E12", "feedback": "Sai dấu: hạng tử giữa cộng → bình phương một tổng.", "review": "f1-hdt" },
-        "3": { "code": "E12", "feedback": "$(x-3)(x+3)=x^2-9$, không có $6x$.", "review": "f1-hdt" }
+        "1": {
+          "code": "E12",
+          "feedback": "$B$ là số có $B^2=9$, không phải $9$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Sai dấu: hạng tử giữa cộng → bình phương một tổng.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E12",
+          "feedback": "$(x-3)(x+3)=x^2-9$, không có $6x$.",
+          "review": "f1-hdt"
+        }
       },
       "solution": "$x^2+6x+9=x^2+2 \\cdot x \\cdot 3+3^2=(x+3)^2$."
     },
@@ -277,12 +466,26 @@
       "type": "mcq",
       "level": "L2",
       "prompt": "Phân tích $x^2+7x+12$ thành nhân tử.",
-      "options": ["$(x+2)(x+6)$", "$(x+1)(x+12)$", "$(x-3)(x-4)$", "$(x+3)(x+4)$"],
+      "options": [
+        "$(x+2)(x+6)$",
+        "$(x+1)(x+12)$",
+        "$(x-3)(x-4)$",
+        "$(x+3)(x+4)$"
+      ],
       "correct": 3,
       "mistakes": {
-        "0": { "code": "E01", "feedback": "Tích đúng là $12$ nhưng tổng $2+6$ không bằng $7$." },
-        "1": { "code": "E01", "feedback": "Tích đúng là $12$ nhưng tổng $1+12$ không bằng $7$." },
-        "2": { "code": "E02", "feedback": "Sai dấu: tổng hai số phải là $+7$." }
+        "0": {
+          "code": "E01",
+          "feedback": "Tích đúng là $12$ nhưng tổng $2+6$ không bằng $7$."
+        },
+        "1": {
+          "code": "E01",
+          "feedback": "Tích đúng là $12$ nhưng tổng $1+12$ không bằng $7$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Sai dấu: tổng hai số phải là $+7$."
+        }
       },
       "solution": "Hai số có tổng $7$, tích $12$ là $3$ và $4$: $x^2+7x+12=(x+3)(x+4)$."
     },
@@ -291,12 +494,26 @@
       "type": "mcq",
       "level": "L2",
       "prompt": "Phân tích $x^2-xy+x-y$ thành nhân tử.",
-      "options": ["$(x+y)(x+1)$", "$(x-y)(x-1)$", "$x(x-y)$", "$(x-y)(x+1)$"],
+      "options": [
+        "$(x+y)(x+1)$",
+        "$(x-y)(x-1)$",
+        "$x(x-y)$",
+        "$(x-y)(x+1)$"
+      ],
       "correct": 3,
       "mistakes": {
-        "0": { "code": "E02", "feedback": "Sai dấu khi đặt nhân tử chung: $x^2-xy=x(x-y)$." },
-        "1": { "code": "E02", "feedback": "Sai dấu: $x-y=+1 \\cdot (x-y)$, nên nhân tử còn lại là $x+1$." },
-        "2": { "code": "E10", "feedback": "Con bỏ sót nhóm $x-y$: nhóm này bằng $1 \\cdot (x-y)$." }
+        "0": {
+          "code": "E02",
+          "feedback": "Sai dấu khi đặt nhân tử chung: $x^2-xy=x(x-y)$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Sai dấu: $x-y=+1 \\cdot (x-y)$, nên nhân tử còn lại là $x+1$."
+        },
+        "2": {
+          "code": "E10",
+          "feedback": "Con bỏ sót nhóm $x-y$: nhóm này bằng $1 \\cdot (x-y)$."
+        }
       },
       "solution": "$x^2-xy+x-y=x(x-y)+(x-y)=(x-y)(x+1)$."
     },
@@ -305,12 +522,28 @@
       "type": "mcq",
       "level": "L2",
       "prompt": "Phân tích đến tận cùng $3x^3-12x$.",
-      "options": ["$3x(x-4)(x+4)$", "$3x(x-2)(x+2)$", "$3x(x-2)^2$", "$3x(x^2-4)$"],
+      "options": [
+        "$3x(x-4)(x+4)$",
+        "$3x(x-2)(x+2)$",
+        "$3x(x-2)^2$",
+        "$3x(x^2-4)$"
+      ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E12", "feedback": "$B^2=4$ nên $B$ không phải $4$.", "review": "f1-hdt" },
-        "2": { "code": "E12", "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.", "review": "f1-hdt" },
-        "3": { "code": "E11", "feedback": "Chưa xong: $x^2-4$ còn phân tích được." }
+        "0": {
+          "code": "E12",
+          "feedback": "$B^2=4$ nên $B$ không phải $4$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Hiệu hai bình phương là $(A-B)(A+B)$, không phải $(A-B)^2$.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa xong: $x^2-4$ còn phân tích được."
+        }
       },
       "solution": "$3x^3-12x=3x(x^2-4)=3x(x-2)(x+2)$."
     },
@@ -328,9 +561,19 @@
       ],
       "correct": 3,
       "mistakes": {
-        "0": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." },
-        "1": { "code": "E12", "feedback": "Mẫu $x-1$ là hiệu hai bình phương $(\\sqrt{x}-1)(\\sqrt{x}+1)$, không phải $(\\sqrt{x}-1)^2$.", "review": "f1-hdt" },
-        "2": { "code": "E02", "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-1)$." }
+        "0": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu."
+        },
+        "1": {
+          "code": "E12",
+          "feedback": "Mẫu $x-1$ là hiệu hai bình phương $(\\sqrt{x}-1)(\\sqrt{x}+1)$, không phải $(\\sqrt{x}-1)^2$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x-\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-1)$."
+        }
       },
       "solution": "$x-\\sqrt{x}=\\sqrt{x}(\\sqrt{x}-1)$, $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$, nên phân thức bằng $\\dfrac{\\sqrt{x}}{\\sqrt{x}+1}$."
     },
@@ -342,8 +585,17 @@
       "source": "68 đề – Bài 2.2 rút gọn (c-rutgon), mẫu $x-9$ (ĐKXĐ $x \\ne 9$) ở Đề 5, 6, 7, 10 (chuyển thể)",
       "answer": "5/2",
       "mistakes": [
-        { "answer": "10", "code": "E12", "feedback": "Mẫu $x-9$ là $(\\sqrt{x}-3)(\\sqrt{x}+3)$, không phải $(\\sqrt{x}-3)^2$.", "review": "f1-hdt" },
-        { "answer": "1/2", "code": "E02", "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x+3\\sqrt{x}=\\sqrt{x}(\\sqrt{x}+3)$." }
+        {
+          "answer": "10",
+          "code": "E12",
+          "feedback": "Mẫu $x-9$ là $(\\sqrt{x}-3)(\\sqrt{x}+3)$, không phải $(\\sqrt{x}-3)^2$.",
+          "review": "f1-hdt"
+        },
+        {
+          "answer": "1/2",
+          "code": "E02",
+          "feedback": "Con làm mất nhân tử chung $\\sqrt{x}$ ở tử: $x+3\\sqrt{x}=\\sqrt{x}(\\sqrt{x}+3)$."
+        }
       ],
       "solution": "$\\dfrac{x+3\\sqrt{x}}{x-9}=\\dfrac{\\sqrt{x}(\\sqrt{x}+3)}{(\\sqrt{x}-3)(\\sqrt{x}+3)}=\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}$. Tại $x=25$: $\\dfrac{5}{5-3}=\\dfrac{5}{2}$."
     },
@@ -361,9 +613,20 @@
       ],
       "correct": 1,
       "mistakes": {
-        "0": { "code": "E12", "feedback": "Sai dấu: mẫu có $-4\\sqrt{x}$ nên là $(\\sqrt{x}-2)^2$.", "review": "f1-hdt" },
-        "2": { "code": "E12", "feedback": "Tử $x-4$ là hiệu hai bình phương, không phải $(\\sqrt{x}-2)^2$.", "review": "f1-hdt" },
-        "3": { "code": "E11", "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu." }
+        "0": {
+          "code": "E12",
+          "feedback": "Sai dấu: mẫu có $-4\\sqrt{x}$ nên là $(\\sqrt{x}-2)^2$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E12",
+          "feedback": "Tử $x-4$ là hiệu hai bình phương, không phải $(\\sqrt{x}-2)^2$.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn đến tận cùng: còn nhân tử chung ở tử và mẫu."
+        }
       },
       "solution": "$x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$ và $x-4\\sqrt{x}+4=(\\sqrt{x}-2)^2$, nên phân thức bằng $\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-2}$."
     }

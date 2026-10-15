@@ -25,8 +25,8 @@
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
-| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); 4 KU còn **draft — phụ huynh duyệt trước 18/10** |
-| Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2` | 🟡 PR #18 (13/10) — không SQL; bản nháp, chờ giải độc lập + phụ huynh duyệt trước 25/10 |
+| Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
+| Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
@@ -40,6 +40,30 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 15/10/2026 — Giải độc lập đợt 2 + phụ huynh duyệt 8 KU (nhánh `p1-content-2-qa`, PR #20)
+
+**Phụ huynh cần làm:** merge PR #20 (không SQL). Sau khi merge, Nguyên thấy ngay 8 bài mới.
+
+**Phụ huynh duyệt 8 KU (15/10, trong chat: "duyệt luôn", chọn "cả 8 bài").** f1-hdt, f1-pnt, a-tanso, b-phepthu (đợt 1) và f1-tgon, f1-qd, a-bieudo, b-xsuat (đợt 2) đổi `status: approved`, `approvedOn: 2026-10-15`. Phụ huynh duyệt dựa trên kết quả giải độc lập (đợt 1: 113/113, đợt 2: 103/103), **chưa làm thử trên bản xem trước** → các mục 2–5 của phiếu duyệt (đọc có hiểu không, độ khó so với con, lời nhắc có giúp không, giống đề thật không) chuyển sang **theo dõi trong pilot**: câu nào con sai nhiều hoặc làm quá lâu thì gia sư/phụ huynh báo để sửa.
+
+**Thay đổi con nhìn thấy sau khi merge:** trang Hôm nay gợi ý **2 bài mới** (LT3: 1 Track A + 1 Track B/C) thay vì chỉ htl-1; Hành trình đếm **0/10 bài đạt M3+**; Tổng quan của phụ huynh đếm trên 10 bài. e2e cập nhật theo (5 kỳ vọng: số bài 2 → 10, 2 gợi ý bài mới, bấm đúng link htl-1).
+
+**Bước 2 §7 — giải độc lập (trả lời Q23: làm trước khi phụ huynh duyệt).** Script bỏ đáp án, nhiễu, lời giải, gợi ý khỏi 4 file → 4 đề trắng; hình a-bieudo chụp bằng Chromium với màu theme thật để agent đọc biểu đồ như con nhìn trên màn hình. Hai agent mới, chỉ được đọc đề trắng, giải **103/103 ô** (f1-tgon 31, f1-qd 32, a-bieudo 20, b-xsuat 20). Chấm bằng chính `gradeItem` của app: **103/103 khớp**, không đổi đáp án nào.
+
+**Agent góp ý → đã sửa**
+| Chỗ | Vấn đề | Sửa |
+|---|---|---|
+| Cả đợt 2 | **47/50 câu trắc nghiệm có đáp án đúng ở phương án đầu tiên** (f1-qd 27/27). App hiện phương án theo đúng thứ tự trong file → con có thể đoán "luôn chọn câu đầu" | Đảo vị trí 60 câu trắc nghiệm của 4 bài (đáp án và mã lỗi đi theo phương án; script kiểm 60/60 giữ nguyên nội dung). Thêm luật vào `standard.ts`: KU có ≥ 8 câu trắc nghiệm thì một vị trí không được chiếm > 60% đáp án đúng. Đợt 1 và htl-1/2 đã đạt |
+| f1-qd-p4, f1-qd-x3 | Đề "Tính …" nhưng phương án chưa thu gọn (E11) cũng bằng đúng giá trị | Đề thành "Tính và thu gọn …" |
+| b-xsuat-x3 | $\frac{6}{16}$ (E11) cũng đúng giá trị khi đề không nói tối giản | Thêm "(phân số tối giản)" như các câu xác suất khác |
+| a-bieudo-x8 | Cột Huy thứ 5 bằng 20, nằm giữa vạch 15 và 30 → khó đọc; "làm tròn đến hàng phần trăm" dễ hiểu nhầm với % | Ghi số 20 trên cột; đề thêm "tức hai chữ số thập phân" |
+
+**Góp ý giữ nguyên:** b-xsuat-p7 (đếm cả số 0 — đã có nhiễu 4/39 với phản hồi riêng); f1-tgon-x3, p5 (đề đã nói "thu gọn"/"rút gọn"); a-bieudo-p7 (con gõ "36,7%" thì app báo không đọc được và cho nhập lại, không chấm sai — ô đã có đơn vị % bên cạnh).
+
+**Kiểm tra:** `npm test` 110/110 (thêm 1 test cho luật vị trí đáp án), lint, build, `./e2e/run.sh` 175 PASS.
 
 ---
 
@@ -80,7 +104,7 @@ Không đổi chức năng app, không SQL.
 | Bước | Kết quả |
 |---|---|
 | 1. `npm test` | 107/107 qua (có thêm kiểm tra cho 4 bài: schema, 3/3/2, 2/3/3, nhận dạng E05, gợi ý ≤ 25 chữ không lộ đáp số, ≥ 1 câu kiểm tra có nguồn, `review` hợp lệ, SVG hợp lệ). `npm run lint`, `npm run build` qua; `./e2e/run.sh` 175 PASS, 0 FAIL (không phải sửa kỳ vọng e2e) |
-| 2. Giải độc lập | **Chưa làm** (xem trên) |
+| 2. Giải độc lập | Xong 15/10 — 103/103 khớp, xem mục 15/10 |
 | 3. Tính lại nhiễu | Script Python/sympy ngoài repo: mỗi đáp án đúng và mỗi phương án nhiễu dạng biểu thức đọc thẳng từ TeX trong file rồi so với giá trị tính độc lập (mỗi nhiễu = đúng một lỗi đã ghi; nhiễu E11 phải bằng đáp án đúng, nhiễu mã khác phải khác); đáp số và nhiễu dạng số tính lại từ đề (đếm bằng liệt kê, `isprime`), ĐKXĐ bằng `solve`, câu hỏi ngược bằng giải phương trình, đồng nhất thức của lời giải mẫu. Thử cố tình sai 3 chỗ → script bắt đủ. **0 lệch** |
 | 4. Soát sư phạm | Script: lý thuyết ≤ 80 chữ/đoạn, mẫu 3–5 bước kết thúc "Kết luận:", khuyết 3–6 bước ≥ 2 chỗ trống, phản hồi ≤ 2 câu, trắc nghiệm ≥ 2 nhiễu có mã, tự đứng được → 0 vấn đề. Chụp hình a-bieudo bằng Chromium với CSS thật: cột, cột kép, hình quạt, cột liền nhau đều đúng số liệu và dễ đọc. Câu khái niệm không có phép tính (nhận dạng, chọn tập ĐKXĐ, mẫu chung, phát biểu hình quạt) soát tay |
 | 5. Gia sư | Không cần — đợt 2 không có KU mạch C, E, G |

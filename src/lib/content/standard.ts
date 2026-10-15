@@ -7,6 +7,8 @@ const EXIT_BANK = { L1: 2, L2: 3, L3: 3 };
 const MAX_HINT_WORDS = 25;
 /** CONTENT_STANDARD §6: exams 57–68 of the 68-exam book are kept untouched for mock tests (from ~01/2027). */
 const RESERVED_EXAM = /Đề\s*(5[7-9]|6[0-8])(?!\d)/;
+/** Options are shown in file order, so the key must not sit mostly in one slot (batch 2 had 47 of 50 at option 0). */
+const MCQ_BALANCE = { min: 8, maxShare: 0.6 };
 
 const levels = (items: Item[]) => ({
   L1: items.filter((i) => i.level === "L1").length,
@@ -44,6 +46,14 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
   for (const it of all.flatMap((x) => [x, ...(x.type === "steps" ? x.steps.map((st) => st.item) : [])]))
     if (it.source && RESERVED_EXAM.test(it.source))
       out.push(`${it.id}: source "${it.source}" — ${it.source.match(RESERVED_EXAM)![0]} để dành cho thi thử, chỉ dùng Đề 1–56`);
+  const mcqs = all.flatMap((x) => (x.type === "steps" ? x.steps.map((st) => st.item) : [x])).filter((i) => i.type === "mcq");
+  if (mcqs.length >= MCQ_BALANCE.min) {
+    const slots = new Map<number, number>();
+    for (const m of mcqs) slots.set(m.correct, (slots.get(m.correct) ?? 0) + 1);
+    const [slot, n] = [...slots].sort((a, b) => b[1] - a[1])[0];
+    if (n > MCQ_BALANCE.maxShare * mcqs.length)
+      out.push(`${u.id}: ${n}/${mcqs.length} câu trắc nghiệm có đáp án đúng ở phương án ${slot + 1} — đảo vị trí để không đoán được`);
+  }
   const p = levels(u.practice);
   if (u.practice.length !== 8 || !same(p, PRACTICE)) out.push(`${u.id}: luyện tập cần 8 câu ${shape(PRACTICE)} (đang ${shape(p)})`);
   const rec = u.practice.filter((i) => i.recognition);

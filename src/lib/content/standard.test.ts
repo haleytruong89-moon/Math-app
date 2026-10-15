@@ -84,3 +84,14 @@ test("standard: exams 57–68 are reserved for mock tests — no item may come f
   for (const d of [1, 5, 56, 156])
     assert.deepEqual(issues((u) => { (u.exit[5] as Record<string, unknown>).source = `68 đề – Đề ${d}, Bài 1`; }), []);
 });
+
+test("standard: the correct option must not sit mostly in one slot (options are shown in file order)", () => {
+  const mcq = (id: string, correct: number) => ({ id, type: "mcq", level: "L1", prompt: "Chọn.", options: ["A", "B", "C", "D"], correct, solution: "A." });
+  const setExit = (slots: number[]) => (u: ReturnType<typeof good>) => {
+    slots.forEach((c, i) => { (u.exit as unknown[])[i] = { ...mcq(`k-x${i + 1}`, c), level: u.exit[i].level, ...(i === 5 ? { source: "68 đề – Đề 1" } : {}) }; });
+  };
+  // 9 mcq (p1 at slot 0 + 8 exit): 7 at slot 0 → flagged; spread → fine; fewer than 8 mcq → not checked.
+  assert.match(issues(setExit([0, 0, 0, 0, 0, 0, 1, 2])).join(), /k: 7\/9 câu trắc nghiệm.*phương án 1/);
+  assert.deepEqual(issues(setExit([1, 2, 3, 0, 1, 2, 3, 0])), []);
+  assert.deepEqual(issues(setExit([0, 0, 0, 0, 0, 0])), []);
+});
