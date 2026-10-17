@@ -1,0 +1,947 @@
+{
+  "id": "g-giaihpt",
+  "module": "bai-toan-tt",
+  "order": 1,
+  "title": "Giải hệ PT bậc nhất hai ẩn",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** chuyển vế phải đổi dấu; nhân hai vế với cùng một số khác $0$ (giải phương trình bậc nhất một ẩn, lớp 8). Đây là bài mở đầu mạch **giải bài toán bằng cách lập phương trình, hệ phương trình**.",
+    "**Quy tắc:** phương trình bậc nhất hai ẩn $ax+by=c$ ($a$, $b$ không cùng bằng $0$) có nghiệm là một **cặp số** $(x_0;y_0)$ làm đẳng thức đúng. Nghiệm của hệ là cặp số thỏa **cả hai** phương trình. **Thế:** rút một ẩn từ một phương trình, thế vào phương trình **còn lại**. **Cộng đại số:** nhân hai vế để hệ số của một ẩn bằng nhau (thì trừ) hoặc đối nhau (thì cộng) vế theo vế.",
+    "**Vì sao:** cả hai cách đều để **khử một ẩn**, đưa về phương trình một ẩn đã biết giải; tìm được ẩn này rồi thế lại để tìm ẩn kia. **Số nghiệm** (các hệ số khác $0$): $\\frac{a}{a'} \\ne \\frac{b}{b'}$ → nghiệm duy nhất; $\\frac{a}{a'} = \\frac{b}{b'} \\ne \\frac{c}{c'}$ → vô nghiệm; $\\frac{a}{a'} = \\frac{b}{b'} = \\frac{c}{c'}$ → vô số nghiệm.",
+    "**Bẫy hay gặp:** $(3x+2y)-(3x-y)=3y$, không phải $y$. Nhân hai vế: $2(x+3y)=2 \\cdot 5$ cho $2x+6y=10$, không phải $2x+3y=10$ hay $2x+6y=5$. Thế ngược vào chính phương trình vừa rút chỉ được $1=1$, không tìm ra gì. Đặt $u=\\frac1x$ phải có $x \\ne 0$; tìm được $u$ rồi còn phải đổi lại $x=\\frac1u$.",
+    "**Nhận dạng:** có ẩn với hệ số $1$ hoặc $-1$ → **thế**. Hệ số của một ẩn bằng nhau, đối nhau hoặc dễ nhân cho bằng → **cộng đại số**. Có ngoặc, phân số → bỏ ngoặc, quy đồng về dạng $ax+by=c$ trước. Ẩn nằm ở mẫu dạng $\\frac1x$, $\\frac1y$ → **đặt ẩn phụ**. Đề chỉ hỏi số nghiệm → so các tỉ số hệ số, **không** cần giải.",
+    "**Thẻ bài toán thực tế:** hệ đến từ bài toán thì lập bảng **đại lượng – ẩn – biểu thức**, ví dụ: thời gian làm một mình – $x$ (giờ) – mỗi giờ làm $\\frac1x$ công việc. Checklist: (1) **đơn vị** thống nhất; (2) **điều kiện** của ẩn ($x>0$; $x \\ne 0$ khi đặt $u=\\frac1x$); (3) mỗi **quan hệ** → một phương trình; (4) **thử lại** vào cả hai phương trình, viết **Kết luận** đủ cặp $(x;y)$."
+  ],
+  "worked": {
+    "problem": "Giải hệ phương trình $\\begin{cases} 3x+2y=8 \\\\ 2x-3y=1 \\end{cases}$.",
+    "steps": [
+      {
+        "text": "Không ẩn nào có hệ số $1$ nên dùng **cộng đại số**. Nhân hai vế phương trình thứ nhất với $3$, phương trình thứ hai với $2$: $\\begin{cases} 9x+6y=24 \\\\ 4x-6y=2 \\end{cases}$.",
+        "why": "Hệ số của $y$ thành $6$ và $-6$ (đối nhau) nên cộng thì $y$ mất. Nhân **mọi** hạng tử, kể cả vế phải."
+      },
+      {
+        "text": "Cộng vế theo vế: $13x=26$, nên $x=2$.",
+        "why": "Chỉ còn một phương trình một ẩn."
+      },
+      {
+        "text": "Thế $x=2$ vào $3x+2y=8$: $6+2y=8$, nên $y=1$.",
+        "why": "Nghiệm của hệ là một cặp số: có $x$ rồi phải tìm tiếp $y$."
+      },
+      {
+        "text": "Thử lại vào phương trình thứ hai: $2 \\cdot 2-3 \\cdot 1=1$, đúng.",
+        "why": "Thử vào phương trình chưa dùng để thế mới phát hiện được chỗ sai."
+      },
+      {
+        "text": "Kết luận: hệ có nghiệm duy nhất $(x;y)=(2;1)$."
+      }
+    ],
+    "selfExplain": "Vì sao phải nhân phương trình thứ nhất với $3$ và phương trình thứ hai với $2$, mà không nhân cả hai với cùng một số?"
+  },
+  "faded": {
+    "problem": "Giải hệ phương trình $\\begin{cases} x-2y=1 \\\\ 3x+4y=13 \\end{cases}$ bằng phương pháp thế.",
+    "steps": [
+      {
+        "prompt": "Rút một ẩn.",
+        "item": {
+          "id": "g-giaihpt-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Từ phương trình $x-2y=1$, rút $x$ theo $y$ được:",
+          "options": [
+            "$x=1-2y$",
+            "$x=2y+1$",
+            "$x=2y-1$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Chuyển $-2y$ sang vế phải phải đổi dấu thành $+2y$."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Chỉ $-2y$ chuyển vế và đổi dấu; số $1$ đang ở vế phải nên giữ nguyên dấu."
+            }
+          },
+          "solution": "$x-2y=1 \\Rightarrow x=2y+1$."
+        }
+      },
+      {
+        "prompt": "Thế vào phương trình còn lại.",
+        "item": {
+          "id": "g-giaihpt-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Thế $x=2y+1$ vào hệ, phương trình một ẩn $y$ đúng là:",
+          "options": [
+            "$6y+1+4y=13$",
+            "$(2y+1)-2y=1$",
+            "$3(2y+1)+4y=13$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Nhân $3$ với **cả hai** hạng tử trong ngoặc $(2y+1)$."
+            },
+            "1": {
+              "code": "E06",
+              "feedback": "Con thế ngược vào chính phương trình vừa rút nên chỉ được $1=1$; phải thế vào phương trình còn lại."
+            }
+          },
+          "solution": "Thế vào phương trình thứ hai: $3(2y+1)+4y=13$."
+        }
+      },
+      {
+        "text": "Thu gọn: $6y+3+4y=13$, tức $10y=10$, nên $y=1$."
+      },
+      {
+        "prompt": "Tìm ẩn còn lại.",
+        "item": {
+          "id": "g-giaihpt-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Đã có $y=1$. Tính $x$.",
+          "answer": "3",
+          "mistakes": [
+            {
+              "answer": "-1",
+              "code": "E02",
+              "feedback": "Con dùng $x=1-2y$: khi rút $x$ từ $x-2y=1$, hạng tử $-2y$ chuyển vế phải đổi dấu."
+            },
+            {
+              "answer": "1",
+              "code": "E02",
+              "feedback": "Con dùng $x=2y-1$: số $1$ ở vế phải giữ nguyên dấu, chỉ $-2y$ đổi dấu."
+            }
+          ],
+          "solution": "$x=2y+1=2 \\cdot 1+1=3$."
+        }
+      },
+      {
+        "text": "Thử lại: $3-2 \\cdot 1=1$ và $3 \\cdot 3+4 \\cdot 1=13$, đúng cả hai phương trình."
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "g-giaihpt-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: hệ có nghiệm duy nhất $(x;y)=(3;1)$.",
+            "Kết luận: $y=1$.",
+            "Kết luận: hệ có nghiệm duy nhất $(x;y)=(1;3)$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Nghiệm của hệ là một **cặp số**; kết luận phải có cả $x$ và $y$."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Cặp nghiệm viết theo thứ tự $(x;y)$: số đứng trước là $x$."
+            }
+          },
+          "solution": "Hệ có nghiệm duy nhất $(x;y)=(3;1)$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-giaihpt-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cặp số nào là một nghiệm của phương trình $2x-y=5$?",
+      "hints": [
+        "Cần cặp $(x;y)$ làm đẳng thức $2x-y=5$ đúng.",
+        "Trong cặp số, số đứng trước là $x$, số đứng sau là $y$.",
+        "Thay lần lượt từng cặp vào $2x-y$; cẩn thận khi $y$ âm."
+      ],
+      "options": [
+        "$(3;4)$",
+        "$(4;-3)$",
+        "$(1;3)$",
+        "$(4;3)$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Cặp $(x;y)$ có thứ tự: số đứng trước là $x$, số sau là $y$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Thay $y=-3$: $2 \\cdot 4-(-3)=8+3$; trừ một số âm là cộng."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con đã tính $2x+y$; đề là $2x-y$, phải trừ $y$."
+        }
+      },
+      "solution": "$2 \\cdot 4-3=5$ nên $(4;3)$ là nghiệm. Các cặp khác: $(3;4)$ cho $2$, $(4;-3)$ cho $11$, $(1;3)$ cho $-1$."
+    },
+    {
+      "id": "g-giaihpt-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Bước đầu tiên hợp lý nhất để giải hệ $\\begin{cases} x+3y=7 \\\\ 5x-2y=1 \\end{cases}$ là gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách bắt đầu, chưa cần tính ra nghiệm.",
+        "Trong hệ có ẩn nào mang hệ số $1$ không?",
+        "Ẩn có hệ số 1 thì rút ra rất gọn rồi thế vào phương trình kia."
+      ],
+      "options": [
+        "Rút $x=7-3y$ từ phương trình thứ nhất rồi thế vào phương trình thứ hai",
+        "Đặt ẩn phụ $u=\\frac1x$, $v=\\frac1y$",
+        "Cộng ngay hai phương trình vế theo vế",
+        "Tính biệt thức $\\Delta$ như phương trình bậc hai"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E05",
+          "feedback": "Ẩn không nằm ở mẫu nên không cần đặt ẩn phụ."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Hệ số của $x$ ($1$ và $5$), của $y$ ($3$ và $-2$) không đối nhau: cộng ngay không khử được ẩn nào."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đây là hệ bậc nhất hai ẩn, không phải phương trình bậc hai; dùng thế hoặc cộng đại số."
+        }
+      },
+      "solution": "Ẩn $x$ có hệ số $1$ nên rút $x=7-3y$ rất gọn, rồi thế vào $5x-2y=1$."
+    },
+    {
+      "id": "g-giaihpt-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Để khử ẩn $x$ trong hệ $\\begin{cases} 4x+3y=10 \\\\ 2x-5y=-8 \\end{cases}$ bằng phương pháp cộng đại số, ta làm thế nào?",
+      "hints": [
+        "Mục tiêu: làm cho ẩn $x$ biến mất.",
+        "Hệ số của $x$ là $4$ và $2$; nhân phương trình nào thì chúng bằng nhau?",
+        "Hệ số bằng nhau thì trừ vế theo vế, đối nhau thì cộng."
+      ],
+      "options": [
+        "Nhân hai vế phương trình thứ hai với $2$ rồi cộng vế theo vế",
+        "Nhân hai vế phương trình thứ nhất với $2$ rồi trừ vế theo vế",
+        "Nhân hai vế phương trình thứ hai với $2$ rồi trừ vế theo vế",
+        "Nhân hai vế phương trình thứ hai với $4$ rồi trừ vế theo vế"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Sau khi nhân, hai hệ số của $x$ cùng là $4$ (bằng nhau) nên phải trừ; cộng thì được $8x$."
+        },
+        "1": {
+          "code": "E06",
+          "feedback": "Nhân phương trình thứ nhất được $8x$, còn phương trình kia vẫn $2x$: $x$ chưa mất."
+        },
+        "3": {
+          "code": "E06",
+          "feedback": "Nhân với $4$ được $8x$, khác $4x$ ở phương trình kia: $x$ chưa mất."
+        }
+      },
+      "solution": "Nhân phương trình thứ hai với $2$: $4x-10y=-16$; hệ số của $x$ bằng nhau ($4$ và $4$) nên trừ vế theo vế được $13y=26$."
+    },
+    {
+      "id": "g-giaihpt-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Giải hệ phương trình $\\begin{cases} 3x+2y=13 \\\\ 3x-4y=1 \\end{cases}$. Tìm $x$.",
+      "hints": [
+        "Đề hỏi $x$, nhưng có thể phải tìm $y$ trước.",
+        "Hệ số của $x$ ở hai phương trình như thế nào? Nên cộng hay trừ?",
+        "Trừ vế theo vế (cẩn thận $2y-(-4y)$), tìm $y$, rồi thế vào phương trình thứ nhất."
+      ],
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "25/3",
+          "code": "E02",
+          "feedback": "Khi trừ, $2y-(-4y)=2y+4y$; trừ một số âm là cộng."
+        },
+        {
+          "answer": "17/3",
+          "code": "E02",
+          "feedback": "Vế trái lấy PT thứ nhất trừ PT thứ hai thì vế phải cũng phải là $13-1$, cùng thứ tự."
+        },
+        {
+          "answer": "2",
+          "code": "E11",
+          "feedback": "Đó mới là $y$; thế vào một phương trình để tìm $x$ mà đề hỏi."
+        }
+      ],
+      "solution": "Trừ vế theo vế: $6y=12$, $y=2$. Thế vào PT thứ nhất: $3x+4=13$, $x=3$. Nghiệm $(3;2)$."
+    },
+    {
+      "id": "g-giaihpt-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Giải hệ phương trình $\\begin{cases} 2(x+1)-y=5 \\\\ 3x-(y-1)=8 \\end{cases}$.",
+      "hints": [
+        "Đề hỏi cả $x$ và $y$, điền từng ô một.",
+        "Hệ có ngoặc: đưa mỗi phương trình về dạng $ax+by=c$ trước.",
+        "Bỏ ngoặc cẩn thận dấu, rồi trừ hai phương trình để khử $y$."
+      ],
+      "steps": [
+        {
+          "prompt": "Đưa hệ về dạng $ax+by=c$.",
+          "item": {
+            "id": "g-giaihpt-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Bỏ ngoặc và chuyển vế, hệ trở thành:",
+            "options": [
+              "$2x-y=4$ và $3x-y=7$",
+              "$2x-y=3$ và $3x-y=7$",
+              "$2x-y=3$ và $3x-y=9$",
+              "$2x-y=7$ và $3x-y=7$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Nhân $2$ với cả hai hạng tử: $2(x+1)=2x+2$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Dấu $-$ trước ngoặc đổi dấu mọi hạng tử: $-(y-1)=-y+1$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Chuyển $+2$ sang vế phải phải đổi dấu thành $-2$."
+              }
+            },
+            "solution": "$2x+2-y=5 \\Rightarrow 2x-y=3$; $3x-y+1=8 \\Rightarrow 3x-y=7$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "g-giaihpt-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giải hệ vừa được. Tìm $x$.",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "3",
+                "code": "E02",
+                "feedback": "Con bỏ ngoặc sai: $2(x+1)=2x+2$, nên PT thứ nhất là $2x-y=3$."
+              },
+              {
+                "answer": "6",
+                "code": "E02",
+                "feedback": "Con bỏ ngoặc sai: $-(y-1)=-y+1$, nên PT thứ hai là $3x-y=7$."
+              },
+              {
+                "answer": "0",
+                "code": "E02",
+                "feedback": "Chuyển $+2$ sang vế phải phải đổi dấu: $2x-y=5-2$."
+              }
+            ],
+            "solution": "Lấy $3x-y=7$ trừ $2x-y=3$: $x=4$."
+          }
+        },
+        {
+          "prompt": "Tìm $y$.",
+          "item": {
+            "id": "g-giaihpt-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tìm $y$.",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "-5",
+                "code": "E02",
+                "feedback": "Từ $2x-y=3$ suy ra $y=2x-3$; con quên đổi dấu khi nhân hai vế với $-1$."
+              },
+              {
+                "answer": "11",
+                "code": "E02",
+                "feedback": "Chuyển vế $-y$ và $3$ phải đổi dấu cả hai: $y=2x-3$."
+              }
+            ],
+            "solution": "$y=2x-3=2 \\cdot 4-3=5$."
+          }
+        }
+      ],
+      "solution": "$\\begin{cases} 2x-y=3 \\\\ 3x-y=7 \\end{cases}$ $\\Rightarrow x=4$, $y=5$. Thử lại: $2 \\cdot 5-5=5$ và $12-4=8$. Nghiệm $(4;5)$."
+    },
+    {
+      "id": "g-giaihpt-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Hệ phương trình $\\begin{cases} 2x-3y=5 \\\\ -4x+6y=-10 \\end{cases}$ có bao nhiêu nghiệm?",
+      "hints": [
+        "Đề chỉ hỏi số nghiệm, không cần giải hệ.",
+        "So sánh các tỉ số $\\frac{a}{a'}$, $\\frac{b}{b'}$, $\\frac{c}{c'}$.",
+        "Tính ba tỉ số, cẩn thận dấu âm, rồi đối chiếu với ba trường hợp."
+      ],
+      "options": [
+        "Vô nghiệm",
+        "Nghiệm duy nhất",
+        "Đúng hai nghiệm",
+        "Vô số nghiệm"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Con tính sai dấu tỉ số hệ số tự do: $\\frac{5}{-10}$ là số âm."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Con tính sai dấu tỉ số: $\\frac{-3}{6}$ là số âm, so lại với $\\frac{2}{-4}$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Hệ bậc nhất hai ẩn chỉ có thể vô nghiệm, có một nghiệm hoặc vô số nghiệm; “hai nghiệm” là chuyện của phương trình bậc hai."
+        }
+      },
+      "solution": "$\\frac{2}{-4}=\\frac{-3}{6}=\\frac{5}{-10}=-\\frac12$: hai phương trình tương đương (PT thứ hai bằng PT thứ nhất nhân $-2$), nên hệ có vô số nghiệm."
+    },
+    {
+      "id": "g-giaihpt-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Giải hệ phương trình $\\begin{cases} \\dfrac6x+\\dfrac6y=1 \\\\ \\dfrac4x+\\dfrac9y=1 \\end{cases}$ (hệ này xuất hiện khi giải bài toán hai người làm chung một công việc).",
+      "source": "CĐ lập PT/HPT – §3 Ví dụ 3 (chuyển thể: chỉ giải hệ)",
+      "hints": [
+        "Đề cần $v$, $x$ và kết luận đủ cặp $(x;y)$.",
+        "Ẩn nằm ở mẫu dạng $\\frac1x$, $\\frac1y$ → đặt ẩn phụ; nhớ điều kiện.",
+        "Đặt $u=\\frac1x$, $v=\\frac1y$; rút $u$ từ PT đầu, thế vào PT sau; cuối cùng đổi lại $x=\\frac1u$."
+      ],
+      "steps": [
+        {
+          "prompt": "Đặt ẩn phụ và điều kiện.",
+          "item": {
+            "id": "g-giaihpt-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách đặt nào đúng và đầy đủ?",
+            "options": [
+              "Không cần điều kiện; đặt $u=\\frac1x$, $v=\\frac1y$: $6u+6v=1$ và $4u+9v=1$",
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; quy đồng: $6y+6x=1$ và $4y+9x=1$",
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; đặt $u=\\frac1x$, $v=\\frac1y$: $\\frac{u}{6}+\\frac{v}{6}=1$ và $\\frac{u}{4}+\\frac{v}{9}=1$",
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; đặt $u=\\frac1x$, $v=\\frac1y$: $6u+6v=1$ và $4u+9v=1$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Ẩn nằm ở mẫu nên phải có điều kiện $x \\ne 0$, $y \\ne 0$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Nhân hai vế với mẫu chung $xy$ thì vế phải $1$ cũng phải nhân thành $xy$."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "$\\frac6x=6 \\cdot \\frac1x=6u$, không phải $\\frac{u}{6}$."
+              }
+            },
+            "solution": "$x \\ne 0$, $y \\ne 0$; $u=\\frac1x$, $v=\\frac1y$ cho $6u+6v=1$ và $4u+9v=1$."
+          }
+        },
+        {
+          "prompt": "Giải hệ ẩn $u$, $v$.",
+          "item": {
+            "id": "g-giaihpt-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giải hệ $\\begin{cases} 6u+6v=1 \\\\ 4u+9v=1 \\end{cases}$. Tìm $v$.",
+            "answer": "1/15",
+            "mistakes": [
+              {
+                "answer": "1/3",
+                "code": "E02",
+                "feedback": "Từ $\\frac23+5v=1$, chuyển $\\frac23$ sang vế phải phải đổi dấu."
+              },
+              {
+                "answer": "0",
+                "code": "E02",
+                "feedback": "Khi nhân hai vế mỗi phương trình với một số, vế phải cũng phải nhân theo."
+              }
+            ],
+            "solution": "Từ PT thứ nhất: $u=\\frac16-v$. Thế vào PT thứ hai: $\\frac23-4v+9v=1$, $5v=\\frac13$, $v=\\frac1{15}$."
+          }
+        },
+        {
+          "prompt": "Đổi lại ẩn cũ.",
+          "item": {
+            "id": "g-giaihpt-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $x$.",
+            "answer": "10",
+            "mistakes": [
+              {
+                "answer": "1/10",
+                "code": "E11",
+                "feedback": "Đó mới là $u$; con chưa đổi lại $x=\\frac1u$."
+              },
+              {
+                "answer": "15",
+                "code": "E10",
+                "feedback": "Con đổi nhầm từ $v$; $x$ tính từ $u=\\frac1x$."
+              }
+            ],
+            "solution": "$u=\\frac16-\\frac1{15}=\\frac1{10}$, nên $x=\\frac1u=10$."
+          }
+        },
+        {
+          "prompt": "Viết kết luận.",
+          "item": {
+            "id": "g-giaihpt-p7-s4",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng và đầy đủ?",
+            "options": [
+              "Kết luận: hệ có nghiệm $(x;y)=\\left(\\frac1{10};\\frac1{15}\\right)$.",
+              "Kết luận: hệ có nghiệm $(x;y)=(10;15)$.",
+              "Kết luận: $x=10$."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó là $(u;v)$; phải đổi lại $x=\\frac1u$, $y=\\frac1v$."
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Nghiệm của hệ là một cặp số; còn thiếu $y=\\frac1v$."
+              }
+            },
+            "solution": "$y=\\frac1v=15$; $x=10$, $y=15$ thỏa điều kiện. Hệ có nghiệm $(10;15)$."
+          }
+        }
+      ],
+      "solution": "Đặt $u=\\frac1x$, $v=\\frac1y$ ($x,y \\ne 0$): $6u+6v=1$, $4u+9v=1$ cho $u=\\frac1{10}$, $v=\\frac1{15}$. Vậy $x=10$, $y=15$. Thử: $\\frac6{10}+\\frac6{15}=1$, $\\frac4{10}+\\frac9{15}=1$."
+    },
+    {
+      "id": "g-giaihpt-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Tìm $a$ và $b$ để hệ phương trình $\\begin{cases} ax+by=5 \\\\ bx+ay=1 \\end{cases}$ có nghiệm $(x;y)=(1;2)$.",
+      "hints": [
+        "Đề cho sẵn nghiệm, cần tìm hai tham số $a$ và $b$.",
+        "Một cặp là nghiệm thì thay vào làm cả hai phương trình đúng; khi đó ẩn mới là gì?",
+        "Thay $x=1$, $y=2$ vào cả hai phương trình, được hệ bậc nhất ẩn $a$, $b$; giải bằng thế."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ ẩn $a$, $b$.",
+          "item": {
+            "id": "g-giaihpt-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Thay $x=1$, $y=2$ vào hệ, ta được hệ ẩn $a$, $b$:",
+            "options": [
+              "$2a+b=5$ và $a+2b=1$",
+              "$a+2b=5$ và $2b+a=1$",
+              "$a+2b=5$ và $2a+b=1$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Cặp $(1;2)$ nghĩa là $x=1$, $y=2$; con đã thay ngược $x=2$, $y=1$."
+              },
+              "1": {
+                "code": "E10",
+                "feedback": "Con đọc nhầm PT thứ hai: đó là $bx+ay=1$, hệ số của $x$ là $b$."
+              }
+            },
+            "solution": "$a \\cdot 1+b \\cdot 2=5$ và $b \\cdot 1+a \\cdot 2=1$: $a+2b=5$, $2a+b=1$."
+          }
+        },
+        {
+          "prompt": "Tìm $b$.",
+          "item": {
+            "id": "g-giaihpt-p8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giải hệ ẩn $a$, $b$ vừa lập. Tìm $b$.",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "-11/3",
+                "code": "E02",
+                "feedback": "Từ $10-3b=1$, chuyển $10$ sang vế phải phải đổi dấu."
+              },
+              {
+                "answer": "-1",
+                "code": "E04",
+                "feedback": "Con thay ngược $x=2$, $y=1$; cặp $(1;2)$ có $x=1$, $y=2$."
+              }
+            ],
+            "solution": "Rút $a=5-2b$, thế vào $2a+b=1$: $10-3b=1$, $b=3$."
+          }
+        },
+        {
+          "prompt": "Tìm $a$.",
+          "item": {
+            "id": "g-giaihpt-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $a$.",
+            "answer": "-1",
+            "mistakes": [
+              {
+                "answer": "11",
+                "code": "E02",
+                "feedback": "Từ $a+2b=5$ thì $a=5-2b$; chuyển $2b$ sang vế phải phải đổi dấu."
+              },
+              {
+                "answer": "3",
+                "code": "E04",
+                "feedback": "Con thay ngược $x=2$, $y=1$; cặp $(1;2)$ có $x=1$, $y=2$."
+              }
+            ],
+            "solution": "$a=5-2b=5-6=-1$."
+          }
+        }
+      ],
+      "solution": "$a+2b=5$, $2a+b=1$ cho $b=3$, $a=-1$. Thử: hệ $-x+3y=5$, $3x-y=1$ có $-1+6=5$ và $3-2=1$, đúng."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-giaihpt-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cặp số nào là nghiệm của hệ $\\begin{cases} x+y=5 \\\\ x-y=1 \\end{cases}$?",
+      "options": [
+        "$(4;1)$",
+        "$(2;3)$",
+        "$(3;2)$",
+        "$(6;5)$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Cặp này chỉ thỏa phương trình thứ nhất; nghiệm của hệ phải thỏa **cả hai** phương trình."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Cặp $(x;y)$ có thứ tự: số đứng trước là $x$; thay lại vào $x-y=1$ để kiểm tra."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Cặp này chỉ thỏa phương trình thứ hai; nghiệm của hệ phải thỏa **cả hai** phương trình."
+        }
+      },
+      "solution": "$3+2=5$ và $3-2=1$: $(3;2)$ thỏa cả hai phương trình."
+    },
+    {
+      "id": "g-giaihpt-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Giải hệ phương trình $\\begin{cases} y=2x-1 \\\\ 3x+y=9 \\end{cases}$. Tìm $y$.",
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "2",
+          "code": "E11",
+          "feedback": "Đó mới là $x$; thế vào $y=2x-1$ để tìm $y$."
+        },
+        {
+          "answer": "11/5",
+          "code": "E02",
+          "feedback": "Sau khi thế, chuyển $-1$ sang vế phải phải đổi dấu thành $+1$."
+        }
+      ],
+      "solution": "Thế: $3x+2x-1=9$, $5x=10$, $x=2$; $y=2 \\cdot 2-1=3$."
+    },
+    {
+      "id": "g-giaihpt-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Giải hệ phương trình $\\begin{cases} 3x+2y=12 \\\\ 3x-5y=-9 \\end{cases}$. Tìm $x$.",
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "26/3",
+          "code": "E02",
+          "feedback": "Khi trừ, $2y-(-5y)=2y+5y$; trừ một số âm là cộng."
+        },
+        {
+          "answer": "26/7",
+          "code": "E02",
+          "feedback": "Vế phải: $12-(-9)=12+9$, trừ một số âm là cộng."
+        },
+        {
+          "answer": "3",
+          "code": "E11",
+          "feedback": "Đó mới là $y$; thế vào một phương trình để tìm $x$."
+        }
+      ],
+      "solution": "Trừ vế theo vế: $7y=21$, $y=3$; $3x+6=12$, $x=2$."
+    },
+    {
+      "id": "g-giaihpt-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Giải hệ phương trình $\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac56 \\\\ \\dfrac1x-\\dfrac1y=\\dfrac16 \\end{cases}$. Tính $x+y$.",
+      "answer": "5",
+      "mistakes": [
+        {
+          "answer": "5/6",
+          "code": "E11",
+          "feedback": "Con mới có $u=\\frac1x$, $v=\\frac1y$; phải đổi lại $x=\\frac1u$, $y=\\frac1v$ rồi mới cộng."
+        },
+        {
+          "answer": "6/5",
+          "code": "E02",
+          "feedback": "$\\frac1x+\\frac1y \\ne \\frac{1}{x+y}$; hãy đặt $u=\\frac1x$, $v=\\frac1y$."
+        }
+      ],
+      "solution": "Đặt $u=\\frac1x$, $v=\\frac1y$ ($x,y \\ne 0$): $u+v=\\frac56$, $u-v=\\frac16$ cho $u=\\frac12$, $v=\\frac13$; $x=2$, $y=3$, $x+y=5$."
+    },
+    {
+      "id": "g-giaihpt-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Kết luận nào đúng về hệ phương trình $\\begin{cases} x-2y=3 \\\\ -2x+4y=1 \\end{cases}$?",
+      "options": [
+        "Hệ có vô số nghiệm",
+        "Hệ vô nghiệm",
+        "Hệ có nghiệm duy nhất",
+        "Hệ có nghiệm $(3;0)$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Hai tỉ số $\\frac{a}{a'}$, $\\frac{b}{b'}$ bằng nhau mới là một nửa; con còn phải so với $\\frac{c}{c'}$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con tính sai dấu tỉ số: $\\frac{-2}{4}$ là số âm, so lại với $\\frac{1}{-2}$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$(3;0)$ chỉ thỏa phương trình thứ nhất; thay vào phương trình thứ hai để kiểm tra."
+        }
+      },
+      "solution": "$\\frac{1}{-2}=\\frac{-2}{4}=-\\frac12 \\ne \\frac{3}{1}$ nên hệ vô nghiệm (nhân PT thứ nhất với $-2$ được $-2x+4y=-6 \\ne 1$)."
+    },
+    {
+      "id": "g-giaihpt-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Giải hệ phương trình $\\begin{cases} \\dfrac{x}{2}+\\dfrac{y}{3}=4 \\\\ \\dfrac{x}{3}-\\dfrac{y}{2}=-\\dfrac53 \\end{cases}$.",
+      "steps": [
+        {
+          "prompt": "Khử mẫu.",
+          "item": {
+            "id": "g-giaihpt-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Nhân hai vế của mỗi phương trình với $6$, hệ trở thành:",
+            "options": [
+              "$3x+2y=4$ và $2x-3y=-\\frac53$",
+              "$2x+3y=24$ và $3x-2y=-10$",
+              "$3x+2y=24$ và $2x-3y=-5$",
+              "$3x+2y=24$ và $2x-3y=-10$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Nhân hai vế: vế phải cũng phải nhân với $6$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "$6 \\cdot \\frac{x}{2}=3x$: lấy $6$ chia cho mẫu, không lấy mẫu làm hệ số."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Vế phải $-\\frac53 \\cdot 6$: con mới bỏ mẫu $3$ mà chưa nhân với $6$."
+              }
+            },
+            "solution": "$6 \\cdot \\frac{x}{2}=3x$, $6 \\cdot \\frac{y}{3}=2y$, $6 \\cdot 4=24$; $6 \\cdot \\frac{x}{3}=2x$, $6 \\cdot \\frac{y}{2}=3y$, $6 \\cdot \\left(-\\frac53\\right)=-10$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "g-giaihpt-x6-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $x$.",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "2/3",
+                "code": "E02",
+                "feedback": "Khi nhân hai vế với $6$, vế phải cũng phải nhân theo."
+              },
+              {
+                "answer": "18/13",
+                "code": "E02",
+                "feedback": "$6 \\cdot \\frac{x}{2}=3x$: lấy $6$ chia cho mẫu, không lấy mẫu làm hệ số."
+              },
+              {
+                "answer": "62/13",
+                "code": "E02",
+                "feedback": "Vế phải $-\\frac53 \\cdot 6$ phải tính đủ, không chỉ bỏ mẫu."
+              }
+            ],
+            "solution": "$\\begin{cases} 3x+2y=24 \\\\ 2x-3y=-10 \\end{cases}$; nhân $3$ và $2$: $9x+6y=72$, $4x-6y=-20$; cộng: $13x=52$, $x=4$."
+          }
+        },
+        {
+          "prompt": "Tìm $y$.",
+          "item": {
+            "id": "g-giaihpt-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $y$.",
+            "answer": "6",
+            "mistakes": [
+              {
+                "answer": "18",
+                "code": "E02",
+                "feedback": "Từ $12+2y=24$, chuyển $12$ sang vế phải phải đổi dấu."
+              },
+              {
+                "answer": "2/3",
+                "code": "E02",
+                "feedback": "Từ $8-3y=-10$, chuyển $8$ sang vế phải phải đổi dấu."
+              }
+            ],
+            "solution": "$3 \\cdot 4+2y=24$, $y=6$."
+          }
+        }
+      ],
+      "solution": "Khử mẫu: $3x+2y=24$, $2x-3y=-10$; được $x=4$, $y=6$. Thử: $2+2=4$ và $\\frac43-3=-\\frac53$."
+    },
+    {
+      "id": "g-giaihpt-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Giải hệ phương trình $\\begin{cases} \\dfrac8x+\\dfrac8y=1 \\\\ \\dfrac{18}{x}+\\dfrac3y=1 \\end{cases}$ (hệ này xuất hiện khi giải bài toán hai tổ làm chung một công việc).",
+      "source": "CĐ lập PT/HPT – §3 Ví dụ 4 (chuyển thể: chỉ giải hệ)",
+      "steps": [
+        {
+          "prompt": "Đặt ẩn phụ và điều kiện.",
+          "item": {
+            "id": "g-giaihpt-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách đặt nào đúng và đầy đủ?",
+            "options": [
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; đặt $u=\\frac1x$, $v=\\frac1y$: $8u+8v=1$ và $18u+3v=1$",
+              "Không cần điều kiện; đặt $u=\\frac1x$, $v=\\frac1y$: $8u+8v=1$ và $18u+3v=1$",
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; quy đồng: $8y+8x=1$ và $18y+3x=1$",
+              "Điều kiện $x \\ne 0$, $y \\ne 0$; đặt $u=\\frac1x$, $v=\\frac1y$: $\\frac{u}{8}+\\frac{v}{8}=1$ và $\\frac{u}{18}+\\frac{v}{3}=1$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Ẩn nằm ở mẫu nên phải có điều kiện $x \\ne 0$, $y \\ne 0$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Nhân hai vế với mẫu chung $xy$ thì vế phải $1$ cũng phải nhân thành $xy$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "$\\frac8x=8 \\cdot \\frac1x=8u$, không phải $\\frac{u}{8}$."
+              }
+            },
+            "solution": "$x \\ne 0$, $y \\ne 0$; $8u+8v=1$ và $18u+3v=1$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "g-giaihpt-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $x$.",
+            "answer": "24",
+            "mistakes": [
+              {
+                "answer": "1/24",
+                "code": "E11",
+                "feedback": "Đó mới là $u$; con chưa đổi lại $x=\\frac1u$."
+              },
+              {
+                "answer": "-24",
+                "code": "E02",
+                "feedback": "Khi trừ hai phương trình, vế phải cũng trừ theo đúng thứ tự như vế trái."
+              }
+            ],
+            "solution": "Nhân PT thứ nhất với $3$, PT thứ hai với $8$: $24u+24v=3$, $144u+24v=8$; trừ: $120u=5$, $u=\\frac1{24}$, $x=24$."
+          }
+        },
+        {
+          "prompt": "Tìm $y$.",
+          "item": {
+            "id": "g-giaihpt-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $y$.",
+            "answer": "12",
+            "mistakes": [
+              {
+                "answer": "1/12",
+                "code": "E11",
+                "feedback": "Đó mới là $v$; con chưa đổi lại $y=\\frac1v$."
+              },
+              {
+                "answer": "6",
+                "code": "E02",
+                "feedback": "Con dùng $u$ sai dấu; kiểm tra lại phép trừ hai phương trình ở bước trước."
+              }
+            ],
+            "solution": "$v=\\frac18-u=\\frac18-\\frac1{24}=\\frac1{12}$, nên $y=12$."
+          }
+        }
+      ],
+      "solution": "$u=\\frac1{24}$, $v=\\frac1{12}$; $x=24$, $y=12$ thỏa điều kiện. Thử: $\\frac8{24}+\\frac8{12}=1$, $\\frac{18}{24}+\\frac3{12}=1$."
+    },
+    {
+      "id": "g-giaihpt-x8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho hệ phương trình $\\begin{cases} 2x+my=7 \\\\ mx-y=4 \\end{cases}$. Giá trị nào của $m$ làm hệ có nghiệm $(x;y)=(3;1)$?",
+      "options": [
+        "$m=1$",
+        "$m=\\frac53$",
+        "Không có giá trị nào của $m$",
+        "$m=1$ hoặc $m=\\frac53$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E11",
+          "feedback": "Con mới thay vào phương trình thứ nhất; $(3;1)$ còn phải thỏa phương trình thứ hai với cùng giá trị $m$."
+        },
+        "1": {
+          "code": "E11",
+          "feedback": "Con mới thay vào phương trình thứ hai; $(3;1)$ còn phải thỏa phương trình thứ nhất với cùng giá trị $m$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Một giá trị $m$ phải làm **cả hai** phương trình đúng cùng lúc, không phải mỗi phương trình một giá trị."
+        }
+      },
+      "solution": "PT thứ nhất: $6+m=7$, $m=1$. PT thứ hai: $3m-1=4$, $m=\\frac53$. Không có $m$ nào thỏa cả hai, nên không có giá trị nào của $m$."
+    }
+  ]
+}

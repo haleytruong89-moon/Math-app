@@ -1,0 +1,1064 @@
+{
+  "id": "g-phantram",
+  "module": "bai-toan-tt",
+  "order": 5,
+  "title": "Giá bán, lãi suất, tăng giảm %",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** (phương pháp thế, cộng đại số). Nhớ: $a\\%$ của $x$ là $\\dfrac{a}{100}x$, ví dụ $15\\%$ của $x$ là $0{,}15x$.",
+    "**Công thức:** tăng $a\\%$: $x \\to x\\left(1+\\dfrac{a}{100}\\right)$; giảm $a\\%$: $x \\to x\\left(1-\\dfrac{a}{100}\\right)$. Giảm $a\\%$ rồi giảm tiếp $b\\%$ **trên giá đã giảm**: nhân lần lượt hai hệ số. Giá có VAT $t\\%$ = giá chưa thuế $\\times (1+t\\%)$. Tiền lãi một năm = tiền gốc $\\times$ lãi suất; lãi nhập gốc sau $2$ năm: $x(1+r)^2$. **Điều kiện dùng:** phần trăm luôn tính trên đại lượng gốc mà đề nói “so với”.",
+    "**Vì sao:** giảm $20\\%$ là bớt $20$ phần trong $100$ phần của giá gốc, còn $80$ phần, tức nhân $0{,}8$. Lần giảm thứ hai tính trên giá **đã giảm** (nhỏ hơn giá gốc) nên tổng mức giảm nhỏ hơn tổng hai phần trăm.",
+    "**Bẫy hay gặp:** giảm $10\\%$ rồi $5\\%$ không phải giảm $15\\%$: $0{,}9 \\cdot 0{,}95 = 0{,}855$, tức giảm $14{,}5\\%$. Biết giá **sau** khi giảm $20\\%$ là $80$ thì giá gốc là $80 : 0{,}8 = 100$, không phải $80 \\cdot 1{,}2 = 96$. “Vượt mức $15\\%$” nghĩa là làm được $1{,}15x$, đừng quên cộng phần kế hoạch $x$.",
+    "**Nhận dạng:** đề có “giảm giá”, “tăng”, “vượt mức”, “lãi suất”, “VAT”, “tỉ lệ trúng tuyển” → lập bảng phần trăm. Một đại lượng chưa biết → phương trình một ẩn; hai đại lượng có tổng cho trước → hệ hai ẩn. **Không** dùng cách này khi ẩn là lãi suất trong lãi nhập gốc (dẫn tới phương trình bậc hai, học sau).",
+    "**Bảng đại lượng** (đại lượng – ẩn – biểu thức): giá niêm yết món 1 – $x$ – sau giảm $a\\%$: $\\left(1-\\frac{a}{100}\\right)x$; kế hoạch tổ I – $x$ – thực tế vượt $a\\%$: $\\left(1+\\frac{a}{100}\\right)x$. **Checklist:** (1) đơn vị thống nhất (nghìn hay triệu đồng); (2) điều kiện: ẩn dương, nhỏ hơn tổng, nguyên nếu đếm người, sản phẩm; (3) quan hệ: phần trăm so với đại lượng nào; (4) thử lại cả hai dữ kiện rồi viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Tháng 3, hai tổ của một xưởng may được $700$ chiếc áo. Tháng 4, tổ I may vượt mức $10\\%$, tổ II may vượt mức $20\\%$ so với tháng 3, nên cả hai tổ may được $810$ chiếc áo. Hỏi tháng 3 mỗi tổ may được bao nhiêu chiếc áo?",
+    "steps": [
+      {
+        "text": "Gọi $x$, $y$ (chiếc áo) là số áo tổ I, tổ II may trong tháng 3. Điều kiện: $x$, $y$ nguyên dương, $x, y < 700$.",
+        "why": "Ẩn là đúng đại lượng đề hỏi; số áo phải là số nguyên dương và nhỏ hơn tổng."
+      },
+      {
+        "text": "Bảng: tháng 3 là $x$, $y$, tổng $700$. Tháng 4: tổ I may $x + 10\\%x = 1{,}1x$, tổ II may $1{,}2y$, tổng $810$. Ta có hệ $\\begin{cases} x+y=700 \\\\ 1{,}1x+1{,}2y=810 \\end{cases}$.",
+        "why": "Vượt mức $10\\%$ nghĩa là làm được phần kế hoạch $x$ cộng thêm $0{,}1x$."
+      },
+      {
+        "text": "Nhân phương trình đầu với $1{,}1$: $1{,}1x+1{,}1y=770$. Trừ vế theo vế: $0{,}1y=40$, nên $y=400$ và $x=700-400=300$.",
+        "why": "Thử lại: $1{,}1 \\cdot 300 + 1{,}2 \\cdot 400 = 330+480=810$, đúng."
+      },
+      {
+        "text": "Kết luận: tháng 3 tổ I may được $300$ chiếc áo, tổ II may được $400$ chiếc áo.",
+        "why": "Cả hai giá trị nguyên dương, nhỏ hơn $700$, thỏa điều kiện."
+      }
+    ],
+    "selfExplain": "Vì sao tháng 4 tổ I may $1{,}1x$ chứ không phải $0{,}1x$? Nếu viết $0{,}1x+0{,}2y=810$ thì đã hiểu sai điều gì?"
+  },
+  "faded": {
+    "problem": "Tổng giá niêm yết của một nồi cơm điện và một ấm siêu tốc là $1200$ nghìn đồng. Dịp khuyến mãi, nồi cơm điện giảm $15\\%$, ấm siêu tốc giảm $25\\%$ so với giá niêm yết, nên mua cả hai chỉ phải trả $980$ nghìn đồng. Tính giá niêm yết của mỗi món.",
+    "steps": [
+      {
+        "text": "Gọi $x$, $y$ (nghìn đồng) là giá niêm yết của nồi cơm điện và ấm siêu tốc. Điều kiện: $0 < x < 1200$, $0 < y < 1200$."
+      },
+      {
+        "prompt": "Viết giá sau khi giảm.",
+        "item": {
+          "id": "g-phantram-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Sau khi giảm $15\\%$, giá nồi cơm điện còn:",
+          "options": [
+            "$0{,}15x$",
+            "$x-15$",
+            "$0{,}85x$",
+            "$1{,}15x$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Con mới tính **số tiền được giảm**; giá còn lại là $x$ trừ đi phần đó."
+            },
+            "1": {
+              "code": "E04",
+              "feedback": "Giảm $15\\%$ là bớt $15$ phần trăm của $x$, không phải bớt $15$ nghìn đồng."
+            },
+            "3": {
+              "code": "E07",
+              "feedback": "Giảm giá thì giá phải nhỏ hơn $x$; con đang tính tăng $15\\%$."
+            }
+          },
+          "solution": "$x - 15\\%x = (1-0{,}15)x = 0{,}85x$."
+        }
+      },
+      {
+        "prompt": "Lập hệ phương trình.",
+        "item": {
+          "id": "g-phantram-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Hệ phương trình đúng là:",
+          "options": [
+            "$\\begin{cases} x+y=1200 \\\\ 0{,}85x+0{,}75y=980 \\end{cases}$",
+            "$\\begin{cases} x+y=980 \\\\ 0{,}85x+0{,}75y=1200 \\end{cases}$",
+            "$\\begin{cases} x+y=1200 \\\\ 0{,}15x+0{,}25y=980 \\end{cases}$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E07",
+              "feedback": "Con đảo hai tổng: $1200$ là tổng giá niêm yết, $980$ là số tiền thực trả."
+            },
+            "2": {
+              "code": "E07",
+              "feedback": "$0{,}15x+0{,}25y$ là số tiền được giảm, không phải số tiền phải trả."
+            }
+          },
+          "solution": "Tổng giá niêm yết: $x+y=1200$. Tiền thực trả: $0{,}85x+0{,}75y=980$."
+        }
+      },
+      {
+        "text": "Nhân phương trình đầu với $0{,}75$: $0{,}75x+0{,}75y=900$. Trừ vế theo vế: $0{,}1x=80$."
+      },
+      {
+        "prompt": "Tìm nghiệm.",
+        "item": {
+          "id": "g-phantram-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Từ $0{,}1x=80$, giá niêm yết của nồi cơm điện $x$ là bao nhiêu nghìn đồng?",
+          "answer": "800",
+          "unit": "nghìn đồng",
+          "mistakes": [
+            {
+              "answer": "8",
+              "code": "E01",
+              "feedback": "Chia cho $0{,}1$ là nhân với $10$, không phải chia cho $10$."
+            }
+          ],
+          "solution": "$x = 80 : 0{,}1 = 800$, suy ra $y = 1200 - 800 = 400$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "g-phantram-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $x=800$.",
+            "Kết luận: giá niêm yết của nồi cơm điện là $800$ nghìn đồng, của ấm siêu tốc là $400$ nghìn đồng.",
+            "Kết luận: nồi cơm điện $680$ nghìn đồng, ấm siêu tốc $300$ nghìn đồng."
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Thiếu kết luận đầy đủ: cần trả lời giá của cả hai món, kèm đơn vị."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "Đó là giá **sau** khi giảm; đề hỏi giá niêm yết."
+            }
+          },
+          "solution": "$y = 400$. Thử lại: $0{,}85 \\cdot 800 + 0{,}75 \\cdot 400 = 680 + 300 = 980$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-phantram-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một chiếc áo khoác có giá niêm yết $250$ nghìn đồng, cửa hàng giảm giá $20\\%$. Mua chiếc áo này phải trả bao nhiêu nghìn đồng?",
+      "hints": [
+        "Cần số tiền **phải trả** sau khi giảm, không phải số tiền được giảm.",
+        "Giảm $20\\%$ thì giá còn lại bằng bao nhiêu phần trăm giá niêm yết?",
+        "Nhân giá niêm yết với $(1-0{,}2)$."
+      ],
+      "answer": "200",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "50",
+          "code": "E11",
+          "feedback": "Đó mới là số tiền được giảm; con cần trừ nó khỏi giá niêm yết."
+        },
+        {
+          "answer": "230",
+          "code": "E04",
+          "feedback": "Giảm $20\\%$ là bớt $20\\%$ của giá niêm yết, không phải bớt $20$ nghìn đồng."
+        }
+      ],
+      "solution": "Phải trả: $250 \\cdot (1-0{,}2) = 250 \\cdot 0{,}8 = 200$ (nghìn đồng)."
+    },
+    {
+      "id": "g-phantram-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một đôi giày có giá niêm yết $800$ nghìn đồng được giảm $10\\%$. Khách có thẻ thành viên được giảm thêm $5\\%$ **trên giá đã giảm**. Khách có thẻ phải trả bao nhiêu nghìn đồng?",
+      "hints": [
+        "Có hai lần giảm nối tiếp; cần số tiền cuối cùng phải trả.",
+        "Lần giảm thứ hai tính trên giá nào: giá niêm yết hay giá đã giảm?",
+        "Nhân $800$ lần lượt với $0{,}9$ rồi với $0{,}95$."
+      ],
+      "answer": "684",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "680",
+          "code": "E04",
+          "feedback": "Không được cộng $10\\% + 5\\%$: lần giảm thứ hai tính trên giá đã giảm, nên nhân lần lượt hai hệ số."
+        },
+        {
+          "answer": "720",
+          "code": "E11",
+          "feedback": "Con mới tính xong lần giảm thứ nhất; còn phải giảm thêm $5\\%$ trên giá đó."
+        }
+      ],
+      "solution": "$800 \\cdot 0{,}9 = 720$; $720 \\cdot 0{,}95 = 684$ (nghìn đồng)."
+    },
+    {
+      "id": "g-phantram-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Tháng đầu hai tổ làm được $800$ sản phẩm. Tháng sau tổ I vượt mức $15\\%$, tổ II vượt mức $20\\%$ so với tháng đầu, nên cả hai tổ làm được $945$ sản phẩm. Hỏi tháng đầu mỗi tổ làm được bao nhiêu sản phẩm?” Cách làm phù hợp là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi số sản phẩm tháng đầu của từng tổ.",
+        "Các dữ kiện là tổng sản phẩm và phần trăm vượt mức. Đó là dạng nào?",
+        "Chọn cách có hai ẩn là số sản phẩm tháng đầu và hệ số $1+a\\%$."
+      ],
+      "options": [
+        "Gọi năng suất mỗi tổ là $\\frac1x$, $\\frac1y$ rồi lập hệ theo phần việc làm được trong một ngày.",
+        "Gọi số sản phẩm tháng đầu của tổ I, tổ II là $x$, $y$; lập hệ theo tổng tháng đầu và tổng tháng sau (nhân $x$ với $1{,}15$, $y$ với $1{,}2$).",
+        "Lập bảng quãng đường – vận tốc – thời gian rồi dùng $s = vt$.",
+        "Viết số cần tìm dưới dạng $\\overline{ab}=10a+b$ rồi lập hệ theo các chữ số."
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đây không phải bài làm chung – làm riêng: đề không cho thời gian hoàn thành công việc."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề không có chuyển động; các con số là số sản phẩm và phần trăm vượt mức."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đề không hỏi về chữ số của một số; đây là bài tăng phần trăm so với tháng đầu."
+        }
+      },
+      "solution": "Có “vượt mức $15\\%$, $20\\%$ so với tháng đầu” và hai tổng → bài phần trăm: $\\begin{cases} x+y=800 \\\\ 1{,}15x+1{,}2y=945 \\end{cases}$."
+    },
+    {
+      "id": "g-phantram-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một chiếc nồi chiên không dầu có giá bán $1320$ nghìn đồng, **đã gồm** thuế VAT $10\\%$. Giá của chiếc nồi khi chưa tính thuế VAT là bao nhiêu nghìn đồng?",
+      "hints": [
+        "Cần giá **chưa** có thuế VAT.",
+        "Gọi giá chưa thuế là $x$. Giá đã gồm thuế $10\\%$ viết theo $x$ thế nào?",
+        "Lập phương trình $1{,}1x = 1320$ rồi giải."
+      ],
+      "answer": "1200",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "1188",
+          "code": "E07",
+          "feedback": "Thuế $10\\%$ tính trên giá **chưa thuế**, không phải trên giá đã gồm thuế; hãy gọi giá chưa thuế là $x$ rồi lập phương trình."
+        },
+        {
+          "answer": "1452",
+          "code": "E07",
+          "feedback": "Giá $1320$ nghìn đồng đã gồm thuế rồi; con lại cộng thêm thuế lần nữa."
+        }
+      ],
+      "solution": "Gọi giá chưa thuế là $x$: $x + 10\\%x = 1{,}1x = 1320$, nên $x = 1320 : 1{,}1 = 1200$ (nghìn đồng)."
+    },
+    {
+      "id": "g-phantram-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Bác An vay ngân hàng một số tiền với lãi suất $10\\%$ một năm. Hết năm thứ nhất bác chưa trả nên tiền lãi được cộng vào tiền vay để tính lãi năm thứ hai (lãi suất không đổi). Sau $2$ năm bác phải trả tất cả $72{,}6$ triệu đồng. Hỏi ban đầu bác An vay bao nhiêu triệu đồng?",
+      "source": "68 đề – Đề 18, Bài 3.1 (chuyển thể: vay thay vì gửi, đổi số liệu)",
+      "hints": [
+        "Cần số tiền vay ban đầu, gọi là $x$ triệu đồng.",
+        "Sau mỗi năm, số tiền nợ được nhân với hệ số nào?",
+        "Sau $2$ năm nợ là $x \\cdot 1{,}1 \\cdot 1{,}1$; cho bằng $72{,}6$ rồi giải."
+      ],
+      "answer": "60",
+      "unit": "triệu đồng",
+      "mistakes": [
+        {
+          "answer": "66",
+          "code": "E11",
+          "feedback": "Con mới lùi lại một năm; số tiền vay ban đầu còn phải chia thêm cho $1{,}1$ một lần nữa."
+        },
+        {
+          "answer": "60,5",
+          "code": "E04",
+          "feedback": "Lãi năm thứ hai tính trên cả gốc lẫn lãi năm đầu, nên sau $2$ năm số nợ là $x \\cdot 1{,}1 \\cdot 1{,}1$, không phải $x(1+2 \\cdot 0{,}1)$."
+        }
+      ],
+      "solution": "Sau $2$ năm: $x \\cdot 1{,}1^2 = 1{,}21x = 72{,}6$, nên $x = 72{,}6 : 1{,}21 = 60$ (triệu đồng)."
+    },
+    {
+      "id": "g-phantram-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cô Mai chia $500$ triệu đồng thành hai khoản đầu tư. Khoản A lãi $6\\%$ một năm, khoản B lãi $8\\%$ một năm. Sau một năm, tổng tiền lãi của hai khoản là $34$ triệu đồng. Tính số tiền cô Mai đầu tư vào mỗi khoản.",
+      "source": "68 đề – Đề 15, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "hints": [
+        "Đề hỏi số tiền đầu tư vào khoản A và khoản B.",
+        "Hai dữ kiện: tổng tiền đầu tư và tổng tiền lãi → hệ hai ẩn.",
+        "Tiền lãi khoản A là $0{,}06x$; cộng lãi hai khoản bằng tổng lãi."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-phantram-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
+            "options": [
+              "$x$, $y$ (triệu đồng) là tiền lãi của khoản A, B; $x+y=500$.",
+              "$x$, $y$ (triệu đồng) là số tiền đầu tư vào khoản A, B; $0<x<500$, $0<y<500$.",
+              "$x$, $y$ (triệu đồng) là số tiền đầu tư vào khoản A, B; $x>500$, $y>500$."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Ẩn phải là đại lượng đề hỏi: số tiền **đầu tư**, không phải tiền lãi."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Mỗi khoản là một phần của $500$ triệu nên phải nhỏ hơn $500$."
+              }
+            },
+            "solution": "Ẩn là số tiền đầu tư vào mỗi khoản; mỗi khoản dương và nhỏ hơn tổng $500$ triệu."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=500 \\\\ 6x+8y=34 \\end{cases}$",
+              "$\\begin{cases} x+y=500 \\\\ 1{,}06x+1{,}08y=34 \\end{cases}$",
+              "$\\begin{cases} x+y=34 \\\\ 0{,}06x+0{,}08y=500 \\end{cases}$",
+              "$\\begin{cases} x+y=500 \\\\ 0{,}06x+0{,}08y=34 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Lãi suất phải đổi ra số thập phân: $6\\% = 0{,}06$."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "$1{,}06x$ là cả gốc lẫn lãi; tổng $34$ triệu chỉ là tiền lãi."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Con đảo hai tổng: $500$ là tổng tiền đầu tư, $34$ là tổng tiền lãi."
+              }
+            },
+            "solution": "Tổng tiền: $x+y=500$; tổng lãi: $0{,}06x+0{,}08y=34$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-phantram-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số tiền đầu tư vào khoản A ($x$) là bao nhiêu triệu đồng?",
+            "answer": "300",
+            "unit": "triệu đồng",
+            "mistakes": [
+              {
+                "answer": "200",
+                "code": "E10",
+                "feedback": "Đó là số tiền của khoản B; đề đang hỏi khoản A."
+              },
+              {
+                "answer": "480",
+                "code": "E01",
+                "feedback": "Kiểm tra lại phép tính: $0{,}08-0{,}06=0{,}02$, và chia cho $0{,}02$ là nhân với $50$."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}06$: $0{,}06x+0{,}06y=30$. Trừ: $0{,}02y=4$, $y=200$, $x=300$."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} x+y=500 \\\\ 0{,}06x+0{,}08y=34 \\end{cases}$ cho $0{,}02y=4$, $y=200$, $x=300$. Khoản A $300$ triệu đồng, khoản B $200$ triệu đồng (thử lại: $18+16=34$)."
+    },
+    {
+      "id": "g-phantram-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Tổng giá niêm yết của một bàn là và một quạt điện là $900$ nghìn đồng. Nhờ khuyến mãi, bàn là được giảm $10\\%$, quạt điện được giảm $20\\%$ so với giá niêm yết, nên người mua được giảm tổng cộng $130$ nghìn đồng. Hỏi quạt điện được giảm bao nhiêu nghìn đồng?",
+      "source": "68 đề – Đề 20, Bài 3.2 (chuyển thể: đổi số liệu)",
+      "hints": [
+        "Đề hỏi **số tiền được giảm** của quạt điện, không phải giá niêm yết.",
+        "$130$ nghìn đồng là tổng tiền được giảm. Viết nó theo giá niêm yết $x$, $y$.",
+        "Tiền giảm của bàn là là $0{,}1x$. Tìm $y$ từ hệ, rồi lấy $20\\%$ của $y$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (nghìn đồng) là giá niêm yết của bàn là và quạt điện ($0<x,y<900$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=900 \\\\ 0{,}9x+0{,}8y=130 \\end{cases}$",
+              "$\\begin{cases} x+y=130 \\\\ 0{,}1x+0{,}2y=900 \\end{cases}$",
+              "$\\begin{cases} x+y=900 \\\\ 0{,}1x+0{,}2y=770 \\end{cases}$",
+              "$\\begin{cases} x+y=900 \\\\ 0{,}1x+0{,}2y=130 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "$0{,}9x+0{,}8y$ là số tiền phải trả; $130$ nghìn đồng là số tiền **được giảm**."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Con đảo hai tổng: $900$ là tổng giá niêm yết, $130$ là tổng tiền được giảm."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Vế trái $0{,}1x+0{,}2y$ là tiền được giảm, còn $770$ là tiền phải trả; hai vế không cùng đại lượng."
+              }
+            },
+            "solution": "Tổng giá niêm yết: $x+y=900$; tổng tiền được giảm: $0{,}1x+0{,}2y=130$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-phantram-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá niêm yết của quạt điện ($y$) là bao nhiêu nghìn đồng?",
+            "answer": "400",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "500",
+                "code": "E10",
+                "feedback": "Đó là giá niêm yết của bàn là; đề đang hỏi quạt điện."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}1$: $0{,}1x+0{,}1y=90$. Trừ: $0{,}1y=40$, $y=400$."
+          }
+        },
+        {
+          "prompt": "Trả lời câu hỏi của đề.",
+          "item": {
+            "id": "g-phantram-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Quạt điện được giảm bao nhiêu nghìn đồng?",
+            "answer": "80",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "400",
+                "code": "E11",
+                "feedback": "Đó là giá niêm yết của quạt; đề hỏi số tiền được giảm."
+              },
+              {
+                "answer": "320",
+                "code": "E07",
+                "feedback": "Đó là giá quạt sau khi giảm; số tiền được giảm là $20\\%$ của giá niêm yết."
+              }
+            ],
+            "solution": "Quạt được giảm $20\\% \\cdot 400 = 80$ (nghìn đồng)."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} x+y=900 \\\\ 0{,}1x+0{,}2y=130 \\end{cases}$ cho $0{,}1y=40$, $y=400$, $x=500$. Quạt được giảm $0{,}2 \\cdot 400 = 80$ nghìn đồng, bàn là được giảm $50$ nghìn đồng (thử lại: $50+80=130$)."
+    },
+    {
+      "id": "g-phantram-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Trong kì thi vào lớp 10, hai trường A và B có tổng cộng $420$ học sinh dự thi và $300$ học sinh trúng tuyển. Tỉ lệ trúng tuyển của trường A là $80\\%$, của trường B là $60\\%$ (so với số học sinh dự thi của mỗi trường). Hỏi mỗi trường có bao nhiêu học sinh dự thi?",
+      "source": "68 đề – Đề 11, Bài 3.2 (chuyển thể: đổi số liệu)",
+      "hints": [
+        "Đề hỏi số học sinh **dự thi** của mỗi trường.",
+        "Tỉ lệ trúng tuyển tính trên số dự thi. Số trúng tuyển của trường A viết theo ẩn thế nào?",
+        "Lập hệ theo tổng dự thi và tổng trúng tuyển; trúng tuyển trường A là $0{,}8x$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-phantram-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
+            "options": [
+              "$x$, $y$ là số học sinh dự thi của trường A, B; $x$, $y$ nguyên dương, $x, y < 420$.",
+              "$x$, $y$ là số học sinh trúng tuyển của trường A, B; $x$, $y$ nguyên dương, $x, y < 300$.",
+              "$x$, $y$ là số học sinh dự thi của trường A, B; $x$, $y > 0$ (có thể không nguyên)."
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Đề hỏi số học sinh **dự thi**; ẩn nên là đúng đại lượng đề hỏi."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Số học sinh phải là số nguyên dương."
+              }
+            },
+            "solution": "Ẩn là số học sinh dự thi mỗi trường: nguyên dương, nhỏ hơn tổng $420$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=420 \\\\ 80x+60y=300 \\end{cases}$",
+              "$\\begin{cases} x+y=300 \\\\ 0{,}8x+0{,}6y=420 \\end{cases}$",
+              "$\\begin{cases} x+y=420 \\\\ 0{,}8x+0{,}6y=300 \\end{cases}$",
+              "$\\begin{cases} x+y=420 \\\\ 0{,}2x+0{,}4y=300 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Phải đổi phần trăm ra số thập phân: $80\\% = 0{,}8$."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Con đảo hai tổng: $420$ là số dự thi, $300$ là số trúng tuyển."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "$0{,}2x$ là số học sinh **không** trúng tuyển của trường A, còn $300$ là số trúng tuyển."
+              }
+            },
+            "solution": "Tổng dự thi: $x+y=420$; tổng trúng tuyển: $0{,}8x+0{,}6y=300$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-phantram-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số học sinh dự thi của trường A ($x$) là:",
+            "answer": "240",
+            "unit": "học sinh",
+            "mistakes": [
+              {
+                "answer": "180",
+                "code": "E10",
+                "feedback": "Đó là số học sinh dự thi của trường B; đề đang hỏi trường A."
+              },
+              {
+                "answer": "192",
+                "code": "E11",
+                "feedback": "Đó là số học sinh trúng tuyển của trường A; đề hỏi số dự thi."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}6$: $0{,}6x+0{,}6y=252$. Trừ: $0{,}2x=48$, $x=240$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "g-phantram-p8-s4",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng và đầy đủ?",
+            "options": [
+              "Kết luận: $x=240$.",
+              "Kết luận: trường A có $192$ học sinh trúng tuyển, trường B có $108$ học sinh trúng tuyển.",
+              "Kết luận: trường A có $240$ học sinh dự thi, trường B có $180$ học sinh dự thi."
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Thiếu kết luận đầy đủ: cần trả lời cho cả hai trường bằng lời."
+              },
+              "1": {
+                "code": "E11",
+                "feedback": "Đề hỏi số học sinh dự thi, không phải số trúng tuyển."
+              }
+            },
+            "solution": "$y = 420 - 240 = 180$. Thử lại: $0{,}8 \\cdot 240 + 0{,}6 \\cdot 180 = 192 + 108 = 300$."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} x+y=420 \\\\ 0{,}8x+0{,}6y=300 \\end{cases}$ cho $0{,}2x=48$, $x=240$, $y=180$. Thử lại: $192+108=300$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-phantram-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một cửa hàng nhập một chiếc bình giữ nhiệt với giá $150$ nghìn đồng và bán ra với giá $200$ nghìn đồng. Tiền lãi bằng bao nhiêu phần trăm **giá nhập**? (làm tròn đến hàng phần mười)",
+      "answer": "33,3",
+      "unit": "%",
+      "mistakes": [
+        {
+          "answer": "25",
+          "code": "E07",
+          "feedback": "Phần trăm phải tính so với giá nhập, không phải giá bán."
+        },
+        {
+          "answer": "33",
+          "code": "E15",
+          "feedback": "Đề yêu cầu làm tròn đến hàng phần mười, tức giữ một chữ số sau dấu phẩy."
+        },
+        {
+          "answer": "50",
+          "code": "E11",
+          "feedback": "Đó là tiền lãi tính bằng nghìn đồng; còn phải chia cho giá nhập và đổi ra phần trăm."
+        }
+      ],
+      "solution": "Tiền lãi: $200-150=50$ (nghìn đồng). Tỉ lệ: $\\dfrac{50}{150} \\cdot 100\\% \\approx 33{,}3\\%$."
+    },
+    {
+      "id": "g-phantram-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Chị Hoa gửi tiết kiệm $200$ triệu đồng, lãi suất $6\\%$ một năm. Hết năm thứ nhất chị không rút, tiền lãi được cộng vào gốc để tính lãi năm thứ hai (lãi suất không đổi). Sau $2$ năm chị nhận được tất cả bao nhiêu triệu đồng (cả gốc lẫn lãi)?",
+      "answer": "224,72",
+      "unit": "triệu đồng",
+      "mistakes": [
+        {
+          "answer": "224",
+          "code": "E04",
+          "feedback": "Năm thứ hai lãi tính trên cả gốc lẫn lãi năm đầu, không chỉ trên số tiền gửi ban đầu."
+        },
+        {
+          "answer": "212",
+          "code": "E11",
+          "feedback": "Con mới tính xong năm thứ nhất; còn năm thứ hai."
+        },
+        {
+          "answer": "24,72",
+          "code": "E11",
+          "feedback": "Đó mới là tiền lãi; đề hỏi cả gốc lẫn lãi."
+        }
+      ],
+      "solution": "Sau năm thứ nhất: $200 \\cdot 1{,}06 = 212$; sau năm thứ hai: $212 \\cdot 1{,}06 = 224{,}72$ (triệu đồng)."
+    },
+    {
+      "id": "g-phantram-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Sau khi được giảm $25\\%$, một chiếc cặp sách có giá $360$ nghìn đồng. Giá ban đầu của chiếc cặp là bao nhiêu nghìn đồng?",
+      "answer": "480",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "450",
+          "code": "E07",
+          "feedback": "Phần giảm $25\\%$ tính trên giá **ban đầu**, không phải trên giá đã giảm; gọi giá ban đầu là $x$ rồi lập phương trình."
+        },
+        {
+          "answer": "1440",
+          "code": "E07",
+          "feedback": "Sau khi giảm $25\\%$, giá còn lại là $75\\%$ giá ban đầu; con đã chia cho phần bị giảm."
+        }
+      ],
+      "solution": "$x(1-0{,}25)=360$, tức $0{,}75x=360$, nên $x=480$ (nghìn đồng)."
+    },
+    {
+      "id": "g-phantram-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một cửa hàng giảm giá ti vi $20\\%$. Cô Tâm có thẻ khách hàng thân thiết nên được giảm thêm $10\\%$ **trên giá đã giảm** và chỉ phải trả $25{,}2$ triệu đồng. Giá ban đầu của chiếc ti vi là bao nhiêu triệu đồng?",
+      "source": "68 đề – Đề 16, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "answer": "35",
+      "unit": "triệu đồng",
+      "mistakes": [
+        {
+          "answer": "36",
+          "code": "E04",
+          "feedback": "Hai lần giảm không được cộng thành $30\\%$: lần sau tính trên giá đã giảm."
+        },
+        {
+          "answer": "28",
+          "code": "E11",
+          "feedback": "Con mới lùi lại lần giảm $10\\%$; còn phải lùi tiếp lần giảm $20\\%$."
+        },
+        {
+          "answer": "31,5",
+          "code": "E11",
+          "feedback": "Con mới lùi lại lần giảm $20\\%$; lần giảm thêm $10\\%$ cũng phải lùi lại."
+        }
+      ],
+      "solution": "$x \\cdot 0{,}8 \\cdot 0{,}9 = 0{,}72x = 25{,}2$, nên $x = 35$ (triệu đồng)."
+    },
+    {
+      "id": "g-phantram-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Bác Tuấn gửi tiết kiệm kì hạn một năm: $200$ triệu đồng ở ngân hàng A và $300$ triệu đồng ở ngân hàng B. Lãi suất một năm của ngân hàng B nhiều hơn ngân hàng A $1\\%$ (ví dụ A là $5\\%$ thì B là $6\\%$). Sau một năm bác nhận được tổng tiền lãi $33$ triệu đồng. Tìm lãi suất một năm của ngân hàng A.",
+      "source": "CĐ lập PT/HPT – §5 Câu 17 (chuyển thể)",
+      "steps": [
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-phantram-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi lãi suất của ngân hàng A là $x\\%$ một năm ($x>0$). Tiền lãi tính bằng triệu đồng. Phương trình đúng là:",
+            "options": [
+              "$2x+3(x+1)=33$",
+              "$200x+300(x+1)=33$",
+              "$2x+3(x-1)=33$",
+              "$2x+3x=33$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Lãi của $200$ triệu với lãi suất $x\\%$ là $\\frac{x}{100} \\cdot 200$ triệu đồng; con quên chia cho $100$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Ngân hàng B có lãi suất **cao hơn** A, nên lãi suất B là $(x+1)\\%$."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Con quên lãi suất ngân hàng B cao hơn A là $1\\%$."
+              }
+            },
+            "solution": "Lãi ở A: $\\frac{x}{100} \\cdot 200 = 2x$; lãi ở B: $\\frac{x+1}{100} \\cdot 300 = 3(x+1)$; tổng $33$."
+          }
+        },
+        {
+          "prompt": "Giải phương trình.",
+          "item": {
+            "id": "g-phantram-x5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Lãi suất của ngân hàng A là bao nhiêu phần trăm một năm?",
+            "answer": "6",
+            "unit": "%",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E10",
+                "feedback": "Đó là lãi suất của ngân hàng B; đề hỏi ngân hàng A."
+              },
+              {
+                "answer": "6,4",
+                "code": "E02",
+                "feedback": "Phá ngoặc sai: $3(x+1) = 3x+3$, không phải $3x+1$.",
+                "review": "g-giaihpt"
+              }
+            ],
+            "solution": "$2x+3x+3=33$, $5x=30$, $x=6$."
+          }
+        }
+      ],
+      "solution": "$2x+3(x+1)=33$, $5x=30$, $x=6$. Ngân hàng A $6\\%$, ngân hàng B $7\\%$ một năm (thử lại: $12+21=33$)."
+    },
+    {
+      "id": "g-phantram-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Theo kế hoạch, hai tổ phải làm $800$ sản phẩm trong một thời gian quy định. Nhờ cải tiến kĩ thuật, tổ I vượt mức $12\\%$, tổ II vượt mức $15\\%$ kế hoạch của tổ mình, nên trong thời gian quy định hai tổ làm **vượt kế hoạch** $105$ sản phẩm. Hỏi theo kế hoạch mỗi tổ phải làm bao nhiêu sản phẩm?",
+      "source": "68 đề – Đề 26, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-phantram-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
+            "options": [
+              "$x$, $y$ là số sản phẩm thực tế tổ I, tổ II làm được; $x+y=905$.",
+              "$x$, $y$ là số sản phẩm kế hoạch của tổ I, tổ II; $x$, $y$ nguyên dương, $x, y < 800$.",
+              "$x$, $y$ là số sản phẩm kế hoạch của tổ I, tổ II; $x$, $y$ nguyên dương, $x, y < 105$."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Đề hỏi số sản phẩm theo **kế hoạch**; ẩn nên là đúng đại lượng đề hỏi."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "$105$ chỉ là phần vượt; kế hoạch của mỗi tổ chỉ cần nhỏ hơn tổng kế hoạch."
+              }
+            },
+            "solution": "Ẩn là số sản phẩm kế hoạch của mỗi tổ: nguyên dương, nhỏ hơn tổng $800$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=800 \\\\ 1{,}12x+1{,}15y=105 \\end{cases}$",
+              "$\\begin{cases} x+y=905 \\\\ 0{,}12x+0{,}15y=105 \\end{cases}$",
+              "$\\begin{cases} x+y=800 \\\\ 12x+15y=105 \\end{cases}$",
+              "$\\begin{cases} x+y=800 \\\\ 0{,}12x+0{,}15y=105 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "$1{,}12x+1{,}15y$ là tổng thực tế; $105$ chỉ là phần **vượt** kế hoạch."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Tổng kế hoạch là $800$; $905$ là tổng thực tế."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Phải đổi phần trăm ra số thập phân: $12\\% = 0{,}12$."
+              }
+            },
+            "solution": "Tổng kế hoạch: $x+y=800$; phần vượt: $0{,}12x+0{,}15y=105$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-phantram-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số sản phẩm kế hoạch của tổ I ($x$) là:",
+            "answer": "500",
+            "unit": "sản phẩm",
+            "mistakes": [
+              {
+                "answer": "300",
+                "code": "E10",
+                "feedback": "Đó là kế hoạch của tổ II; đề đang hỏi tổ I."
+              },
+              {
+                "answer": "560",
+                "code": "E11",
+                "feedback": "Đó là số sản phẩm thực tế tổ I làm được; đề hỏi kế hoạch."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}12$: $0{,}12x+0{,}12y=96$. Trừ: $0{,}03y=9$, $y=300$, $x=500$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "g-phantram-x6-s4",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng và đầy đủ?",
+            "options": [
+              "Kết luận: theo kế hoạch tổ I làm $560$ sản phẩm, tổ II làm $345$ sản phẩm.",
+              "Kết luận: $x=500$, $y=300$.",
+              "Kết luận: theo kế hoạch tổ I làm $500$ sản phẩm, tổ II làm $300$ sản phẩm."
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó là số sản phẩm thực tế; đề hỏi kế hoạch."
+              },
+              "1": {
+                "code": "E11",
+                "feedback": "Kết luận phải trả lời bằng lời: mỗi tổ làm bao nhiêu sản phẩm theo kế hoạch."
+              }
+            },
+            "solution": "Thử lại: $0{,}12 \\cdot 500 + 0{,}15 \\cdot 300 = 60 + 45 = 105$."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} x+y=800 \\\\ 0{,}12x+0{,}15y=105 \\end{cases}$ cho $0{,}03y=9$, $y=300$, $x=500$. Thử lại: $60+45=105$."
+    },
+    {
+      "id": "g-phantram-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một người mua một ti vi và một tủ lạnh. Nếu chưa tính thuế VAT thì tổng giá hai món là $15$ triệu đồng. Thực tế người đó phải trả $16{,}36$ triệu đồng vì ti vi chịu thuế VAT $10\\%$, tủ lạnh chịu thuế VAT $8\\%$. Hỏi giá mỗi món khi chưa tính thuế VAT là bao nhiêu?",
+      "source": "68 đề – Đề 47, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (triệu đồng) là giá chưa thuế của ti vi và tủ lạnh ($0<x,y<15$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=15 \\\\ 1{,}1x+1{,}08y=16{,}36 \\end{cases}$",
+              "$\\begin{cases} x+y=15 \\\\ 0{,}1x+0{,}08y=16{,}36 \\end{cases}$",
+              "$\\begin{cases} x+y=16{,}36 \\\\ 1{,}1x+1{,}08y=15 \\end{cases}$",
+              "$\\begin{cases} x+y=15 \\\\ 1{,}08x+1{,}1y=16{,}36 \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "$0{,}1x+0{,}08y$ chỉ là tiền thuế; $16{,}36$ triệu là giá đã gồm thuế."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Con đảo hai tổng: $15$ là giá chưa thuế, $16{,}36$ là giá đã gồm thuế."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Con gán nhầm mức thuế: ti vi chịu $10\\%$, tủ lạnh chịu $8\\%$."
+              }
+            },
+            "solution": "Giá chưa thuế: $x+y=15$; giá đã gồm thuế: $1{,}1x+1{,}08y=16{,}36$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-phantram-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá ti vi khi chưa tính thuế ($x$) là bao nhiêu triệu đồng?",
+            "answer": "8",
+            "unit": "triệu đồng",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E10",
+                "feedback": "Đó là giá tủ lạnh; đề đang hỏi ti vi."
+              },
+              {
+                "answer": "8,8",
+                "code": "E11",
+                "feedback": "Đó là giá ti vi đã gồm thuế $10\\%$; đề hỏi giá chưa thuế."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $1{,}08$: $1{,}08x+1{,}08y=16{,}2$. Trừ: $0{,}02x=0{,}16$, $x=8$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "g-phantram-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng và đầy đủ?",
+            "options": [
+              "Kết luận: ti vi $8{,}8$ triệu đồng, tủ lạnh $7{,}56$ triệu đồng.",
+              "Kết luận: ti vi $7$ triệu đồng, tủ lạnh $8$ triệu đồng.",
+              "Kết luận: khi chưa tính thuế, ti vi giá $8$ triệu đồng, tủ lạnh giá $7$ triệu đồng."
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó là giá đã gồm thuế VAT; đề hỏi giá chưa thuế."
+              },
+              "1": {
+                "code": "E10",
+                "feedback": "Con đổi chỗ hai món: $x$ là giá ti vi."
+              }
+            },
+            "solution": "$y = 15 - 8 = 7$. Thử lại: $1{,}1 \\cdot 8 + 1{,}08 \\cdot 7 = 8{,}8 + 7{,}56 = 16{,}36$."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} x+y=15 \\\\ 1{,}1x+1{,}08y=16{,}36 \\end{cases}$ cho $0{,}02x=0{,}16$, $x=8$, $y=7$. Thử lại: $8{,}8+7{,}56=16{,}36$."
+    },
+    {
+      "id": "g-phantram-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một cửa hàng giảm giá $20\\%$ cho mỗi cây bút và $10\\%$ cho mỗi quyển vở so với giá niêm yết. Bạn Nam mua $5$ cây bút và $4$ quyển vở, trả tổng cộng $68$ nghìn đồng. Nếu không được giảm giá, Nam phải trả thêm $12$ nghìn đồng. Tính giá niêm yết của một cây bút và một quyển vở.",
+      "source": "CĐ lập PT/HPT – §5 Câu 20 (chuyển thể)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-phantram-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (nghìn đồng) là giá niêm yết của một cây bút và một quyển vở ($x, y > 0$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} 5x+4y=12 \\\\ 4x+3{,}6y=68 \\end{cases}$",
+              "$\\begin{cases} x+y=80 \\\\ 0{,}8x+0{,}9y=68 \\end{cases}$",
+              "$\\begin{cases} 5x+4y=80 \\\\ x+0{,}4y=68 \\end{cases}$",
+              "$\\begin{cases} 5x+4y=80 \\\\ 4x+3{,}6y=68 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "$12$ nghìn đồng chỉ là phần chênh; tổng giá niêm yết là $68+12$."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Phải nhân giá một món với số lượng: $5$ cây bút, $4$ quyển vở."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "$x+0{,}4y$ là số tiền được giảm; $68$ nghìn đồng là số tiền phải trả."
+              }
+            },
+            "solution": "Giá niêm yết: $5x+4y=68+12=80$; tiền phải trả: $5 \\cdot 0{,}8x + 4 \\cdot 0{,}9y = 4x+3{,}6y=68$."
+          }
+        },
+        {
+          "prompt": "Tìm giá bút.",
+          "item": {
+            "id": "g-phantram-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá niêm yết của một cây bút ($x$) là bao nhiêu nghìn đồng?",
+            "answer": "8",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "10",
+                "code": "E10",
+                "feedback": "Đó là giá một quyển vở; đề đang hỏi cây bút."
+              },
+              {
+                "answer": "6,4",
+                "code": "E11",
+                "feedback": "Đó là giá bút sau khi giảm; đề hỏi giá niêm yết."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}8$: $4x+3{,}2y=64$. Trừ: $0{,}4y=4$, $y=10$; $5x=80-40$, $x=8$."
+          }
+        },
+        {
+          "prompt": "Tìm giá vở.",
+          "item": {
+            "id": "g-phantram-x8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá niêm yết của một quyển vở ($y$) là bao nhiêu nghìn đồng?",
+            "answer": "10",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "9",
+                "code": "E11",
+                "feedback": "Đó là giá vở sau khi giảm $10\\%$; đề hỏi giá niêm yết."
+              },
+              {
+                "answer": "8",
+                "code": "E10",
+                "feedback": "Đó là giá một cây bút; đề đang hỏi quyển vở."
+              }
+            ],
+            "solution": "Từ $0{,}4y=4$ được $y=10$."
+          }
+        }
+      ],
+      "solution": "Hệ $\\begin{cases} 5x+4y=80 \\\\ 4x+3{,}6y=68 \\end{cases}$. Nhân phương trình đầu với $0{,}8$ rồi trừ: $0{,}4y=4$, $y=10$, $x=8$. Thử lại: $4 \\cdot 8 + 3{,}6 \\cdot 10 = 68$."
+    }
+  ]
+}
