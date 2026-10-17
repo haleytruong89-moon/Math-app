@@ -44,7 +44,7 @@
           "id": "g-nangsuat-f1",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Đổi $3$ giờ $36$ phút ra giờ rồi chọn điều kiện đúng của $x$, $y$:",
+          "prompt": "Đổi $3$ giờ $36$ phút ra giờ rồi chọn điều kiện đúng và đầy đủ của $x$, $y$:",
           "options": [
             "$x>3{,}36$ và $y>3{,}36$",
             "$0<x<3{,}6$ và $0<y<3{,}6$",

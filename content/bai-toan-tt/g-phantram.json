@@ -306,7 +306,7 @@
             "id": "g-phantram-p6-s1",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Cách chọn ẩn và điều kiện đúng là:",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
             "options": [
               "$x$, $y$ (triệu đồng) là tiền lãi của khoản A, B; $x+y=500$.",
               "$x$, $y$ (triệu đồng) là số tiền đầu tư vào khoản A, B; $0<x<500$, $0<y<500$.",
@@ -491,7 +491,7 @@
             "id": "g-phantram-p8-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Cách chọn ẩn và điều kiện đúng là:",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
             "options": [
               "$x$, $y$ là số học sinh dự thi của trường A, B; $x$, $y$ nguyên dương, $x, y < 420$.",
               "$x$, $y$ là số học sinh trúng tuyển của trường A, B; $x$, $y$ nguyên dương, $x, y < 300$.",
@@ -701,7 +701,7 @@
       "id": "g-phantram-x5",
       "type": "steps",
       "level": "L2",
-      "prompt": "Bác Tuấn gửi tiết kiệm kì hạn một năm: $200$ triệu đồng ở ngân hàng A và $300$ triệu đồng ở ngân hàng B. Lãi suất của ngân hàng B cao hơn ngân hàng A là $1\\%$ một năm. Sau một năm bác nhận được tổng tiền lãi $33$ triệu đồng. Tìm lãi suất một năm của ngân hàng A.",
+      "prompt": "Bác Tuấn gửi tiết kiệm kì hạn một năm: $200$ triệu đồng ở ngân hàng A và $300$ triệu đồng ở ngân hàng B. Lãi suất một năm của ngân hàng B nhiều hơn ngân hàng A $1\\%$ (ví dụ A là $5\\%$ thì B là $6\\%$). Sau một năm bác nhận được tổng tiền lãi $33$ triệu đồng. Tìm lãi suất một năm của ngân hàng A.",
       "source": "CĐ lập PT/HPT – §5 Câu 17 (chuyển thể)",
       "steps": [
         {
@@ -776,7 +776,7 @@
             "id": "g-phantram-x6-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Cách chọn ẩn và điều kiện đúng là:",
+            "prompt": "Cách chọn ẩn và điều kiện đúng và đầy đủ là:",
             "options": [
               "$x$, $y$ là số sản phẩm thực tế tổ I, tổ II làm được; $x+y=905$.",
               "$x$, $y$ là số sản phẩm kế hoạch của tổ I, tổ II; $x$, $y$ nguyên dương, $x, y < 800$.",

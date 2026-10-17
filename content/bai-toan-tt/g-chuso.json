@@ -44,7 +44,7 @@
           "id": "g-chuso-f1",
           "type": "mcq",
           "level": "L1",
-          "prompt": "Cách chọn ẩn và điều kiện nào đúng?",
+          "prompt": "Cách chọn ẩn và điều kiện nào đúng và đầy đủ?",
           "options": [
             "$a$ là chữ số hàng chục, $b$ là chữ số hàng đơn vị; $a,b\\in\\mathbb N$, $0\\le a\\le 9$, $0\\le b\\le 9$",
             "$a$ là chữ số hàng chục, $b$ là chữ số hàng đơn vị; $a,b\\in\\mathbb N$, $1\\le a\\le 9$, $1\\le b\\le 9$",

@@ -44,7 +44,7 @@
           "id": "g-chuyendong-f1",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+          "prompt": "Cách đặt ẩn và điều kiện nào đúng và đầy đủ?",
           "options": [
             "Gọi thời gian xuôi dòng là $x$, ngược dòng là $y$ (giờ), $x>0$, $y>0$",
             "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>0$, $y>0$",
@@ -392,7 +392,7 @@
             "id": "g-chuyendong-p6-s1",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng và đầy đủ?",
             "options": [
               "Gọi vận tốc dòng nước là $x$ (km/h), $x>0$",
               "Gọi vận tốc ca nô khi nước yên lặng là $x$ (km/h), $x>3$",
@@ -483,7 +483,7 @@
             "id": "g-chuyendong-p7-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng và đầy đủ?",
             "options": [
               "Gọi vận tốc dự định là $x$ (km/h), thời gian dự định là $y$ (giờ); $x>8$, $y>1$",
               "Gọi vận tốc dự định là $x$ (km/h), thời gian dự định là $y$ (giờ); $x>0$, $y>0$",
@@ -764,7 +764,7 @@
             "id": "g-chuyendong-x4-s1",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng và đầy đủ?",
             "options": [
               "Gọi thời gian dự định là $x$ (phút), $x>1$",
               "Gọi thời gian dự định là $x$ (giờ), $x>0$",
@@ -958,7 +958,7 @@
             "id": "g-chuyendong-x7-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng và đầy đủ?",
             "options": [
               "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>y>0$",
               "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>0$, $y>0$",

@@ -28,7 +28,8 @@
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | 🟡 PR mở 15/10 — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
-| Nội dung đợt 4–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 |
+| LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | 🟡 PR mở 17/10 — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
+| Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
 
@@ -41,6 +42,37 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 17/10/2026 — LT19–LT20 + nội dung đợt 4: giải bài toán bằng PT/HPT (nhánh `p1-content-4`)
+
+**Phụ huynh cần làm:** merge PR (không SQL). 5 bài đều **nháp**; mạch G → **gia sư soát trước** (§7 bước 5), rồi phụ huynh nói "duyệt KU …". Sau khi duyệt, g-giaihpt mở ngay (không cần bài trước); 4 bài còn lại mở khi g-giaihpt đạt M3 (hoặc phụ huynh mở tay).
+
+**Quyết định (phụ huynh 17/10, ghi ở `docs/SPEC.md` §0):** LT19 — gia sư đánh giá giải bài toán bằng PT/HPT là chỗ đang hổng, trường đang học Toán 9 chương 1 → mạch G lên **đợt 4**; thêm **g-giaihpt** (giải HPT bậc nhất hai ẩn) và **g-chuso** (chữ số, tìm số) → **50 KU (42 lõi + 8 P2)**; g-chuyendong/g-nangsuat/g-phantram cần g-giaihpt thay cho d-ptbh và chỉ gồm bài lập PT/HPT bậc nhất; bài dẫn tới PT bậc hai gom vào g-honhop (đợt 8, cần d-ptbh); đợt 4–7 cũ thành 5–8, giữ ngày. Thứ tự dạng nào trước do gia sư quyết. LT20 — tài liệu PDF gia sư gửi là nguồn như 68 đề (chuyển thể, ghi `source`, không đưa PDF lên GitHub); Claude viết lời giải từng bước cho bài gia sư giao để con tự kiểm tra (chỉ ghi số câu, không chép đề).
+
+**Đã làm**
+- `CURRICULUM.md`, `curriculum.json`, `SPEC.md` §0, `CONTENT_STANDARD.md` §6, `CLAUDE.md`, test đếm 50 KU.
+- Module mới `bai-toan-tt`; 5 KU draft đủ khung §1. Bài toán có lời văn là câu nhiều bước: chọn ẩn + điều kiện → chọn hệ → từng ẩn → kết luận (app chấm được phần lập hệ). estMinutes 45–50.
+- Nguồn: chuyên đề gia sư ("CĐ lập PT/HPT", §1, §3, §4, §5, §6, §7) và 68 đề (Đề 1, 11, 13, 15, 16, 18, 20, 23, 26, 37, 41, 43, 44, 47, 48, 49 — chỉ Đề 1–56). Soạn mới: L1–L2 phần lớn; L3 soạn mới: g-giaihpt p8, x6, x8; g-nangsuat p8.
+
+**Kiểm tra (§7)**
+| Bước | Kết quả |
+|---|---|
+| 1. `npm test` | 123/123; lint, build; `./e2e/run.sh` (xem PR) |
+| 2. Giải độc lập | 3 agent mới chỉ nhận đề trắng giải **190/190 ô — 190/190 khớp**. Góp ý đã sửa: 10 câu "chọn ẩn và điều kiện" đổi thành "đúng **và đầy đủ**" (phương án thiếu điều kiện không còn cãi được là đúng); g-phantram-x5 nói rõ "nhiều hơn $1\%$ (A $5\%$ thì B $6\%$)" |
+| 3. Tính lại nhiễu | Mỗi KU một script sympy: mọi đáp án, mọi phương án nhiễu (kể cả hệ phương trình trong trắc nghiệm, so từng phương trình với mô hình lỗi) tái tạo đúng lỗi đã ghi — **0 lệch**, chạy lại sau khi sửa: 0 lệch |
+| 4. Soát sư phạm | Phản hồi ≤ 2 câu không lộ đáp số; gợi ý chung → cụ thể; câu tự đứng được; 2 hình SVG (g-chuyendong p5, p8) đúng tỉ lệ |
+| 5. Gia sư | **Cần** — mạch G. Xem: cách ghi điều kiện của ẩn (Q24), mã lỗi E07/E04/E14 ở bước lập hệ |
+
+**Lỗi tìm thấy trong tài liệu nguồn (báo gia sư)**
+- Chuyên đề gia sư: §1 Câu 14 không có đáp số duy nhất (tăng tử 4, giảm mẫu 4 luôn ra nghịch đảo); §1 Ví dụ 9 ra phân số $\frac05$; §1 Câu 6 hỏi "hai số" nhưng đáp án một số; §3 Câu 5 có vô số nghiệm (hai dữ kiện cho cùng một phương trình); §5 Câu 30 đáp án thiếu giá máy sấy (45 nghìn); §5 Câu 8 thiếu tên trường; §5 Câu 22 số liệu khó tin (laptop 100 USD, tai nghe 500 USD).
+- 68 đề: Đề 32 Bài 3.2 "49 giờ 48 phút" gần như chắc là "4 giờ 48 phút".
+
+### Câu hỏi mở mới
+| # | Câu hỏi | Mặc định nếu chưa trả lời |
+|---|---|---|
+| Q24 | Điều kiện của ẩn: app dùng điều kiện đầy đủ (ví dụ thời gian mỗi vòi > thời gian chảy chung, vận tốc riêng > vận tốc dòng nước); ở vài câu "$x>0$, $y>0$" là phương án sai (thiếu). Gia sư có chấp nhận "$x>0$, $y>0$" không? | Giữ điều kiện đầy đủ; câu hỏi ghi "đúng và đầy đủ" |
 
 ---
 
