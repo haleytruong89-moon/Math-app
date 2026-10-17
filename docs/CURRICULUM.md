@@ -7,7 +7,7 @@
 > **12/10/2026 → 31/03/2027**, Track C starts earlier, table data fixed. The machine-readable copy of §2
 > will live in `content/curriculum.json` (S6a); when both exist, the JSON is what the app uses and `npm test` keeps them in sync.
 > Revised 06/10/2026 (LT17–LT18) after indexing 68 practice papers + Hà Nội 2025/2026 structure (`docs/SOURCE_INDEX.md`):
-> 8 rarely-tested KUs moved to **P2**, optimisation merged 5 → 3 KUs, Track C starts week 7. **48 KUs: 40 core + 8 P2.**
+> 8 rarely-tested KUs moved to **P2**, optimisation merged 5 → 3 KUs, Track C starts week 7. **48 KUs: 40 core + 8 P2.** · 17/10/2026 (LT19): Bài toán thực tế bằng PT/HPT kéo lên đợt 4 theo đánh giá của gia sư; thêm g-giaihpt, g-chuso → **50 KUs: 42 core + 8 P2.**
 > Upstream: `deliverables/PROJECT_HOC_TOAN_LOP9_6_THANG_MASTER.md` (master plan, 51 sections, domains A–Q + F0–F3).
 > Teacher assessment: Hằng đẳng thức chưa thuộc (F1.4), thu gọn đa thức chưa tận cùng (F1.1/F1.5/F1.6),
 > nâng cao căn thức chưa làm được (C), hình cần đồng dạng (F3.7/F3.8), trình bày thiếu kết luận.
@@ -56,7 +56,7 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 
 ## 2. Bảng KU đầy đủ
 
-### 2.1 Track A — Lõi đại số (19 KUs)
+### 2.1 Track A — Lõi đại số (21 KUs)
 
 | # | id | module | title | grade | prereq | priority | examWeight | gradable | estMinutes | source | notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -75,10 +75,12 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 | 13 | e-viete | viet | Viète cơ bản: tổng tích & biểu thức đối xứng | 9 | d-ptbh | P0 | 0.5 | full | 45 | master-plan §9 | E1–E5: S, P, x₁²+x₂², lập PT. Numeric answers |
 | 14 | e-vietets | viet | Viète có tham số | 9 | e-viete, d-thamso | P0 | 0.5 | partial | 65 | master-plan §9 | ★GATE 8.5 — E6–E7: ĐK nghiệm + biểu thức đạt max/min |
 | 15 | e-giaodiem | viet | Giao điểm parabol – đường thẳng & Viète | 9 | e-viete | P2 | 0.5 | partial | 55 | master-plan §9–10 | E9+F5–F8: hoành độ giao điểm, tham số — **P2 (LT17): hầu như không ra trong 68 đề; học khi dư thời gian** |
-| 16 | g-chuyendong | bai-toan-tt | Chuyển động & dòng nước | 9 | d-ptbh | P0 | 0.5 | partial | 55 | master-plan §11 | G4+G5: s=vt, xuôi/ngược dòng. Numeric answer nhưng setup khó grade |
-| 17 | g-nangsuat | bai-toan-tt | Năng suất, làm chung, vòi nước | 9 | d-ptbh | P0 | 0.5 | partial | 55 | master-plan §11 | G6+G7: năng suất=1/t. Scaffolded: chọn bảng→lập PT→giải→kiểm tra |
-| 18 | g-phantram | bai-toan-tt | Giá bán, lãi suất, tăng giảm % | 9 | d-ptbh | P1 | 0.5 | full | 45 | master-plan §11 | G2+G3+G9: numeric (tính tiền, lãi). Phần lớn auto-gradable |
-| 19 | g-honhop | bai-toan-tt | Pha trộn, hình học có ẩn & dẫn tới PT bậc hai | 9 | d-ptbh | P1 | 0.5 | partial | 55 | master-plan §11 | G8+G10+G13: nồng độ, kích thước hình, PT bậc hai |
+| 49 | g-giaihpt | bai-toan-tt | Giải hệ PT bậc nhất hai ẩn | 9 | — | P0 | 0.5 | full | 45 | LT19 (gia sư, SGK Toán 9 chương 1) | Thế, cộng đại số, đặt ẩn phụ $u=\frac1x$; hệ vô nghiệm/vô số nghiệm. Numeric + MCQ |
+| 50 | g-chuso | bai-toan-tt | Toán chữ số & tìm số | 9 | g-giaihpt | P1 | 0.25 | full | 40 | LT19 (chuyên đề gia sư §1) | $\overline{ab}=10a+b$, đổi chỗ chữ số, điều kiện chữ số. Câu nhiều bước |
+| 16 | g-chuyendong | bai-toan-tt | Chuyển động & dòng nước | 9 | g-giaihpt | P0 | 0.5 | partial | 55 | master-plan §11 | G4+G5: s=vt, xuôi/ngược dòng. Numeric answer nhưng setup khó grade |
+| 17 | g-nangsuat | bai-toan-tt | Năng suất, làm chung, vòi nước | 9 | g-giaihpt | P0 | 0.5 | partial | 55 | master-plan §11 | G6+G7: năng suất=1/t. Scaffolded: chọn bảng→lập PT→giải→kiểm tra |
+| 18 | g-phantram | bai-toan-tt | Giá bán, lãi suất, tăng giảm % | 9 | g-giaihpt | P1 | 0.5 | full | 45 | master-plan §11 | G2+G3+G9: numeric (tính tiền, lãi). Phần lớn auto-gradable |
+| 19 | g-honhop | bai-toan-tt | Bài toán dẫn tới PT bậc hai & pha trộn | 9 | d-ptbh | P1 | 0.5 | partial | 55 | master-plan §11 | G8+G10+G13: nồng độ, kích thước hình, PT bậc hai |
 
 ### 2.2 Track B — Quick wins (12 new + 2 existing = 14 KUs)
 
@@ -133,10 +135,10 @@ Bài 5 chỉ **0,5 điểm** (khung đề Hà Nội 2025–2026 và cả 68 đ�
 
 | Nhóm | KU lõi (P0/P1) | KU P2 | Tổng |
 |------|---------|---------|------|
-| Track A — Lõi đại số + tối ưu | 21 (F1 4, C 5, D 3, E 2, G 4, tối ưu 3) | 1 (e-giaodiem) | 22 |
+| Track A — Lõi đại số + tối ưu | 23 (F1 4, C 5, D 3, E 2, G 6, tối ưu 3) | 1 (e-giaodiem) | 24 |
 | Track B — Quick wins | 10 (A 2, B 3, P 3, htl-1, htl-2) | 4 (i-giaitgv, i-ungdung, f-hamso, f-parabol) | 14 |
 | Track C — Hình học | 9 (f3-dongdang, j-coban, k ×2, l ×2, o ×3) | 3 (j-cung, m-vitri, n-ngoainoi) | 12 |
-| **Tổng** | **40** (38 mới + 2 có sẵn) | **8** | **48** |
+| **Tổng** | **42** (40 mới + 2 có sẵn) | **8** | **50** |
 
 ---
 
@@ -206,7 +208,7 @@ Nguồn: luatminhkhue.vn (minh hoạ 2025), hocmai.vn + daibieunhandan.vn (đề
 
 Mất tối đa 1,5đ. Kế hoạch: chấp nhận mất Bài 5 (0,5đ) + một phần 4.2c (~0,75đ) + sai sót nhỏ.
 **Phải chắc:** Bài 1, 2a–2b, 3, 4.1, 4.2a–b. **KU bắt buộc vững:** c-rutgon, c-cauphu, e-vietets, k-tugiacnt, l-tieptuyen,
-o-chungminh, o-dongdang, p-ghep, g-* → xong cuối GĐ3 (~21/02/2027).
+o-chungminh, o-dongdang, p-ghep, g-* → xong cuối GĐ3 (~21/02/2027). **LT19 (17/10):** g-giaihpt, g-chuso, g-nangsuat, g-phantram, g-chuyendong (phần lập HPT bậc nhất) học ngay từ GĐ1 theo gia sư; chỉ g-honhop (dẫn tới PT bậc hai) giữ ở GĐ3.
 
 ### 4.2 Mốc 9.5
 
@@ -221,12 +223,12 @@ App grading capabilities: MCQ (2–6 options) và single exact numeric. **KHÔNG
 
 | Mức | Ý nghĩa | KU count | KUs |
 |---|---|---|---|
-| **full** | Mọi câu là MCQ / đáp số → app tự chấm | 26 | f1-hdt, f1-pnt, c-dkxd, c-coban, c-truccan, d-ptbh, d-nhamnghiem, e-viete, g-phantram, a-tanso, a-bieudo, b-phepthu, b-xsuat, b-haib, p-trunon, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol, j-coban, j-cung, m-vitri |
+| **full** | Mọi câu là MCQ / đáp số → app tự chấm | 28 | g-giaihpt, g-chuso, f1-hdt, f1-pnt, c-dkxd, c-coban, c-truccan, d-ptbh, d-nhamnghiem, e-viete, g-phantram, a-tanso, a-bieudo, b-phepthu, b-xsuat, b-haib, p-trunon, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol, j-coban, j-cung, m-vitri |
 | **scaffolded** | Dùng câu nhiều bước (item type `steps`, LT5) → app tự chấm hết | 4 | f1-tgon, f1-qd, c-rutgon, c-cauphu |
 | **partial** | App chấm phần MCQ/đáp số/nhiều bước; phần chứng minh / tập nghiệm làm trên giấy với gia sư → nhãn "cần gia sư xác nhận" (LT6) | 14 | d-thamso, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-honhop, f3-dongdang, k-goiintiep, k-tugiacnt, l-tieptuyen, n-ngoainoi, hq-amgm, hq-doanhthu, hq-hinhhoc |
 | **tutor** | App chỉ có phần nhận dạng / bước then chốt; kỹ năng chính (chứng minh tự do) gia sư chấm trên giấy | 4 | l-kethop, o-chungminh, o-dongdang, o-nangcao |
 
-**30/48 KU (63%) app tự chấm toàn bộ** (full + scaffolded). 18 KU có phần gia sư: mức trong app tính trên phần tự chấm,
+**32/50 KU (64%) app tự chấm toàn bộ** (full + scaffolded). 18 KU có phần gia sư: mức trong app tính trên phần tự chấm,
 mức cuối = gia sư đề xuất (S3) + phụ huynh chốt (S4). Các KU g-chuyendong, g-nangsuat dùng thêm câu nhiều bước cho phần lập phương trình.
 
 ### Câu nhiều bước (scaffolded → item type `steps`)
@@ -272,7 +274,7 @@ C1–C3 (S5) cần thiết kế trước ~11/2026 để dùng từ GĐ2.
 
 ### H4. Những KU nào app chấm được 100%?
 
-**Trả lời:** 26 KU full + 4 KU câu nhiều bước = **30/48 (63%)**. Danh sách ở §5.
+**Trả lời:** 28 KU full + 4 KU câu nhiều bước = **32/50 (64%)**. Danh sách ở §5.
 (Bản trước ghi 28 + 6 = 34 — số đếm không khớp bảng, đã sửa 05/10.)
 
 ### H5. Giải pháp cho KUs "partial"?
@@ -292,16 +294,16 @@ Mỗi KU qua kiểm tra độc lập (agent thứ hai giải lại + script tín
 | 1 | f1-hdt, f1-pnt, a-tanso, b-phepthu (+ chuẩn hoá htl-1/2) | GĐ1 tuần 2 (chỉ cần S6a) | 18/10/2026 |
 | 2 | f1-tgon, f1-qd, a-bieudo, b-xsuat | GĐ1 tuần 3 (cần S6b: nhiều bước, hình) | 25/10/2026 |
 | 3 | p-trunon, p-cau, p-ghep, b-haib, c-dkxd | GĐ1 cuối, GĐ2 đầu | 08/11/2026 |
-| 4 | f3-dongdang, j-coban, c-coban, c-truccan | GĐ2 (Track C bắt đầu 23/11) | 15/11/2026 |
-| 5 | c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt | GĐ2 (mốc 8.5) — gia sư soát | 29/11/2026 |
-| 6 | d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen | GĐ2 cuối, GĐ3 | 13/12/2026 |
-| 7 | e-viete, e-vietets, o-chungminh, o-dongdang | GĐ3 (mốc 8.5) — gia sư soát | 03/01/2027 |
-| 8 | g-chuyendong, g-nangsuat, g-phantram, g-honhop | GĐ3 — gia sư soát G | 17/01/2027 |
+| 4 | **g-giaihpt, g-chuso, g-nangsuat, g-phantram, g-chuyendong** (LT19 — gia sư soát G) | Ngay: gia sư đang dạy HPT, trường học chương 1 | 01/11/2026 |
+| 5 | f3-dongdang, j-coban, c-coban, c-truccan | GĐ2 (Track C bắt đầu 23/11) | 15/11/2026 |
+| 6 | c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt | GĐ2 (mốc 8.5) — gia sư soát | 29/11/2026 |
+| 7 | d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen | GĐ2 cuối, GĐ3 | 13/12/2026 |
+| 8 | e-viete, e-vietets, o-chungminh, o-dongdang, g-honhop | GĐ3 (mốc 8.5) — gia sư soát | 03/01/2027 |
 | 9 | l-kethop, o-nangcao, hq-amgm | GĐ4 | 07/02/2027 |
 | 10 | hq-doanhthu, hq-hinhhoc | GĐ4 | 21/02/2027 |
 | P2 | i-giaitgv, i-ungdung, f-hamso, f-parabol, e-giaodiem, j-cung, m-vitri, n-ngoainoi | Chỉ khi dư thời gian | — |
 
-Tổng 38 KU lõi mới (+ htl-1, htl-2 đã có) + 8 KU P2. Trung bình ~2 KU/tuần soạn; phụ huynh duyệt ~1 giờ/tuần.
+Tổng 40 KU lõi mới (+ htl-1, htl-2 đã có) + 8 KU P2. Đợt 8 cũ (G) chuyển lên đợt 4 (LT19); đợt 4–7 cũ thành 5–8, giữ nguyên ngày. Trung bình ~2 KU/tuần soạn; phụ huynh duyệt ~1 giờ/tuần.
 
 ---
 
@@ -338,7 +340,7 @@ Map giữa module ID và domain(s) trong master plan:
 | pt-bac-hai | D | d-ptbh, d-nhamnghiem, d-thamso | Phương trình bậc hai |
 | viet | E | e-viete, e-vietets, e-giaodiem | Định lý Viète |
 | ham-so | F | f-hamso, f-parabol | Hàm số & parabol |
-| bai-toan-tt | G | g-chuyendong, g-nangsuat, g-phantram, g-honhop | Giải bài toán bằng PT/HPT |
+| bai-toan-tt | G | g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram, g-honhop | Giải bài toán bằng PT/HPT |
 | hinh-khoi | P | p-trunon, p-cau, p-ghep | Hình khối trong thực tiễn |
 | he-thuc-luong | I | htl-1, htl-2, i-giaitgv, i-ungdung | Hệ thức lượng trong tam giác vuông |
 | duong-tron | J | j-coban, j-cung | Đường tròn cơ bản |
@@ -429,3 +431,4 @@ Per D14 + SPEC.md §0:
 | 05/10/2026 | Initial version: 2-track structure, 50 KUs, time estimates, H1–H6. Approved by parent. |
 | 05/10/2026 | Design review (LT1–LT12): timeline 12/10/2026 → 31/03/2027; f3-dongdang to GĐ2, Track C from GĐ3; 13 rows given their missing examWeight; gradability counts reconciled (26/4/15/5, 60% fully auto); content batches re-dated; §9 matches the real schema + planned changes. |
 | 06/10/2026 | LT17–LT18 from the 68-paper index + Hà Nội 2025/26 structure: 8 KUs → P2, optimisation 5 → 3 KUs (48 total, 40 core), Track C from week 7, exam gates recomputed (Bài 4 = 4đ, Bài 5 = 0,5đ), batches re-dated, ~77h core. |
+| 17/10/2026 | LT19–LT20: tutor-directed — G strand (linear PT/HPT word problems) pulled to batch 4 (01/11); new g-giaihpt, g-chuso (50 KUs, 42 core); g-chuyendong/g-nangsuat/g-phantram now require g-giaihpt, quadratic word problems gathered in g-honhop (batch 8, needs d-ptbh); old batches 4–7 renumbered 5–8, dates unchanged. Tutor PDFs become a content source (LT20). |
