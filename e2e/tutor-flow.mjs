@@ -179,6 +179,27 @@ ok("db: homework corrected with note", rv[0].r === true && rv[0].review_note ===
 // keep the later session counts (2) unchanged: the cascade removes the proposal and homework too
 await sql(`delete from public.teaching_sessions where id in (select session_id from public.homework)`);
 
+// ---- S9: homework on another unit of the app (not taught today) + what the student did there
+await page.goto(formUrl);
+await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await page.getByRole("button", { name: "+ Giao bài về nhà" }).click();
+const opts = await page.locator('select[name="hw.0.unit"] optgroup[label="Bài khác trong app"] option').allTextContents();
+ok("S9: picker offers other units of the app", opts.includes(title["htl-2"]), JSON.stringify(opts));
+await page.locator('select[name="hw.0.unit"]').selectOption("htl-2");
+ok("S9: tells the tutor the unit opens for the student", (await page.getByText(/Làm trên app/).count()) === 1);
+await page.locator('textarea[name="hw.0.task"]').fill("Làm phần luyện tập htl-2 trên app");
+await save().click();
+await page.locator("form [role=status]").filter({ hasText: "giao 1 bài về nhà" }).waitFor();
+ok("db: S9 homework saved on htl-2", (await sql(`select unit_id from public.homework`))[0]?.unit_id === "htl-2");
+await page.reload();
+const appRes = page.getByTestId("homework-app-result");
+ok("S9: tutor sees 'not done in the app yet'", (await appRes.count()) === 1 && (await appRes.innerText()).includes("con chưa làm"), await appRes.innerText().catch(() => ""));
+await sql(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct)
+  select id, 'htl-2', 'htl-2-p1', 'practice', '1', true from public.students where full_name='Hạnh Nguyên'`);
+await page.reload();
+ok("S9: tutor sees the app result since the homework", (await appRes.innerText()).includes("luyện tập 1/1 đúng"), await appRes.innerText());
+await sql(`delete from public.attempts where unit_id = 'htl-2'; delete from public.teaching_sessions where id in (select session_id from public.homework)`);
+
 // ---- dark mode, evidence open
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage();

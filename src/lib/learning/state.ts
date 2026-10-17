@@ -84,15 +84,17 @@ export async function loadStudentState(
   studentId: string,
   opts: { includeDrafts?: boolean } = {},
 ): Promise<StudentState> {
-  const [progress, attempts, queue, unlocks, lastReview] = await Promise.all([
+  const [progress, attempts, queue, unlocks, lastReview, assigned] = await Promise.all([
     supabase.from("unit_progress").select("unit_id, worked_viewed_at, faded_done_at, testout_run, testout_at").eq("student_id", studentId),
     allAttempts(supabase, studentId),
     supabase.from("review_queue").select("unit_id, stage, due_on, completed_at").eq("student_id", studentId),
     supabase.from("unit_unlocks").select("unit_id").eq("student_id", studentId),
     supabase.from("review_log").select("created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(1),
+    // S9: a unit the tutor gave as homework is open for the student, like a parent's manual unlock.
+    supabase.from("homework").select("unit_id").eq("student_id", studentId).order("created_at", { ascending: false }).limit(200),
   ]);
-  for (const r of [progress, attempts, queue, unlocks, lastReview]) if (r.error) console.error("loadStudentState", r.error.message);
-  const unlocked = new Set((unlocks.data ?? []).map((u) => u.unit_id as string));
+  for (const r of [progress, attempts, queue, unlocks, lastReview, assigned]) if (r.error) console.error("loadStudentState", r.error.message);
+  const unlocked = new Set([...(unlocks.data ?? []), ...(assigned.data ?? [])].map((u) => u.unit_id as string | null).filter((x): x is string => !!x));
   const roadmap = curriculum();
   const entryOf = new Map(roadmap.units.map((u) => [u.id, u]));
 

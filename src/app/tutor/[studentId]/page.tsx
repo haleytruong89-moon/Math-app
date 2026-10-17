@@ -10,7 +10,8 @@ import { SESSION_RULES } from "@/lib/learning/session";
 import { loadStudentState } from "@/lib/learning/state";
 import { SessionForm, type UnitEvidence } from "@/components/tutor/session-form";
 import { ActionForm } from "@/components/action-form";
-import { HOMEWORK_RULES, dueLabel } from "@/lib/learning/homework";
+import { HOMEWORK_RULES, dueLabel, homeworkAppResult } from "@/lib/learning/homework";
+import { errorLabel } from "@/lib/content/errors";
 import { reviewHomework } from "@/app/tutor/actions";
 
 export const metadata: Metadata = { title: "Ghi buổi dạy — App Toán" };
@@ -40,7 +41,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
     // RLS: only homework this tutor gave, while still assigned.
     supabase
       .from("homework")
-      .select("id, unit_id, task, due_on, done_at")
+      .select("id, unit_id, task, due_on, done_at, created_at")
       .eq("student_id", student.id)
       .eq("tutor_id", tutor.id)
       .is("reviewed_at", null)
@@ -106,6 +107,27 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
                   {dueLabel(h.due_on as string, today)} ·{" "}
                   {h.done_at ? <span className="text-good">Con đã báo xong ({ddmm(vnDate(h.done_at as string))})</span> : "Con chưa báo xong"}
                 </p>
+                {(() => {
+                  // S9: what the student did in the app on this unit since the homework was given.
+                  const u = h.unit_id ? state.units.find((x) => x.unit.id === h.unit_id) : undefined;
+                  if (!u || u.unit.status !== "approved") return null;
+                  const r = homeworkAppResult(u.attempts, h.created_at as string);
+                  return (
+                    <p className="mt-1.5 rounded-lg bg-accent-soft px-2.5 py-1.5 text-xs" data-testid="homework-app-result">
+                      <b>Trên app từ khi giao:</b>{" "}
+                      {!r
+                        ? "con chưa làm."
+                        : [
+                            r.practice.total ? `luyện tập ${r.practice.right}/${r.practice.total} đúng` : null,
+                            r.exit ? `kiểm tra ${r.exit.right}/${r.exit.total}` : null,
+                            r.topError ? `lỗi lặp lại: ${errorLabel(r.topError) ?? r.topError}` : null,
+                            `mức hiện tại M${u.mastery.level}`,
+                          ]
+                            .filter(Boolean)
+                            .join(" · ")}
+                    </p>
+                  );
+                })()}
                 <ActionForm action={reviewHomework} submitLabel="Đã chữa" variant="quiet" className="mt-2 flex flex-col gap-2">
                   <input type="hidden" name="homeworkId" value={h.id} />
                   <textarea

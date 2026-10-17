@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dueLabel, isDriveLink, parseHomework, readHomeworkForm, reviewNote, studentHomework, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
+import { dueLabel, homeworkAppResult, isDriveLink, parseHomework, readHomeworkForm, reviewNote, studentHomework, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
 
 const ctx = { taughtOn: "2026-10-05", today: "2026-10-05", ticked: new Set(["htl-1"]) };
 const raw = (p: Partial<RawHomework>): RawHomework => ({ unit: "htl-1", task: "Làm bài 3 trang 72", links: [], due: "2026-10-08", ...p });
@@ -37,6 +37,9 @@ test("refusals name the homework row", () => {
   assert.match(err(parseHomework([raw({}), raw({ task: "", links: ["https://drive.google.com/a"] })], ctx)), /Bài về nhà 2: ghi yêu cầu/);
   assert.match(err(parseHomework([raw({ task: "x".repeat(301) })], ctx)), /tối đa 300/);
   assert.match(err(parseHomework([raw({ unit: "htl-2" })], ctx)), /chọn một bài đã tick/);
+  // S9: any approved unit of the app can be given, not only the ticked ones
+  assert.equal(parseHomework([raw({ unit: "htl-2" })], { ...ctx, assignable: new Set(["htl-2"]) }).ok, true);
+  assert.match(err(parseHomework([raw({ unit: "nope" })], { ...ctx, assignable: new Set(["htl-2"]) })), /chọn một bài đã tick/);
   assert.match(err(parseHomework([raw({ links: ["http://drive.google.com/a"] })], ctx)), /https:\/\//);
   assert.match(err(parseHomework([raw({ links: ["javascript:alert(1)"] })], ctx)), /https:\/\//);
   assert.match(err(parseHomework([raw({ links: ["https://a b"] })], ctx)), /https:\/\//);
@@ -83,4 +86,22 @@ test("student list: open homework is never pushed out by old corrected rows", ()
   const open = [row("new-open", "2026-10-23", null), row("late-open", "2026-10-01", null)];
   const recent = [row("new-open", "2026-10-23", null), row("just-corrected", "2026-10-18", "2026-10-19T08:00:00Z"), row("old-corrected", "2026-09-01", "2026-09-05T08:00:00Z")];
   assert.deepEqual(studentHomework(open, recent, now).map((r) => r.id), ["late-open", "just-corrected", "new-open"]);
+});
+
+test("S9: app result on a homework's unit counts only answers since it was given", () => {
+  const a = (mode: string, correct: boolean, at: string, run: string | null = null, code: string | null = null) => ({ mode, correct, error_code: code, exit_run: run, created_at: at });
+  const since = "2026-10-17T10:00:00Z";
+  assert.equal(homeworkAppResult([a("practice", true, "2026-10-16T10:00:00Z")], since), null);
+  const r = homeworkAppResult([
+    a("practice", true, "2026-10-16T10:00:00Z"), // before: ignored
+    a("faded", false, "2026-10-17T11:00:00Z", null, "E02"), // faded: ignored
+    a("practice", true, "2026-10-17T11:00:00Z"),
+    a("practice", false, "2026-10-17T11:01:00Z", null, "E07"),
+    a("exit", true, "2026-10-17T12:00:00Z", "r1"),
+    a("exit", false, "2026-10-17T12:01:00Z", "r1", "E07"),
+    a("exit", true, "2026-10-18T12:00:00Z", "r2"),
+    a("exit", true, "2026-10-18T12:01:00Z", "r2"),
+  ], since)!;
+  assert.deepEqual(r, { practice: { right: 1, total: 2 }, exit: { right: 2, total: 2 }, topError: "E07" });
+  assert.equal(homeworkAppResult([a("practice", false, "2026-10-17T11:00:00Z", null, "E02")], since)!.topError, null); // once is not a pattern
 });

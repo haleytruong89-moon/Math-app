@@ -7,8 +7,9 @@ type Row = { key: number; unit: string; task: string; links: string[]; due: stri
 const input = "w-full rounded-lg border border-border bg-surface px-3 py-2 text-base text-ink";
 
 /** "Giao bài về nhà" rows inside the session form; submitted with it as hw.<i>.* fields. */
-export function HomeworkFields({ units, defaultDue, minDue, maxDue }: {
-  units: { id: string; title: string }[]; // the units ticked above
+export function HomeworkFields({ units, appUnits = [], defaultDue, minDue, maxDue }: {
+  units: { id: string; title: string; inApp?: boolean }[]; // the units ticked above (inApp: approved, the student can open it)
+  appUnits?: { id: string; title: string }[]; // S9: other approved units — the student does them in the app
   defaultDue: string;
   minDue: string; // the taught day
   maxDue: string;
@@ -33,10 +34,22 @@ export function HomeworkFields({ units, defaultDue, minDue, maxDue }: {
               Cho phần
               <select name={`hw.${i}.unit`} value={r.unit} onChange={(e) => set(r.key, { unit: e.target.value })} className={input}>
                 <option value="">Khác</option>
-                {units.map((u) => (
-                  <option key={u.id} value={u.id}>{u.title}</option>
-                ))}
+                {units.length > 0 && (
+                  <optgroup label="Bài vừa dạy">
+                    {units.map((u) => (
+                      <option key={u.id} value={u.id}>{u.title}</option>
+                    ))}
+                  </optgroup>
+                )}
+                {appUnits.length > 0 && (
+                  <optgroup label="Bài khác trong app">
+                    {appUnits.map((u) => (
+                      <option key={u.id} value={u.id}>{u.title}</option>
+                    ))}
+                  </optgroup>
+                )}
               </select>
+              {(appUnits.some((u) => u.id === r.unit) || units.some((u) => u.id === r.unit && u.inApp)) && <span className="text-xs">Con sẽ thấy nút “Làm trên app” — bài này được mở cho con ngay, kể cả khi chưa học bài trước.</span>}
             </label>
             <label className="flex flex-col gap-1 text-sm text-muted">
               <span className="flex justify-between">

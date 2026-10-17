@@ -23,6 +23,7 @@
 | S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5; trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | ✅ Merged 06/10 (PR #15), không SQL |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
+| S9 — Gia sư giao bài trong app (T6) | `p1-slice-9` | 🟡 PR mở 17/10 — **không SQL** |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -41,6 +42,21 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 17/10/2026 — S9: gia sư giao bài trong app (nhánh `p1-slice-9`)
+
+**Phụ huynh cần làm:** merge PR (không SQL, không đổi nội dung). Phụ huynh duyệt thiết kế trong chat ("ok", 17/10).
+
+**Đã làm (T6 trong `docs/SPEC.md` §0)**
+- Gia sư "Giao bài về nhà": ô "Cho phần" có thêm nhóm **"Bài khác trong app"** (mọi bài đã duyệt, không cần tick ở buổi đó); chọn bài trong app thì form nhắc "Con sẽ thấy nút Làm trên app…". Máy chủ kiểm: bài phải đã tick hoặc đã duyệt.
+- Học sinh: thẻ bài về nhà có nút **"Làm trên app → <tên bài>"** (ẩn khi đã chữa hoặc bài chưa duyệt); bài được giao **mở luôn** dù bài trước chưa đạt M3 (tính như phụ huynh mở tay — `loadStudentState` đọc `homework.unit_id`).
+- Gia sư: dưới mỗi bài đã giao chưa chữa có dòng **"Trên app từ khi giao"**: luyện tập đúng/tổng, điểm lần kiểm tra gần nhất, mã lỗi lặp ≥ 2 lần, mức hiện tại (`homeworkAppResult`, không tính bài khuyết bước).
+- Thứ tự ưu tiên của gia sư = hạn nộp (thẻ đã xếp theo hạn).
+- Test: `homework.test.ts` (+2: bài trong app được giao; kết quả chỉ tính từ lúc giao, bỏ bài khuyết, lỗi 1 lần không tính). e2e +7: gia sư chọn bài khác trong app, thấy "con chưa làm" rồi "luyện tập 1/1 đúng"; học sinh thấy nút và mở được bài.
+
+**Kiểm tra:** `npm test`, lint, build, `./e2e/run.sh` 182 PASS.
 
 ---
 
