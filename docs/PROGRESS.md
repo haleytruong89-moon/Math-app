@@ -59,7 +59,7 @@
 **Kiểm tra (§7)**
 | Bước | Kết quả |
 |---|---|
-| 1. `npm test` | 123/123; lint, build; `./e2e/run.sh` (xem PR) |
+| 1. `npm test` | 123/123; lint, build qua; `./e2e/run.sh` 175 PASS |
 | 2. Giải độc lập | 3 agent mới chỉ nhận đề trắng giải **190/190 ô — 190/190 khớp**. Góp ý đã sửa: 10 câu "chọn ẩn và điều kiện" đổi thành "đúng **và đầy đủ**" (phương án thiếu điều kiện không còn cãi được là đúng); g-phantram-x5 nói rõ "nhiều hơn $1\%$ (A $5\%$ thì B $6\%$)" |
 | 3. Tính lại nhiễu | Mỗi KU một script sympy: mọi đáp án, mọi phương án nhiễu (kể cả hệ phương trình trong trắc nghiệm, so từng phương trình với mô hình lỗi) tái tạo đúng lỗi đã ghi — **0 lệch**, chạy lại sau khi sửa: 0 lệch |
 | 4. Soát sư phạm | Phản hồi ≤ 2 câu không lộ đáp số; gợi ý chung → cụ thể; câu tự đứng được; 2 hình SVG (g-chuyendong p5, p8) đúng tỉ lệ |
