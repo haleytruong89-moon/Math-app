@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { curriculum } from "@/lib/content";
+import { curriculum, listModules } from "@/lib/content";
 import { vnDate } from "@/lib/learning/rules";
 import { parseSession } from "@/lib/learning/session";
 import { parseHomework, readHomeworkForm, reviewNote } from "@/lib/learning/homework";
@@ -52,6 +52,8 @@ export async function saveTeachingSession(_p: SaveSessionState, fd: FormData): P
     taughtOn: v.taughtOn,
     today: vnDate(),
     ticked: new Set(v.proposals.map((p) => p.unitId)),
+    // S9: any approved unit can be given as homework to do in the app.
+    assignable: new Set(listModules().flatMap((m) => m.unitList.filter((u) => u.status === "approved").map((u) => u.id))),
   });
   if (!hw.ok) return { error: hw.error };
 

@@ -28,7 +28,7 @@ export default async function StudentHome() {
   // Acceptance criterion (§2.7): no way past this screen until consent is recorded.
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
-  const cols = "id, task, links, due_on, done_at, reviewed_at, review_note";
+  const cols = "id, unit_id, task, links, due_on, done_at, reviewed_at, review_note";
   const [state, open, recent, confRows] = await Promise.all([
     loadStudentState(supabase, me.id),
     supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
@@ -169,7 +169,7 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
   if (homework.length)
     cards.push(
       <Group key="g-homework" kind="homework">
-        {homework.map((h) => <HomeworkCard key={h.id} h={h} today={state.today} />)}
+        {homework.map((h) => <HomeworkCard key={h.id} h={h} today={state.today} unit={h.unit_id ? state.units.find((u) => u.unit.id === h.unit_id && u.status === "open") : undefined} />)}
       </Group>,
     );
   if (inProgress.length)
@@ -223,7 +223,7 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
   return <div>{cards}</div>;
 }
 
-function HomeworkCard({ h, today }: { h: HomeworkRow; today: string }) {
+function HomeworkCard({ h, today, unit }: { h: HomeworkRow; today: string; unit?: UnitState }) {
   const due = dueLabel(h.due_on, today);
   const late = !h.done_at && !h.reviewed_at && due.startsWith("quá hạn");
   return (
@@ -243,6 +243,19 @@ function HomeworkCard({ h, today }: { h: HomeworkRow; today: string }) {
             </a>
           ))}
         </p>
+      )}
+      {unit && !h.reviewed_at && (
+        <Link
+          href={`/student/learn/${unit.unit.id}`}
+          className="mt-3 flex items-center justify-between gap-3 rounded-lg bg-accent-soft px-3.5 py-2.5 text-sm"
+          data-testid="homework-app-link"
+        >
+          <span>
+            <span className="block text-xs text-muted">Làm trên app</span>
+            <b className="font-display">{unit.unit.title}</b>
+          </span>
+          <span aria-hidden className="text-accent">→</span>
+        </Link>
       )}
       <p className={`mt-2 font-mono text-xs ${late ? "text-warn" : "text-muted"}`}>{due}</p>
       {h.reviewed_at ? (

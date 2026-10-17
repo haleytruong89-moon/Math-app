@@ -1,0 +1,14 @@
+{
+  "id": "bai-toan-tt",
+  "title": "Giải bài toán bằng PT/HPT",
+  "domains": [
+    "G"
+  ],
+  "units": [
+    "g-giaihpt",
+    "g-chuso",
+    "g-chuyendong",
+    "g-nangsuat",
+    "g-phantram"
+  ]
+}

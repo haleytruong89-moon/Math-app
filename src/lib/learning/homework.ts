@@ -17,6 +17,7 @@ export type RawHomework = { unit: string; task: string; links: string[]; due: st
 export type Homework = { unitId: string | null; task: string; links: string[]; dueOn: string };
 export type HomeworkRow = {
   id: string;
+  unit_id?: string | null;
   task: string;
   links: string[];
   due_on: string;
@@ -49,7 +50,8 @@ export function readHomeworkForm(fd: FormData): RawHomework[] {
 
 export function parseHomework(
   raw: RawHomework[],
-  ctx: { taughtOn: string; today: string; ticked: Set<string> },
+  /** ticked = units logged in this session; assignable (S9) = any approved unit the student can practise in the app. */
+  ctx: { taughtOn: string; today: string; ticked: Set<string>; assignable?: Set<string> },
 ): { ok: true; value: Homework[] } | { ok: false; error: string } {
   const R = HOMEWORK_RULES;
   const rows = raw
@@ -62,7 +64,8 @@ export function parseHomework(
   for (const r of rows) {
     const at = `Bài về nhà ${r.n}`;
     if (!r.task || r.task.length > R.taskMax) return { ok: false, error: `${at}: ghi yêu cầu (tối đa ${R.taskMax} ký tự).` };
-    if (r.unit && !ctx.ticked.has(r.unit)) return { ok: false, error: `${at}: chọn một bài đã tick ở trên, hoặc “Khác”.` };
+    if (r.unit && !ctx.ticked.has(r.unit) && !ctx.assignable?.has(r.unit))
+      return { ok: false, error: `${at}: chọn một bài đã tick ở trên, một bài có trong app, hoặc “Khác”.` };
     if (r.links.length > R.linksMax) return { ok: false, error: `${at}: tối đa ${R.linksMax} link.` };
     if (r.links.some((l) => !LINK.test(l) || l.length > R.linkMax))
       return { ok: false, error: `${at}: link phải bắt đầu bằng https:// và không có dấu cách.` };
@@ -109,4 +112,38 @@ export function studentHomework(open: HomeworkRow[], recent: HomeworkRow[], now:
   const byId = new Map<string, HomeworkRow>();
   for (const r of [...open, ...visibleHomework(recent, now)]) byId.set(r.id, r);
   return [...byId.values()].sort((a, b) => a.due_on.localeCompare(b.due_on) || a.id.localeCompare(b.id));
+}
+
+/**
+ * S9: what the student did in the app on a homework's unit since it was given — shown to the
+ * tutor beside the homework. Faded steps don't count (same as "Bài làm của con").
+ */
+export type HomeworkAppResult = {
+  practice: { right: number; total: number };
+  exit: { right: number; total: number } | null; // the latest exit run since the homework was given
+  topError: string | null; // most frequent error code among wrong answers, if any repeats
+};
+
+export function homeworkAppResult(
+  attempts: { mode: string; correct: boolean; error_code: string | null; exit_run: string | null; created_at: string }[],
+  sinceIso: string,
+): HomeworkAppResult | null {
+  const since = Date.parse(sinceIso);
+  const rows = attempts.filter((a) => Date.parse(a.created_at) >= since && a.mode !== "faded");
+  if (!rows.length) return null;
+  const practice = rows.filter((a) => a.mode === "practice");
+  const exits = rows.filter((a) => a.mode === "exit" && a.exit_run);
+  const lastRun = exits.reduce<{ run: string; at: number } | null>((best, a) => {
+    const at = Date.parse(a.created_at);
+    return !best || at > best.at ? { run: a.exit_run!, at } : best;
+  }, null);
+  const run = lastRun ? exits.filter((a) => a.exit_run === lastRun.run) : [];
+  const counts = new Map<string, number>();
+  for (const a of rows) if (!a.correct && a.error_code) counts.set(a.error_code, (counts.get(a.error_code) ?? 0) + 1);
+  const top = [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+  return {
+    practice: { right: practice.filter((a) => a.correct).length, total: practice.length },
+    exit: run.length ? { right: run.filter((a) => a.correct).length, total: run.length } : null,
+    topError: top && top[1] >= 2 ? top[0] : null,
+  };
 }

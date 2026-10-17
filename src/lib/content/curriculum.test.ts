@@ -28,9 +28,9 @@ function files() {
   });
 }
 
-test("curriculum lists exactly the 48 KUs of CURRICULUM.md (LT17)", () => {
+test("curriculum lists exactly the 50 KUs of CURRICULUM.md (LT17, LT19)", () => {
   const doc = idsInDoc();
-  assert.equal(doc.length, 48);
+  assert.equal(doc.length, 50);
   assert.deepEqual(curriculum.units.map((u) => u.id).sort(), [...doc].sort());
 });
 

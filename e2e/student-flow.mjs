@@ -199,6 +199,17 @@ ok("homework: tutor's note shown, no buttons", (await hwCard.getByText(/Thầy\/
 await sql(`update public.homework set reviewed_at = now() - interval '8 days'`);
 await page.reload();
 ok("homework: hidden 7 days after correction", (await page.getByTestId("homework-card").count()) === 0);
+// S9: homework on a unit of the app → "Làm trên app" opens it
+await sql(`insert into public.homework (session_id, student_id, tutor_id, unit_id, task, due_on)
+    select id, student_id, tutor_id, 'htl-2', 'Luyện thêm htl-2 trên app', current_date + 2 from public.teaching_sessions order by created_at desc limit 1;`);
+await page.goto(`${BASE}/student`);
+const appLink = page.getByTestId("homework-app-link");
+ok("S9: homework card links to the unit in the app", (await appLink.count()) === 1 && (await appLink.getAttribute("href")) === "/student/learn/htl-2");
+await appLink.click();
+await page.waitForURL(/learn\/htl-2/);
+ok("S9: the assigned unit opens", page.url().includes("/student/learn/htl-2"));
+await page.waitForLoadState("networkidle");
+await sql(`delete from public.homework where unit_id = 'htl-2'`);
 
 const [{ id: sid }] = await sql(`select id from public.students where full_name = 'Hạnh Nguyên'`);
 await page.goto(`${BASE}/tutor/${sid}/work`);

@@ -211,7 +211,7 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4,
+      "batch": 5,
       "priority": "P0"
     },
     {
@@ -226,7 +226,7 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4,
+      "batch": 5,
       "priority": "P0"
     },
     {
@@ -241,7 +241,7 @@
       "examWeight": 1,
       "grading": "scaffolded",
       "testOut": false,
-      "batch": 5,
+      "batch": 6,
       "priority": "P0"
     },
     {
@@ -256,7 +256,7 @@
       "examWeight": 0.5,
       "grading": "scaffolded",
       "testOut": false,
-      "batch": 5,
+      "batch": 6,
       "priority": "P0"
     },
     {
@@ -271,7 +271,7 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 6,
+      "batch": 7,
       "priority": "P0"
     },
     {
@@ -286,7 +286,7 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 6,
+      "batch": 7,
       "priority": "P1"
     },
     {
@@ -301,7 +301,7 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 6,
+      "batch": 7,
       "priority": "P0"
     },
     {
@@ -316,7 +316,7 @@
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 7,
+      "batch": 8,
       "priority": "P0"
     },
     {
@@ -332,8 +332,36 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 7,
+      "batch": 8,
       "priority": "P0"
+    },
+    {
+      "id": "g-giaihpt",
+      "module": "bai-toan-tt",
+      "title": "Giải hệ PT bậc nhất hai ẩn",
+      "track": "A",
+      "seq": 55,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 4,
+      "priority": "P0"
+    },
+    {
+      "id": "g-chuso",
+      "module": "bai-toan-tt",
+      "title": "Toán chữ số & tìm số",
+      "track": "A",
+      "seq": 145,
+      "prereq": [
+        "g-giaihpt"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
+      "testOut": false,
+      "batch": 4,
+      "priority": "P1"
     },
     {
       "id": "g-chuyendong",
@@ -342,12 +370,12 @@
       "track": "A",
       "seq": 150,
       "prereq": [
-        "d-ptbh"
+        "g-giaihpt"
       ],
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 8,
+      "batch": 4,
       "priority": "P0"
     },
     {
@@ -357,12 +385,12 @@
       "track": "A",
       "seq": 160,
       "prereq": [
-        "d-ptbh"
+        "g-giaihpt"
       ],
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 8,
+      "batch": 4,
       "priority": "P0"
     },
     {
@@ -372,18 +400,18 @@
       "track": "A",
       "seq": 170,
       "prereq": [
-        "d-ptbh"
+        "g-giaihpt"
       ],
       "examWeight": 0.5,
       "grading": "full",
       "testOut": false,
-      "batch": 8,
+      "batch": 4,
       "priority": "P1"
     },
     {
       "id": "g-honhop",
       "module": "bai-toan-tt",
-      "title": "Pha trộn, hình học có ẩn & dẫn tới PT bậc hai",
+      "title": "Bài toán dẫn tới PT bậc hai & pha trộn",
       "track": "A",
       "seq": 180,
       "prereq": [
@@ -667,7 +695,7 @@
       "examWeight": "indirect",
       "grading": "partial",
       "testOut": true,
-      "batch": 4,
+      "batch": 5,
       "priority": "P0"
     },
     {
@@ -680,7 +708,7 @@
       "examWeight": 0.25,
       "grading": "full",
       "testOut": false,
-      "batch": 4,
+      "batch": 5,
       "priority": "P0"
     },
     {
@@ -695,7 +723,7 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 5,
+      "batch": 6,
       "priority": "P0"
     },
     {
@@ -710,7 +738,7 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 5,
+      "batch": 6,
       "priority": "P0"
     },
     {
@@ -725,7 +753,7 @@
       "examWeight": 0.5,
       "grading": "partial",
       "testOut": false,
-      "batch": 6,
+      "batch": 7,
       "priority": "P0"
     },
     {
@@ -741,7 +769,7 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 7,
+      "batch": 8,
       "priority": "P1"
     },
     {
@@ -757,7 +785,7 @@
       "examWeight": 0.5,
       "grading": "tutor",
       "testOut": false,
-      "batch": 7,
+      "batch": 8,
       "priority": "P1"
     },
     {

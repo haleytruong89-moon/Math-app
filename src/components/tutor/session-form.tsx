@@ -175,7 +175,8 @@ function Fields({ studentId, today, minDate, units, defaultDue, maxDue }: FormPr
       </label>
 
       <HomeworkFields
-        units={units.filter((u) => ticked.has(u.id)).map((u) => ({ id: u.id, title: u.title }))}
+        units={units.filter((u) => ticked.has(u.id)).map((u) => ({ id: u.id, title: u.title, inApp: !u.draft && !u.noContent }))}
+        appUnits={units.filter((u) => !ticked.has(u.id) && !u.draft && !u.noContent).map((u) => ({ id: u.id, title: u.title }))}
         defaultDue={defaultDue < day ? day : defaultDue}
         minDue={day}
         maxDue={maxDue}
