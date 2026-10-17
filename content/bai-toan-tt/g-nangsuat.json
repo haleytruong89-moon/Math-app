@@ -1,0 +1,1343 @@
+{
+  "id": "g-nangsuat",
+  "module": "bai-toan-tt",
+  "order": 4,
+  "title": "Năng suất, làm chung, vòi nước",
+  "status": "draft",
+  "estMinutes": 50,
+  "theory": [
+    "**Cần nhớ trước:** bài **Giải hệ phương trình bậc nhất hai ẩn** — phương pháp thế, cộng đại số và đặt ẩn phụ $u=\\dfrac1x$, $v=\\dfrac1y$.",
+    "**Công thức:** khối lượng công việc $=$ năng suất $\\times$ thời gian. Coi cả công việc (cả bể) là $1$: làm một mình xong trong $x$ giờ thì mỗi giờ làm được $\\dfrac1x$ công việc, $k$ giờ làm được $\\dfrac kx$. Hai người làm chung xong trong $t$ giờ: $\\dfrac1x+\\dfrac1y=\\dfrac1t$, với điều kiện $x>t$, $y>t$. Vòi tháo nước ra thì **trừ** phần bể của vòi đó.",
+    "**Vì sao:** hai người làm cùng lúc thì trong mỗi giờ, phần việc của họ cộng lại. Thời gian thì không cộng được: cùng làm phải xong **nhanh hơn** từng người, nên thời gian làm riêng luôn lớn hơn thời gian làm chung.",
+    "**Bẫy hay gặp:** viết $x+y=t$ (cộng thời gian) thay vì $\\dfrac1x+\\dfrac1y=\\dfrac1t$; viết $3x$ thay vì $\\dfrac3x$ cho phần việc trong $3$ giờ; đổi $2$ giờ $24$ phút thành $2{,}24$ giờ (đúng là $2+\\dfrac{24}{60}=2{,}4$ giờ); giải được $u=\\dfrac14$ rồi kết luận “$\\dfrac14$ giờ” — phải lấy $x=\\dfrac1u=4$ giờ.",
+    "**Nhận dạng:** “làm chung… thì xong”, “chảy đầy bể”, “làm một mình mất bao lâu” → ẩn là thời gian, dùng phần việc $\\dfrac1x$. “Kế hoạch – thực tế”, “vượt mức $a\\%$”, “mỗi ngày làm được” kèm tổng sản phẩm → ẩn là số sản phẩm, lập hệ theo tổng. **Không** dùng cách này cho kiểu “mỗi ngày làm thêm $5$ sản phẩm nên xong sớm $2$ ngày”: bài đó dẫn tới phương trình bậc hai (học sau).",
+    "**Bảng đại lượng:** mỗi dòng một đối tượng: thời gian làm một mình $x$ → phần việc mỗi giờ $\\dfrac1x$ → phần việc trong $k$ giờ $\\dfrac kx$; bài sản phẩm: năng suất $x$ → số ngày $k$ → số sản phẩm $kx$. **Checklist:** (1) đổi phút ra giờ; (2) điều kiện $x>t$, hoặc nguyên dương; (3) cộng phần việc, không cộng thời gian; (4) thử lại vào đề; (5) **Kết luận** bằng thời gian, có đơn vị."
+  ],
+  "worked": {
+    "problem": "Hai người làm chung một công việc thì sau $6$ giờ xong. Hai người làm chung được $4$ giờ thì người I nghỉ, người II làm tiếp một mình $5$ giờ nữa thì xong. Hỏi mỗi người làm một mình thì sau bao lâu xong công việc?",
+    "steps": [
+      {
+        "text": "Gọi $x$, $y$ (giờ) là thời gian người I, người II làm một mình xong việc. Điều kiện: $x>6$, $y>6$. Mỗi giờ người I làm được $\\dfrac1x$, người II làm được $\\dfrac1y$ công việc.",
+        "why": "Mỗi người làm một mình thì chậm hơn hai người cùng làm, nên thời gian phải lớn hơn $6$ giờ."
+      },
+      {
+        "text": "Làm chung $6$ giờ xong: $\\dfrac1x+\\dfrac1y=\\dfrac16$. Làm chung $4$ giờ rồi người II làm thêm $5$ giờ: $4\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac5y=1$.",
+        "why": "Trong $4$ giờ đầu cả hai cùng làm; $5$ giờ sau chỉ có người II."
+      },
+      {
+        "text": "Đặt $u=\\dfrac1x$, $v=\\dfrac1y$: thay $u+v=\\dfrac16$ vào phương trình sau được $\\dfrac46+5v=1$, nên $v=\\dfrac1{15}$; $u=\\dfrac16-\\dfrac1{15}=\\dfrac1{10}$.",
+        "why": "Phương pháp thế: tổng $u+v$ đã biết nên thay luôn cả cụm."
+      },
+      {
+        "text": "Kết luận: $x=\\dfrac1u=10$, $y=\\dfrac1v=15$, đều lớn hơn $6$ nên thỏa điều kiện. Người I làm một mình $10$ giờ, người II làm một mình $15$ giờ thì xong.",
+        "why": "Thử lại: $\\dfrac1{10}+\\dfrac1{15}=\\dfrac16$ và $4\\cdot\\dfrac16+\\dfrac5{15}=1$."
+      }
+    ],
+    "selfExplain": "Vì sao điều kiện là $x>6$ chứ không chỉ $x>0$? Nếu lỡ viết $x+y=6$ thì sai ở chỗ nào?"
+  },
+  "faded": {
+    "problem": "Hai vòi nước cùng chảy vào một bể cạn thì sau $3$ giờ $36$ phút đầy bể. Nếu mở vòi I chảy $2$ giờ rồi khóa lại, sau đó mở vòi II chảy $3$ giờ thì được $\\dfrac23$ bể. Hỏi mỗi vòi chảy một mình thì sau bao lâu đầy bể?",
+    "steps": [
+      {
+        "prompt": "Gọi $x$, $y$ (giờ) là thời gian vòi I, vòi II chảy một mình đầy bể. Chọn điều kiện.",
+        "item": {
+          "id": "g-nangsuat-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Đổi $3$ giờ $36$ phút ra giờ rồi chọn điều kiện đúng của $x$, $y$:",
+          "options": [
+            "$x>3{,}36$ và $y>3{,}36$",
+            "$0<x<3{,}6$ và $0<y<3{,}6$",
+            "$x>3{,}6$ và $y>3{,}6$",
+            "$x+y=3{,}6$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E14",
+              "feedback": "Con đổi sai đơn vị: $36$ phút $=\\dfrac{36}{60}$ giờ, không phải $0{,}36$ giờ."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "Một vòi chảy một mình thì chậm hơn cả hai vòi cùng chảy, nên thời gian phải lớn hơn thời gian chảy chung."
+            },
+            "3": {
+              "code": "E07",
+              "feedback": "Thời gian không cộng được; hai vòi chảy cùng lúc thì phần bể chảy được mỗi giờ mới cộng lại."
+            }
+          },
+          "solution": "$3$ giờ $36$ phút $=3+\\dfrac{36}{60}=3{,}6$ giờ. Mỗi vòi chảy một mình lâu hơn khi chảy chung: $x>3{,}6$, $y>3{,}6$."
+        }
+      },
+      {
+        "prompt": "Lập hệ phương trình.",
+        "item": {
+          "id": "g-nangsuat-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Mỗi giờ vòi I chảy được $\\dfrac1x$ bể, vòi II chảy được $\\dfrac1y$ bể; $3{,}6=\\dfrac{18}{5}$ giờ. Hệ phương trình đúng là:",
+          "options": [
+            "$\\begin{cases} x+y=\\dfrac{18}{5} \\\\ 2x+3y=\\dfrac23 \\end{cases}$",
+            "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{5}{18} \\\\ \\dfrac2x+\\dfrac3y=\\dfrac23 \\end{cases}$",
+            "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{5}{18} \\\\ \\dfrac x2+\\dfrac y3=\\dfrac23 \\end{cases}$",
+            "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{18}{5} \\\\ \\dfrac2x+\\dfrac3y=\\dfrac23 \\end{cases}$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E04",
+              "feedback": "Con dùng thời gian $x$ thay cho phần bể; mỗi giờ vòi I chảy được $\\dfrac1x$ bể."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Phần bể chảy được trong $2$ giờ là $2\\cdot\\dfrac1x=\\dfrac2x$, không phải $\\dfrac x2$."
+            },
+            "3": {
+              "code": "E07",
+              "feedback": "Mỗi giờ cả hai vòi chảy được $1:\\dfrac{18}{5}$ bể; con lấy luôn thời gian chảy chung làm phần bể."
+            }
+          },
+          "solution": "Chảy chung: $\\dfrac1x+\\dfrac1y=1:\\dfrac{18}{5}=\\dfrac5{18}$. Chảy lần lượt: $\\dfrac2x+\\dfrac3y=\\dfrac23$."
+        }
+      },
+      {
+        "text": "Đặt $u=\\dfrac1x$, $v=\\dfrac1y$: $u+v=\\dfrac{5}{18}$ và $2u+3v=\\dfrac23$. Nhân phương trình đầu với $2$ được $2u+2v=\\dfrac59$, rồi trừ vế theo vế với phương trình sau."
+      },
+      {
+        "prompt": "Tìm $y$.",
+        "item": {
+          "id": "g-nangsuat-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Tìm $v$ rồi suy ra thời gian vòi II chảy một mình đầy bể: $y=$",
+          "answer": "9",
+          "unit": "giờ",
+          "mistakes": [
+            {
+              "answer": "1/9",
+              "code": "E11",
+              "feedback": "Con mới tìm được $v$ là phần bể mỗi giờ; thời gian là $y=\\dfrac1v$."
+            },
+            {
+              "answer": "18/7",
+              "code": "E02",
+              "feedback": "Khi nhân phương trình với $2$, con phải nhân cả vế phải.",
+              "review": "g-giaihpt"
+            }
+          ],
+          "solution": "$v=\\dfrac23-\\dfrac59=\\dfrac19$, nên $y=9$."
+        }
+      },
+      {
+        "text": "Thay $v=\\dfrac19$: $u=\\dfrac{5}{18}-\\dfrac19=\\dfrac16$, nên $x=6$."
+      },
+      {
+        "prompt": "Đối chiếu điều kiện và kết luận.",
+        "item": {
+          "id": "g-nangsuat-f4",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Có $x=6$, $y=9$. Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: vòi I chảy $\\dfrac16$ bể, vòi II chảy $\\dfrac19$ bể.",
+            "Kết luận: $x=6$, $y=9$.",
+            "Kết luận: vòi I chảy một mình $9$ giờ, vòi II chảy một mình $6$ giờ thì đầy bể.",
+            "Kết luận: $6>3{,}6$ và $9>3{,}6$ nên thỏa điều kiện. Vòi I chảy một mình $6$ giờ, vòi II chảy một mình $9$ giờ thì đầy bể."
+          ],
+          "correct": 3,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Đó là phần bể mỗi giờ; đề hỏi thời gian mỗi vòi chảy một mình đầy bể."
+            },
+            "1": {
+              "code": "E11",
+              "feedback": "Còn thiếu bước đối chiếu điều kiện và câu trả lời bằng lời, có đơn vị."
+            },
+            "2": {
+              "code": "E10",
+              "feedback": "Con đảo tên hai vòi: $x$ là thời gian của vòi I."
+            }
+          },
+          "solution": "$6>3{,}6$, $9>3{,}6$: thỏa điều kiện. Vòi I: $6$ giờ, vòi II: $9$ giờ."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-nangsuat-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Vòi A chảy một mình thì sau $8$ giờ đầy một bể cạn. Mở vòi A chảy trong $3$ giờ thì được bao nhiêu phần bể? (ghi phân số)",
+      "hints": [
+        "Cần phần bể vòi A chảy được trong $3$ giờ.",
+        "Chảy đầy bể mất $8$ giờ thì mỗi giờ chảy được mấy phần bể?",
+        "Nhân phần bể mỗi giờ với số giờ chảy."
+      ],
+      "answer": "3/8",
+      "mistakes": [
+        {
+          "answer": "8/3",
+          "code": "E04",
+          "feedback": "Mỗi giờ vòi A chảy $\\dfrac18$ bể; phần bể chảy được bằng số giờ nhân phần bể mỗi giờ."
+        },
+        {
+          "answer": "5/8",
+          "code": "E10",
+          "feedback": "Con tính phần bể còn thiếu; đề hỏi phần bể đã chảy được."
+        }
+      ],
+      "solution": "Mỗi giờ vòi A chảy $\\dfrac18$ bể, nên $3$ giờ chảy được $3\\cdot\\dfrac18=\\dfrac38$ bể."
+    },
+    {
+      "id": "g-nangsuat-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Người I làm một mình xong một công việc trong $6$ giờ, người II làm một mình xong trong $3$ giờ. Nếu hai người làm chung thì sau bao nhiêu giờ xong công việc?",
+      "hints": [
+        "Cần thời gian hai người làm chung xong việc.",
+        "Mỗi giờ mỗi người làm được bao nhiêu phần công việc?",
+        "Cộng hai phần việc mỗi giờ, rồi lấy $1$ chia cho tổng đó."
+      ],
+      "answer": "2",
+      "unit": "giờ",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E07",
+          "feedback": "Thời gian không cộng được: làm chung thì xong nhanh hơn mỗi người. Hãy cộng phần việc mỗi giờ."
+        },
+        {
+          "answer": "4,5",
+          "code": "E07",
+          "feedback": "Thời gian làm chung không phải trung bình cộng; hãy cộng phần việc mỗi giờ của hai người."
+        },
+        {
+          "answer": "1/2",
+          "code": "E11",
+          "feedback": "Đó là phần việc cả hai làm trong một giờ; thời gian là nghịch đảo của số đó."
+        }
+      ],
+      "solution": "Mỗi giờ hai người làm được $\\dfrac16+\\dfrac13=\\dfrac12$ công việc, nên làm chung xong trong $1:\\dfrac12=2$ giờ."
+    },
+    {
+      "id": "g-nangsuat-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Theo kế hoạch, hai tổ phải làm $600$ sản phẩm. Thực tế tổ I vượt mức $10\\%$, tổ II vượt mức $20\\%$ nên cả hai tổ làm được $680$ sản phẩm. Tính số sản phẩm mỗi tổ phải làm theo kế hoạch.” Nên bắt đầu thế nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách bắt đầu, chưa cần tính.",
+        "Đề cho tổng kế hoạch và tổng thực tế; hai số nào chưa biết?",
+        "Đặt hai ẩn là hai số chưa biết; mỗi dữ kiện về tổng cho một phương trình."
+      ],
+      "options": [
+        "Gọi số sản phẩm theo kế hoạch của tổ I, tổ II là $x$, $y$; lập hệ $x+y=600$ và $1{,}1x+1{,}2y=680$",
+        "Gọi thời gian mỗi tổ làm một mình xong là $x$, $y$ rồi dùng phần việc $\\dfrac1x$, $\\dfrac1y$ mỗi ngày",
+        "Tính luôn $10\\%+20\\%=30\\%$ của $600$ sản phẩm",
+        "Lấy $680-600=80$ rồi chia đều cho hai tổ"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E05",
+          "feedback": "Đề không hỏi thời gian làm một mình; đề cho số sản phẩm theo kế hoạch và thực tế."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Hai tổ vượt mức theo hai phần trăm của hai số khác nhau, nên không cộng phần trăm được."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Phần vượt của mỗi tổ phụ thuộc số sản phẩm của tổ đó, nên không chia đều được."
+        }
+      },
+      "solution": "Hai số chưa biết là số sản phẩm kế hoạch của hai tổ: $x+y=600$; thực tế tổ I làm $1{,}1x$, tổ II làm $1{,}2y$ nên $1{,}1x+1{,}2y=680$ (giải ra $x=400$, $y=200$)."
+    },
+    {
+      "id": "g-nangsuat-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Hai vòi nước cùng chảy vào một bể cạn thì sau $2$ giờ $24$ phút đầy bể. Nếu mở vòi I chảy $1$ giờ $30$ phút rồi khóa lại, sau đó mở vòi II chảy $2$ giờ thì được $\\dfrac{17}{24}$ bể. Hỏi mỗi vòi chảy một mình thì sau bao lâu đầy bể?",
+      "source": "CĐ lập PT/HPT – §3 Câu 10 (chuyển thể)",
+      "hints": [
+        "Cần thời gian mỗi vòi chảy một mình đầy bể.",
+        "Đổi giờ phút ra giờ; mỗi giờ hai vòi chảy được $\\dfrac1x$ và $\\dfrac1y$ bể.",
+        "Một phương trình cho chảy chung, một cho chảy lần lượt; đặt $u=\\dfrac1x$, $v=\\dfrac1y$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện.",
+          "item": {
+            "id": "g-nangsuat-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ (giờ) là thời gian vòi I, vòi II chảy một mình đầy bể. Điều kiện đúng là:",
+            "options": [
+              "$x+y=2{,}4$",
+              "$x>2{,}24$ và $y>2{,}24$",
+              "$x>2{,}4$ và $y>2{,}4$",
+              "$0<x<2{,}4$ và $0<y<2{,}4$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Thời gian không cộng được: hai vòi chảy cùng lúc thì phần bể mỗi giờ mới cộng lại."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Con đổi sai đơn vị: $24$ phút $=\\dfrac{24}{60}$ giờ, không phải $0{,}24$ giờ."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Một vòi chảy một mình thì lâu hơn cả hai vòi cùng chảy."
+              }
+            },
+            "solution": "$2$ giờ $24$ phút $=2{,}4$ giờ; mỗi vòi chảy một mình lâu hơn: $x>2{,}4$, $y>2{,}4$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{5}{12} \\\\ \\dfrac{3}{2x}+\\dfrac2y=\\dfrac{17}{24} \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{5}{12} \\\\ \\dfrac{1{,}3}{x}+\\dfrac2y=\\dfrac{17}{24} \\end{cases}$",
+              "$\\begin{cases} x+y=\\dfrac{12}{5} \\\\ \\dfrac32x+2y=\\dfrac{17}{24} \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac{12}{5} \\\\ \\dfrac{3}{2x}+\\dfrac2y=\\dfrac{17}{24} \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "$30$ phút $=\\dfrac12$ giờ, nên $1$ giờ $30$ phút $=1{,}5$ giờ, không phải $1{,}3$ giờ."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần bể; mỗi giờ vòi I chảy được $\\dfrac1x$ bể."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Mỗi giờ cả hai vòi chảy được $1:\\dfrac{12}{5}$ bể; con lấy nhầm thời gian làm phần bể."
+              }
+            },
+            "solution": "$\\dfrac1x+\\dfrac1y=1:\\dfrac{12}{5}=\\dfrac5{12}$; trong $\\dfrac32$ giờ vòi I chảy $\\dfrac{3}{2x}$ bể, trong $2$ giờ vòi II chảy $\\dfrac2y$ bể."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-nangsuat-p4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Đặt $u=\\dfrac1x$, $v=\\dfrac1y$ rồi giải hệ. Thời gian vòi I chảy một mình đầy bể là $x=$",
+            "answer": "4",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/4",
+                "code": "E11",
+                "feedback": "Con mới tìm được $u$ là phần bể mỗi giờ; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là thời gian của vòi II; bước này hỏi vòi I."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $2$: $2u+2v=\\dfrac{20}{24}$; trừ phương trình sau: $\\dfrac12u=\\dfrac3{24}$, $u=\\dfrac14$, nên $x=4$."
+          }
+        },
+        {
+          "prompt": "Đối chiếu điều kiện và kết luận.",
+          "item": {
+            "id": "g-nangsuat-p4-s4",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Giải được $x=4$, $y=6$. Kết luận nào đúng?",
+            "options": [
+              "Kết luận: mỗi giờ vòi I chảy $\\dfrac14$ bể, vòi II chảy $\\dfrac16$ bể.",
+              "Kết luận: $4>2{,}4$ và $6>2{,}4$ nên thỏa điều kiện; vòi I chảy một mình $4$ giờ, vòi II chảy một mình $6$ giờ thì đầy bể.",
+              "Kết luận: loại nghiệm vì $x+y=10\\ne 2{,}4$."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó là phần bể mỗi giờ; đề hỏi thời gian chảy một mình đầy bể."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thời gian chảy chung không bằng tổng thời gian chảy riêng; điều kiện là mỗi thời gian lớn hơn $2{,}4$."
+              }
+            },
+            "solution": "$4$ và $6$ đều lớn hơn $2{,}4$. Vòi I: $4$ giờ, vòi II: $6$ giờ."
+          }
+        }
+      ],
+      "solution": "$2$ giờ $24$ phút $=\\dfrac{12}{5}$ giờ, $1$ giờ $30$ phút $=\\dfrac32$ giờ. Hệ $u+v=\\dfrac5{12}$, $\\dfrac32u+2v=\\dfrac{17}{24}$ cho $u=\\dfrac14$, $v=\\dfrac16$, nên $x=4$, $y=6$ (đều lớn hơn $2{,}4$). Vòi I chảy một mình $4$ giờ, vòi II $6$ giờ thì đầy bể."
+    },
+    {
+      "id": "g-nangsuat-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Hai đội công nhân làm chung một công việc thì $12$ ngày xong. Hai đội làm chung được $8$ ngày thì đội I được điều đi làm việc khác, đội II làm tiếp một mình $10$ ngày nữa thì xong. Hỏi mỗi đội làm một mình thì bao nhiêu ngày xong công việc?",
+      "source": "CĐ lập PT/HPT – §3 Câu 23 (chuyển thể)",
+      "hints": [
+        "Cần số ngày mỗi đội làm một mình xong việc.",
+        "Trong $8$ ngày đầu cả hai đội cùng làm; sau đó chỉ đội II làm.",
+        "Đội II làm $10$ ngày được $\\dfrac{10}{y}$ công việc; tổng các phần việc bằng $1$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ (ngày) là thời gian đội I, đội II làm một mình xong việc ($x>12$, $y>12$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac1{12} \\\\ \\dfrac8x+\\dfrac{10}y=1 \\end{cases}$",
+              "$\\begin{cases} x+y=12 \\\\ 8(x+y)+10y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac1{12} \\\\ 8\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac{10}y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac1{12} \\\\ 8\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac{10}x=1 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Trong $8$ ngày làm chung, đội II cũng làm; phần việc của đội II gồm cả $8$ ngày đó và $10$ ngày sau."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần việc; mỗi ngày đội I làm được $\\dfrac1x$ công việc."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Người làm tiếp $10$ ngày là đội II, nên phần việc đó là $\\dfrac{10}{y}$."
+              }
+            },
+            "solution": "$\\dfrac1x+\\dfrac1y=\\dfrac1{12}$; $8$ ngày chung làm được $8\\left(\\dfrac1x+\\dfrac1y\\right)$, $10$ ngày đội II làm được $\\dfrac{10}y$, tổng bằng $1$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của đội II.",
+          "item": {
+            "id": "g-nangsuat-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thời gian đội II làm một mình xong việc là $y=$",
+            "answer": "30",
+            "unit": "ngày",
+            "mistakes": [
+              {
+                "answer": "1/30",
+                "code": "E11",
+                "feedback": "Đó là phần việc đội II làm mỗi ngày; thời gian là $y=\\dfrac1v$."
+              },
+              {
+                "answer": "6",
+                "code": "E07",
+                "feedback": "Con quên phần việc đội II làm trong $8$ ngày chung; nghiệm này còn nhỏ hơn $12$, trái điều kiện."
+              }
+            ],
+            "solution": "$8\\cdot\\dfrac1{12}+\\dfrac{10}y=1$ nên $\\dfrac{10}y=\\dfrac13$, $y=30$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của đội I.",
+          "item": {
+            "id": "g-nangsuat-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thời gian đội I làm một mình xong việc là $x=$",
+            "answer": "20",
+            "unit": "ngày",
+            "mistakes": [
+              {
+                "answer": "1/20",
+                "code": "E11",
+                "feedback": "Đó là phần việc đội I làm mỗi ngày; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "18",
+                "code": "E02",
+                "feedback": "Con trừ hai phân số bằng cách trừ mẫu; phải quy đồng rồi mới trừ $\\dfrac1{12}-\\dfrac1{30}$."
+              }
+            ],
+            "solution": "$\\dfrac1x=\\dfrac1{12}-\\dfrac1{30}=\\dfrac{5-2}{60}=\\dfrac1{20}$, nên $x=20$."
+          }
+        }
+      ],
+      "solution": "$8\\cdot\\dfrac1{12}+\\dfrac{10}{y}=1$ nên $\\dfrac{10}y=\\dfrac13$, $y=30$; $\\dfrac1x=\\dfrac1{12}-\\dfrac1{30}=\\dfrac1{20}$, $x=20$. Cả hai đều lớn hơn $12$. Đội I làm một mình $20$ ngày, đội II $30$ ngày thì xong."
+    },
+    {
+      "id": "g-nangsuat-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Trong tháng $3$, hai tổ sản xuất được $800$ sản phẩm. Sang tháng $4$, tổ I làm vượt mức $15\\%$, tổ II làm vượt mức $20\\%$ so với tháng $3$, nên cả hai tổ làm được $945$ sản phẩm. Tính số sản phẩm mỗi tổ làm trong tháng $3$.",
+      "source": "68 đề – Đề 13, Bài 3.2 (chuyển thể: hai tổ, 800 sản phẩm, vượt 15% và 20%)",
+      "hints": [
+        "Cần số sản phẩm mỗi tổ làm trong tháng $3$.",
+        "Vượt mức $15\\%$ thì tháng $4$ làm bằng bao nhiêu phần trăm của tháng $3$?",
+        "Tháng $4$ tổ I làm $1{,}15x$; cộng phần của tổ II bằng tổng tháng $4$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ là số sản phẩm tổ I, tổ II làm trong tháng $3$ ($x$, $y$ nguyên dương, nhỏ hơn $800$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=800 \\\\ 0{,}15x+0{,}2y=945 \\end{cases}$",
+              "$\\begin{cases} x+y=800 \\\\ 1{,}15x+1{,}2y=945 \\end{cases}$",
+              "$\\begin{cases} x+y=800 \\\\ 1{,}35(x+y)=945 \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "$0{,}15x+0{,}2y$ chỉ là phần vượt mức; tháng $4$ tổ I làm cả $x$ cộng phần vượt."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Không cộng $15\\%$ với $20\\%$ được vì chúng tính trên hai số khác nhau."
+              }
+            },
+            "solution": "Tháng $4$ tổ I làm $x+0{,}15x=1{,}15x$, tổ II làm $1{,}2y$: $1{,}15x+1{,}2y=945$."
+          }
+        },
+        {
+          "prompt": "Tìm số sản phẩm của tổ I.",
+          "item": {
+            "id": "g-nangsuat-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số sản phẩm tổ I làm trong tháng $3$ là:",
+            "answer": "300",
+            "unit": "sản phẩm",
+            "mistakes": [
+              {
+                "answer": "345",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm tổ I làm trong tháng $4$; đề hỏi tháng $3$."
+              },
+              {
+                "answer": "500",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm của tổ II."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $1{,}15$: $1{,}15x+1{,}15y=920$; trừ đi: $0{,}05y=25$, $y=500$, nên $x=300$."
+          }
+        },
+        {
+          "prompt": "Tìm số sản phẩm của tổ II.",
+          "item": {
+            "id": "g-nangsuat-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số sản phẩm tổ II làm trong tháng $3$ là:",
+            "answer": "500",
+            "unit": "sản phẩm",
+            "mistakes": [
+              {
+                "answer": "600",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm tổ II làm trong tháng $4$; đề hỏi tháng $3$."
+              },
+              {
+                "answer": "300",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm của tổ I."
+              }
+            ],
+            "solution": "$y=800-300=500$."
+          }
+        }
+      ],
+      "solution": "$x+y=800$, $1{,}15x+1{,}2y=945$ cho $y=500$, $x=300$. Thử lại: $345+600=945$. Tháng $3$ tổ I làm $300$, tổ II làm $500$ sản phẩm."
+    },
+    {
+      "id": "g-nangsuat-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Hai người làm chung một công việc thì sau $3$ giờ $20$ phút xong. Hai người làm chung được $3$ giờ thì người I đi làm việc khác, người II làm tiếp $1$ giờ nữa thì xong. Hỏi nếu làm riêng thì mỗi người mất bao lâu xong công việc?",
+      "source": "68 đề – Đề 44, Bài 3.2 (chuyển thể: 3 giờ 20 phút, làm chung 3 giờ, người II làm tiếp 1 giờ)",
+      "hints": [
+        "Cần thời gian mỗi người làm một mình xong việc.",
+        "Đổi giờ phút ra giờ trước; trong $3$ giờ đầu cả hai cùng làm.",
+        "Phần làm chung cộng phần người II làm thêm bằng $1$; đặt $u=\\dfrac1x$, $v=\\dfrac1y$."
+      ],
+      "steps": [
+        {
+          "prompt": "Đổi đơn vị.",
+          "item": {
+            "id": "g-nangsuat-p7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Đổi $3$ giờ $20$ phút ra giờ (ghi phân số):",
+            "answer": "10/3",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "3,2",
+                "code": "E14",
+                "feedback": "Con đổi sai đơn vị: $20$ phút $=\\dfrac{20}{60}$ giờ, không phải $0{,}2$ giờ."
+              },
+              {
+                "answer": "200",
+                "code": "E14",
+                "feedback": "Con đổi ra phút; bài này tính thời gian bằng giờ."
+              }
+            ],
+            "solution": "$3+\\dfrac{20}{60}=3+\\dfrac13=\\dfrac{10}3$ giờ."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (giờ) là thời gian người I, người II làm một mình xong ($x$, $y$ lớn hơn thời gian làm chung). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac3{10} \\\\ \\dfrac3x+\\dfrac1y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac1{3{,}2} \\\\ 3\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac1y=1 \\end{cases}$",
+              "$\\begin{cases} x+y=\\dfrac{10}3 \\\\ 3(x+y)+y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac3{10} \\\\ 3\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac1y=1 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Trong $3$ giờ làm chung, người II cũng làm; phần của người II gồm cả $3$ giờ đó và $1$ giờ sau."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "$3$ giờ $20$ phút không bằng $3{,}2$ giờ; $20$ phút $=\\dfrac13$ giờ."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần việc; mỗi giờ người I làm được $\\dfrac1x$ công việc."
+              }
+            },
+            "solution": "$\\dfrac1x+\\dfrac1y=1:\\dfrac{10}3=\\dfrac3{10}$; $3$ giờ chung và $1$ giờ của người II: $3\\left(\\dfrac1x+\\dfrac1y\\right)+\\dfrac1y=1$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của người II.",
+          "item": {
+            "id": "g-nangsuat-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian người II làm một mình xong là $y=$",
+            "answer": "10",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/10",
+                "code": "E11",
+                "feedback": "Đó là phần việc người II làm mỗi giờ; thời gian là $y=\\dfrac1v$."
+              },
+              {
+                "answer": "10/7",
+                "code": "E02",
+                "feedback": "Khi nhân phương trình $u+v=\\dfrac3{10}$ với $3$, con phải nhân cả vế phải.",
+                "review": "g-giaihpt"
+              }
+            ],
+            "solution": "Thay $u+v=\\dfrac3{10}$: $\\dfrac9{10}+v=1$, $v=\\dfrac1{10}$, nên $y=10$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của người I.",
+          "item": {
+            "id": "g-nangsuat-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian người I làm một mình xong là $x=$",
+            "answer": "5",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/5",
+                "code": "E11",
+                "feedback": "Đó là phần việc người I làm mỗi giờ; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "10",
+                "code": "E10",
+                "feedback": "Đó là thời gian của người II; bước này hỏi người I."
+              }
+            ],
+            "solution": "$u=\\dfrac3{10}-\\dfrac1{10}=\\dfrac15$, nên $x=5$."
+          }
+        }
+      ],
+      "solution": "$3$ giờ $20$ phút $=\\dfrac{10}3$ giờ. $u+v=\\dfrac3{10}$, $3(u+v)+v=1$ nên $v=1-\\dfrac9{10}=\\dfrac1{10}$, $u=\\dfrac15$. Vậy $x=5$, $y=10$, đều lớn hơn $\\dfrac{10}3$: người I làm riêng $5$ giờ, người II $10$ giờ."
+    },
+    {
+      "id": "g-nangsuat-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Vòi A chảy một mình thì sau $3$ giờ đầy một bể cạn. Vòi B ở đáy bể tháo nước ra. Nếu bể cạn và mở cùng lúc cả vòi A lẫn vòi B thì sau $5$ giờ mới đầy bể. Hỏi nếu bể đầy và chỉ mở vòi B thì sau bao lâu bể cạn?",
+      "hints": [
+        "Cần thời gian vòi B tháo cạn bể đầy.",
+        "Vòi A làm bể đầy lên, vòi B làm bể vơi đi: phần bể của B cộng hay trừ?",
+        "Mỗi giờ A chảy vào $\\dfrac13$ bể, hai vòi cùng mở đầy thêm $\\dfrac15$ bể; hiệu là phần B tháo ra."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-nangsuat-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $y$ (giờ) là thời gian vòi B tháo cạn bể đầy. Phương trình đúng là:",
+            "options": [
+              "$\\dfrac13+\\dfrac1y=\\dfrac15$",
+              "$\\dfrac13-\\dfrac1y=\\dfrac15$",
+              "$5-3=y$",
+              "$\\dfrac13-y=\\dfrac15$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Vòi B tháo nước ra nên phần bể của vòi B phải trừ đi, không cộng."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thời gian không cộng trừ trực tiếp được; hãy so sánh phần bể chảy được mỗi giờ."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Mỗi giờ vòi B tháo được $\\dfrac1y$ bể, không phải $y$ bể."
+              }
+            },
+            "solution": "Mỗi giờ A chảy vào $\\dfrac13$ bể, B tháo ra $\\dfrac1y$ bể, mở cả hai thì mỗi giờ đầy thêm $\\dfrac15$ bể: $\\dfrac13-\\dfrac1y=\\dfrac15$."
+          }
+        },
+        {
+          "prompt": "Giải phương trình.",
+          "item": {
+            "id": "g-nangsuat-p8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian vòi B tháo cạn bể đầy là $y=$",
+            "answer": "15/2",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "2/15",
+                "code": "E11",
+                "feedback": "Đó là phần bể vòi B tháo mỗi giờ; thời gian là nghịch đảo của số đó."
+              },
+              {
+                "answer": "2",
+                "code": "E02",
+                "feedback": "Con trừ hai phân số bằng cách trừ mẫu; phải quy đồng rồi mới trừ $\\dfrac13-\\dfrac15$."
+              },
+              {
+                "answer": "15/8",
+                "code": "E02",
+                "feedback": "Chuyển vế phải đổi dấu: $\\dfrac1y=\\dfrac13-\\dfrac15$, không phải cộng."
+              }
+            ],
+            "solution": "$\\dfrac1y=\\dfrac13-\\dfrac15=\\dfrac2{15}$, nên $y=\\dfrac{15}2=7{,}5$."
+          }
+        }
+      ],
+      "solution": "$\\dfrac13-\\dfrac1y=\\dfrac15$ nên $\\dfrac1y=\\dfrac2{15}$, $y=\\dfrac{15}2=7{,}5$ giờ (lớn hơn $3$, nên vòi B tháo chậm hơn vòi A chảy vào, bể vẫn đầy được). Vòi B tháo cạn bể đầy sau $7{,}5$ giờ, tức $7$ giờ $30$ phút."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-nangsuat-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Vòi I chảy một mình đầy bể cạn trong $10$ giờ, vòi II chảy một mình đầy bể trong $15$ giờ. Mở cả hai vòi cùng lúc vào bể cạn thì sau bao nhiêu giờ đầy bể?",
+      "answer": "6",
+      "unit": "giờ",
+      "mistakes": [
+        {
+          "answer": "25",
+          "code": "E07",
+          "feedback": "Thời gian không cộng được: hai vòi cùng chảy thì đầy nhanh hơn mỗi vòi. Hãy cộng phần bể mỗi giờ."
+        },
+        {
+          "answer": "12,5",
+          "code": "E07",
+          "feedback": "Thời gian chảy chung không phải trung bình cộng; hãy cộng phần bể mỗi giờ của hai vòi."
+        },
+        {
+          "answer": "1/6",
+          "code": "E11",
+          "feedback": "Đó là phần bể hai vòi chảy trong một giờ; thời gian là nghịch đảo của số đó."
+        }
+      ],
+      "solution": "Mỗi giờ: $\\dfrac1{10}+\\dfrac1{15}=\\dfrac16$ bể, nên sau $6$ giờ đầy bể."
+    },
+    {
+      "id": "g-nangsuat-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một đội làm một mình xong công việc trong $x$ ngày ($x>0$). Trong $4$ ngày, đội đó làm được bao nhiêu phần công việc?",
+      "options": [
+        "$4x$",
+        "$\\dfrac x4$",
+        "$\\dfrac4x$",
+        "$x-4$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Mỗi ngày đội làm được $\\dfrac1x$ công việc, không phải $x$."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Con chia ngược: $4$ ngày làm được $4\\cdot\\dfrac1x$ công việc."
+        },
+        "3": {
+          "code": "E07",
+          "feedback": "Đó là số ngày còn lại, không phải phần công việc."
+        }
+      },
+      "solution": "Mỗi ngày làm $\\dfrac1x$ công việc, $4$ ngày làm $\\dfrac4x$ công việc."
+    },
+    {
+      "id": "g-nangsuat-x3",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Hai vòi nước cùng chảy vào một bể cạn thì sau $4$ giờ đầy bể. Nếu mở vòi I chảy $3$ giờ rồi khóa lại, sau đó mở vòi II chảy $2$ giờ thì được $\\dfrac7{12}$ bể. Hỏi mỗi vòi chảy một mình thì sau bao lâu đầy bể?",
+      "source": "CĐ lập PT/HPT – §3 Câu 7 (chuyển thể)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ (giờ) là thời gian vòi I, vòi II chảy một mình đầy bể ($x>4$, $y>4$). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=4 \\\\ \\dfrac3x+\\dfrac2y=\\dfrac7{12} \\end{cases}$",
+              "$\\begin{cases} x+y=4 \\\\ 3x+2y=\\dfrac7{12} \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac14 \\\\ \\dfrac x3+\\dfrac y2=\\dfrac7{12} \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac14 \\\\ \\dfrac3x+\\dfrac2y=\\dfrac7{12} \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Mỗi giờ cả hai vòi chảy được $\\dfrac14$ bể; con lấy nhầm thời gian làm phần bể."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần bể; mỗi giờ vòi I chảy được $\\dfrac1x$ bể."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Phần bể chảy được trong $3$ giờ là $3\\cdot\\dfrac1x=\\dfrac3x$, không phải $\\dfrac x3$."
+              }
+            },
+            "solution": "$\\dfrac1x+\\dfrac1y=\\dfrac14$; $\\dfrac3x+\\dfrac2y=\\dfrac7{12}$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của vòi I.",
+          "item": {
+            "id": "g-nangsuat-x3-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thời gian vòi I chảy một mình đầy bể là $x=$",
+            "answer": "12",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/12",
+                "code": "E11",
+                "feedback": "Đó là phần bể vòi I chảy mỗi giờ; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "3",
+                "code": "E02",
+                "feedback": "Khi nhân phương trình với $2$, con phải nhân cả vế phải; nghiệm này còn nhỏ hơn $4$, trái điều kiện.",
+                "review": "g-giaihpt"
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là thời gian của vòi II; bước này hỏi vòi I."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $2$: $2u+2v=\\dfrac12$; trừ vế theo vế: $u=\\dfrac7{12}-\\dfrac12=\\dfrac1{12}$, nên $x=12$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của vòi II.",
+          "item": {
+            "id": "g-nangsuat-x3-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thời gian vòi II chảy một mình đầy bể là $y=$",
+            "answer": "6",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/6",
+                "code": "E11",
+                "feedback": "Đó là phần bể vòi II chảy mỗi giờ; thời gian là $y=\\dfrac1v$."
+              },
+              {
+                "answer": "12",
+                "code": "E10",
+                "feedback": "Đó là thời gian của vòi I; bước này hỏi vòi II."
+              }
+            ],
+            "solution": "$v=\\dfrac14-\\dfrac1{12}=\\dfrac16$, nên $y=6$."
+          }
+        }
+      ],
+      "solution": "$u+v=\\dfrac14$, $3u+2v=\\dfrac7{12}$ cho $u=\\dfrac1{12}$, $v=\\dfrac16$. Vậy $x=12$, $y=6$ (đều lớn hơn $4$): vòi I chảy một mình $12$ giờ, vòi II $6$ giờ thì đầy bể."
+    },
+    {
+      "id": "g-nangsuat-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một nhà máy có hai phân xưởng cùng sản xuất một loại dụng cụ. Nếu phân xưởng I làm trong $10$ ngày và phân xưởng II làm trong $12$ ngày thì cả hai làm được $760$ dụng cụ. Biết số dụng cụ phân xưởng I làm trong $3$ ngày bằng số dụng cụ phân xưởng II làm trong $4$ ngày. Tính số dụng cụ mỗi phân xưởng làm được trong một ngày.",
+      "source": "68 đề – Đề 41, Bài 3.2 (chuyển thể: 10 và 12 ngày, 760 dụng cụ, 3 ngày bằng 4 ngày)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ là số dụng cụ phân xưởng I, phân xưởng II làm trong một ngày ($x$, $y$ nguyên dương). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} 10x+12y=760 \\\\ 4x=3y \\end{cases}$",
+              "$\\begin{cases} x+y=760 \\\\ 3x=4y \\end{cases}$",
+              "$\\begin{cases} \\dfrac{10}x+\\dfrac{12}y=760 \\\\ 3x=4y \\end{cases}$",
+              "$\\begin{cases} 10x+12y=760 \\\\ 3x=4y \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Số dụng cụ phân xưởng I làm trong $3$ ngày là $3x$; con đảo số ngày giữa hai phân xưởng."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "$760$ là số dụng cụ làm trong $10$ và $12$ ngày, nên phải nhân năng suất với số ngày."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Ẩn ở đây đã là số dụng cụ mỗi ngày; số dụng cụ bằng năng suất nhân số ngày, không chia."
+              }
+            },
+            "solution": "$10x+12y=760$ và $3x=4y$."
+          }
+        },
+        {
+          "prompt": "Tìm năng suất phân xưởng I.",
+          "item": {
+            "id": "g-nangsuat-x4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số dụng cụ phân xưởng I làm trong một ngày là:",
+            "answer": "40",
+            "unit": "dụng cụ",
+            "mistakes": [
+              {
+                "answer": "30",
+                "code": "E10",
+                "feedback": "Đó là năng suất của phân xưởng II."
+              },
+              {
+                "answer": "400",
+                "code": "E11",
+                "feedback": "Đó là số dụng cụ phân xưởng I làm trong $10$ ngày; đề hỏi một ngày."
+              }
+            ],
+            "solution": "$x=\\dfrac{4y}3$ nên $\\dfrac{40y}3+12y=760$, $\\dfrac{76y}3=760$, $y=30$, $x=40$."
+          }
+        },
+        {
+          "prompt": "Tìm năng suất phân xưởng II.",
+          "item": {
+            "id": "g-nangsuat-x4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số dụng cụ phân xưởng II làm trong một ngày là:",
+            "answer": "30",
+            "unit": "dụng cụ",
+            "mistakes": [
+              {
+                "answer": "40",
+                "code": "E10",
+                "feedback": "Đó là năng suất của phân xưởng I."
+              },
+              {
+                "answer": "360",
+                "code": "E11",
+                "feedback": "Đó là số dụng cụ phân xưởng II làm trong $12$ ngày; đề hỏi một ngày."
+              }
+            ],
+            "solution": "$y=\\dfrac{3x}4=30$."
+          }
+        }
+      ],
+      "solution": "$10x+12y=760$, $3x=4y$ cho $x=40$, $y=30$. Thử lại: $400+360=760$, $3\\cdot 40=4\\cdot 30$. Phân xưởng I làm $40$, phân xưởng II làm $30$ dụng cụ mỗi ngày."
+    },
+    {
+      "id": "g-nangsuat-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Theo kế hoạch, hai xí nghiệp phải làm $900$ sản phẩm. Thực tế, xí nghiệp I vượt mức $20\\%$, còn xí nghiệp II chỉ đạt $90\\%$ so với kế hoạch (giảm mức $10\\%$), nên cả hai làm được $930$ sản phẩm. Hỏi theo kế hoạch xí nghiệp I phải làm bao nhiêu sản phẩm?",
+      "source": "68 đề – Đề 43, Bài 3.2 (chuyển thể: 900 sản phẩm, vượt 20% và giảm 10%)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ là số sản phẩm xí nghiệp I, xí nghiệp II phải làm theo kế hoạch ($x$, $y$ nguyên dương). Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=900 \\\\ 1{,}2x+1{,}1y=930 \\end{cases}$",
+              "$\\begin{cases} x+y=900 \\\\ 0{,}2x-0{,}1y=930 \\end{cases}$",
+              "$\\begin{cases} x+y=900 \\\\ 1{,}2x+0{,}9y=930 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Giảm mức $10\\%$ nghĩa là xí nghiệp II chỉ làm $90\\%$ kế hoạch, tức $0{,}9y$."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "$0{,}2x-0{,}1y$ chỉ là phần thay đổi so với kế hoạch, không phải tổng số sản phẩm thực tế."
+              }
+            },
+            "solution": "$x+y=900$; thực tế: $1{,}2x+0{,}9y=930$."
+          }
+        },
+        {
+          "prompt": "Tìm số sản phẩm kế hoạch của xí nghiệp I.",
+          "item": {
+            "id": "g-nangsuat-x5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Theo kế hoạch, xí nghiệp I phải làm:",
+            "answer": "400",
+            "unit": "sản phẩm",
+            "mistakes": [
+              {
+                "answer": "480",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm xí nghiệp I làm thực tế; đề hỏi theo kế hoạch."
+              },
+              {
+                "answer": "500",
+                "code": "E10",
+                "feedback": "Đó là số sản phẩm kế hoạch của xí nghiệp II."
+              }
+            ],
+            "solution": "Thế $y=900-x$: $1{,}2x+0{,}9(900-x)=930$, $0{,}3x=120$, nên $x=400$."
+          }
+        }
+      ],
+      "solution": "$x+y=900$, $1{,}2x+0{,}9y=930$ cho $x=400$, $y=500$. Thử lại: $480+450=930$. Theo kế hoạch xí nghiệp I làm $400$ sản phẩm."
+    },
+    {
+      "id": "g-nangsuat-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Hai đội công nhân cùng làm một công trình. Lần thứ nhất: đội I làm $3$ ngày rồi đội II làm tiếp $6$ ngày thì xong công trình. Lần thứ hai (một công trình giống hệt): đội I làm $5$ ngày rồi đội II làm tiếp $2$ ngày thì xong. Hỏi nếu làm một mình thì mỗi đội cần bao nhiêu ngày để xong công trình?",
+      "source": "68 đề – Đề 18, Bài 3.2 (chuyển thể: đổi số ngày hai lần làm)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (ngày) là thời gian đội I, đội II làm một mình xong công trình. Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} 3x+6y=1 \\\\ 5x+2y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac3x+\\dfrac6y=1 \\\\ \\dfrac5x+\\dfrac2y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac3x+\\dfrac6y=1 \\\\ \\dfrac2x+\\dfrac5y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac19 \\\\ \\dfrac1x+\\dfrac1y=\\dfrac17 \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần việc; mỗi ngày đội I làm được $\\dfrac1x$ công trình."
+              },
+              "2": {
+                "code": "E10",
+                "feedback": "Lần thứ hai đội I làm $5$ ngày, đội II làm $2$ ngày; con đảo số ngày."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Hai đội không làm cùng lúc; mỗi đội làm số ngày riêng, nên phải tính phần việc của từng đội."
+              }
+            },
+            "solution": "Lần một: $\\dfrac3x+\\dfrac6y=1$; lần hai: $\\dfrac5x+\\dfrac2y=1$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của đội I.",
+          "item": {
+            "id": "g-nangsuat-x6-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian đội I làm một mình xong công trình là $x=$",
+            "answer": "6",
+            "unit": "ngày",
+            "mistakes": [
+              {
+                "answer": "1/6",
+                "code": "E11",
+                "feedback": "Đó là phần việc đội I làm mỗi ngày; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "1",
+                "code": "E02",
+                "feedback": "Khi thế $2v=1-5u$ vào $3u+6v=1$ thành $3u+3(1-5u)=1$, con phải nhân $3$ với cả hai hạng tử trong ngoặc.",
+                "review": "g-giaihpt"
+              },
+              {
+                "answer": "12",
+                "code": "E10",
+                "feedback": "Đó là thời gian của đội II; bước này hỏi đội I."
+              }
+            ],
+            "solution": "Đặt $u=\\dfrac1x$, $v=\\dfrac1y$: $3u+6v=1$, $5u+2v=1$. Nhân phương trình sau với $3$: $15u+6v=3$; trừ đi: $12u=2$, $u=\\dfrac16$, nên $x=6$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của đội II.",
+          "item": {
+            "id": "g-nangsuat-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian đội II làm một mình xong công trình là $y=$",
+            "answer": "12",
+            "unit": "ngày",
+            "mistakes": [
+              {
+                "answer": "1/12",
+                "code": "E11",
+                "feedback": "Đó là phần việc đội II làm mỗi ngày; thời gian là $y=\\dfrac1v$."
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là thời gian của đội I; bước này hỏi đội II."
+              }
+            ],
+            "solution": "$2v=1-5\\cdot\\dfrac16=\\dfrac16$, $v=\\dfrac1{12}$, nên $y=12$."
+          }
+        }
+      ],
+      "solution": "$3u+6v=1$, $5u+2v=1$ cho $u=\\dfrac16$, $v=\\dfrac1{12}$. Thử lại: $\\dfrac36+\\dfrac6{12}=1$, $\\dfrac56+\\dfrac2{12}=1$. Đội I làm một mình $6$ ngày, đội II $12$ ngày."
+    },
+    {
+      "id": "g-nangsuat-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Hai vòi nước cùng chảy vào một bể cạn thì sau $2$ giờ $40$ phút đầy bể. Nếu mở vòi I chảy $1$ giờ rồi khóa lại, sau đó mở vòi II chảy $3$ giờ thì được $\\dfrac58$ bể. Tính thời gian mỗi vòi chảy một mình đầy bể.",
+      "source": "68 đề – Đề 48, Bài 3.1 (chuyển thể: 2 giờ 40 phút, vòi I 1 giờ, vòi II 3 giờ, 5/8 bể)",
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện.",
+          "item": {
+            "id": "g-nangsuat-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$, $y$ (giờ) là thời gian vòi I, vòi II chảy một mình đầy bể. Điều kiện đúng là:",
+            "options": [
+              "$x>2{,}4$ và $y>2{,}4$",
+              "$x>\\dfrac83$ và $y>\\dfrac83$",
+              "$x+y=\\dfrac83$",
+              "$0<x<\\dfrac83$ và $0<y<\\dfrac83$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Con đổi sai đơn vị: $40$ phút $=\\dfrac{40}{60}$ giờ, không phải $0{,}4$ giờ."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thời gian không cộng được; hai vòi chảy cùng lúc thì phần bể mỗi giờ mới cộng lại."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Một vòi chảy một mình thì lâu hơn cả hai vòi cùng chảy."
+              }
+            },
+            "solution": "$2$ giờ $40$ phút $=2+\\dfrac23=\\dfrac83$ giờ; $x>\\dfrac83$, $y>\\dfrac83$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-nangsuat-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình đúng là:",
+            "options": [
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac38 \\\\ \\dfrac1x+\\dfrac3y=\\dfrac58 \\end{cases}$",
+              "$\\begin{cases} x+y=\\dfrac83 \\\\ x+3y=\\dfrac58 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac38 \\\\ \\dfrac1x+\\dfrac3y=1 \\end{cases}$",
+              "$\\begin{cases} \\dfrac1x+\\dfrac1y=\\dfrac83 \\\\ \\dfrac1x+\\dfrac3y=\\dfrac58 \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Con dùng thời gian thay cho phần bể; mỗi giờ vòi I chảy được $\\dfrac1x$ bể."
+              },
+              "2": {
+                "code": "E10",
+                "feedback": "Hai vòi chảy lần lượt chỉ được $\\dfrac58$ bể, chưa đầy bể."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Mỗi giờ cả hai vòi chảy được $1:\\dfrac83$ bể; con lấy nhầm thời gian làm phần bể."
+              }
+            },
+            "solution": "$\\dfrac1x+\\dfrac1y=1:\\dfrac83=\\dfrac38$; $\\dfrac1x+\\dfrac3y=\\dfrac58$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của vòi II.",
+          "item": {
+            "id": "g-nangsuat-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian vòi II chảy một mình đầy bể là $y=$",
+            "answer": "8",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/8",
+                "code": "E11",
+                "feedback": "Đó là phần bể vòi II chảy mỗi giờ; thời gian là $y=\\dfrac1v$."
+              },
+              {
+                "answer": "2",
+                "code": "E02",
+                "feedback": "Trừ vế theo vế thì vế phải là $\\dfrac58-\\dfrac38$; con đã cộng thay vì trừ.",
+                "review": "g-giaihpt"
+              }
+            ],
+            "solution": "Trừ vế theo vế: $2v=\\dfrac58-\\dfrac38=\\dfrac14$, $v=\\dfrac18$, nên $y=8$."
+          }
+        },
+        {
+          "prompt": "Tìm thời gian của vòi I.",
+          "item": {
+            "id": "g-nangsuat-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian vòi I chảy một mình đầy bể là $x=$",
+            "answer": "4",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "1/4",
+                "code": "E11",
+                "feedback": "Đó là phần bể vòi I chảy mỗi giờ; thời gian là $x=\\dfrac1u$."
+              },
+              {
+                "answer": "8",
+                "code": "E10",
+                "feedback": "Đó là thời gian của vòi II; bước này hỏi vòi I."
+              }
+            ],
+            "solution": "$u=\\dfrac38-\\dfrac18=\\dfrac14$, nên $x=4$."
+          }
+        }
+      ],
+      "solution": "$2$ giờ $40$ phút $=\\dfrac83$ giờ. $u+v=\\dfrac38$, $u+3v=\\dfrac58$ cho $v=\\dfrac18$, $u=\\dfrac14$. Vậy $x=4$, $y=8$ (đều lớn hơn $\\dfrac83$): vòi I chảy một mình $4$ giờ, vòi II $8$ giờ thì đầy bể."
+    },
+    {
+      "id": "g-nangsuat-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một công nhân dự định làm xong một số sản phẩm với năng suất $20$ sản phẩm mỗi giờ. Sau khi làm xong một nửa số sản phẩm, người đó tăng năng suất lên $25$ sản phẩm mỗi giờ, nhờ vậy xong sớm hơn dự định $30$ phút. Tính số sản phẩm người đó dự định làm.",
+      "source": "CĐ lập PT/HPT – §4 Câu 28 (chuyển thể)",
+      "steps": [
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-nangsuat-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $S$ là số sản phẩm dự định ($S$ nguyên dương). Phương trình đúng là:",
+            "options": [
+              "$\\dfrac{S}{40}+\\dfrac{S}{50}=\\dfrac{S}{20}-\\dfrac12$",
+              "$\\dfrac{S}{40}+\\dfrac{S}{50}=\\dfrac{S}{20}+\\dfrac12$",
+              "$\\dfrac{S}{40}+\\dfrac{S}{50}=\\dfrac{S}{20}-30$",
+              "$\\dfrac{S}{20}+\\dfrac{S}{25}=\\dfrac{S}{20}-\\dfrac12$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Xong sớm hơn nghĩa là thời gian thực tế ít hơn dự định, nên phải trừ $\\dfrac12$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Thời gian đang tính bằng giờ nên $30$ phút phải đổi thành $\\dfrac12$ giờ."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Mỗi giai đoạn chỉ làm một nửa số sản phẩm, tức $\\dfrac S2$ sản phẩm."
+              }
+            },
+            "solution": "Dự định: $\\dfrac S{20}$ giờ. Thực tế: nửa đầu $\\dfrac{S}{2}:20=\\dfrac S{40}$ giờ, nửa sau $\\dfrac S2:25=\\dfrac S{50}$ giờ, ít hơn dự định $\\dfrac12$ giờ."
+          }
+        },
+        {
+          "prompt": "Giải phương trình.",
+          "item": {
+            "id": "g-nangsuat-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số sản phẩm dự định là $S=$",
+            "answer": "100",
+            "unit": "sản phẩm",
+            "mistakes": [
+              {
+                "answer": "6000",
+                "code": "E14",
+                "feedback": "Con dùng $30$ thay cho $\\dfrac12$ giờ; đổi phút ra giờ trước khi lập phương trình."
+              },
+              {
+                "answer": "50",
+                "code": "E11",
+                "feedback": "Đó mới là một nửa số sản phẩm; đề hỏi cả số sản phẩm dự định."
+              }
+            ],
+            "solution": "$\\dfrac S{20}-\\dfrac S{40}-\\dfrac S{50}=\\dfrac12$, tức $\\dfrac{10S-5S-4S}{200}=\\dfrac12$, $\\dfrac S{200}=\\dfrac12$, nên $S=100$."
+          }
+        }
+      ],
+      "solution": "$\\dfrac S{40}+\\dfrac S{50}=\\dfrac S{20}-\\dfrac12$ cho $\\dfrac{S}{200}=\\dfrac12$, $S=100$. Thử lại: dự định $5$ giờ; thực tế $2{,}5+2=4{,}5$ giờ, sớm $30$ phút. Người đó dự định làm $100$ sản phẩm."
+    }
+  ]
+}

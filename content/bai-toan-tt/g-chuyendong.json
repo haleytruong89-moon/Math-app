@@ -1,0 +1,1138 @@
+{
+  "id": "g-chuyendong",
+  "module": "bai-toan-tt",
+  "order": 3,
+  "title": "Chuyển động & dòng nước",
+  "status": "draft",
+  "estMinutes": 50,
+  "theory": [
+    "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** (phương pháp thế, cộng đại số) và đổi thời gian: $1$ giờ $=60$ phút, nên $20$ phút $=\\dfrac13$ giờ.",
+    "**Công thức:** $s=v\\cdot t$, $v=\\dfrac{s}{t}$, $t=\\dfrac{s}{v}$, dùng cùng hệ đơn vị km – km/h – giờ. **Ngược chiều**, gặp nhau: $s_1+s_2=AB$. **Cùng chiều**, xe sau đuổi kịp xe trước (cùng điểm xuất phát): $s_1=s_2$. **Dòng nước:** $v_{\\text{xuôi}}=v+v_n$, $v_{\\text{ngược}}=v-v_n$, điều kiện $v>v_n>0$.",
+    "**Vì sao:** đi ngược chiều, mỗi giờ hai xe xích lại gần nhau $v_1+v_2$ km; đi cùng chiều, xe nhanh chỉ rút ngắn khoảng cách $v_2-v_1$ km mỗi giờ. Xuôi dòng, nước đẩy thêm ca nô; ngược dòng, nước cản lại.",
+    "**Bẫy hay gặp:** $40$ phút $=\\dfrac23$ giờ, **không** phải $0{,}4$ giờ. Nhầm $v+v_n$ với $v-v_n$. Quên thời gian nghỉ. Hai xe gặp nhau thì cộng **quãng đường**, không cộng thời gian. Xe xuất phát trước đi **lâu hơn**: đi từ $7$ giờ, gặp lúc $10$ giờ là đã đi $3$ giờ, không phải $10$ giờ.",
+    "**Nhận dạng:** “gặp nhau”, “đuổi kịp”, “xuôi – ngược dòng”, “nghỉ … rồi quay về”, “đi với vận tốc … thì muộn/sớm …” → lập bảng $s$ – $v$ – $t$. Nên đặt ẩn là **thời gian** hoặc **quãng đường** để PT bậc nhất. **Chưa dùng bài này** khi ẩn vận tốc buộc nằm ở mẫu hai phân thức (biết $AB$, “tăng vận tốc thêm … nên đến sớm …”): dẫn tới PT bậc hai, học ở bài sau.",
+    "**Bảng đại lượng:** $\\begin{array}{l|c|c|c} & s\\ (\\text{km}) & v\\ (\\text{km/h}) & t\\ (\\text{giờ}) \\\\ \\hline \\text{Xe 1} & v_1t_1 & v_1 & t_1 \\\\ \\text{Xe 2} & v_2t_2 & v_2 & t_2 \\end{array}$ Mỗi dòng là một xe hoặc một chặng; biết hai ô thì ô thứ ba là tích hoặc thương. **Checklist:** (1) đơn vị: phút → giờ; (2) điều kiện của ẩn ($x>0$, $v>v_n$); (3) quan hệ: tổng/hiệu quãng đường hay thời gian, có thời gian nghỉ không; (4) thử lại vào đề rồi viết **Kết luận** có đơn vị."
+  ],
+  "worked": {
+    "problem": "Một người đi xe máy từ A đến B với vận tốc $40$ km/h. Đến B, người đó nghỉ $30$ phút rồi quay về A với vận tốc $60$ km/h. Thời gian từ lúc đi khỏi A đến lúc về tới A là $5$ giờ $30$ phút. Tính quãng đường AB.",
+    "steps": [
+      {
+        "text": "Gọi quãng đường AB là $x$ (km), $x>0$. Bảng: lúc đi $s=x$, $v=40$, $t=\\dfrac{x}{40}$; lúc về $s=x$, $v=60$, $t=\\dfrac{x}{60}$.",
+        "why": "Đề hỏi AB nên đặt ẩn là AB; biết quãng đường và vận tốc thì thời gian là thương."
+      },
+      {
+        "text": "Đổi đơn vị: $30$ phút $=\\dfrac12$ giờ, $5$ giờ $30$ phút $=\\dfrac{11}{2}$ giờ. Thời gian chạy xe: $\\dfrac{11}{2}-\\dfrac12=5$ (giờ).",
+        "why": "Tổng thời gian gồm cả lúc nghỉ; chỉ phần còn lại mới là thời gian đi và về."
+      },
+      {
+        "text": "Lập và giải PT: $\\dfrac{x}{40}+\\dfrac{x}{60}=5 \\Leftrightarrow 3x+2x=600 \\Leftrightarrow x=120$.",
+        "why": "Nhân hai vế với mẫu chung $120$ cho gọn; ẩn ở tử nên PT bậc nhất."
+      },
+      {
+        "text": "Kết luận: $x=120$ thoả $x>0$. Quãng đường AB dài $120$ km.",
+        "why": "Thử lại: đi $3$ giờ, nghỉ $0{,}5$ giờ, về $2$ giờ, tổng $5{,}5$ giờ, đúng đề."
+      }
+    ],
+    "selfExplain": "Nếu quên trừ $30$ phút nghỉ thì phương trình sẽ thế nào, và vì sao kết quả khi đó lớn hơn quãng đường thật?"
+  },
+  "faded": {
+    "problem": "Một ca nô xuôi dòng trong $2$ giờ rồi ngược dòng trong $3$ giờ thì đi được tổng cộng $145$ km. Nếu ca nô xuôi dòng trong $3$ giờ rồi ngược dòng trong $2$ giờ thì đi được $155$ km. Tính vận tốc của ca nô khi nước yên lặng và vận tốc của dòng nước (hai vận tốc này không đổi).",
+    "steps": [
+      {
+        "prompt": "Chọn ẩn và điều kiện.",
+        "item": {
+          "id": "g-chuyendong-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+          "options": [
+            "Gọi thời gian xuôi dòng là $x$, ngược dòng là $y$ (giờ), $x>0$, $y>0$",
+            "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>0$, $y>0$",
+            "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>y>0$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Thời gian đề đã cho; ẩn phải là các đại lượng đề hỏi, ở đây là hai vận tốc."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "Thiếu điều kiện $x>y$: ngược dòng ca nô phải tiến lên được, tức $x-y>0$."
+            }
+          },
+          "solution": "Đề hỏi hai vận tốc nên đặt $x$, $y$ là hai vận tốc; ngược dòng cần $x-y>0$, vậy $x>y>0$."
+        }
+      },
+      {
+        "text": "Vận tốc xuôi dòng là $x+y$, ngược dòng là $x-y$ (km/h). Quãng đường $=$ vận tốc $\\times$ thời gian."
+      },
+      {
+        "prompt": "Lập hệ phương trình.",
+        "item": {
+          "id": "g-chuyendong-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Hệ phương trình nào đúng?",
+          "options": [
+            "$\\begin{cases} 2(x-y)+3(x+y)=145 \\\\ 3(x-y)+2(x+y)=155 \\end{cases}$",
+            "$\\begin{cases} 2(x+y)+3(x-y)=145 \\\\ 3(x+y)+2(x-y)=155 \\end{cases}$",
+            "$\\begin{cases} \\dfrac{x+y}{2}+\\dfrac{x-y}{3}=145 \\\\ \\dfrac{x+y}{3}+\\dfrac{x-y}{2}=155 \\end{cases}$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Con đổi chỗ xuôi và ngược: xuôi dòng nước đẩy thêm nên vận tốc là $x+y$."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Quãng đường là vận tốc **nhân** thời gian: $s=v\\cdot t$."
+            }
+          },
+          "solution": "Lần 1: $2(x+y)+3(x-y)=145$; lần 2: $3(x+y)+2(x-y)=155$."
+        }
+      },
+      {
+        "text": "Phá ngoặc, thu gọn: $\\begin{cases} 5x-y=145 \\\\ 5x+y=155 \\end{cases}$"
+      },
+      {
+        "prompt": "Giải hệ.",
+        "item": {
+          "id": "g-chuyendong-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Vận tốc dòng nước $y$ bằng bao nhiêu km/h?",
+          "answer": "5",
+          "unit": "km/h",
+          "mistakes": [
+            {
+              "answer": "10",
+              "code": "E02",
+              "feedback": "Hiệu hai phương trình cho $2y$, không phải $y$; con quên chia cho $2$."
+            },
+            {
+              "answer": "-5",
+              "code": "E02",
+              "feedback": "Con sai dấu khi trừ hai phương trình; vận tốc dòng nước phải là số dương."
+            }
+          ],
+          "solution": "Trừ vế: $(5x+y)-(5x-y)=155-145 \\Rightarrow 2y=10 \\Rightarrow y=5$, rồi $x=30$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "g-chuyendong-f4",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $x=30$, $y=5$ thoả $x>y>0$; vận tốc ca nô khi nước yên lặng là $30$ km/h, vận tốc dòng nước là $5$ km/h.",
+            "Kết luận: $x=30$, $y=5$.",
+            "Kết luận: vận tốc xuôi dòng là $30$ km/h, vận tốc ngược dòng là $5$ km/h."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Thiếu đối chiếu điều kiện, thiếu tên đại lượng và đơn vị."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "$x$, $y$ là vận tốc ca nô khi nước yên lặng và vận tốc dòng nước, không phải vận tốc xuôi, ngược."
+            }
+          },
+          "solution": "$x=30>y=5>0$ (thoả). Vận tốc ca nô khi nước yên lặng $30$ km/h, dòng nước $5$ km/h."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-chuyendong-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một bạn đi xe đạp với vận tốc $14$ km/h trong $1$ giờ $30$ phút. Bạn đó đi được quãng đường dài bao nhiêu ki-lô-mét?",
+      "hints": [
+        "Đề hỏi quãng đường bạn đó đi được.",
+        "Biết vận tốc và thời gian; đơn vị thời gian đã khớp với km/h chưa?",
+        "Đổi $30$ phút ra giờ, rồi dùng $s=v\\cdot t$."
+      ],
+      "answer": "21",
+      "unit": "km",
+      "mistakes": [
+        {
+          "answer": "18,2",
+          "code": "E14",
+          "feedback": "Con đổi phút sai: $30$ phút $=\\dfrac{30}{60}$ giờ, không phải $0{,}3$ giờ."
+        },
+        {
+          "answer": "1260",
+          "code": "E14",
+          "feedback": "Con nhân với số phút; vận tốc tính theo km/h thì thời gian phải đổi ra giờ."
+        },
+        {
+          "answer": "28/3",
+          "code": "E03",
+          "feedback": "Quãng đường là vận tốc **nhân** thời gian, không phải chia."
+        }
+      ],
+      "solution": "$1$ giờ $30$ phút $=1{,}5$ giờ; $s=14\\cdot 1{,}5=21$ (km)."
+    },
+    {
+      "id": "g-chuyendong-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một ca nô có vận tốc khi nước yên lặng là $24$ km/h, vận tốc dòng nước là $3$ km/h. Vận tốc của ca nô khi đi ngược dòng là:",
+      "hints": [
+        "Đề hỏi vận tốc ca nô khi đi ngược dòng.",
+        "Ngược dòng thì dòng nước giúp hay cản ca nô?",
+        "Dùng $v_{\\text{ngược}}=v-v_n$."
+      ],
+      "options": [
+        "$27$ km/h",
+        "$21$ km/h",
+        "$24$ km/h",
+        "$18$ km/h"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Đó là vận tốc xuôi dòng; ngược dòng nước cản nên phải trừ $v_n$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Dòng nước làm thay đổi vận tốc thật của ca nô; không bỏ qua vận tốc dòng nước."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con trừ vận tốc dòng nước hai lần; ngược dòng chỉ trừ một lần: $v-v_n$."
+        }
+      },
+      "solution": "$v_{\\text{ngược}}=v-v_n=24-3=21$ (km/h)."
+    },
+    {
+      "id": "g-chuyendong-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Hai ô tô xuất phát cùng lúc từ hai thành phố A và B cách nhau $180$ km, đi ngược chiều nhau với vận tốc $40$ km/h và $50$ km/h. Muốn biết sau bao lâu hai xe gặp nhau, nên làm thế nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi thời gian từ lúc xuất phát đến lúc gặp nhau.",
+        "Đi ngược chiều: mỗi giờ hai xe xích lại gần nhau bao nhiêu km?",
+        "Khi gặp nhau, tổng quãng đường hai xe đã đi bằng $AB$."
+      ],
+      "options": [
+        "Lấy $180$ chia cho hiệu vận tốc $50-40$",
+        "Tính thời gian mỗi xe đi hết $AB$ rồi cộng lại",
+        "Lấy $180$ chia cho tổng vận tốc $40+50$",
+        "Lập hệ hai ẩn là vận tốc của hai xe"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Chia cho hiệu vận tốc dùng khi hai xe đi **cùng chiều**, xe sau đuổi xe trước."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Khi gặp nhau chưa xe nào đi hết $AB$; điều biết được là tổng quãng đường hai xe đi bằng $AB$."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Vận tốc hai xe đề đã cho; chỉ còn một đại lượng chưa biết là thời gian."
+        }
+      },
+      "solution": "Ngược chiều: mỗi giờ hai xe gần nhau $40+50=90$ km, nên gặp nhau sau $180:90=2$ giờ."
+    },
+    {
+      "id": "g-chuyendong-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Lúc $6$ giờ $30$ phút, một xe tải đi từ A đến B với vận tốc $45$ km/h. Đến B, xe dừng $1$ giờ $30$ phút để dỡ hàng rồi quay về A với vận tốc $30$ km/h và về tới A lúc $15$ giờ cùng ngày. Tính quãng đường AB.",
+      "source": "CĐ lập PT/HPT – §6 Câu 6 (chuyển thể)",
+      "hints": [
+        "Đề hỏi độ dài quãng đường AB.",
+        "Lập bảng lúc đi – lúc về; tổng thời gian gồm những khoảng nào?",
+        "Thời gian chạy xe $=$ tổng thời gian $-$ thời gian dỡ hàng; đặt $AB=x$ rồi lập PT."
+      ],
+      "answer": "126",
+      "unit": "km",
+      "mistakes": [
+        {
+          "answer": "153",
+          "code": "E07",
+          "feedback": "Con quên trừ $1$ giờ $30$ phút dỡ hàng; xe chỉ chạy trong phần thời gian còn lại."
+        },
+        {
+          "answer": "133,2",
+          "code": "E14",
+          "feedback": "Con đổi phút sai: $30$ phút $=0{,}5$ giờ, không phải $0{,}3$ giờ."
+        }
+      ],
+      "solution": "Từ $6$ giờ $30$ phút đến $15$ giờ là $8{,}5$ giờ; trừ $1{,}5$ giờ dỡ hàng còn $7$ giờ chạy xe. Gọi $AB=x$ (km), $x>0$: $\\dfrac{x}{45}+\\dfrac{x}{30}=7 \\Leftrightarrow \\dfrac{x}{18}=7 \\Leftrightarrow x=126$ (thoả). Vậy $AB=126$ km."
+    },
+    {
+      "id": "g-chuyendong-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Lúc $7$ giờ, một xe máy đi từ A về B. Đến $8$ giờ, một ô tô cũng đi từ A về B trên cùng con đường, với vận tốc lớn hơn vận tốc xe máy $20$ km/h, và đuổi kịp xe máy lúc $10$ giờ. Tính vận tốc của xe máy.",
+      "source": "CĐ lập PT/HPT – §6 Câu 27 (chuyển thể)",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 320 96\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"70\" x2=\"262\" y2=\"70\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"20\" y1=\"65\" x2=\"20\" y2=\"75\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"20\" y=\"88\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">A</text><line x1=\"262\" y1=\"65\" x2=\"262\" y2=\"75\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"262\" y=\"88\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">chỗ gặp (10 giờ)</text><line x1=\"20\" y1=\"24\" x2=\"255\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.8\"/><polygon points=\"262,24 255,20 255,28\" fill=\"currentColor\"/><text x=\"141\" y=\"16\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">xe máy, xuất phát 7 giờ</text><line x1=\"20\" y1=\"50\" x2=\"255\" y2=\"50\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polygon points=\"262,50 255,46 255,54\" fill=\"var(--accent)\"/><text x=\"141\" y=\"42\" font-size=\"10\" text-anchor=\"middle\" fill=\"var(--accent)\">ô tô, xuất phát 8 giờ (nhanh hơn 20 km/h)</text></svg>",
+        "alt": "Sơ đồ: xe máy xuất phát từ A lúc 7 giờ, ô tô xuất phát từ A lúc 8 giờ, cùng chiều; hai xe tới chỗ gặp lúc 10 giờ."
+      },
+      "hints": [
+        "Đề hỏi vận tốc của xe máy.",
+        "Hai xe cùng chiều, cùng xuất phát từ A: lúc gặp nhau, quãng đường hai xe đã đi thế nào?",
+        "Tính thời gian đi của mỗi xe, rồi cho hai quãng đường bằng nhau."
+      ],
+      "steps": [
+        {
+          "prompt": "Thời gian đi của mỗi xe.",
+          "item": {
+            "id": "g-chuyendong-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Đến lúc gặp nhau, mỗi xe đã đi trong bao lâu?",
+            "options": [
+              "Xe máy $10$ giờ, ô tô $8$ giờ",
+              "Cả hai xe $2$ giờ",
+              "Xe máy $2$ giờ, ô tô $3$ giờ",
+              "Xe máy $3$ giờ, ô tô $2$ giờ"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Đó là giờ trên đồng hồ; thời gian đi $=$ giờ gặp $-$ giờ xuất phát."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Xe máy xuất phát sớm hơn ô tô nên đã đi lâu hơn ô tô."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Xe đi trước (xe máy) có thời gian đi dài hơn xe đi sau."
+              }
+            },
+            "solution": "Xe máy: $10-7=3$ giờ; ô tô: $10-8=2$ giờ."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-chuyendong-p5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi vận tốc xe máy là $x$ (km/h), $x>0$. Chọn phương trình đúng.",
+            "options": [
+              "$3x=2(x+20)$",
+              "$3(x+20)=2x$",
+              "$\\dfrac{x}{3}=\\dfrac{x+20}{2}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Con gán nhầm thời gian: xe máy đi $3$ giờ với vận tốc $x$, ô tô đi $2$ giờ với vận tốc $x+20$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Quãng đường là vận tốc **nhân** thời gian: $s=v\\cdot t$."
+              }
+            },
+            "solution": "Hai xe cùng đi từ A tới chỗ gặp nên hai quãng đường bằng nhau: $3x=2(x+20)$."
+          }
+        },
+        {
+          "prompt": "Giải và trả lời.",
+          "item": {
+            "id": "g-chuyendong-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Vận tốc của xe máy là bao nhiêu km/h?",
+            "answer": "40",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "20",
+                "code": "E02",
+                "feedback": "Phá ngoặc phải nhân $2$ với cả $20$: $2(x+20)=2x+40$."
+              },
+              {
+                "answer": "60",
+                "code": "E10",
+                "feedback": "Đề hỏi vận tốc **xe máy**, không phải vận tốc ô tô."
+              }
+            ],
+            "solution": "$3x=2x+40 \\Leftrightarrow x=40$ (thoả $x>0$)."
+          }
+        }
+      ],
+      "solution": "Xe máy đi $3$ giờ, ô tô đi $2$ giờ. Gọi vận tốc xe máy là $x$ (km/h), $x>0$: $3x=2(x+20) \\Leftrightarrow x=40$ (thoả). Vậy xe máy đi với vận tốc $40$ km/h (ô tô $60$ km/h)."
+    },
+    {
+      "id": "g-chuyendong-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một ca nô xuôi dòng từ bến A đến bến B mất $4$ giờ và ngược dòng từ B về A mất $6$ giờ. Vận tốc dòng nước là $3$ km/h. Tính khoảng cách AB.",
+      "source": "CĐ lập PT/HPT – §6 Câu 36 (chuyển thể)",
+      "hints": [
+        "Đề hỏi khoảng cách giữa hai bến A và B.",
+        "Đi xuôi và đi ngược trên cùng quãng đường AB: hai quãng đường thế nào?",
+        "Viết quãng đường xuôi và ngược theo $x$ bằng $s=v\\cdot t$, rồi cho bằng nhau."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-chuyendong-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "options": [
+              "Gọi vận tốc dòng nước là $x$ (km/h), $x>0$",
+              "Gọi vận tốc ca nô khi nước yên lặng là $x$ (km/h), $x>3$",
+              "Gọi vận tốc ca nô khi nước yên lặng là $x$ (km/h), $x>0$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Vận tốc dòng nước đề đã cho; ẩn phải là đại lượng chưa biết."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Ngược dòng ca nô đi với vận tốc $x-3$, nên cần $x>3$."
+              }
+            },
+            "solution": "Gọi vận tốc ca nô khi nước yên lặng là $x$ (km/h); ngược dòng cần $x-3>0$, tức $x>3$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-chuyendong-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn phương trình đúng.",
+            "options": [
+              "$4(x-3)=6(x+3)$",
+              "$4(x+3)=6(x-3)$",
+              "$\\dfrac{x+3}{4}=\\dfrac{x-3}{6}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Con đổi chỗ xuôi và ngược: xuôi dòng mất $4$ giờ với vận tốc $x+3$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Quãng đường là vận tốc **nhân** thời gian: $s=v\\cdot t$."
+              }
+            },
+            "solution": "Xuôi và ngược trên cùng quãng đường AB: $4(x+3)=6(x-3)$."
+          }
+        },
+        {
+          "prompt": "Tính quãng đường.",
+          "item": {
+            "id": "g-chuyendong-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Khoảng cách AB là bao nhiêu km?",
+            "answer": "72",
+            "unit": "km",
+            "mistakes": [
+              {
+                "answer": "15",
+                "code": "E11",
+                "feedback": "Con mới tìm được vận tốc ca nô; đề hỏi quãng đường AB."
+              },
+              {
+                "answer": "60",
+                "code": "E07",
+                "feedback": "Quãng đường xuôi dòng là $4(x+3)$, không phải $4x$."
+              }
+            ],
+            "solution": "$4x+12=6x-18 \\Leftrightarrow x=15$ (thoả $x>3$); $AB=4\\cdot(15+3)=72$ km."
+          }
+        }
+      ],
+      "solution": "Gọi vận tốc ca nô khi nước yên lặng là $x$ (km/h), $x>3$. $4(x+3)=6(x-3) \\Leftrightarrow 2x=30 \\Leftrightarrow x=15$ (thoả). $AB=4\\cdot 18=72$ km."
+    },
+    {
+      "id": "g-chuyendong-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một ô tô dự định đi từ A đến B với vận tốc và thời gian định trước. Nếu ô tô tăng vận tốc thêm $12$ km/h thì đến B sớm hơn dự định $1$ giờ. Nếu ô tô giảm vận tốc $8$ km/h thì đến B muộn hơn dự định $1$ giờ. Tính quãng đường AB.",
+      "source": "CĐ lập PT/HPT – §7 Câu 1 (chuyển thể)",
+      "hints": [
+        "Đề hỏi quãng đường AB; chưa biết cả vận tốc lẫn thời gian dự định.",
+        "Ba cách đi đều trên cùng quãng đường AB: tích vận tốc × thời gian không đổi.",
+        "Đặt hai ẩn vận tốc, thời gian dự định; mỗi cách đi cho một PT (vận tốc mới)(thời gian mới) $=xy$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-chuyendong-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "options": [
+              "Gọi vận tốc dự định là $x$ (km/h), thời gian dự định là $y$ (giờ); $x>8$, $y>1$",
+              "Gọi vận tốc dự định là $x$ (km/h), thời gian dự định là $y$ (giờ); $x>0$, $y>0$",
+              "Gọi vận tốc dự định là $x$ (km/h), vận tốc khi tăng là $y$ (km/h); $x>0$, $y>0$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Thiếu điều kiện: vận tốc sau khi giảm $x-8$ và thời gian khi đến sớm $y-1$ đều phải dương."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Vận tốc khi tăng là $x+12$, đã biết theo $x$, nên không phải ẩn mới; ẩn thứ hai nên là thời gian dự định."
+              }
+            },
+            "solution": "Hai ẩn: vận tốc $x$, thời gian $y$ dự định; cần $x-8>0$ và $y-1>0$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuyendong-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Quãng đường AB không đổi. Chọn hệ phương trình đúng.",
+            "options": [
+              "$\\begin{cases} (x+12)(y+1)=xy \\\\ (x-8)(y-1)=xy \\end{cases}$",
+              "$\\begin{cases} (x+12)(y-1)=xy \\\\ (x-8)(y+1)=xy \\end{cases}$",
+              "$\\begin{cases} (x+12)+(y-1)=x+y \\\\ (x-8)+(y+1)=x+y \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Đi nhanh hơn thì đến sớm, thời gian **giảm** $1$ giờ: $(x+12)(y-1)$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Quãng đường là vận tốc **nhân** thời gian, không phải cộng."
+              }
+            },
+            "solution": "Cả ba cách đi đều có quãng đường AB $=xy$: $(x+12)(y-1)=xy$, $(x-8)(y+1)=xy$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuyendong-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian dự định $y$ là bao nhiêu giờ?",
+            "answer": "5",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "-1",
+                "code": "E02",
+                "feedback": "Phá ngoặc sai dấu: $(x+12)(y-1)=xy-x+12y-12$."
+              }
+            ],
+            "solution": "$-x+12y=12$ và $x-8y=8$; cộng vế: $4y=20$, $y=5$, $x=48$."
+          }
+        },
+        {
+          "prompt": "Tính quãng đường.",
+          "item": {
+            "id": "g-chuyendong-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Quãng đường AB dài bao nhiêu km?",
+            "answer": "240",
+            "unit": "km",
+            "mistakes": [
+              {
+                "answer": "300",
+                "code": "E07",
+                "feedback": "$AB$ là vận tốc **dự định** nhân thời gian dự định: $AB=xy$."
+              },
+              {
+                "answer": "48",
+                "code": "E11",
+                "feedback": "Con mới tìm được vận tốc dự định; đề hỏi quãng đường AB."
+              }
+            ],
+            "solution": "$AB=xy=48\\cdot 5=240$ km."
+          }
+        }
+      ],
+      "solution": "Gọi vận tốc, thời gian dự định là $x$ (km/h), $y$ (giờ); $x>8$, $y>1$. $(x+12)(y-1)=xy \\Leftrightarrow -x+12y=12$; $(x-8)(y+1)=xy \\Leftrightarrow x-8y=8$. Cộng vế: $4y=20$, $y=5$, $x=48$ (thoả). $AB=48\\cdot 5=240$ km."
+    },
+    {
+      "id": "g-chuyendong-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Hai thành phố A và B cách nhau $150$ km. Một xe khách đi từ A về B. Sau khi xe khách xuất phát $1$ giờ $20$ phút, một xe tải đi từ B về A và gặp xe khách sau đó $40$ phút. Biết mỗi giờ xe khách đi nhanh hơn xe tải $15$ km. Tính vận tốc của xe tải.",
+      "source": "68 đề – Đề 49, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 320 104\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"62\" x2=\"300\" y2=\"62\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"20\" y1=\"57\" x2=\"20\" y2=\"67\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"20\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">A</text><line x1=\"169\" y1=\"57\" x2=\"169\" y2=\"67\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"169\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">C</text><line x1=\"244\" y1=\"57\" x2=\"244\" y2=\"67\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"244\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">D</text><line x1=\"300\" y1=\"57\" x2=\"300\" y2=\"67\" stroke=\"currentColor\" stroke-width=\"1.5\"/><text x=\"300\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">B</text><line x1=\"20\" y1=\"22\" x2=\"162\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.8\"/><polygon points=\"169,22 162,18 162,26\" fill=\"currentColor\"/><text x=\"94\" y=\"14\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">xe khách: 1 giờ 20 phút</text><line x1=\"169\" y1=\"44\" x2=\"237\" y2=\"44\" stroke=\"currentColor\" stroke-width=\"1.8\"/><polygon points=\"244,44 237,40 237,48\" fill=\"currentColor\"/><text x=\"206\" y=\"36\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">40 phút</text><line x1=\"300\" y1=\"44\" x2=\"251\" y2=\"44\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polygon points=\"244,44 251,40 251,48\" fill=\"var(--accent)\"/><text x=\"278\" y=\"36\" font-size=\"10\" text-anchor=\"middle\" fill=\"var(--accent)\">xe tải: 40 phút</text><text x=\"160\" y=\"98\" font-size=\"10\" text-anchor=\"middle\" fill=\"var(--muted)\">AB = 150 km</text></svg>",
+        "alt": "Sơ đồ đoạn AB dài 150 km: xe khách đi từ A, sau 1 giờ 20 phút tới C thì xe tải bắt đầu đi từ B; sau đó 40 phút hai xe gặp nhau tại D."
+      },
+      "hints": [
+        "Đề hỏi vận tốc của xe tải.",
+        "Hai xe đi ngược chiều: khi gặp nhau, tổng quãng đường hai xe đã đi bằng gì?",
+        "Đổi $1$ giờ $20$ phút và $40$ phút ra giờ; tính thời gian đi của từng xe."
+      ],
+      "steps": [
+        {
+          "prompt": "Thời gian đi của mỗi xe.",
+          "item": {
+            "id": "g-chuyendong-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Đến lúc gặp nhau, mỗi xe đã đi trong bao lâu?",
+            "options": [
+              "Cả hai xe $\\dfrac23$ giờ",
+              "Xe khách $1{,}6$ giờ, xe tải $0{,}4$ giờ",
+              "Xe khách $\\dfrac43$ giờ, xe tải $\\dfrac23$ giờ",
+              "Xe khách $2$ giờ, xe tải $\\dfrac23$ giờ"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Xe khách đã đi trước $1$ giờ $20$ phút rồi mới đi tiếp $40$ phút nữa."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Đổi phút ra giờ phải chia cho $60$: $20$ phút $=\\dfrac13$ giờ, $40$ phút $=\\dfrac23$ giờ."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "$1$ giờ $20$ phút mới là lúc xe tải bắt đầu đi; xe khách còn đi thêm $40$ phút đến lúc gặp."
+              }
+            },
+            "solution": "Xe khách: $\\dfrac43+\\dfrac23=2$ giờ; xe tải: $\\dfrac23$ giờ."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-chuyendong-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi vận tốc xe khách là $x$ (km/h), $x>15$. Chọn phương trình đúng.",
+            "options": [
+              "$2x+\\dfrac23(x-15)=150$",
+              "$2x-\\dfrac23(x-15)=150$",
+              "$2x+\\dfrac23(x+15)=150$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Hai xe đi ngược chiều nên tổng hai quãng đường bằng $AB$, không phải hiệu."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Xe khách nhanh hơn nên vận tốc xe tải là $x-15$."
+              }
+            },
+            "solution": "Ngược chiều, gặp nhau: quãng đường xe khách $+$ quãng đường xe tải $=AB$."
+          }
+        },
+        {
+          "prompt": "Giải và trả lời.",
+          "item": {
+            "id": "g-chuyendong-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc của xe tải là bao nhiêu km/h?",
+            "answer": "45",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "60",
+                "code": "E10",
+                "feedback": "Đề hỏi vận tốc **xe tải**; con vừa tìm vận tốc xe khách."
+              },
+              {
+                "answer": "105",
+                "code": "E07",
+                "feedback": "Con quên quãng đường xe khách đi trước khi xe tải xuất phát."
+              },
+              {
+                "answer": "63",
+                "code": "E14",
+                "feedback": "Con đổi phút sai: $20$ phút $=\\dfrac13$ giờ, không phải $0{,}2$ giờ."
+              }
+            ],
+            "solution": "$6x+2x-30=450 \\Leftrightarrow x=60$ (thoả $x>15$); xe tải: $60-15=45$ km/h."
+          }
+        }
+      ],
+      "solution": "Xe khách đi $\\dfrac43+\\dfrac23=2$ giờ, xe tải đi $\\dfrac23$ giờ. Gọi vận tốc xe khách là $x$ (km/h), $x>15$: $2x+\\dfrac23(x-15)=150 \\Leftrightarrow 8x=480 \\Leftrightarrow x=60$ (thoả). Vận tốc xe tải là $60-15=45$ km/h."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-chuyendong-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một ca nô đi xuôi dòng với vận tốc $30$ km/h và đi ngược dòng với vận tốc $22$ km/h. Tính vận tốc của dòng nước.",
+      "answer": "4",
+      "unit": "km/h",
+      "mistakes": [
+        {
+          "answer": "8",
+          "code": "E03",
+          "feedback": "Hiệu vận tốc xuôi và ngược bằng **hai lần** vận tốc dòng nước: $(v+v_n)-(v-v_n)=2v_n$."
+        },
+        {
+          "answer": "26",
+          "code": "E10",
+          "feedback": "Con vừa tính vận tốc ca nô khi nước yên lặng; đề hỏi vận tốc dòng nước."
+        }
+      ],
+      "solution": "$v+v_n=30$, $v-v_n=22$ nên $2v_n=8$, $v_n=4$ km/h."
+    },
+    {
+      "id": "g-chuyendong-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Hai xe xuất phát cùng lúc từ A và B cách nhau $135$ km, đi ngược chiều nhau với vận tốc $40$ km/h và $50$ km/h. Sau bao nhiêu phút thì hai xe gặp nhau?",
+      "answer": "90",
+      "unit": "phút",
+      "mistakes": [
+        {
+          "answer": "1,5",
+          "code": "E14",
+          "feedback": "Đề hỏi số **phút**; con cần đổi giờ ra phút."
+        },
+        {
+          "answer": "810",
+          "code": "E04",
+          "feedback": "Ngược chiều thì mỗi giờ hai xe gần nhau $v_1+v_2$; hiệu vận tốc chỉ dùng khi đi cùng chiều."
+        }
+      ],
+      "solution": "Thời gian gặp: $135:(40+50)=1{,}5$ giờ $=90$ phút."
+    },
+    {
+      "id": "g-chuyendong-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Lúc $7$ giờ, bạn Minh đạp xe từ nhà với vận tốc $12$ km/h. Lúc $8$ giờ, bố Minh đi xe máy từ nhà đuổi theo trên cùng con đường với vận tốc $36$ km/h. Chỗ bố đuổi kịp Minh cách nhà bao nhiêu ki-lô-mét?",
+      "source": "CĐ lập PT/HPT – §6 Câu 26 (chuyển thể)",
+      "answer": "18",
+      "unit": "km",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E04",
+          "feedback": "Bố đuổi theo cùng chiều nên mỗi giờ chỉ gần thêm $36-12$ km, không phải $36+12$ km."
+        },
+        {
+          "answer": "6",
+          "code": "E07",
+          "feedback": "Minh đã đạp trước $1$ giờ; quãng đường của Minh phải tính cả $1$ giờ đó."
+        },
+        {
+          "answer": "1/2",
+          "code": "E11",
+          "feedback": "Con mới tìm được thời gian bố đi; đề hỏi khoảng cách từ nhà đến chỗ gặp."
+        }
+      ],
+      "solution": "Gọi thời gian bố đi đến lúc gặp là $t$ (giờ), $t>0$: $12(t+1)=36t \\Leftrightarrow 24t=12 \\Leftrightarrow t=\\dfrac12$. Chỗ gặp cách nhà $36\\cdot\\dfrac12=18$ km."
+    },
+    {
+      "id": "g-chuyendong-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một ô tô đi từ A đến B. Nếu đi với vận tốc $45$ km/h thì đến B muộn hơn dự định $1$ giờ. Nếu đi với vận tốc $60$ km/h thì đến B sớm hơn dự định $1$ giờ. Tính quãng đường AB.",
+      "source": "CĐ lập PT/HPT – §6 Câu 12 (chuyển thể)",
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-chuyendong-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "options": [
+              "Gọi thời gian dự định là $x$ (phút), $x>1$",
+              "Gọi thời gian dự định là $x$ (giờ), $x>0$",
+              "Gọi thời gian dự định là $x$ (giờ), $x>1$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Vận tốc tính theo km/h thì thời gian phải tính bằng giờ."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Đi $60$ km/h đến sớm $1$ giờ nên thời gian $x-1$ phải dương: cần $x>1$."
+              }
+            },
+            "solution": "Gọi thời gian dự định là $x$ (giờ); cần $x-1>0$, tức $x>1$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-chuyendong-x4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Quãng đường AB không đổi. Chọn phương trình đúng.",
+            "options": [
+              "$45(x-1)=60(x+1)$",
+              "$45(x+1)=60(x-1)$",
+              "$45x+1=60x-1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Đến muộn thì thời gian đi **nhiều hơn** dự định: đi $45$ km/h mất $x+1$ giờ."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Thiếu ngoặc: quãng đường là $45(x+1)$, phải nhân $45$ với cả $x$ và $1$."
+              }
+            },
+            "solution": "Hai cách đi cùng quãng đường AB: $45(x+1)=60(x-1)$."
+          }
+        },
+        {
+          "prompt": "Tính quãng đường.",
+          "item": {
+            "id": "g-chuyendong-x4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Quãng đường AB dài bao nhiêu km?",
+            "answer": "360",
+            "unit": "km",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E11",
+                "feedback": "Con mới tìm được thời gian dự định; đề hỏi quãng đường AB."
+              },
+              {
+                "answer": "315",
+                "code": "E07",
+                "feedback": "Đi $45$ km/h thì mất $x+1$ giờ, không phải $x$ giờ."
+              }
+            ],
+            "solution": "$45x+45=60x-60 \\Leftrightarrow x=7$ (thoả $x>1$); $AB=45\\cdot 8=360$ km."
+          }
+        }
+      ],
+      "solution": "Gọi thời gian dự định là $x$ (giờ), $x>1$. $45(x+1)=60(x-1) \\Leftrightarrow 15x=105 \\Leftrightarrow x=7$ (thoả). $AB=45\\cdot 8=360$ km."
+    },
+    {
+      "id": "g-chuyendong-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một xe tải dự định đi từ A đến B với vận tốc $50$ km/h. Đi được $1$ giờ thì gặp đường xấu nên trên quãng đường còn lại xe chỉ đi với vận tốc $40$ km/h, vì vậy đến B muộn $30$ phút so với dự định. Tính quãng đường AB.",
+      "source": "CĐ lập PT/HPT – §6 Câu 14 (chuyển thể)",
+      "answer": "150",
+      "unit": "km",
+      "mistakes": [
+        {
+          "answer": "110",
+          "code": "E14",
+          "feedback": "Con đổi phút sai: $30$ phút $=\\dfrac12$ giờ, không phải $0{,}3$ giờ."
+        },
+        {
+          "answer": "100",
+          "code": "E07",
+          "feedback": "Trong $1$ giờ đầu xe vẫn đi $50$ km/h; chỉ quãng đường còn lại $x-50$ mới đi chậm."
+        }
+      ],
+      "solution": "Gọi $AB=x$ (km), $x>50$. Quãng còn lại $x-50$ km: $\\dfrac{x-50}{40}-\\dfrac{x-50}{50}=\\dfrac12 \\Leftrightarrow \\dfrac{x-50}{200}=\\dfrac12 \\Leftrightarrow x=150$ (thoả). Vậy $AB=150$ km."
+    },
+    {
+      "id": "g-chuyendong-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một xe tải chạy từ A đến B với vận tốc $50$ km/h, rồi chạy tiếp từ B đến C với vận tốc $40$ km/h. Tổng hai quãng đường AB và BC là $200$ km, và thời gian chạy quãng AB ít hơn thời gian chạy quãng BC là $30$ phút. Tính thời gian xe chạy trên mỗi quãng đường.",
+      "source": "68 đề – Đề 1, Bài 3.2 (chuyển thể: đổi số liệu)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuyendong-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi thời gian chạy quãng AB, BC lần lượt là $x$, $y$ (giờ), $x>0$, $y>0$. Chọn hệ phương trình đúng.",
+            "options": [
+              "$\\begin{cases} x+y=200 \\\\ y-x=\\dfrac12 \\end{cases}$",
+              "$\\begin{cases} 50x+40y=200 \\\\ y-x=30 \\end{cases}$",
+              "$\\begin{cases} 50x+40y=200 \\\\ x-y=\\dfrac12 \\end{cases}$",
+              "$\\begin{cases} 50x+40y=200 \\\\ y-x=\\dfrac12 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "$200$ km là tổng **quãng đường**, phải viết $50x+40y=200$; không cộng các thời gian."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Hai vế phải cùng đơn vị giờ: $30$ phút $=\\dfrac12$ giờ."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Quãng AB chạy **ít** thời gian hơn nên $y-x=\\dfrac12$."
+              }
+            },
+            "solution": "Quãng đường: $50x+40y=200$; thời gian: $y-x=\\dfrac12$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuyendong-x6-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thời gian xe chạy quãng BC là bao nhiêu giờ?",
+            "answer": "5/2",
+            "unit": "giờ",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E10",
+                "feedback": "Đó là thời gian chạy quãng AB; ô này hỏi quãng BC."
+              }
+            ],
+            "solution": "Thế $y=x+\\dfrac12$: $50x+40x+20=200 \\Leftrightarrow x=2$, $y=\\dfrac52$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "g-chuyendong-x6-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng?",
+            "options": [
+              "Kết luận: quãng AB chạy $2$ giờ, quãng BC chạy $2$ giờ $50$ phút.",
+              "Kết luận: quãng AB chạy $2$ giờ, quãng BC chạy $2$ giờ $30$ phút.",
+              "Kết luận: quãng AB chạy $2$ giờ $30$ phút, quãng BC chạy $2$ giờ."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Đổi phần lẻ của giờ ra phút phải nhân với $60$, không đọc thẳng chữ số thập phân."
+              },
+              "2": {
+                "code": "E10",
+                "feedback": "Con đổi chỗ hai quãng: quãng AB chạy ít thời gian hơn."
+              }
+            },
+            "solution": "$x=2$, $y=2{,}5$ đều dương (thoả): AB chạy $2$ giờ, BC chạy $2$ giờ $30$ phút."
+          }
+        }
+      ],
+      "solution": "Gọi thời gian chạy AB, BC là $x$, $y$ (giờ), $x,y>0$: $50x+40y=200$, $y-x=\\dfrac12$. Thế: $90x+20=200$, $x=2$, $y=2{,}5$ (thoả). AB chạy $2$ giờ, BC chạy $2$ giờ $30$ phút."
+    },
+    {
+      "id": "g-chuyendong-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một ca nô xuôi dòng trong $4$ giờ và ngược dòng trong $3$ giờ thì đi được tổng cộng $192$ km. Một lần khác, ca nô đó xuôi dòng trong $1$ giờ và ngược dòng trong $30$ phút thì đi được $42$ km. Biết vận tốc của ca nô khi nước yên lặng và vận tốc dòng nước ở hai lần như nhau. Tính vận tốc của ca nô khi nước yên lặng và vận tốc của dòng nước.",
+      "source": "68 đề – Đề 37, Bài 3.2 (chuyển thể: đổi số liệu)",
+      "steps": [
+        {
+          "prompt": "Chọn ẩn và điều kiện.",
+          "item": {
+            "id": "g-chuyendong-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Cách đặt ẩn và điều kiện nào đúng?",
+            "options": [
+              "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>y>0$",
+              "Gọi vận tốc ca nô khi nước yên lặng là $x$, vận tốc dòng nước là $y$ (km/h), $x>0$, $y>0$",
+              "Gọi thời gian xuôi dòng là $x$, thời gian ngược dòng là $y$ (giờ), $x>0$, $y>0$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Thiếu điều kiện $x>y$: ngược dòng ca nô phải tiến lên được, tức $x-y>0$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thời gian đề đã cho; ẩn phải là hai vận tốc đề hỏi."
+              }
+            },
+            "solution": "Hai ẩn là hai vận tốc; ngược dòng cần $x-y>0$, nên $x>y>0$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuyendong-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} 4(x-y)+3(x+y)=192 \\\\ (x-y)+\\dfrac12(x+y)=42 \\end{cases}$",
+              "$\\begin{cases} 4(x+y)+3(x-y)=192 \\\\ (x+y)+0{,}3(x-y)=42 \\end{cases}$",
+              "$\\begin{cases} 4(x+y)+3(x-y)=192 \\\\ (x+y)+\\dfrac12(x-y)=42 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Con đổi chỗ xuôi và ngược: xuôi dòng vận tốc là $x+y$."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "$30$ phút $=\\dfrac12$ giờ, không phải $0{,}3$ giờ."
+              }
+            },
+            "solution": "$4(x+y)+3(x-y)=192$ và $(x+y)+\\dfrac12(x-y)=42$."
+          }
+        },
+        {
+          "prompt": "Vận tốc ca nô.",
+          "item": {
+            "id": "g-chuyendong-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc của ca nô khi nước yên lặng $x$ là bao nhiêu km/h?",
+            "answer": "27",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "30",
+                "code": "E11",
+                "feedback": "$30$ km/h là vận tốc xuôi dòng $x+y$; con cần tách tiếp ra $x$."
+              }
+            ],
+            "solution": "Thu gọn: $7x+y=192$, $3x+y=84$; trừ vế: $4x=108$, $x=27$."
+          }
+        },
+        {
+          "prompt": "Vận tốc dòng nước.",
+          "item": {
+            "id": "g-chuyendong-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc dòng nước $y$ là bao nhiêu km/h?",
+            "answer": "3",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "-3",
+                "code": "E07",
+                "feedback": "Con đổi chỗ xuôi và ngược khi lập hệ; vận tốc dòng nước phải dương."
+              },
+              {
+                "answer": "6",
+                "code": "E03",
+                "feedback": "Hiệu vận tốc xuôi và ngược bằng **hai lần** vận tốc dòng nước."
+              }
+            ],
+            "solution": "$y=84-3\\cdot 27=3$ (thoả $x>y>0$)."
+          }
+        }
+      ],
+      "solution": "Gọi $x$, $y$ (km/h) là vận tốc ca nô khi nước yên lặng và vận tốc dòng nước, $x>y>0$. $4(x+y)+3(x-y)=192 \\Leftrightarrow 7x+y=192$; $(x+y)+\\dfrac12(x-y)=42 \\Leftrightarrow 3x+y=84$. Trừ vế: $x=27$, $y=3$ (thoả). Ca nô $27$ km/h, dòng nước $3$ km/h."
+    },
+    {
+      "id": "g-chuyendong-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Hai ga A và B cách nhau $600$ km. Nếu hai tàu hoả khởi hành cùng lúc, tàu thứ nhất từ A, tàu thứ hai từ B, đi ngược chiều nhau thì sau $6$ giờ chúng gặp nhau. Nếu tàu thứ nhất khởi hành trước tàu thứ hai $2$ giờ $30$ phút thì sau khi tàu thứ hai đi được $5$ giờ, hai tàu gặp nhau. Tính vận tốc của mỗi tàu (vận tốc mỗi tàu không đổi).",
+      "source": "68 đề – Đề 43, Bài 3.1 (chuyển thể: đổi số liệu)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuyendong-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi vận tốc tàu thứ nhất, tàu thứ hai lần lượt là $x$, $y$ (km/h), $x>0$, $y>0$. Chọn hệ phương trình đúng.",
+            "options": [
+              "$\\begin{cases} 6x+6y=600 \\\\ 7{,}3x+5y=600 \\end{cases}$",
+              "$\\begin{cases} 6x+6y=600 \\\\ 2{,}5x+5y=600 \\end{cases}$",
+              "$\\begin{cases} 6x+6y=600 \\\\ 7{,}5x+5y=600 \\end{cases}$",
+              "$\\begin{cases} 6x-6y=600 \\\\ 7{,}5x-5y=600 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "$2$ giờ $30$ phút $=2{,}5$ giờ, không phải $2{,}3$ giờ."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Tàu thứ nhất đi trước $2{,}5$ giờ rồi còn đi tiếp $5$ giờ cùng lúc với tàu thứ hai."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Hai tàu đi ngược chiều nên tổng hai quãng đường bằng $AB$, không phải hiệu."
+              }
+            },
+            "solution": "Lần 1: $6x+6y=600$; lần 2: tàu thứ nhất đi $2{,}5+5=7{,}5$ giờ: $7{,}5x+5y=600$."
+          }
+        },
+        {
+          "prompt": "Vận tốc tàu thứ nhất.",
+          "item": {
+            "id": "g-chuyendong-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc tàu thứ nhất $x$ là bao nhiêu km/h?",
+            "answer": "40",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "-40",
+                "code": "E07",
+                "feedback": "Con quên tàu thứ nhất còn đi tiếp $5$ giờ; vận tốc không thể âm."
+              },
+              {
+                "answer": "60",
+                "code": "E10",
+                "feedback": "Con đổi chỗ hai tàu: $x$ là vận tốc tàu đi từ A, khởi hành trước."
+              }
+            ],
+            "solution": "Từ lần 1: $x+y=100$. Thế $y=100-x$: $7{,}5x+500-5x=600 \\Leftrightarrow x=40$."
+          }
+        },
+        {
+          "prompt": "Vận tốc tàu thứ hai.",
+          "item": {
+            "id": "g-chuyendong-x8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc tàu thứ hai $y$ là bao nhiêu km/h?",
+            "answer": "60",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "40",
+                "code": "E10",
+                "feedback": "Con đổi chỗ hai tàu: $y$ là vận tốc tàu đi từ B."
+              }
+            ],
+            "solution": "$y=100-40=60$ (thoả)."
+          }
+        }
+      ],
+      "solution": "Gọi vận tốc hai tàu là $x$, $y$ (km/h), $x,y>0$: $6x+6y=600$, $7{,}5x+5y=600$. Từ PT đầu $y=100-x$; thế vào: $2{,}5x=100$, $x=40$, $y=60$ (thoả). Tàu thứ nhất $40$ km/h, tàu thứ hai $60$ km/h."
+    }
+  ]
+}

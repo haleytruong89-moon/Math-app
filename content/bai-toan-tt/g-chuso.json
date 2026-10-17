@@ -1,0 +1,1398 @@
+{
+  "id": "g-chuso",
+  "module": "bai-toan-tt",
+  "order": 2,
+  "title": "Toán chữ số & tìm số",
+  "status": "draft",
+  "estMinutes": 45,
+  "theory": [
+    "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** — phương pháp thế, cộng đại số; giải xong thì thử lại nghiệm vào cả hai phương trình.",
+    "**Công thức:** số có hai chữ số $\\overline{ab}=10a+b$ với $a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$. Đổi chỗ: $\\overline{ba}=10b+a$. Xen chữ số $0$ vào giữa: $\\overline{a0b}=100a+b$; xen chữ số $1$: $\\overline{a1b}=100a+10+b$. Viết thêm chữ số $c$ bên phải: $\\overline{abc}=10\\cdot\\overline{ab}+c$. Chia $A$ cho $B$ được thương $q$, dư $r$: $A=qB+r$ với $0\\le r<B$.",
+    "**Vì sao:** chữ số đứng ở hàng chục có giá trị gấp $10$ lần chính nó. Vì vậy $\\overline{ab}-\\overline{ba}=9(a-b)$ và $\\overline{ab}+\\overline{ba}=11(a+b)$. Ví dụ: $72-27=45=9\\cdot5$ và $72+27=99=11\\cdot9$.",
+    "**Bẫy hay gặp:** viết $\\overline{ab}=a+b$ hay $ab$ (đó là tổng, tích hai chữ số). “Số mới lớn hơn số cũ $18$” là mới $-$ cũ $=18$, không phải cũ $-$ mới. Chia có dư mà viết $A=qB$ là mất số dư. Ra $b=-3$ hay $a=\\frac{11}{3}$ thì đó không phải chữ số: xem lại hệ. Đề hỏi **số**, đừng trả lời một chữ số.",
+    "**Nhận dạng:** đề nói “chữ số hàng chục, hàng đơn vị”, “đổi chỗ”, “viết thêm, xen vào” → đặt ẩn là **hai chữ số** $a$, $b$. Đề “tìm hai số biết tổng, hiệu, tỉ số, phép chia” (không nói chữ số) → đặt ẩn là **chính hai số**. **Không** thuộc bài này: đề có tích hai chữ số hay tổng bình phương, vì dẫn tới phương trình bậc hai (học sau).",
+    "**Bảng đại lượng & checklist:** $\\begin{array}{l|c|c} \\text{Đại lượng} & \\text{Kí hiệu} & \\text{Biểu thức} \\\\ \\hline \\text{chữ số hàng chục} & a & 1\\le a\\le 9 \\\\ \\text{chữ số hàng đơn vị} & b & 0\\le b\\le 9 \\\\ \\text{số ban đầu} & \\overline{ab} & 10a+b \\\\ \\text{số đổi chỗ} & \\overline{ba} & 10b+a \\end{array}$ (1) đơn vị: hỏi chữ số hay hỏi số; (2) điều kiện của ẩn; (3) quan hệ: lớn $-$ nhỏ $=$ phần hơn; (4) giải hệ, đối chiếu điều kiện, thử lại trên đề; (5) viết **Kết luận**."
+  ],
+  "worked": {
+    "problem": "Tìm số tự nhiên có hai chữ số, biết tổng các chữ số của nó bằng $12$ và nếu đổi chỗ hai chữ số thì được số mới nhỏ hơn số ban đầu $36$ đơn vị.",
+    "steps": [
+      {
+        "text": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Số cần tìm là $\\overline{ab}=10a+b$; đổi chỗ được $\\overline{ba}=10b+a$.",
+        "why": "Đặt ẩn là hai chữ số thì viết được cả số ban đầu lẫn số sau khi đổi chỗ."
+      },
+      {
+        "text": "Tổng các chữ số bằng $12$: $a+b=12$. Số mới nhỏ hơn số ban đầu $36$: $(10a+b)-(10b+a)=36$, tức $9a-9b=36$ hay $a-b=4$.",
+        "why": "Số lớn trừ số nhỏ bằng phần hơn kém; ở đây số ban đầu lớn hơn."
+      },
+      {
+        "text": "Giải hệ $\\begin{cases} a+b=12 \\\\ a-b=4 \\end{cases}$: cộng hai phương trình được $2a=16$, $a=8$; suy ra $b=4$. Cả hai thỏa điều kiện chữ số.",
+        "why": "Cộng đại số khử được $b$ ngay."
+      },
+      {
+        "text": "Kết luận: số cần tìm là $84$.",
+        "why": "Thử lại: $8+4=12$ và $84-48=36$."
+      }
+    ],
+    "selfExplain": "Nếu giải hệ ra $b=-2$ hoặc $a=12$ thì con kết luận thế nào, và vì sao?"
+  },
+  "faded": {
+    "problem": "Tìm số tự nhiên có hai chữ số, biết chữ số hàng chục lớn hơn chữ số hàng đơn vị là $3$ và nếu viết thêm chữ số $0$ vào giữa hai chữ số thì được số mới lớn hơn số ban đầu $540$ đơn vị.",
+    "steps": [
+      {
+        "prompt": "Chọn ẩn và điều kiện.",
+        "item": {
+          "id": "g-chuso-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Cách chọn ẩn và điều kiện nào đúng?",
+          "options": [
+            "$a$ là chữ số hàng chục, $b$ là chữ số hàng đơn vị; $a,b\\in\\mathbb N$, $0\\le a\\le 9$, $0\\le b\\le 9$",
+            "$a$ là chữ số hàng chục, $b$ là chữ số hàng đơn vị; $a,b\\in\\mathbb N$, $1\\le a\\le 9$, $1\\le b\\le 9$",
+            "$a$ là chữ số hàng chục, $b$ là chữ số hàng đơn vị; $a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$",
+            "$x$ là số cần tìm; $x\\in\\mathbb N$, $1\\le x\\le 9$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E14",
+              "feedback": "Chữ số hàng chục của số có hai chữ số không thể bằng $0$."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "Chữ số hàng đơn vị được phép bằng $0$, ví dụ số $30$."
+            },
+            "3": {
+              "code": "E07",
+              "feedback": "Số cần tìm có hai chữ số, không phải một chữ số. Đề nói về từng chữ số nên đặt ẩn là hai chữ số."
+            }
+          },
+          "solution": "Hai chữ số $a$, $b$ với $1\\le a\\le 9$, $0\\le b\\le 9$, $a,b\\in\\mathbb N$."
+        }
+      },
+      {
+        "text": "Số ban đầu là $\\overline{ab}=10a+b$. Viết thêm $0$ vào giữa được $\\overline{a0b}=100a+b$."
+      },
+      {
+        "prompt": "Lập hệ phương trình.",
+        "item": {
+          "id": "g-chuso-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Hệ phương trình nào đúng?",
+          "options": [
+            "$\\begin{cases} a-b=3 \\\\ (100a+b)-(10a+b)=540 \\end{cases}$",
+            "$\\begin{cases} b-a=3 \\\\ (100a+b)-(10a+b)=540 \\end{cases}$",
+            "$\\begin{cases} a-b=3 \\\\ (10a+b)-(100a+b)=540 \\end{cases}$",
+            "$\\begin{cases} a-b=3 \\\\ (a+0+b)-(a+b)=540 \\end{cases}$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E07",
+              "feedback": "Chữ số hàng chục lớn hơn, nên hiệu là (hàng chục) $-$ (hàng đơn vị)."
+            },
+            "2": {
+              "code": "E07",
+              "feedback": "Số mới lớn hơn số ban đầu, nên lấy số mới trừ số ban đầu."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Con đang cộng các chữ số; mỗi chữ số phải nhân với giá trị hàng của nó."
+            }
+          },
+          "solution": "$a-b=3$ và $(100a+b)-(10a+b)=540$."
+        }
+      },
+      {
+        "prompt": "Giải hệ.",
+        "item": {
+          "id": "g-chuso-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Từ hệ trên, chữ số hàng chục $a$ bằng bao nhiêu?",
+          "answer": "6",
+          "mistakes": [
+            {
+              "answer": "-6",
+              "code": "E07",
+              "feedback": "Con lấy số ban đầu trừ số mới nên ra số âm; số mới lớn hơn phải đứng trước dấu trừ."
+            },
+            {
+              "answer": "5,4",
+              "code": "E02",
+              "feedback": "$(100a+b)-(10a+b)$ còn phải trừ cả $10a$, không chỉ trừ $b$."
+            }
+          ],
+          "solution": "$(100a+b)-(10a+b)=90a=540$ nên $a=6$; $b=a-3=3$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "g-chuso-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng?",
+          "options": [
+            "Kết luận: số cần tìm là $6$.",
+            "Kết luận: số cần tìm là $603$.",
+            "Kết luận: số cần tìm là $36$.",
+            "Kết luận: $a=6$, $b=3$ thỏa điều kiện; số cần tìm là $63$."
+          ],
+          "correct": 3,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Đó mới là chữ số hàng chục; đề hỏi cả số có hai chữ số."
+            },
+            "1": {
+              "code": "E10",
+              "feedback": "Đó là số mới sau khi xen chữ số $0$; đề hỏi số ban đầu."
+            },
+            "2": {
+              "code": "E10",
+              "feedback": "Con ghép ngược hai chữ số: chữ số hàng chục phải đứng trước."
+            }
+          },
+          "solution": "$a=6$, $b=3$ thỏa điều kiện; số cần tìm là $63$ (thử: $603-63=540$)."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-chuso-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Số $\\overline{ab}$ có chữ số hàng chục $a$, chữ số hàng đơn vị $b$. Viết thêm chữ số $1$ vào giữa hai chữ số thì được số $\\overline{a1b}$. Số mới bằng:",
+      "hints": [
+        "Cần viết số mới $\\overline{a1b}$ thành biểu thức theo $a$ và $b$.",
+        "Số mới có ba chữ số: mỗi chữ số đứng ở hàng nào?",
+        "Nhân mỗi chữ số với giá trị hàng của nó: trăm, chục, đơn vị."
+      ],
+      "options": [
+        "$10a+1+b$",
+        "$100a+10+b$",
+        "$100a+b+1$",
+        "$a+1+b$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Sau khi xen, $a$ lên hàng trăm nên có giá trị $100a$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Chữ số $1$ đứng ở hàng chục nên có giá trị $10$, không phải $1$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Con đang cộng các chữ số; mỗi chữ số phải nhân với giá trị hàng của nó."
+        }
+      },
+      "solution": "$\\overline{a1b}=100a+10\\cdot 1+b=100a+10+b$."
+    },
+    {
+      "id": "g-chuso-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Tìm số có hai chữ số, biết tổng hai chữ số bằng $9$ và nếu đổi chỗ hai chữ số thì số đó tăng thêm $27$ đơn vị.” Khi giải bằng cách lập hệ phương trình, bước đầu tiên nên là gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi một số có hai chữ số; cần chọn ẩn trước khi lập hệ.",
+        "Đề nói đến từng chữ số và việc đổi chỗ chúng.",
+        "Ẩn nào giúp viết được cả số ban đầu lẫn số sau khi đổi chỗ?"
+      ],
+      "options": [
+        "Gọi $x$ là số cần tìm rồi lập một phương trình ẩn $x$",
+        "Gọi chữ số hàng chục là $a$, hàng đơn vị là $b$; số là $10a+b$, số đổi chỗ là $10b+a$",
+        "Lập phương trình bậc hai nhận hai chữ số làm nghiệm (dùng tổng và tích)",
+        "Thử lần lượt các số từ $10$ đến $99$ cho đến khi gặp số đúng"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Với một ẩn $x$ con không viết được số sau khi đổi chỗ; dạng chữ số cần đặt ẩn là từng chữ số."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề không cho tích hai chữ số nên không dùng cách tổng – tích; ở đây lập hệ bậc nhất."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Thử từng số không phải là lập hệ và rất mất thời gian; dạng chữ số nên đặt ẩn là hai chữ số."
+        }
+      },
+      "solution": "Dạng chữ số: đặt hai chữ số $a$, $b$ ($1\\le a\\le 9$, $0\\le b\\le 9$); số là $10a+b$, số đổi chỗ là $10b+a$; rồi lập hệ $a+b=9$, $(10b+a)-(10a+b)=27$."
+    },
+    {
+      "id": "g-chuso-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Số $\\overline{ab}$ chia cho tổng các chữ số của nó thì được thương là $7$ và dư $6$. Phương trình đúng là:",
+      "hints": [
+        "Cần viết câu “chia được thương 7 dư 6” thành phương trình.",
+        "Trong phép chia này, số nào là số bị chia, số nào là số chia?",
+        "Dùng $A=q\\cdot B+r$: $A$ số bị chia, $B$ số chia, $q$ thương, $r$ số dư."
+      ],
+      "options": [
+        "$10a+b=7(a+b)$",
+        "$a+b=7(10a+b)+6$",
+        "$10a+b=7(a+b)+6$",
+        "$ab=7(a+b)+6$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Con bỏ mất số dư: số bị chia $=$ thương $\\times$ số chia $+$ số dư."
+        },
+        "1": {
+          "code": "E07",
+          "feedback": "Con đảo số bị chia và số chia: số $\\overline{ab}$ mới là số bị chia."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$ab$ là tích hai chữ số; số $\\overline{ab}$ phải viết là $10a+b$."
+        }
+      },
+      "solution": "Số bị chia $\\overline{ab}=10a+b$, số chia $a+b$, thương $7$, dư $6$: $10a+b=7(a+b)+6$ (với $6<a+b$)."
+    },
+    {
+      "id": "g-chuso-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Tìm số tự nhiên có hai chữ số, biết tổng các chữ số của nó bằng $10$ và nếu đổi chỗ hai chữ số thì số đó tăng thêm $36$ đơn vị.",
+      "hints": [
+        "Cần tìm số $\\overline{ab}$; đề cho tổng hai chữ số và phần tăng khi đổi chỗ.",
+        "Số tăng thêm nghĩa là số mới $\\overline{ba}$ lớn hơn số cũ.",
+        "Lập (số mới) $-$ (số cũ) $=36$, rút gọn rồi chia hai vế cho $9$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} a+b=10 \\\\ (10a+b)-(10b+a)=36 \\end{cases}$",
+              "$\\begin{cases} a+b=10 \\\\ ba-ab=36 \\end{cases}$",
+              "$\\begin{cases} 10a+b=10 \\\\ (10b+a)-(10a+b)=36 \\end{cases}$",
+              "$\\begin{cases} a+b=10 \\\\ (10b+a)-(10a+b)=36 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Số tăng thêm nghĩa là số mới lớn hơn, nên lấy số mới $10b+a$ trừ số cũ."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "$ba$ và $ab$ là tích hai chữ số; số $\\overline{ab}$ phải viết là $10a+b$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "“Tổng các chữ số” là $a+b$, không phải số $\\overline{ab}$."
+              }
+            },
+            "solution": "$a+b=10$ và $(10b+a)-(10a+b)=36$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-p4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chữ số hàng chục $a$ bằng bao nhiêu?",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E07",
+                "feedback": "Con lấy số cũ trừ số mới; số tăng thêm thì số mới trừ số cũ."
+              }
+            ],
+            "solution": "$9(b-a)=36$ nên $b-a=4$; với $a+b=10$: $a=3$, $b=7$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-p4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số cần tìm là bao nhiêu?",
+            "answer": "37",
+            "mistakes": [
+              {
+                "answer": "73",
+                "code": "E10",
+                "feedback": "Đó là số sau khi đổi chỗ; đề hỏi số ban đầu."
+              },
+              {
+                "answer": "3",
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; hãy ghép hai chữ số thành số."
+              }
+            ],
+            "solution": "$a=3$, $b=7$ nên số cần tìm là $37$."
+          }
+        }
+      ],
+      "solution": "$(10b+a)-(10a+b)=36 \\Rightarrow 9(b-a)=36 \\Rightarrow b-a=4$. Với $a+b=10$: $a=3$, $b=7$. Số cần tìm là $37$ (thử: $73-37=36$)."
+    },
+    {
+      "id": "g-chuso-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Tìm số tự nhiên có hai chữ số, biết chữ số hàng chục lớn hơn chữ số hàng đơn vị là $4$, và nếu đem số đó chia cho tổng các chữ số của nó thì được thương là $7$ và dư $3$.",
+      "source": "CĐ lập PT/HPT – §1 Ví dụ 6 (chuyển thể: hiệu chữ số 4, dư 3)",
+      "hints": [
+        "Cần tìm số $\\overline{ab}$; có hai dữ kiện nên lập hệ hai phương trình.",
+        "“Chia được thương 7 dư 3”: số bị chia là số nào, số chia là gì?",
+        "Dùng $A=q\\cdot B+r$ với $A=10a+b$, $B=a+b$; nhớ đối chiếu $r<B$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} a-b=4 \\\\ 10a+b=7(a+b)+3 \\end{cases}$",
+              "$\\begin{cases} a-b=4 \\\\ 10a+b=7(a+b) \\end{cases}$",
+              "$\\begin{cases} b-a=4 \\\\ 10a+b=7(a+b)+3 \\end{cases}$",
+              "$\\begin{cases} a-b=4 \\\\ a+b=7(10a+b)+3 \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Con bỏ mất số dư: số bị chia $=$ thương $\\times$ số chia $+$ số dư."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Chữ số hàng chục lớn hơn nên hiệu là (hàng chục) $-$ (hàng đơn vị)."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Con đảo số bị chia và số chia: số $\\overline{ab}$ mới là số bị chia."
+              }
+            },
+            "solution": "$a-b=4$ và $10a+b=7(a+b)+3$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chữ số hàng đơn vị $b$ bằng bao nhiêu?",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "4",
+                "code": "E07",
+                "feedback": "Con bỏ mất số dư $3$ trong phép chia."
+              },
+              {
+                "answer": "-3",
+                "code": "E02",
+                "feedback": "Từ $-b=-3$, chia hai vế cho $-1$ thì $b$ dương; con đổi dấu sai.",
+                "review": "g-giaihpt"
+              },
+              {
+                "answer": "-5",
+                "code": "E07",
+                "feedback": "Chữ số hàng chục lớn hơn nên hiệu là (hàng chục) $-$ (hàng đơn vị)."
+              }
+            ],
+            "solution": "$10a+b=7a+7b+3 \\Rightarrow 3a-6b=3 \\Rightarrow a-2b=1$. Thay $a=b+4$: $b+4-2b=1$, $b=3$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số cần tìm là bao nhiêu?",
+            "answer": "73",
+            "mistakes": [
+              {
+                "answer": "37",
+                "code": "E10",
+                "feedback": "Con ghép ngược: chữ số hàng chục phải đứng trước."
+              },
+              {
+                "answer": "7",
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; hãy ghép hai chữ số thành số."
+              }
+            ],
+            "solution": "$b=3$, $a=7$ nên số cần tìm là $73$."
+          }
+        }
+      ],
+      "solution": "$10a+b=7(a+b)+3 \\Rightarrow a-2b=1$. Thay $a=b+4$: $b=3$, $a=7$. Số cần tìm là $73$ (thử: $73=7\\cdot 10+3$ và $3<10$)."
+    },
+    {
+      "id": "g-chuso-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Tổng của hai số bằng $66$. Biết $\\dfrac23$ số thứ nhất bằng $\\dfrac14$ số thứ hai. Tìm hai số đó.",
+      "source": "CĐ lập PT/HPT – §1 Câu 12 (chuyển thể: tổng 66, tỉ lệ 2/3 và 1/4)",
+      "hints": [
+        "Cần tìm hai số $x$, $y$ biết tổng và một quan hệ tỉ lệ.",
+        "Câu “hai phần ba số thứ nhất bằng một phần tư số thứ hai” cho phương trình thứ hai.",
+        "Nhân hai vế phương trình thứ hai với $12$ để bỏ mẫu, rồi thế $y$ theo $x$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi số thứ nhất là $x$, số thứ hai là $y$. Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} x+y=66 \\\\ \\frac23 y=\\frac14 x \\end{cases}$",
+              "$\\begin{cases} x+y=66 \\\\ 3x=2y \\end{cases}$",
+              "$\\begin{cases} x+y=66 \\\\ \\frac23 x=\\frac14 y \\end{cases}$",
+              "$\\begin{cases} x-y=66 \\\\ \\frac23 x=\\frac14 y \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Con gán nhầm: $\\frac23$ đi với số thứ nhất $x$, $\\frac14$ đi với số thứ hai $y$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Khi bỏ mẫu, nhân cả hai vế với mẫu chung $12$, không nhân chéo tử với mẫu."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Con đọc nhầm: đề cho tổng hai số, không phải hiệu."
+              }
+            },
+            "solution": "$x+y=66$ và $\\frac23x=\\frac14y$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số thứ nhất $x$ bằng bao nhiêu?",
+            "answer": "18",
+            "mistakes": [
+              {
+                "answer": "48",
+                "code": "E07",
+                "feedback": "Con gán nhầm phân số: $\\frac23$ là của số thứ nhất."
+              },
+              {
+                "answer": "132/5",
+                "code": "E02",
+                "feedback": "Bỏ mẫu sai: nhân hai vế của $\\frac23x=\\frac14y$ với $12$."
+              }
+            ],
+            "solution": "$\\frac23x=\\frac14y \\Rightarrow 8x=3y$. Thế $y=66-x$: $11x=198$, $x=18$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số thứ hai $y$ bằng bao nhiêu?",
+            "answer": "48",
+            "mistakes": [
+              {
+                "answer": "18",
+                "code": "E07",
+                "feedback": "Con gán nhầm phân số: $\\frac14$ là của số thứ hai."
+              },
+              {
+                "answer": "198/5",
+                "code": "E02",
+                "feedback": "Bỏ mẫu sai: nhân hai vế của $\\frac23x=\\frac14y$ với $12$."
+              }
+            ],
+            "solution": "$y=66-18=48$."
+          }
+        }
+      ],
+      "solution": "$\\frac23x=\\frac14y \\Rightarrow 8x=3y$. Thế $y=66-x$: $8x=198-3x$, $11x=198$, $x=18$, $y=48$ (thử: $\\frac23\\cdot 18=12=\\frac14\\cdot 48$)."
+    },
+    {
+      "id": "g-chuso-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Tìm số tự nhiên có hai chữ số, biết chữ số hàng chục lớn hơn chữ số hàng đơn vị là $4$, và nếu đổi chỗ hai chữ số thì được số mới bằng $\\dfrac47$ số ban đầu.",
+      "source": "CĐ lập PT/HPT – §1 Câu 8 (chuyển thể: hiệu chữ số 4, số mới bằng 4/7 số ban đầu)",
+      "hints": [
+        "Cần tìm số ban đầu $\\overline{ab}$; đề cho hiệu hai chữ số và quan hệ số mới – số ban đầu.",
+        "Số mới là $\\overline{ba}$; “bằng $\\frac47$ số ban đầu” nghĩa là $\\overline{ba}=\\frac47\\cdot\\overline{ab}$.",
+        "Nhân hai vế với $7$, thu gọn để được quan hệ giữa $a$ và $b$, rồi kết hợp $a-b=4$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện của ẩn.",
+          "item": {
+            "id": "g-chuso-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$. Điều kiện đúng là:",
+            "options": [
+              "$a,b\\in\\mathbb N$; $0\\le a\\le 9$, $0\\le b\\le 9$",
+              "$a,b\\in\\mathbb N$; $1\\le a\\le 9$, $0\\le b\\le 9$",
+              "$a>0$, $b>0$ (số thực bất kì)",
+              "$a,b\\in\\mathbb N$; $1\\le a\\le 9$, $0\\le b\\le 9$, $a<b$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Chữ số hàng chục của số có hai chữ số không thể bằng $0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Chữ số phải là số tự nhiên từ $0$ đến $9$."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Đề cho chữ số hàng chục lớn hơn, nên nếu ghi thêm thì phải là $a>b$."
+              }
+            },
+            "solution": "$a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} a-b=4 \\\\ 10a+b=\\frac47(10b+a) \\end{cases}$",
+              "$\\begin{cases} a-b=4 \\\\ b+a=\\frac47(a+b) \\end{cases}$",
+              "$\\begin{cases} b-a=4 \\\\ 10b+a=\\frac47(10a+b) \\end{cases}$",
+              "$\\begin{cases} a-b=4 \\\\ 10b+a=\\frac47(10a+b) \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Đặt nhầm chỗ: số **mới** $\\overline{ba}$ bằng $\\frac47$ số **ban đầu**."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Con viết số thành tổng các chữ số; $\\overline{ba}=10b+a$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Chữ số hàng chục lớn hơn nên hiệu là (hàng chục) $-$ (hàng đơn vị)."
+              }
+            },
+            "solution": "$a-b=4$ và $10b+a=\\frac47(10a+b)$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chữ số hàng chục $a$ bằng bao nhiêu?",
+            "answer": "8",
+            "mistakes": [
+              {
+                "answer": "-4",
+                "code": "E07",
+                "feedback": "Con đặt nhầm chỗ số mới và số ban đầu, nên ra chữ số âm."
+              },
+              {
+                "answer": "-8",
+                "code": "E07",
+                "feedback": "Chữ số hàng chục lớn hơn nên hiệu là (hàng chục) $-$ (hàng đơn vị)."
+              }
+            ],
+            "solution": "$7(10b+a)=4(10a+b) \\Rightarrow 66b=33a \\Rightarrow a=2b$; với $a-b=4$: $b=4$, $a=8$."
+          }
+        },
+        {
+          "prompt": "Kết luận và đối chiếu điều kiện.",
+          "item": {
+            "id": "g-chuso-p7-s4",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng?",
+            "options": [
+              "Kết luận: số cần tìm là $8$.",
+              "Kết luận: số cần tìm là $48$.",
+              "Kết luận: $a=8$, $b=4$ thỏa điều kiện; số cần tìm là $84$.",
+              "Kết luận: không có số nào thỏa mãn vì ra chữ số âm."
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; đề hỏi cả số có hai chữ số."
+              },
+              "1": {
+                "code": "E10",
+                "feedback": "Đó là số mới sau khi đổi chỗ; đề hỏi số ban đầu."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Ra chữ số âm là dấu hiệu lập sai hệ; xem lại phương trình giữa số mới và số ban đầu."
+              }
+            },
+            "solution": "$a=8$, $b=4$ thỏa điều kiện; số cần tìm là $84$ (thử: $\\frac47\\cdot 84=48$)."
+          }
+        }
+      ],
+      "solution": "$7(10b+a)=4(10a+b) \\Rightarrow 66b=33a \\Rightarrow a=2b$. Với $a-b=4$: $b=4$, $a=8$. Số cần tìm là $84$ (thử: $8-4=4$, $\\frac47\\cdot 84=48$)."
+    },
+    {
+      "id": "g-chuso-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Tìm số tự nhiên có hai chữ số, biết tổng các chữ số của nó bằng $\\dfrac17$ số đó, và nếu đổi chỗ hai chữ số thì được số mới nhỏ hơn số đã cho $27$ đơn vị.",
+      "source": "CĐ lập PT/HPT – §1 Câu 11 (chuyển thể: tổng chữ số bằng 1/7 số đó, số mới nhỏ hơn 27)",
+      "hints": [
+        "Cần tìm $\\overline{ab}$; có hai dữ kiện nên lập hệ hai phương trình.",
+        "“Tổng chữ số bằng $\\frac17$ số đó” nghĩa là số đó gấp mấy lần tổng chữ số?",
+        "Số mới $\\overline{ba}$ nhỏ hơn, nên lấy (số đã cho) $-$ (số mới); rút gọn chia cho $9$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} 7(a+b)=10a+b \\\\ (10b+a)-(10a+b)=27 \\end{cases}$",
+              "$\\begin{cases} 7(a+b)=10a+b \\\\ (10a+b)-(10b+a)=27 \\end{cases}$",
+              "$\\begin{cases} a+b=7(10a+b) \\\\ (10a+b)-(10b+a)=27 \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Số mới nhỏ hơn, nên lấy số đã cho trừ số mới."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Tổng chữ số bằng $\\frac17$ số đó, tức số đó gấp $7$ lần tổng chữ số, không phải ngược lại."
+              }
+            },
+            "solution": "$7(a+b)=10a+b$ và $(10a+b)-(10b+a)=27$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-p8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chữ số hàng đơn vị $b$ bằng bao nhiêu?",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "-3",
+                "code": "E07",
+                "feedback": "Con đặt ngược hiệu: số mới nhỏ hơn thì số đã cho trừ số mới."
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là chữ số hàng chục; câu này hỏi chữ số hàng đơn vị."
+              }
+            ],
+            "solution": "$7a+7b=10a+b \\Rightarrow a=2b$; $9(a-b)=27 \\Rightarrow a-b=3$; suy ra $b=3$, $a=6$."
+          }
+        },
+        {
+          "prompt": "Kết luận và đối chiếu điều kiện.",
+          "item": {
+            "id": "g-chuso-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng?",
+            "options": [
+              "Kết luận: số cần tìm là $36$.",
+              "Kết luận: không có số nào thỏa mãn vì $b=-3$ không phải chữ số.",
+              "Kết luận: số cần tìm là $3$.",
+              "Kết luận: $a=6$, $b=3$ thỏa điều kiện; số cần tìm là $63$."
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E10",
+                "feedback": "Đó là số mới sau khi đổi chỗ; đề hỏi số đã cho."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Ra chữ số âm là dấu hiệu lập ngược hiệu; xem lại phương trình thứ hai."
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng đơn vị; hãy ghép hai chữ số thành số."
+              }
+            },
+            "solution": "$a=6$, $b=3$ thỏa điều kiện; số cần tìm là $63$."
+          }
+        }
+      ],
+      "solution": "$10a+b=7(a+b) \\Rightarrow a=2b$; $(10a+b)-(10b+a)=27 \\Rightarrow a-b=3$. Suy ra $b=3$, $a=6$; số cần tìm là $63$ (thử: $6+3=9=\\frac{63}{7}$ và $63-36=27$)."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-chuso-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Số $\\overline{ab}$ có chữ số hàng chục là $8$, chữ số hàng đơn vị là $3$. Nếu đổi chỗ hai chữ số thì số mới nhỏ hơn số ban đầu bao nhiêu đơn vị?",
+      "answer": "45",
+      "mistakes": [
+        {
+          "answer": "5",
+          "code": "E04",
+          "feedback": "Con trừ hai chữ số; phải trừ hai số $10a+b$ và $10b+a$."
+        },
+        {
+          "answer": "121",
+          "code": "E07",
+          "feedback": "Con cộng hai số; “nhỏ hơn bao nhiêu” là hiệu của hai số."
+        }
+      ],
+      "solution": "$83-38=45$ (hay $9(a-b)=9\\cdot 5=45$)."
+    },
+    {
+      "id": "g-chuso-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Gọi chữ số hàng chục là $x$, chữ số hàng đơn vị là $y$. Viết thêm chữ số $5$ vào **bên phải** số $\\overline{xy}$ thì được số mới bằng:",
+      "options": [
+        "$10x+y+5$",
+        "$100x+10y+5$",
+        "$500+10x+y$",
+        "$10x+y+50$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Viết thêm chữ số bên phải làm số cũ lên một hàng (gấp $10$), không chỉ cộng thêm $5$."
+        },
+        "2": {
+          "code": "E10",
+          "feedback": "Đó là viết $5$ vào bên trái; đề nói bên phải."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Chữ số $5$ đứng ở hàng đơn vị; chính $x$, $y$ mới lên hàng."
+        }
+      },
+      "solution": "$\\overline{xy5}=100x+10y+5=10\\cdot\\overline{xy}+5$."
+    },
+    {
+      "id": "g-chuso-x3",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Tìm số có hai chữ số, biết tổng của chữ số hàng đơn vị và hai lần chữ số hàng chục bằng $13$, và nếu đổi chỗ hai chữ số thì được số mới nhỏ hơn số ban đầu $18$ đơn vị.",
+      "source": "CĐ lập PT/HPT – §1 Câu 2 (chuyển thể: tổng 13, hiệu 18)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} a+2b=13 \\\\ (10a+b)-(10b+a)=18 \\end{cases}$",
+              "$\\begin{cases} 2a+b=13 \\\\ (10b+a)-(10a+b)=18 \\end{cases}$",
+              "$\\begin{cases} 2a+b=13 \\\\ ba-ab=18 \\end{cases}$",
+              "$\\begin{cases} 2a+b=13 \\\\ (10a+b)-(10b+a)=18 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Hai lần chữ số hàng chục là $2a$; hệ số $2$ đi với $a$."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Số mới nhỏ hơn, nên lấy số ban đầu trừ số mới."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "$ab$, $ba$ là tích hai chữ số; số $\\overline{ab}$ phải viết là $10a+b$."
+              }
+            },
+            "solution": "$2a+b=13$ và $(10a+b)-(10b+a)=18$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x3-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chữ số hàng chục $a$ bằng bao nhiêu?",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "11/3",
+                "code": "E07",
+                "feedback": "Số mới nhỏ hơn, nên lấy số ban đầu trừ số mới."
+              },
+              {
+                "answer": "17/3",
+                "code": "E07",
+                "feedback": "Hai lần chữ số hàng chục là $2a$; hệ số $2$ đi với $a$."
+              }
+            ],
+            "solution": "$9(a-b)=18 \\Rightarrow a-b=2$; cộng với $2a+b=13$: $3a=15$, $a=5$, $b=3$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-x3-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số cần tìm là bao nhiêu?",
+            "answer": "53",
+            "mistakes": [
+              {
+                "answer": "35",
+                "code": "E10",
+                "feedback": "Đó là số sau khi đổi chỗ; đề hỏi số ban đầu."
+              },
+              {
+                "answer": "5",
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; hãy ghép hai chữ số thành số."
+              }
+            ],
+            "solution": "$a=5$, $b=3$ nên số cần tìm là $53$."
+          }
+        }
+      ],
+      "solution": "$a-b=2$ và $2a+b=13$ cho $a=5$, $b=3$. Số cần tìm là $53$ (thử: $3+2\\cdot 5=13$, $53-35=18$)."
+    },
+    {
+      "id": "g-chuso-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Tìm số tự nhiên có hai chữ số, biết chữ số hàng đơn vị hơn chữ số hàng chục là $3$, và khi viết chữ số $1$ xen vào giữa hai chữ số của nó thì được số mới lớn hơn số đó $460$ đơn vị.",
+      "source": "CĐ lập PT/HPT – §1 Câu 5 (chuyển thể: tăng 460 đơn vị)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} b-a=3 \\\\ (100a+10+b)-(10a+b)=460 \\end{cases}$",
+              "$\\begin{cases} b-a=3 \\\\ (100a+1+b)-(10a+b)=460 \\end{cases}$",
+              "$\\begin{cases} a-b=3 \\\\ (100a+10+b)-(10a+b)=460 \\end{cases}$",
+              "$\\begin{cases} b-a=3 \\\\ (10a+b)-(100a+10+b)=460 \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Chữ số $1$ xen vào đứng ở hàng chục nên có giá trị $10$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Chữ số hàng đơn vị lớn hơn, nên hiệu là (hàng đơn vị) $-$ (hàng chục)."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Số mới lớn hơn, nên lấy số mới trừ số ban đầu."
+              }
+            },
+            "solution": "$b-a=3$ và $(100a+10+b)-(10a+b)=460$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chữ số hàng chục $a$ bằng bao nhiêu?",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "51/10",
+                "code": "E04",
+                "feedback": "Chữ số $1$ xen vào đứng ở hàng chục nên có giá trị $10$."
+              },
+              {
+                "answer": "-47/9",
+                "code": "E07",
+                "feedback": "Số mới lớn hơn, nên lấy số mới trừ số ban đầu."
+              }
+            ],
+            "solution": "$90a+10=460 \\Rightarrow a=5$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-x4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số cần tìm là bao nhiêu?",
+            "answer": "58",
+            "mistakes": [
+              {
+                "answer": "518",
+                "code": "E10",
+                "feedback": "Đó là số mới sau khi xen chữ số; đề hỏi số ban đầu."
+              },
+              {
+                "answer": "52",
+                "code": "E07",
+                "feedback": "Chữ số hàng đơn vị hơn chữ số hàng chục, nên phải cộng thêm chứ không trừ."
+              },
+              {
+                "answer": "5",
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; hãy ghép hai chữ số thành số."
+              }
+            ],
+            "solution": "$a=5$, $b=a+3=8$ nên số cần tìm là $58$."
+          }
+        }
+      ],
+      "solution": "$(100a+10+b)-(10a+b)=90a+10=460 \\Rightarrow a=5$, $b=8$. Số cần tìm là $58$ (thử: $518-58=460$)."
+    },
+    {
+      "id": "g-chuso-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Hiệu của hai số tự nhiên là $38$. Nếu lấy số lớn chia cho số nhỏ thì được thương là $3$ và số dư là $4$. Tìm hai số đó.",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi số lớn là $x$, số nhỏ là $y$ ($x,y\\in\\mathbb N$, $y>4$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} x-y=38 \\\\ x=3y+4 \\end{cases}$",
+              "$\\begin{cases} x-y=38 \\\\ x=3y \\end{cases}$",
+              "$\\begin{cases} x-y=38 \\\\ y=3x+4 \\end{cases}$",
+              "$\\begin{cases} x-y=38 \\\\ x=4y+3 \\end{cases}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Con bỏ mất số dư: số bị chia $=$ thương $\\times$ số chia $+$ số dư."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Con đảo số bị chia và số chia: số lớn mới là số bị chia."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Con đổi chỗ thương và số dư: thương là $3$, dư là $4$."
+              }
+            },
+            "solution": "$x-y=38$ và $x=3y+4$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số nhỏ $y$ bằng bao nhiêu?",
+            "answer": "17",
+            "mistakes": [
+              {
+                "answer": "19",
+                "code": "E07",
+                "feedback": "Con bỏ mất số dư trong phép chia."
+              },
+              {
+                "answer": "21",
+                "code": "E02",
+                "feedback": "Khi chuyển $4$ sang vế bên kia phải đổi dấu.",
+                "review": "g-giaihpt"
+              },
+              {
+                "answer": "35/3",
+                "code": "E10",
+                "feedback": "Con đổi chỗ thương và số dư: thương là $3$, dư là $4$."
+              }
+            ],
+            "solution": "Thế $x=3y+4$: $3y+4-y=38$, $2y=34$, $y=17$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-x5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số lớn $x$ bằng bao nhiêu?",
+            "answer": "55",
+            "mistakes": [
+              {
+                "answer": "57",
+                "code": "E07",
+                "feedback": "Con bỏ mất số dư trong phép chia."
+              },
+              {
+                "answer": "59",
+                "code": "E02",
+                "feedback": "Khi chuyển $4$ sang vế bên kia phải đổi dấu.",
+                "review": "g-giaihpt"
+              }
+            ],
+            "solution": "$x=17+38=55$."
+          }
+        }
+      ],
+      "solution": "$3y+4-y=38 \\Rightarrow y=17$, $x=55$ (thử: $55-17=38$; $55=3\\cdot 17+4$ và $4<17$)."
+    },
+    {
+      "id": "g-chuso-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một câu lạc bộ có $96$ học sinh, chia thành hai nhóm cờ vua và cờ tướng. Nếu chuyển $18$ học sinh từ nhóm cờ vua sang nhóm cờ tướng thì số học sinh nhóm cờ tướng bằng $\\dfrac53$ số học sinh nhóm cờ vua. Hỏi lúc đầu mỗi nhóm có bao nhiêu học sinh?",
+      "source": "68 đề – Đề 23, Bài 3.2 (chuyển thể: đổi bối cảnh, 96 học sinh, chuyển 18, tỉ số 5/3)",
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện của ẩn.",
+          "item": {
+            "id": "g-chuso-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi số học sinh lúc đầu của nhóm cờ vua là $x$, nhóm cờ tướng là $y$. Điều kiện đúng là:",
+            "options": [
+              "$x,y\\in\\mathbb N^*$; $18<x<96$",
+              "$x>0$, $y>0$ (số thực bất kì)",
+              "$x,y\\in\\mathbb N$; $1\\le x\\le 9$, $0\\le y\\le 9$",
+              "$x,y\\in\\mathbb N^*$; $x<18$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Số học sinh phải là số tự nhiên."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Đây không phải bài chữ số; $x$, $y$ là số học sinh."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Nhóm cờ vua phải chuyển đi $18$ bạn nên lúc đầu có nhiều hơn $18$ bạn."
+              }
+            },
+            "solution": "$x,y\\in\\mathbb N^*$, $18<x<96$ (phải chuyển đi được $18$ bạn)."
+          }
+        },
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} x+y=96 \\\\ y=\\frac53 x \\end{cases}$",
+              "$\\begin{cases} x+y=96 \\\\ x-18=\\frac53(y+18) \\end{cases}$",
+              "$\\begin{cases} x+y=96 \\\\ y+18=\\frac53(x-18) \\end{cases}$",
+              "$\\begin{cases} x+y=96 \\\\ y+18=\\frac53(x+18) \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Tỉ số $\\frac53$ là sau khi chuyển; phải dùng số học sinh mới của mỗi nhóm."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Con đặt $\\frac53$ nhầm nhóm: nhóm cờ tướng (sau khi nhận) bằng $\\frac53$ nhóm cờ vua."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Nhóm cờ vua chuyển đi $18$ bạn nên còn $x-18$, không phải $x+18$."
+              }
+            },
+            "solution": "$x+y=96$ và $y+18=\\frac53(x-18)$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Lúc đầu nhóm cờ vua có bao nhiêu học sinh?",
+            "answer": "54",
+            "unit": "học sinh",
+            "mistakes": [
+              {
+                "answer": "36",
+                "code": "E07",
+                "feedback": "Tỉ số $\\frac53$ là sau khi chuyển; phải dùng số học sinh mới của mỗi nhóm."
+              },
+              {
+                "answer": "78",
+                "code": "E07",
+                "feedback": "Con đặt $\\frac53$ nhầm nhóm: nhóm cờ tướng (sau khi nhận) bằng $\\frac53$ nhóm cờ vua."
+              },
+              {
+                "answer": "63/2",
+                "code": "E07",
+                "feedback": "Nhóm cờ vua chuyển đi $18$ bạn nên còn $x-18$."
+              }
+            ],
+            "solution": "$3(y+18)=5(x-18) \\Rightarrow 5x-3y=144$; thế $y=96-x$: $8x=432$, $x=54$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "g-chuso-x6-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Lúc đầu nhóm cờ tướng có bao nhiêu học sinh?",
+            "answer": "42",
+            "unit": "học sinh",
+            "mistakes": [
+              {
+                "answer": "60",
+                "code": "E10",
+                "feedback": "Đó là số học sinh nhóm cờ tướng sau khi chuyển (hoặc con quên việc chuyển); đề hỏi lúc đầu."
+              },
+              {
+                "answer": "18",
+                "code": "E07",
+                "feedback": "Con đặt $\\frac53$ nhầm nhóm: nhóm cờ tướng (sau khi nhận) bằng $\\frac53$ nhóm cờ vua."
+              }
+            ],
+            "solution": "$y=96-54=42$."
+          }
+        }
+      ],
+      "solution": "$x+y=96$, $3(y+18)=5(x-18)$ cho $x=54$, $y=42$ (thử: sau khi chuyển cờ vua còn $36$, cờ tướng có $60=\\frac53\\cdot 36$)."
+    },
+    {
+      "id": "g-chuso-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho một số có hai chữ số. Nếu đổi chỗ hai chữ số của nó thì được số mới lớn hơn số đã cho $45$ đơn vị. Tổng của số đã cho và số mới bằng $121$. Tìm số đã cho.",
+      "source": "CĐ lập PT/HPT – §1 Câu 7 (chuyển thể: hơn 45, tổng 121)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} (10a+b)-(10b+a)=45 \\\\ (10a+b)+(10b+a)=121 \\end{cases}$",
+              "$\\begin{cases} (10b+a)-(10a+b)=45 \\\\ (10a+b)+(10b+a)=121 \\end{cases}$",
+              "$\\begin{cases} (10b+a)-(10a+b)=45 \\\\ (a+b)+(b+a)=121 \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Số mới lớn hơn, nên lấy số mới trừ số đã cho."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Đề cho tổng hai **số**, không phải tổng các chữ số; $\\overline{ab}=10a+b$."
+              }
+            },
+            "solution": "$(10b+a)-(10a+b)=45$ và $(10a+b)+(10b+a)=121$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chữ số hàng chục $a$ bằng bao nhiêu?",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "8",
+                "code": "E07",
+                "feedback": "Số mới lớn hơn, nên lấy số mới trừ số đã cho."
+              },
+              {
+                "answer": "111/4",
+                "code": "E04",
+                "feedback": "Đề cho tổng hai **số**, không phải tổng các chữ số."
+              }
+            ],
+            "solution": "$9(b-a)=45 \\Rightarrow b-a=5$; $11(a+b)=121 \\Rightarrow a+b=11$; suy ra $a=3$, $b=8$."
+          }
+        },
+        {
+          "prompt": "Kết luận và đối chiếu điều kiện.",
+          "item": {
+            "id": "g-chuso-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng?",
+            "options": [
+              "Kết luận: số đã cho là $3$.",
+              "Kết luận: số đã cho là $83$.",
+              "Kết luận: $a=3$, $b=8$ thỏa điều kiện; số đã cho là $38$.",
+              "Kết luận: không có số nào thỏa mãn vì chữ số không nguyên."
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Đó mới là chữ số hàng chục; đề hỏi cả số có hai chữ số."
+              },
+              "1": {
+                "code": "E10",
+                "feedback": "Đó là số mới sau khi đổi chỗ; đề hỏi số đã cho."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Ra chữ số không nguyên là do lập sai phương trình tổng hai số; xem lại."
+              }
+            },
+            "solution": "$a=3$, $b=8$ thỏa điều kiện; số đã cho là $38$."
+          }
+        }
+      ],
+      "solution": "$b-a=5$, $a+b=11$ nên $a=3$, $b=8$; số đã cho là $38$ (thử: $83-38=45$, $38+83=121$)."
+    },
+    {
+      "id": "g-chuso-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một số tự nhiên có hai chữ số, tỉ số giữa chữ số hàng chục và chữ số hàng đơn vị là $\\dfrac34$. Nếu viết thêm chữ số $1$ xen vào giữa hai chữ số thì được số mới lớn hơn số đã cho $280$ đơn vị. Tìm số đã cho.",
+      "source": "CĐ lập PT/HPT – §1 Ví dụ 3 (chuyển thể: tỉ số 3/4, lớn hơn 280)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-chuso-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$ ($a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$). Hệ phương trình nào đúng?",
+            "options": [
+              "$\\begin{cases} 3a=4b \\\\ (100a+10+b)-(10a+b)=280 \\end{cases}$",
+              "$\\begin{cases} 4a=3b \\\\ (100a+1+b)-(10a+b)=280 \\end{cases}$",
+              "$\\begin{cases} 4a=3b \\\\ (10a+b)-(100a+10+b)=280 \\end{cases}$",
+              "$\\begin{cases} 4a=3b \\\\ (100a+10+b)-(10a+b)=280 \\end{cases}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Nhân chéo sai: từ $\\frac ab=\\frac34$, tích $a$ với $4$ bằng tích $b$ với $3$."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Chữ số $1$ xen vào đứng ở hàng chục nên có giá trị $10$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Số mới lớn hơn, nên lấy số mới trừ số đã cho."
+              }
+            },
+            "solution": "$4a=3b$ và $(100a+10+b)-(10a+b)=280$."
+          }
+        },
+        {
+          "prompt": "Giải hệ.",
+          "item": {
+            "id": "g-chuso-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chữ số hàng đơn vị $b$ bằng bao nhiêu?",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "9/4",
+                "code": "E07",
+                "feedback": "Nhân chéo sai tỉ số $\\frac ab=\\frac34$."
+              },
+              {
+                "answer": "62/15",
+                "code": "E04",
+                "feedback": "Chữ số $1$ xen vào đứng ở hàng chục nên có giá trị $10$."
+              }
+            ],
+            "solution": "$90a+10=280 \\Rightarrow a=3$; $4\\cdot 3=3b \\Rightarrow b=4$."
+          }
+        },
+        {
+          "prompt": "Kết luận và đối chiếu điều kiện.",
+          "item": {
+            "id": "g-chuso-x8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Câu kết luận nào đúng?",
+            "options": [
+              "Kết luận: $a=3$, $b=4$ thỏa điều kiện; số đã cho là $34$.",
+              "Kết luận: số đã cho là $314$.",
+              "Kết luận: $a=3$, $b=\\frac94$ thỏa điều kiện vì $0\\le\\frac94\\le 9$.",
+              "Kết luận: số đã cho là $43$."
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E10",
+                "feedback": "Đó là số mới sau khi xen chữ số; đề hỏi số đã cho."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Chữ số phải là số tự nhiên; một phân số không phải chữ số."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Con ghép ngược: chữ số hàng chục phải đứng trước."
+              }
+            },
+            "solution": "$a=3$, $b=4$ thỏa điều kiện; số đã cho là $34$."
+          }
+        }
+      ],
+      "solution": "$90a+10=280 \\Rightarrow a=3$; $4a=3b \\Rightarrow b=4$. Số đã cho là $34$ (thử: $\\frac34$ đúng tỉ số, $314-34=280$)."
+    }
+  ]
+}
