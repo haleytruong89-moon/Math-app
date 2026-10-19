@@ -20,6 +20,7 @@
 ## Phiên Code (VS Code / cloud)
 | Việc | Nhánh | Hạn | Điều kiện |
 |---|---|---|---|
+| Bàn làm việc gia sư (T7–T9): mẫu giao diện 5 tab → lát S10 (kho bài, duyệt, ưu tiên; SQL bảng duyệt) → lát S11 (giao từng câu, buổi dạy gọn, Hôm nay; SQL) | `p1-tutor-ux`, `p1-slice-10`, `p1-slice-11` | mẫu 21/10; code tuần 43–44 | Phụ huynh chốt A/B/C 19/10; mẫu cần phụ huynh + gia sư xem; trợ lý AI (S8) lùi ~1 tuần |
 | S9 — Gia sư giao bài trong app: bài về nhà gắn KU → nút "Làm trên app" (mở cả khi KU còn khoá), gia sư thấy kết quả của bài đó; ưu tiên theo hạn nộp. Không SQL (dùng `homework.unit_id`) | `p1-slice-9` | ngay sau khi phụ huynh "ok" | ✅ Phụ huynh "ok" 17/10 → PR #23 (không SQL) |
 | S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | code 26/10–06/11, bật ~09/11 | Chờ phản hồi thật từ pilot 12/10; cần khoá API 10 USD/tháng (phụ huynh dán vào Vercel) |
 | S4b — mốc 8,5/9,5, mở khoá tay | `p1-slice-4b` | ~06/11 | Kiểm tra số migration trước khi đặt số |
