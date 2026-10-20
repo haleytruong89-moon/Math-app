@@ -4,7 +4,7 @@
 > Cập nhật lần cuối: 17/10/2026. Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
-- Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL, không đọc/in khoá bí mật.
+- Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
 - Trước khi làm: `git fetch`, xem PR/CI thật trên GitHub; đọc `docs/PROGRESS.md` (mục mới nhất) và `docs/CURRICULUM.md` §3.
 - Nội dung chỉ lấy từ Đề 1–56 của sách 68 đề (Đề 57–68 để dành thi thử). Mọi KU mới ở trạng thái `draft`.
 

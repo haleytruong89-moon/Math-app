@@ -19,6 +19,7 @@
 | 02/10/2026 | Units `htl-1`, `htl-2` approved for students | `content/he-thuc-luong/` |
 | 02/10/2026 | 8 practice + 5 exit questions per unit for the pilot | content |
 | 02/10/2026 | New SQL is pasted into Supabase by the parent; no automatic migrations to the live database | `docs/P1_PLAN.md` §1 |
+| 20/10/2026 | **SQL button (replaces the row above):** the parent applies each new migration with the GitHub Actions workflow "Áp dụng SQL" (`apply-sql.yml` + `scripts/apply-migration.sh`): inputs file + PR branch + "CHAY"; it dumps the database first (30-day artifact), runs that one file in one transaction and records it in `app_meta.applied_migrations` (never twice; 0001–0010 refused, applied by hand). Still manual and per file, still before merging; Claude never triggers it and never sees `SUPABASE_DB_URL` | `.github/workflows/apply-sql.yml` |
 | 03/10/2026 | After D+21: keep a **maintenance review every 60 days** until the exam (fail → back to D+1, M4 lost until D+21 is passed again) | rules.ts, migration 0005 |
 | 03/10/2026 | **Pilot early**: Nguyên starts with the approved units once S3 (tutor log) is in; S4 parent dashboard and more content follow during the pilot | `docs/P1_PLAN.md` §3 |
 | 03/10/2026 | Geometry proof items **C1–C3 (S5) move to after the pilot starts** (deviation from §3.4 / §4 "P1"; hub doc to be updated) | `docs/P1_PLAN.md` §3 |
