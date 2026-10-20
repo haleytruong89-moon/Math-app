@@ -1,0 +1,92 @@
+# "Áp dụng SQL" — the parent applies one new migration to the live Supabase database with one click
+# (parent decision 20/10/2026, replaces pasting SQL into the Supabase SQL Editor).
+#
+# How: GitHub → Actions → "Áp dụng SQL" → Run workflow →
+#   file   = the migration file name, e.g. 0012_p1_content_review.sql
+#   branch = the PR's branch that holds it (run BEFORE merging that PR), e.g. p1-slice-10
+#   confirm = CHAY
+# What it does: backs the database up first (artifact, 30 days), then runs that one file in a single
+# transaction and records it in app_meta.applied_migrations, so the same file can never run twice;
+# if anything fails, nothing is changed. Uses the SUPABASE_DB_URL secret of the weekly backup
+# (the password never appears in logs or chat). 0001–0010 were applied by hand and are refused.
+name: Áp dụng SQL
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "File SQL trong supabase/migrations (vd 0012_p1_content_review.sql)"
+        required: true
+        type: string
+      branch:
+        description: "Nhánh của PR có file đó (chạy TRƯỚC khi merge PR)"
+        required: true
+        default: main
+        type: string
+      confirm:
+        description: "Gõ CHAY để xác nhận chạy trên database thật"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apply-sql
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check inputs and secret
+        env:
+          FILE: ${{ inputs.file }}
+          BRANCH: ${{ inputs.branch }}
+          CONFIRM: ${{ inputs.confirm }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          [ "$CONFIRM" = "CHAY" ] || { echo "::error::Gõ đúng CHAY vào ô xác nhận."; exit 1; }
+          [[ "$FILE" =~ ^[0-9]{4}_[a-z0-9_]+\.sql$ ]] || { echo "::error::Tên file không hợp lệ: $FILE"; exit 1; }
+          [[ "$BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]] || { echo "::error::Tên nhánh không hợp lệ: $BRANCH"; exit 1; }
+          [ -n "$SUPABASE_DB_URL" ] || { echo "::error::Chưa có secret SUPABASE_DB_URL (xem weekly-backup.yml)."; exit 1; }
+
+      # The script comes from main; the SQL file from the chosen branch.
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+          path: pr
+          sparse-checkout: supabase/migrations
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Back up the database first
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          mkdir -p backup
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/schema.sql
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/data.sql --use-copy --data-only
+          ls -la backup
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: before-${{ inputs.file }}-${{ github.run_id }}
+          path: backup/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Apply ${{ inputs.file }}
+        env:
+          FILE: ${{ inputs.file }}
+          BRANCH: ${{ inputs.branch }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          export GIT_SHA="$(git -C pr rev-parse HEAD)" # the commit the SQL came from
+          echo "SQL from $BRANCH at ${GIT_SHA:0:7}"
+          scripts/apply-migration.sh "$FILE" pr/supabase/migrations
+          echo "✅ Đã chạy \`$FILE\` từ nhánh \`$BRANCH\`. Giờ có thể merge PR." >> "$GITHUB_STEP_SUMMARY"

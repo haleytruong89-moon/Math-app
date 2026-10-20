@@ -20,7 +20,7 @@ Web app helping Hạnh Nguyên (grade 9) learn math and prepare for the grade-10
 - Plan: `docs/P1_PLAN.md`; status, open questions and the latest report: `docs/PROGRESS.md` — read both first.
 - Curriculum (50 KUs: 42 core + 8 P2, tracks, prerequisites, timeline 12/10/2026 → 31/03/2027, content batches): `docs/CURRICULUM.md`; its decisions are LT1–LT20 in `docs/SPEC.md` §0. AI design (hints, guardrails, eval, budget): `docs/AI_TUTOR.md` (AI1–AI4). Student UI: `docs/HANDOVER_STUDENT_UX.md` (progress map superseded by LT9). **Writing content: follow `docs/CONTENT_STANDARD.md`** (item mix, error codes, sources, QA).
 - Migration numbers are global across branches: check `supabase/migrations/` on `main` **and** open PRs before picking the next number.
-- One branch per slice (`p1-slice-N`), never push `main`; pushing a `p[0-9]-*` branch auto-opens a PR. The parent runs new SQL in Supabase and merges.
+- One branch per slice (`p1-slice-N`), never push `main`; pushing a `p[0-9]-*` branch auto-opens a PR. The parent applies new SQL with the **"Áp dụng SQL"** button (GitHub Actions, `apply-sql.yml`; backup first, one file, once) on the PR's branch, then merges. Claude never triggers it.
 - Before pushing: `npm run lint`, `npm test`, `npm run build`, `./e2e/run.sh` (browser + in-memory DB; patches auth temporarily and reverts itself).
 
 ## Working with two Claude surfaces (claude.ai brainstorm ↔ Claude Code)
