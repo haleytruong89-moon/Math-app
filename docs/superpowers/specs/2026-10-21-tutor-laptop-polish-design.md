@@ -18,7 +18,7 @@ The session persists; next visits skip the login.
 | 4 | Bài làm | One phone-width column listing ~20 units "chưa làm câu nào"; redundant "← Học sinh" | Laptop: grid of 2–3 columns; units with work first; units without any answer folded into "Chưa làm (N)" (`<details>`); no back link inside the tutor tabs (parent page keeps its own) |
 | 5 | Header | "App Toán" not aligned with the content (header `max-w-5xl`, tutor body `max-w-6xl`) | `AppHeader` takes `wide`; the tutor layout passes it |
 | 6 | Đăng nhập | "tài khoản phụ huynh đã cấp" reads like "use the parent's account"; no way to check a typed password | "Dùng email và mật khẩu phụ huynh đã gửi cho bạn."; 👁 show/hide password button |
-| 7 | Duyệt (latent) | `content_hash` = JSON of the parsed item → depends on key order; a schema change would flip every "fix" to "changed" | Canonical JSON (sorted keys) in `review.ts`; existing rows keep working for "ok" (grading hash unchanged). Rows made before this fix: a "fix" item may show "↻" once — acceptable (no "fix" rows exist in production yet beyond the first review day) |
+| 7 | Duyệt (latent) | `content_hash` = JSON of the parsed item → depends on key order; a schema change would flip every "fix" to "changed" | Canonical JSON (sorted keys) in `review.ts`; existing rows keep working for "ok" (grading hash unchanged). Any "fix" recorded before this change shows "↻ xem lại" once — acceptable |
 
 ## Out of scope
 Keyboard shortcuts, a 3-column review layout, AI (S8).
