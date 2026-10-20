@@ -132,7 +132,21 @@ const CheckInput = z.object({
   hintLevel: z.number().int().min(0).max(3).optional(),
   /** LT5, practice: check one step of a multi-step item (not recorded; the whole item is recorded at the end). */
   step: z.number().int().min(0).max(4).optional(),
+  /** T9: an item of an open homework of this student — practised without the worked-example gate. */
+  homeworkId: z.uuid().optional(),
 });
+
+/** T9: a hand-picked homework item (open, this student's, this unit) may be practised without the worked example. */
+async function homeworkAllows(studentId: string, homeworkId: string, unitId: string, itemId: string) {
+  const { data } = await createAdminClient()
+    .from("homework")
+    .select("unit_id, items")
+    .eq("id", homeworkId)
+    .eq("student_id", studentId)
+    .is("reviewed_at", null)
+    .maybeSingle();
+  return !!data && data.unit_id === unitId && Array.isArray(data.items) && (data.items as string[]).includes(itemId);
+}
 
 /** LT16: "Ôn lại: …" — only to a KU the viewer can open (what the student sees, or any in a preview). */
 async function reviewLink(who: Learner, unitId: string | undefined) {
@@ -152,10 +166,13 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
   if (!item) return DENIED;
 
   if (who.kind === "student") {
-    // §2.7: no self-solving before the worked example has been viewed in full.
-    const p = await progress(who.studentId, v.unitId);
-    if (!p?.worked_viewed_at) return { ok: false, message: "Con cần xem hết lời giải mẫu trước." };
-    if (v.mode === "practice" && !p.faded_done_at) return { ok: false, message: "Con cần làm xong phần điền bước trước." };
+    const viaHomework = v.mode === "practice" && !!v.homeworkId && (await homeworkAllows(who.studentId, v.homeworkId, v.unitId, v.itemId));
+    if (!viaHomework) {
+      // §2.7: no self-solving before the worked example has been viewed in full.
+      const p = await progress(who.studentId, v.unitId);
+      if (!p?.worked_viewed_at) return { ok: false, message: "Con cần xem hết lời giải mẫu trước." };
+      if (v.mode === "practice" && !p.faded_done_at) return { ok: false, message: "Con cần làm xong phần điền bước trước." };
+    }
   }
 
   // LT5: one step of a multi-step practice item — feedback for that step, nothing recorded yet.

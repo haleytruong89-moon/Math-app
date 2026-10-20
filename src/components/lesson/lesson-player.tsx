@@ -288,7 +288,8 @@ function FadedStage({ unit, alreadyDone, onDone }: { unit: PublicUnit; alreadyDo
 
 // ---------------------------------------------------------------------
 
-function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: () => void; recapHref: (id: string) => string }) {
+/** Practice of a unit — or (T9) the items of a homework: `homeworkId` lets the server skip the worked-example gate. */
+export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: PublicUnit; onDone: () => void; recapHref: (id: string) => string; homeworkId?: string }) {
   // One graded try per item; items answered wrong come back once at the end.
   const [queue, setQueue] = useState<PublicItem[]>(unit.practice);
   const [pos, setPos] = useState(0);
@@ -316,6 +317,7 @@ function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: 
         answer,
         durationMs: Date.now() - startedAtRef.current,
         hintLevel,
+        homeworkId,
       });
       if (!r.ok) return r.message;
       if (!r.understood) {
@@ -346,13 +348,15 @@ function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: 
     const right = Object.values(firstTry).filter(Boolean).length;
     return (
       <Card>
-        <h2 className="font-display text-lg font-bold">Xong phần luyện tập</h2>
+        <h2 className="font-display text-lg font-bold">{homeworkId ? "Xong bài về nhà" : "Xong phần luyện tập"}</h2>
         <p className="mt-2">
           Đúng ngay lần đầu: <b className="tabular-nums">{right}/{unit.practice.length}</b> câu.
         </p>
-        <p className="mt-1 text-sm text-muted">Phần tiếp theo là bài kiểm tra ngắn: không có gợi ý, xem đáp án sau khi nộp.</p>
+        <p className="mt-1 text-sm text-muted">
+          {homeworkId ? "Thầy/cô xem được kết quả này." : "Phần tiếp theo là bài kiểm tra ngắn: không có gợi ý, xem đáp án sau khi nộp."}
+        </p>
         <PrimaryButton className="mt-4 w-full" onClick={onDone}>
-          Làm bài kiểm tra
+          {homeworkId ? "Về trang chính" : "Làm bài kiểm tra"}
         </PrimaryButton>
       </Card>
     );
@@ -374,7 +378,7 @@ function PracticeStage({ unit, onDone, recapHref }: { unit: PublicUnit; onDone: 
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
       {item.type === "steps" && !result ? (
-        <StepsPractice key={`${item.id}-${pos}`} unitId={unit.id} item={item} recapHref={recapHref} pending={pending} onComplete={(answer) => {
+        <StepsPractice key={`${item.id}-${pos}`} unitId={unit.id} item={item} recapHref={recapHref} pending={pending} homeworkId={homeworkId} onComplete={(answer) => {
             setValue(answer); // keep her step answers on screen under the result
             check(answer);
           }} />
@@ -416,12 +420,14 @@ function StepsPractice({
   recapHref,
   pending: submitting,
   onComplete,
+  homeworkId,
 }: {
   unitId: string;
   item: PublicItem;
   recapHref: (id: string) => string;
   pending: boolean;
   onComplete: (answer: string) => void;
+  homeworkId?: string;
 }) {
   const steps = item.steps!;
   const [k, setK] = useState(0);
@@ -436,7 +442,7 @@ function StepsPractice({
     run(async () => {
       if (!parts[k].trim()) return "Con chưa trả lời bước này.";
       setHint(null);
-      const r = await checkAnswer({ unitId, itemId: item.id, mode: "practice", answer: parts[k], step: k, durationMs: Date.now() - startedAtRef.current });
+      const r = await checkAnswer({ unitId, itemId: item.id, mode: "practice", answer: parts[k], step: k, durationMs: Date.now() - startedAtRef.current, homeworkId });
       if (!r.ok) return r.message;
       if (!r.understood) {
         setHint(FORMAT_HINT);
