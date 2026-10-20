@@ -4,8 +4,9 @@ import { useActionState, useRef, useState } from "react";
 import Link from "next/link";
 import { assignHomework } from "@/app/tutor/actions";
 import { isDriveLink } from "@/lib/learning/homework";
+import { Rich } from "@/components/lesson/rich";
 
-export type PickItem = { id: string; level: "L1" | "L2" | "L3"; promptText: string; oftenWrong: boolean; examLike: boolean };
+export type PickItem = { id: string; level: "L1" | "L2" | "L3"; promptHtml: string; oftenWrong: boolean; examLike: boolean };
 
 export function AssignForm(p: { studentId: string; studentName: string; unitId: string | null; mode: "unit" | "items" | "paper"; items: PickItem[]; defaultDue: string; maxDue: string; today: string }) {
   const [state, action, pending] = useActionState(assignHomework, {});
@@ -36,7 +37,7 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
                     {it.oftenWrong && <span className="rounded-full bg-warn-soft px-2 text-warn">con hay sai</span>}
                     {it.examLike && <span className="rounded-full bg-accent-soft px-2 text-accent">giống đề thi</span>}
                   </span>
-                  <span className="mt-1 block text-[15px]">{it.promptText}</span>
+                  <Rich html={it.promptHtml} className="mt-1 block text-[15px]" />
                 </span>
               </label>
             ))}

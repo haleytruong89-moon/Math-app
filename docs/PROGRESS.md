@@ -24,9 +24,10 @@
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
 | S9 — Gia sư giao bài trong app (T6) | `p1-slice-9` | ✅ Merged 19/10 (PR #23) — không SQL |
-| Sửa lỗi audit H1 + H2: lượt ôn do server lập (SQL 0011), khoá câu đã duyệt | `p1-audit-fix` | 🟡 PR mở 20/10 — **chạy SQL 0011 trước khi merge** |
-| S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | 🟡 PR mở 20/10 — **chạy SQL 0012 trước khi merge** (sau #24, #25) |
-| S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ⬜ sau S10 — SQL 0013 |
+| Sửa lỗi audit H1 + H2: lượt ôn do server lập (SQL 0011), khoá câu đã duyệt | `p1-audit-fix` | ✅ Merged 20/10 (PR #25), SQL 0011 chạy bằng nút 20/10 |
+| Nút "Áp dụng SQL" (GitHub Actions) | `p1-sql-button` | ✅ Merged 20/10 (PR #28) |
+| S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | ✅ Merged 20/10 (PR #27), SQL 0012 chạy bằng nút 20/10 |
+| S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | 🟡 PR mở 20/10 — **Áp dụng SQL 0013 (nhánh `p1-slice-11`) trước khi merge** |
 | S8 — AI giảng bài + báo cáo tuần (SQL **0014**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -48,6 +49,25 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 20/10/2026 — S11: Giao bài từng câu, Buổi dạy gọn, Hôm nay (nhánh `p1-slice-11`)
+
+Kế hoạch: `docs/superpowers/plans/2026-10-20-s11-assign-today-session.md`. Trước đó trong ngày: nút "Áp dụng SQL" (PR #28, SPEC §0 20/10) — phụ huynh đã dùng nó để chạy 0011 và 0012.
+
+### Đã làm
+- **SQL 0013**: `homework.items` (câu luyện tập được giao, phải thuộc đúng bài, 1–20 câu); `session_id` không bắt buộc (giao bài không cần ghi buổi).
+- **Giao bài (T9)**: chọn bài đã duyệt (★ ưu tiên lên đầu) → "Chọn từng câu" (chỉ câu luyện tập; chọn nhanh theo L1/L2/L3; nhãn "con hay sai", "giống đề thi") / "Cả bài" / "Bài trên giấy" (yêu cầu + ≤ 3 link Drive, cảnh báo link không phải Drive) → hạn nộp, lời dặn.
+- **Con làm trên app**: thẻ bài về nhà ghi "Làm N câu trên app" → trang riêng, làm như luyện tập (chấm trên server, **tính vào mức hiểu**), không cần xem bài mẫu trước; cuối có "Xong bài về nhà".
+- **Buổi dạy gọn**: 3 bước — ngày; chọn bài bằng nút (ưu tiên + đang học dở, tìm bài khác); mức M0–M4 **chỉ cho bài đã chọn**, vẫn hiện bằng chứng (mức hệ thống, số câu, kiểm tra gần nhất, "Xem câu sai →"). Form cũ ~50 bài và phần bài về nhà trong form đã bỏ.
+- **Hôm nay**: bài chờ duyệt, bài về nhà chờ chữa (kết quả trên app chỉ tính các câu được giao), nhắc buổi chưa ghi (theo thứ dạy trong tuần); cột phải: ưu tiên, "Tuần này của con". Gia sư có một học sinh → vào thẳng bàn làm việc.
+- 5 tab: Hôm nay · Kho bài · Giao bài · Buổi dạy · Bài làm.
+
+### Đã tự kiểm
+- `npm run lint`, `npm test` (139 test + RLS, thêm 5 kiểm tra 0013), `npm run build`, `./e2e/run.sh` 208 PASS. `tutor-flow` viết lại cho các tab mới (giữ mọi kiểm tra cũ: bằng chứng, thiếu mức, ngày tương lai/quá 7 ngày, ghi chú 500 ký tự, bài làm của con, bài trên giấy, "Đã chữa", S9, hết phân công/khoá tài khoản); thêm `assign-flow` (giao 2 câu, không có câu kiểm tra trong danh sách, không cần buổi) và `assign-student-flow` (con làm 2 câu từ thẻ, chưa xem bài mẫu, ghi là luyện tập, đúng).
+
+### Phụ huynh cần làm
+1. Actions → **Áp dụng SQL**: file `0013_p1_item_homework.sql`, nhánh `p1-slice-11`, `CHAY` → ✅.
+2. Merge PR S11.
 
 ## 20/10/2026 — S10: Kho bài, duyệt từng câu, ưu tiên (nhánh `p1-slice-10`)
 

@@ -8,6 +8,7 @@ import { loadStudentState } from "@/lib/learning/state";
 import { addDays, vnDate } from "@/lib/learning/rules";
 import { HOMEWORK_RULES } from "@/lib/learning/homework";
 import { TutorTabs } from "@/components/tutor/tutor-tabs";
+import { texToHtml } from "@/lib/content/tex";
 import { AssignForm, type PickItem } from "@/components/tutor/assign-form";
 
 export const metadata: Metadata = { title: "Giao bài — App Toán" };
@@ -16,8 +17,6 @@ const MODES = [
   { id: "unit", label: "Cả bài" },
   { id: "paper", label: "Bài trên giấy" },
 ] as const;
-// Plain text of a prompt for the picker (TeX kept as typed).
-const plain = (s: string) => s.replace(/\*\*/g, "").replace(/\$/g, "").slice(0, 160);
 
 // Mockup artboard 4: pick a KU (priorities first) → mode → items → due → Giao.
 export default async function AssignPage(props: PageProps<"/tutor/[studentId]/giao">) {
@@ -35,7 +34,7 @@ export default async function AssignPage(props: PageProps<"/tutor/[studentId]/gi
   const attempts = state.units.find((u) => u.unit.id === unit?.id)?.attempts ?? [];
   const wrongs = new Map<string, number>();
   for (const a of attempts) if (!a.correct) wrongs.set(a.item_id, (wrongs.get(a.item_id) ?? 0) + 1);
-  const items: PickItem[] = (unit?.practice ?? []).map((it) => ({ id: it.id, level: it.level, promptText: plain(it.prompt), oftenWrong: (wrongs.get(it.id) ?? 0) >= 1, examLike: !!it.source }));
+  const items: PickItem[] = (unit?.practice ?? []).map((it) => ({ id: it.id, level: it.level, promptHtml: texToHtml(it.prompt), oftenWrong: (wrongs.get(it.id) ?? 0) >= 1, examLike: !!it.source }));
   const today = vnDate();
   const q = (o: Record<string, string>) => `?${new URLSearchParams({ unit: unit?.id ?? "", mode, ...o })}`;
 
