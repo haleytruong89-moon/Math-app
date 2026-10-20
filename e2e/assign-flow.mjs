@@ -1,0 +1,28 @@
+// S11 tutor: give 2 hand-picked practice items of htl-1; see the app result after the student answers. Run via e2e/run.sh.
+import { chromium } from "playwright";
+import fs from "node:fs";
+const BASE = process.env.BASE ?? "http://localhost:3110";
+const sql = async (q) => (await fetch(`${BASE}/api/e2e/sql`, { method: "POST", body: JSON.stringify({ sql: q }) })).json();
+const res = []; const ok = (n, c, extra = "") => res.push(`${c ? "PASS" : "FAIL"} ${n}${c ? "" : " " + extra}`);
+const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const page = await (await browser.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
+const errors = []; page.on("pageerror", (e) => errors.push(e.message));
+const htl1 = JSON.parse(fs.readFileSync("content/he-thuc-luong/htl-1.json", "utf8"));
+const [p1, p2] = htl1.practice.filter((i) => i.type !== "steps").slice(0, 2).map((i) => i.id);
+
+await sql(`delete from public.homework; delete from public.attempts where unit_id = 'htl-1';`);
+const sid = (await sql(`select id from public.students where full_name='Hạnh Nguyên'`))[0].id;
+await page.goto(`${BASE}/tutor/${sid}/giao?unit=htl-1&mode=items`);
+ok("giao: practice items listed, no exit items", (await page.locator('input[name="item"]').count()) === htl1.practice.length && (await page.locator(`input[value="${htl1.exit[0].id}"]`).count()) === 0);
+await page.locator(`input[name="item"][value="${p1}"]`).check();
+await page.locator(`input[name="item"][value="${p2}"]`).check();
+await page.getByRole("button", { name: /Giao cho/ }).click();
+await page.getByText("Đã giao 2 câu.").waitFor();
+const hw = await sql(`select unit_id, items, session_id from public.homework`);
+ok("db: item homework without a session", hw.length === 1 && hw[0].unit_id === "htl-1" && hw[0].items.join() === `${p1},${p2}` && hw[0].session_id === null, JSON.stringify(hw));
+await page.goto(`${BASE}/tutor/${sid}`);
+ok("hôm nay: homework listed, nothing done in the app yet", (await page.getByTestId("homework-app-result").innerText()).includes("con chưa làm"));
+ok("no browser errors", errors.length === 0, errors.join(" | "));
+await browser.close();
+console.log(res.join("\n"));
+process.exit(res.some((r) => r.startsWith("FAIL")) ? 1 : 0);

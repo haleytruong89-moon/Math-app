@@ -1,14 +1,16 @@
 "use client";
 
-import { useActionState, useRef } from "react";
+import { useActionState, useRef, useState } from "react";
 import Link from "next/link";
 import { assignHomework } from "@/app/tutor/actions";
+import { isDriveLink } from "@/lib/learning/homework";
 
 export type PickItem = { id: string; level: "L1" | "L2" | "L3"; promptText: string; oftenWrong: boolean; examLike: boolean };
 
 export function AssignForm(p: { studentId: string; studentName: string; unitId: string | null; mode: "unit" | "items" | "paper"; items: PickItem[]; defaultDue: string; maxDue: string; today: string }) {
   const [state, action, pending] = useActionState(assignHomework, {});
   const list = useRef<HTMLDivElement>(null);
+  const [links, setLinks] = useState(["", "", ""]);
   const pick = (level?: string) =>
     list.current?.querySelectorAll<HTMLInputElement>('input[name="item"]').forEach((b) => { b.checked = !level ? false : b.dataset.level === level || b.checked; });
   return (
@@ -48,7 +50,13 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
         <input id="due" name="due" type="date" defaultValue={p.defaultDue} min={p.today} max={p.maxDue} className="rounded-lg border border-border px-3 py-2" />
         <label className="font-display text-xs font-semibold uppercase tracking-wide text-muted" htmlFor="task">{p.mode === "paper" ? "Yêu cầu" : "Lời dặn con (tuỳ chọn)"}</label>
         <textarea id="task" name="task" rows={3} maxLength={300} className="rounded-lg border border-border px-3 py-2" />
-        {[0, 1, 2].map((i) => <input key={i} name="link" type="url" placeholder={i ? "Link khác (tuỳ chọn)" : "Link đề Google Drive (tuỳ chọn)"} className="rounded-lg border border-border px-3 py-2 text-sm" />)}
+        {[0, 1, 2].map((i) => (
+          <div key={i}>
+            <input name="link" type="url" value={links[i]} onChange={(e) => setLinks((l) => l.map((x, j) => (j === i ? e.target.value : x)))} aria-label={`Link ${i + 1}`}
+              placeholder={i ? "Link khác (tuỳ chọn)" : "Link đề / ảnh Google Drive (tuỳ chọn)"} className="w-full rounded-lg border border-border px-3 py-2 text-sm" />
+            {links[i].trim() && !isDriveLink(links[i]) && <span className="mt-0.5 block text-xs text-warn">Đây không phải link Google Drive — con có mở được không?</span>}
+          </div>
+        ))}
         <button type="submit" disabled={pending} className="rounded-lg bg-accent px-4 py-3 font-display font-bold text-on-accent disabled:opacity-60">{pending ? "Đang giao…" : `Giao cho ${p.studentName}`}</button>
         {state.error && <p role="alert" className="text-sm text-warn">{state.error}</p>}
         {state.ok && <p role="status" className="text-sm text-good">✓ {state.ok} <Link href={`/tutor/${p.studentId}`} className="underline">Về Hôm nay</Link></p>}

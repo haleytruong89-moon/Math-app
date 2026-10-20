@@ -18,6 +18,12 @@ const errors = []; page.on("pageerror", (e) => errors.push(e.message));
 let taps = 0;
 const tap = async (loc) => { taps++; await loc.click(); };
 const unitBox = (id) => page.locator(`input[name="unit"][value="${id}"]`);
+// S11: KUs are chips (priority / in progress); others are found by searching first.
+const tick = async (id, count = true) => {
+  const chip = page.locator(`label:has(input[name="unit"][value="${id}"])`);
+  if (!(await chip.count())) await page.getByLabel("Tìm bài khác").fill(title[id]);
+  if (count) await tap(chip); else await chip.click();
+};
 const level = (id, n) => page.locator(`label:has(input[name="level:${id}"][value="${n}"])`);
 const save = () => page.getByRole("button", { name: "Lưu buổi dạy" });
 const counts = async () => (await sql(`select (select count(*)::int from public.teaching_sessions) s, (select count(*)::int from public.tutor_proposals) p`))[0];
@@ -32,25 +38,27 @@ await sql(`
       ('htl-1-x1','exit',true),('htl-1-x2','exit',true),('htl-1-x3','exit',true),('htl-1-x4','exit',false),('htl-1-x5','exit',false)) v(item, mode, ok)
     where s.full_name='Hạnh Nguyên';`);
 
-// ---- home: only the assigned student
+// ---- home: one assigned student → straight into her workspace (S11)
 await page.goto(`${BASE}/tutor`);
-ok("home: assigned student listed", (await page.getByText("Hạnh Nguyên").count()) === 1);
+await page.waitForURL(/\/tutor\/[0-9a-f-]{36}$/);
+const sid = page.url().split("/").pop();
+ok("home: one student opens her workspace on 'Hôm nay'", (await page.getByRole("link", { name: "Hôm nay" }).getAttribute("aria-current")) === "page" && (await page.getByText("Hạnh Nguyên").count()) >= 1);
 ok("home: unassigned student hidden (RLS)", (await page.getByText("Đăng An").count()) === 0);
-ok("home: 'chưa ghi buổi nào'", (await page.getByText("chưa ghi buổi nào").count()) === 1);
-await page.screenshot({ path: `${shots}/1-home.png`, fullPage: true });
+await page.screenshot({ path: `${shots}/1-today.png`, fullPage: true });
 
 // ---- evidence appears on tick, before choosing a level
-await tap(page.getByRole("link", { name: "Ghi buổi dạy" }));
-await page.waitForURL(/\/tutor\/[0-9a-f-]{36}$/);
+await tap(page.getByRole("link", { name: "Buổi dạy" }));
+await page.waitForURL(/\/buoi$/);
 const formUrl = page.url();
 ok("form: date defaults to today", (await page.locator('input[name="taughtOn"]').inputValue()) === vnToday);
 ok("form: no evidence before ticking", (await page.getByTestId("evidence-htl-1").count()) === 0);
-await tap(unitBox("htl-1"));
+ok("form: in-progress KU offered as a chip", (await page.locator('label:has(input[name="unit"][value="htl-1"])').count()) === 1);
+await tick("htl-1");
 const ev = page.getByTestId("evidence-htl-1");
 ok("evidence: system level M2 shown on tick", (await ev.getByText("Hệ thống tính: M2").count()) === 1);
 ok("evidence: answer count", (await ev.getByText("10 câu đã làm").count()) === 1);
 ok("evidence: last exit 3/5 + practice 80%", (await page.getByText(/Kiểm tra gần nhất 3\/5 · 5 câu luyện gần nhất đúng 80%/).count()) === 1);
-await tap(unitBox("htl-2"));
+await tick("htl-2");
 ok("evidence: htl-2 'chưa đủ dữ liệu'", (await page.getByTestId("evidence-htl-2").getByText(/chưa đủ dữ liệu/).count()) === 1);
 await tap(level("htl-1", 3));
 await page.screenshot({ path: `${shots}/2-form-ticked.png`, fullPage: true });
@@ -85,14 +93,14 @@ await page.screenshot({ path: `${shots}/4-saved.png`, fullPage: true });
 // ---- server-side guards (bypassing the browser's own checks)
 await page.locator('input[name="taughtOn"]').evaluate((el) => el.removeAttribute("max"));
 await page.locator('input[name="taughtOn"]').fill(add(vnToday, 1));
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await tick("htl-1", false); await level("htl-1", 2).click();
 await save().click();
 await page.locator("form [role=alert]").waitFor();
 ok("guard: future date refused", (await page.locator("form [role=alert]").innerText()).includes("tương lai"));
 await page.goto(formUrl);
 await page.locator('input[name="taughtOn"]').evaluate((el) => el.removeAttribute("min"));
 await page.locator('input[name="taughtOn"]').fill(add(vnToday, -8));
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await tick("htl-1", false); await level("htl-1", 2).click();
 await save().click();
 await page.locator("form [role=alert]").waitFor();
 ok("guard: more than 7 days back refused", (await page.locator("form [role=alert]").innerText()).includes("7 ngày"));
@@ -104,7 +112,7 @@ await page.locator('textarea[name="note"]').fill("Chữa đề kiểm tra giữa
 await save().click();
 await page.locator("form [role=status]").filter({ hasText: "Đã lưu lúc" }).waitFor();
 ok("note-only session saved", (await counts()).s === 2);
-ok("home: last logged date shown", await page.goto(`${BASE}/tutor`).then(() => page.getByText(`buổi ghi gần nhất ${vnToday.slice(8)}/${vnToday.slice(5, 7)}`).count()) === 1);
+ok("recent: note-only session listed", (await page.getByRole("list", { name: "Buổi đã ghi" }).getByText("Chữa đề kiểm tra giữa kỳ ở trường.").count()) === 1);
 // A note with line breaks that the counter shows as 500/500 must save (the form sends CRLF).
 await page.goto(formUrl);
 await page.locator('textarea[name="note"]').fill(`${"x".repeat(49)}\n`.repeat(9) + "x".repeat(50));
@@ -122,8 +130,8 @@ await sql(`
   update public.attempts set answer = '144', error_code = 'E10' where item_id = 'htl-1-x5';
   insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct)
     select id, 'htl-1', 'htl-1-p3', 'practice', '1', true from public.students where full_name = 'Hạnh Nguyên';`);
-await page.goto(`${BASE}/tutor`);
-await page.getByRole("link", { name: "Xem bài làm" }).click();
+await page.goto(`${BASE}/tutor/${sid}`);
+await page.getByRole("link", { name: "Bài làm" }).click();
 await page.waitForURL(/\/work$/);
 const workUrl = page.url();
 ok("work: unit list with common error E10 × 2", (await page.getByTestId("work-summary-htl-1").getByText("E10 × 2").count()) === 1);
@@ -141,76 +149,67 @@ ok("work: 'Tất cả' shows 11", (await page.getByTestId("work-entry").count())
 await page.goto(`${workUrl}?unit=../../etc`);
 ok("work: unknown unit falls back to the list", (await page.getByTestId("work-summary-htl-1").count()) === 1);
 await page.goto(formUrl);
-await unitBox("htl-1").check();
+await tick("htl-1", false);
 const evLink = page.getByRole("link", { name: "Xem câu sai →" });
 ok("form: evidence links to wrong answers in a new tab", (await evLink.getAttribute("href"))?.endsWith("/work?unit=htl-1") && (await evLink.getAttribute("target")) === "_blank");
 
-// ---- homework (part B): give it with the session, see the student's "done", mark corrected
-await page.goto(formUrl);
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
-await page.getByRole("button", { name: "+ Giao bài về nhà" }).click();
-ok("homework: due defaults to today + 3", (await page.locator('input[name="hw.0.due"]').inputValue()) === add(vnToday, 3));
-await page.locator('input[name="hw.0.link"]').fill("https://drive.google.com/file/d/abc/view");
-await save().click();
+// ---- homework from the Giao bài tab (S11; T1–T4 paper homework, no session needed)
+await page.goto(`${BASE}/tutor/${sid}/giao?unit=htl-1&mode=paper`);
+ok("homework: due defaults to today + 3", (await page.locator('input[name="due"]').inputValue()) === add(vnToday, 3));
+await page.getByRole("button", { name: /Giao cho/ }).click();
 await page.locator("form [role=alert]").waitFor();
-ok("homework: link without a task refused", (await page.locator("form [role=alert]").innerText()).includes("ghi yêu cầu"));
-await page.locator('select[name="hw.0.unit"]').selectOption("htl-1");
-await page.locator('textarea[name="hw.0.task"]').fill("Làm bài 3, 5 trang 72 SGK");
-await page.getByRole("button", { name: "+ thêm link" }).click();
-await page.locator('input[name="hw.0.link"]').nth(1).fill("https://example.com/de.pdf");
+ok("homework: no task and no link refused", (await page.locator("form [role=alert]").innerText()).includes("Ghi yêu cầu"));
+await page.locator('textarea[name="task"]').fill("Làm bài 3, 5 trang 72 SGK");
+await page.getByLabel("Link 1").fill("https://drive.google.com/file/d/abc/view");
+await page.getByLabel("Link 2").fill("https://example.com/de.pdf");
 ok("homework: non-Drive link warned", (await page.getByText(/không phải link Google Drive/).count()) === 1);
-await page.locator('input[name="hw.0.link"]').nth(1).fill("");
+await page.getByLabel("Link 2").fill("");
 await page.screenshot({ path: `${shots}/7-homework-form.png`, fullPage: true });
-await save().click();
-await page.locator("form [role=status]").filter({ hasText: "giao 1 bài về nhà" }).waitFor();
-const hwRows = await sql(`select h.unit_id, h.links, h.due_on::text due from public.homework h`);
-ok("db: homework saved with the session", hwRows.length === 1 && hwRows[0].unit_id === "htl-1" && hwRows[0].links.length === 1 && hwRows[0].due === add(vnToday, 3), JSON.stringify(hwRows));
-await page.reload();
+await page.getByRole("button", { name: /Giao cho/ }).click();
+await page.locator("form [role=status]").filter({ hasText: "Đã giao bài." }).waitFor();
+const hwRows = await sql(`select h.unit_id, h.links, h.items, h.session_id, h.due_on::text due from public.homework h`);
+ok("db: paper homework saved without a session", hwRows.length === 1 && hwRows[0].unit_id === "htl-1" && hwRows[0].links.length === 1 && hwRows[0].items === null && hwRows[0].session_id === null && hwRows[0].due === add(vnToday, 3), JSON.stringify(hwRows));
+await page.goto(`${BASE}/tutor/${sid}`);
 const openHw = page.getByTestId("open-homework");
-ok("homework: listed as not done yet", (await openHw.count()) === 1 && (await openHw.getByText("Con chưa báo xong").count()) === 1);
+ok("hôm nay: homework listed as not done yet", (await openHw.count()) === 1 && (await openHw.getByText("Con chưa báo xong").count()) === 1);
 await sql(`update public.homework set done_at = now()`);
 await page.reload();
-ok("homework: shows the student's 'done'", (await openHw.getByText(/Con đã báo xong/).count()) === 1);
+ok("hôm nay: shows the student's 'done'", (await openHw.getByText(/Con đã báo xong/).count()) === 1);
 await openHw.locator('textarea[name="reviewNote"]').fill("Bài 5 sai dấu, đã chữa.");
 await openHw.getByRole("button", { name: "Đã chữa" }).click();
 await openHw.waitFor({ state: "detached" });
 const rv = await sql(`select reviewed_at is not null r, review_note from public.homework`);
 ok("db: homework corrected with note", rv[0].r === true && rv[0].review_note === "Bài 5 sai dấu, đã chữa.", JSON.stringify(rv));
-// keep the later session counts (2) unchanged: the cascade removes the proposal and homework too
-await sql(`delete from public.teaching_sessions where id in (select session_id from public.homework)`);
+await sql(`delete from public.homework`);
 
-// ---- S9: homework on another unit of the app (not taught today) + what the student did there
-await page.goto(formUrl);
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
-await page.getByRole("button", { name: "+ Giao bài về nhà" }).click();
-const opts = await page.locator('select[name="hw.0.unit"] optgroup[label="Bài khác trong app"] option').allTextContents();
-ok("S9: picker offers other units of the app", opts.includes(title["htl-2"]), JSON.stringify(opts));
-await page.locator('select[name="hw.0.unit"]').selectOption("htl-2");
-ok("S9: tells the tutor the unit opens for the student", (await page.getByText(/Làm trên app/).count()) === 1);
-await page.locator('textarea[name="hw.0.task"]').fill("Làm phần luyện tập htl-2 trên app");
-await save().click();
-await page.locator("form [role=status]").filter({ hasText: "giao 1 bài về nhà" }).waitFor();
-ok("db: S9 homework saved on htl-2", (await sql(`select unit_id from public.homework`))[0]?.unit_id === "htl-2");
-await page.reload();
+// ---- S9: a whole KU of the app as homework + what the student did there
+await page.goto(`${BASE}/tutor/${sid}/giao?mode=unit`);
+const opts = await page.locator('select[name="unit"] option').allTextContents();
+ok("S9: picker offers the approved units of the app", opts.some((o) => o.includes(title["htl-2"])), JSON.stringify(opts));
+await page.goto(`${BASE}/tutor/${sid}/giao?unit=htl-2&mode=unit`);
+await page.getByRole("button", { name: /Giao cho/ }).click();
+await page.locator("form [role=status]").filter({ hasText: "Đã giao bài." }).waitFor();
+ok("db: S9 homework saved on htl-2 (whole KU)", JSON.stringify(await sql(`select unit_id, items from public.homework`)) === JSON.stringify([{ unit_id: "htl-2", items: null }]));
+await page.goto(`${BASE}/tutor/${sid}`);
 const appRes = page.getByTestId("homework-app-result");
 ok("S9: tutor sees 'not done in the app yet'", (await appRes.count()) === 1 && (await appRes.innerText()).includes("con chưa làm"), await appRes.innerText().catch(() => ""));
 await sql(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct)
   select id, 'htl-2', 'htl-2-p1', 'practice', '1', true from public.students where full_name='Hạnh Nguyên'`);
 await page.reload();
 ok("S9: tutor sees the app result since the homework", (await appRes.innerText()).includes("luyện tập 1/1 đúng"), await appRes.innerText());
-await sql(`delete from public.attempts where unit_id = 'htl-2'; delete from public.teaching_sessions where id in (select session_id from public.homework)`);
+await sql(`delete from public.attempts where unit_id = 'htl-2'; delete from public.homework`);
 
 // ---- dark mode, evidence open
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage();
 await dp.goto(formUrl);
-await dp.locator('input[name="unit"][value="htl-1"]').check();
+await dp.locator('label:has(input[name="unit"][value="htl-1"])').click();
 await dp.locator('label:has(input[name="level:htl-1"][value="2"])').click();
 await dp.screenshot({ path: `${shots}/5-form-dark.png`, fullPage: true });
 
 // ---- assignment ended → cannot log, student disappears
 await page.goto(formUrl);
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await tick("htl-1", false); await level("htl-1", 2).click();
 await sql(`update public.tutor_assignments set ended_at = now()`);
 await save().click();
 await page.locator("form [role=alert]").waitFor();
@@ -222,7 +221,7 @@ ok("ended assignment: form URL is 404", (await page.goto(formUrl)).status() === 
 ok("ended assignment: work URL is 404", (await page.goto(workUrl)).status() === 404);
 await sql(`update public.tutor_assignments set ended_at = null`);
 await page.goto(formUrl);
-await unitBox("htl-1").check(); await level("htl-1", 2).click();
+await tick("htl-1", false); await level("htl-1", 2).click();
 await sql(`update public.profiles set is_active = false where role = 'tutor'`);
 await save().click();
 await page.locator("form [role=alert]").waitFor();
