@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test:db": "node supabase/tests/rls.test.mjs",
     "content:index": "node scripts/content-index.mjs",
+    "content:lock": "node scripts/content-lock.ts",
     "test:content": "node --test src/lib/content/*.test.ts src/lib/learning/*.test.ts src/lib/accounts/*.test.ts",
     "test": "npm run test:content && npm run test:db"
   },

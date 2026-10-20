@@ -23,7 +23,7 @@ const answer = async (id, wrong = false, scope = page) => {
   else await scope.getByLabel("Đáp số").last().fill(wrong ? "999" : k.num);
 };
 
-await sql(`delete from public.review_log; delete from public.review_queue; delete from public.attempts; delete from public.unit_progress;`);
+await sql(`delete from public.review_runs; delete from public.review_log; delete from public.review_queue; delete from public.attempts; delete from public.unit_progress;`);
 await page.goto(`${BASE}/student`);
 await page.screenshot({ path: "e2e/out/student/1-today-start.png", fullPage: true });
 ok("today: goal 0/4", (await page.getByText("0/4 buổi").count()) === 1);
@@ -105,6 +105,8 @@ for (let i = 0; i < 6; i++) {
     // F5 after a wrong htl-2 answer: the run resumes, the wrong answer still counts.
     await page.reload();
     ok("review: reload resumes at question 3/6", (await page.getByText("Câu 3/6").count()) === 1);
+    const runs = await sql(`select cardinality(items) n, finished_at is null open from public.review_runs`);
+    ok("db (H1): the server saved one open run with 6 planned questions", runs.length === 1 && runs[0].n === 6 && runs[0].open === true, JSON.stringify(runs));
   }
   const hdr = page.locator("[data-item]");
   const id = await hdr.getAttribute("data-item"); const unit = await hdr.getAttribute("data-unit");
@@ -140,6 +142,7 @@ ok("db: htl-1 passed easy → stage 2, D+11", q[0].stage === 2 && q[0].due_on ==
 ok("db: htl-2 failed → stage 1, D+1", q[1].stage === 1 && q[1].due_on === add(vnToday, 1), JSON.stringify(q));
 const log = await sql(`select unit_id, correct, total, passed, rating from public.review_log order by unit_id`);
 ok("db: review_log 2 rows", log.length === 2 && log[0].rating === "easy" && log[1].passed === false && log[1].correct === 1, JSON.stringify(log));
+ok("db (H1): the run is closed after saving", (await sql(`select count(*)::int c from public.review_runs where finished_at is null`))[0].c === 0);
 
 // double submit must not re-score
 await page.goBack();
@@ -156,6 +159,17 @@ for (let i = 0; i < 3; i++) {
   await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
   await page.getByRole("button", { name: /Câu tiếp|Xem kết quả/ }).click();
 }
+// H1: a run with a planned question left unanswered is refused, and reloading asks exactly that question.
+await sql(`delete from public.attempts where id = (select max(id) from public.attempts where mode = 'review')`);
+await page.getByRole("button", { name: "Lưu kết quả ôn" }).click();
+await page.getByText(/Con còn 1 câu chưa làm/).waitFor();
+ok("review (H1): saving with a question unanswered is refused", (await page.getByText(/Con còn 1 câu chưa làm/).count()) === 1);
+ok("db (H1): nothing scored for the partial run", (await sql(`select count(*)::int c from public.review_log where created_at > now() - interval '1 hour'`))[0].c === 0);
+await page.reload();
+ok("review (H1): reload asks the missing question (3/3)", (await page.getByText("Câu 3/3").count()) === 1);
+await answer(await page.locator("[data-item]").getAttribute("data-item"));
+await page.getByRole("button", { name: /^Kiểm tra$/ }).click();
+await page.getByRole("button", { name: /Xem kết quả/ }).click();
 await page.getByRole("button", { name: "Lưu kết quả ôn" }).click();
 await page.getByText("Xong lượt ôn").waitFor();
 ok("review: maintenance message after D+21", (await page.getByText(/Ôn duy trì lần tới/).count()) === 1);

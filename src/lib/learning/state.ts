@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { curriculum, listModules } from "@/lib/content";
 import type { Unit } from "@/lib/content/schema";
 import type { CurriculumModule, CurriculumUnit } from "@/lib/content/curriculum";
-import { studyDaysThisWeek, systemMastery, vnDate, type AttemptRow, type Mastery, type Stage } from "./rules";
+import { newReviewPlan, parseRunItem, reviewRunProgress, studyDaysThisWeek, systemMastery, vnDate, type AttemptRow, type Mastery, type Stage } from "./rules";
 import { isInProgress, masteryHistory, selectReviewUnits, suggestNew, unitStatus, type SeqUnit, type UnitStatus } from "./sequence";
 
 export type UnitState = {
@@ -186,4 +186,72 @@ export function todaysReview(state: StudentState, openRunUnits: string[] = []): 
   const pick = selectReviewUnits(due.map((u) => ({ unitId: u.unit.id, dueOn: u.review!.dueOn! })), openRunUnits);
   const units = due.filter((u) => pick.includes(u.unit.id));
   return { units, later: due.length - units.length };
+}
+
+// ---------- H1 (0011): server-planned review runs ----------
+
+export type OpenRun = { id: string; items: string[] };
+
+/** The student's unfinished review run, null if none, or "error" if it couldn't be read. */
+export async function findOpenRun(supabase: SupabaseClient, studentId: string): Promise<OpenRun | null | "error"> {
+  const { data, error } = await supabase
+    .from("review_runs")
+    .select("id, items")
+    .eq("student_id", studentId)
+    .is("finished_at", null)
+    .maybeSingle();
+  if (error) {
+    console.error("findOpenRun", error.message);
+    return "error";
+  }
+  return (data as OpenRun | null) ?? null;
+}
+
+export type ReviewSession = {
+  /** The open run these questions belong to, or null: the first answer creates the run with `planned`. */
+  runId: string | null;
+  /** An open run with nothing left that is due (to be closed when the next run starts). */
+  staleRunId: string | null;
+  units: UnitState[];
+  later: number;
+  planned: { unitId: string; item: Unit["practice"][number] }[];
+  answered: { unitId: string; itemId: string; correct: boolean }[];
+  remaining: { unitId: string; item: Unit["practice"][number] }[];
+};
+
+/**
+ * Today's review (D14, LT8). An open run keeps its planned questions (reload / another day resumes it,
+ * wrong answers still count); otherwise a new plan from today's due units, saved as a run on the first answer.
+ * Review questions come from practice only: exit-test solutions stay unseen until a retake.
+ */
+export function reviewSession(state: StudentState, run: OpenRun | null): ReviewSession {
+  const planItems = (run?.items ?? []).map(parseRunItem);
+  const { units: today } = todaysReview(state, [...new Set(planItems.map((p) => p.unitId))]);
+  const due = dueReviews(state).length;
+  const byId = new Map(today.map((u) => [u.unit.id, u]));
+  const live = planItems.flatMap((p) => {
+    const item = byId.get(p.unitId)?.unit.practice.find((i) => i.id === p.itemId);
+    return item ? [{ unitId: p.unitId, item }] : [];
+  });
+  if (run && live.length) {
+    const inRun = new Set(live.map((q) => q.unitId));
+    const units = today.filter((u) => inRun.has(u.unit.id));
+    const answers = units.flatMap((u) =>
+      u.attempts.filter((a) => a.mode === "review" && a.exit_run === run.id).map((a) => ({ unitId: u.unit.id, ...a })),
+    );
+    const p = reviewRunProgress(live.map((q) => ({ ...q, itemId: q.item.id })), answers);
+    return {
+      runId: run.id,
+      staleRunId: null,
+      units,
+      later: due - units.length,
+      planned: live,
+      answered: p.answered,
+      remaining: p.remaining.map(({ unitId, item }) => ({ unitId, item })),
+    };
+  }
+  // No open run, or a stale one (its units were picked with it in mind): plan from today's due units alone.
+  const units = run ? todaysReview(state).units : today;
+  const plan = newReviewPlan(units.map((u) => ({ unitId: u.unit.id, pool: u.unit.practice, attempts: u.attempts })));
+  return { runId: null, staleRunId: run?.id ?? null, units, later: due - units.length, planned: plan, answered: [], remaining: plan };
 }

@@ -20,13 +20,11 @@ function formatDate(iso: string) {
 
 /** One mixed review session: questions from several units, interleaved (D14). */
 export function ReviewPlayer({
-  runId,
   questions,
   answered,
   units,
   hasFigure,
 }: {
-  runId: string;
   questions: ReviewQuestion[];
   /** Answers already given in this run before a reload; they count and aren't asked again. */
   answered: { unitId: string; correct: boolean }[];
@@ -60,7 +58,7 @@ export function ReviewPlayer({
     run(async () => {
       if (isBlank(q.item, value)) return "Con chưa trả lời.";
       setHint(null);
-      const r = await checkReview({ runId, unitId: q.unitId, itemId: q.item.id, answer: value, durationMs: Date.now() - startedAtRef.current });
+      const r = await checkReview({ unitId: q.unitId, itemId: q.item.id, answer: value, durationMs: Date.now() - startedAtRef.current });
       if (!r.ok) return r.message;
       if (!r.understood) {
         setHint(FORMAT_HINT);
@@ -83,7 +81,7 @@ export function ReviewPlayer({
 
   const save = () =>
     run(async () => {
-      const r = await finishReview({ runId, ratings });
+      const r = await finishReview({ ratings });
       if (!r.ok) return r.message;
       setSummary(r);
     });
