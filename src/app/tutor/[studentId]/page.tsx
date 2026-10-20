@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
@@ -13,6 +12,7 @@ import { ActionForm } from "@/components/action-form";
 import { HOMEWORK_RULES, dueLabel, homeworkAppResult } from "@/lib/learning/homework";
 import { errorLabel } from "@/lib/content/errors";
 import { reviewHomework } from "@/app/tutor/actions";
+import { TutorTabs } from "@/components/tutor/tutor-tabs";
 
 export const metadata: Metadata = { title: "Ghi buổi dạy — App Toán" };
 
@@ -91,8 +91,9 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
   const today = vnDate();
   return (
     <>
-      <Link href="/tutor" className="text-sm text-accent hover:underline">← Học sinh</Link>
-      <h1 className="mt-2 font-display text-2xl font-bold">Ghi buổi dạy</h1>
+      <TutorTabs studentId={student.id} studentName={student.full_name} active="buoi" />
+      <div className="mx-auto max-w-md">
+      <h1 className="font-display text-2xl font-bold">Ghi buổi dạy</h1>
       <p className="mt-1 text-muted">{student.full_name}</p>
 
       {!!openHw.data?.length && (
@@ -179,6 +180,7 @@ export default async function LogSessionPage(props: PageProps<"/tutor/[studentId
           <li className="rounded-xl border border-dashed border-border p-3.5 text-sm text-muted">Chưa có buổi nào.</li>
         )}
       </ul>
+      </div>
     </>
   );
 }

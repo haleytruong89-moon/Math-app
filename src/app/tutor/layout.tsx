@@ -6,7 +6,7 @@ export default async function TutorLayout({ children }: { children: React.ReactN
   return (
     <>
       <AppHeader user={user} />
-      <main className="mx-auto max-w-md px-4 py-8">{children}</main>
+      <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
     </>
   );
 }

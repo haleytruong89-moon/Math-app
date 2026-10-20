@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { StudentWork } from "@/components/work/student-work";
+import { TutorTabs } from "@/components/tutor/tutor-tabs";
 
 export const metadata: Metadata = { title: "Bài làm của con — App Toán" };
 
@@ -15,6 +16,9 @@ export default async function TutorWorkPage(props: PageProps<"/tutor/[studentId]
   const { data: student } = await supabase.from("students").select("id, full_name").eq("id", studentId).maybeSingle();
   if (!student) notFound();
   return (
+    <>
+    <TutorTabs studentId={student.id} studentName={student.full_name} active="work" />
+    <div className="mx-auto max-w-md">
     <StudentWork
       supabase={supabase}
       student={student}
@@ -24,5 +28,7 @@ export default async function TutorWorkPage(props: PageProps<"/tutor/[studentId]
       all={sp.all === "1"}
       proposer="Bạn"
     />
+    </div>
+    </>
   );
 }
