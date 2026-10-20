@@ -134,6 +134,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 | Deploy | merge to `main` → Vercel production; every branch → preview URL (shares the production DB) |
 | Keep-alive | `vercel.json` cron 01:00 UTC → `/api/cron/ping` |
 | Backup | `.github/workflows/weekly-backup.yml` (Sunday 02:00 VN) → 90-day artifact |
+| New SQL | `.github/workflows/apply-sql.yml` "Áp dụng SQL" (parent, by hand, before merging the PR): backup dump → `scripts/apply-migration.sh <file> <dir>` = one transaction + row in `app_meta.applied_migrations` (file, time, git sha, sha256); refuses 0001–0010, a file already applied, files with their own `begin/commit` |
 | CI | `.github/workflows/ci.yml`: no-e2e-patch guard, lint, tests, build |
 | Auto PR | `.github/workflows/auto-pr.yml` for `p[0-9]-*` / `fix-*` branches |
 
