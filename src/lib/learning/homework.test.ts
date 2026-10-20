@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dueLabel, homeworkAppResult, isDriveLink, parseHomework, readHomeworkForm, reviewNote, studentHomework, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
+import { dueLabel, homeworkAppResult, parseAssignment, isDriveLink, parseHomework, readHomeworkForm, reviewNote, studentHomework, visibleHomework, type HomeworkRow, type RawHomework } from "./homework.ts";
 
 const ctx = { taughtOn: "2026-10-05", today: "2026-10-05", ticked: new Set(["htl-1"]) };
 const raw = (p: Partial<RawHomework>): RawHomework => ({ unit: "htl-1", task: "Làm bài 3 trang 72", links: [], due: "2026-10-08", ...p });
@@ -89,7 +89,7 @@ test("student list: open homework is never pushed out by old corrected rows", ()
 });
 
 test("S9: app result on a homework's unit counts only answers since it was given", () => {
-  const a = (mode: string, correct: boolean, at: string, run: string | null = null, code: string | null = null) => ({ mode, correct, error_code: code, exit_run: run, created_at: at });
+  const a = (mode: string, correct: boolean, at: string, run: string | null = null, code: string | null = null) => ({ item_id: "x", mode, correct, error_code: code, exit_run: run, created_at: at });
   const since = "2026-10-17T10:00:00Z";
   assert.equal(homeworkAppResult([a("practice", true, "2026-10-16T10:00:00Z")], since), null);
   const r = homeworkAppResult([
@@ -104,4 +104,36 @@ test("S9: app result on a homework's unit counts only answers since it was given
   ], since)!;
   assert.deepEqual(r, { practice: { right: 1, total: 2 }, exit: { right: 2, total: 2 }, topError: "E07" });
   assert.equal(homeworkAppResult([a("practice", false, "2026-10-17T11:00:00Z", null, "E02")], since)!.topError, null); // once is not a pattern
+});
+
+
+const ctxA = { today: "2026-10-20", units: new Map([["g-giaihpt", { title: "Giải hệ PT", practice: ["g-giaihpt-p1", "g-giaihpt-p4", "g-giaihpt-p7"] }]]) };
+const rawA = (p: Partial<{ mode: string; unit: string; items: string[]; task: string; links: string[]; due: string }>) =>
+  ({ mode: "items", unit: "g-giaihpt", items: ["g-giaihpt-p4"], task: "", links: [], due: "2026-10-22", ...p });
+
+test("T9: hand-picked practice items of an approved KU; default task text; due within 30 days", () => {
+  const r = parseAssignment(rawA({ items: ["g-giaihpt-p4", "g-giaihpt-p7", "g-giaihpt-p4"] }), ctxA);
+  assert.deepEqual(r, { ok: true, value: { unitId: "g-giaihpt", items: ["g-giaihpt-p4", "g-giaihpt-p7"], task: "Làm 2 câu \"Giải hệ PT\" trên app.", links: [], dueOn: "2026-10-22" } });
+  assert.equal(parseAssignment(rawA({ items: [] }), ctxA).ok, false);
+  assert.equal(parseAssignment(rawA({ items: ["g-giaihpt-x1"] }), ctxA).ok, false); // exit items can't be assigned
+  assert.equal(parseAssignment(rawA({ unit: "htl-9" }), ctxA).ok, false);
+  assert.equal(parseAssignment(rawA({ due: "2026-10-19" }), ctxA).ok, false);
+  assert.equal(parseAssignment(rawA({ due: "2026-11-30" }), ctxA).ok, false);
+});
+
+test("T9: whole KU, or paper homework (task or Drive link required)", () => {
+  assert.deepEqual(parseAssignment(rawA({ mode: "unit", items: ["ignored"] }), ctxA), { ok: true, value: { unitId: "g-giaihpt", items: null, task: "Làm cả bài \"Giải hệ PT\" trên app.", links: [], dueOn: "2026-10-22" } });
+  assert.equal(parseAssignment(rawA({ mode: "paper", unit: "", task: "" }), ctxA).ok, false);
+  const p = parseAssignment(rawA({ mode: "paper", unit: "", task: "Bài 3 trang 72", links: ["https://drive.google.com/x"] }), ctxA);
+  assert.deepEqual(p, { ok: true, value: { unitId: null, items: null, task: "Bài 3 trang 72", links: ["https://drive.google.com/x"], dueOn: "2026-10-22" } });
+  assert.equal(parseAssignment(rawA({ mode: "paper", task: "x", links: ["http://a"] }), ctxA).ok, false);
+});
+
+test("app result can be limited to the homework's items", () => {
+  const rows = [
+    { item_id: "u-p1", mode: "practice", correct: true, error_code: null, exit_run: null, created_at: "2026-10-20T03:00:00Z" },
+    { item_id: "u-p2", mode: "practice", correct: false, error_code: "E02", exit_run: null, created_at: "2026-10-20T03:01:00Z" },
+  ];
+  assert.deepEqual(homeworkAppResult(rows, "2026-10-20T00:00:00Z", ["u-p2"])?.practice, { right: 0, total: 1 });
+  assert.deepEqual(homeworkAppResult(rows, "2026-10-20T00:00:00Z")?.practice, { right: 1, total: 2 });
 });

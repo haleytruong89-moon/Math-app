@@ -27,6 +27,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0009_p1_curriculum.sql`, 'utf8
 await db.exec(fs.readFileSync(`${repo}/migrations/0010_p1_hints.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0011_p1_review_runs.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0012_p1_content_review.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0013_p1_item_homework.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -241,6 +242,15 @@ check('one KU per position', isErr(await q12(`insert into public.tutor_prioritie
 check('student reads own priorities', (await as('nguyen@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 2);
 check('other student sees no priorities', (await as('an@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);
 check('active tutor reads priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 2);
+// 0013: homework from the Giao bài tab (T9) — no session needed, hand-picked practice items
+const q13 = (sql) => db.query(sql).then(()=>'ok', e=>'ERROR '+e.message);
+const tutor13 = `(select id from auth.users where email='trang@example.com')`;
+const nguyen13 = `(select id from public.students where full_name='Hạnh Nguyên')`;
+check('homework without a session, with items', await q13(`insert into public.homework (student_id, tutor_id, unit_id, items, task, due_on) values (${nguyen13}, ${tutor13}, 'g-giaihpt', array['g-giaihpt-p4','g-giaihpt-p7'], 'Làm 2 câu trên app', current_date + 3)`), 'ok');
+check('items need a unit', isErr(await q13(`insert into public.homework (student_id, tutor_id, items, task, due_on) values (${nguyen13}, ${tutor13}, array['x-p1'], 'x', current_date)`)), true);
+check('items: 1–20, no empty list', isErr(await q13(`insert into public.homework (student_id, tutor_id, unit_id, items, task, due_on) values (${nguyen13}, ${tutor13}, 'g-giaihpt', '{}', 'x', current_date)`)), true);
+check('items must belong to the unit', isErr(await q13(`insert into public.homework (student_id, tutor_id, unit_id, items, task, due_on) values (${nguyen13}, ${tutor13}, 'g-giaihpt', array['htl-1-p1'], 'x', current_date)`)), true);
+check('student reads own item homework', (await as('nguyen@example.com',`select cardinality(items)::int n from public.homework where items is not null`))[0]?.n, 2);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor reads no item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
 check('locked tutor reads no priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);

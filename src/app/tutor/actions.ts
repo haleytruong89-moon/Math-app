@@ -8,7 +8,7 @@ import { curriculum } from "@/lib/content";
 import { studentModules } from "@/lib/content/approvals";
 import { vnDate } from "@/lib/learning/rules";
 import { parseSession } from "@/lib/learning/session";
-import { parseHomework, readHomeworkForm, reviewNote } from "@/lib/learning/homework";
+import { parseAssignment, parseHomework, readHomeworkForm, reviewNote } from "@/lib/learning/homework";
 import type { ActionState } from "@/components/action-form";
 import { z } from "zod";
 import { loadStudentState } from "@/lib/learning/state";
@@ -140,4 +140,28 @@ export async function reviewHomework(_p: ActionState, fd: FormData): Promise<Act
   }
   revalidatePath(`/tutor/${hw.student_id}`);
   return { ok: "Đã chữa" };
+}
+
+/** T9 "Giao bài": homework without a session — whole KU, hand-picked practice items, or paper. */
+export async function assignHomework(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const tutor = await requireRole("tutor");
+  const studentId = z.uuid().safeParse(fd.get("studentId"));
+  if (!studentId.success) return { error: "Không tìm thấy học sinh." };
+  const units = new Map((await studentModules()).flatMap((m) => m.unitList.map((u) => [u.id, { title: u.title, practice: u.practice.map((i) => i.id) }] as const)));
+  const parsed = parseAssignment(
+    { mode: String(fd.get("mode") ?? ""), unit: String(fd.get("unit") ?? ""), items: fd.getAll("item").map(String), task: String(fd.get("task") ?? ""), links: fd.getAll("link").map(String), due: String(fd.get("due") ?? "") },
+    { today: vnDate(), units },
+  );
+  if (!parsed.ok) return { error: parsed.error };
+  const admin = createAdminClient();
+  if (!(await activeAssignment(admin, tutor.id, studentId.data))) return { error: NOT_ASSIGNED };
+  const v = parsed.value;
+  const { error } = await admin.from("homework").insert({ student_id: studentId.data, tutor_id: tutor.id, unit_id: v.unitId, items: v.items, task: v.task, links: v.links, due_on: v.dueOn });
+  if (error) {
+    console.error("assignHomework", error.message);
+    return { error: "Chưa lưu được, thử lại sau." };
+  }
+  revalidatePath(`/tutor/${studentId.data}`, "layout");
+  revalidatePath("/student");
+  return { ok: v.items ? `Đã giao ${v.items.length} câu.` : "Đã giao bài." };
 }

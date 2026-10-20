@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 
@@ -18,6 +19,8 @@ export default async function TutorHome() {
       .order("taught_on", { ascending: false })
       .limit(50),
   ]);
+  // One student (the usual case): straight into her workspace.
+  if (students?.length === 1) redirect(`/tutor/${students[0].id}`);
   const lastLogged = new Map<string, string>();
   for (const s of sessions ?? []) if (!lastLogged.has(s.student_id)) lastLogged.set(s.student_id, s.taught_on);
 
@@ -40,13 +43,7 @@ export default async function TutorHome() {
                 href={`/tutor/${s.id}`}
                 className="mt-4 block w-full rounded-lg bg-accent px-4 py-3 text-center font-display font-bold text-on-accent"
               >
-                Ghi buổi dạy
-              </Link>
-              <Link
-                href={`/tutor/${s.id}/work`}
-                className="mt-2 block w-full rounded-lg border border-border px-4 py-2.5 text-center font-display text-sm font-semibold"
-              >
-                Xem bài làm
+                Mở bàn làm việc
               </Link>
             </li>
           );

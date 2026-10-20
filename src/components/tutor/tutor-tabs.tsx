@@ -1,9 +1,11 @@
 import Link from "next/link";
 
-export type TutorTab = "buoi" | "bai" | "work";
+export type TutorTab = "today" | "bai" | "giao" | "buoi" | "work";
 const TABS: { id: TutorTab; label: string; path: string }[] = [
-  { id: "buoi", label: "Buổi dạy", path: "" },
+  { id: "today", label: "Hôm nay", path: "" },
   { id: "bai", label: "Kho bài", path: "/bai" },
+  { id: "giao", label: "Giao bài", path: "/giao" },
+  { id: "buoi", label: "Buổi dạy", path: "/buoi" },
   { id: "work", label: "Bài làm", path: "/work" },
 ];
 
