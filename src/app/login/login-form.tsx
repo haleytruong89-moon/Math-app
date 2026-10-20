@@ -1,10 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { signIn, type LoginState } from "./actions";
 
 export function LoginForm() {
   const [state, action, pending] = useActionState<LoginState, FormData>(signIn, {});
+  const [show, setShow] = useState(false);
 
   return (
     <form action={action} className="mt-8 flex flex-col gap-4">
@@ -22,13 +23,25 @@ export function LoginForm() {
       </label>
       <label className="flex flex-col gap-1.5">
         <span className="text-sm text-muted">Mật khẩu</span>
-        <input
-          name="password"
-          type="password"
-          autoComplete="current-password"
-          required
-          className="rounded-lg border border-border bg-surface px-3 py-2.5 text-base"
-        />
+        <span className="flex gap-2">
+          <input
+            name="password"
+            type={show ? "text" : "password"}
+            autoComplete="current-password"
+            required
+            className="min-w-0 flex-1 rounded-lg border border-border bg-surface px-3 py-2.5 text-base"
+          />
+          {/* Lets a tutor check a password copied from a message before submitting. */}
+          <button
+            type="button"
+            onClick={() => setShow((s) => !s)}
+            aria-label={show ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
+            aria-pressed={show}
+            className="rounded-lg border border-border bg-surface px-3 text-sm text-muted hover:text-ink"
+          >
+            {show ? "Ẩn" : "Hiện"}
+          </button>
+        </span>
       </label>
 
       {state.error && (

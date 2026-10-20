@@ -5,7 +5,7 @@ export default async function TutorLayout({ children }: { children: React.ReactN
   const user = await requireRole("tutor");
   return (
     <>
-      <AppHeader user={user} />
+      <AppHeader user={user} wide />
       <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
     </>
   );
