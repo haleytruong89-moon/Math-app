@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
-import { getUnit, toPublicUnit } from "@/lib/content";
+import { toPublicUnit } from "@/lib/content";
+import { studentUnit } from "@/lib/content/approvals";
 import { Rich } from "@/components/lesson/rich";
 import { RightTriangleAltitude, SvgFigure } from "@/components/lesson/figure";
 
@@ -15,8 +16,8 @@ export const metadata: Metadata = { title: "Ôn lại bài nền — App Toán" 
 export default async function RecapPage(props: PageProps<"/student/recap/[unitId]">) {
   const user = await requireRole("student");
   const { unitId } = await props.params;
-  const found = getUnit(unitId);
-  if (!found || found.unit.status !== "approved") notFound();
+  const found = await studentUnit(unitId); // T7: git-approved, or approved in the app (only its ok items)
+  if (!found) notFound(); // drafts never reach students (D16)
   const supabase = await createClient();
   const { data: me } = await supabase.from("students").select("consent_at").eq("profile_id", user.id).maybeSingle();
   if (!me?.consent_at) redirect("/student");

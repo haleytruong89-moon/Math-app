@@ -31,6 +31,7 @@ export function LessonPlayer({
   initial,
   backHref,
   testOut = false,
+  previewBase = "/parent/content",
 }: {
   unit: PublicUnit;
   mode: "student" | "preview";
@@ -38,6 +39,8 @@ export function LessonPlayer({
   backHref: string;
   /** LT4: the exit test taken directly, once (track B / backfill KUs). */
   testOut?: boolean;
+  /** Preview only: where "Ôn lại" links go (the parent's or the tutor's preview, T7). */
+  previewBase?: string;
 }) {
   const [workedViewed, setWorkedViewed] = useState(initial.workedViewed);
   const [fadedDone, setFadedDone] = useState(initial.fadedDone);
@@ -47,7 +50,7 @@ export function LessonPlayer({
   const [testOutMode, setTestOutMode] = useState(testOut);
 
   // LT16: "Ôn lại" opens the earlier KU read-only; the parent preview opens its own preview page.
-  const recapHref = (id: string) => (mode === "preview" ? `/parent/content/${id}` : `/student/recap/${id}`);
+  const recapHref = (id: string) => (mode === "preview" ? `${previewBase}/${id}` : `/student/recap/${id}`);
   const unlocked = (s: Stage) => s === "learn" || (s === "faded" ? workedViewed : fadedDone);
 
   if (testOutMode) {

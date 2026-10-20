@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { curriculum, listModules } from "@/lib/content";
+import { curriculum } from "@/lib/content";
+import { studentModules } from "@/lib/content/approvals";
 import type { Unit } from "@/lib/content/schema";
 import type { CurriculumModule, CurriculumUnit } from "@/lib/content/curriculum";
 import { newReviewPlan, parseRunItem, reviewRunProgress, studyDaysThisWeek, systemMastery, vnDate, type AttemptRow, type Mastery, type Stage } from "./rules";
@@ -39,6 +40,8 @@ export type StudentState = {
   suggestions: UnitState[];
   /** LT8: a review session was already finished today (one per day). */
   reviewedToday: boolean;
+  /** T8: the tutor's focus KUs, in order. */
+  priorities: string[];
 };
 
 /**
@@ -84,7 +87,7 @@ export async function loadStudentState(
   studentId: string,
   opts: { includeDrafts?: boolean } = {},
 ): Promise<StudentState> {
-  const [progress, attempts, queue, unlocks, lastReview, assigned] = await Promise.all([
+  const [progress, attempts, queue, unlocks, lastReview, assigned, prio, modules] = await Promise.all([
     supabase.from("unit_progress").select("unit_id, worked_viewed_at, faded_done_at, testout_run, testout_at").eq("student_id", studentId),
     allAttempts(supabase, studentId),
     supabase.from("review_queue").select("unit_id, stage, due_on, completed_at").eq("student_id", studentId),
@@ -92,9 +95,15 @@ export async function loadStudentState(
     supabase.from("review_log").select("created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(1),
     // S9: a unit the tutor gave as homework is open for the student, like a parent's manual unlock.
     supabase.from("homework").select("unit_id").eq("student_id", studentId).order("created_at", { ascending: false }).limit(200),
+    // T8: the tutor's focus KUs for this student, in order.
+    supabase.from("tutor_priorities").select("unit_id, position").eq("student_id", studentId).order("position", { ascending: true }),
+    // T7: what the student may see (git-approved, or approved in the app with only its ok items).
+    studentModules({ includeDrafts: opts.includeDrafts }),
   ]);
-  for (const r of [progress, attempts, queue, unlocks, lastReview, assigned]) if (r.error) console.error("loadStudentState", r.error.message);
-  const unlocked = new Set([...(unlocks.data ?? []), ...(assigned.data ?? [])].map((u) => u.unit_id as string | null).filter((x): x is string => !!x));
+  for (const r of [progress, attempts, queue, unlocks, lastReview, assigned, prio]) if (r.error) console.error("loadStudentState", r.error.message);
+  const priorities = (prio.data ?? []).map((p) => p.unit_id as string);
+  // T8: a priority KU opens at once, like a parent's unlock or a tutor's homework (S9).
+  const unlocked = new Set([...(unlocks.data ?? []), ...(assigned.data ?? [])].map((u) => u.unit_id as string | null).filter((x): x is string => !!x).concat(priorities));
   const roadmap = curriculum();
   const entryOf = new Map(roadmap.units.map((u) => [u.id, u]));
 
@@ -107,9 +116,8 @@ export async function loadStudentState(
     byUnit.set(a.unit_id, list);
   }
 
-  const units: UnitState[] = listModules().flatMap((m) =>
+  const units: UnitState[] = modules.flatMap((m) =>
     m.unitList
-      .filter((u) => opts.includeDrafts || u.status === "approved")
       .map((unit) => {
         const p = prog.get(unit.id);
         const r = q.get(unit.id);
@@ -154,7 +162,7 @@ export async function loadStudentState(
     u.status = unitStatus(x, seqById);
     u.inProgress = isInProgress(x);
   }
-  const suggestions = suggestNew(seq).map((x) => byUnitId.get(x.id)!).filter(Boolean);
+  const suggestions = suggestNew(seq, priorities).map((x) => byUnitId.get(x.id)!).filter(Boolean);
 
   const today = vnDate();
   const last = (lastReview.data ?? [])[0]?.created_at as string | undefined;
@@ -169,6 +177,7 @@ export async function loadStudentState(
     modules: roadmap.modules,
     suggestions,
     reviewedToday: !!last && vnDate(last) === today,
+    priorities,
   };
 }
 
