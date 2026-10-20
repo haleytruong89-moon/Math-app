@@ -78,3 +78,12 @@ test("LT17: a P2 KU is suggested only once every P0/P1 KU of its track is at M3,
   // P1 counts as core; core KUs without content ("Sắp có") still have to be learnt first.
   assert.deepEqual(suggestNew([{ ...core, level: 3 }, U("b2", { track: "B", seq: 20, priority: "P1", hasContent: false }), p2]).map((u) => u.id), []);
 });
+
+test("T8: priority KUs come first in 'Bài mới' (in the tutor's order), still at most 2 offered and none with 2 in progress", () => {
+  const us = [U("a1", { track: "A", seq: 10 }), U("b1", { track: "B", seq: 10 }), U("g2", { track: "B", seq: 50 }), U("g1", { track: "B", seq: 40 })];
+  assert.deepEqual(suggestNew(us, ["g1", "g2"]).map((u) => u.id), ["g1", "g2"]);
+  assert.deepEqual(suggestNew(us, ["g1"]).map((u) => u.id), ["g1", "a1"]);
+  assert.deepEqual(suggestNew(us, ["missing", "a1"]).map((u) => u.id), ["a1", "b1"]);
+  assert.deepEqual(suggestNew([...us, U("x", { started: true, level: 1 }), U("y", { started: true, level: 1 })], ["g1"]), []);
+  assert.deepEqual(suggestNew(us).map((u) => u.id), ["a1", "b1"]); // unchanged without priorities
+});
