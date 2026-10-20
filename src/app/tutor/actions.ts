@@ -2,8 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/dal";
+import { activeAssignment } from "@/lib/access";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { curriculum, listModules } from "@/lib/content";
+import { curriculum } from "@/lib/content";
+import { studentModules } from "@/lib/content/approvals";
 import { vnDate } from "@/lib/learning/rules";
 import { parseSession } from "@/lib/learning/session";
 import { parseHomework, readHomeworkForm, reviewNote } from "@/lib/learning/homework";
@@ -13,20 +15,6 @@ import { loadStudentState } from "@/lib/learning/state";
 
 export type SaveSessionState = { ok?: string; error?: string; savedAt?: string };
 
-/** D3: an active tutor profile with an active assignment to this student. */
-async function activeAssignment(admin: ReturnType<typeof createAdminClient>, tutorId: string, studentId: string) {
-  const [{ data: profile }, { data: assignment }] = await Promise.all([
-    admin.from("profiles").select("is_active").eq("id", tutorId).maybeSingle(),
-    admin
-      .from("tutor_assignments")
-      .select("id")
-      .eq("tutor_id", tutorId)
-      .eq("student_id", studentId)
-      .is("ended_at", null)
-      .maybeSingle(),
-  ]);
-  return !!profile?.is_active && !!assignment;
-}
 const NOT_ASSIGNED = "Bạn không còn được phân công dạy học sinh này. Liên hệ phụ huynh.";
 
 /**
@@ -53,7 +41,7 @@ export async function saveTeachingSession(_p: SaveSessionState, fd: FormData): P
     today: vnDate(),
     ticked: new Set(v.proposals.map((p) => p.unitId)),
     // S9: any approved unit can be given as homework to do in the app.
-    assignable: new Set(listModules().flatMap((m) => m.unitList.filter((u) => u.status === "approved").map((u) => u.id))),
+    assignable: new Set((await studentModules()).flatMap((m) => m.unitList.map((u) => u.id))),
   });
   if (!hw.ok) return { error: hw.error };
 

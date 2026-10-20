@@ -7,6 +7,7 @@ import { getCurrentUser } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { fadedItems, findItem, getUnit } from "@/lib/content";
+import { studentUnit } from "@/lib/content/approvals";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
@@ -35,7 +36,8 @@ const Duration = z.number().int().min(0).max(3_600_000).optional();
 async function learner(): Promise<Learner | null> {
   const user = await getCurrentUser();
   if (!user) return null;
-  if (user.role === "parent") return { kind: "preview" };
+  // T7: the tutor previews like the parent ("Làm thử như con"); nothing is recorded.
+  if (user.role === "parent" || user.role === "tutor") return { kind: "preview" };
   if (user.role !== "student") return null;
   const supabase = await createClient();
   const { data } = await supabase
@@ -47,12 +49,9 @@ async function learner(): Promise<Learner | null> {
   return { kind: "student", studentId: data.id };
 }
 
-/** Students only ever reach approved units; the parent can preview drafts. */
-function loadUnit(who: Learner, unitId: string) {
-  const found = getUnit(unitId);
-  if (!found) return null;
-  if (who.kind === "student" && found.unit.status !== "approved") return null;
-  return found;
+/** Students only ever reach what `studentView` allows (T7: git- or app-approved, only ok items); previews see drafts. */
+async function loadUnit(who: Learner, unitId: string) {
+  return who.kind === "student" ? studentUnit(unitId) : getUnit(unitId);
 }
 
 async function progress(studentId: string, unitId: string) {
@@ -91,7 +90,7 @@ const SAVE_FAILED = { ok: false as const, message: "Chưa lưu được câu tr�
 export async function markWorkedViewed(unitIdRaw: string): Promise<{ ok: boolean; message?: string }> {
   const who = await learner();
   const unitId = UnitId.safeParse(unitIdRaw);
-  if (!who || !unitId.success || !loadUnit(who, unitId.data)) return DENIED;
+  if (!who || !unitId.success || !(await loadUnit(who, unitId.data))) return DENIED;
   if (who.kind === "preview") return { ok: true };
   const rs = await roadmapState(who.studentId, unitId.data);
   if (rs?.status === "locked") return { ok: false, message: "Bài này chưa mở — con cần đạt M3 ở bài trước." };
@@ -135,12 +134,11 @@ const CheckInput = z.object({
   step: z.number().int().min(0).max(4).optional(),
 });
 
-/** LT16: "Ôn lại: …" — only to a KU the viewer can open (approved, or any in the parent preview). */
-function reviewLink(who: Learner, unitId: string | undefined) {
+/** LT16: "Ôn lại: …" — only to a KU the viewer can open (what the student sees, or any in a preview). */
+async function reviewLink(who: Learner, unitId: string | undefined) {
   if (!unitId) return undefined;
-  const f = getUnit(unitId);
-  if (!f || (who.kind === "student" && f.unit.status !== "approved")) return undefined;
-  return { unitId, title: f.unit.title };
+  const f = who.kind === "student" ? await studentUnit(unitId) : getUnit(unitId);
+  return f ? { unitId, title: f.unit.title } : undefined;
 }
 
 export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<CheckResult> {
@@ -148,7 +146,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
   const parsed = CheckInput.safeParse(input);
   if (!who || !parsed.success) return DENIED;
   const v = parsed.data;
-  const found = loadUnit(who, v.unitId);
+  const found = await loadUnit(who, v.unitId);
   if (!found) return DENIED;
   const item = findItem(found.unit, v.itemId, v.mode);
   if (!item) return DENIED;
@@ -178,7 +176,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
       // The right value of this step, so the student can carry on with the next one.
       correctHtml: gs.correct || reviewDue ? undefined : correctHtml(stepItem),
       errorCode: gs.correct ? null : (gs.errorCode ?? null),
-      review: gs.correct ? undefined : reviewLink(who, gs.review),
+      review: gs.correct ? undefined : await reviewLink(who, gs.review),
     };
   }
 
@@ -216,7 +214,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     correctHtml: showSolution ? correctHtml(item) : undefined,
     errorCode: g.correct ? null : (g.errorCode ?? null),
     steps: g.steps,
-    review: g.correct ? undefined : reviewLink(who, g.review),
+    review: g.correct ? undefined : await reviewLink(who, g.review),
     mastery: who.kind === "student" && v.mode === "practice" ? await practiceMastery(who.studentId, v.unitId) : undefined,
   };
 }
@@ -227,7 +225,7 @@ export async function completeFaded(unitIdRaw: string): Promise<{ ok: boolean; m
   const who = await learner();
   const unitId = UnitId.safeParse(unitIdRaw);
   if (!who || !unitId.success) return DENIED;
-  const found = loadUnit(who, unitId.data);
+  const found = await loadUnit(who, unitId.data);
   if (!found) return DENIED;
   if (who.kind === "preview") return { ok: true };
 
@@ -274,7 +272,7 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
   const parsed = ExitInput.safeParse(input);
   if (!who || !parsed.success) return DENIED;
   const v = parsed.data;
-  const found = loadUnit(who, v.unitId);
+  const found = await loadUnit(who, v.unitId);
   if (!found) return DENIED;
 
   if (who.kind === "student") {
@@ -436,7 +434,7 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
   const parsed = ReviewCheck.safeParse(input);
   if (!who || who.kind !== "student" || !parsed.success) return DENIED;
   const v = parsed.data;
-  const found = loadUnit(who, v.unitId);
+  const found = await loadUnit(who, v.unitId);
   const item = found && findItem(found.unit, v.itemId, "review");
   if (!item || !(await dueQueueRow(who.studentId, v.unitId))) return { ok: false, message: "Bài này chưa đến hạn ôn." };
 
@@ -476,7 +474,7 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
     correctHtml: correctHtml(item),
     errorCode: g.correct ? null : (g.errorCode ?? null),
     steps: g.steps,
-    review: g.correct ? undefined : reviewLink(who, g.review),
+    review: g.correct ? undefined : await reviewLink(who, g.review),
     // AI2: in a review, hints open only after answering (to understand, not to change the result).
     hintsHtml: item.hints?.map(texToHtml),
   };

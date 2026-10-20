@@ -22,7 +22,7 @@ export default async function TutorHome() {
   for (const s of sessions ?? []) if (!lastLogged.has(s.student_id)) lastLogged.set(s.student_id, s.taught_on);
 
   return (
-    <>
+    <div className="mx-auto max-w-md">
       <h1 className="font-display text-2xl font-bold">Chào {user.displayName}</h1>
       <h2 className="mt-8 font-display text-sm font-semibold uppercase tracking-wide text-muted">
         Học sinh bạn đang dạy
@@ -57,6 +57,6 @@ export default async function TutorHome() {
           </li>
         )}
       </ul>
-    </>
+    </div>
   );
 }

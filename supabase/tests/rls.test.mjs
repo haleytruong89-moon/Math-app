@@ -26,6 +26,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0008_p1_parent_overview.sql`, 
 await db.exec(fs.readFileSync(`${repo}/migrations/0009_p1_curriculum.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0010_p1_hints.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0011_p1_review_runs.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0012_p1_content_review.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -221,7 +222,28 @@ check('student reads own review runs', (await as('nguyen@example.com','select co
 check('other student sees no review runs', (await as('an@example.com','select count(*)::int c from public.review_runs'))[0].c, 0);
 check('parent sees child review runs', (await as('me@example.com','select count(*)::int c from public.review_runs'))[0].c, 2);
 check('student cannot open or close a run', [isErr(await as('nguyen@example.com',`insert into public.review_runs (student_id, items) select id, array['x/y'] from public.students`)), isErr(await as('nguyen@example.com',`update public.review_runs set finished_at = now()`))], [true, true]);
+// 0012: item_reviews / unit_approvals / tutor_priorities (S10, T7–T8)
+const q12 = (sql) => db.query(sql).then(()=>'ok', e=>'ERROR '+e.message);
+const tutorId = `(select id from auth.users where email='trang@example.com')`;
+const parentId = `(select id from auth.users where email='me@example.com')`;
+check('service_role writes an item review', await q12(`insert into public.item_reviews (unit_id, item_id, verdict, grading_hash, content_hash, reviewer_id) values ('b-haib','b-haib-p1','ok','0123456789abcdef','0123456789abcdef', ${tutorId})`), 'ok');
+check('a "fix" verdict needs a note', isErr(await q12(`insert into public.item_reviews (unit_id, item_id, verdict, grading_hash, content_hash, reviewer_id) values ('b-haib','b-haib-p2','fix','0123456789abcdef','0123456789abcdef', ${tutorId})`)), true);
+check('lesson block id accepted', await q12(`insert into public.item_reviews (unit_id, item_id, verdict, note, grading_hash, content_hash, reviewer_id) values ('b-haib','_lesson','fix','Sửa đoạn 2','0123456789abcdef','0123456789abcdef', ${parentId})`), 'ok');
+check('bad hash refused', isErr(await q12(`insert into public.item_reviews (unit_id, item_id, verdict, grading_hash, content_hash, reviewer_id) values ('b-haib','b-haib-p3','ok','xyz','0123456789abcdef', ${tutorId})`)), true);
+check('service_role writes an approval', await q12(`insert into public.unit_approvals (unit_id, action, actor_id) values ('b-haib','approve', ${tutorId})`), 'ok');
+check('parent reads item reviews', (await as('me@example.com','select count(*)::int c from public.item_reviews'))[0].c, 2);
+check('active tutor reads item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 2);
+check('student cannot read item reviews', (await as('nguyen@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
+check('student reads approvals', (await as('nguyen@example.com','select count(*)::int c from public.unit_approvals'))[0].c, 1);
+check('nobody writes reviews directly', [isErr(await as('trang@example.com',`insert into public.item_reviews (unit_id, item_id, verdict, grading_hash, content_hash, reviewer_id) values ('b-haib','b-haib-p4','ok','0123456789abcdef','0123456789abcdef', auth.uid())`)), isErr(await as('me@example.com',`insert into public.unit_approvals (unit_id, action, actor_id) values ('b-haib','return', auth.uid())`))], [true, true]);
+check('service_role writes priorities', await q12(`insert into public.tutor_priorities (student_id, unit_id, position, set_by) values (${nguyen}, 'g-giaihpt', 1, ${tutorId}), (${nguyen}, 'g-chuyendong', 2, ${tutorId})`), 'ok');
+check('one KU per position', isErr(await q12(`insert into public.tutor_priorities (student_id, unit_id, position, set_by) values (${nguyen}, 'g-chuso', 2, ${tutorId})`)), true);
+check('student reads own priorities', (await as('nguyen@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 2);
+check('other student sees no priorities', (await as('an@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);
+check('active tutor reads priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 2);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
+check('locked tutor reads no item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
+check('locked tutor reads no priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);
 check('locked tutor sees no review runs', (await as('trang@example.com','select count(*)::int c from public.review_runs'))[0].c, 0);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);

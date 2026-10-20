@@ -146,6 +146,7 @@ ok("db (H1): the run is closed after saving", (await sql(`select count(*)::int c
 
 // double submit must not re-score
 await page.goBack();
+await page.waitForLoadState("networkidle"); // let the back navigation finish before leaving (else "network error")
 await page.goto(`${BASE}/student`);
 ok("today: review card gone", (await page.getByRole("link", { name: "Bắt đầu ôn" }).count()) === 0);
 await page.screenshot({ path: "e2e/out/student/7-today-end.png", fullPage: true });
