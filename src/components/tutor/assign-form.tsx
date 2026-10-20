@@ -12,8 +12,12 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
   const [state, action, pending] = useActionState(assignHomework, {});
   const list = useRef<HTMLDivElement>(null);
   const [links, setLinks] = useState(["", "", ""]);
-  const pick = (level?: string) =>
+  const [picked, setPicked] = useState(0);
+  const recount = () => setPicked(list.current?.querySelectorAll('input[name="item"]:checked').length ?? 0);
+  const pick = (level?: string) => {
     list.current?.querySelectorAll<HTMLInputElement>('input[name="item"]').forEach((b) => { b.checked = !level ? false : b.dataset.level === level || b.checked; });
+    recount();
+  };
   return (
     <form action={action} className="flex flex-wrap items-start gap-5">
       <input type="hidden" name="studentId" value={p.studentId} />
@@ -21,7 +25,7 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
       {p.unitId && <input type="hidden" name="unit" value={p.unitId} />}
       <section className="min-w-0 flex-[999_1_560px]">
         {p.mode === "items" && (
-          <div className="overflow-hidden rounded-xl border border-border bg-surface" ref={list}>
+          <div className="overflow-hidden rounded-xl border border-border bg-surface" ref={list} onChange={recount}>
             <div className="flex flex-wrap items-center gap-2 border-b border-border bg-bg px-4 py-2 text-sm">
               <b className="font-display">Câu luyện tập</b>
               <span className="ml-auto text-muted">Chọn nhanh:</span>
@@ -46,7 +50,8 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
         {p.mode === "unit" && <p className="rounded-xl border border-border bg-surface p-4 text-sm">Con làm cả bài theo thứ tự của app (luyện tập rồi kiểm tra). Bài mở ngay cho con.</p>}
         {p.mode === "paper" && <p className="rounded-xl border border-border bg-surface p-4 text-sm">Bài làm trên giấy: ghi yêu cầu và/hoặc dán link đề (Google Drive). Không chấm trên app.</p>}
       </section>
-      <aside className="flex min-w-0 flex-[1_1_300px] flex-col gap-3 rounded-xl border border-border bg-surface p-4">
+      {/* Sticky: the due date and the button stay in view while scrolling a long item list. */}
+      <aside className="sticky top-4 flex min-w-0 flex-[1_1_300px] flex-col gap-3 self-start rounded-xl border border-border bg-surface p-4">
         <label className="font-display text-xs font-semibold uppercase tracking-wide text-muted" htmlFor="due">Hạn nộp</label>
         <input id="due" name="due" type="date" defaultValue={p.defaultDue} min={p.today} max={p.maxDue} className="rounded-lg border border-border px-3 py-2" />
         <label className="font-display text-xs font-semibold uppercase tracking-wide text-muted" htmlFor="task">{p.mode === "paper" ? "Yêu cầu" : "Lời dặn con (tuỳ chọn)"}</label>
@@ -58,7 +63,8 @@ export function AssignForm(p: { studentId: string; studentName: string; unitId: 
             {links[i].trim() && !isDriveLink(links[i]) && <span className="mt-0.5 block text-xs text-warn">Đây không phải link Google Drive — con có mở được không?</span>}
           </div>
         ))}
-        <button type="submit" disabled={pending} className="rounded-lg bg-accent px-4 py-3 font-display font-bold text-on-accent disabled:opacity-60">{pending ? "Đang giao…" : `Giao cho ${p.studentName}`}</button>
+        {p.mode === "items" && <p className="font-display font-semibold" aria-live="polite">{picked ? `Đã chọn ${picked} câu` : "Chưa chọn câu nào"}</p>}
+        <button type="submit" disabled={pending || (p.mode === "items" && !picked)} className="rounded-lg bg-accent px-4 py-3 font-display font-bold text-on-accent disabled:opacity-60">{pending ? "Đang giao…" : `Giao cho ${p.studentName}`}</button>
         {state.error && <p role="alert" className="text-sm text-warn">{state.error}</p>}
         {state.ok && <p role="status" className="text-sm text-good">✓ {state.ok} <Link href={`/tutor/${p.studentId}`} className="underline">Về Hôm nay</Link></p>}
         <p className="text-xs text-muted">Câu làm trên app được chấm và tính như luyện tập; cô thấy đúng/sai ở tab Hôm nay.</p>

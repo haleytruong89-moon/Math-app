@@ -10,6 +10,7 @@ import { HOMEWORK_RULES } from "@/lib/learning/homework";
 import { TutorTabs } from "@/components/tutor/tutor-tabs";
 import { texToHtml } from "@/lib/content/tex";
 import { AssignForm, type PickItem } from "@/components/tutor/assign-form";
+import { UnitPicker } from "@/components/tutor/unit-picker";
 
 export const metadata: Metadata = { title: "Giao bài — App Toán" };
 const MODES = [
@@ -42,14 +43,7 @@ export default async function AssignPage(props: PageProps<"/tutor/[studentId]/gi
     <>
       <TutorTabs studentId={student.id} studentName={student.full_name} active="giao" />
       <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-border bg-surface p-4">
-        <form className="flex flex-wrap items-center gap-2">
-          <input type="hidden" name="mode" value={mode} />
-          <label htmlFor="unit" className="font-display text-xs font-semibold uppercase tracking-wide text-muted">Bài</label>
-          <select id="unit" name="unit" defaultValue={unit?.id} className="rounded-lg border border-border bg-surface px-3 py-2 font-display font-semibold">
-            {ordered.map((u) => <option key={u.id} value={u.id}>{state.priorities.includes(u.id) ? "★ " : ""}{u.title}</option>)}
-          </select>
-          <button type="submit" className="rounded-lg border border-border px-3 py-2 text-sm">Chọn</button>
-        </form>
+        <UnitPicker key={unit?.id} units={ordered.map((u) => ({ id: u.id, title: u.title, star: state.priorities.includes(u.id) }))} value={unit?.id ?? null} mode={mode} />
         <nav className="flex flex-wrap gap-2" aria-label="Cách giao">
           {MODES.map((m) => (
             <Link key={m.id} href={q({ mode: m.id })} aria-current={m.id === mode ? "page" : undefined}
