@@ -62,6 +62,7 @@ Key choices
 | `attempts.hint_level` (0010) | AI2: highest pre-written hint opened before a practice answer, 0–3 (default 0); right after H2+ is not right first time (`rightUnaided`) | `checkAnswer` |
 | `review_queue` (0004, 0005) | next review per unit: stage 1/2/3 = D+1/7/21, 4 = maintenance (60 days); `completed_at` = M4 | learn actions |
 | `review_log` (0004) | every finished review, for a later FSRS upgrade (D14) | learn actions |
+| `review_runs` (0011) | audit H1: one server-planned review run — `items` = planned questions `"<unit>/<item>"` in order; `finished_at` null = open, unique per student while open. RLS read: parent, active tutor, the student | `checkReview` (creates), `finishReview` (closes) |
 | `teaching_sessions` (0006) | one lesson: student, tutor, date taught (≤ today, ≤ 7 days back), note ≤ 500 | `saveTeachingSession` |
 | `tutor_proposals` (0006) | per session × unit: tutor's level 0–4 + snapshot of the system level and answer count shown at the time (D8); composite FK pins student/tutor to the session | `saveTeachingSession` |
 | `homework` (0007) | homework given in a session: unit (or "Khác"), task ≤ 300, 0–3 `https://` links (Drive), due date, student `done_at`, tutor `reviewed_at` + note; composite FK to the session. RLS: parent, own active tutor, the student. Never graded, not in mastery/weekly goal | `saveTeachingSession`, `reviewHomework`, `setHomeworkDone` |
@@ -88,7 +89,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 - Authoring fields (CONTENT_STANDARD, S6a+): item `source`, `recognition: true`, `hints` (exactly 3), mistake `review` (a prerequisite KU id). They stay on the server — `publicItem` is a whitelist; hints and "Ôn lại" links are shown from S6b.
 - `src/lib/content/standard.ts` (`checkStandard`, run on every file by `npm test`): practice 3 L1 + 3 L2 + 2 L3 with ≥ 1 recognition MCQ (wrong options E05), 3 hints per practice item (≤ 25 words, no answer of 2+ characters as a token), exit bank 2 L1 + 3 L2 + 3 L3 without hints and with ≥ 1 `source`, `review` ∈ prerequisites (`ancestors`). `STANDARD_EXEMPT` = htl-1, htl-2 until batch 1.
 - Text: plain Vietnamese with `$…$` TeX and `**bold**`, rendered server-side by `texToHtml` (KaTeX, throws on bad TeX).
-- Students see `status: "approved"` units only; the parent previews drafts. Approval = PR that flips status + `approvedOn`.
+- Students see `status: "approved"` units only; the parent previews drafts. Approval = PR that flips status + `approvedOn` and runs `npm run content:lock` (H2).
 - `npm test` checks every file: schema, unique IDs, answers parse, mistakes ≠ answer, TeX renders, module lists files.
 
 ## 5. Grading and learning rules
@@ -100,10 +101,17 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
   Exit bank (LT13, `src/lib/learning/exit-draw.ts`): a run shows 5 of the bank (1 L1 + 2 L2 + 2 L3), unseen first, then seen longest ago, seeded by student + unit + number of past runs; the learn page sends only those, `submitExit` re-draws and refuses another set; both read the history with `exitHistory` (one unit, exit answers only). The exit stage keeps the set it opened with, so the result still lists the answered items after the post-submit re-render. `loadStudentState` reads attempts in pages of 1000 (Supabase API "Max rows"); the e2e fake applies the same cap. Banks ≤ 5 are used whole; the parent preview gets the whole bank with a note.
 - `src/lib/learning/rules.ts` (pure, unit-tested): mastery M0–M4, confidence (< 5 answers), review schedule,
   interleaving, review item picking (least recently answered), weekly study days (Vietnam time, Mon–Sun).
-- Reaching M3 in an exit test inserts the first review (D+1). `finishReview` scores the first answer per question in the run.
+- Reaching M3 in an exit test inserts the first review (D+1).
 - Review questions come from **practice items only** (review shows solutions; exit-test items stay unseen until a retake).
-  Reloading `/student/review` resumes the latest unfinished run (`planReview`: review answers for a due unit with no
-  `review_log` row for that run), so answered questions count and aren't asked again.
+  Runs are planned by the server (audit H1, 0011): `reviewSession` (state.ts) returns the open run's planned questions
+  (minus units no longer due) or a new plan (`newReviewPlan`: 3 least recently answered practice items per unit, LT8 units,
+  interleaved). The page writes nothing; the first `checkReview` saves the plan as the student's one open run (a stale open
+  run with nothing due is closed first; another tab's run wins the unique index). `checkReview` accepts only planned
+  questions, once each (`exit_run` = run id). `finishReview` refuses while `reviewRunProgress().remaining` is non-empty,
+  closes the run (conditional update), then scores the first answer per question. Reload resumes the run; a fully answered,
+  unsaved run reopens on its rating screen.
+- Approved items are locked (audit H2): `content/approved.lock.json` + `src/lib/content/lock.ts` / `lock.test.ts`;
+  `npm run content:lock` (`scripts/content-lock.ts`) adds newly approved items, `--relock <id>` accepts a deliberate change.
 - Sequencing (`src/lib/learning/sequence.ts`, pure, unit-tested): status open / locked / comingSoon — open when every prerequisite is at **system** M3, manually unlocked, or already started (never re-locked); in progress = started, below M3, not in review; `suggestNew` = none at 2 in progress, else first open track-A KU + first open B/C KU (batch → track → seq); a **P2** KU (LT17, `priority` in curriculum.json) only once every P0/P1 KU of its track is at system M3, or after a manual unlock — and no core KU may depend on a P2 KU (`checkCurriculum`); `splitTestOut` keeps the test-out run's answers out of mastery (pass still gives M3 + D+1, `workedViewed || testoutPassed`); `selectReviewUnits` = open run's units first, else the 5 most overdue. `loadStudentState` returns `roadmap`, `modules`, `suggestions`, `reviewedToday`; `todaysReview` = today's units + how many wait.
 - S6b practice: hint box H1→H3 (H2+ → requeued, `hint_level`), multi-step items step by step (`checkAnswer({ step })` grades one step, records nothing; "Hoàn thành câu" records the whole item), "Ôn lại: …" links (new tab), SVG figures. Exit / review take a multi-step item at once (`StepsInput`); review shows hints only after answering. Badge "Cần gia sư xác nhận" (LT6, `needsTutor`: grading partial/tutor) on home cards, the journey map and the parent's unit map.
 - Tutor session form rules: `src/lib/learning/session.ts` (`parseSession`, unit-tested). A ticked unit needs a level;

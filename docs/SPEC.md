@@ -59,6 +59,8 @@
 | 05/10/2026 | **AI2 Hint source:** H1–H3 hints are **pre-written in content and reviewed like any item** (available from S6b, no AI); AI only for free questions after H3 / a wrong answer (H4–H5, ≤ 6 turns per item); H6 = the approved solution, never AI text. Answers after H2+ or AI help do not count as first-try correct | same §3–4 |
 | 05/10/2026 | **AI3 Parent/tutor AI:** weekly narrative report for the parent, pre-session brief for the tutor, weekly digest of AI conversations; numbers come from the DB via templates and are cross-checked | same §5 |
 | 05/10/2026 | **AI4 Budget:** at most **$10/month** (Console spend limit + server token count); at the cap AI pauses and written hints keep working | same §6 |
+| 20/10/2026 | **Audit fix H1 — review runs planned by the server:** the first review answer saves today's plan (5 units × 3 practice items, LT8/D14) as the student's **one open run** (`review_runs`, migration 0011); only planned questions are accepted, the first answer to each counts, and a run is **scored only when every planned question has an answer** (closed before scoring). An open run is resumed on reload or another day. Replaces the "resume the latest unscored run" rule of 05/10 | `src/app/learn/actions.ts`, `docs/DESIGN.md` §5 |
+| 20/10/2026 | **Audit fix H2 — approved items are locked:** the grading key (options and their order, right option, right value, steps) of every recorded item of an approved KU is pinned in `content/approved.lock.json`; a test refuses changes. Wording stays editable; a changed answer = a new item id. Interim until T7 moves approval + content hash into the DB (S10) | `docs/CONTENT_STANDARD.md` §7 |
 
 ## 1. Mục tiêu
 
