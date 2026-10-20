@@ -24,6 +24,8 @@ export type HomeworkRow = {
   done_at: string | null;
   reviewed_at: string | null;
   review_note: string | null;
+  /** T9 (0013): practice items of unit_id to do in the app; null = whole unit / paper. */
+  items?: string[] | null;
 };
 
 // Forms submit line breaks as CRLF while a textarea counts them as one character.
@@ -125,11 +127,14 @@ export type HomeworkAppResult = {
 };
 
 export function homeworkAppResult(
-  attempts: { mode: string; correct: boolean; error_code: string | null; exit_run: string | null; created_at: string }[],
+  attempts: { item_id: string; mode: string; correct: boolean; error_code: string | null; exit_run: string | null; created_at: string }[],
   sinceIso: string,
+  /** T9: only these items (hand-picked homework); null/undefined = the whole unit. */
+  items?: string[] | null,
 ): HomeworkAppResult | null {
   const since = Date.parse(sinceIso);
-  const rows = attempts.filter((a) => Date.parse(a.created_at) >= since && a.mode !== "faded");
+  const only = items ? new Set(items) : null;
+  const rows = attempts.filter((a) => Date.parse(a.created_at) >= since && a.mode !== "faded" && (!only || only.has(a.item_id)));
   if (!rows.length) return null;
   const practice = rows.filter((a) => a.mode === "practice");
   const exits = rows.filter((a) => a.mode === "exit" && a.exit_run);
@@ -146,4 +151,35 @@ export function homeworkAppResult(
     exit: run.length ? { right: run.filter((a) => a.correct).length, total: run.length } : null,
     topError: top && top[1] >= 2 ? top[0] : null,
   };
+}
+
+export type RawAssignment = { mode: string; unit: string; items: string[]; task: string; links: string[]; due: string };
+export type Assignment = { unitId: string | null; items: string[] | null; task: string; links: string[]; dueOn: string };
+
+/** T9, "Giao bài" tab: whole KU, hand-picked practice items, or paper homework (no session needed). */
+export function parseAssignment(
+  raw: RawAssignment,
+  ctx: { today: string; units: Map<string, { title: string; practice: string[] }> },
+): { ok: true; value: Assignment } | { ok: false; error: string } {
+  const R = HOMEWORK_RULES;
+  const task = clean(raw.task);
+  const links = raw.links.map((l) => l.trim()).filter(Boolean);
+  const due = raw.due.trim();
+  if (!isIsoDate(due) || due < ctx.today || due > addDays(ctx.today, R.dueMaxDays)) return { ok: false, error: `Hạn nộp từ hôm nay đến ${R.dueMaxDays} ngày tới.` };
+  if (task.length > R.taskMax) return { ok: false, error: `Lời dặn tối đa ${R.taskMax} ký tự.` };
+  if (links.length > R.linksMax || links.some((l) => !LINK.test(l) || l.length > R.linkMax)) return { ok: false, error: `Tối đa ${R.linksMax} link, mỗi link bắt đầu bằng https://.` };
+  if (raw.mode === "paper") {
+    if (!task && !links.length) return { ok: false, error: "Ghi yêu cầu bài làm hoặc dán link đề." };
+    const unit = raw.unit.trim();
+    if (unit && !ctx.units.has(unit)) return { ok: false, error: "Bài này chưa có trong app." };
+    return { ok: true, value: { unitId: unit || null, items: null, task: task || "Làm theo đề trong link.", links, dueOn: due } };
+  }
+  const u = ctx.units.get(raw.unit.trim());
+  if (!u) return { ok: false, error: "Chọn một bài đã duyệt." };
+  if (raw.mode === "unit") return { ok: true, value: { unitId: raw.unit.trim(), items: null, task: task || `Làm cả bài "${u.title}" trên app.`, links, dueOn: due } };
+  if (raw.mode !== "items") return { ok: false, error: "Chọn cách giao." };
+  const items = [...new Set(raw.items)];
+  if (!items.length || items.length > 20) return { ok: false, error: "Chọn từ 1 đến 20 câu." };
+  if (items.some((id) => !u.practice.includes(id))) return { ok: false, error: "Có câu không thuộc phần luyện tập của bài này." };
+  return { ok: true, value: { unitId: raw.unit.trim(), items, task: task || `Làm ${items.length} câu "${u.title}" trên app.`, links, dueOn: due } };
 }
