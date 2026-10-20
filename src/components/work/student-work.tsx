@@ -21,7 +21,8 @@ type Props = {
   supabase: SupabaseClient;
   student: { id: string; full_name: string };
   basePath: string;
-  back: { href: string; label: string };
+  /** Link above the unit list (the parent's page); the tutor has tabs instead. */
+  back?: { href: string; label: string };
   unitId: string | null;
   all: boolean;
   proposer: string; // label before "đề xuất": "Bạn" for a tutor, "Gia sư" for the parent
@@ -51,24 +52,48 @@ export async function StudentWork(props: Props) {
   // Only an id from the content is ever used in a query.
   const unit = props.unitId ? (state.units.find((u) => u.unit.id === props.unitId) ?? null) : null;
 
+  // Laptop audit 20/10: units with work (or a proposal) first, as a grid; untouched units folded away.
+  const worked = (u: UnitState) => u.attempts.some((a) => a.mode !== "faded") || latest.has(u.unit.id);
+  const card = (u: UnitState) => (
+    <li key={u.unit.id}>
+      <Link href={`${basePath}?unit=${u.unit.id}`} className="block h-full rounded-xl border border-border bg-surface p-4 hover:border-accent">
+        <Summary u={u} proposal={latest.get(u.unit.id)} conf={confs.get(u.unit.id)} proposer={props.proposer} />
+      </Link>
+    </li>
+  );
+  const done = state.units.filter(worked);
+  const untouched = state.units.filter((u) => !worked(u));
+  const grid = "grid gap-3 sm:grid-cols-2 xl:grid-cols-3";
   return (
     <>
-      <Link href={unit ? basePath : props.back.href} className="text-sm text-accent hover:underline">
-        {unit ? "← Tất cả bài" : props.back.label}
-      </Link>
+      {(unit || props.back) && (
+        <Link href={unit ? basePath : props.back!.href} className="text-sm text-accent hover:underline">
+          {unit ? "← Tất cả bài" : props.back!.label}
+        </Link>
+      )}
       <h1 className="mt-2 font-display text-2xl font-bold">Bài làm của {student.full_name}</h1>
       {unit ? (
-        <UnitWork {...props} u={unit} proposal={latest.get(unit.unit.id)} conf={confs.get(unit.unit.id)} />
+        <div className="max-w-3xl">
+          <UnitWork {...props} u={unit} proposal={latest.get(unit.unit.id)} conf={confs.get(unit.unit.id)} />
+        </div>
       ) : (
-        <ul className="mt-6 flex flex-col gap-3" aria-label="Các bài">
-          {state.units.map((u) => (
-            <li key={u.unit.id}>
-              <Link href={`${basePath}?unit=${u.unit.id}`} className="block rounded-xl border border-border bg-surface p-4 hover:border-accent">
-                <Summary u={u} proposal={latest.get(u.unit.id)} conf={confs.get(u.unit.id)} proposer={props.proposer} />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <>
+          {done.length ? (
+            <ul className={`mt-6 ${grid}`} aria-label="Các bài">
+              {done.map(card)}
+            </ul>
+          ) : (
+            <p className="mt-6 text-muted">Con chưa làm câu nào trên app.</p>
+          )}
+          {untouched.length > 0 && (
+            <details className="mt-6">
+              <summary className="cursor-pointer font-display font-semibold">Chưa làm ({untouched.length})</summary>
+              <ul className={`mt-3 ${grid}`} aria-label="Bài chưa làm">
+                {untouched.map(card)}
+              </ul>
+            </details>
+          )}
+        </>
       )}
     </>
   );

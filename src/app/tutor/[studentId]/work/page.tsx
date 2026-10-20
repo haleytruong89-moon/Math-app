@@ -18,17 +18,14 @@ export default async function TutorWorkPage(props: PageProps<"/tutor/[studentId]
   return (
     <>
     <TutorTabs studentId={student.id} studentName={student.full_name} active="work" />
-    <div className="mx-auto max-w-md">
     <StudentWork
       supabase={supabase}
       student={student}
       basePath={`/tutor/${student.id}/work`}
-      back={{ href: "/tutor", label: "← Học sinh" }}
       unitId={typeof sp.unit === "string" ? sp.unit : null}
       all={sp.all === "1"}
       proposer="Bạn"
     />
-    </div>
     </>
   );
 }
