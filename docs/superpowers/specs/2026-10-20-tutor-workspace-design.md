@@ -1,8 +1,10 @@
 # Tutor workspace — design (T7–T9, S10 + S11)
 
 > Parent decisions 19/10/2026 (SPEC §0 T7–T9, "Tutor workspace"); mockup "Bàn làm việc gia sư"
-> (5 artboards, Claude Design) approved by the parent 20/10/2026. Build decisions below marked **[20/10]**
-> are proposals in the plan, to be confirmed by the parent before code.
+> (5 artboards, Claude Design) approved by the parent 20/10/2026. Build decisions marked **[20/10]** were
+> **confirmed by the parent on 20/10/2026** (all four: hide "Cần sửa" items + approve rule; the 10 approved KUs
+> are not re-reviewed; priorities open at once but the LT3 cap of 2 in progress stays; no "Theo dạng" for now).
+> Build order: S10 complete → parent runs SQL 0012 + merges → S11.
 
 ## 1. Problem (UX audit 19/10)
 
@@ -60,7 +62,12 @@ priority on a KU that is not approved yet has no effect for the student until it
   recorded as `practice` (they count toward mastery, T9); the worked-example gate is skipped for items of an open
   homework of that student.
 - "Theo dạng" (by problem type) is **not built**: items carry no type tag. S11 offers whole KU, hand-picked items
-  with quick-select by level (L1/L2/L3) and "con hay sai" badges. Adding a `form` tag to items is a later content task.
+  with quick-select by level (L1/L2/L3) and "con hay sai" badges.
+- Adding it later is cheap and needs no SQL or rework: homework stores item ids, so "Theo dạng" is only a filter.
+  (1) Content: an optional `form` field per item (3–6 forms per KU, list agreed with the tutor); one content session
+  tags the existing KUs, new batches tag as they are written (CONTENT_STANDARD). A tag doesn't touch the grading key,
+  so approved items stay approved (H2 lock / `grading_hash`). (2) Code: schema field + a "Theo dạng" tab that
+  pre-ticks the items of the chosen forms — about half a day.
 
 ## 6. Data (migrations; numbers checked against main + open PRs on 20/10)
 
