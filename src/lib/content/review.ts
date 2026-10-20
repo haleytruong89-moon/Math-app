@@ -23,7 +23,18 @@ export type UnitReview = {
 };
 export type ShelfStatus = "approved" | "reapprove" | "waiting" | "none";
 
-const h16 = (v: unknown) => createHash("sha256").update(JSON.stringify(v)).digest("hex").slice(0, 16);
+/** JSON with object keys sorted at every level, so hashes don't depend on key order (arrays keep their order). */
+export function canonicalJson(v: unknown): string {
+  if (Array.isArray(v)) return `[${v.map(canonicalJson).join(",")}]`;
+  if (v && typeof v === "object")
+    return `{${Object.keys(v as object)
+      .sort()
+      .map((k) => `${JSON.stringify(k)}:${canonicalJson((v as Record<string, unknown>)[k])}`)
+      .join(",")}}`;
+  return JSON.stringify(v ?? null);
+}
+
+const h16 = (v: unknown) => createHash("sha256").update(canonicalJson(v)).digest("hex").slice(0, 16);
 
 /** What gets a verdict: the lesson block (theory, worked, faded), then practice, then exit items. */
 export function reviewables(unit: Unit): Reviewable[] {
