@@ -63,7 +63,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ✅ Merged 05/10 (PR #13) | 16/10 (để đợt 1 lên app tuần 2) |
 | 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | ✅ Merged 05/10 (qua PR #13) | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | 🟡 PR `p1-slice-6b` — SQL 0010, merge sau #14 → #15 | 23/10 (để đợt 2 lên app tuần 3) |
-| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration 0011) | ⬜ code 26/10 – 06/11; bật ~09/11 sau khi đạt bộ test | 06/11 |
+| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration 0012) | ⬜ code 26/10 – 06/11; bật ~09/11 sau khi đạt bộ test | 06/11 |
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |
 | 9 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot (PR #8) | ⬜ phụ huynh | **12/10** |
 | 10 | **C1…C10** | Soạn nội dung 10 đợt theo `docs/CURRICULUM.md` H6 (nháp + kiểm tra độc lập) | ⬜ | theo bảng H6 |

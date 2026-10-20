@@ -10,10 +10,10 @@ import { fadedItems, findItem, getUnit } from "@/lib/content";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
 import type { CheckResult, ExitResult, ReviewSummary } from "@/lib/content/public";
-import { rightUnaided, afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
+import { rightUnaided, afterReview, exitReachesM3, firstReview, lastExitRun, practiceFirstTries, reviewPassed, runItemKey, systemMastery, vnDate, RULES, type AttemptRow, type Rating, type Stage } from "@/lib/learning/rules";
 import { answerHtml, correctHtml } from "@/lib/learning/work";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
-import { exitHistory, loadStudentState } from "@/lib/learning/state";
+import { exitHistory, findOpenRun, loadStudentState, reviewSession } from "@/lib/learning/state";
 import { masteryHistory } from "@/lib/learning/sequence";
 import { exitDrawFor } from "@/lib/learning/exit-draw";
 
@@ -390,8 +390,9 @@ export async function submitExit(input: z.input<typeof ExitInput>): Promise<Exit
 }
 
 // ---------------------------------------------------------------------
-// Mixed review (D14). The run id comes from the review page; answers are
-// grouped by it so each review is scored once.
+// Mixed review (D14). H1 (audit 19/10, 0011): the server plans each run. The first answer saves
+// today's plan as the student's one open run; only its planned questions are accepted, each once;
+// the run is scored only when every planned question has an answer.
 
 async function dueQueueRow(studentId: string, unitId: string) {
   const { data } = await createAdminClient()
@@ -404,7 +405,31 @@ async function dueQueueRow(studentId: string, unitId: string) {
   return data as { stage: Stage; due_on: string; completed_at: string | null };
 }
 
-const ReviewCheck = z.object({ runId: z.uuid(), unitId: UnitId, itemId: UnitId, answer: Answer, durationMs: Duration });
+/** Today's review for a student, with its run saved (created from the plan if none is open). */
+async function reviewRun(studentId: string, create: boolean) {
+  const admin = createAdminClient();
+  const [state, run] = await Promise.all([loadStudentState(admin, studentId), findOpenRun(admin, studentId)]);
+  if (run === "error") return "error" as const;
+  const s = reviewSession(state, run);
+  if (s.runId || !create || !s.planned.length) return s;
+  // Nothing of the open run is due any more (e.g. content changed): close it, then start today's.
+  if (s.staleRunId) await admin.from("review_runs").update({ finished_at: new Date().toISOString() }).eq("id", s.staleRunId).is("finished_at", null);
+  const { data, error } = await admin
+    .from("review_runs")
+    .insert({ student_id: studentId, items: s.planned.map((q) => runItemKey(q.unitId, q.item.id)) })
+    .select("id")
+    .maybeSingle();
+  if (!error && data?.id) return { ...s, runId: data.id as string };
+  // One open run per student: another tab saved its run first — use that one.
+  const again = await findOpenRun(admin, studentId);
+  if (again === "error" || !again) {
+    console.error("reviewRun create", error?.message);
+    return "error" as const;
+  }
+  return reviewSession(state, again);
+}
+
+const ReviewCheck = z.object({ unitId: UnitId, itemId: UnitId, answer: Answer, durationMs: Duration });
 
 export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<CheckResult> {
   const who = await learner();
@@ -415,9 +440,17 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
   const item = found && findItem(found.unit, v.itemId, "review");
   if (!item || !(await dueQueueRow(who.studentId, v.unitId))) return { ok: false, message: "Bài này chưa đến hạn ôn." };
 
-  // A typo in one step gets the format hint, like any other answer (not a wrong review).
+  // A typo in one step gets the format hint, like any other answer (not a wrong review); nothing is saved.
   const g = gradeItem(item, v.answer);
   if (!g.understood) return { ok: true, understood: false };
+
+  const s = await reviewRun(who.studentId, true);
+  if (s === "error" || !s.runId) return SAVE_FAILED;
+  if (!s.planned.some((q) => q.unitId === v.unitId && q.item.id === v.itemId))
+    return { ok: false, message: "Câu này không thuộc lượt ôn hôm nay. Tải lại trang để làm tiếp nhé." };
+  if (s.answered.some((a) => a.unitId === v.unitId && a.itemId === v.itemId))
+    return { ok: false, message: "Câu này con đã trả lời rồi. Tải lại trang để làm câu tiếp." };
+
   const { error } = await createAdminClient().from("attempts").insert({
     student_id: who.studentId,
     unit_id: v.unitId,
@@ -427,7 +460,7 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
     correct: g.correct,
     error_code: g.errorCode ?? null,
     duration_ms: v.durationMs ?? null,
-    exit_run: v.runId,
+    exit_run: s.runId,
   });
   if (error) {
     console.error("checkReview insert", error.message);
@@ -449,40 +482,47 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
   };
 }
 
-const ReviewFinish = z.object({ runId: z.uuid(), ratings: z.record(UnitId, z.enum(["easy", "normal"])) });
+const ReviewFinish = z.object({ ratings: z.record(UnitId, z.enum(["easy", "normal"])) });
 
 export async function finishReview(input: z.input<typeof ReviewFinish>): Promise<ReviewSummary> {
   const who = await learner();
   const parsed = ReviewFinish.safeParse(input);
   if (!who || who.kind !== "student" || !parsed.success) return DENIED;
-  const { runId, ratings } = parsed.data;
+  const { ratings } = parsed.data;
   const admin = createAdminClient();
 
-  const { data: rows, error } = await admin
-    .from("attempts")
-    .select("unit_id, item_id, correct, created_at")
-    .eq("student_id", who.studentId)
-    .eq("mode", "review")
-    .eq("exit_run", runId)
-    .order("created_at", { ascending: true });
-  if (error || !rows?.length) return { ok: false, message: "Không tìm thấy câu trả lời của lượt ôn này." };
+  const s = await reviewRun(who.studentId, false);
+  if (s === "error") return SAVE_FAILED;
+  if (!s.runId) return { ok: false, message: "Không tìm thấy lượt ôn này. Tải lại trang nhé." };
+  if (s.remaining.length) return { ok: false, message: `Con còn ${s.remaining.length} câu chưa làm. Tải lại trang để làm nốt rồi lưu.` };
 
-  // Score = first answer to each question of the run, per unit.
-  const first = new Map<string, { unit: string; correct: boolean }>();
-  for (const r of rows) if (!first.has(r.item_id)) first.set(r.item_id, { unit: r.unit_id, correct: r.correct });
+  // Close the run first: of two simultaneous saves only one scores it.
+  const { data: claimed, error: cErr } = await admin
+    .from("review_runs")
+    .update({ finished_at: new Date().toISOString() })
+    .eq("id", s.runId)
+    .eq("student_id", who.studentId)
+    .is("finished_at", null)
+    .select("id");
+  if (cErr) {
+    console.error("finishReview claim", cErr.message);
+    return SAVE_FAILED;
+  }
+  if (!claimed?.length) return { ok: false, message: "Lượt ôn này đã được lưu rồi." };
+
   const perUnit = new Map<string, { correct: number; total: number }>();
-  for (const { unit, correct } of first.values()) {
-    const u = perUnit.get(unit) ?? { correct: 0, total: 0 };
+  for (const a of s.answered) {
+    const u = perUnit.get(a.unitId) ?? { correct: 0, total: 0 };
     u.total += 1;
-    if (correct) u.correct += 1;
-    perUnit.set(unit, u);
+    if (a.correct) u.correct += 1;
+    perUnit.set(a.unitId, u);
   }
 
   const today = vnDate();
   const units: Extract<ReviewSummary, { ok: true }>["units"] = [];
   for (const [unitId, score] of perUnit) {
     const due = await dueQueueRow(who.studentId, unitId);
-    if (!due) continue; // already scored (double submit) or not due
+    if (!due) continue; // not due any more
     const passed = reviewPassed(score.correct, score.total);
     const rating: Rating = ratings[unitId] ?? "normal";
     const next = afterReview(due.stage, passed, rating, today);
@@ -490,7 +530,7 @@ export async function finishReview(input: z.input<typeof ReviewFinish>): Promise
     const { error: logErr } = await admin.from("review_log").insert({
       student_id: who.studentId,
       unit_id: unitId,
-      run_id: runId,
+      run_id: s.runId,
       stage: due.stage,
       correct: score.correct,
       total: score.total,

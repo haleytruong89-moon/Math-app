@@ -102,6 +102,11 @@ Số đáp án nhiễu: trắc nghiệm 4 phương án → **≥ 2 phương án 
 
 Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
 
+**Sau khi duyệt — khoá câu (H2, 20/10/2026).** App lưu câu trả lời của con đúng như con chọn/gõ (trắc nghiệm = *số thứ tự* phương án). Vì vậy với bài đã `approved`:
+- PR duyệt bài chạy `npm run content:lock` để khoá thêm câu của bài mới duyệt (`content/approved.lock.json`); thiếu thì `npm test` báo.
+- **Không** đổi phương án, thứ tự phương án, phương án đúng, đáp số hay các bước của câu đã khoá. Cần đổi → thêm câu mới (id mới) và bỏ câu cũ (`npm run content:lock -- --relock <id cũ>`).
+- Được sửa tự do: lời đề, lời giải, gợi ý, phản hồi khi sai, nguồn. Chỉ sửa chữ của một phương án (không đổi nghĩa, không đổi thứ tự): `npm run content:lock -- --relock <id>` và ghi lý do trong PR.
+
 **Phiếu duyệt của phụ huynh (~20 phút/KU, trên preview):** (1) làm thử hết bài như con; (2) có câu nào đọc không hiểu?;
 (3) có câu nào quá dễ / quá khó so với con?; (4) lời nhắc khi sai có giúp được không?; (5) đề thi thật có giống không?;
 (6) nói "duyệt KU …" hoặc ghi câu cần sửa.

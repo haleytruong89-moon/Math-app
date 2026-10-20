@@ -175,51 +175,45 @@ export function pickReviewItems<T extends { id: string }>(pool: T[], attempts: A
 
 export type ReviewPlanUnit<T> = { unitId: string; pool: T[]; attempts: AttemptRow[] };
 
-export type ReviewPlan<T> = {
-  /** Unfinished run to resume, or null to start a new one. */
-  runId: string | null;
-  /** First answers already given in that run, oldest first. */
-  answered: { unitId: string; itemId: string; correct: boolean }[];
-  /** Questions still to ask, interleaved across units (D14). */
-  remaining: { unitId: string; item: T }[];
-};
+/** A new review run (D14): per due unit the least recently answered practice items, interleaved. */
+export function newReviewPlan<T extends { id: string }>(units: ReviewPlanUnit<T>[]): { unitId: string; item: T }[] {
+  return interleave(units.map((u) => pickReviewItems(u.pool, u.attempts).map((item) => ({ unitId: u.unitId, item }))));
+}
+
+/** H1 (0011): a planned question of a server-made review run is stored as "<unit_id>/<item_id>". */
+export const runItemKey = (unitId: string, itemId: string) => `${unitId}/${itemId}`;
+export function parseRunItem(key: string): { unitId: string; itemId: string } {
+  const i = key.indexOf("/");
+  return { unitId: key.slice(0, i), itemId: key.slice(i + 1) };
+}
+
+export type RunAnswer = { unitId: string; item_id: string; correct: boolean; created_at: string };
 
 /**
- * Build today's review session. A run is unfinished while it has review answers for a
- * due unit but no review_log row for that unit (`scored` holds "runId|unitId").
- * Reloading the page resumes the latest unfinished run, so a wrong answer still counts
- * and the questions don't change; the run's own answers are left out when picking the
- * rest, which gives back the set the run started with.
+ * Where a server-planned review run stands. Only the first answer to a planned question counts
+ * (an answer to anything else is ignored); the run may be scored only when `remaining` is empty.
  */
-export function planReview<T extends { id: string }>(units: ReviewPlanUnit<T>[], scored: Set<string>): ReviewPlan<T> {
-  let latest: AttemptRow | null = null;
-  for (const u of units)
-    for (const a of u.attempts)
-      if (a.mode === "review" && a.exit_run && !scored.has(`${a.exit_run}|${u.unitId}`) && (!latest || a.created_at > latest.created_at))
-        latest = a;
-  const runId = latest?.exit_run ?? null;
-
-  const answered: (ReviewPlan<T>["answered"][number] & { at: string })[] = [];
-  const groups = units.map((u) => {
-    const inRun = u.attempts.filter((a) => a.mode === "review" && runId !== null && a.exit_run === runId);
-    const done = new Set<string>();
-    for (const a of [...inRun].sort((x, y) => x.created_at.localeCompare(y.created_at))) {
-      if (done.has(a.item_id)) continue;
-      done.add(a.item_id);
-      answered.push({ unitId: u.unitId, itemId: a.item_id, correct: a.correct, at: a.created_at });
-    }
-    const others = u.attempts.filter((a) => !inRun.includes(a));
-    const pool = u.pool.filter((it) => !done.has(it.id));
-    const n = Math.max(0, RULES.reviewItemsPerUnit - done.size);
-    return pickReviewItems(pool, others, n).map((item) => ({ unitId: u.unitId, item }));
-  });
-
+export function reviewRunProgress<Q extends { unitId: string; itemId: string }>(planned: Q[], answers: RunAnswer[]) {
+  const key = (u: string, i: string) => `${u}/${i}`;
+  const wanted = new Set(planned.map((q) => key(q.unitId, q.itemId)));
+  const first = new Map<string, { unitId: string; itemId: string; correct: boolean }>();
+  for (const a of [...answers].sort((x, y) => x.created_at.localeCompare(y.created_at))) {
+    const k = key(a.unitId, a.item_id);
+    if (wanted.has(k) && !first.has(k)) first.set(k, { unitId: a.unitId, itemId: a.item_id, correct: a.correct });
+  }
+  const perUnit = new Map<string, { correct: number; total: number }>();
+  for (const a of first.values()) {
+    const u = perUnit.get(a.unitId) ?? { correct: 0, total: 0 };
+    u.total += 1;
+    if (a.correct) u.correct += 1;
+    perUnit.set(a.unitId, u);
+  }
   return {
-    runId,
-    answered: answered
-      .sort((x, y) => x.at.localeCompare(y.at))
-      .map((a) => ({ unitId: a.unitId, itemId: a.itemId, correct: a.correct })),
-    remaining: interleave(groups),
+    /** First answers, oldest first. */
+    answered: [...first.values()],
+    /** Planned questions still without an answer, in plan order. */
+    remaining: planned.filter((q) => !first.has(key(q.unitId, q.itemId))),
+    perUnit,
   };
 }
 

@@ -25,6 +25,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0007_p1_homework.sql`, 'utf8')
 await db.exec(fs.readFileSync(`${repo}/migrations/0008_p1_parent_overview.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0009_p1_curriculum.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0010_p1_hints.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0011_p1_review_runs.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -208,7 +209,20 @@ check('hint_level 0–3 accepted', [await hl(0), await hl(3)], ['ok', 'ok']);
 check('hint_level outside 0–3 refused', [isErr(await hl(4)), isErr(await hl(-1))], [true, true]);
 check('hint_level defaults to 0 for older writers', (await db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct) select id, 'htl-1', 'htl-1-p2', 'practice', '1', true from public.students where full_name='Hạnh Nguyên' returning hint_level`)).rows[0].hint_level, 0);
 check('student reads own hint_level', (await as('nguyen@example.com',`select max(hint_level)::int m from public.attempts where item_id = 'htl-1-p1'`))[0]?.m, 3);
+// 0011: review_runs (audit H1) — server-planned review runs, one open run per student
+const rr = (sql) => db.query(sql).then(()=>'ok', e=>'ERROR '+e.message);
+const nguyen = `(select id from public.students where full_name='Hạnh Nguyên')`;
+check('service_role opens a review run', await rr(`insert into public.review_runs (student_id, items) values (${nguyen}, array['htl-1/htl-1-p1','htl-1/htl-1-p2'])`), 'ok');
+check('only one open review run per student', isErr(await rr(`insert into public.review_runs (student_id, items) values (${nguyen}, array['htl-1/htl-1-p3'])`)), true);
+check('a run needs at least one question', isErr(await rr(`insert into public.review_runs (student_id, items) values ((select id from public.students where full_name='Đăng An'), '{}')`)), true);
+await db.exec(`update public.review_runs set finished_at = now()`);
+check('after finishing, a new run can open', await rr(`insert into public.review_runs (student_id, items) values (${nguyen}, array['htl-1/htl-1-p3'])`), 'ok');
+check('student reads own review runs', (await as('nguyen@example.com','select count(*)::int c from public.review_runs'))[0].c, 2);
+check('other student sees no review runs', (await as('an@example.com','select count(*)::int c from public.review_runs'))[0].c, 0);
+check('parent sees child review runs', (await as('me@example.com','select count(*)::int c from public.review_runs'))[0].c, 2);
+check('student cannot open or close a run', [isErr(await as('nguyen@example.com',`insert into public.review_runs (student_id, items) select id, array['x/y'] from public.students`)), isErr(await as('nguyen@example.com',`update public.review_runs set finished_at = now()`))], [true, true]);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
+check('locked tutor sees no review runs', (await as('trang@example.com','select count(*)::int c from public.review_runs'))[0].c, 0);
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);
 check('locked tutor sees no confirmations', (await as('trang@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);

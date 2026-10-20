@@ -23,13 +23,14 @@
 | S6a+ — Schema theo chuẩn nội dung: L3, `source`, `recognition`, `review`, `hints`; kho kiểm tra 8 câu rút 5; trường `priority` + chặn KU P2 (LT17) | `p1-slice-6a2` | ✅ Merged 06/10 (PR #15), không SQL |
 | UX — Giao diện học sinh | `p1-student-ux` | ✅ Merged 05/10 (qua PR #13; theme, trang chủ, Hành trình, thẻ phản hồi — spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`); bản đồ nhóm theo track (LT9) làm trong S6a |
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
-| S9 — Gia sư giao bài trong app (T6) | `p1-slice-9` | 🟡 PR #23 mở 17/10 — **không SQL**; đã gộp nhánh đợt 4 → merge **#22 trước, #23 sau** |
-| S8 — AI giảng bài + báo cáo tuần (SQL 0011) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 |
+| S9 — Gia sư giao bài trong app (T6) | `p1-slice-9` | ✅ Merged 19/10 (PR #23) — không SQL |
+| Sửa lỗi audit H1 + H2: lượt ôn do server lập (SQL 0011), khoá câu đã duyệt | `p1-audit-fix` | 🟡 PR mở 20/10 — **chạy SQL 0011 trước khi merge** |
+| S8 — AI giảng bài + báo cáo tuần (SQL **0012**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
-| Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | 🟡 PR mở 15/10 — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
-| LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | 🟡 PR mở 17/10 — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
+| Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
+| LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
@@ -45,6 +46,28 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 20/10/2026 — Sửa 2 lỗi lớn của audit trước khi gia sư sửa bài (nhánh `p1-audit-fix`)
+
+Phụ huynh "ok" 20/10 (sau audit 19/10, tài liệu "Audit App Toán trước khi dùng").
+
+### Đã làm
+- **H1 — lượt ôn bị chấm khi con mới làm dở.** Trước: trình duyệt tự đặt mã lượt ôn, "Lưu kết quả ôn" chấm mọi câu đã có (1/6 câu vẫn có thể "đạt"); đổi mã lượt là làm lại được. Nay: câu trả lời đầu tiên lưu **kế hoạch của server** thành lượt ôn (bảng mới `review_runs`, **SQL 0011**), mỗi học sinh chỉ 1 lượt đang mở; chỉ nhận câu trong kế hoạch, mỗi câu 1 lần; **còn câu chưa làm thì không lưu** ("Con còn N câu chưa làm"); lưu xong lượt đóng lại trước khi chấm (bấm 2 lần không chấm 2 lần). Tải lại trang vẫn tiếp đúng câu, câu sai vẫn tính. Lượt làm hết mà chưa bấm lưu: mở lại trang là tới màn đánh giá để lưu.
+- **H2 — sửa câu đã duyệt làm sai lịch sử.** Câu trắc nghiệm lưu *số thứ tự* phương án; đổi thứ tự/đáp án sau khi con đã làm thì lịch sử bị hiểu sai. Nay `content/approved.lock.json` khoá "khoá chấm" (phương án, phương án đúng, đáp số) của **192 câu** trong 10 bài đã duyệt; test `lock.test.ts` chặn mọi thay đổi. Lời đề, lời giải, gợi ý, phản hồi vẫn sửa được. Cách làm: `CONTENT_STANDARD.md` §7. Khi lát S10 chuyển việc duyệt vào DB (T7, kèm mã băm) thì khoá này chuyển theo.
+- `planReview` (tự đoán lượt dở từ câu trả lời) thay bằng `newReviewPlan` + `reviewRunProgress` (rules.ts) và `reviewSession` (state.ts).
+- Số migration: lấy **0011** (không nhánh/PR nào đang dùng); S8 chuyển sang **0012** (sửa trong HANDOFF, P1_PLAN, AI_TUTOR).
+
+### Đã tự kiểm
+- `npm run lint`, `npm test` (127 test + RLS, thêm 8 kiểm tra `review_runs`), `npm run build`, `./e2e/run.sh` 187 PASS — thêm: server lưu 1 lượt mở 6 câu; lưu khi còn 1 câu chưa làm bị từ chối, không ghi `review_log`; tải lại hỏi đúng câu thiếu; lưu xong lượt đóng.
+
+### Phụ huynh cần làm
+1. **Chạy SQL `supabase/migrations/0011_p1_review_runs.sql` trên Supabase TRƯỚC khi merge** (merge trước thì trang Ôn lại báo lỗi lưu).
+2. Merge PR. Lượt ôn đang dở của con (nếu có) sẽ bắt đầu lại từ đầu, không mất lịch ôn.
+3. Khi duyệt bài mới (đổi `approved`): chạy `npm run content:lock` trong cùng PR — hoặc nhờ Claude làm.
+
+### Ghi chú
+- Khoá API Anthropic (`ANTHROPIC_API_KEY`, workspace riêng, giới hạn chi tiêu) phụ huynh đã đặt trên Vercel 19/10 — S8 không còn chờ việc này.
+- Các mục audit mức vừa (lộ đáp án qua luyện tập khi đang đến hạn ôn, tải lại câu nhiều bước, giới hạn LT3, làm lại kiểm tra không giới hạn, khoá/đặt lại tài khoản) để sau S10–S11.
 
 ## 17/10/2026 — S9: gia sư giao bài trong app (nhánh `p1-slice-9`)
 

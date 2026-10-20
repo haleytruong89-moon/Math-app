@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  addDays, afterReview, firstReview, interleave, pickReviewItems, planReview, reviewPassed,
+  addDays, afterReview, firstReview, interleave, newReviewPlan, parseRunItem, pickReviewItems, reviewPassed, reviewRunProgress, runItemKey,
   studyDaysThisWeek, systemMastery, vnDate, weekStart, type AttemptRow,
 } from "./rules.ts";
 
@@ -100,34 +100,27 @@ test("review picks least recently answered items, never-answered first", () => {
   assert.deepEqual(pickReviewItems(pool, seen, 3).map((i) => i.id), ["x3", "x4", "x1"]);
 });
 
-test("reloading the review page resumes the unfinished run: same questions, wrong answers still count", () => {
+test("a new review run: 3 least recently answered practice items per unit, interleaved", () => {
   const pool = ["p1", "p2", "p3", "p4", "p5"].map((id) => ({ id }));
   const before = [a({ item_id: "p1", created_at: at("2026-10-01") }), a({ item_id: "p2", created_at: at("2026-10-02") })];
-  const fresh = planReview([{ unitId: "u", pool, attempts: before }], new Set());
-  assert.equal(fresh.runId, null);
-  assert.deepEqual(fresh.remaining.map((q) => q.item.id), ["p3", "p4", "p5"]);
-
-  // Answered p3 wrong, then pressed F5.
-  const wrong = a({ item_id: "p3", mode: "review", correct: false, exit_run: "run-1", created_at: at("2026-10-05", 9) });
-  const resumed = planReview([{ unitId: "u", pool, attempts: [...before, wrong] }], new Set());
-  assert.equal(resumed.runId, "run-1");
-  assert.deepEqual(resumed.answered, [{ unitId: "u", itemId: "p3", correct: false }]);
-  assert.deepEqual(resumed.remaining.map((q) => q.item.id), ["p4", "p5"]);
-
-  // Once the run is scored, the next review starts a new run.
-  const next = planReview([{ unitId: "u", pool, attempts: [...before, wrong] }], new Set(["run-1|u"]));
-  assert.equal(next.runId, null);
-  assert.equal(next.answered.length, 0);
-  assert.equal(next.remaining.length, 3);
+  const plan = newReviewPlan([{ unitId: "u", pool, attempts: before }, { unitId: "v", pool: [{ id: "q1" }], attempts: [] }]);
+  assert.deepEqual(plan.map((q) => `${q.unitId}:${q.item.id}`), ["u:p3", "v:q1", "u:p4", "u:p5"]);
+  assert.deepEqual(parseRunItem(runItemKey("g-giaihpt", "g-giaihpt-p4")), { unitId: "g-giaihpt", itemId: "g-giaihpt-p4" });
 });
 
-test("a resumed run with every question answered has nothing left to ask for that unit", () => {
-  const pool = ["p1", "p2", "p3", "p4"].map((id) => ({ id }));
-  const run = ["p1", "p2", "p3"].map((item_id, i) => a({ item_id, mode: "review", exit_run: "r", created_at: at("2026-10-05", 9 + i) }));
-  const plan = planReview([{ unitId: "u", pool, attempts: run }, { unitId: "v", pool: [{ id: "q1" }], attempts: [] }], new Set());
-  assert.equal(plan.runId, "r");
-  assert.equal(plan.answered.length, 3);
-  assert.deepEqual(plan.remaining.map((q) => `${q.unitId}:${q.item.id}`), ["v:q1"]); // a newly due unit joins the run
+test("H1: a review run counts only the first answer to each planned question and is done only when all are answered", () => {
+  const planned = [{ unitId: "u", itemId: "p1" }, { unitId: "v", itemId: "q1" }, { unitId: "u", itemId: "p2" }];
+  const ans = (unitId: string, item_id: string, correct: boolean, h: number) => ({ unitId, item_id, correct, created_at: at("2026-10-05", h) });
+  // One of three answered (the old bug: this run used to be scored and could pass).
+  const one = reviewRunProgress(planned, [ans("u", "p1", true, 9)]);
+  assert.deepEqual(one.remaining, [{ unitId: "v", itemId: "q1" }, { unitId: "u", itemId: "p2" }]);
+  // A second answer to p1 and an answer to an unplanned item don't count.
+  const all = reviewRunProgress(planned, [
+    ans("u", "p2", false, 11), ans("u", "p1", false, 9), ans("u", "p1", true, 10), ans("u", "p9", true, 12), ans("v", "q1", true, 13),
+  ]);
+  assert.equal(all.remaining.length, 0);
+  assert.deepEqual(all.answered.map((x) => `${x.itemId}:${x.correct}`), ["p1:false", "p2:false", "q1:true"]);
+  assert.deepEqual(Object.fromEntries(all.perUnit), { u: { correct: 0, total: 2 }, v: { correct: 1, total: 1 } });
 });
 
 test("weekly goal counts study days in the current week (Mon–Sun), never streaks", () => {

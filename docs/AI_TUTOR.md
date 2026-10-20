@@ -76,7 +76,7 @@ Trả lời ──► sai ──► lời nhắc theo mã lỗi (đã duyệt) �
 |---|---|---|
 | **S6b** | Gợi ý viết sẵn H1–H3 trong luyện tập; ghi `hint_level` (migration **0010**); câu dùng gợi ý H2+ không tính đúng lần đầu | 23/10 |
 | Nội dung | Mọi câu luyện tập từ đợt 1 có `hints` H1–H3 (`CONTENT_STANDARD.md` §3) | từ đợt 1 |
-| **S8** | Hội thoại AI cho con + soát câu trả lời + nhật ký + nút "AI nói sai?" + trang chấm bộ test + giới hạn chi phí (migration **0011**); báo cáo tuần, tóm tắt gia sư, tóm tắt hội thoại | code 26/10 – 06/11 |
+| **S8** | Hội thoại AI cho con + soát câu trả lời + nhật ký + nút "AI nói sai?" + trang chấm bộ test + giới hạn chi phí (migration **0012**); báo cáo tuần, tóm tắt gia sư, tóm tắt hội thoại | code 26/10 – 06/11 |
 | Bộ test | Gom 20–30 lỗi thật từ pilot tuần 1–3 → phụ huynh chấm | 02–08/11 |
 | **Bật AI cho con** | Sau khi đạt bộ test + phụ huynh duyệt lệnh hệ thống | **~09/11/2026** (tuần pilot thứ 5) |
 
