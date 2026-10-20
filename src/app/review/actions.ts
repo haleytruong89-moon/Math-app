@@ -30,7 +30,7 @@ function refresh(unitId: string) {
 export async function reviewItem(_p: ActionState, fd: FormData): Promise<ActionState> {
   const who = await reviewerOf();
   if (!who) return NO_RIGHT;
-  const v = z.object({ unitId: UnitId, itemId: ItemId, verdict: z.enum(["ok", "fix"]), note: Note, back: Back }).safeParse(Object.fromEntries(fd));
+  const v = z.object({ unitId: UnitId, itemId: ItemId, verdict: z.enum(["ok", "fix"]), note: Note.optional(), back: Back }).safeParse(Object.fromEntries(fd));
   if (!v.success) return { error: "Thiếu thông tin, tải lại trang." };
   const f = getUnit(v.data.unitId);
   const r = f && reviewables(f.unit).find((x) => x.id === v.data.itemId);
