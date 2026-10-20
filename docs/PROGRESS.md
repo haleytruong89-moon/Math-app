@@ -62,7 +62,7 @@ Mẫu "Bàn làm việc gia sư" phụ huynh duyệt 20/10; 4 quyết định bu
 - Mọi chỗ chặn bài nháp với con đi qua `studentUnit` / `studentModules`. Số migration: S11 = 0013, S8 = **0014**.
 
 ### Đã tự kiểm
-- `npm run lint`, `npm test` (134 test + RLS, thêm 15 kiểm tra 0012), `npm run build`, `./e2e/run.sh` E2E_PASS PASS. Mới: gia sư ⭐ + duyệt hết b-haib (1 câu cần sửa) + duyệt cả bài; bên con: b-haib mở, đứng đầu Bài mới, câu cần sửa không có trong trang, bài nháp vẫn 404, bài bị trả lại 404.
+- `npm run lint`, `npm test` (134 test + RLS, thêm 15 kiểm tra 0012), `npm run build`, `./e2e/run.sh` 202 PASS. Mới: gia sư ⭐ + duyệt hết b-haib (1 câu cần sửa) + duyệt cả bài; bên con: b-haib mở, đứng đầu Bài mới, câu cần sửa không có trong trang, bài nháp vẫn 404, bài bị trả lại 404.
 - Sửa một chỗ chờ trong `student-flow` (quay lại trang trước rồi đi ngay → "network error" lúc có lúc không).
 
 ### Phụ huynh cần làm
