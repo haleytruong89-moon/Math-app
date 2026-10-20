@@ -98,7 +98,7 @@ Số đáp án nhiễu: trắc nghiệm 4 phương án → **≥ 2 phương án 
 | 2. Giải độc lập | agent thứ hai, **không xem đáp án** | Giải hết câu luyện + kiểm tra + chỗ trống; mọi đáp số trùng file. Lệch → sửa, ghi lý do |
 | 3. Tính lại nhiễu | script (Python/sympy) trong phiên soạn | Mỗi đáp án nhiễu tái tạo được bằng đúng lỗi đã ghi |
 | 4. Soát sư phạm | người soạn | Phản hồi ≤ 2 câu, không lộ đáp số; gợi ý đi từ chung → cụ thể, H3 chưa làm hộ phép tính; bước cuối "Kết luận:"; câu luyện tự đứng được |
-| 5. Gia sư | gia sư | Chỉ đợt có C, E, G |
+| 5. Gia sư (hoặc phụ huynh) duyệt trong app | gia sư / phụ huynh | Từ 20/10 (S10): màn **Duyệt** — từng câu "Đạt" / "Cần sửa" + góp ý; "Duyệt cả bài" khi lý thuyết đạt, không còn câu chưa xem, ≥ 4 câu luyện + ≥ 5 câu kiểm tra đạt. Câu "cần sửa" ẩn với con. Góp ý gom ở `/parent/content` → dán cho phiên soạn nội dung → sửa xong câu hiện "↻" để xem lại |
 
 Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
 

@@ -25,7 +25,9 @@
 | S6b — Câu nhiều bước, hình SVG, gợi ý H1–H3 (SQL 0010) | `p1-slice-6b` | ✅ Merged 06/10 (PR #16), SQL 0010 (xác nhận đã chạy trên Supabase: phụ huynh) |
 | S9 — Gia sư giao bài trong app (T6) | `p1-slice-9` | ✅ Merged 19/10 (PR #23) — không SQL |
 | Sửa lỗi audit H1 + H2: lượt ôn do server lập (SQL 0011), khoá câu đã duyệt | `p1-audit-fix` | 🟡 PR mở 20/10 — **chạy SQL 0011 trước khi merge** |
-| S8 — AI giảng bài + báo cáo tuần (SQL **0012**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
+| S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | 🟡 PR mở 20/10 — **chạy SQL 0012 trước khi merge** (sau #24, #25) |
+| S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ⬜ sau S10 — SQL 0013 |
+| S8 — AI giảng bài + báo cáo tuần (SQL **0014**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -46,6 +48,27 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 20/10/2026 — S10: Kho bài, duyệt từng câu, ưu tiên (nhánh `p1-slice-10`)
+
+Mẫu "Bàn làm việc gia sư" phụ huynh duyệt 20/10; 4 quyết định build chốt 20/10 (`docs/superpowers/specs/2026-10-20-tutor-workspace-design.md`). Kế hoạch: `docs/superpowers/plans/2026-10-20-s10-content-review.md`.
+
+### Đã làm
+- **SQL 0012**: `item_reviews` (nhận xét từng câu + mã băm nội dung đã xem), `unit_approvals` (duyệt / trả lại), `tutor_priorities` (thứ tự ưu tiên theo học sinh). RLS: con không đọc được nhận xét; gia sư đã ngừng phân công không thấy gì.
+- **Duyệt trong app (T7)**: gia sư hoặc phụ huynh bấm "Đạt" / "Cần sửa" từng câu (và phần lý thuyết & bài mẫu); "Duyệt cả bài" khi lý thuyết đạt, không còn câu chưa xem, ≥ 4 câu luyện + ≥ 5 câu kiểm tra đạt → con thấy bài ngay, **câu "cần sửa" bị ẩn**. Sửa đáp án/phương án sau khi duyệt → câu chuyển "↻ xem lại" và ẩn với con. "Trả lại để sửa" ẩn cả bài. 10 bài đã duyệt bằng git giữ nguyên (khoá H2).
+- **Ưu tiên (T8)**: ☆/★ ở Kho bài, sắp ↑↓; bài ưu tiên mở ngay cho con và đứng đầu "Bài mới" (vẫn tối đa 2 bài đang học).
+- **Màn gia sư**: bố cục rộng + tab (Buổi dạy · Kho bài · Bài làm); Kho bài (lọc, tìm, "đã xem x/y"); Duyệt (danh sách câu ✓ ! ↻ ·, câu đầy đủ đáp án/gợi ý/lời giải/lỗi, ghi chú); "Làm thử như con" (không ghi dữ liệu).
+- **Phụ huynh**: danh sách nội dung hiện trạng thái mới; màn Duyệt giống gia sư; khối "Góp ý cần sửa" + nút chép để dán cho phiên Claude soạn nội dung.
+- Mọi chỗ chặn bài nháp với con đi qua `studentUnit` / `studentModules`. Số migration: S11 = 0013, S8 = **0014**.
+
+### Đã tự kiểm
+- `npm run lint`, `npm test` (134 test + RLS, thêm 15 kiểm tra 0012), `npm run build`, `./e2e/run.sh` E2E_PASS PASS. Mới: gia sư ⭐ + duyệt hết b-haib (1 câu cần sửa) + duyệt cả bài; bên con: b-haib mở, đứng đầu Bài mới, câu cần sửa không có trong trang, bài nháp vẫn 404, bài bị trả lại 404.
+- Sửa một chỗ chờ trong `student-flow` (quay lại trang trước rồi đi ngay → "network error" lúc có lúc không).
+
+### Phụ huynh cần làm
+1. Merge #24, #25 (SQL 0011 trước), #26.
+2. **Chạy SQL `0012_p1_content_review.sql` trên Supabase TRƯỚC khi merge PR S10.**
+3. Merge PR S10; gửi gia sư link app → tab **Kho bài** → duyệt 10 bài đợt 3–4.
 
 ## 20/10/2026 — Sửa 2 lỗi lớn của audit trước khi gia sư sửa bài (nhánh `p1-audit-fix`)
 
