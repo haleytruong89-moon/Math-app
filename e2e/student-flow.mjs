@@ -233,7 +233,7 @@ ok("student: tutor work page not reachable", !page.url().includes("/tutor/"), pa
 const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", deviceScaleFactor: 2 });
 const dp = await dark.newPage(); await dp.goto(`${BASE}/student`); await dp.screenshot({ path: "e2e/out/student/8-today-dark.png", fullPage: true });
 await dp.goto(`${BASE}/student/journey`); await dp.screenshot({ path: "e2e/out/student/8b-journey-dark.png", fullPage: true });
-ok("dark: student theme background", (await dp.evaluate(() => getComputedStyle(document.querySelector(".student-theme")).backgroundColor)) === "rgb(26, 22, 19)");
+ok("always light (21/10): student cream background even when the OS is dark", (await dp.evaluate(() => getComputedStyle(document.querySelector(".student-theme")).backgroundColor)) === "rgb(255, 248, 240)");
 ok("no browser errors", errors.length === 0, errors.join(" | "));
 await browser.close();
 console.log(res.join("\n"));

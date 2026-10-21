@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { sessionDue, weekSummary } from "./tutor-today.ts";
+import { nextAction, sessionDue, weekSummary } from "./tutor-today.ts";
 import type { AttemptRow } from "./rules.ts";
 
 const a = (mode: AttemptRow["mode"], correct: boolean, at: string): AttemptRow => ({ item_id: "i", mode, correct, error_code: null, exit_run: null, created_at: at });
@@ -19,4 +19,18 @@ test("session reminder: the last scheduled day (≤ today) with no session logge
   assert.equal(sessionDue("2026-10-20", [2, 4], "2026-10-20"), null);
   assert.equal(sessionDue("2026-10-13", [4], "2026-10-20"), "2026-10-15");
   assert.equal(sessionDue(null, [], "2026-10-20"), null);
+});
+
+test("Việc tiếp theo: correct finished homework → priority KU to review → unlogged session → any review → assign", () => {
+  const shelf = [
+    { id: "a", title: "A", status: "waiting" as const, reviewed: 3, total: 17 },
+    { id: "b", title: "B", status: "approved" as const, reviewed: 0, total: 0 },
+    { id: "c", title: "C", status: "none" as const, reviewed: 0, total: 0 },
+    { id: "d", title: "D", status: "reapprove" as const, reviewed: 17, total: 17 },
+  ];
+  assert.deepEqual(nextAction({ priorities: ["d"], shelf, homeworkDone: 2, sessionDue: "2026-10-21" }), { kind: "correct", count: 2 });
+  assert.deepEqual(nextAction({ priorities: ["c", "b", "d"], shelf, homeworkDone: 0, sessionDue: "2026-10-21" }), { kind: "review", unitId: "d", title: "D", reviewed: 17, total: 17, priority: 3 });
+  assert.deepEqual(nextAction({ priorities: ["b"], shelf, homeworkDone: 0, sessionDue: "2026-10-21" }), { kind: "session", date: "2026-10-21" });
+  assert.deepEqual(nextAction({ priorities: [], shelf, homeworkDone: 0, sessionDue: null }), { kind: "review", unitId: "a", title: "A", reviewed: 3, total: 17, priority: null });
+  assert.deepEqual(nextAction({ priorities: [], shelf: [shelf[1]], homeworkDone: 0, sessionDue: null }), { kind: "assign" });
 });

@@ -64,14 +64,14 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
         <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.level} · {item.type === "mcq" ? "trắc nghiệm" : item.type === "numeric" ? "điền số" : "nhiều bước"}</span>
         {item.source && <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.source}</span>}
       </p>
-      <Html html={texToHtml(item.prompt)} className="text-lg leading-relaxed" />
+      <Html html={texToHtml(item.prompt)} className="font-body text-lg leading-relaxed" />
       <div className="flex flex-col gap-2"><Label>Đáp án đúng</Label><Answer item={item} /></div>
       {item.hints && (
         <div className="flex flex-col gap-2"><Label>Gợi ý con mở dần</Label>
-          <ol className="list-decimal pl-5 text-sm">{item.hints.map((h, i) => <li key={i}><Html html={texToHtml(h)} /></li>)}</ol>
+          <ol className="list-decimal pl-5 font-body text-sm">{item.hints.map((h, i) => <li key={i}><Html html={texToHtml(h)} /></li>)}</ol>
         </div>
       )}
-      <div className="flex flex-col gap-2"><Label>Lời giải (con xem sau khi làm)</Label><Html html={texToHtml(item.solution)} className="text-sm" /></div>
+      <div className="flex flex-col gap-2"><Label>Lời giải (con xem sau khi làm)</Label><Html html={texToHtml(item.solution)} className="font-body text-sm" /></div>
       <div className="flex flex-col gap-2"><Label>Con trả lời sai thì app nói gì</Label><Mistakes item={item} /></div>
     </div>
   );
@@ -80,7 +80,7 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
 /** The lesson block: theory, worked example, faded example with the blanks' answers. */
 export function LessonPanel({ unit }: { unit: Unit }) {
   return (
-    <div className="flex flex-col gap-5 text-sm">
+    <div className="flex flex-col gap-5 font-body text-sm">
       <div className="flex flex-col gap-2"><Label>Lý thuyết</Label>{unit.theory.map((t, i) => <Html key={i} html={texToHtml(t)} />)}</div>
       <div className="flex flex-col gap-2"><Label>Bài mẫu</Label><Html html={texToHtml(unit.worked.problem)} />
         <ol className="list-decimal pl-5">{unit.worked.steps.map((s, i) => <li key={i}><Html html={texToHtml(s.text)} />{s.why && <Html html={texToHtml(s.why)} className="text-muted" />}</li>)}</ol>

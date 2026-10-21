@@ -5,8 +5,10 @@ import type { StudentState } from "@/lib/learning/state";
 import { errorLabel } from "@/lib/content/errors";
 import { ActionForm } from "@/components/action-form";
 import { reviewHomework } from "@/app/tutor/actions";
+import { card, sectionTitle } from "@/components/ui/styles";
 
-export type OpenHwRow = { id: string; unit_id: string | null; items: string[] | null; task: string; due_on: string; done_at: string | null; created_at: string };
+export type { OpenHwRow } from "@/lib/tutor/workspace";
+import type { OpenHwRow } from "@/lib/tutor/workspace";
 
 const ddmm = (iso: string) => iso.slice(0, 10).split("-").reverse().slice(0, 2).join("/");
 
@@ -15,8 +17,8 @@ export function OpenHomework({ rows, state, today }: { rows: OpenHwRow[]; state:
   if (!rows.length) return null;
   const sorted = [...rows].sort((a, b) => Number(!!b.done_at) - Number(!!a.done_at) || a.due_on.localeCompare(b.due_on));
   return (
-    <section className="rounded-xl border border-border bg-surface p-4" aria-label="Bài đã giao chưa chữa">
-      <h2 className="font-display font-semibold">Bài về nhà chờ chữa ({rows.length})</h2>
+    <section className={`${card} p-4`} aria-label="Bài đã giao chưa chữa">
+      <h2 className={sectionTitle}>Bài về nhà chờ chữa ({rows.length})</h2>
       <ul className="mt-3 flex flex-col gap-3">
         {sorted.map((h) => {
           // S9 / T9: what the student did in the app since the homework was given (only its items, if hand-picked).
