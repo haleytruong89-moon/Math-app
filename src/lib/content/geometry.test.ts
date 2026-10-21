@@ -3,6 +3,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Item, Unit } from "./schema.ts";
 import { displayOrder } from "./shuffle.ts";
+import { gradeItem } from "./grade.ts";
+import { analysisView, orderView, proofView } from "./public-geometry.ts";
+import { isProofKu } from "./curriculum.ts";
+import { texToHtml } from "./tex.ts";
 
 const mcq = (id: string, correct = 0, n = 3) => ({
   id, type: "mcq", level: "L2", prompt: "?", options: Array.from({ length: n }, (_, i) => `Phương án ${i + 1}`), correct,
@@ -102,7 +106,6 @@ test("drawFirst and worked.analysis are accepted", () => {
 
 
 // ---------------------------------------------------------------- grading
-import { gradeItem } from "./grade.ts";
 
 type Of<T extends Item["type"]> = Extract<Item, { type: T }>;
 const P = (raw: ReturnType<typeof proof>) => Item.parse(raw) as Of<"proof">;
@@ -147,4 +150,33 @@ test("grade order: every topological order is right; distractor / prerequisite /
   assert.deepEqual([miss.correct, miss.at, miss.errorCode], [false, 3, "E09"]);
   assert.match(miss.feedback!, /thiếu bước/);
   for (const bad of ["", "0,0", "99", "a,b"]) assert.equal(gradeItem(it, bad).understood, false, bad);
+});
+
+// ---------------------------------------------------------------- public views
+const SECRET = /"(correct|mistakes|node|outline|after|given|solution|feedback|code)"/;
+
+test("public views: no answer key, lines and bank shuffled", () => {
+  const p = P(proof());
+  const pv = proofView(p);
+  assert.doesNotMatch(JSON.stringify(pv), SECRET);
+  assert.deepEqual(pv.proofLines[0].filter((s) => "blank" in s), [{ blank: 0 }]);
+  assert.deepEqual(pv.bankHtml, displayOrder(p.id, 4).map((k) => texToHtml(p.bank[k])), "bank follows displayOrder");
+  const o = O(order());
+  const ov = orderView(o);
+  assert.doesNotMatch(JSON.stringify(ov), SECRET);
+  assert.equal(ov.extraCount, 1);
+  assert.equal(ov.orderLinesHtml.length, 5);
+  assert.notDeepEqual(ov.orderLinesHtml.slice(0, 4), o.lines.map((l) => texToHtml(l.text)), "authored order hidden");
+  const a = Item.parse(analysis()) as Of<"analysis">;
+  const av = analysisView(a);
+  assert.doesNotMatch(JSON.stringify(av), SECRET);
+  assert.equal(av.steps.length, 2);
+  assert.doesNotMatch(JSON.stringify(av), /giả thiết/, "nodes stay on the server");
+});
+
+test("isProofKu: track C and not fully auto-graded", () => {
+  assert.equal(isProofKu({ track: "C", grading: "partial" }), true);
+  assert.equal(isProofKu({ track: "C", grading: "tutor" }), true);
+  assert.equal(isProofKu({ track: "C", grading: "full" }), false);
+  assert.equal(isProofKu({ track: "A", grading: "partial" }), false);
 });

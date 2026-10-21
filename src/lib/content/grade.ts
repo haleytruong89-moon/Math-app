@@ -65,7 +65,8 @@ type SimpleGradable =
   | { type: "numeric"; answer: string; mistakes?: (Mistake & { answer: string })[] };
 type ProofGradable = { type: "proof"; id: string; bank: string[]; blanks: { correct: number; mistakes?: Record<string, Mistake> }[] };
 type OrderGradable = { type: "order"; id: string; lines: { text: string; after?: number[] }[]; distractors: { text: string; code: string; feedback: string }[] };
-type GradableItem = SimpleGradable | { type: "steps" | "analysis"; steps: { item: SimpleGradable }[] } | ProofGradable | OrderGradable;
+type StepsGradable = { type: "steps"; steps: { item: SimpleGradable }[] } | { type: "analysis"; steps: { item: SimpleGradable }[] };
+type GradableItem = SimpleGradable | StepsGradable | ProofGradable | OrderGradable;
 
 /** LT5: a multi-step answer is the step answers joined by "|" (also S5 analysis levels and C3 blanks). */
 export const STEP_SEPARATOR = "|";
