@@ -29,16 +29,16 @@
 | S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | ✅ Merged 20/10 (PR #27), SQL 0012 chạy bằng nút 20/10 |
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
-| Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | 🟡 PR mở 21/10 — không SQL |
-| S8 — AI giảng bài + báo cáo tuần (SQL **0014**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
-| S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
+| Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
+| S8 — AI giảng bài + báo cáo tuần | `p1-slice-8` | ⬜ code ~09–25/11, bật ~cuối 11 (thứ tự 21/10: sau S5) |
+| S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ⬜ 25–27/10 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
-| S5 — Hình học C1–C3 | — | ⬜ thiết kế ~11/2026 (Track C từ 23/11, LT18) |
+| S5 — Hình học C2 + C3 (C1 để sau) | `p1-slice-5` | ⬜ thiết kế 22–24/10, code 28/10–08/11 (Track C từ 23/11, LT18) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -49,6 +49,18 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 21/10/2026 — Thứ tự lát tiếp theo: S5 → S4b → S8 (nhánh `p1-plan-reorder`, chỉ tài liệu)
+
+Phụ huynh chốt 21/10 (ghi ở `docs/SPEC.md` §0):
+- **Thứ tự:** thiết kế S5 (22–24/10) → S4b gọn (25–27/10) → code S5 (28/10–08/11) → S8 (~09–25/11, AI cho con bật ~cuối 11 thay vì ~09/11).
+- **Lý do:** hình học có hạn cứng (Track C từ 23/11, đợt 5 hạn 15/11) và câu chứng minh cần dạng C2/C3; S8 chờ dữ liệu pilot thật và cần phép tính mốc của S4b cho báo cáo tuần.
+- **S5:** làm C2 (sắp xếp bước) + C3 (chứng minh hai cột); **C1 (kéo hình) để sau**, chỉ làm khi C2 + C3 chưa đủ.
+- **S4b:** giữ tiến độ mốc 8,5/9,5 + tô vàng KU trễ lịch; **bỏ nút mở khoá tay** (dấu ★ ưu tiên đã mở bài).
+- Số migration lấy theo thứ tự làm (số trống kế tiếp), không giữ chỗ 0014 cho S8 nữa.
+- Sửa trạng thái: giao diện bản 2 đã merge (#31).
 
 ---
 

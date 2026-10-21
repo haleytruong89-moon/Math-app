@@ -270,7 +270,7 @@ F0 (số học nền) và F2 (PT bậc nhất) giả định đã biết — kh�
 3. GĐ4: l-kethop, o-nangcao (4.2c) + ôn trộn nhiều
 
 Chứng minh viết tự do làm trên giấy với gia sư (LT6); app luyện nhận dạng, tính góc/độ dài, bước then chốt. Hình học tương tác
-C1–C3 (S5) cần thiết kế trước ~11/2026 để dùng từ GĐ2.
+C1–C3 (S5) cần thiết kế trước ~11/2026 để dùng từ GĐ2. (21/10: thiết kế 22–24/10, code C2 + C3 trước 08/11; C1 làm sau.)
 
 ### H4. Những KU nào app chấm được 100%?
 

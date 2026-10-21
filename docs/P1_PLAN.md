@@ -63,11 +63,11 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ✅ Merged 05/10 (PR #13) | 16/10 (để đợt 1 lên app tuần 2) |
 | 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | ✅ Merged 05/10 (qua PR #13) | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | 🟡 PR `p1-slice-6b` — SQL 0010, merge sau #14 → #15 | 23/10 (để đợt 2 lên app tuần 3) |
-| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration 0014) | ⬜ code 26/10 – 06/11; bật ~09/11 sau khi đạt bộ test | 06/11 |
-| 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch, nút mở khoá tay | ⬜ sau khi PR #11 merge | 06/11 |
+| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration: số trống kế tiếp lúc làm) | ⬜ code ~09–25/11 (sau S5, quyết định 21/10); bật ~cuối 11/2026 sau khi đạt bộ test | 25/11 |
+| 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch (bỏ nút mở khoá tay — đã có ★ ưu tiên, 21/10) | ⬜ 25–27/10 | 27/10 |
 | 9 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot (PR #8) | ⬜ phụ huynh | **12/10** |
 | 10 | **C1…C10** | Soạn nội dung 10 đợt theo `docs/CURRICULUM.md` H6 (nháp + kiểm tra độc lập) | ⬜ | theo bảng H6 |
-| 11 | **S5** | Hình học C1 kéo hình, C2 sắp xếp bước, C3 hai cột | ⬜ thiết kế ~11/2026, code 12/2026 (Track C từ 23/11, LT18) | 31/12 |
+| 11 | **S5** | Hình học: C2 sắp xếp bước, C3 chứng minh hai cột (C1 kéo hình làm sau, chỉ khi cần — 21/10) | ⬜ thiết kế 22–24/10, code 28/10–08/11 (đợt 5 hạn 15/11, Track C từ 23/11) | 08/11 |
 
 ### S6a — Bộ lộ trình (curriculum engine)
 
@@ -158,11 +158,11 @@ Thiết kế mặc định (đổi được khi review):
 - Cờ lệch: đề xuất **mới nhất** của gia sư cho một KU lệch ≥ 1 bậc so với mức hệ thống, và chưa có mức phụ huynh chốt mới hơn đề xuất đó → "Cần chú ý" hiện cả hai mức + bằng chứng + nút "Xem & chốt mức". Chốt → bảng `parent_confirmations` (học sinh, KU, mức, lúc chốt); cờ biến mất.
 - Mức hiển thị cuối cùng của KU = phụ huynh chốt (nếu mới hơn mọi thay đổi khác) ?? mức hệ thống; ô "chưa đủ dữ liệu" khi < 5 câu (D15).
 - Bảng màu theo domain/KU; tóm tắt tuần (số buổi học, bài kiểm tra, lượt ôn).
-- Bổ sung 05/10 (làm trong S4b, sau khi PR #11 merge): **tiến độ tới mốc** 8.5 (KU bắt buộc vững ở `CURRICULUM.md` §4.1, hạn ~21/02/2027) và 9.5 (thêm o-nangcao, 2c chắc chắn, hạn 31/03/2027) theo `docs/CURRICULUM.md` §4; KU trễ so với lịch §3.3 tô vàng; mở khoá tay cũng có ở đây.
+- Bổ sung 05/10 (làm trong S4b): **tiến độ tới mốc** 8.5 (KU bắt buộc vững ở `CURRICULUM.md` §4.1, hạn ~21/02/2027) và 9.5 (thêm o-nangcao, 2c chắc chắn, hạn 31/03/2027) theo `docs/CURRICULUM.md` §4; KU trễ so với lịch §3.3 tô vàng. ~~Mở khoá tay~~ bỏ 21/10 (dấu ★ ưu tiên của gia sư đã mở bài). Phép tính tiến độ mốc dùng lại cho báo cáo tuần của S8.
 - **Buổi dạy chưa ghi > 24h:** cần biết lịch dạy → mặc định thêm "ngày dạy trong tuần" vào phần gán gia sư (phụ huynh chọn, ví dụ T3, T5); ngày có lịch mà quá 24h chưa có buổi ghi → nhắc. *(Câu hỏi Q8 trong PROGRESS.)*
 
 ### S5
-Chi tiết hoá khi bắt đầu lát, lấy từ §2.7 và §3.4 của `docs/SPEC.md`.
+Thứ tự chốt 21/10 (`docs/SPEC.md` §0): **thiết kế S5 (22–24/10) → S4b gọn → code S5 (28/10–08/11) → S8**. Làm C2 (sắp xếp bước) và C3 (chứng minh hai cột) trước; C1 (kéo hình) để sau. Chi tiết hoá trong spec thiết kế S5, lấy từ §2.7 và §3.4 của `docs/SPEC.md`.
 
 ## 4. Việc phụ huynh cần làm (gom lại)
 
