@@ -1,0 +1,950 @@
+{
+  "id": "f3-dongdang",
+  "module": "backfill-hinh",
+  "order": 1,
+  "title": "Tam giác đồng dạng & tỉ số cạnh",
+  "status": "draft",
+  "estMinutes": 50,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 288.1 251.7\" role=\"img\"><title>Tam giác ABC với hai đường cao BE, CF cắt nhau tại H</title><line x1=\"176.2\" y1=\"22\" x2=\"22\" y2=\"229.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"229.7\" x2=\"266.1\" y2=\"229.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"266.1\" y1=\"229.7\" x2=\"176.2\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"229.7\" x2=\"227.6\" y2=\"140.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"266.1\" y1=\"229.7\" x2=\"108.7\" y2=\"112.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"220.2,143.9 223.4,151.2 230.7,148\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"115.1,117.6 110.4,124.1 104,119.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"176.2\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.9\" y=\"234.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"278.2\" y=\"234.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"239.2\" y=\"134.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"96.6\" y=\"108\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"176.2\" y=\"175.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"176.2\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"229.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"266.1\" cy=\"229.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"227.6\" cy=\"140.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"108.7\" cy=\"112.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"176.2\" cy=\"162.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+    "alt": "Tam giác ABC nhọn với hai đường cao BE (E trên AC) và CF (F trên AB) cắt nhau tại H."
+  },
+  "theory": [
+    "**Định nghĩa và thứ tự đỉnh:** $\\triangle ABC \\backsim \\triangle MNP$ nghĩa là $A \\leftrightarrow M$, $B \\leftrightarrow N$, $C \\leftrightarrow P$: $\\widehat A=\\widehat M$, $\\widehat B=\\widehat N$, $\\widehat C=\\widehat P$ và $\\dfrac{AB}{MN}=\\dfrac{BC}{NP}=\\dfrac{CA}{PM}=k$ (tỉ số đồng dạng). **Viết đỉnh theo đúng cặp tương ứng**: cạnh nối đỉnh thứ 1–2 của tam giác này ứng với cạnh nối đỉnh thứ 1–2 của tam giác kia. Từ tỉ lệ thức suy ra tích: $\\dfrac{a}{b}=\\dfrac{c}{d} \\iff a\\cdot d=b\\cdot c$.",
+    "**Các trường hợp đồng dạng:** **g.g** — hai cặp góc bằng nhau; **c.g.c** — hai cặp cạnh tỉ lệ và góc **xen giữa** bằng nhau; **c.c.c** — ba cặp cạnh tỉ lệ. **Tam giác vuông:** một cặp góc nhọn bằng nhau; hoặc hai cạnh góc vuông tỉ lệ; hoặc cạnh huyền và một cạnh góc vuông tỉ lệ. **Song song:** $MN \\parallel BC$ ($M \\in AB$, $N \\in AC$) thì $\\triangle AMN \\backsim \\triangle ABC$ (định lí Thalès).",
+    "**Vì sao:** tam giác này là tam giác kia được phóng to hoặc thu nhỏ: các góc giữ nguyên, mọi cạnh nhân cùng một số $k$. Biết hai cặp góc bằng nhau là biết luôn cặp thứ ba (tổng ba góc $180^\\circ$), nên g.g là đủ.",
+    "**Bẫy hay gặp:** (1) viết đỉnh theo thứ tự chữ cái — có $\\widehat A=\\widehat N$, $\\widehat B=\\widehat M$ thì phải viết $\\triangle ABC \\backsim \\triangle NMP$; (2) lập tỉ số với đoạn không tương ứng, như lấy $\\dfrac{AM}{MB}$ thay cho $\\dfrac{AM}{AB}$; (3) dùng c.g.c khi góc không nằm giữa hai cạnh; (4) lấy chính điều cần chứng minh làm lí do.",
+    "**Nhận dạng:** đề hỏi “chứng minh $AB\\cdot CD=EF\\cdot GH$” → đổi thành tỉ lệ thức $\\dfrac{AB}{EF}=\\dfrac{GH}{CD}$ → tìm hai tam giác chứa các đoạn đó. Có góc chung và góc vuông → g.g; có đường song song → định lí Thalès; đề cho toàn số đo cạnh → c.g.c hoặc c.c.c. **Không** dùng đồng dạng khi đề chỉ cần một hệ thức đã thuộc sẵn.",
+    "**Cấu hình mẫu:** $\\triangle ABC$ vuông tại $A$, đường cao $AH$: $\\triangle HBA \\backsim \\triangle ABC$, $\\triangle HAC \\backsim \\triangle ABC$, $\\triangle HBA \\backsim \\triangle HAC$ (cầu nối sang hệ thức lượng: $AB^2=BH\\cdot BC$, $AH^2=BH\\cdot CH$). Hai đường cao $BE$, $CF$ của $\\triangle ABC$: $\\triangle ABE \\backsim \\triangle ACF$ (g.g), rồi $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c)."
+  ],
+  "worked": {
+    "problem": "Cho $\\triangle ABC$ có hai đường cao $BE$ và $CF$ ($E \\in AC$, $F \\in AB$). Chứng minh $AE\\cdot AC = AF\\cdot AB$.",
+    "analysis": {
+      "goal": "$AE\\cdot AC = AF\\cdot AB$",
+      "steps": [
+        {
+          "ask": "Muốn có $AE\\cdot AC = AF\\cdot AB$, cần tỉ lệ thức nào?",
+          "node": "$\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$"
+        },
+        {
+          "ask": "Muốn có $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$, cần hai tam giác nào đồng dạng?",
+          "node": "$\\triangle AEB \\backsim \\triangle AFC$"
+        },
+        {
+          "ask": "Muốn có $\\triangle AEB \\backsim \\triangle AFC$, cần gì?",
+          "node": "$\\widehat A$ chung và $\\widehat{AEB}=\\widehat{AFC}=90^\\circ$ — có từ giả thiết $BE$, $CF$ là đường cao"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "text": "Xét $\\triangle AEB$ và $\\triangle AFC$ có: $\\widehat A$ chung; $\\widehat{AEB}=\\widehat{AFC}=90^\\circ$ ($BE$, $CF$ là đường cao).",
+        "why": "Hai tam giác vuông có thêm một cặp góc nhọn bằng nhau là đủ điều kiện g.g."
+      },
+      {
+        "text": "⇒ $\\triangle AEB \\backsim \\triangle AFC$ (g.g).",
+        "why": "Ghép đỉnh theo góc bằng nhau: $A \\leftrightarrow A$, $E \\leftrightarrow F$ (góc vuông), $B \\leftrightarrow C$ (góc còn lại)."
+      },
+      {
+        "text": "⇒ $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$ (cặp cạnh tương ứng).",
+        "why": "$AE$ nối đỉnh 1–2 của tam giác thứ nhất, ứng với $AF$ nối đỉnh 1–2 của tam giác thứ hai; tương tự $AB \\leftrightarrow AC$ (đỉnh 1–3)."
+      },
+      {
+        "text": "⇒ $AE\\cdot AC = AF\\cdot AB$ (nhân chéo tỉ lệ thức).",
+        "why": "$\\dfrac{a}{b}=\\dfrac{c}{d} \\iff a\\cdot d=b\\cdot c$."
+      },
+      {
+        "text": "Kết luận: $AE\\cdot AC = AF\\cdot AB$.",
+        "why": "Viết lại đúng điều đề yêu cầu chứng minh."
+      }
+    ],
+    "selfExplain": "Vì sao trong tỉ lệ thức, $AE$ phải đứng cùng $AF$ chứ không đứng cùng $AC$?"
+  },
+  "faded": {
+    "problem": "Cho $\\triangle ABC$ nhọn có hai đường cao $BE$, $CF$ cắt nhau tại $H$. Chứng minh $HB\\cdot HE = HC\\cdot HF$; áp dụng: biết $HB = 6$ cm, $HE = 2$ cm, $HC = 4$ cm, tính $HF$.",
+    "steps": [
+      {
+        "text": "Xét $\\triangle HFB$ và $\\triangle HEC$ có: $\\widehat{FHB}=\\widehat{EHC}$ (đối đỉnh); $\\widehat{HFB}=\\widehat{HEC}=90^\\circ$ ($CF \\perp AB$, $BE \\perp AC$)."
+      },
+      {
+        "prompt": "Viết kết luận đồng dạng (đúng thứ tự đỉnh và đúng trường hợp).",
+        "item": {
+          "id": "f3-dongdang-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Từ hai cặp góc trên, ta có:",
+          "options": [
+            "$\\triangle HFB \\backsim \\triangle HCE$ (g.g)",
+            "$\\triangle HFB \\backsim \\triangle HEC$ (c.g.c)",
+            "$\\triangle HBF \\backsim \\triangle HEC$ (g.g)",
+            "$\\triangle HFB \\backsim \\triangle HEC$ (g.g)"
+          ],
+          "correct": 3,
+          "mistakes": {
+            "0": {
+              "code": "E08",
+              "feedback": "Sai thứ tự đỉnh: góc vuông $F$ phải ứng với góc vuông $E$, không ứng với $C$."
+            },
+            "1": {
+              "code": "E09",
+              "feedback": "Ta mới có hai cặp góc bằng nhau, chưa có cặp cạnh tỉ lệ nào: lí do phải là g.g."
+            },
+            "2": {
+              "code": "E08",
+              "feedback": "Sai thứ tự đỉnh: đỉnh thứ hai $B$ không phải góc vuông, nhưng $E$ là góc vuông."
+            }
+          },
+          "solution": "$H \\leftrightarrow H$ (đối đỉnh), $F \\leftrightarrow E$ (góc vuông), $B \\leftrightarrow C$: $\\triangle HFB \\backsim \\triangle HEC$ (g.g)."
+        }
+      },
+      {
+        "prompt": "Lập tỉ số cạnh tương ứng.",
+        "item": {
+          "id": "f3-dongdang-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Từ $\\triangle HFB \\backsim \\triangle HEC$, tỉ lệ thức nào đúng?",
+          "options": [
+            "$\\dfrac{HF}{HE}=\\dfrac{HB}{HC}$",
+            "$\\dfrac{HF}{HC}=\\dfrac{HB}{HE}$",
+            "$\\dfrac{HF}{HE}=\\dfrac{HC}{HB}$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E08",
+              "feedback": "$HF$ nối đỉnh 1–2 nên ứng với $HE$ (đỉnh 1–2 của $\\triangle HEC$), không ứng với $HC$."
+            },
+            "2": {
+              "code": "E08",
+              "feedback": "$HB$ (đỉnh 1–3 của $\\triangle HFB$) ứng với $HC$ (đỉnh 1–3 của $\\triangle HEC$); con đảo ngược vế phải."
+            }
+          },
+          "solution": "Cặp tương ứng: $HF \\leftrightarrow HE$, $HB \\leftrightarrow HC$, nên $\\dfrac{HF}{HE}=\\dfrac{HB}{HC}$."
+        }
+      },
+      {
+        "text": "⇒ $HF\\cdot HC = HE\\cdot HB$ (nhân chéo), tức $HB\\cdot HE = HC\\cdot HF$."
+      },
+      {
+        "prompt": "Áp dụng: tính $HF$.",
+        "item": {
+          "id": "f3-dongdang-f3",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Với $HB = 6$ cm, $HE = 2$ cm, $HC = 4$ cm, tính $HF$.",
+          "answer": "3",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "4/3",
+              "code": "E08",
+              "feedback": "Con ghép $HF$ với $HC$; theo tỉ lệ thức đúng, $HF$ đi cùng $HE$ và $HB$ đi cùng $HC$."
+            },
+            {
+              "answer": "12",
+              "code": "E08",
+              "feedback": "Con đặt sai vị trí trong tích: $HB\\cdot HE$ là tích của hai đoạn trên cùng đường cao $BE$."
+            }
+          ],
+          "solution": "$HC\\cdot HF = HB\\cdot HE = 6\\cdot 2 = 12$ ⇒ $HF = \\dfrac{12}{4} = 3$ (cm)."
+        }
+      },
+      {
+        "text": "Kết luận: $HB\\cdot HE = HC\\cdot HF$ và $HF = 3$ cm."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "f3-dongdang-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho $\\triangle ABC \\backsim \\triangle MNP$. Khẳng định nào đúng?",
+      "hints": [
+        "Đề hỏi: từ cách viết $\\triangle ABC \\backsim \\triangle MNP$ suy ra được gì?",
+        "Thứ tự chữ cho biết đỉnh nào ứng với đỉnh nào.",
+        "Ghép $A$–$M$, $B$–$N$, $C$–$P$ rồi kiểm tra từng phương án."
+      ],
+      "options": [
+        "$\\widehat B=\\widehat P$",
+        "$\\dfrac{AB}{MP}=\\dfrac{BC}{NP}$",
+        "$\\dfrac{AC}{MP}=\\dfrac{BC}{NP}$",
+        "$\\dfrac{AB}{NP}=\\dfrac{AC}{MN}$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E08",
+          "feedback": "Đỉnh thứ hai ứng với đỉnh thứ hai: $B \\leftrightarrow N$, nên $\\widehat B=\\widehat N$."
+        },
+        "1": {
+          "code": "E08",
+          "feedback": "$AB$ nối đỉnh 1–2 nên ứng với $MN$ (đỉnh 1–2), không ứng với $MP$."
+        },
+        "3": {
+          "code": "E08",
+          "feedback": "Cạnh nối hai đỉnh nào thì ứng với cạnh nối hai đỉnh cùng vị trí: $AB \\leftrightarrow MN$, $AC \\leftrightarrow MP$."
+        }
+      },
+      "solution": "$A \\leftrightarrow M$, $B \\leftrightarrow N$, $C \\leftrightarrow P$ nên $AC \\leftrightarrow MP$, $BC \\leftrightarrow NP$: $\\dfrac{AC}{MP}=\\dfrac{BC}{NP}$."
+    },
+    {
+      "id": "f3-dongdang-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $\\triangle ABC \\backsim \\triangle DEF$ có $AB = 4$ cm, $BC = 6$ cm, $DE = 6$ cm. Tính $EF$.",
+      "hints": [
+        "Cần tìm $EF$, một cạnh của $\\triangle DEF$.",
+        "Theo thứ tự đỉnh, $EF$ ứng với cạnh nào của $\\triangle ABC$?",
+        "Tỉ số đồng dạng $k = \\dfrac{DE}{AB}$, rồi nhân $k$ với cạnh tương ứng."
+      ],
+      "answer": "9",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "4",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $\\triangle DEF$ lớn hơn ($DE > AB$) nên $EF$ phải lớn hơn $BC$."
+        },
+        {
+          "answer": "8",
+          "code": "E04",
+          "feedback": "Đồng dạng là **nhân** cùng một tỉ số $k$, không phải **cộng** thêm cùng một số."
+        }
+      ],
+      "solution": "$k = \\dfrac{DE}{AB} = \\dfrac{6}{4} = \\dfrac{3}{2}$; $EF \\leftrightarrow BC$ nên $EF = \\dfrac{3}{2}\\cdot 6 = 9$ (cm)."
+    },
+    {
+      "id": "f3-dongdang-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "$\\triangle ABC$ và $\\triangle DEF$ có $\\widehat A=\\widehat D$, $AB = 3$, $AC = 4$, $DE = 6$, $DF = 8$ (cùng đơn vị). Để chứng minh hai tam giác đồng dạng, dùng trường hợp nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi: chứng minh đồng dạng theo trường hợp nào?",
+        "Đếm xem đề cho mấy cặp góc bằng nhau, mấy cặp cạnh.",
+        "So sánh $\\dfrac{AB}{DE}$ với $\\dfrac{AC}{DF}$ và xem góc $A$ nằm ở đâu."
+      ],
+      "options": [
+        "Góc – góc (g.g)",
+        "Cạnh – góc – cạnh (c.g.c)",
+        "Cạnh – cạnh – cạnh (c.c.c)",
+        "Đường thẳng song song với một cạnh (Thalès)"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đề chỉ cho một cặp góc bằng nhau; g.g cần hai cặp góc."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề chưa cho $BC$ và $EF$, nên chưa có đủ ba cặp cạnh để dùng c.c.c."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Hai tam giác nằm riêng, không có đường thẳng song song nào cắt hai cạnh."
+        }
+      },
+      "solution": "$\\dfrac{AB}{DE}=\\dfrac{AC}{DF}=\\dfrac{1}{2}$ và góc xen giữa $\\widehat A=\\widehat D$ ⇒ $\\triangle ABC \\backsim \\triangle DEF$ (c.g.c)."
+    },
+    {
+      "id": "f3-dongdang-p4",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ vuông tại $A$, đường cao $AH$. Phân tích ngược để chứng minh $AH^2 = BH\\cdot CH$.",
+      "hints": [
+        "Cần chứng minh một bình phương bằng một tích: $AH^2 = BH\\cdot CH$.",
+        "Tích → tỉ lệ thức → hai tam giác cùng có cạnh $AH$.",
+        "Xét hai tam giác vuông tại $H$; tìm một cặp góc nhọn bằng nhau."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 344 188\" role=\"img\"><title>Tam giác ABC vuông tại A, đường cao AH</title><line x1=\"130\" y1=\"22\" x2=\"22\" y2=\"166\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"166\" x2=\"322\" y2=\"166\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"322\" y1=\"166\" x2=\"130\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"130\" y1=\"22\" x2=\"130\" y2=\"166\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"125.2,28.4 131.6,33.2 136.4,26.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"130,158 138,158 138,166\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"130\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.5\" y=\"169.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"334.5\" y=\"169.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"130\" y=\"179\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"130\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"322\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"130\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vuông tại A, đường cao AH, H nằm trên cạnh BC."
+      },
+      "drawFirst": true,
+      "goal": "$AH^2 = BH\\cdot CH$",
+      "steps": [
+        {
+          "ask": "Muốn có $AH^2 = BH\\cdot CH$, cần tỉ lệ thức nào?",
+          "node": "$\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$",
+          "item": {
+            "id": "f3-dongdang-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn tỉ lệ thức dẫn tới điều cần chứng minh.",
+            "options": [
+              "$\\dfrac{HA}{HB}=\\dfrac{HA}{HC}$",
+              "$\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$",
+              "$AB^2 = BH\\cdot BC$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Nhân chéo tỉ lệ thức này ra $HA\\cdot HC = HA\\cdot HB$, không ra $AH^2$. Cần $HA$ đứng ở hai vị trí chéo nhau."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Đẳng thức này đúng nhưng không chứa $AH$ và $CH$, nên không dẫn tới điều cần chứng minh."
+              }
+            },
+            "solution": "Nhân chéo $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$ được $HA^2 = HB\\cdot HC$."
+          }
+        },
+        {
+          "ask": "Muốn có $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$, cần hai tam giác nào đồng dạng?",
+          "node": "$\\triangle HBA \\backsim \\triangle HAC$",
+          "item": {
+            "id": "f3-dongdang-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp tam giác (đúng thứ tự đỉnh).",
+            "options": [
+              "$\\triangle HBA \\backsim \\triangle HCA$",
+              "$\\triangle HBA \\backsim \\triangle ABC$",
+              "$\\triangle HBA \\backsim \\triangle HAC$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Sai thứ tự đỉnh: viết vậy thì $B \\leftrightarrow C$, cho tỉ số $\\dfrac{HB}{HC}$ chứ không cho $\\dfrac{HB}{HA}$."
+              },
+              "1": {
+                "code": "E06",
+                "feedback": "Cặp tam giác này đúng nhưng tỉ số của nó không chứa $HC$; nó dẫn tới $AB^2 = BH\\cdot BC$."
+              }
+            },
+            "solution": "$H \\leftrightarrow H$, $B \\leftrightarrow A$, $A \\leftrightarrow C$ cho $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$."
+          }
+        },
+        {
+          "ask": "Muốn có $\\triangle HBA \\backsim \\triangle HAC$ (g.g), cần hai cặp góc nào bằng nhau?",
+          "node": "$\\widehat{BHA}=\\widehat{AHC}=90^\\circ$ và $\\widehat{HBA}=\\widehat{HAC}$",
+          "item": {
+            "id": "f3-dongdang-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn điều cần có.",
+            "options": [
+              "$\\widehat{BHA}=\\widehat{AHC}=90^\\circ$ và $\\widehat{HBA}=\\widehat{HAC}$",
+              "$\\widehat{BHA}=\\widehat{AHC}=90^\\circ$ và $\\widehat{HBA}=\\widehat{HCA}$",
+              "$\\widehat{BHA}=\\widehat{AHC}=90^\\circ$ và $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "$B$ ứng với $A$, nên góc cần so là $\\widehat{HAC}$; $\\widehat{HBA}$ và $\\widehat{HCA}$ nói chung không bằng nhau."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "Tỉ lệ thức này chính là điều đang cần chứng minh, không được dùng làm lí do."
+              }
+            },
+            "solution": "Hai tam giác cùng vuông tại $H$; cần thêm một cặp góc nhọn tương ứng: $\\widehat{HBA}=\\widehat{HAC}$."
+          }
+        },
+        {
+          "ask": "Vì sao $\\widehat{HBA}=\\widehat{HAC}$?",
+          "node": "Cùng phụ với $\\widehat{BAH}$ (vì $AH \\perp BC$ và $\\widehat{BAC}=90^\\circ$ — giả thiết)",
+          "given": true,
+          "item": {
+            "id": "f3-dongdang-p4-s4",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $AH$ là tia phân giác của $\\widehat{BAC}$",
+              "Vì $\\triangle HBA \\backsim \\triangle HAC$",
+              "Vì cùng phụ với $\\widehat{BAH}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "$AH$ là đường cao, không phải phân giác; đọc lại giả thiết."
+              },
+              "1": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng cặp tam giác đồng dạng để suy ra chính góc cần cho nó."
+              }
+            },
+            "solution": "$\\widehat{HBA}+\\widehat{BAH}=90^\\circ$ ($\\triangle HBA$ vuông tại $H$) và $\\widehat{HAC}+\\widehat{BAH}=90^\\circ$ ($\\widehat{BAC}=90^\\circ$)."
+          }
+        }
+      ],
+      "outline": [
+        "$\\widehat{HBA}=\\widehat{HAC}$ (cùng phụ $\\widehat{BAH}$)",
+        "$\\widehat{BHA}=\\widehat{AHC}=90^\\circ$ ⇒ $\\triangle HBA \\backsim \\triangle HAC$ (g.g)",
+        "⇒ $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$",
+        "⇒ $AH^2 = BH\\cdot CH$"
+      ],
+      "solution": "Xét $\\triangle HBA$ và $\\triangle HAC$ có $\\widehat{BHA}=\\widehat{AHC}=90^\\circ$, $\\widehat{HBA}=\\widehat{HAC}$ (cùng phụ $\\widehat{BAH}$) ⇒ $\\triangle HBA \\backsim \\triangle HAC$ (g.g) ⇒ $\\dfrac{HB}{HA}=\\dfrac{HA}{HC}$ ⇒ $AH^2 = BH\\cdot CH$."
+    },
+    {
+      "id": "f3-dongdang-p5",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ có $BC = 10$ cm. Trên cạnh $AB$ lấy $M$ với $AM = 2$ cm, $MB = 3$ cm; đường thẳng qua $M$ song song với $BC$ cắt $AC$ tại $N$. Điền vào chỗ trống để chứng minh $\\triangle AMN \\backsim \\triangle ABC$ và tính $MN$.",
+      "hints": [
+        "Cần chứng minh hai tam giác đồng dạng rồi tính $MN$.",
+        "Có $MN \\parallel BC$: tạo ra cặp góc bằng nhau nào?",
+        "Cạnh $AM$ của tam giác nhỏ ứng với cạnh nào của tam giác lớn?"
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 344 164\" role=\"img\"><title>Tam giác ABC, MN song song với BC</title><line x1=\"112\" y1=\"22\" x2=\"22\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"142\" x2=\"322\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"322\" y1=\"142\" x2=\"112\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"76\" y1=\"70\" x2=\"196\" y2=\"70\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"112\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.5\" y=\"145.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"334.5\" y=\"145.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"63.3\" y=\"67.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"208.5\" y=\"66.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><circle cx=\"112\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"322\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"76\" cy=\"70\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196\" cy=\"70\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC, M trên AB, N trên AC, MN song song với BC."
+      },
+      "lines": [
+        "Xét $\\triangle AMN$ và $\\triangle ABC$ có: $\\widehat A$ chung;",
+        "$\\widehat{AMN}=\\widehat{ABC}$ ([[1]])",
+        "⇒ $\\triangle AMN \\backsim \\triangle ABC$ ([[2]])",
+        "⇒ $\\dfrac{MN}{BC}$ = [[3]] $=\\dfrac{2}{5}$ (vì $AB = AM + MB = 5$ cm)",
+        "⇒ $MN = \\dfrac{2}{5}\\cdot 10 = 4$ (cm).",
+        "Kết luận: $\\triangle AMN \\backsim \\triangle ABC$ và $MN = 4$ cm."
+      ],
+      "bank": [
+        "hai góc đồng vị, $MN \\parallel BC$",
+        "hai góc so le trong, $MN \\parallel BC$",
+        "g.g",
+        "c.g.c",
+        "$\\dfrac{AM}{AB}$",
+        "$\\dfrac{AM}{MB}$",
+        "$\\triangle AMN \\backsim \\triangle ABC$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E08",
+              "feedback": "$\\widehat{AMN}$ và $\\widehat{ABC}$ nằm cùng phía với cát tuyến $AB$: đó là cặp góc đồng vị, không phải so le trong."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Ta mới có hai cặp góc bằng nhau, chưa có cặp cạnh tỉ lệ nào: lí do phải là g.g."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "$AM$ ứng với cả cạnh $AB$ của tam giác lớn, không ứng với đoạn $MB$."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat A$ chung, $\\widehat{AMN}=\\widehat{ABC}$ (đồng vị, $MN \\parallel BC$) ⇒ $\\triangle AMN \\backsim \\triangle ABC$ (g.g) ⇒ $\\dfrac{MN}{BC}=\\dfrac{AM}{AB}=\\dfrac{2}{5}$ ⇒ $MN = 4$ cm."
+    },
+    {
+      "id": "f3-dongdang-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ có $AB = 6$ cm, $AC = 9$ cm, $BC = 12$ cm. Trên cạnh $AB$ lấy $D$ với $AD = 2$ cm, trên cạnh $AC$ lấy $E$ với $AE = 3$ cm. Tính $DE$.",
+      "hints": [
+        "Cần tính $DE$, một cạnh của $\\triangle ADE$.",
+        "So sánh $\\dfrac{AD}{AB}$ và $\\dfrac{AE}{AC}$; hai tam giác chung góc nào?",
+        "Có c.g.c thì $\\dfrac{DE}{BC}$ bằng tỉ số đồng dạng."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 344 152.9\" role=\"img\"><title>Tam giác ABC, D trên AB, E trên AC</title><line x1=\"125.1\" y1=\"22\" x2=\"22\" y2=\"130.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"130.9\" x2=\"322\" y2=\"130.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"322\" y1=\"130.9\" x2=\"125.1\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"90.8\" y1=\"58.3\" x2=\"190.8\" y2=\"58.3\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"125.1\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.5\" y=\"134.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"334.5\" y=\"134.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"78\" y=\"55.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"202.8\" y=\"53.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"125.1\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"130.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"322\" cy=\"130.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"90.8\" cy=\"58.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"190.8\" cy=\"58.3\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC, D trên cạnh AB, E trên cạnh AC, đoạn DE."
+      },
+      "drawFirst": true,
+      "answer": "4",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "36",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $\\triangle ADE$ nhỏ hơn $\\triangle ABC$ nên $DE$ phải nhỏ hơn $BC$."
+        },
+        {
+          "answer": "6",
+          "code": "E08",
+          "feedback": "Con lấy tỉ số $\\dfrac{AD}{DB}$; cạnh $AD$ ứng với cả cạnh $AB$, không ứng với đoạn $DB$."
+        }
+      ],
+      "solution": "$\\dfrac{AD}{AB}=\\dfrac{2}{6}=\\dfrac{1}{3}$, $\\dfrac{AE}{AC}=\\dfrac{3}{9}=\\dfrac{1}{3}$, $\\widehat A$ chung ⇒ $\\triangle ADE \\backsim \\triangle ABC$ (c.g.c) ⇒ $\\dfrac{DE}{BC}=\\dfrac{1}{3}$ ⇒ $DE = 4$ cm."
+    },
+    {
+      "id": "f3-dongdang-p7",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABC$ có ba góc nhọn, đường cao $BE$. Gọi $H$, $K$ lần lượt là chân đường vuông góc kẻ từ $E$ đến $AB$ và $BC$. Sắp xếp các dòng thành lời giải chứng minh $BH\\cdot BA = BK\\cdot BC$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 8, Bài 4.2b (chuyển thể, bỏ đường tròn)",
+      "hints": [
+        "Đề cần $BH\\cdot BA = BK\\cdot BC$: hai tích cùng xuất phát từ $B$.",
+        "Đoạn $BE$ nằm trong cả hai tam giác vuông $BEA$ và $BEC$.",
+        "Mỗi cặp tam giác vuông có chung góc tại $B$ → g.g → so sánh với $BE^2$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324 244\" role=\"img\"><title>Tam giác ABC, đường cao BE, EH vuông góc AB, EK vuông góc BC</title><line x1=\"110\" y1=\"22\" x2=\"22\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"222\" x2=\"302\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302\" y1=\"222\" x2=\"110\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"222\" x2=\"167.7\" y2=\"82.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"167.7\" y1=\"82.1\" x2=\"97.2\" y2=\"51.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"167.7\" y1=\"82.1\" x2=\"167.7\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"161.9,87.7 167.5,93.4 173.3,87.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"104.5,54.3 101.3,61.6 94,58.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"167.7,214 175.7,214 175.7,222\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"110\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.9\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"314.1\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"179.3\" y=\"76.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"84.7\" y=\"47.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"167.7\" y=\"235\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"110\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"167.7\" cy=\"82.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"97.2\" cy=\"51.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"167.7\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, đường cao BE; EH vuông góc với AB tại H, EK vuông góc với BC tại K."
+      },
+      "drawFirst": true,
+      "lines": [
+        {
+          "text": "Xét $\\triangle BHE$ và $\\triangle BEA$ có:"
+        },
+        {
+          "text": "$\\widehat{ABE}$ chung;"
+        },
+        {
+          "text": "$\\widehat{BHE}=\\widehat{BEA}=90^\\circ$ (gt);",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "⇒ $\\triangle BHE \\backsim \\triangle BEA$ (g.g) ⇒ $\\dfrac{BH}{BE}=\\dfrac{BE}{BA}$ ⇒ $BE^2 = BH\\cdot BA$ (1)",
+          "after": [
+            1,
+            2
+          ]
+        },
+        {
+          "text": "Tương tự, $\\triangle BKE \\backsim \\triangle BEC$ (g.g) ⇒ $BE^2 = BK\\cdot BC$ (2)"
+        },
+        {
+          "text": "Kết luận: từ (1) và (2) ⇒ $BH\\cdot BA = BK\\cdot BC$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "⇒ $\\triangle BHE \\backsim \\triangle BAE$ (g.g) ⇒ $BE^2 = BH\\cdot BA$ (1)",
+          "code": "E08",
+          "feedback": "Sai thứ tự đỉnh: góc vuông $H$ phải ứng với góc vuông $E$ của $\\triangle BEA$."
+        },
+        {
+          "text": "Vì $BH\\cdot BA = BK\\cdot BC$ nên $\\triangle BHK \\backsim \\triangle BCA$ (c.g.c)",
+          "code": "E09",
+          "feedback": "Lập luận vòng: dòng này dùng chính đẳng thức cần chứng minh."
+        }
+      ],
+      "solution": "$\\triangle BHE \\backsim \\triangle BEA$ (g.g: $\\widehat B$ chung, góc vuông) ⇒ $BE^2 = BH\\cdot BA$; tương tự $\\triangle BKE \\backsim \\triangle BEC$ ⇒ $BE^2 = BK\\cdot BC$. Vậy $BH\\cdot BA = BK\\cdot BC$. Hai dòng “$\\widehat{ABE}$ chung” và “góc vuông” đổi chỗ được."
+    },
+    {
+      "id": "f3-dongdang-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho $\\triangle AEB$ vuông tại $E$ có $AB = 10$ cm, $AE = 8$ cm. Trên cạnh $AB$ lấy điểm $I$ với $AI = 2$ cm; đường thẳng vuông góc với $AB$ tại $I$ cắt $AE$ tại $K$. Tính $AK$.",
+      "source": "68 đề – Đề 4, Bài 4.2b (chuyển thể, bỏ đường tròn)",
+      "hints": [
+        "Cần tính $AK$, với $K$ nằm trên $AE$.",
+        "$\\triangle AIK$ và $\\triangle AEB$ đều vuông; chúng có chung góc nào?",
+        "Viết đúng thứ tự đỉnh rồi lập tỉ số chứa $AK$ và $AB$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 344 188\" role=\"img\"><title>Tam giác AEB vuông tại E, đường vuông góc với AB tại I cắt AE tại K</title><line x1=\"22\" y1=\"166\" x2=\"322\" y2=\"166\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"322\" y1=\"166\" x2=\"214\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"214\" y1=\"22\" x2=\"22\" y2=\"166\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"82\" y1=\"166\" x2=\"82\" y2=\"121\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"82\" y1=\"121\" x2=\"82\" y2=\"70\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"207.6,26.8 212.4,33.2 218.8,28.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"90,166 90,158 82,158\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"9.5\" y=\"169.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"334.5\" y=\"169.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"216.5\" y=\"9.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"82\" y=\"179\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"70.9\" y=\"114.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"22\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"322\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"214\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"82\" cy=\"166\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"82\" cy=\"121\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác AEB vuông tại E; I trên AB, đường vuông góc với AB tại I cắt AE tại K."
+      },
+      "answer": "2,5",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "1,6",
+          "code": "E08",
+          "feedback": "Con ghép sai cặp cạnh: $AK$ ứng với $AB$ (cùng đối diện góc vuông), $AI$ ứng với $AE$."
+        },
+        {
+          "answer": "40",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $\\triangle AIK$ nhỏ hơn $\\triangle AEB$ nên $AK$ phải nhỏ hơn $AB$."
+        }
+      ],
+      "solution": "$\\widehat A$ chung, $\\widehat{AIK}=\\widehat{AEB}=90^\\circ$ ⇒ $\\triangle AIK \\backsim \\triangle AEB$ (g.g) ⇒ $\\dfrac{AK}{AB}=\\dfrac{AI}{AE}$ ⇒ $AK = \\dfrac{2\\cdot 10}{8} = 2,5$ (cm). (Đây là đẳng thức $AK\\cdot AE = AI\\cdot AB$ của đề thi.)"
+    }
+  ],
+  "exit": [
+    {
+      "id": "f3-dongdang-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "$\\triangle ABC$ có $\\widehat A = 50^\\circ$, $\\widehat B = 60^\\circ$; $\\triangle MNP$ có $\\widehat M = 60^\\circ$, $\\widehat N = 70^\\circ$. Cách viết nào đúng?",
+      "options": [
+        "$\\triangle ABC \\backsim \\triangle MNP$",
+        "$\\triangle ABC \\backsim \\triangle NMP$",
+        "$\\triangle ABC \\backsim \\triangle PNM$",
+        "$\\triangle ABC \\backsim \\triangle PMN$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E08",
+          "feedback": "Con viết theo thứ tự chữ cái; phải ghép đỉnh có góc bằng nhau. Tính thêm góc còn lại của mỗi tam giác."
+        },
+        "1": {
+          "code": "E08",
+          "feedback": "$\\widehat A = 50^\\circ$ nên $A$ phải ứng với đỉnh có góc $50^\\circ$, mà $\\widehat N = 70^\\circ$."
+        },
+        "2": {
+          "code": "E08",
+          "feedback": "$A$ ghép đúng, nhưng $\\widehat B = 60^\\circ$ nên $B$ ứng với $M$, không ứng với $N$."
+        }
+      },
+      "solution": "$\\widehat C = 70^\\circ$, $\\widehat P = 50^\\circ$. Ghép: $A \\leftrightarrow P$, $B \\leftrightarrow M$, $C \\leftrightarrow N$, nên $\\triangle ABC \\backsim \\triangle PMN$."
+    },
+    {
+      "id": "f3-dongdang-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $\\triangle MNP \\backsim \\triangle ABC$ có $MN = 6$ cm, $AB = 9$ cm, $AC = 12$ cm. Tính $MP$.",
+      "answer": "8",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "18",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $MN < AB$ nên $\\triangle MNP$ nhỏ hơn, $MP$ phải nhỏ hơn $AC$."
+        },
+        {
+          "answer": "9",
+          "code": "E04",
+          "feedback": "Đồng dạng là **nhân** cùng một tỉ số, không phải **trừ** đi cùng một số."
+        }
+      ],
+      "solution": "$k = \\dfrac{MN}{AB} = \\dfrac{2}{3}$; $MP \\leftrightarrow AC$ nên $MP = \\dfrac{2}{3}\\cdot 12 = 8$ (cm)."
+    },
+    {
+      "id": "f3-dongdang-x3",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$, điểm $D$ nằm trên cạnh $AC$ sao cho $\\widehat{ABD}=\\widehat{ACB}$. Phân tích ngược để chứng minh $AB^2 = AD\\cdot AC$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 332 193.2\" role=\"img\"><title>Tam giác ABC, D trên AC với góc ABD bằng góc ACB</title><line x1=\"22\" y1=\"171.2\" x2=\"142.9\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"142.9\" y1=\"22\" x2=\"310\" y2=\"171.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"310\" y1=\"171.2\" x2=\"22\" y2=\"171.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"142.9\" y1=\"22\" x2=\"150\" y2=\"171.2\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"9.5\" y=\"174.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"142.9\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"322.5\" y=\"174.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"150\" y=\"184.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><circle cx=\"22\" cy=\"171.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"142.9\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"310\" cy=\"171.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"150\" cy=\"171.2\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC, D trên cạnh AC, đoạn BD với góc ABD bằng góc ACB."
+      },
+      "goal": "$AB^2 = AD\\cdot AC$",
+      "steps": [
+        {
+          "ask": "Muốn có $AB^2 = AD\\cdot AC$, cần tỉ lệ thức nào?",
+          "node": "$\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$",
+          "item": {
+            "id": "f3-dongdang-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn tỉ lệ thức dẫn tới điều cần chứng minh.",
+            "options": [
+              "$\\dfrac{AB}{AD}=\\dfrac{AB}{AC}$",
+              "$\\dfrac{AB}{BD}=\\dfrac{AC}{BC}$",
+              "$\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Nhân chéo ra $AB\\cdot AC = AB\\cdot AD$, không ra $AB^2$."
+              },
+              "1": {
+                "code": "E06",
+                "feedback": "Tỉ lệ thức này không chứa $AD$, nên không dẫn tới điều cần chứng minh."
+              }
+            },
+            "solution": "Nhân chéo $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$ được $AB^2 = AD\\cdot AC$."
+          }
+        },
+        {
+          "ask": "Muốn có $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$, cần hai tam giác nào đồng dạng?",
+          "node": "$\\triangle ABD \\backsim \\triangle ACB$",
+          "item": {
+            "id": "f3-dongdang-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp tam giác (đúng thứ tự đỉnh).",
+            "options": [
+              "$\\triangle ABD \\backsim \\triangle ACB$",
+              "$\\triangle ABD \\backsim \\triangle ABC$",
+              "$\\triangle BDC \\backsim \\triangle ABC$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "Sai thứ tự đỉnh: $\\widehat{ABD}=\\widehat{ACB}$ nên $B$ của $\\triangle ABD$ ứng với $C$."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "$\\triangle BDC$ không chứa cả $AB$ và $AD$; hướng này không dẫn tới tỉ lệ thức cần có."
+              }
+            },
+            "solution": "$A \\leftrightarrow A$, $B \\leftrightarrow C$, $D \\leftrightarrow B$ cho $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$."
+          }
+        },
+        {
+          "ask": "Vì sao $\\triangle ABD \\backsim \\triangle ACB$?",
+          "node": "$\\widehat A$ chung và $\\widehat{ABD}=\\widehat{ACB}$ (giả thiết) ⇒ g.g",
+          "given": true,
+          "item": {
+            "id": "f3-dongdang-x3-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "$\\widehat A$ chung và $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$ (c.g.c)",
+              "$\\widehat A$ chung và $\\widehat{ABD}=\\widehat{ACB}$ (g.g)",
+              "$\\widehat{ADB}=\\widehat{BDC}$ (kề bù) và $\\widehat{ABD}=\\widehat{ACB}$ (g.g)"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: tỉ lệ thức này là điều đang cần chứng minh."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "Hai góc kề bù có tổng $180^\\circ$, không bằng nhau; lí do không khớp."
+              }
+            },
+            "solution": "Hai cặp góc bằng nhau: $\\widehat A$ chung và $\\widehat{ABD}=\\widehat{ACB}$ (gt)."
+          }
+        }
+      ],
+      "outline": [
+        "$\\widehat A$ chung, $\\widehat{ABD}=\\widehat{ACB}$ (gt)",
+        "⇒ $\\triangle ABD \\backsim \\triangle ACB$ (g.g)",
+        "⇒ $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$",
+        "⇒ $AB^2 = AD\\cdot AC$"
+      ],
+      "solution": "$\\widehat A$ chung, $\\widehat{ABD}=\\widehat{ACB}$ ⇒ $\\triangle ABD \\backsim \\triangle ACB$ (g.g) ⇒ $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$ ⇒ $AB^2 = AD\\cdot AC$."
+    },
+    {
+      "id": "f3-dongdang-x4",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "$\\triangle ABC$ vuông tại $A$ có $AB = 3$ cm, $AC = 4$ cm, $BC = 5$ cm; $\\triangle DEF$ vuông tại $D$ có $DE = 6$ cm, $DF = 8$ cm. Điền vào chỗ trống để chứng minh $\\triangle ABC \\backsim \\triangle DEF$ và tính $EF$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 344 164\" role=\"img\"><title>Tam giác ABC vuông tại A và tam giác DEF vuông tại D</title><line x1=\"22\" y1=\"142\" x2=\"22\" y2=\"82\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"82\" x2=\"102\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"102\" y1=\"142\" x2=\"22\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"162\" y1=\"142\" x2=\"162\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"162\" y1=\"22\" x2=\"322\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"322\" y1=\"142\" x2=\"162\" y2=\"142\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"22,134 30,134 30,142\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"162,134 170,134 170,142\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12.8\" y=\"151.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.4\" y=\"76.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"113.1\" y=\"148.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"152.8\" y=\"151.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"150.4\" y=\"16.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"333.1\" y=\"148.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><circle cx=\"22\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"82\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"162\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"162\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"322\" cy=\"142\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vuông tại A và tam giác DEF vuông tại D, vẽ cùng tỉ lệ."
+      },
+      "lines": [
+        "Xét $\\triangle ABC$ và $\\triangle DEF$ có: $\\widehat{BAC}=\\widehat{EDF}=90^\\circ$;",
+        "$\\dfrac{AB}{DE}=\\dfrac{3}{6}=\\dfrac{1}{2}$, $\\dfrac{AC}{DF}=\\dfrac{4}{8}=\\dfrac{1}{2}$ ⇒ [[1]]",
+        "⇒ $\\triangle ABC \\backsim \\triangle DEF$ ([[2]])",
+        "⇒ $\\dfrac{BC}{EF}=\\dfrac{1}{2}$ ⇒ $EF =$ [[3]] $= 10$ (cm).",
+        "Kết luận: $\\triangle ABC \\backsim \\triangle DEF$ và $EF = 10$ cm."
+      ],
+      "bank": [
+        "$\\dfrac{AB}{DE}=\\dfrac{AC}{DF}$",
+        "$\\dfrac{AB}{DF}=\\dfrac{AC}{DE}$",
+        "hai cạnh góc vuông tỉ lệ",
+        "g.g",
+        "$2BC$",
+        "$\\dfrac{BC}{2}$",
+        "cạnh huyền – cạnh góc vuông tỉ lệ"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E08",
+              "feedback": "$AB$ ứng với $DE$ (cùng nối đỉnh góc vuông với đỉnh thứ hai), không ứng với $DF$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Chưa có cặp góc nhọn nào bằng nhau; lí do g.g không khớp với điều vừa có."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "Ta vừa dùng $AB$ và $AC$ — hai cạnh góc vuông, không dùng cạnh huyền."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "$\\dfrac{BC}{EF}=\\dfrac{1}{2}$ nghĩa là $EF$ gấp đôi $BC$; con lật ngược tỉ số."
+            }
+          }
+        }
+      ],
+      "solution": "Góc vuông bằng nhau, $\\dfrac{AB}{DE}=\\dfrac{AC}{DF}=\\dfrac{1}{2}$ ⇒ $\\triangle ABC \\backsim \\triangle DEF$ (hai cạnh góc vuông tỉ lệ) ⇒ $EF = 2BC = 10$ cm."
+    },
+    {
+      "id": "f3-dongdang-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "$\\triangle ABC$ vuông tại $A$ có $BC = 10$ cm, $AB = 6$ cm; $\\triangle DEF$ vuông tại $D$ có $EF = 15$ cm, $DE = 9$ cm. Biết $\\triangle ABC \\backsim \\triangle DEF$ (cạnh huyền – cạnh góc vuông tỉ lệ). Tính $DF$.",
+      "answer": "12",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "16/3",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $\\triangle DEF$ lớn hơn ($EF > BC$) nên $DF$ phải lớn hơn $AC$."
+        },
+        {
+          "answer": "9",
+          "code": "E08",
+          "feedback": "$DF$ ứng với $AC$ (đỉnh 1–3), không ứng với $AB$."
+        }
+      ],
+      "solution": "$k = \\dfrac{EF}{BC} = \\dfrac{3}{2}$; $AC = \\sqrt{10^2-6^2} = 8$ cm; $DF \\leftrightarrow AC$ nên $DF = \\dfrac{3}{2}\\cdot 8 = 12$ (cm)."
+    },
+    {
+      "id": "f3-dongdang-x6",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABC$ nhọn ($AB < AC$), hai đường cao $BE$ và $CF$ ($E \\in AC$, $F \\in AB$). Sắp xếp các dòng thành lời giải chứng minh $\\triangle AEF \\backsim \\triangle ABC$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 44, Bài 4.2a (chuyển thể, bỏ đường tròn)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324 244\" role=\"img\"><title>Tam giác ABC, đường cao BE, CF và đoạn EF</title><line x1=\"102\" y1=\"22\" x2=\"22\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"222\" x2=\"302\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302\" y1=\"222\" x2=\"102\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"222\" x2=\"162\" y2=\"82\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302\" y1=\"222\" x2=\"60.6\" y2=\"125.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"162\" y1=\"82\" x2=\"60.6\" y2=\"125.4\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><polyline points=\"156.3,87.7 162,93.3 167.7,87.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"68,128.4 65.1,135.8 57.6,132.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"102\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.9\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"314.1\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"173.6\" y=\"76.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"48.6\" y=\"120.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><circle cx=\"102\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"162\" cy=\"82\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"60.6\" cy=\"125.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, AB nhỏ hơn AC, hai đường cao BE, CF và đoạn EF."
+      },
+      "lines": [
+        {
+          "text": "Xét $\\triangle ABE$ và $\\triangle ACF$ có: $\\widehat A$ chung, $\\widehat{AEB}=\\widehat{AFC}=90^\\circ$"
+        },
+        {
+          "text": "⇒ $\\triangle ABE \\backsim \\triangle ACF$ (g.g) ⇒ $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$"
+        },
+        {
+          "text": "⇒ $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$"
+        },
+        {
+          "text": "Xét $\\triangle AEF$ và $\\triangle ABC$ có:"
+        },
+        {
+          "text": "$\\widehat{EAF}=\\widehat{BAC}$ (góc chung);",
+          "after": [
+            3
+          ]
+        },
+        {
+          "text": "$\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$ (chứng minh trên);",
+          "after": [
+            3
+          ]
+        },
+        {
+          "text": "Kết luận: $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c).",
+          "after": [
+            4,
+            5
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Kết luận: $\\triangle AEF \\backsim \\triangle ACB$ (c.g.c).",
+          "code": "E08",
+          "feedback": "Sai thứ tự đỉnh: $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$ nên $E \\leftrightarrow B$, $F \\leftrightarrow C$."
+        },
+        {
+          "text": "$\\widehat{AEF}=\\widehat{ABC}$ (hai góc đồng vị);",
+          "code": "E09",
+          "feedback": "$EF$ không song song với $BC$, nên không có cặp góc đồng vị; lí do không khớp."
+        }
+      ],
+      "solution": "$\\triangle ABE \\backsim \\triangle ACF$ (g.g) ⇒ $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$ ⇒ $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$; cùng với $\\widehat A$ chung ⇒ $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c). Hai dòng “góc chung” và “chứng minh trên” đổi chỗ được."
+    },
+    {
+      "id": "f3-dongdang-x7",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABC$ nhọn, hai đường cao $AI$ và $CE$ ($I \\in BC$, $E \\in AB$). Điền vào chỗ trống để chứng minh $AB\\cdot BE = BI\\cdot BC$.",
+      "source": "68 đề – Đề 56, Bài 4.2b (chuyển thể, bỏ đường tròn)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324 244\" role=\"img\"><title>Tam giác ABC, hai đường cao AI và CE</title><line x1=\"122\" y1=\"22\" x2=\"22\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"222\" x2=\"302\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302\" y1=\"222\" x2=\"122\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"122\" y1=\"22\" x2=\"122\" y2=\"222\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302\" y1=\"222\" x2=\"78\" y2=\"110\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"122,214 130,214 130,222\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"85.2,113.6 88.7,106.4 81.6,102.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"122\" y=\"9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.9\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"314.1\" y=\"226.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"122\" y=\"235\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"65.9\" y=\"105.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"122\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"122\" cy=\"222\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"78\" cy=\"110\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, đường cao AI xuống BC và đường cao CE xuống AB."
+      },
+      "lines": [
+        "Xét $\\triangle BEC$ và $\\triangle BIA$ có:",
+        "$\\widehat B$ chung; $\\widehat{BEC}=\\widehat{BIA}=90^\\circ$ ([[1]])",
+        "⇒ $\\triangle BEC \\backsim \\triangle BIA$ ([[2]])",
+        "⇒ [[3]] (cặp cạnh tương ứng)",
+        "Kết luận: $AB\\cdot BE = BI\\cdot BC$."
+      ],
+      "bank": [
+        "$CE \\perp AB$, $AI \\perp BC$ (gt)",
+        "$\\triangle BEC \\backsim \\triangle BIA$",
+        "g.g",
+        "c.g.c",
+        "$\\dfrac{BE}{BI}=\\dfrac{BC}{BA}$",
+        "$\\dfrac{BE}{BA}=\\dfrac{BC}{BI}$",
+        "$\\dfrac{BE}{BI}=\\dfrac{BA}{BC}$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Lập luận vòng: dùng chính cặp tam giác đồng dạng để suy ra góc vuông của nó."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Ta có hai cặp góc bằng nhau, không có cặp cạnh tỉ lệ: lí do phải là g.g."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "$BE$ ứng với $BI$ (đỉnh 1–2), không ứng với $BA$."
+            },
+            "6": {
+              "code": "E08",
+              "feedback": "$BC$ (đỉnh 1–3 của $\\triangle BEC$) ứng với $BA$ (đỉnh 1–3 của $\\triangle BIA$); con đảo ngược vế phải."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat B$ chung, $\\widehat{BEC}=\\widehat{BIA}=90^\\circ$ ⇒ $\\triangle BEC \\backsim \\triangle BIA$ (g.g) ⇒ $\\dfrac{BE}{BI}=\\dfrac{BC}{BA}$ ⇒ $AB\\cdot BE = BI\\cdot BC$."
+    },
+    {
+      "id": "f3-dongdang-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Hình thang $ABCD$ ($AB \\parallel CD$) có $AB = 4$ cm, $CD = 10$ cm; hai đường chéo $AC$ và $BD$ cắt nhau tại $O$. Biết $OA = 3$ cm, tính $OC$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 264 193.6\" role=\"img\"><title>Hình thang ABCD đáy AB, CD, hai đường chéo cắt nhau tại O</title><line x1=\"66\" y1=\"22\" x2=\"154\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"154\" y1=\"22\" x2=\"242\" y2=\"171.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"242\" y1=\"171.6\" x2=\"22\" y2=\"171.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"171.6\" x2=\"66\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"66\" y1=\"22\" x2=\"242\" y2=\"171.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"154\" y1=\"22\" x2=\"22\" y2=\"171.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"59.3\" y=\"10.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"160.7\" y=\"10.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"253.1\" y=\"178.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"10.9\" y=\"178.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"129.3\" y=\"64.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"66\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"154\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"242\" cy=\"171.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"171.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"116.3\" cy=\"64.7\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Hình thang ABCD có đáy nhỏ AB ở trên, đáy lớn CD ở dưới, hai đường chéo cắt nhau tại O."
+      },
+      "answer": "7,5",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "1,2",
+          "code": "E08",
+          "feedback": "Con lật ngược tỉ số: $OC$ nằm trong tam giác có cạnh $CD$ dài hơn, nên $OC$ phải lớn hơn $OA$."
+        },
+        {
+          "answer": "9",
+          "code": "E04",
+          "feedback": "Đồng dạng là **nhân** cùng một tỉ số, không phải **cộng** thêm hiệu $CD - AB$."
+        }
+      ],
+      "solution": "$AB \\parallel CD$ ⇒ $\\widehat{OAB}=\\widehat{OCD}$, $\\widehat{OBA}=\\widehat{ODC}$ (so le trong) ⇒ $\\triangle OAB \\backsim \\triangle OCD$ (g.g) ⇒ $\\dfrac{OA}{OC}=\\dfrac{AB}{CD}=\\dfrac{2}{5}$ ⇒ $OC = 7,5$ cm."
+    }
+  ]
+}
