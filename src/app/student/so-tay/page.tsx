@@ -12,9 +12,9 @@ export default async function StudentSoTayPage() {
   if (!data || data.status !== "approved")
     return <p className="rounded-lg border border-border bg-surface p-4">Sổ tay suy ngược đang được soạn — thầy cô duyệt xong là con xem được.</p>;
   return (
-    <>
+    <div data-wide="">
       <h1 className="mb-4 font-display text-2xl font-bold">Sổ tay suy ngược</h1>
       <SoTayView data={data} />
-    </>
+    </div>
   );
 }

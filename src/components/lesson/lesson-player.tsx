@@ -72,7 +72,7 @@ export function LessonPlayer({
   }
 
   return (
-    <div>
+    <div data-wide={unit.proofKu ? "" : undefined}>
       {mode === "preview" && (
         <p className="mb-4 rounded-lg border border-warn bg-warn-soft px-3 py-2 text-sm text-warn">
           Chế độ xem trước — bấm thử như học sinh, <b>không ghi dữ liệu</b>.
