@@ -100,3 +100,51 @@ test("drawFirst and worked.analysis are accepted", () => {
   assert.ok(r.success, JSON.stringify(r.error?.issues));
 });
 
+
+// ---------------------------------------------------------------- grading
+import { gradeItem } from "./grade.ts";
+
+type Of<T extends Item["type"]> = Extract<Item, { type: T }>;
+const P = (raw: ReturnType<typeof proof>) => Item.parse(raw) as Of<"proof">;
+const O = (raw: ReturnType<typeof order>) => Item.parse(raw) as Of<"order">;
+/** Shown position of an authored index. */
+const shownAt = (id: string, n: number, authored: number) => displayOrder(id, n).indexOf(authored);
+
+test("grade analysis = steps semantics (first wrong level's code)", () => {
+  const it = Item.parse(analysis());
+  assert.deepEqual(gradeItem(it, "0|2"), { understood: true, correct: true, steps: [true, true] });
+  const g = gradeItem(it, "1|2");
+  assert.equal(g.correct, false);
+  assert.equal(g.errorCode, "E06");
+  assert.deepEqual(g.steps, [false, true]);
+  assert.equal(gradeItem(it, "0").understood, false);
+});
+
+test("grade proof: shown positions mapped back, per-blank parts, first wrong blank's mistake", () => {
+  const it = P(proof());
+  const s = (k: number) => shownAt(it.id, it.bank.length, k);
+  assert.deepEqual(gradeItem(it, `${s(0)}|${s(1)}`), { understood: true, correct: true, parts: [true, true] });
+  const g = gradeItem(it, `${s(3)}|${s(1)}`);
+  assert.deepEqual([g.correct, g.parts, g.errorCode, g.feedback], [false, [false, true], "E09", "Đó là hệ quả, không phải lí do."]);
+  assert.equal(gradeItem(it, `${s(0)}|`).understood, false, "blank in practice = not understood");
+  const ex = gradeItem(it, `${s(0)}|`, { blanksWrong: true });
+  assert.deepEqual([ex.understood, ex.correct, ex.parts], [true, false, [true, false]]);
+  assert.equal(gradeItem(it, "9|0").understood, false, "out of range");
+});
+
+test("grade order: every topological order is right; distractor / prerequisite / missing give `at`", () => {
+  const it = O(order());
+  const n = it.lines.length + it.distractors.length;
+  const ans = (authored: number[]) => authored.map((a) => shownAt(it.id, n, a)).join(",");
+  assert.equal(gradeItem(it, ans([0, 1, 2, 3])).correct, true);
+  assert.equal(gradeItem(it, ans([0, 2, 1, 3])).correct, true, "lines 1 and 2 may swap");
+  const d = gradeItem(it, ans([0, 4, 1, 2, 3]));
+  assert.deepEqual([d.correct, d.at, d.errorCode, d.feedback], [false, 1, "E08", "Sai thứ tự đỉnh."]);
+  const pre = gradeItem(it, ans([0, 1, 3, 2]));
+  assert.deepEqual([pre.at, pre.errorCode], [2, "E09"]);
+  assert.match(pre.feedback!, /góc vuông/);
+  const miss = gradeItem(it, ans([0, 1, 2]));
+  assert.deepEqual([miss.correct, miss.at, miss.errorCode], [false, 3, "E09"]);
+  assert.match(miss.feedback!, /thiếu bước/);
+  for (const bad of ["", "0,0", "99", "a,b"]) assert.equal(gradeItem(it, bad).understood, false, bad);
+});
