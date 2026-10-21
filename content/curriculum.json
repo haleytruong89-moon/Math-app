@@ -699,6 +699,19 @@
       "priority": "P0"
     },
     {
+      "id": "f3-tugiac",
+      "module": "backfill-hinh",
+      "title": "Tứ giác đặc biệt, đường trung bình & Thalès",
+      "track": "C",
+      "seq": 15,
+      "prereq": [],
+      "examWeight": "indirect",
+      "grading": "partial",
+      "testOut": true,
+      "batch": 7,
+      "priority": "P0"
+    },
+    {
       "id": "j-coban",
       "module": "duong-tron",
       "title": "Đường tròn: tâm, bán kính, dây, góc ở tâm",
@@ -759,7 +772,7 @@
     {
       "id": "o-chungminh",
       "module": "hinh-nang-cao",
-      "title": "CM vuông góc, song song, thẳng hàng, đồng quy",
+      "title": "CM vuông góc, song song, phân giác & góc bằng nhau",
       "track": "C",
       "seq": 60,
       "prereq": [
@@ -789,14 +802,14 @@
       "priority": "P1"
     },
     {
-      "id": "l-kethop",
-      "module": "tiep-tuyen",
-      "title": "Tiếp tuyến kết hợp dây – góc – đồng dạng",
+      "id": "o-thanghang",
+      "module": "hinh-nang-cao",
+      "title": "CM thẳng hàng, trung điểm, đồng quy & hình đặc biệt",
       "track": "C",
       "seq": 80,
       "prereq": [
-        "l-tieptuyen",
-        "k-tugiacnt"
+        "o-chungminh",
+        "f3-tugiac"
       ],
       "examWeight": 0.5,
       "grading": "tutor",
@@ -860,6 +873,21 @@
       ],
       "examWeight": 0.25,
       "grading": "partial",
+      "testOut": false,
+      "batch": 10,
+      "priority": "P2"
+    },
+    {
+      "id": "q-dagiac",
+      "module": "duong-tron",
+      "title": "Đa giác đều & phép quay",
+      "track": "C",
+      "seq": 130,
+      "prereq": [
+        "j-coban"
+      ],
+      "examWeight": 0.25,
+      "grading": "full",
       "testOut": false,
       "batch": 10,
       "priority": "P2"

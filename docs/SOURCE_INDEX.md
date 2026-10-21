@@ -22,6 +22,8 @@
 
 ## 2. Tần suất theo KU (số đề có ít nhất 1 câu / tổng số câu)
 
+> **LT21 (21/10/2026):** bảng dưới là phân loại gốc 05/10. Từ 21/10: câu o-chungminh về thẳng hàng / trung điểm / đồng quy / hình bình hành chuyển sang **o-thanghang**; o-chungminh còn vuông góc, song song, phân giác, góc bằng nhau; l-kethop bỏ (gộp vào l-tieptuyen, o-dongdang); f3-tugiac (bù lớp 8) và q-dagiac (P2) không có câu riêng trong 68 đề.
+
 | KU | Tên | Số đề /68 | Số câu |
 |---|---|---|---|
 | f1-hdt | 7 hằng đẳng thức đáng nhớ | 0 | 0 |

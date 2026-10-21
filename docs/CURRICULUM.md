@@ -7,7 +7,7 @@
 > **12/10/2026 → 31/03/2027**, Track C starts earlier, table data fixed. The machine-readable copy of §2
 > will live in `content/curriculum.json` (S6a); when both exist, the JSON is what the app uses and `npm test` keeps them in sync.
 > Revised 06/10/2026 (LT17–LT18) after indexing 68 practice papers + Hà Nội 2025/2026 structure (`docs/SOURCE_INDEX.md`):
-> 8 rarely-tested KUs moved to **P2**, optimisation merged 5 → 3 KUs, Track C starts week 7. **48 KUs: 40 core + 8 P2.** · 17/10/2026 (LT19): Bài toán thực tế bằng PT/HPT kéo lên đợt 4 theo đánh giá của gia sư; thêm g-giaihpt, g-chuso → **50 KUs: 42 core + 8 P2.**
+> 8 rarely-tested KUs moved to **P2**, optimisation merged 5 → 3 KUs, Track C starts week 7. **48 KUs: 40 core + 8 P2.** · 17/10/2026 (LT19): Bài toán thực tế bằng PT/HPT kéo lên đợt 4 theo đánh giá của gia sư; thêm g-giaihpt, g-chuso → **50 KUs: 42 core + 8 P2.** · 21/10/2026 (LT21): rà soát hình học — thêm f3-tugiac (bù lớp 8), tách o-chungminh → o-chungminh + o-thanghang, gộp l-kethop vào l-tieptuyen/o-dongdang, thêm q-dagiac (P2) → **52 KUs: 43 core + 9 P2.**
 > Upstream: `deliverables/PROJECT_HOC_TOAN_LOP9_6_THANG_MASTER.md` (master plan, 51 sections, domains A–Q + F0–F3).
 > Teacher assessment: Hằng đẳng thức chưa thuộc (F1.4), thu gọn đa thức chưa tận cùng (F1.1/F1.5/F1.6),
 > nâng cao căn thức chưa làm được (C), hình cần đồng dạng (F3.7/F3.8), trình bày thiếu kết luận.
@@ -106,16 +106,19 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 | # | id | module | title | grade | prereq | priority | examWeight | gradable | estMinutes | source | notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 32 | f3-dongdang | backfill-hinh | Tam giác đồng dạng & tỉ số cạnh | 8 | — | P0 | indirect | partial | 50 | teacher-assessment | GV: hình báo động. F3.7+F3.8: dấu hiệu, tỉ số, tính cạnh |
+| 51 | f3-tugiac | backfill-hinh | Tứ giác đặc biệt, đường trung bình & Thalès | 8 | — | P0 | indirect | partial | 50 | LT21 (rà soát 68 đề) | F3: dấu hiệu hình bình hành / chữ nhật / thoi / vuông, đường trung bình tam giác – hình thang, Thalès, tính chất đường phân giác. Công cụ của ~21 câu "trung điểm", 7 câu "hình bình hành / cân" ở Bài 4.2 |
 | 33 | j-coban | duong-tron | Đường tròn: tâm, bán kính, dây, góc ở tâm | 9 | — | P0 | 0.25 | full | 30 | master-plan §14 | J1–J4: khái niệm cơ bản. MCQ+numeric |
 | 34 | j-cung | duong-tron | Cung, độ dài cung & hình quạt tròn | 9 | j-coban | P2 | 0.25 | full | 30 | master-plan §14 | J5–J8: l=πRn/180, S quạt. Numeric — **P2 (LT17): hầu như không ra trong 68 đề; học khi dư thời gian** |
 | 35 | k-goiintiep | noi-tiep | Góc nội tiếp & các tính chất | 9 | j-coban | P0 | 0.5 | partial | 45 | master-plan §15 | K1–K3: chắn nửa ĐT→90°, cùng chắn cung. MCQ+proof |
 | 36 | k-tugiacnt | noi-tiep | Tứ giác nội tiếp: dấu hiệu & ứng dụng | 9 | k-goiintiep | P0 | 0.5 | partial | 55 | master-plan §15 | K4–K7: 4 dấu hiệu, NT→ĐD→tích đoạn. Proof-heavy |
-| 37 | l-tieptuyen | tiep-tuyen | Tiếp tuyến: dấu hiệu & hai TT từ một điểm | 9 | j-coban | P0 | 0.5 | partial | 50 | master-plan §16 | L1–L3: OC⊥d, AB=AC. MCQ+proof |
-| 38 | l-kethop | tiep-tuyen | Tiếp tuyến kết hợp dây – góc – đồng dạng | 9 | l-tieptuyen, k-tugiacnt | P1 | 0.5 | tutor | 65 | master-plan §16 | L4+L5: bài tổng hợp. Gia sư chấm |
+| 37 | l-tieptuyen | tiep-tuyen | Tiếp tuyến: dấu hiệu & hai TT từ một điểm | 9 | j-coban | P0 | 0.5 | partial | 50 | master-plan §16 | L1–L3: OC⊥d, AB=AC. MCQ+proof. Gộp L4–L5 từ l-kethop (21/10, LT21): tiếp tuyến kết hợp dây – góc, trung điểm / song song |
+| ~~38~~ | ~~l-kethop~~ | | gộp vào l-tieptuyen (L4–L5) + o-dongdang (21/10, LT21) — 0/68 đề có câu riêng | | | | | | | | |
 | 39 | m-vitri | vi-tri-td | Vị trí tương đối: điểm, đường thẳng, 2 đường tròn | 9 | j-coban | P2 | 0.25 | full | 35 | master-plan §17 | M1–M5: phân loại vị trí, tiếp xúc. MCQ — **P2 (LT17): hầu như không ra trong 68 đề; học khi dư thời gian** |
 | 40 | n-ngoainoi | vi-tri-td | Đường tròn ngoại tiếp & nội tiếp tam giác | 9 | k-goiintiep | P2 | 0.25 | partial | 40 | master-plan §18 | N1–N5: tâm = giao trung trực/phân giác. MCQ+proof — **P2 (LT17): hầu như không ra trong 68 đề; học khi dư thời gian** |
-| 41 | o-chungminh | hinh-nang-cao | CM vuông góc, song song, thẳng hàng, đồng quy | 9 | k-tugiacnt, f3-dongdang | P1 | 0.5 | tutor | 70 | master-plan §19 | O1–O6: proof skeleton. Gia sư chấm |
+| 53 | q-dagiac | duong-tron | Đa giác đều & phép quay | 9 | j-coban | P2 | 0.25 | full | 30 | SGK Toán 9 (KNTT Bài 30) — LT21 | Đa giác đều, góc ở tâm, phép quay giữ nguyên hình. **P2: không có ở Bài 4.2 của 68 đề; học khi dư thời gian** |
+| 41 | o-chungminh | hinh-nang-cao | CM vuông góc, song song, phân giác & góc bằng nhau | 9 | k-tugiacnt, f3-dongdang | P1 | 0.5 | tutor | 70 | master-plan §19 | O1, O2, O6 + góc bằng nhau (tách 21/10, LT21). Phân tích ngược + C2/C3 (S5) |
 | 42 | o-dongdang | hinh-nang-cao | Đồng dạng trong đường tròn & tích đoạn thẳng | 9 | o-chungminh, l-tieptuyen | P1 | 0.5 | tutor | 70 | master-plan §19 | O7–O8: NT→ĐD→tỉ số→PA·PB=PC·PD |
+| 52 | o-thanghang | hinh-nang-cao | CM thẳng hàng, trung điểm, đồng quy & hình đặc biệt | 9 | o-chungminh, f3-tugiac | P1 | 0.5 | tutor | 70 | LT21 (tách từ o-chungminh) | O3, O4, O5, O10: thẳng hàng (15 câu/68 đề), trung điểm, đồng quy, hình bình hành / tam giác cân — chủ yếu 4.2c |
 | 43 | o-nangcao | hinh-nang-cao | Điểm cố định, đường cố định & điểm di động | 9 | o-dongdang | P1 | 0.5 | tutor | 75 | master-plan §19 | ★GATE 9.5 — O9–O15. Chỉ cho HS có năng lực |
 
 ### 2.4 BĐT & Tối ưu (3 KUs sau khi gộp — LT17, cuối Track A)
@@ -131,14 +134,14 @@ Bài 5 chỉ **0,5 điểm** (khung đề Hà Nội 2025–2026 và cả 68 đ�
 | ~~44~~ | ~~h-bdt~~ | | gộp vào hq-amgm (06/10) | | | | | | | | |
 | ~~48~~ | ~~hq-nangcao~~ | | bỏ (06/10) — tối ưu rời rạc, BĐT hình học | | | | | | | | |
 
-### 2.5 Tổng kết (sau LT17)
+### 2.5 Tổng kết (sau LT17, LT19, LT21)
 
 | Nhóm | KU lõi (P0/P1) | KU P2 | Tổng |
 |------|---------|---------|------|
 | Track A — Lõi đại số + tối ưu | 23 (F1 4, C 5, D 3, E 2, G 6, tối ưu 3) | 1 (e-giaodiem) | 24 |
 | Track B — Quick wins | 10 (A 2, B 3, P 3, htl-1, htl-2) | 4 (i-giaitgv, i-ungdung, f-hamso, f-parabol) | 14 |
-| Track C — Hình học | 9 (f3-dongdang, j-coban, k ×2, l ×2, o ×3) | 3 (j-cung, m-vitri, n-ngoainoi) | 12 |
-| **Tổng** | **42** (40 mới + 2 có sẵn) | **8** | **50** |
+| Track C — Hình học | 10 (f3 ×2, j-coban, k ×2, l-tieptuyen, o ×4) | 4 (j-cung, m-vitri, n-ngoainoi, q-dagiac) | 14 |
+| **Tổng** | **43** (41 mới + 2 có sẵn) | **9** | **52** |
 
 ---
 
@@ -154,6 +157,7 @@ Bài 5 chỉ **0,5 điểm** (khung đề Hà Nội 2025–2026 và cả 68 đ�
 | Mixed review / interleaving hàng tuần | ~13h |
 | **Tổng lõi** | **~77 giờ** (trước: ~90h với 50 KU) |
 | 8 KU P2 (nếu dư thời gian) | +~8h |
+| LT21 (21/10): +f3-tugiac, o-thanghang, −l-kethop; +q-dagiac (P2) | lõi +~1,5h; P2 +~0,5h |
 
 Bỏ/hạ 10 KU tiết kiệm **~11–13 giờ**, dồn cho hình học (Bài 4.2, ~3đ) và ôn trộn.
 
@@ -174,9 +178,9 @@ Bỏ/hạ 10 KU tiết kiệm **~11–13 giờ**, dồn cho hình học (Bài 4.
 | GĐ | Tuần | Ngày | Track A | Track B/C | KU mới | Ghi chú |
 |----|------|------|---------|-----------|--------|---------|
 | 1 | 1–6 | 12/10 – 22/11 | F1 backfill (4) | a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep (8) | 12 | Tuần 1: htl-1/2 trên app + F1 với gia sư trên giấy; F1 lên app từ tuần 2 |
-| 2 | 7–13 | 23/11 – 10/01 | C (5) + D (3) | **f3-dongdang, j-coban, k-goiintiep, k-tugiacnt** (4) | 12 | Hình học bắt đầu sớm (GV báo động; Bài 4.2 ~3đ). k-tugiacnt có trong 64/68 đề |
+| 2 | 7–13 | 23/11 – 10/01 | C (5) + D (3) | **f3-dongdang, f3-tugiac, j-coban, k-goiintiep, k-tugiacnt** (5) | 13 | Hình học bắt đầu sớm (GV báo động; Bài 4.2 ~3đ). k-tugiacnt có trong 64/68 đề |
 | 3 | 14–19 | 11/01 – 21/02 | E (2) + G (4) | l-tieptuyen, o-chungminh, o-dongdang (3) | 9 | Tuần 17–18 (01–14/02) Tết: chỉ ôn. **Xong mốc 8.5 cuối GĐ3** |
-| 4 | 20–25 | 22/02 – 31/03 | Tối ưu (3) | l-kethop, o-nangcao (2) | 5 | Nhẹ KU mới → nhiều ôn trộn + đề Bài 4.2 trên giấy. KU P2 nếu dư |
+| 4 | 20–25 | 22/02 – 31/03 | Tối ưu (3) | o-thanghang, o-nangcao (2) | 5 | Nhẹ KU mới → nhiều ôn trộn + đề Bài 4.2 trên giấy. KU P2 nếu dư |
 | — | 26–34 | 01/04 – đầu 06 | — | — | 0 | Luyện đề (gia sư + giấy), app chỉ còn ôn D+21 và ôn duy trì |
 
 ### 3.4 Estimation per KU (cách tính chi tiết)
@@ -213,7 +217,7 @@ o-chungminh, o-dongdang, p-ghep, g-* → xong cuối GĐ3 (~21/02/2027). **LT19 
 ### 4.2 Mốc 9.5
 
 Mất tối đa 0,5đ: cần thêm **2c** chắc chắn và **một trong hai** câu phân loại (4.2c hoặc Bài 5).
-4.2c đáng ~0,75–1đ, Bài 5 chỉ 0,5đ → **ưu tiên 4.2c (o-nangcao, o-dongdang)** hơn tối ưu.
+4.2c đáng ~0,75–1đ, Bài 5 chỉ 0,5đ → **ưu tiên 4.2c (o-thanghang, o-nangcao, o-dongdang)** hơn tối ưu.
 
 ---
 
@@ -223,12 +227,12 @@ App grading capabilities: MCQ (2–6 options) và single exact numeric. **KHÔNG
 
 | Mức | Ý nghĩa | KU count | KUs |
 |---|---|---|---|
-| **full** | Mọi câu là MCQ / đáp số → app tự chấm | 28 | g-giaihpt, g-chuso, f1-hdt, f1-pnt, c-dkxd, c-coban, c-truccan, d-ptbh, d-nhamnghiem, e-viete, g-phantram, a-tanso, a-bieudo, b-phepthu, b-xsuat, b-haib, p-trunon, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol, j-coban, j-cung, m-vitri |
+| **full** | Mọi câu là MCQ / đáp số → app tự chấm | 29 | g-giaihpt, g-chuso, f1-hdt, f1-pnt, c-dkxd, c-coban, c-truccan, d-ptbh, d-nhamnghiem, e-viete, g-phantram, a-tanso, a-bieudo, b-phepthu, b-xsuat, b-haib, p-trunon, p-cau, p-ghep, htl-1, htl-2, i-giaitgv, i-ungdung, f-hamso, f-parabol, j-coban, j-cung, m-vitri, q-dagiac |
 | **scaffolded** | Dùng câu nhiều bước (item type `steps`, LT5) → app tự chấm hết | 4 | f1-tgon, f1-qd, c-rutgon, c-cauphu |
-| **partial** | App chấm phần MCQ/đáp số/nhiều bước; phần chứng minh / tập nghiệm làm trên giấy với gia sư → nhãn "cần gia sư xác nhận" (LT6) | 14 | d-thamso, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-honhop, f3-dongdang, k-goiintiep, k-tugiacnt, l-tieptuyen, n-ngoainoi, hq-amgm, hq-doanhthu, hq-hinhhoc |
-| **tutor** | App chỉ có phần nhận dạng / bước then chốt; kỹ năng chính (chứng minh tự do) gia sư chấm trên giấy | 4 | l-kethop, o-chungminh, o-dongdang, o-nangcao |
+| **partial** | App chấm phần MCQ/đáp số/nhiều bước; phần chứng minh / tập nghiệm làm trên giấy với gia sư → nhãn "cần gia sư xác nhận" (LT6) | 15 | d-thamso, e-vietets, e-giaodiem, g-chuyendong, g-nangsuat, g-honhop, f3-dongdang, f3-tugiac, k-goiintiep, k-tugiacnt, l-tieptuyen, n-ngoainoi, hq-amgm, hq-doanhthu, hq-hinhhoc |
+| **tutor** | App chỉ có phần nhận dạng / bước then chốt; kỹ năng chính (chứng minh tự do) gia sư chấm trên giấy | 4 | o-chungminh, o-thanghang, o-dongdang, o-nangcao |
 
-**32/50 KU (64%) app tự chấm toàn bộ** (full + scaffolded). 18 KU có phần gia sư: mức trong app tính trên phần tự chấm,
+**33/52 KU (63%) app tự chấm toàn bộ** (full + scaffolded). 19 KU có phần gia sư. Từ S5 (21/10), câu phân tích ngược, điền lí do (C3) và sắp xếp bước (C2) cho phần chứng minh cũng tự chấm; viết tự do vẫn do gia sư: mức trong app tính trên phần tự chấm,
 mức cuối = gia sư đề xuất (S3) + phụ huynh chốt (S4). Các KU g-chuyendong, g-nangsuat dùng thêm câu nhiều bước cho phần lập phương trình.
 
 ### Câu nhiều bước (scaffolded → item type `steps`)
@@ -258,19 +262,19 @@ Step 4: Tính giá trị → Numeric: nhập đáp số
 
 **Trả lời:** Có, bắt buộc 5 KUs:
 - **F1:** f1-hdt, f1-pnt, f1-tgon, f1-qd (4 KUs — prerequisite cho C, D, E)
-- **F3:** f3-dongdang (1 KU — prerequisite cho J, K, O)
+- **F3:** f3-dongdang, f3-tugiac (2 KU — prerequisite cho J, K, O; f3-tugiac thêm 21/10, LT21)
 
 F0 (số học nền) và F2 (PT bậc nhất) giả định đã biết — không tạo KU riêng.
 
 ### H3. Hình học mở khi nào?
 
 **Trả lời (sửa 06/10, LT18):** Track C từ **tuần 7 (23/11)**, song song căn thức:
-1. GĐ2: f3-dongdang → j-coban → k-goiintiep → k-tugiacnt
+1. GĐ2: f3-dongdang → f3-tugiac → j-coban → k-goiintiep → k-tugiacnt
 2. GĐ3: l-tieptuyen → o-chungminh → o-dongdang — **đủ mốc 8.5 (4.2a–b)**
-3. GĐ4: l-kethop, o-nangcao (4.2c) + ôn trộn nhiều
+3. GĐ4: o-thanghang, o-nangcao (4.2c) + ôn trộn nhiều
 
 Chứng minh viết tự do làm trên giấy với gia sư (LT6); app luyện nhận dạng, tính góc/độ dài, bước then chốt. Hình học tương tác
-C1–C3 (S5) cần thiết kế trước ~11/2026 để dùng từ GĐ2.
+C1–C3 (S5) cần thiết kế trước ~11/2026 để dùng từ GĐ2. (21/10: thiết kế xong — `docs/superpowers/specs/2026-10-21-s5-geometry-design.md`; code 28/10–~11/11; C1 làm sau.)
 
 ### H4. Những KU nào app chấm được 100%?
 
@@ -297,13 +301,13 @@ Mỗi KU qua kiểm tra độc lập (agent thứ hai giải lại + script tín
 | 4 | **g-giaihpt, g-chuso, g-nangsuat, g-phantram, g-chuyendong** (LT19 — gia sư soát G) | Ngay: gia sư đang dạy HPT, trường học chương 1 | 01/11/2026 |
 | 5 | f3-dongdang, j-coban, c-coban, c-truccan | GĐ2 (Track C bắt đầu 23/11) | 15/11/2026 |
 | 6 | c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt | GĐ2 (mốc 8.5) — gia sư soát | 29/11/2026 |
-| 7 | d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen | GĐ2 cuối, GĐ3 | 13/12/2026 |
+| 7 | d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | GĐ2 cuối, GĐ3 | 13/12/2026 |
 | 8 | e-viete, e-vietets, o-chungminh, o-dongdang, g-honhop | GĐ3 (mốc 8.5) — gia sư soát | 03/01/2027 |
-| 9 | l-kethop, o-nangcao, hq-amgm | GĐ4 | 07/02/2027 |
+| 9 | o-thanghang, o-nangcao, hq-amgm | GĐ4 | 07/02/2027 |
 | 10 | hq-doanhthu, hq-hinhhoc | GĐ4 | 21/02/2027 |
-| P2 | i-giaitgv, i-ungdung, f-hamso, f-parabol, e-giaodiem, j-cung, m-vitri, n-ngoainoi | Chỉ khi dư thời gian | — |
+| P2 | i-giaitgv, i-ungdung, f-hamso, f-parabol, e-giaodiem, j-cung, m-vitri, n-ngoainoi, q-dagiac | Chỉ khi dư thời gian | — |
 
-Tổng 40 KU lõi mới (+ htl-1, htl-2 đã có) + 8 KU P2. Đợt 8 cũ (G) chuyển lên đợt 4 (LT19); đợt 4–7 cũ thành 5–8, giữ nguyên ngày. Trung bình ~2 KU/tuần soạn; phụ huynh duyệt ~1 giờ/tuần.
+Tổng 41 KU lõi mới (+ htl-1, htl-2 đã có) + 9 KU P2 (LT21, 21/10). Đợt 8 cũ (G) chuyển lên đợt 4 (LT19); đợt 4–7 cũ thành 5–8, giữ nguyên ngày. Trung bình ~2 KU/tuần soạn; phụ huynh duyệt ~1 giờ/tuần.
 
 ---
 
@@ -333,7 +337,7 @@ Map giữa module ID và domain(s) trong master plan:
 | module id | domain(s) | units | title |
 |---|---|---|---|
 | backfill-dai-so | F1 | f1-hdt, f1-pnt, f1-tgon, f1-qd | Bù lỗ hổng đại số lớp 7–8 |
-| backfill-hinh | F3 | f3-dongdang | Bù lỗ hổng hình học lớp 8 |
+| backfill-hinh | F3 | f3-dongdang, f3-tugiac | Bù lỗ hổng hình học lớp 8 |
 | thong-ke | A | a-tanso, a-bieudo | Thống kê |
 | xac-suat | B | b-phepthu, b-xsuat, b-haib | Xác suất |
 | can-thuc | C | c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu | Căn bậc hai & biểu thức chứa căn |
@@ -343,11 +347,11 @@ Map giữa module ID và domain(s) trong master plan:
 | bai-toan-tt | G | g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram, g-honhop | Giải bài toán bằng PT/HPT |
 | hinh-khoi | P | p-trunon, p-cau, p-ghep | Hình khối trong thực tiễn |
 | he-thuc-luong | I | htl-1, htl-2, i-giaitgv, i-ungdung | Hệ thức lượng trong tam giác vuông |
-| duong-tron | J | j-coban, j-cung | Đường tròn cơ bản |
+| duong-tron | J | j-coban, j-cung, q-dagiac | Đường tròn cơ bản |
 | noi-tiep | K | k-goiintiep, k-tugiacnt | Góc & tứ giác nội tiếp |
-| tiep-tuyen | L | l-tieptuyen, l-kethop | Tiếp tuyến |
+| tiep-tuyen | L | l-tieptuyen | Tiếp tuyến |
 | vi-tri-td | M, N | m-vitri, n-ngoainoi | Vị trí tương đối & ngoại/nội tiếp |
-| hinh-nang-cao | O | o-chungminh, o-dongdang, o-nangcao | Hình học tổng hợp nâng cao |
+| hinh-nang-cao | O | o-chungminh, o-thanghang, o-dongdang, o-nangcao | Hình học tổng hợp nâng cao |
 | toi-uu | H, Q | hq-amgm, hq-doanhthu, hq-hinhhoc | BĐT & tối ưu (gộp 06/10) |
 
 ---
@@ -432,3 +436,4 @@ Per D14 + SPEC.md §0:
 | 05/10/2026 | Design review (LT1–LT12): timeline 12/10/2026 → 31/03/2027; f3-dongdang to GĐ2, Track C from GĐ3; 13 rows given their missing examWeight; gradability counts reconciled (26/4/15/5, 60% fully auto); content batches re-dated; §9 matches the real schema + planned changes. |
 | 06/10/2026 | LT17–LT18 from the 68-paper index + Hà Nội 2025/26 structure: 8 KUs → P2, optimisation 5 → 3 KUs (48 total, 40 core), Track C from week 7, exam gates recomputed (Bài 4 = 4đ, Bài 5 = 0,5đ), batches re-dated, ~77h core. |
 | 17/10/2026 | LT19–LT20: tutor-directed — G strand (linear PT/HPT word problems) pulled to batch 4 (01/11); new g-giaihpt, g-chuso (50 KUs, 42 core); g-chuyendong/g-nangsuat/g-phantram now require g-giaihpt, quadratic word problems gathered in g-honhop (batch 8, needs d-ptbh); old batches 4–7 renumbered 5–8, dates unchanged. Tutor PDFs become a content source (LT20). |
+| 21/10/2026 | LT21 geometry audit (68-paper Bài 4.2 + Toán 9 GDPT 2018): +f3-tugiac (batch 7), o-chungminh split → o-chungminh + o-thanghang (batch 9), l-kethop folded into l-tieptuyen / o-dongdang, +q-dagiac (P2). **52 KUs: 43 core + 9 P2.** Sổ tay suy ngược gains 4 "cấu hình mẫu". |
