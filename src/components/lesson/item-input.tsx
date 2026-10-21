@@ -6,6 +6,7 @@ import { Rich } from "./rich";
 import { proofParts, stepParts } from "./answer-parts";
 import { OrderInput } from "./geometry/order-input";
 import { ProofInput } from "./geometry/proof-input";
+import { AnalysisInput } from "./geometry/analysis";
 
 export { stepParts } from "./answer-parts";
 
@@ -31,6 +32,7 @@ export function ItemInput({
 }) {
   const ref = useRef<HTMLInputElement>(null);
 
+  if (item.type === "analysis") return <AnalysisInput item={item} value={value} onChange={onChange} disabled={disabled} />;
   if (item.type === "proof") return <ProofInput item={item} value={value} onChange={onChange} disabled={disabled} marks={marks} />;
   if (item.type === "order") return <OrderInput item={item} value={value} onChange={onChange} disabled={disabled} at={at} />;
 
