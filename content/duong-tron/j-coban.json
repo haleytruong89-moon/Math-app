@@ -1,0 +1,686 @@
+{
+  "id": "j-coban",
+  "module": "duong-tron",
+  "order": 1,
+  "title": "Đường tròn: tâm, bán kính, dây, góc ở tâm",
+  "status": "draft",
+  "estMinutes": 40,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" role=\"img\" aria-label=\"Đường tròn tâm O, dây AB, OH vuông góc với AB tại H\"><circle cx=\"120\" cy=\"100\" r=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"48\" y1=\"154\" x2=\"192\" y2=\"154\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"120\" y1=\"100\" x2=\"48\" y2=\"154\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"100\" x2=\"120\" y2=\"154\" stroke=\"var(--warn)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M 120 146 L 128 146 L 128 154\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"120\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"48\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"192\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><text x=\"124\" y=\"93\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">O</text><text x=\"42\" y=\"158\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"198\" y=\"158\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"169\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">H</text><text x=\"76\" y=\"125\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">R</text><text x=\"126\" y=\"131\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--warn)\">d</text><text x=\"84\" y=\"148\" font-size=\"11\" text-anchor=\"middle\" fill=\"var(--accent)\">l/2</text></svg>",
+    "alt": "Đường tròn tâm O bán kính R; dây AB nằm ngang phía dưới tâm; OH vuông góc với AB tại trung điểm H; OH = d là khoảng cách từ tâm đến dây, AH = l/2 là nửa dây; tam giác OHA vuông tại H có cạnh huyền OA = R (vẽ theo tỉ lệ 5 : 3 : 4)."
+  },
+  "theory": [
+    "**Cần nhớ trước:** định lí **Pythagore** (lớp 8) — trong tam giác vuông, bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông. Bộ số hay gặp: $3$–$4$–$5$, $6$–$8$–$10$, $5$–$12$–$13$ (số lớn nhất là cạnh huyền).",
+    "**Quy tắc:** đường tròn $(O;R)$ gồm các điểm cách $O$ đúng $R$. Điểm $M$ nằm trong / trên / ngoài đường tròn khi $OM<R$ / $OM=R$ / $OM>R$. **Dây** nối hai điểm của đường tròn; đường kính $2R$ là dây lớn nhất. Kẻ $OH \\perp AB$ thì $H$ là trung điểm dây và $OH^2+\\left(\\frac{AB}{2}\\right)^2=R^2$. Hai dây bằng nhau $\\iff$ cách đều tâm. **Góc ở tâm** $\\widehat{AOB}$ bằng số đo cung nhỏ $AB$; cung lớn $=360^\\circ-$ cung nhỏ.",
+    "**Vì sao:** $OA=OB=R$ nên tam giác $OAB$ cân tại $O$; đường cao $OH$ cũng là trung tuyến, nên $H$ là trung điểm dây. Tam giác $OHA$ vuông tại $H$, cạnh huyền là **bán kính** $OA$. Ngược lại, đường kính đi qua trung điểm một dây **không qua tâm** thì vuông góc với dây đó. Dây càng gần tâm càng dài; khoảng cách bằng $0$ thì dây là đường kính.",
+    "**Bẫy hay gặp:** (1) **Quên chia đôi dây**: $R=5$, $AB=8$ thì $OH=\\sqrt{5^2-4^2}=3$, không dùng $8$. (2) **Nhầm cạnh huyền**: cạnh huyền là $R$, nên $OH^2=R^2-AH^2$ (trừ), còn $R^2=OH^2+AH^2$ (cộng). (3) **Nhầm cung**: $\\widehat{AOB}=70^\\circ$ thì cung nhỏ $70^\\circ$, cung lớn $290^\\circ$. (4) So sánh $OM$ với **đường kính** thay vì bán kính.",
+    "**Nhận dạng:** đề có “dây”, “khoảng cách từ tâm đến dây”, “bán kính” → kẻ $OH \\perp$ dây, xét tam giác vuông $OHA$. Đề có “góc ở tâm”, “số đo cung”, kim đồng hồ, nan hoa → góc ở tâm $=$ cung nhỏ; một vòng $360^\\circ$, mỗi số trên đồng hồ cách $30^\\circ$. **Không** coi $H$ là trung điểm khi $H$ chỉ là một điểm bất kì trên dây (chưa có $OH \\perp AB$).",
+    "**Thẻ dây – khoảng cách – bán kính** ($l$: độ dài dây, $d$: khoảng cách từ tâm đến dây): $\\begin{array}{l|l} \\text{Biết } R,\\ d & l=2\\sqrt{R^2-d^2} \\\\ \\text{Biết } R,\\ l & d=\\sqrt{R^2-\\left(\\frac{l}{2}\\right)^2} \\\\ \\text{Biết } d,\\ l & R=\\sqrt{d^2+\\left(\\frac{l}{2}\\right)^2} \\end{array}$ Bộ $(d;\\ \\frac{l}{2};\\ R)$ đẹp: $(3;4;5)$, $(6;8;10)$, $(5;12;13)$. **Cung:** nhỏ $=$ góc ở tâm; lớn $=360^\\circ-$ nhỏ; nửa đường tròn $=180^\\circ$."
+  ],
+  "worked": {
+    "problem": "Cho đường tròn $(O;13\\text{ cm})$ và dây $AB=24$ cm. Tính khoảng cách từ $O$ đến dây $AB$.",
+    "steps": [
+      {
+        "text": "Kẻ $OH \\perp AB$ tại $H$. Vì $OA=OB$ nên tam giác $OAB$ cân tại $O$, đường cao $OH$ cũng là trung tuyến: $AH=\\dfrac{AB}{2}=12$ cm.",
+        "why": "Đường kính (bán kính) vuông góc với dây thì đi qua trung điểm của dây."
+      },
+      {
+        "text": "Tam giác $OHA$ vuông tại $H$, cạnh huyền là $OA=R=13$ cm.",
+        "why": "Cạnh huyền nằm đối diện góc vuông $H$; đó luôn là bán kính."
+      },
+      {
+        "text": "$OH^2=OA^2-AH^2=13^2-12^2=169-144=25$, nên $OH=5$ cm.",
+        "why": "Tìm cạnh góc vuông thì lấy bình phương cạnh huyền trừ đi; đây là bộ $5$–$12$–$13$."
+      },
+      {
+        "text": "Kết luận: khoảng cách từ $O$ đến dây $AB$ là $5$ cm.",
+        "why": "Thử lại: $5^2+12^2=169=13^2$."
+      }
+    ],
+    "selfExplain": "Vì sao trong tam giác $OHA$ con dùng $12$ chứ không dùng $24$, và vì sao lấy $13^2$ **trừ** $12^2$ chứ không cộng?"
+  },
+  "faded": {
+    "problem": "Cho đường tròn $(O;R)$ có dây $CD=16$ cm, khoảng cách từ $O$ đến $CD$ bằng $6$ cm. Tính bán kính $R$.",
+    "steps": [
+      {
+        "text": "Kẻ $OH \\perp CD$ tại $H$, khi đó $OH=6$ cm và tam giác $OHC$ vuông tại $H$."
+      },
+      {
+        "prompt": "Tìm nửa dây.",
+        "item": {
+          "id": "j-coban-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Độ dài $CH$ bằng bao nhiêu? Vì sao?",
+          "options": [
+            "$CH=8$ cm, vì $OH \\perp CD$ nên $H$ là trung điểm $CD$",
+            "$CH=16$ cm, vì $CH$ chính là dây $CD$",
+            "$CH=6$ cm, vì $CH=OH$",
+            "Chưa tính được $CH$ vì chưa biết $R$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E03",
+              "feedback": "Con quên chia đôi: $OH \\perp CD$ nên $H$ là trung điểm, $CH$ chỉ là nửa dây."
+            },
+            "2": {
+              "code": "E08",
+              "feedback": "$OH$ là khoảng cách từ tâm; $CH$ là đoạn nằm trên dây, hai đoạn khác nhau."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Đường thẳng qua tâm vuông góc với dây thì đi qua trung điểm dây, không cần biết $R$."
+            }
+          },
+          "solution": "$OH \\perp CD$ nên $H$ là trung điểm $CD$: $CH=16:2=8$ cm."
+        }
+      },
+      {
+        "prompt": "Chọn cạnh huyền.",
+        "item": {
+          "id": "j-coban-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Trong tam giác vuông $OHC$ (vuông tại $H$), cạnh huyền là:",
+          "options": [
+            "$OH$",
+            "$CH$",
+            "$OC$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E08",
+              "feedback": "Cạnh huyền nằm đối diện góc vuông $H$; $OH$ là một cạnh góc vuông."
+            },
+            "1": {
+              "code": "E08",
+              "feedback": "Cạnh huyền nằm đối diện góc vuông $H$; $CH$ là một cạnh góc vuông."
+            }
+          },
+          "solution": "Góc vuông ở $H$, cạnh đối diện là $OC=R$: bán kính luôn là cạnh huyền."
+        }
+      },
+      {
+        "prompt": "Kết luận.",
+        "item": {
+          "id": "j-coban-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Kết luận: bán kính $R$ bằng bao nhiêu xentimét?",
+          "answer": "10",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "2√73",
+              "code": "E03",
+              "feedback": "Con quên chia đôi dây: cạnh góc vuông là $CH=8$, không phải $16$."
+            },
+            {
+              "answer": "2√7",
+              "code": "E08",
+              "feedback": "$OC$ là cạnh huyền nên $OC^2=OH^2+CH^2$, phải cộng."
+            },
+            {
+              "answer": "14",
+              "code": "E03",
+              "feedback": "Pythagore cộng các **bình phương**: $R^2=6^2+8^2$, không cộng độ dài."
+            }
+          ],
+          "solution": "$R=OC=\\sqrt{OH^2+CH^2}=\\sqrt{36+64}=10$ cm."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "j-coban-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ có **đường kính** $10$ cm và ba điểm $A$, $B$, $C$ với $OA=3$ cm, $OB=5$ cm, $OC=8$ cm. Vị trí của ba điểm so với đường tròn là:",
+      "hints": [
+        "Đề hỏi vị trí từng điểm so với đường tròn.",
+        "Vị trí của $M$ phụ thuộc vào việc so sánh $OM$ với đại lượng nào?",
+        "Tính bán kính từ đường kính, rồi so sánh $OA$, $OB$, $OC$ với bán kính."
+      ],
+      "options": [
+        "$A$, $B$, $C$ đều nằm trong đường tròn",
+        "$A$ nằm trong, $B$ nằm trên, $C$ nằm ngoài đường tròn",
+        "$A$ nằm ngoài, $B$ nằm trên, $C$ nằm trong đường tròn"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Con so sánh với đường kính; phải so sánh $OM$ với **bán kính**."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Con đảo chiều: $OM<R$ thì $M$ nằm trong, $OM>R$ thì $M$ nằm ngoài."
+        }
+      },
+      "solution": "$R=10:2=5$ cm. $OA=3<5$: $A$ nằm trong; $OB=5=R$: $B$ nằm trên; $OC=8>5$: $C$ nằm ngoài."
+    },
+    {
+      "id": "j-coban-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O;10\\text{ cm})$ và dây $AB$ cách tâm $O$ một khoảng $6$ cm. Tính độ dài dây $AB$.",
+      "hints": [
+        "Cần tìm độ dài dây $AB$.",
+        "Có bán kính và khoảng cách từ tâm đến dây: tạo được tam giác vuông nào?",
+        "Kẻ $OH \\perp AB$; tính $AH$ bằng Pythagore trong tam giác $OHA$ rồi nhân đôi."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" role=\"img\" aria-label=\"Đường tròn tâm O bán kính 10 cm, dây AB cách tâm 6 cm\"><circle cx=\"120\" cy=\"100\" r=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"48\" y1=\"154\" x2=\"192\" y2=\"154\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"120\" y1=\"100\" x2=\"48\" y2=\"154\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"100\" x2=\"120\" y2=\"154\" stroke=\"var(--warn)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M 120 146 L 128 146 L 128 154\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"120\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"48\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"192\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><text x=\"124\" y=\"93\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">O</text><text x=\"42\" y=\"158\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"198\" y=\"158\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"169\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">H</text><text x=\"76\" y=\"125\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">10 cm</text><text x=\"126\" y=\"131\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--warn)\">6 cm</text></svg>",
+        "alt": "Đường tròn tâm O, bán kính OA = 10 cm; dây AB nằm ngang phía dưới tâm; OH vuông góc với AB tại H, OH = 6 cm."
+      },
+      "answer": "16",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "8",
+          "code": "E06",
+          "feedback": "Con mới tính nửa dây $AH$; dây $AB=2AH$."
+        },
+        {
+          "answer": "4√34",
+          "code": "E08",
+          "feedback": "Cạnh huyền là bán kính $OA$: $AH^2=OA^2-OH^2$, trừ chứ không cộng."
+        }
+      ],
+      "solution": "Kẻ $OH \\perp AB$ thì $H$ là trung điểm $AB$, $OH=6$ cm. $AH=\\sqrt{10^2-6^2}=\\sqrt{64}=8$ cm, nên $AB=2\\cdot 8=16$ cm."
+    },
+    {
+      "id": "j-coban-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ và hai điểm $A$, $B$ trên đường tròn với $\\widehat{AOB}=80^\\circ$. Số đo cung lớn $AB$ là:",
+      "hints": [
+        "Đề hỏi cung **lớn** $AB$, không phải cung nhỏ.",
+        "Góc ở tâm $\\widehat{AOB}$ cho ngay số đo của cung nào?",
+        "Cung lớn $=360^\\circ-$ cung nhỏ."
+      ],
+      "options": [
+        "$80^\\circ$",
+        "$280^\\circ$",
+        "$160^\\circ$",
+        "$100^\\circ$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Góc ở tâm bằng số đo cung **nhỏ**; cung lớn bằng $360^\\circ$ trừ cung nhỏ."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Số đo cung nhỏ bằng đúng góc ở tâm, không gấp đôi."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Cung lớn và cung nhỏ cộng lại bằng cả đường tròn $360^\\circ$, không phải $180^\\circ$."
+        }
+      },
+      "solution": "Cung nhỏ $AB=\\widehat{AOB}=80^\\circ$, nên cung lớn $AB=360^\\circ-80^\\circ=280^\\circ$."
+    },
+    {
+      "id": "j-coban-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Đề: «Cho đường tròn $(O;10\\text{ cm})$, dây $AB$ cách tâm $8$ cm. Tính độ dài $AB$.» Bước đầu tiên nên làm gì?",
+      "recognition": true,
+      "hints": [
+        "Đề cho bán kính và khoảng cách, hỏi độ dài dây.",
+        "Khoảng cách từ tâm đến dây là một đoạn vuông góc: đoạn nào?",
+        "Cần một tam giác vuông có cạnh huyền là bán kính."
+      ],
+      "options": [
+        "Tính góc ở tâm $\\widehat{AOB}$ rồi suy ra số đo cung $AB$",
+        "Áp dụng Pythagore cho tam giác $OAB$ với cạnh huyền $AB$",
+        "Kẻ $OH \\perp AB$ tại $H$ rồi xét tam giác vuông $OHA$",
+        "So sánh $OA$ với $R$ để xem $A$ nằm trong hay ngoài đường tròn"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đề hỏi độ dài dây, không hỏi góc hay cung; góc ở tâm không cho ngay độ dài."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Tam giác $OAB$ cân tại $O$, không vuông; cần tạo một tam giác vuông trước."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$A$ là đầu mút của dây nên đã nằm trên đường tròn; so sánh $OM$ với $R$ là cách của bài vị trí điểm."
+        }
+      },
+      "solution": "Dây + khoảng cách + bán kính → kẻ $OH \\perp AB$: $H$ là trung điểm $AB$, tam giác $OHA$ vuông tại $H$ có cạnh huyền $OA=R$. (Ở đây $AH=6$ cm, $AB=12$ cm.)"
+    },
+    {
+      "id": "j-coban-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Đường tròn $(O)$ có dây $AB=12$ cm cách tâm $O$ một khoảng $8$ cm. Tính **đường kính** của đường tròn.",
+      "hints": [
+        "Đề hỏi đường kính, tức là $2R$.",
+        "Biết dây và khoảng cách từ tâm: tam giác vuông nào có cạnh huyền là $R$?",
+        "Dùng $R^2=d^2+\\left(\\frac{AB}{2}\\right)^2$, rồi nhân đôi."
+      ],
+      "answer": "20",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "10",
+          "code": "E10",
+          "feedback": "Con đọc lướt đề: đề hỏi **đường kính**, bằng $2R$."
+        },
+        {
+          "answer": "8√13",
+          "code": "E03",
+          "feedback": "Con quên chia đôi dây: cạnh góc vuông là nửa dây $6$ cm."
+        },
+        {
+          "answer": "4√7",
+          "code": "E08",
+          "feedback": "Bán kính là cạnh huyền: $R^2=OH^2+AH^2$, cộng chứ không trừ."
+        }
+      ],
+      "solution": "Kẻ $OH \\perp AB$: $AH=6$ cm, $OH=8$ cm. $R=\\sqrt{8^2+6^2}=\\sqrt{100}=10$ cm. Đường kính $=2R=20$ cm."
+    },
+    {
+      "id": "j-coban-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Mặt đồng hồ là một đường tròn có $12$ số chia đều. Lúc $8$ giờ đúng, kim giờ và kim phút tạo thành một góc ở tâm (lấy góc không quá $180^\\circ$). Góc đó bằng bao nhiêu độ?",
+      "hints": [
+        "Cần góc ở tâm giữa kim giờ (chỉ số $8$) và kim phút (chỉ số $12$).",
+        "Mặt đồng hồ chia thành $12$ cung bằng nhau: mỗi cung bao nhiêu độ?",
+        "Đếm số khoảng theo đường ngắn hơn từ số $8$ đến số $12$."
+      ],
+      "answer": "120",
+      "unit": "độ",
+      "mistakes": [
+        {
+          "answer": "240",
+          "code": "E04",
+          "feedback": "$240^\\circ$ là phía lớn; đề lấy góc không quá $180^\\circ$, tức $360^\\circ$ trừ phía lớn."
+        },
+        {
+          "answer": "48",
+          "code": "E03",
+          "feedback": "Hai số liền nhau trên mặt đồng hồ cách $360^\\circ:12=30^\\circ$; $6^\\circ$ là góc của một vạch phút."
+        }
+      ],
+      "solution": "Mỗi khoảng giữa hai số liền nhau: $360^\\circ:12=30^\\circ$. Từ số $8$ đến số $12$ theo đường ngắn có $4$ khoảng: $4\\cdot 30^\\circ=120^\\circ$."
+    },
+    {
+      "id": "j-coban-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O;5\\text{ cm})$, đường kính $AB$ vuông góc với dây $CD$ tại $I$ ($I$ nằm giữa $A$ và $O$). Biết $AI=2$ cm. Tính độ dài dây $CD$.",
+      "source": "68 đề – Đề 4, Bài 4.2 (chuyển thể: cho R = 5 cm, AI = 2 cm, tính dây CD)",
+      "hints": [
+        "Cần dây $CD$; đi lần lượt $OI$ → $CI$ → $CD$.",
+        "Đường kính vuông góc với dây thì cắt dây tại điểm đặc biệt nào?",
+        "Xét tam giác vuông $OIC$: cạnh huyền là $OC=R$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 210\" role=\"img\" aria-label=\"Đường tròn tâm O, đường kính AB vuông góc với dây CD tại I\"><circle cx=\"120\" cy=\"105\" r=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"105\" x2=\"210\" y2=\"105\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"66\" y1=\"33\" x2=\"66\" y2=\"177\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"120\" y1=\"105\" x2=\"66\" y2=\"33\" stroke=\"var(--warn)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M 74 105 L 74 97 L 66 97\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"120\" cy=\"105\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"30\" cy=\"105\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"210\" cy=\"105\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"66\" cy=\"105\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"66\" cy=\"33\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"66\" cy=\"177\" r=\"2.5\" fill=\"currentColor\"/><text x=\"123\" y=\"120\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">O</text><text x=\"24\" y=\"109\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"216\" y=\"109\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"61\" y=\"120\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">I</text><text x=\"61\" y=\"28\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">C</text><text x=\"61\" y=\"190\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">D</text><text x=\"48\" y=\"99\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">2 cm</text><text x=\"101\" y=\"69\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--warn)\">5 cm</text></svg>",
+        "alt": "Đường tròn tâm O bán kính 5 cm; đường kính AB nằm ngang, A bên trái; dây CD thẳng đứng cắt AB tại I nằm giữa A và O, AI = 2 cm, CD vuông góc với AB tại I; nối OC."
+      },
+      "steps": [
+        {
+          "prompt": "Tính khoảng cách từ tâm đến dây.",
+          "item": {
+            "id": "j-coban-p7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $OI$ (cm).",
+            "answer": "3",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E08",
+                "feedback": "$AI$ là đoạn từ $A$ đến $I$; khoảng cách từ tâm đến dây là $OI=OA-AI$."
+              },
+              {
+                "answer": "7",
+                "code": "E08",
+                "feedback": "$I$ nằm giữa $A$ và $O$ nên $OI=OA-AI$, không cộng."
+              }
+            ],
+            "solution": "$OI=OA-AI=5-2=3$ cm."
+          }
+        },
+        {
+          "prompt": "Tính nửa dây.",
+          "item": {
+            "id": "j-coban-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $CI$ (cm).",
+            "answer": "4",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "√34",
+                "code": "E08",
+                "feedback": "Cạnh huyền của tam giác $OIC$ là $OC$: $CI^2=OC^2-OI^2$."
+              },
+              {
+                "answer": "√21",
+                "code": "E06",
+                "feedback": "Con dùng $AI$; trong tam giác vuông $OIC$ cạnh góc vuông là $OI$."
+              }
+            ],
+            "solution": "Tam giác $OIC$ vuông tại $I$, $OC=R=5$: $CI=\\sqrt{5^2-3^2}=4$ cm."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "j-coban-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Kết luận: dây $CD$ dài bao nhiêu xentimét?",
+            "answer": "8",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "4",
+                "code": "E06",
+                "feedback": "Đường kính $AB \\perp CD$ nên $I$ là trung điểm $CD$: $CD=2CI$."
+              }
+            ],
+            "solution": "$CD=2CI=2\\cdot 4=8$ cm."
+          }
+        }
+      ],
+      "solution": "$OI=5-2=3$ cm. Đường kính $AB \\perp CD$ nên $I$ là trung điểm $CD$. $CI=\\sqrt{5^2-3^2}=4$ cm, nên $CD=8$ cm."
+    },
+    {
+      "id": "j-coban-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O;2\\text{ cm})$ có đường kính $BC$. Trên tia đối của tia $BC$ lấy điểm $P$ sao cho $PB=BO=2$ cm. Điểm $A$ thuộc đường tròn sao cho $\\widehat{OAP}=90^\\circ$ ($PA$ là tiếp tuyến). Tính $PA$.",
+      "source": "68 đề – Đề 14, Bài 4.2b (chuyển thể: cho sẵn góc vuông tại A, chỉ tính PA)",
+      "hints": [
+        "Cần độ dài $PA$ trong tam giác vuông $OAP$.",
+        "$PO$ gồm những đoạn nào? Cạnh nào đối diện góc vuông $A$?",
+        "Tính $PO=PB+BO$, rồi $PA^2=PO^2-OA^2$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 190\" role=\"img\" aria-label=\"Đường tròn tâm O bán kính 2 cm, P trên tia đối tia BC, PA vuông góc OA\"><circle cx=\"190\" cy=\"100\" r=\"80\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"100\" x2=\"270\" y2=\"100\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"100\" x2=\"150\" y2=\"30.7\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"190\" y1=\"100\" x2=\"150\" y2=\"30.7\" stroke=\"var(--warn)\" stroke-width=\"1.5\"/><path d=\"M 143.1 34.7 L 147.1 41.6 L 154 37.6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"30\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"110\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"190\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"270\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"150\" cy=\"30.7\" r=\"2.5\" fill=\"currentColor\"/><text x=\"26\" y=\"115\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">P</text><text x=\"114\" y=\"115\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"190\" y=\"115\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">O</text><text x=\"276\" y=\"104\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">C</text><text x=\"148\" y=\"23.7\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"70\" y=\"115\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">2 cm</text><text x=\"150\" y=\"115\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">2 cm</text></svg>",
+        "alt": "Đường tròn tâm O bán kính 2 cm, đường kính BC nằm ngang; P nằm trên tia đối của tia BC với PB = BO = 2 cm; A trên đường tròn, phía trên, với PA vuông góc với OA tại A."
+      },
+      "answer": "2√3",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2√5",
+          "code": "E08",
+          "feedback": "$PO$ là cạnh huyền (đối diện góc vuông $A$): $PA^2=PO^2-OA^2$."
+        },
+        {
+          "answer": "12",
+          "code": "E11",
+          "feedback": "Con mới tính $PA^2$; còn phải lấy căn bậc hai."
+        }
+      ],
+      "solution": "$PO=PB+BO=4$ cm, $OA=R=2$ cm. Tam giác $OAP$ vuông tại $A$: $PA=\\sqrt{4^2-2^2}=\\sqrt{12}=2\\sqrt3$ cm."
+    }
+  ],
+  "exit": [
+    {
+      "id": "j-coban-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O;10\\text{ cm})$ và dây $AB=12$ cm. Tính khoảng cách từ $O$ đến dây $AB$.",
+      "answer": "8",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2√34",
+          "code": "E08",
+          "feedback": "Cạnh huyền là bán kính: $d^2=R^2-\\left(\\frac{AB}{2}\\right)^2$, trừ chứ không cộng."
+        },
+        {
+          "answer": "4",
+          "code": "E03",
+          "feedback": "Pythagore dùng bình phương: $d=\\sqrt{10^2-6^2}$, không phải $10-6$."
+        }
+      ],
+      "solution": "Kẻ $OH \\perp AB$: $H$ là trung điểm, $AH=6$ cm. $OH=\\sqrt{10^2-6^2}=\\sqrt{64}=8$ cm."
+    },
+    {
+      "id": "j-coban-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đường tròn $(O;7\\text{ cm})$. Độ dài nào sau đây **không thể** là độ dài một dây của đường tròn?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$14$ cm",
+        "$15$ cm"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Dây có thể dài hơn bán kính; dây dài nhất là đường kính $2R$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Đường kính cũng là một dây (dây đi qua tâm), và là dây dài nhất."
+        }
+      },
+      "solution": "Dây lớn nhất là đường kính $2R=14$ cm, nên mọi dây dài không quá $14$ cm: $15$ cm không thể."
+    },
+    {
+      "id": "j-coban-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Đường tròn $(O;13\\text{ cm})$ có dây $AB$ cách tâm $5$ cm và dây $CD=24$ cm. So sánh $AB$ và $CD$.",
+      "options": [
+        "$AB=CD$",
+        "$AB<CD$",
+        "$AB>CD$",
+        "Không so sánh được vì chưa biết khoảng cách từ $O$ đến $CD$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E06",
+          "feedback": "Con mới tính nửa dây $AB$; dây $AB$ gấp đôi nửa dây."
+        },
+        "2": {
+          "code": "E08",
+          "feedback": "Cạnh huyền là bán kính: nửa dây $=\\sqrt{13^2-5^2}$, trừ chứ không cộng."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Biết $R$ và khoảng cách từ tâm là tính được $AB$, rồi so với $CD$."
+        }
+      },
+      "solution": "Nửa dây $AB$: $\\sqrt{13^2-5^2}=12$ cm, nên $AB=24$ cm $=CD$. (Hai dây bằng nhau thì cách đều tâm: $CD$ cũng cách $O$ là $5$ cm.)"
+    },
+    {
+      "id": "j-coban-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Đường tròn $(O)$ có dây $AB=10$ cm, khoảng cách từ $O$ đến $AB$ bằng $12$ cm. Tính bán kính của đường tròn.",
+      "answer": "13",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2√61",
+          "code": "E03",
+          "feedback": "Con quên chia đôi dây: cạnh góc vuông là nửa dây."
+        },
+        {
+          "answer": "√119",
+          "code": "E08",
+          "feedback": "Bán kính là cạnh huyền: $R^2=d^2+\\left(\\frac{AB}{2}\\right)^2$, cộng chứ không trừ."
+        }
+      ],
+      "solution": "Kẻ $OH \\perp AB$: $AH=5$ cm, $OH=12$ cm. $R=\\sqrt{12^2+5^2}=\\sqrt{169}=13$ cm."
+    },
+    {
+      "id": "j-coban-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Đường tròn $(O;6\\text{ cm})$ có dây $AB=6$ cm. Tính số đo cung lớn $AB$.",
+      "answer": "300",
+      "unit": "độ",
+      "mistakes": [
+        {
+          "answer": "60",
+          "code": "E04",
+          "feedback": "Đó là cung nhỏ (bằng góc ở tâm); cung lớn $=360^\\circ-$ cung nhỏ."
+        },
+        {
+          "answer": "180",
+          "code": "E08",
+          "feedback": "$AB=6$ cm bằng bán kính, không phải đường kính ($12$ cm)."
+        }
+      ],
+      "solution": "$OA=OB=AB=6$ cm nên tam giác $OAB$ đều, $\\widehat{AOB}=60^\\circ$. Cung nhỏ $AB=60^\\circ$, cung lớn $AB=360^\\circ-60^\\circ=300^\\circ$."
+    },
+    {
+      "id": "j-coban-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho nửa đường tròn tâm $O$, đường kính $AB=2R$. Trên nửa đường tròn lấy điểm $M$ sao cho $MB=R$. Số đo cung $AM$ (cung nằm trên nửa đường tròn) là:",
+      "source": "68 đề – Đề 51, Bài 4.2 (chuyển thể: tính số đo cung AM)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 135\" role=\"img\" aria-label=\"Nửa đường tròn tâm O đường kính AB, điểm M với MB = R\"><path d=\"M 30 115 A 90 90 0 0 1 210 115\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"115\" x2=\"210\" y2=\"115\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"115\" x2=\"165\" y2=\"37.1\" stroke=\"var(--warn)\" stroke-width=\"1.5\"/><line x1=\"165\" y1=\"37.1\" x2=\"210\" y2=\"115\" stroke=\"var(--accent)\" stroke-width=\"2\"/><circle cx=\"30\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"210\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"165\" cy=\"37.1\" r=\"2.5\" fill=\"currentColor\"/><text x=\"24\" y=\"119\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"216\" y=\"119\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"130\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">O</text><text x=\"169\" y=\"30.1\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">M</text><text x=\"196.5\" y=\"73\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--accent)\">R</text></svg>",
+        "alt": "Nửa đường tròn tâm O, đường kính AB nằm ngang; điểm M trên nửa đường tròn, gần B, với dây MB = R; nối OM."
+      },
+      "options": [
+        "$60^\\circ$",
+        "$120^\\circ$",
+        "$240^\\circ$",
+        "$300^\\circ$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E08",
+          "feedback": "Đó là cung $MB$ (góc $\\widehat{MOB}$); cung $AM$ ứng với góc ở tâm $\\widehat{AOM}$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Cung $AM$ trên nửa đường tròn là cung nhỏ, bằng góc ở tâm $\\widehat{AOM}$; không lấy $360^\\circ$ trừ."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Con lấy cung lớn $MB$; đề hỏi cung $AM$ trên nửa đường tròn."
+        }
+      },
+      "solution": "$OM=OB=MB=R$ nên tam giác $OMB$ đều, $\\widehat{MOB}=60^\\circ$. $\\widehat{AOM}=180^\\circ-60^\\circ=120^\\circ$, nên cung $AM=120^\\circ$."
+    },
+    {
+      "id": "j-coban-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O;6\\text{ cm})$ và điểm $A$ với $OA=12$ cm. Kẻ hai tiếp tuyến $AB$, $AC$ ($B$, $C$ là tiếp điểm). Biết $\\widehat{AOB}=\\widehat{AOC}=60^\\circ$ và $OA \\perp BC$ tại $H$ với $OH=3$ cm.",
+      "source": "68 đề – Đề 11, Bài 4.2 (chuyển thể: R = 6 cm, OA = 2R; tính góc BOC, cung lớn BC, dây BC)",
+      "steps": [
+        {
+          "prompt": "Góc ở tâm.",
+          "item": {
+            "id": "j-coban-x7-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số đo góc ở tâm $\\widehat{BOC}$ (độ).",
+            "answer": "120",
+            "unit": "độ",
+            "mistakes": [
+              {
+                "answer": "60",
+                "code": "E08",
+                "feedback": "Tia $OA$ nằm giữa $OB$ và $OC$: $\\widehat{BOC}=\\widehat{BOA}+\\widehat{AOC}$."
+              },
+              {
+                "answer": "240",
+                "code": "E04",
+                "feedback": "Góc ở tâm $\\widehat{BOC}$ ở đây nhỏ hơn $180^\\circ$; $240^\\circ$ là số đo cung lớn."
+              }
+            ],
+            "solution": "$\\widehat{BOC}=60^\\circ+60^\\circ=120^\\circ$."
+          }
+        },
+        {
+          "prompt": "Cung lớn.",
+          "item": {
+            "id": "j-coban-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số đo cung lớn $BC$ (độ).",
+            "answer": "240",
+            "unit": "độ",
+            "mistakes": [
+              {
+                "answer": "120",
+                "code": "E04",
+                "feedback": "Đó là cung nhỏ (bằng góc ở tâm); cung lớn $=360^\\circ-$ cung nhỏ."
+              }
+            ],
+            "solution": "Cung nhỏ $BC=120^\\circ$, cung lớn $BC=360^\\circ-120^\\circ=240^\\circ$."
+          }
+        },
+        {
+          "prompt": "Độ dài dây.",
+          "item": {
+            "id": "j-coban-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Độ dài dây $BC$ (cm).",
+            "answer": "6√3",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "3√3",
+                "code": "E06",
+                "feedback": "$OH \\perp BC$ nên $H$ là trung điểm $BC$: $BC=2BH$."
+              },
+              {
+                "answer": "6√5",
+                "code": "E08",
+                "feedback": "Cạnh huyền của tam giác $OHB$ là $OB$: $BH^2=OB^2-OH^2$."
+              }
+            ],
+            "solution": "$BH=\\sqrt{6^2-3^2}=\\sqrt{27}=3\\sqrt3$ cm, $BC=2BH=6\\sqrt3$ cm."
+          }
+        }
+      ],
+      "solution": "$\\widehat{BOC}=120^\\circ$; cung lớn $BC=240^\\circ$. $OH \\perp BC$ nên $H$ là trung điểm $BC$: $BH=\\sqrt{36-9}=3\\sqrt3$, $BC=6\\sqrt3$ cm."
+    },
+    {
+      "id": "j-coban-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O;4\\text{ cm})$ có hai đường kính $AB$ và $CD$ vuông góc với nhau tại $O$. Tính khoảng cách từ $O$ đến dây $BC$.",
+      "source": "68 đề – Đề 55, Bài 4.2 (chuyển thể: R = 4 cm, tính khoảng cách từ O đến dây BC)",
+      "answer": "2√2",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2√6",
+          "code": "E08",
+          "feedback": "Cạnh huyền là bán kính $OB$: $d^2=R^2-\\left(\\frac{BC}{2}\\right)^2$, trừ chứ không cộng."
+        },
+        {
+          "answer": "4√2",
+          "code": "E06",
+          "feedback": "Đó là độ dài dây $BC$; khoảng cách là đoạn $OH \\perp BC$."
+        }
+      ],
+      "solution": "Tam giác $BOC$ vuông cân tại $O$: $BC=\\sqrt{4^2+4^2}=4\\sqrt2$ cm. Kẻ $OH \\perp BC$: $BH=2\\sqrt2$ cm, $OH=\\sqrt{16-8}=\\sqrt8=2\\sqrt2$ cm."
+    }
+  ]
+}
