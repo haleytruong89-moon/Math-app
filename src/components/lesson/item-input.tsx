@@ -3,6 +3,11 @@
 import { useRef, useState } from "react";
 import type { PublicItem } from "@/lib/content/public";
 import { Rich } from "./rich";
+import { proofParts, stepParts } from "./answer-parts";
+import { OrderInput } from "./geometry/order-input";
+import { ProofInput } from "./geometry/proof-input";
+
+export { stepParts } from "./answer-parts";
 
 /** Multiple choice (value = option index as string) or numeric answer box with √ and / helpers. */
 export function ItemInput({
@@ -11,14 +16,23 @@ export function ItemInput({
   onChange,
   disabled,
   onEnter,
+  marks,
+  at,
 }: {
   item: PublicItem;
   value: string;
   onChange: (v: string) => void;
   disabled?: boolean;
   onEnter?: () => void;
+  /** S5 C3, after a check: right / wrong per blank. */
+  marks?: boolean[];
+  /** S5 C2, after a check: the first wrong line. */
+  at?: number;
 }) {
   const ref = useRef<HTMLInputElement>(null);
+
+  if (item.type === "proof") return <ProofInput item={item} value={value} onChange={onChange} disabled={disabled} marks={marks} />;
+  if (item.type === "order") return <OrderInput item={item} value={value} onChange={onChange} disabled={disabled} at={at} />;
 
   if (item.type === "steps") return <StepsInput item={item} value={value} onChange={onChange} disabled={disabled} />;
 
@@ -104,15 +118,12 @@ export function ItemInput({
 // LT5: a multi-step item answered at once (exit test, review). Value = step answers joined by "|".
 
 const SEP = "|";
-export const stepParts = (item: PublicItem, value: string) => {
-  const n = item.steps?.length ?? 0;
-  const parts = value.split(SEP);
-  return Array.from({ length: n }, (_, i) => parts[i] ?? "");
-};
 
-/** Empty answer (for a multi-step item: any empty step). */
+/** Empty answer (multi-step / analysis: any empty level; C3: any empty blank). */
 export function isBlank(item: PublicItem, value: string): boolean {
-  return item.type === "steps" ? stepParts(item, value).some((p) => !p.trim()) : !value.trim();
+  if (item.type === "steps" || item.type === "analysis") return stepParts(item, value).some((p) => !p.trim());
+  if (item.type === "proof") return proofParts(item, value).some((p) => !p);
+  return !value.trim();
 }
 
 /** Numeric boxes that can't be read (format check only — the grading happens on the server). */

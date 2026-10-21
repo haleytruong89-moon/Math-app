@@ -6,6 +6,7 @@ import type { CheckResult, ExitResult, PublicItem, PublicUnit } from "@/lib/cont
 import { checkAnswer, completeFaded, markWorkedViewed, submitExit } from "@/app/learn/actions";
 import { parseAnswer } from "@/lib/content/grade";
 import { RightTriangleAltitude, SvgFigure } from "./figure";
+import { ItemFigure } from "./geometry/item-figure";
 import { FORMAT_HINT, HintBox, ItemInput, isBlank, unreadable as unreadableItem } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
@@ -374,7 +375,7 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
       </div>
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
       {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-2 max-w-[220px]" />}
-      {item.figure && <SvgFigure figure={item.figure} className="my-2" />}
+      <ItemFigure key={`f-${item.id}-${pos}`} item={item} />
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
       {item.type === "steps" && !result ? (
@@ -383,7 +384,16 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
             check(answer);
           }} />
       ) : (
-        <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
+        <ItemInput
+          key={`${item.id}-${pos}`}
+          item={item}
+          value={value}
+          onChange={setValue}
+          disabled={!!result || pending}
+          marks={result?.parts}
+          at={result?.at}
+          onEnter={() => !result && check()}
+        />
       )}
       {result ? (
         <QuestionFeedback
@@ -616,7 +626,7 @@ function ExitStage({
           <p className="font-mono text-xs text-muted" data-item={it.id}>
             Câu {i + 1}
           </p>
-          {it.figure && <SvgFigure figure={it.figure} className="my-2" />}
+          <ItemFigure item={it} />
           <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
           <ItemInput item={it} value={answers[it.id] ?? ""} onChange={(v) => setAnswers((a) => ({ ...a, [it.id]: v }))} disabled={pending} />
         </Card>
