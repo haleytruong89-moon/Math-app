@@ -89,7 +89,7 @@ Not stored: system mastery (computed from `attempts` by `src/lib/learning/rules.
 
 ## 4. Content
 
-- Roadmap: `content/curriculum.json` (LT1) — 17 modules, 50 KUs `{id, module, title, track A/B/C, seq, prereq, examWeight, grading, testOut, batch}`; zod schema + `checkCurriculum` in `src/lib/content/curriculum.ts` (ids, per-track seq, prereqs exist / acyclic / earlier in the same track, testOut only track B or `backfill-*`, every file listed with matching title/domains).
+- Roadmap: `content/curriculum.json` (LT1) — 17 modules, 52 KUs (LT21) `{id, module, title, track A/B/C, seq, prereq, examWeight, grading, testOut, batch}`; zod schema + `checkCurriculum` in `src/lib/content/curriculum.ts` (ids, per-track seq, prereqs exist / acyclic / earlier in the same track, testOut only track B or `backfill-*`, every file listed with matching title/domains).
 - Files: `content/<module>/module.json` (`domains`, legacy `domain` accepted) + one `<unit>.json` per knowledge unit. **Registry:** `npm run content:index` regenerates `src/lib/content/registry.generated.ts` (static imports of every file + the curriculum); `npm test` fails when it is stale, CI fails if it points at `e2e/fixtures`. A KU in the curriculum without an approved file is "Sắp có".
 - Schema: `src/lib/content/schema.ts` (zod). Unit = theory, worked example (steps + "why"), faded example
   (text steps + blanks that are items), practice items, exit items, optional figure.

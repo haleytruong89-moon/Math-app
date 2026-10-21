@@ -30,7 +30,7 @@
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
-| S8 — AI giảng bài + báo cáo tuần | `p1-slice-8` | ⬜ code ~09–25/11, bật ~cuối 11 (thứ tự 21/10: sau S5) |
+| S8 — AI giảng bài + báo cáo tuần | `p1-slice-8` | ⬜ code ~12–28/11, bật ~cuối 11 (thứ tự 21/10: sau S5) |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ⬜ 25–27/10 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -38,7 +38,7 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
-| S5 — Hình học C2 + C3 (C1 để sau) | `p1-slice-5` | ⬜ thiết kế 22–24/10, code 28/10–08/11 (Track C từ 23/11, LT18) |
+| S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | 🟡 thiết kế ✅ 21/10 (PR #32); code 28/10–~11/11 (Track C từ 23/11, LT18) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -49,6 +49,15 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 21/10/2026 — Thiết kế S5 (hình học) + rà soát danh mục hình (LT21) (nhánh `p1-plan-reorder`, PR #32)
+
+- **S5 thiết kế xong** (`docs/superpowers/specs/2026-10-21-s5-geometry-design.md`, mẫu trên design canvas hàng "S5 · Học hình"): 3 dạng câu tự chấm — **Phân tích ngược** (từ kết luận hỏi "cần gì?" tới giả thiết, rồi lật thành dàn ý), **C3 điền chỗ trống** kiểu "Xét … có … ⇒ … (lí do)", **C2 sắp xếp bước** (bước nhiễu, nhận mọi thứ tự hợp lý, báo "Sai từ dòng N"); **Sổ tay suy ngược** (mục tiêu → cách → dấu hiệu, 4 cấu hình mẫu); **tự vẽ hình trước** (hình ẩn tới khi con bấm). Laptop, bấm + ↑ ↓, không kéo-thả. C1 để sau. Không SQL.
+- **M3 bài hình:** như bài khác (kiểm tra ≥ 80 %, kho có ≥ 1 phân tích ngược + ≥ 2 C2/C3); viết tự do gia sư chấm trên giấy, đề xuất mức ở Buổi dạy — thay điều kiện C5 (SPEC §0).
+- **LT21 rà soát hình học** (68 đề Bài 4.2 + Toán 9 GDPT 2018): +f3-tugiac (bù lớp 8, đợt 7), tách o-chungminh → o-chungminh + o-thanghang (đợt 9, thay chỗ l-kethop), gộp l-kethop vào l-tieptuyen/o-dongdang, +q-dagiac (P2). `curriculum.json` + test: **52 KU (43 lõi + 9 P2)**.
+- Lịch: code S5 28/10–~11/11 (~11 ngày); S8 lùi ~12–28/11.
 
 ---
 

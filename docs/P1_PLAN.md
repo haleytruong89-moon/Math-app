@@ -63,11 +63,11 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | 5 | **S6a** | Bộ lộ trình: `curriculum.json`, mở khoá, gợi ý 2 track, kiểm tra vượt, giới hạn ôn 5 bài, bản đồ nhóm theo track, danh sách KU nhóm theo module cho gia sư, **migration 0009** | ✅ Merged 05/10 (PR #13) | 16/10 (để đợt 1 lên app tuần 2) |
 | 6 | **UX** | Giao diện học sinh — đã làm ở PR #12 (spec `docs/superpowers/specs/2026-10-05-student-ux-design.md`, thay handover); bản đồ nhóm theo track (LT9) làm trong S6a | ✅ Merged 05/10 (qua PR #13) | 18/10 |
 | 7 | **S6b** | Câu nhiều bước `steps`, hình SVG, nhãn "cần gia sư xác nhận" | 🟡 PR `p1-slice-6b` — SQL 0010, merge sau #14 → #15 | 23/10 (để đợt 2 lên app tuần 3) |
-| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration: số trống kế tiếp lúc làm) | ⬜ code ~09–25/11 (sau S5, quyết định 21/10); bật ~cuối 11/2026 sau khi đạt bộ test | 25/11 |
+| 7b | **S8** | AI: hội thoại gợi mở cho con (H4–H5), soát câu trả lời, nhật ký + "AI nói sai?", trang chấm bộ test, trần $10; báo cáo tuần, tóm tắt gia sư — `docs/AI_TUTOR.md` (migration: số trống kế tiếp lúc làm) | ⬜ code ~12–28/11 (sau S5, quyết định 21/10); bật ~cuối 11/2026 sau khi đạt bộ test | 28/11 |
 | 8 | **S4b** | Bổ sung Tổng quan: tiến độ tới mốc 8.5 / 9.5, KU trễ lịch (bỏ nút mở khoá tay — đã có ★ ưu tiên, 21/10) | ⬜ 25–27/10 | 27/10 |
 | 9 | **S7** | Pilot: tài khoản Nguyên (sau D18), checklist pilot (PR #8) | ⬜ phụ huynh | **12/10** |
 | 10 | **C1…C10** | Soạn nội dung 10 đợt theo `docs/CURRICULUM.md` H6 (nháp + kiểm tra độc lập) | ⬜ | theo bảng H6 |
-| 11 | **S5** | Hình học: C2 sắp xếp bước, C3 chứng minh hai cột (C1 kéo hình làm sau, chỉ khi cần — 21/10) | ⬜ thiết kế 22–24/10, code 28/10–08/11 (đợt 5 hạn 15/11, Track C từ 23/11) | 08/11 |
+| 11 | **S5** | Hình học: Phân tích ngược, C3 điền chỗ trống, C2 sắp xếp bước, Sổ tay suy ngược, tự vẽ hình (C1 kéo hình làm sau — 21/10) | ✅ thiết kế 21/10 (`docs/superpowers/specs/2026-10-21-s5-geometry-design.md`); code 28/10–~11/11 (đợt 5 hạn 15/11, Track C từ 23/11) | 11/11 |
 
 ### S6a — Bộ lộ trình (curriculum engine)
 
@@ -94,7 +94,7 @@ với htl-1/2 trên app + F1 với gia sư trên giấy; các lát còn lại ch
 | Chỗ phải đoán | Mặc định |
 |---|---|
 | Nhánh gốc | Tách từ `main`. Nếu PR #10 (tài liệu này) chưa merge thì **xếp chồng trên `p1-curriculum-design`** như các PR trước. S6a không phụ thuộc PR #11 (S4). |
-| `seq` | Thứ tự trong track (duy nhất trong track, lặp giữa các track là bình thường), đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, g-chuyendong, g-nangsuat, g-phantram, g-honhop, hq-amgm, hq-doanhthu, hq-hinhhoc, *(P2)* e-giaodiem. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, *(P2)* i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, j-coban, k-goiintiep, k-tugiacnt, l-tieptuyen, o-chungminh, o-dongdang, l-kethop, o-nangcao, *(P2)* j-cung, m-vitri, n-ngoainoi. (Sửa 06/10, LT17–LT18: 48 KU.) |
+| `seq` | Thứ tự trong track (duy nhất trong track, lặp giữa các track là bình thường), đánh 10, 20, 30… **Track A:** f1-hdt, f1-pnt, f1-tgon, f1-qd, c-dkxd, c-coban, c-truccan, c-rutgon, c-cauphu, d-ptbh, d-nhamnghiem, d-thamso, e-viete, e-vietets, g-chuyendong, g-nangsuat, g-phantram, g-honhop, hq-amgm, hq-doanhthu, hq-hinhhoc, *(P2)* e-giaodiem. **Track B:** a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep, htl-1, htl-2, *(P2)* i-giaitgv, i-ungdung, f-hamso, f-parabol. **Track C:** f3-dongdang, f3-tugiac, j-coban, k-goiintiep, k-tugiacnt, l-tieptuyen, o-chungminh, o-dongdang, o-thanghang, o-nangcao, *(P2)* j-cung, m-vitri, n-ngoainoi, q-dagiac. (Sửa 06/10, LT17–LT18: 48 KU; 21/10, LT21: 52 KU.) |
 | `batch` | Theo bảng H6 trong CURRICULUM.md; htl-1, htl-2 = **0** (đã có). |
 | `testOut` | `true` cho mọi KU track B (kể cả htl-1/2) và f1-hdt, f1-pnt, f1-tgon, f1-qd, f3-dongdang; còn lại `false`. |
 | KU P2 (LT17) | Thêm trường `priority` (P0/P1/P2). KU P2 **không được gợi ý** cho đến khi mọi KU P0/P1 cùng track đạt M3, hoặc phụ huynh mở tay. Bản đồ hiện nhóm "Học thêm khi dư thời gian". |
@@ -162,7 +162,7 @@ Thiết kế mặc định (đổi được khi review):
 - **Buổi dạy chưa ghi > 24h:** cần biết lịch dạy → mặc định thêm "ngày dạy trong tuần" vào phần gán gia sư (phụ huynh chọn, ví dụ T3, T5); ngày có lịch mà quá 24h chưa có buổi ghi → nhắc. *(Câu hỏi Q8 trong PROGRESS.)*
 
 ### S5
-Thứ tự chốt 21/10 (`docs/SPEC.md` §0): **thiết kế S5 (22–24/10) → S4b gọn → code S5 (28/10–08/11) → S8**. Làm C2 (sắp xếp bước) và C3 (chứng minh hai cột) trước; C1 (kéo hình) để sau. Chi tiết hoá trong spec thiết kế S5, lấy từ §2.7 và §3.4 của `docs/SPEC.md`.
+Thứ tự chốt 21/10 (`docs/SPEC.md` §0): **thiết kế S5 (22–24/10) → S4b gọn → code S5 (28/10–08/11) → S8**. Thiết kế xong 21/10: `docs/superpowers/specs/2026-10-21-s5-geometry-design.md` — 3 dạng câu tự chấm (Phân tích ngược, C3 điền chỗ trống kiểu "Xét … có …", C2 sắp xếp bước, nhận mọi thứ tự hợp lý), Sổ tay suy ngược, tự vẽ hình trước; C1 (kéo hình) để sau. Không SQL. Kế hoạch code: `docs/superpowers/plans/2026-10-21-s5-geometry.md`.
 
 ## 4. Việc phụ huynh cần làm (gom lại)
 
