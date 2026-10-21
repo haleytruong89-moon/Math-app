@@ -35,17 +35,47 @@ const fs1 = () => {
   u.exit = [stepsItem("fs-1-x1", 2, "L1", 0), ...u.exit.slice(1)];
   return u;
 };
+// S5: fg-1 — one analysis, one C3 (figure folded: drawFirst) and one C2 in practice and in the exit test.
+const mcqLevel = (id, options, correct, mistakes) => ({ id, type: "mcq", level: "L2", prompt: "Chọn.", options, correct, mistakes, solution: "Vì vậy." });
+const analysisItem = (id) => ({
+  id, type: "analysis", level: "L2", prompt: "Chứng minh điều thử.", goal: "Điều cần chứng minh thử",
+  steps: [
+    { ask: "Muốn có điều thử, cần gì?", node: "Mốc giữa thử", item: mcqLevel(`${id}-s1`, ["Hướng đúng thử", "Hướng sai thử", "Hướng lạc thử"], 0, { "1": { code: "E06", feedback: "Hướng này không tới giả thiết." }, "2": { code: "E06", feedback: "Hướng này lạc đề." } }) },
+    { ask: "Vì sao có mốc giữa thử?", node: "Giả thiết thử", given: true, item: mcqLevel(`${id}-s2`, ["Vì giả thiết thử", "Vì điều cần chứng minh"], 0, { "1": { code: "E09", feedback: "Đang dùng điều cần chứng minh." } }) },
+  ],
+  outline: ["Từ giả thiết thử", "suy ra mốc giữa thử", "suy ra điều cần chứng minh thử"], solution: "Lời giải phân tích thử.",
+});
+const proofItem = (id) => ({
+  id, type: "proof", level: "L2", prompt: "Điền lời giải thử.", drawFirst: true, figure: { svg: SVG, alt: "Hình chứng minh thử" },
+  lines: ["Ta có góc thử vuông ([[1]])", "⇒ kết luận thử ([[2]])"],
+  bank: ["lí do một", "lí do hai", "lí do ba", "lí do bốn"],
+  blanks: [{ correct: 0, mistakes: { "2": { code: "E09", feedback: "Lí do ba không khớp bước này." } } }, { correct: 1, mistakes: { "3": { code: "E09", feedback: "Lí do bốn chưa đúng." } } }],
+  solution: "Lời giải điền thử.",
+});
+const orderItem = (id) => ({
+  id, type: "order", level: "L3", prompt: "Sắp xếp lời giải thử.",
+  lines: [{ text: "Dòng mở đầu thử" }, { text: "Dòng A thử" }, { text: "Dòng B thử", after: [0] }, { text: "Dòng kết luận thử", after: [1, 2] }],
+  distractors: [{ text: "Dòng thừa thử", code: "E08", feedback: "Dòng này là bước thừa." }],
+  solution: "Lời giải sắp xếp thử.",
+});
+const fg1 = () => {
+  const u = unit("fg-1", "fx-geo", 4, "Chứng minh thử");
+  u.worked.analysis = { goal: "Điều cần chứng minh thử", steps: [{ ask: "Cần gì?", node: "Mốc giữa thử" }, { ask: "Vì sao?", node: "Giả thiết thử" }] };
+  u.practice = [analysisItem("fg-1-p1"), proofItem("fg-1-p2"), orderItem("fg-1-p3"), ...u.practice.slice(3)];
+  u.exit = [analysisItem("fg-1-x1"), proofItem("fg-1-x2"), orderItem("fg-1-x3"), ...u.exit.slice(3)];
+  return u;
+};
 const modules = [
   { id: "fx-alg", title: "Đại số thử", domains: ["C"], units: [["fa-1", "Đại số thử 1"], ["fa-2", "Đại số thử 2"]] },
   { id: "backfill-fx", title: "Bù lỗ hổng thử", domains: ["F1"], units: [["fz-1", "Bù lỗ hổng thử 1"]] },
   { id: "fx-quick", title: "Ghi điểm thử", domains: ["A"], units: [["fb-1", "Ghi điểm thử 1"], ["fb-2", "Ghi điểm thử 2"], ["fb-3", "Ghi điểm thử 3"]] },
-  { id: "fx-geo", title: "Hình học thử", domains: ["J"], units: [["fc-1", "Hình học thử 1"], ["fc-9", "Học thêm thử"], ["fs-1", "Nhiều bước thử"]] },
+  { id: "fx-geo", title: "Hình học thử", domains: ["J"], units: [["fc-1", "Hình học thử 1"], ["fc-9", "Học thêm thử"], ["fs-1", "Nhiều bước thử"], ["fg-1", "Chứng minh thử"]] },
 ];
 fs.rmSync(root, { recursive: true, force: true });
 for (const m of modules) {
   fs.mkdirSync(path.join(root, m.id), { recursive: true });
   fs.writeFileSync(path.join(root, m.id, "module.json"), JSON.stringify({ id: m.id, title: m.title, domains: m.domains, units: m.units.map(([u]) => u) }, null, 2) + "\n");
-  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : unit(u, m.id, i + 1, t), null, 2) + "\n"));
+  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : u === "fg-1" ? fg1() : unit(u, m.id, i + 1, t), null, 2) + "\n"));
 }
 const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0", grading = "full") => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading, testOut, batch, priority });
 const curriculum = {
@@ -62,8 +92,14 @@ const curriculum = {
     C("fc-1", "fx-geo", "Hình học thử 1", "C", 10, 1),
     C("fc-9", "fx-geo", "Học thêm thử", "C", 5, 1, [], false, "P2"), // LT17: lower seq than fc-1, still waits for it
     C("fs-1", "fx-geo", "Nhiều bước thử", "C", 20, 1, ["fc-1"], false, "P0", "partial"), // S6b, locked until unlocked by hand
+    C("fg-1", "fx-geo", "Chứng minh thử", "C", 30, 1, [], false, "P0", "partial"), // S5 proof KU, open
     C("fl-1", "fx-later", "Bài chưa soạn thử", "A", 40, 9, ["fa-2"]),
   ],
 };
 fs.writeFileSync(path.join(root, "curriculum.json"), JSON.stringify(curriculum, null, 2) + "\n");
+// S5: an approved fixture Sổ tay.
+fs.writeFileSync(
+  path.join(root, "so-tay.json"),
+  JSON.stringify({ status: "approved", approvedOn: "2026-10-21", goals: [{ id: "g-thu", title: "Mục tiêu thử", tip: "Mẹo thử.", ways: [{ how: "Cách thử", sign: "Dấu hiệu thử", units: ["fg-1"] }] }], figures: [{ id: "h-thu", title: "Cấu hình thử", facts: ["Điều có sẵn thử"] }] }, null, 2) + "\n",
+);
 console.log("fixtures written");

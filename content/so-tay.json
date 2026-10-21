@@ -1,0 +1,107 @@
+{
+  "status": "draft",
+  "goals": [
+    {
+      "id": "noi-tiep",
+      "title": "Tứ giác nội tiếp",
+      "tip": "Hỏi: trong hình có những góc vuông nào? Hai góc vuông là dấu hiệu thường gặp nhất.",
+      "ways": [
+        { "how": "Tổng hai góc đối bằng $180^\\circ$", "sign": "hai góc vuông ở hai đỉnh đối nhau (ví dụ chân hai đường cao)", "units": ["k-tugiacnt"] },
+        { "how": "Hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau", "sign": "hai góc vuông cùng nhìn một đoạn thẳng", "units": ["k-tugiacnt"] },
+        { "how": "Góc ngoài tại một đỉnh bằng góc trong ở đỉnh đối", "sign": "có tia đối hoặc góc kề bù đã biết số đo", "units": ["k-tugiacnt"] },
+        { "how": "Bốn đỉnh cách đều một điểm", "sign": "trung điểm cạnh huyền của tam giác vuông, hoặc tâm đường tròn đã có", "units": ["j-coban", "k-tugiacnt"] }
+      ]
+    },
+    {
+      "id": "dong-dang",
+      "title": "Hai tam giác đồng dạng",
+      "tip": "Viết đúng thứ tự đỉnh tương ứng ngay từ đầu — sai thứ tự là sai cả tỉ số phía sau.",
+      "ways": [
+        { "how": "Góc – góc (g.g)", "sign": "góc chung + góc vuông; hoặc hai góc nội tiếp cùng chắn một cung", "units": ["f3-dongdang", "k-goiintiep"] },
+        { "how": "Cạnh – góc – cạnh (c.g.c)", "sign": "góc chung + đã có một đẳng thức tích, đổi thành tỉ số hai cạnh kề", "units": ["f3-dongdang"] },
+        { "how": "Tam giác vuông: cạnh huyền – cạnh góc vuông tỉ lệ", "sign": "hai tam giác vuông, biết tỉ số hai cạnh huyền và hai cạnh góc vuông", "units": ["f3-dongdang"] }
+      ]
+    },
+    {
+      "id": "dang-thuc-tich",
+      "title": "Đẳng thức tích $MA\\cdot MB = MC\\cdot MD$",
+      "tip": "Đổi tích thành tỉ số, rồi tìm hai tam giác chứa đúng các đoạn đó.",
+      "ways": [
+        { "how": "Đưa về $\\frac{MA}{MC} = \\frac{MD}{MB}$, chứng minh $\\Delta MAD \\backsim \\Delta MCB$", "sign": "bốn đoạn chung một đầu mút M, nằm trên hai đường thẳng qua M", "units": ["o-dongdang"] },
+        { "how": "Hai vế cùng bằng một đại lượng thứ ba", "sign": "có tam giác vuông với đường cao → hai vế cùng bằng một bình phương", "units": ["htl-1", "o-dongdang"] }
+      ]
+    },
+    {
+      "id": "goc-bang-nhau",
+      "title": "Hai góc bằng nhau",
+      "tip": "Thử lần lượt: cùng chắn một cung? cùng nhìn một cạnh của tứ giác nội tiếp? góc tương ứng của hai tam giác đồng dạng?",
+      "ways": [
+        { "how": "Hai góc nội tiếp cùng chắn một cung", "sign": "hai góc có đỉnh trên đường tròn, cạnh đi qua cùng hai điểm", "units": ["k-goiintiep"] },
+        { "how": "Cùng nhìn một cạnh trong tứ giác nội tiếp", "sign": "đã chứng minh được (hoặc đề cho) tứ giác nội tiếp", "units": ["k-tugiacnt"] },
+        { "how": "Góc tương ứng của hai tam giác đồng dạng", "sign": "hai góc ở vị trí tương ứng của hai tam giác đã chứng minh đồng dạng", "units": ["f3-dongdang"] },
+        { "how": "Cùng phụ (hoặc cùng bù) với một góc", "sign": "nhiều góc vuông dùng chung một góc nhọn", "units": ["o-chungminh"] }
+      ]
+    },
+    {
+      "id": "vuong-goc-tiep-tuyen",
+      "title": "Vuông góc · tiếp tuyến",
+      "tip": "Tiếp tuyến luôn đi kèm bán kính vuông góc tại tiếp điểm.",
+      "ways": [
+        { "how": "Góc nội tiếp chắn nửa đường tròn bằng $90^\\circ$", "sign": "đề có đường kính và một điểm trên đường tròn", "units": ["k-goiintiep"] },
+        { "how": "Đường thẳng vuông góc với bán kính tại điểm trên đường tròn là tiếp tuyến", "sign": "cần chứng minh một đường là tiếp tuyến", "units": ["l-tieptuyen"] },
+        { "how": "Hai tiếp tuyến cắt nhau: $AB = AC$, $AO$ là phân giác, $AO \\perp BC$", "sign": "từ một điểm ngoài kẻ hai tiếp tuyến tới đường tròn", "units": ["l-tieptuyen"] }
+      ]
+    },
+    {
+      "id": "trung-diem-song-song",
+      "title": "Trung điểm · song song",
+      "tip": "Thấy trung điểm, nghĩ ngay tới đường trung bình và hình bình hành.",
+      "ways": [
+        { "how": "Đường trung bình của tam giác / hình thang", "sign": "có hai trung điểm, hoặc một trung điểm và một đường song song", "units": ["f3-tugiac", "o-thanghang"] },
+        { "how": "Hai đường chéo hình bình hành cắt nhau tại trung điểm mỗi đường", "sign": "tứ giác có hai cặp cạnh song song, hoặc một cặp cạnh song song và bằng nhau", "units": ["f3-tugiac", "o-thanghang"] },
+        { "how": "Cùng vuông góc với một đường thẳng thì song song", "sign": "hai đường cùng vuông góc với một cạnh hay một bán kính", "units": ["o-chungminh"] }
+      ]
+    },
+    {
+      "id": "thang-hang",
+      "title": "Ba điểm thẳng hàng",
+      "tip": "Đưa về một góc bẹt, hoặc chứng minh hai đường thẳng trùng nhau.",
+      "ways": [
+        { "how": "Tổng hai góc kề bằng $180^\\circ$", "sign": "ba điểm nằm trên hai tia ngược chiều qua điểm giữa", "units": ["o-thanghang"] },
+        { "how": "Cùng song song (hoặc cùng vuông góc) với một đường thẳng, qua cùng một điểm", "sign": "hai đường qua cùng một điểm, cùng song song / vuông góc với một đường", "units": ["o-thanghang"] },
+        { "how": "Điểm thứ ba thuộc một đường đặc biệt (trung trực, phân giác, đường kính)", "sign": "đề cho trung điểm hoặc tâm đường tròn", "units": ["o-thanghang"] }
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "hai-tiep-tuyen",
+      "title": "Điểm ngoài đường tròn kẻ hai tiếp tuyến (và một cát tuyến)",
+      "facts": [
+        "$AB = AC$, $AO$ là phân giác góc $BAC$",
+        "$AO \\perp BC$ tại $H$, $H$ là trung điểm $BC$",
+        "Tứ giác $ABOC$ nội tiếp (hai góc vuông tại $B$, $C$)",
+        "$AB^2 = AH\\cdot AO$, $OH\\cdot OA = R^2$ (hệ thức lượng)"
+      ]
+    },
+    {
+      "id": "ba-duong-cao",
+      "title": "Tam giác có ba đường cao và trực tâm $H$",
+      "facts": [
+        "Có sẵn nhiều tứ giác nội tiếp: mỗi cặp chân đường cao cùng hai đỉnh",
+        "Nhiều cặp góc bằng nhau (cùng phụ một góc)",
+        "Nhiều cặp tam giác vuông đồng dạng có chung một góc"
+      ]
+    },
+    {
+      "id": "nua-duong-tron",
+      "title": "Nửa đường tròn đường kính $AB$ và tiếp tuyến $Ax$",
+      "facts": ["Điểm trên nửa đường tròn nhìn $AB$ dưới góc vuông", "$Ax \\perp AB$", "Hai tiếp tuyến cắt nhau: các đoạn tiếp tuyến bằng nhau"]
+    },
+    {
+      "id": "duong-kinh-day",
+      "title": "Đường kính và dây vuông góc",
+      "facts": ["Đường kính vuông góc với dây thì đi qua trung điểm dây", "Hai cung bị chắn bằng nhau → các góc nội tiếp chắn chúng bằng nhau"]
+    }
+  ]
+}

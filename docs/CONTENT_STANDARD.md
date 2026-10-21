@@ -119,9 +119,58 @@ Kết quả bước 2–3 ghi vào `docs/PROGRESS.md` cùng đợt.
 | Nút "Gợi ý" H1→H3 khi luyện tập, ghi `hint_level` (migration 0010) | ✅ S6b (PR `p1-slice-6b`) |
 | Kho kiểm tra 8 câu, mỗi lượt rút 5 theo cấp, ưu tiên câu chưa gặp; máy chủ kiểm lượt nộp đúng bộ đã rút | ✅ S6a+ (PR `p1-slice-6a2`) |
 | Hiện link "Ôn lại: …" trong phản hồi sai | ✅ S6b (PR `p1-slice-6b`) |
+| Câu phân tích ngược, C3 điền chỗ trống, C2 sắp xếp bước, `drawFirst`, `worked.analysis`, Sổ tay suy ngược (§10) | ✅ S5 (PR `p1-slice-5`) |
 
 ## 9. Chuẩn hoá htl-1, htl-2 (đợt 1)
 
 Đã duyệt nhưng chưa theo chuẩn: thêm `hints` H1–H3 cho 8 câu luyện, thêm 2 câu L3 vào luyện tập (đổi 2 câu L2 hiện có), thêm 3 câu vào kho kiểm tra, sửa mã lỗi
 (ví dụ htl-2 "quên bình phương" đang là E10 → **E03**; "tính ngược công thức" đang là E06 → **E03**), thêm bước "Kết luận:". Sau khi sửa,
 phụ huynh duyệt lại (trạng thái giữ `approved` để con không bị gián đoạn; thay đổi đi qua PR như mọi nội dung).
+
+## 10. Hình học chứng minh (S5, 21/10/2026)
+
+Áp dụng cho **bài hình có chứng minh**: track C và `grading` khác `full` (f3-dongdang, f3-tugiac, k-*, l-tieptuyen, o-*, n-ngoainoi). `standard.ts` kiểm tự động (`proofRules`).
+
+**Trình tự trong bài** (giảm dần hỗ trợ): lời giải mẫu có `worked.analysis` (sơ đồ phân tích ngược) rồi mới tới các bước trình bày → câu **phân tích ngược** → **C3 điền chỗ trống** → **C2 sắp xếp bước** → viết tự do trên giấy với gia sư.
+
+| Yêu cầu | Luyện tập | Kho kiểm tra |
+|---|---|---|
+| Phân tích ngược (`analysis`) | ≥ 1 | ≥ 1 |
+| C3 (`proof`) / C2 (`order`) | ≥ 1 mỗi loại | ≥ 2 (cộng chung) |
+
+**Phân tích ngược** — 2–5 tầng, mỗi tầng một câu trắc nghiệm "muốn có … thì cần gì?"; tầng cuối `given: true` (chạm giả thiết). `node` = điều con thấy sau khi tầng đó xong (máy chủ trả về, không gửi trước). **Mỗi phương án sai có `mistakes`**: E06 (hướng không tới giả thiết / lạc đề), E09 (vòng — dùng điều cần chứng minh, hoặc lí do không khớp), E08 (sai thứ tự đỉnh, đọc hình sai). Hỏi tầng sau có thể nhắc lại `node` tầng trước (khi kiểm tra, con chọn xong một tầng mới thấy tầng sau và không đổi lại được). `outline` 2–6 dòng: dàn ý đi xuôi, con thấy sau khi xong.
+```json
+{ "id": "k-tugiacnt-p5", "type": "analysis", "level": "L2", "prompt": "…", "goal": "$AD\\cdot AC = AE\\cdot AB$",
+  "steps": [
+    { "ask": "Muốn có …, cần chứng minh gì?", "node": "$\\Delta ADB \\backsim \\Delta AEC$",
+      "item": { "id": "k-tugiacnt-p5-s1", "type": "mcq", "level": "L2", "prompt": "Chọn hướng.", "options": ["…", "…", "…"], "correct": 0,
+                "mistakes": { "1": { "code": "E08", "feedback": "…" }, "2": { "code": "E06", "feedback": "…" } }, "solution": "…" } },
+    { "ask": "Vì sao …?", "node": "BD, CE là đường cao", "given": true, "item": { "id": "k-tugiacnt-p5-s2", "…": "…" } } ],
+  "outline": ["…", "…", "…"], "solution": "…" }
+```
+
+**C3 điền chỗ trống** — lời giải viết **đúng kiểu bài thi Việt Nam** ("Xét … có: … ⇒ … (lí do)"). Chỗ trống `[[1]]`…`[[k]]` (2–5, đúng thứ tự, mỗi số một lần, **không nằm trong `$…$`**). `bank` 3–10 lựa chọn khác nhau, ít nhất k + 2; một lựa chọn có thể đúng cho nhiều ô; ô có thể là lí do hoặc khẳng định (một tỉ số…). **Mỗi ô có ≥ 1 bẫy có phản hồi** (`blanks[i].mistakes`, khoá = chỉ số trong `bank` gốc).
+```json
+{ "id": "k-tugiacnt-p6", "type": "proof", "level": "L2", "prompt": "…",
+  "lines": ["Ta có $\\angle BDC = 90^\\circ$ ([[1]])", "⇒ D, E thuộc đường tròn đường kính [[2]]"],
+  "bank": ["BD là đường cao (gt)", "BC", "DE", "góc nội tiếp chắn nửa đường tròn"],
+  "blanks": [ { "correct": 0, "mistakes": { "3": { "code": "E09", "feedback": "…" } } }, { "correct": 1, "mistakes": { "2": { "code": "E08", "feedback": "…" } } } ],
+  "solution": "…" }
+```
+
+**C2 sắp xếp bước** — 3–10 dòng theo thứ tự đúng của tác giả; `after` chỉ ghi cho dòng **có thể đổi chỗ** (mặc định: dòng ngay trước; `after` chỉ trỏ về dòng đứng trước). App nhận mọi thứ tự hợp với `after`. **≥ 1 bước nhiễu** (`distractors`, tối đa 3) với mã lỗi + phản hồi. Các dòng không trùng nhau.
+```json
+{ "id": "k-tugiacnt-p7", "type": "order", "level": "L3", "prompt": "…",
+  "lines": [ { "text": "Xét ΔADB và ΔAEC có:" }, { "text": "$\\angle A$ chung" }, { "text": "$\\angle ADB = \\angle AEC = 90^\\circ$", "after": [0] },
+             { "text": "⇒ ΔADB ∽ ΔAEC (g.g)", "after": [1, 2] } ],
+  "distractors": [ { "text": "⇒ ΔADB ∽ ΔACE (g.g)", "code": "E08", "feedback": "…" } ], "solution": "…" }
+```
+
+**Tự vẽ hình** — `"drawFirst": true` trên câu có hình mà con nên tự vẽ (hình ẩn cho tới khi con bấm "Đã vẽ xong"). Câu "chọn hình vẽ đúng với đề": một SVG có Hình 1/2/3 + trắc nghiệm.
+
+**Không đổi sau khi duyệt** (khoá H2): với C3 và C2, câu trả lời lưu là **vị trí con thấy** (lựa chọn / dòng đã xáo theo id câu) → `bank`, `lines`, `after`, `distractors` và id câu thuộc khoá chấm. Sửa chữ = phải `--relock` có chủ đích.
+
+**Giải độc lập (§7 bước 2)** — người giải chỉ nhận góc nhìn của con: các tầng (không `node`), các dòng / lựa chọn đã xáo.
+
+**Sổ tay suy ngược** — `content/so-tay.json` (mục tiêu → cách → dấu hiệu trong đề → bài học; cấu hình mẫu + điều có sẵn, `figure` SVG tuỳ chọn). Soạn và duyệt như nội dung: `status: "draft"` tới khi phụ huynh duyệt (`"approved"` + `approvedOn`) trong PR; mọi id bài phải có trong lộ trình (test).
+

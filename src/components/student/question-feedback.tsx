@@ -78,6 +78,19 @@ export function QuestionFeedback({ result, mode, tally, index, requeued = false,
         </a>
       )}
 
+      {result.outlineHtml && (
+        <div className="rounded-xl border border-border bg-surface p-4 text-sm" data-testid="analysis-outline">
+          <p className="text-xs font-bold uppercase tracking-wide text-muted">Dàn ý lời giải (đi xuôi)</p>
+          <ol className="mt-2 list-decimal pl-5 font-body text-base leading-relaxed">
+            {result.outlineHtml.map((h, i) => (
+              <li key={i}>
+                <Rich html={h} />
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
       {result.solutionHtml && (
         <div className="rounded-xl border border-border bg-surface p-4 text-sm">
           <p className="text-xs font-bold uppercase tracking-wide text-muted">Lời giải</p>

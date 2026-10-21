@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { CheckResult, ReviewQuestion, ReviewSummary } from "@/lib/content/public";
 import { checkReview, finishReview } from "@/app/learn/actions";
 import { RightTriangleAltitude, SvgFigure } from "./figure";
+import { ItemFigure } from "./geometry/item-figure";
 import { FORMAT_HINT, ItemInput, isBlank } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, PrimaryButton, useAction, useStartTime } from "./parts";
@@ -178,9 +179,18 @@ export function ReviewPlayer({
         </div>
         {hasFigure && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
         {q.figure && <SvgFigure figure={q.figure} className="my-2 max-w-[220px]" />}
-        {q.item.figure && <SvgFigure figure={q.item.figure} className="my-2" />}
+        <ItemFigure key={`f-${q.item.id}-${pos}`} item={q.item} />
         <Rich as="div" html={q.item.promptHtml} className="mt-2 leading-relaxed" />
-        <ItemInput key={`${q.item.id}-${pos}`} item={q.item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
+        <ItemInput
+          key={`${q.item.id}-${pos}`}
+          item={q.item}
+          value={value}
+          onChange={setValue}
+          disabled={!!result || pending}
+          marks={result?.parts}
+          at={result?.at}
+          onEnter={() => !result && check()}
+        />
         {result ? (
           <QuestionFeedback
             result={result}

@@ -21,6 +21,9 @@ export function render(rootRel) {
     `// Regenerate with \`npm run content:index\` after adding or removing a content file.`,
     `import curriculum from "${imp("curriculum.json")}";`,
   ];
+  // S5: the Sổ tay suy ngược, when the content root has one.
+  const hasSoTay = fs.existsSync(path.join(root, "so-tay.json"));
+  if (hasSoTay) lines.push(`import soTay from "${imp("so-tay.json")}";`);
   const entries = [];
   mods.forEach((m, i) => {
     const mod = JSON.parse(fs.readFileSync(path.join(root, m, "module.json"), "utf8"));
@@ -32,6 +35,7 @@ export function render(rootRel) {
     entries.push(`  { module: m${i}, units: [${units.join(", ")}] },`);
   });
   lines.push("", `export const CONTENT_SOURCE = ${JSON.stringify(rootRel)};`, "export const CURRICULUM: unknown = curriculum;");
+  lines.push(hasSoTay ? "export const SO_TAY: unknown = soTay;" : "export const SO_TAY: unknown = null;");
   lines.push("export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [", ...entries, "];", "");
   return lines.join("\n");
 }

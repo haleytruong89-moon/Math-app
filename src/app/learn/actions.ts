@@ -177,7 +177,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
 
   // LT5: one step of a multi-step practice item — feedback for that step, nothing recorded yet.
   if (v.step !== undefined) {
-    if (item.type !== "steps" || v.mode !== "practice" || v.step >= item.steps.length) return DENIED;
+    if ((item.type !== "steps" && item.type !== "analysis") || v.mode !== "practice" || v.step >= item.steps.length) return DENIED;
     const stepItem = item.steps[v.step].item;
     const gs = gradeItem(stepItem, v.answer);
     if (!gs.understood) return { ok: true, understood: false };
@@ -192,6 +192,8 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
       answerHtml: answerHtml(stepItem, v.answer),
       // The right value of this step, so the student can carry on with the next one.
       correctHtml: gs.correct || reviewDue ? undefined : correctHtml(stepItem),
+      // S5: the fact this level leads to, so she climbs on (right pick, or the right one after a wrong pick).
+      nodeHtml: item.type === "analysis" && (gs.correct || !reviewDue) ? texToHtml(item.steps[v.step].node) : undefined,
       errorCode: gs.correct ? null : (gs.errorCode ?? null),
       review: gs.correct ? undefined : await reviewLink(who, gs.review),
     };
@@ -231,6 +233,9 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     correctHtml: showSolution ? correctHtml(item) : undefined,
     errorCode: g.correct ? null : (g.errorCode ?? null),
     steps: g.steps,
+    parts: g.parts,
+    at: g.at,
+    outlineHtml: item.type === "analysis" && showSolution ? item.outline.map(texToHtml) : undefined,
     review: g.correct ? undefined : await reviewLink(who, g.review),
     mastery: who.kind === "student" && v.mode === "practice" ? await practiceMastery(who.studentId, v.unitId) : undefined,
   };
@@ -491,6 +496,9 @@ export async function checkReview(input: z.input<typeof ReviewCheck>): Promise<C
     correctHtml: correctHtml(item),
     errorCode: g.correct ? null : (g.errorCode ?? null),
     steps: g.steps,
+    parts: g.parts,
+    at: g.at,
+    outlineHtml: item.type === "analysis" ? item.outline.map(texToHtml) : undefined,
     review: g.correct ? undefined : await reviewLink(who, g.review),
     // AI2: in a review, hints open only after answering (to understand, not to change the result).
     hintsHtml: item.hints?.map(texToHtml),

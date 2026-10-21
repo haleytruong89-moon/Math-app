@@ -111,3 +111,8 @@ export function ancestors(c: Curriculum, id: string): Set<string> {
 export function needsTutor(u: { grading: CurriculumUnit["grading"] }): boolean {
   return u.grading === "partial" || u.grading === "tutor";
 }
+
+/** S5: a geometry KU whose proofs are practised in the app (analysis, C3, C2) — track C and not fully auto-graded. */
+export function isProofKu(u: { track: Track; grading: CurriculumUnit["grading"] }): boolean {
+  return u.track === "C" && u.grading !== "full";
+}

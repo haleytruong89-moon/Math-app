@@ -31,22 +31,24 @@ export function hintRevealsAnswer(hint: string, answer: string): boolean {
 }
 
 function mistakesOf(it: Item): { code: string; review?: string }[] {
-  if (it.type === "steps") return it.steps.flatMap((st) => mistakesOf(st.item));
+  if (it.type === "steps" || it.type === "analysis") return it.steps.flatMap((st) => mistakesOf(st.item));
+  if (it.type === "proof") return it.blanks.flatMap((b) => Object.values(b.mistakes ?? {}));
+  if (it.type === "order") return it.distractors.map((d) => ({ code: d.code }));
   return it.type === "mcq" ? Object.values(it.mistakes ?? {}) : (it.mistakes ?? []);
 }
 
 /** Issues in Vietnamese for the author; empty = meets the standard. `prereqs` = all prerequisites of the KU. */
-export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
+export function checkStandard(u: Unit, prereqs: Set<string>, opts: { proofKu?: boolean } = {}): string[] {
   const out: string[] = [];
   const all = [...u.faded.steps.flatMap((s) => ("item" in s ? [s.item] : [])), ...u.practice, ...u.exit];
   for (const it of all)
     for (const m of mistakesOf(it))
       if (m.review && !prereqs.has(m.review)) out.push(`${it.id}: review "${m.review}" không phải bài tiên quyết của ${u.id}`);
       else if (m.code === "E12" && !m.review) out.push(`${it.id}: mã E12 (hổng nền) cần review tới bài nền`);
-  for (const it of all.flatMap((x) => [x, ...(x.type === "steps" ? x.steps.map((st) => st.item) : [])]))
+  for (const it of all.flatMap((x) => [x, ...(x.type === "steps" || x.type === "analysis" ? x.steps.map((st) => st.item) : [])]))
     if (it.source && RESERVED_EXAM.test(it.source))
       out.push(`${it.id}: source "${it.source}" — ${it.source.match(RESERVED_EXAM)![0]} để dành cho thi thử, chỉ dùng Đề 1–56`);
-  const mcqs = all.flatMap((x) => (x.type === "steps" ? x.steps.map((st) => st.item) : [x])).filter((i) => i.type === "mcq");
+  const mcqs = all.flatMap((x) => (x.type === "steps" || x.type === "analysis" ? x.steps.map((st) => st.item) : [x])).filter((i) => i.type === "mcq");
   if (mcqs.length >= MCQ_BALANCE.min) {
     const slots = new Map<number, number>();
     for (const m of mcqs) slots.set(m.correct, (slots.get(m.correct) ?? 0) + 1);
@@ -77,5 +79,25 @@ export function checkStandard(u: Unit, prereqs: Set<string>): string[] {
   if (u.exit.length !== 8 || !same(x, EXIT_BANK)) out.push(`${u.id}: kho kiểm tra cần 8 câu ${shape(EXIT_BANK)} (đang ${shape(x)})`);
   for (const it of u.exit) if (it.hints) out.push(`${it.id}: câu kiểm tra không có gợi ý`);
   if (!u.exit.some((i) => i.source)) out.push(`${u.id}: kho kiểm tra cần ≥ 1 câu dạng đề thi có source`);
+  if (opts.proofKu) out.push(...proofRules(u));
+  return out;
+}
+
+/** S5 (CONTENT_STANDARD, hình học chứng minh): a track C proof KU practises finding (analysis) and writing (C3, C2) proofs. */
+function proofRules(u: Unit): string[] {
+  const out: string[] = [];
+  const count = (items: Item[], t: Item["type"]) => items.filter((i) => i.type === t).length;
+  if (!count(u.practice, "analysis") || !count(u.practice, "proof") || !count(u.practice, "order"))
+    out.push(`${u.id}: luyện tập của bài hình cần ≥ 1 câu phân tích ngược, ≥ 1 câu điền chỗ trống, ≥ 1 câu sắp xếp`);
+  if (!count(u.exit, "analysis") || count(u.exit, "proof") + count(u.exit, "order") < 2)
+    out.push(`${u.id}: kho kiểm tra của bài hình cần ≥ 1 câu phân tích ngược và ≥ 2 câu điền chỗ trống / sắp xếp`);
+  for (const it of [...u.practice, ...u.exit]) {
+    if (it.type === "analysis")
+      it.steps.forEach((st, i) => {
+        if (Object.keys(st.item.mistakes ?? {}).length < st.item.options.length - 1) out.push(`${it.id}: tầng ${i + 1}: mỗi hướng sai cần phản hồi (mistakes)`);
+      });
+    if (it.type === "proof" && it.blanks.some((b) => !Object.keys(b.mistakes ?? {}).length)) out.push(`${it.id}: mỗi chỗ trống cần ≥ 1 lựa chọn sai có phản hồi`);
+    if (it.type === "order" && !it.distractors.length) out.push(`${it.id}: câu sắp xếp cần ≥ 1 bước nhiễu`);
+  }
   return out;
 }

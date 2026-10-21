@@ -6,6 +6,8 @@ import type { CheckResult, ExitResult, PublicItem, PublicUnit } from "@/lib/cont
 import { checkAnswer, completeFaded, markWorkedViewed, submitExit } from "@/app/learn/actions";
 import { parseAnswer } from "@/lib/content/grade";
 import { RightTriangleAltitude, SvgFigure } from "./figure";
+import { ItemFigure } from "./geometry/item-figure";
+import { AnalysisPractice, LadderStatic } from "./geometry/analysis";
 import { FORMAT_HINT, HintBox, ItemInput, isBlank, unreadable as unreadableItem } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, Feedback, PrimaryButton, useAction, useStartTime } from "./parts";
@@ -70,7 +72,7 @@ export function LessonPlayer({
   }
 
   return (
-    <div>
+    <div data-wide={unit.proofKu ? "" : undefined}>
       {mode === "preview" && (
         <p className="mb-4 rounded-lg border border-warn bg-warn-soft px-3 py-2 text-sm text-warn">
           Chế độ xem trước — bấm thử như học sinh, <b>không ghi dữ liệu</b>.
@@ -79,6 +81,17 @@ export function LessonPlayer({
       )}
       <p className="font-mono text-xs text-muted">{unit.moduleTitle}</p>
       <h1 className="mt-1 font-display text-2xl font-bold">{unit.title}</h1>
+      {unit.proofKu && (
+        <a
+          href={mode === "preview" ? "/parent/content/so-tay" : "/student/so-tay"}
+          target="_blank"
+          rel="noopener"
+          className="mt-1 inline-block font-display text-sm font-semibold text-accent hover:underline"
+          data-testid="so-tay-link"
+        >
+          📒 Mở Sổ tay suy ngược ↗
+        </a>
+      )}
 
       <nav aria-label="Các phần của bài" className="mt-5 grid grid-cols-4 gap-1.5">
         {STAGES.map((s, i) => {
@@ -163,6 +176,13 @@ function LearnStage({ unit, alreadyViewed, onDone }: { unit: PublicUnit; already
       <Card>
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-muted">Lời giải mẫu</h2>
         <Rich as="p" html={unit.worked.problemHtml} className="mt-2 font-semibold" />
+        {unit.worked.analysis && (
+          <div className="mt-3">
+            <p className="mb-2 font-display text-xs font-semibold uppercase tracking-wide text-muted">Phân tích ngược — tìm hướng giải</p>
+            <LadderStatic goalHtml={unit.worked.analysis.goalHtml} steps={unit.worked.analysis.steps} />
+            <p className="mb-1 mt-4 font-display text-xs font-semibold uppercase tracking-wide text-muted">Trình bày lời giải</p>
+          </div>
+        )}
         <ol className="mt-3 flex flex-col gap-3">
           {steps.slice(0, shown).map((s, i) => (
             <li key={i} className="rounded-lg border border-border px-3 py-2.5">
@@ -374,7 +394,7 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
       </div>
       {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
       {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-2 max-w-[220px]" />}
-      {item.figure && <SvgFigure figure={item.figure} className="my-2" />}
+      <ItemFigure key={`f-${item.id}-${pos}`} item={item} />
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
       {item.type === "steps" && !result ? (
@@ -382,8 +402,29 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
             setValue(answer); // keep her step answers on screen under the result
             check(answer);
           }} />
+      ) : item.type === "analysis" && !result ? (
+        <AnalysisPractice
+          key={`${item.id}-${pos}`}
+          unitId={unit.id}
+          item={item}
+          homeworkId={homeworkId}
+          pending={pending}
+          onComplete={(answer) => {
+            setValue(answer); // keep her picks on screen under the result
+            check(answer);
+          }}
+        />
       ) : (
-        <ItemInput key={`${item.id}-${pos}`} item={item} value={value} onChange={setValue} disabled={!!result || pending} onEnter={() => !result && check()} />
+        <ItemInput
+          key={`${item.id}-${pos}`}
+          item={item}
+          value={value}
+          onChange={setValue}
+          disabled={!!result || pending}
+          marks={result?.parts}
+          at={result?.at}
+          onEnter={() => !result && check()}
+        />
       )}
       {result ? (
         <QuestionFeedback
@@ -397,7 +438,8 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
           recapHref={recapHref}
         />
       ) : (
-        item.type !== "steps" && (
+        item.type !== "steps" &&
+        item.type !== "analysis" && (
           <PrimaryButton className="mt-4 w-full" disabled={pending} onClick={() => check()}>
             {pending ? "Đang chấm…" : "Kiểm tra"}
           </PrimaryButton>
@@ -616,7 +658,7 @@ function ExitStage({
           <p className="font-mono text-xs text-muted" data-item={it.id}>
             Câu {i + 1}
           </p>
-          {it.figure && <SvgFigure figure={it.figure} className="my-2" />}
+          <ItemFigure item={it} />
           <Rich as="div" html={it.promptHtml} className="mt-1 leading-relaxed" />
           <ItemInput item={it} value={answers[it.id] ?? ""} onChange={(v) => setAnswers((a) => ({ ...a, [it.id]: v }))} disabled={pending} />
         </Card>

@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { Curriculum, ancestors } from "./curriculum.ts";
+import { Curriculum, ancestors, isProofKu } from "./curriculum.ts";
 import { Unit } from "./schema.ts";
 import { checkStandard } from "./standard.ts";
 
@@ -68,7 +68,8 @@ for (const dir of fs.readdirSync(root)) {
   for (const f of fs.readdirSync(mdir).filter((x) => x.endsWith(".json") && x !== "module.json")) {
     test(`standard: ${dir}/${f}`, () => {
       const u = Unit.parse(JSON.parse(fs.readFileSync(path.join(mdir, f), "utf8")));
-      assert.deepEqual(checkStandard(u, ancestors(curriculum, u.id)), []);
+      const cu = curriculum.units.find((x) => x.id === u.id);
+      assert.deepEqual(checkStandard(u, ancestors(curriculum, u.id), { proofKu: !!cu && isProofKu(cu) }), []);
     });
   }
 }
