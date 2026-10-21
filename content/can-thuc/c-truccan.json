@@ -107,7 +107,7 @@
           "id": "c-truccan-f3",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Kết luận: $\\dfrac{4}{3-\\sqrt5}$ bằng:",
+          "prompt": "Kết luận: $\\dfrac{4}{3-\\sqrt5}$ bằng (rút gọn đến tận cùng):",
           "options": [
             "$\\dfrac{4(3+\\sqrt5)}{4}$",
             "$1$",
@@ -224,7 +224,7 @@
       "id": "c-truccan-p4",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Trục căn thức ở mẫu: $\\dfrac{2}{\\sqrt3+1}$ bằng:",
+      "prompt": "Trục căn thức ở mẫu: $\\dfrac{2}{\\sqrt3+1}$ bằng (rút gọn đến tận cùng):",
       "hints": [
         "Đề hỏi: viết lại phân số với mẫu không còn căn, gọn nhất.",
         "Mẫu là tổng $\\sqrt3+1$: biểu thức liên hợp của nó là gì?",
@@ -258,7 +258,7 @@
       "id": "c-truccan-p5",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Với $x \\ge 0$, rút gọn $\\dfrac{x-1}{\\sqrt x+1}$.",
+      "prompt": "Với $x \\ge 0$, rút gọn đến tận cùng $\\dfrac{x-1}{\\sqrt x+1}$.",
       "hints": [
         "Đề hỏi: viết biểu thức gọn nhất, không còn phân số.",
         "Tử $x-1$ có viết được thành tích chứa $\\sqrt x+1$ không?",
@@ -355,7 +355,7 @@
             "id": "c-truccan-p6-s3",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Kết quả trục căn là:",
+            "prompt": "Kết quả trục căn là (rút gọn đến tận cùng):",
             "options": [
               "$\\sqrt5+\\sqrt2$",
               "$\\dfrac{3(\\sqrt5+\\sqrt2)}{3}$",
@@ -466,7 +466,7 @@
             "id": "c-truccan-p7-s3",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Rút gọn $M$ được:",
+            "prompt": "Rút gọn $M$ được (rút gọn đến tận cùng):",
             "options": [
               "$\\dfrac{2(\\sqrt x+3)}{9-x}$",
               "$\\dfrac{2}{\\sqrt x+3}$",
@@ -716,7 +716,7 @@
       "id": "c-truccan-x8",
       "type": "mcq",
       "level": "L3",
-      "prompt": "Cho $A=\\dfrac{\\sqrt x}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $A$ khi $x=3$ (viết kết quả với mẫu không còn căn).",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $A$ khi $x=3$ (viết kết quả với mẫu không còn căn, rút gọn đến tận cùng).",
       "source": "68 đề – Đề 48, Bài 2a (chuyển thể: thay x = 3)",
       "options": [
         "$\\dfrac{1+\\sqrt3}{2}$",
