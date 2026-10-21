@@ -60,7 +60,7 @@ Mã lỗi gắn với **nguyên nhân** của đáp án sai, không phải với
 | E06 Chiến lược | Biết công thức nhưng áp sai chỗ / sai thứ tự bước | — | Tính $CH$ trước khi có $BC$ |
 | E07 Mô hình hoá | Đặt ẩn / lập phương trình / chọn không gian mẫu sai | — | Năng suất chung = $t_1+t_2$ |
 | E08 Đọc hình | Nhầm cạnh kề–đối, nhầm hình chiếu, đọc sai số liệu trên hình/biểu đồ | — | Nhầm $BH$ với $CH$ |
-| E09 Logic chứng minh | (Chỉ dùng cho phần gia sư chấm trên giấy) | Câu tự chấm | — |
+| E09 Logic chứng minh | Lập luận chứng minh sai: dùng điều cần chứng minh (vòng), lí do không khớp bước, thiếu bước, sai thứ tự suy luận — trong câu hình tự chấm (phân tích ngược, C3, C2, §10) và phần gia sư chấm trên giấy | Câu tính toán thuần | Chọn "vì $\Delta ADB \backsim \Delta AEC$" để suy ra chính hai góc dùng chứng minh đồng dạng |
 | E10 Ẩu | Sơ suất **một chỗ**: chép nhầm số, đọc nhầm đề, quên dấu cuối | Lỗi có hệ thống / lặp lại (→ mã gốc) | Đề cho 12, con dùng 21 |
 | E11 Trình bày / chưa hoàn thiện | Kết quả **chưa rút gọn đến tận cùng**, thiếu kết luận, thiếu đơn vị | — | Dừng ở $\frac{2\sqrt x+4}{2}$ thay vì $\sqrt x+2$ |
 | E12 Hổng nền | Lỗi gốc ở kiến thức lớp dưới (F0–F3) trong KU lớp 9 → **bắt buộc kèm `review`** (§5) | Lỗi của chính KU | Sai HĐT khi rút gọn căn |
