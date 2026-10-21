@@ -1,7 +1,8 @@
 // "Bài làm của con" view model for tutors and the parent (spec 2026-10-05, part A).
 // Pure, so `node --test` covers it. Faded steps are never shown (T5).
 import type { Item } from "../content/schema.ts";
-import { STEP_SEPARATOR, gradeItem } from "../content/grade.ts";
+import { ORDER_SEPARATOR, STEP_SEPARATOR, gradeItem } from "../content/grade.ts";
+import { displayOrder } from "../content/shuffle.ts";
 import { texToHtml } from "../content/tex.ts";
 import type { AttemptRow } from "./rules.ts";
 
@@ -42,9 +43,36 @@ export function commonErrors(attempts: AttemptRow[], min = 2): { code: string; c
 
 /** What the student entered: escaped text, or the chosen MCQ option rendered. */
 export function answerHtml(item: Item, raw: string): string {
-  if (item.type === "steps") {
+  if (item.type === "steps" || item.type === "analysis") {
     const parts = raw.split(STEP_SEPARATOR);
-    return item.steps.map((st, i) => `Bước ${i + 1}: ${answerHtml(st.item, parts[i] ?? "")}`).join(" · ");
+    const label = item.type === "steps" ? "Bước" : "Tầng";
+    return item.steps.map((st, i) => `${label} ${i + 1}: ${answerHtml(st.item, parts[i] ?? "")}`).join(" · ");
+  }
+  if (item.type === "proof") {
+    // S5 C3: each part is a shown bank position.
+    const order = displayOrder(item.id, item.bank.length);
+    const parts = raw.split(STEP_SEPARATOR);
+    return item.blanks
+      .map((_, i) => {
+        const p = (parts[i] ?? "").trim();
+        const k = /^\d$/.test(p) ? order[Number(p)] : undefined;
+        return `(${i + 1}) ${k === undefined ? "(bỏ trống)" : texToHtml(item.bank[k])}`;
+      })
+      .join(" · ");
+  }
+  if (item.type === "order") {
+    // S5 C2: shown positions in the chosen order.
+    const all = [...item.lines.map((l) => l.text), ...item.distractors.map((d) => d.text)];
+    const order = displayOrder(item.id, all.length);
+    const s = raw.trim();
+    if (!s) return "(bỏ trống)";
+    return s
+      .split(ORDER_SEPARATOR)
+      .map((p, i) => {
+        const k = /^\d{1,2}$/.test(p.trim()) ? order[Number(p)] : undefined;
+        return `${i + 1}. ${k === undefined ? "?" : texToHtml(all[k])}`;
+      })
+      .join("<br>");
   }
   const answer = raw.trim();
   if (!answer) return "(bỏ trống)";
@@ -57,6 +85,9 @@ export function answerHtml(item: Item, raw: string): string {
 
 export function correctHtml(item: Item): string {
   if (item.type === "steps") return item.steps.map((st, i) => `Bước ${i + 1}: ${correctHtml(st.item)}`).join(" · ");
+  if (item.type === "analysis") return item.steps.map((st, i) => `Tầng ${i + 1}: ${correctHtml(st.item)}`).join(" · ");
+  if (item.type === "proof") return item.blanks.map((b, i) => `(${i + 1}) ${texToHtml(item.bank[b.correct])}`).join(" · ");
+  if (item.type === "order") return item.lines.map((l, i) => `${i + 1}. ${texToHtml(l.text)}`).join("<br>");
   return item.type === "mcq" ? texToHtml(item.options[item.correct]) : texToHtml(item.unit ? `${item.answer} ${item.unit}` : item.answer);
 }
 

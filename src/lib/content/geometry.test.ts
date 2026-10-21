@@ -7,6 +7,9 @@ import { gradeItem } from "./grade.ts";
 import { analysisView, orderView, proofView } from "./public-geometry.ts";
 import { isProofKu } from "./curriculum.ts";
 import { texToHtml } from "./tex.ts";
+import { itemHash } from "./lock.ts";
+import { answerHtml, correctHtml } from "../learning/work.ts";
+import { checkStandard } from "./standard.ts";
 
 const mcq = (id: string, correct = 0, n = 3) => ({
   id, type: "mcq", level: "L2", prompt: "?", options: Array.from({ length: n }, (_, i) => `Phương án ${i + 1}`), correct,
@@ -179,4 +182,44 @@ test("isProofKu: track C and not fully auto-graded", () => {
   assert.equal(isProofKu({ track: "C", grading: "tutor" }), true);
   assert.equal(isProofKu({ track: "C", grading: "full" }), false);
   assert.equal(isProofKu({ track: "A", grading: "partial" }), false);
+});
+
+// ---------------------------------------------------------------- lock, Bài làm, standard
+test("lock: grading key of the new types; wording outside the key may change", () => {
+  const o = O(order());
+  assert.equal(itemHash(o), itemHash(O({ ...order(), prompt: "Đề khác." })));
+  const o3 = order();
+  o3.lines[2].after = [0, 1];
+  assert.notEqual(itemHash(o), itemHash(O(o3)));
+  const p2 = proof();
+  p2.blanks[1].correct = 2;
+  assert.notEqual(itemHash(P(proof())), itemHash(P(p2)));
+  assert.equal(itemHash(Item.parse(analysis())), itemHash(Item.parse({ ...analysis(), outline: ["x", "y"] })), "outline is wording");
+});
+
+test("work: readable answers and right answers", () => {
+  const p = P(proof());
+  const s = (k: number) => displayOrder(p.id, 4).indexOf(k);
+  assert.match(answerHtml(p, `${s(3)}|${s(1)}`), /\(1\) góc nội tiếp.*\(2\) BC/);
+  assert.match(correctHtml(p), /\(1\) BD là đường cao.*\(2\) BC/);
+  const o = O(order());
+  const ans = [0, 2, 1, 3].map((a) => displayOrder(o.id, 5).indexOf(a)).join(",");
+  assert.match(answerHtml(o, ans), /1\. Xét hai tam giác[\s\S]*2\. góc vuông[\s\S]*3\. góc A chung/);
+  assert.match(correctHtml(o), /1\. Xét hai tam giác[\s\S]*4\. ⇒ đồng dạng/);
+  assert.equal(answerHtml(o, ""), "(bỏ trống)");
+  assert.match(answerHtml(Item.parse(analysis()), "1|2"), /Tầng 1: Phương án 2 · Tầng 2: Phương án 3/);
+});
+
+test("standard: a proof KU needs analysis, C3 and C2 in practice and exit", () => {
+  const u = Unit.parse({
+    id: "g", module: "m", order: 1, title: "G", status: "draft", estMinutes: 30, theory: ["L."],
+    worked: { problem: "B.", steps: [{ text: "a" }, { text: "b" }], selfExplain: "?" },
+    faded: { problem: "B.", steps: [{ text: "a" }, { prompt: "Điền.", item: mcq("g-f1") }] },
+    practice: ["g-p1", "g-p2", "g-p3", "g-p4"].map((id) => mcq(id)),
+    exit: ["g-x1", "g-x2", "g-x3", "g-x4"].map((id) => mcq(id)),
+  });
+  const out = checkStandard(u, new Set(), { proofKu: true }).join("\n");
+  assert.match(out, /luyện tập của bài hình cần ≥ 1 câu phân tích ngược, ≥ 1 câu điền chỗ trống, ≥ 1 câu sắp xếp/);
+  assert.match(out, /kho kiểm tra của bài hình cần ≥ 1 câu phân tích ngược và ≥ 2 câu điền chỗ trống \/ sắp xếp/);
+  assert.doesNotMatch(checkStandard(u, new Set()).join("\n"), /bài hình/, "only for proof KUs");
 });

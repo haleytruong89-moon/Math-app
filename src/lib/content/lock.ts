@@ -4,11 +4,17 @@
 // key of every recorded item is locked in content/approved.lock.json and a test refuses changes.
 // Wording (prompt, solution, hints, feedback) stays editable. Pure module: used by the test and the script.
 import { createHash } from "node:crypto";
+import { afterOf } from "./grade.ts";
 
 type Simple =
   | { id: string; type: "mcq"; options: string[]; correct: number }
   | { id: string; type: "numeric"; answer: string };
-type Gradable = Simple | { id: string; type: "steps"; steps: { item: Simple }[] };
+type Gradable =
+  | Simple
+  | { id: string; type: "steps"; steps: { item: Simple }[] }
+  | { id: string; type: "analysis"; steps: { item: Simple }[] }
+  | { id: string; type: "proof"; bank: string[]; blanks: { correct: number }[] }
+  | { id: string; type: "order"; lines: { text: string; after?: number[] }[]; distractors: { text: string }[] };
 type LockableUnit = {
   id: string;
   status: string;
@@ -21,6 +27,11 @@ type LockableUnit = {
 function gradingKey(it: Gradable): unknown {
   if (it.type === "mcq") return ["mcq", it.options.map((o) => o.trim()), it.correct];
   if (it.type === "numeric") return ["numeric", it.answer.trim()];
+  if (it.type === "analysis") return ["analysis", it.steps.map((s) => gradingKey(s.item))];
+  // S5: the stored answer is a shown position — the bank / lines (and the id that seeds the shuffle) are part of the key.
+  if (it.type === "proof") return ["proof", it.id, it.bank.map((b) => b.trim()), it.blanks.map((b) => b.correct)];
+  if (it.type === "order")
+    return ["order", it.id, it.lines.map((l, i) => [l.text.trim(), afterOf(it.lines, i)]), it.distractors.map((d) => d.text.trim())];
   return ["steps", it.steps.map((s) => gradingKey(s.item))];
 }
 
