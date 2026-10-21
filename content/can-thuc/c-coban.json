@@ -98,7 +98,7 @@
           "id": "c-coban-f3",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Kết luận: $\\sqrt{(2-\\sqrt5)^2}+\\sqrt{20}$ bằng:",
+          "prompt": "Kết luận (thu gọn đến tận cùng): $\\sqrt{(2-\\sqrt5)^2}+\\sqrt{20}$ bằng:",
           "options": [
             "$\\sqrt5+2$",
             "$3\\sqrt5-2$",
@@ -336,7 +336,7 @@
       "id": "c-coban-p6",
       "type": "mcq",
       "level": "L2",
-      "prompt": "Với $x<2$, rút gọn $\\sqrt{x^2-4x+4}$.",
+      "prompt": "Với $x<2$, rút gọn $\\sqrt{x^2-4x+4}$ (kết quả không còn dấu căn và không còn dấu giá trị tuyệt đối).",
       "hints": [
         "Đề hỏi dạng gọn nhất, không còn căn, không còn dấu giá trị tuyệt đối.",
         "Biểu thức dưới căn là một hằng đẳng thức → căn của một bình phương.",
