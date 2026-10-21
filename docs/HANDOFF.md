@@ -34,6 +34,7 @@
 - [x] Tạo khoá Anthropic API hạn mức 10 USD/tháng, dán vào Vercel (xong 19/10).
 - [x] SQL 0011 + PR #25; #24, #26, #28; SQL 0012 + PR #27 (20/10).
 - [x] SQL 0013 + PR #29 (20/10).
-- [ ] Merge PR `p1-tutor-polish` (không SQL); gửi gia sư link app.
+- [x] Merge PR #30 (21/10).
+- [ ] Merge PR `p1-tutor-v2` (giao diện bản 2, không SQL).
 - [ ] Nhờ gia sư duyệt 10 bài đợt 3–4 trên tab **Kho bài** (thay cho soát qua tin nhắn).
 - [ ] Cập nhật `claude/PJ_APP_TOAN.md` trong hub (bản nháp: `docs/HUB_PJ_APP_TOAN_UPDATE.md`).

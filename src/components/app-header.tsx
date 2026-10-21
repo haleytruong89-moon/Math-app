@@ -15,11 +15,14 @@ export function AppHeader({
   wide?: boolean;
 }) {
   return (
-    <header className="border-b border-border bg-surface">
+    <header className="border-b border-border bg-surface font-display">
       <div className={`mx-auto flex ${wide ? "max-w-6xl" : "max-w-5xl"} flex-wrap items-center justify-between gap-3 px-4 py-3`}>
-        <div className="flex items-baseline gap-3">
-          <span className="font-display text-lg font-bold">App Toán</span>
-          <span className="font-mono text-xs text-muted">
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-2 text-lg font-bold">
+            <span className="grid size-8 place-items-center rounded-lg bg-accent text-base text-on-accent" aria-hidden>∑</span>
+            App Toán
+          </span>
+          <span className="text-sm text-muted">
             {ROLE_LABEL[user.role]} · {user.displayName}
           </span>
         </div>

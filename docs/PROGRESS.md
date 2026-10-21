@@ -28,7 +28,8 @@
 | Nút "Áp dụng SQL" (GitHub Actions) | `p1-sql-button` | ✅ Merged 20/10 (PR #28) |
 | S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | ✅ Merged 20/10 (PR #27), SQL 0012 chạy bằng nút 20/10 |
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
-| Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | 🟡 PR mở 21/10 — không SQL |
+| Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
+| Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | 🟡 PR mở 21/10 — không SQL |
 | S8 — AI giảng bài + báo cáo tuần (SQL **0014**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -50,6 +51,25 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 21/10/2026 — Giao diện gia sư bản 2: nền trắng, sao vàng, "Việc tiếp theo" (nhánh `p1-tutor-v2`)
+
+Máy gia sư để chế độ tối nên app hiện nền đen, dấu sao gần như không thấy. Phụ huynh duyệt mẫu bản 2 (Design canvas, 21/10) và nói "ok". Không SQL.
+
+### Đã làm
+- **Luôn nền trắng** cho mọi người (bỏ tự đổi theo chế độ tối của máy).
+- **Sao ưu tiên** vàng đặc / viền xám, vùng bấm 40px; dòng ưu tiên viền vàng + nền vàng nhạt.
+- **Đầu trang học sinh** (chữ viết tắt tên, lớp) + **tab có số việc** (Hôm nay: bài con đã làm xong chờ chữa + buổi chưa ghi; Kho bài: số bài chờ duyệt).
+- **Hôm nay**: ô **"Việc tiếp theo"** với 1 nút chính (chữa bài con đã làm xong → duyệt bài ưu tiên → ghi buổi chưa ghi → duyệt bài khác → giao bài); danh sách chờ duyệt có thanh tiến độ; ô trống có nút gợi ý; cột ưu tiên ghi trạng thái từng bài + link Duyệt/Giao bài; "Tuần này" thành 3 ô số.
+- **Kho bài**: lọc dạng nút gộp, thanh tiến độ, nút "Duyệt"/"Duyệt tiếp" đặc màu, "Xem" nhạt.
+- **Đăng nhập**: logo, "Dành cho phụ huynh, gia sư và học sinh", khung trắng.
+- Chữ giao diện không chân (Libre Franklin); đề bài, lời giải vẫn chữ có chân. Nút dùng chung kiểu (`src/components/ui/styles.ts`).
+
+### Đã tự kiểm
+- `npm run lint`, `npm test` (141, thêm thứ tự "Việc tiếp theo"), `npm run build`, `./e2e/run.sh` 210 PASS (2 kiểm tra chế độ tối đổi thành "vẫn nền trắng khi máy để chế độ tối"). Ảnh 1366×768 với máy để chế độ tối: nền trắng.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL).
 
 ## 21/10/2026 — Bàn làm việc gia sư trên laptop (nhánh `p1-tutor-polish`)
 
