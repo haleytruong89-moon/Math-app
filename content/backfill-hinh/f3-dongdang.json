@@ -733,7 +733,7 @@
       },
       "lines": [
         "Xét $\\triangle ABC$ và $\\triangle DEF$ có: $\\widehat{BAC}=\\widehat{EDF}=90^\\circ$;",
-        "$\\dfrac{AB}{DE}=\\dfrac{3}{6}=\\dfrac{1}{2}$, $\\dfrac{AC}{DF}=\\dfrac{4}{8}=\\dfrac{1}{2}$ ⇒ [[1]]",
+        "$\\dfrac{AB}{DE}=\\dfrac{3}{6}=\\dfrac{1}{2}$, $\\dfrac{AC}{DF}=\\dfrac{4}{8}=\\dfrac{1}{2}$ ⇒ tỉ lệ thức [[1]]",
         "⇒ $\\triangle ABC \\backsim \\triangle DEF$ ([[2]])",
         "⇒ $\\dfrac{BC}{EF}=\\dfrac{1}{2}$ ⇒ $EF =$ [[3]] $= 10$ (cm).",
         "Kết luận: $\\triangle ABC \\backsim \\triangle DEF$ và $EF = 10$ cm."
