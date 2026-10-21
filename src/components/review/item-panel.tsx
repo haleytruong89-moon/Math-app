@@ -2,10 +2,19 @@ import { texToHtml } from "@/lib/content/tex";
 import { errorLabel } from "@/lib/content/errors";
 import type { Item, Unit } from "@/lib/content/schema";
 import { Rich } from "@/components/lesson/rich";
+import { afterOf } from "@/lib/content/grade";
 
 const Html = ({ html, className = "" }: { html: string; className?: string }) => <Rich as="div" html={html} className={className} />;
 const Label = ({ children }: { children: React.ReactNode }) => <p className="font-display text-xs font-semibold uppercase tracking-wide text-muted">{children}</p>;
 const ABC = "ABCDEF";
+const TYPE_LABEL: Record<Item["type"], string> = {
+  mcq: "trắc nghiệm",
+  numeric: "điền số",
+  steps: "nhiều bước",
+  analysis: "phân tích ngược",
+  proof: "điền lời giải (C3)",
+  order: "sắp xếp bước (C2)",
+};
 
 function Answer({ item }: { item: Item }) {
   if (item.type === "mcq")
@@ -21,6 +30,70 @@ function Answer({ item }: { item: Item }) {
       </ol>
     );
   if (item.type === "numeric") return <p className="font-mono text-xl font-semibold text-good">{item.answer}{item.unit ? ` ${item.unit}` : ""}</p>;
+  if (item.type === "analysis")
+    return (
+      <ol className="flex flex-col gap-3">
+        <li className="rounded-lg border-2 border-accent bg-accent-soft px-3 py-2">
+          <b className="text-xs text-accent">CẦN CHỨNG MINH</b>
+          <Html html={texToHtml(item.goal)} className="font-body" />
+        </li>
+        {item.steps.map((s, i) => (
+          <li key={i} className="rounded-lg border border-border p-3">
+            <p className="font-mono text-[11px] text-muted">Tầng {i + 1}</p>
+            <Html html={texToHtml(s.ask)} className="text-sm font-semibold" />
+            <div className="mt-2"><Answer item={s.item} /></div>
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-muted">→ con thấy:</span>
+              <Html html={texToHtml(s.node)} className="font-body" />
+              {s.given && <span className="rounded-full bg-good-soft px-2 text-xs text-good">giả thiết</span>}
+            </div>
+          </li>
+        ))}
+        <li className="rounded-lg border border-border p-3">
+          <b className="text-xs text-muted">DÀN Ý (con thấy sau khi xong)</b>
+          <ol className="mt-1 list-decimal pl-5 font-body">{item.outline.map((o, i) => <li key={i}><Html html={texToHtml(o)} /></li>)}</ol>
+        </li>
+      </ol>
+    );
+  if (item.type === "proof")
+    return (
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-1 font-body">
+          {item.lines.map((l, i) => (
+            <Html key={i} html={texToHtml(l.replace(/\[\[(\d)\]\]/g, (_, n: string) => `**[${n}: ${item.bank[item.blanks[Number(n) - 1].correct]}]**`))} />
+          ))}
+        </div>
+        <p className="text-xs text-muted">
+          Lựa chọn con thấy (xáo thứ tự):{" "}
+          {item.bank.map((b, i) => (
+            <span key={i}>{i > 0 && " · "}<Rich html={texToHtml(b)} /></span>
+          ))}
+        </p>
+      </div>
+    );
+  if (item.type === "order")
+    return (
+      <div className="flex flex-col gap-2">
+        <ol className="flex flex-col gap-1.5">
+          {item.lines.map((l, i) => {
+            const swap = [i - 1, i + 1].filter((j) => j >= 0 && j < item.lines.length && !afterOf(item.lines, i).includes(j) && !afterOf(item.lines, j).includes(i));
+            return (
+              <li key={i} className="flex flex-wrap items-center gap-2 rounded-lg border border-good bg-good-soft px-3 py-2">
+                <b className="font-mono">{i + 1}</b>
+                <Html html={texToHtml(l.text)} className="font-body" />
+                {swap.length > 0 && <span className="ml-auto font-mono text-xs text-good">có thể đổi chỗ với dòng {swap.map((j) => j + 1).join(", ")}</span>}
+              </li>
+            );
+          })}
+        </ol>
+        {item.distractors.map((d, i) => (
+          <div key={i} className="flex flex-wrap items-center gap-2 rounded-lg border border-dashed border-border px-3 py-2 text-sm">
+            <span className="font-mono text-xs text-muted">bước thừa</span>
+            <Html html={texToHtml(d.text)} className="font-body" />
+          </div>
+        ))}
+      </div>
+    );
   return (
     <ol className="flex flex-col gap-3">
       {item.steps.map((s, i) => (
@@ -34,8 +107,15 @@ function Answer({ item }: { item: Item }) {
 }
 
 function Mistakes({ item }: { item: Item }) {
-  const list =
-    item.type === "mcq"
+  type Row = { key: string; code: string; feedback: string; review?: string };
+  const list: Row[] =
+    item.type === "analysis"
+      ? item.steps.flatMap((s, i) => Object.entries(s.item.mistakes ?? {}).map(([k, m]) => ({ key: `T${i + 1}·${ABC[Number(k)]}`, ...m })))
+      : item.type === "proof"
+        ? item.blanks.flatMap((b, i) => Object.entries(b.mistakes ?? {}).map(([k, m]) => ({ key: `Ô${i + 1}`, ...m, feedback: `«${item.bank[Number(k)]}»: ${m.feedback}` })))
+        : item.type === "order"
+          ? item.distractors.map((d) => ({ key: "thừa", code: d.code, feedback: `${d.text} — ${d.feedback}` }))
+          : item.type === "mcq"
       ? Object.entries(item.mistakes ?? {}).map(([k, m]) => ({ key: ABC[Number(k)], ...m }))
       : item.type === "numeric"
         ? (item.mistakes ?? []).map((m) => ({ key: m.answer, ...m }))
@@ -61,7 +141,7 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
     <div className="flex flex-col gap-5">
       <p className="flex flex-wrap gap-2 font-mono text-xs">
         <span className="rounded-full bg-accent-soft px-2 py-0.5 text-accent">{kind === "practice" ? "Luyện tập" : "Kiểm tra"}</span>
-        <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.level} · {item.type === "mcq" ? "trắc nghiệm" : item.type === "numeric" ? "điền số" : "nhiều bước"}</span>
+        <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.level} · {TYPE_LABEL[item.type]}</span>
         {item.source && <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.source}</span>}
       </p>
       <Html html={texToHtml(item.prompt)} className="font-body text-lg leading-relaxed" />
