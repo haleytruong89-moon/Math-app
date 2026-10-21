@@ -38,7 +38,7 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
-| S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | 🟡 thiết kế ✅ 21/10 (PR #32); code 28/10–~11/11 (Track C từ 23/11, LT18) |
+| S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | 🟡 PR mở 21/10 — không SQL (thiết kế #32) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -49,6 +49,27 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 21/10/2026 — S5 hình học: code xong (nhánh `p1-slice-5`, không SQL)
+
+Theo kế hoạch `docs/superpowers/plans/2026-10-21-s5-geometry.md` (11 phần), phụ huynh chọn "làm liền một mạch" 21/10.
+
+### Đã làm
+- **3 dạng câu mới** (`schema.ts`, `grade.ts`): **phân tích ngược** (chấm từng tầng như câu nhiều bước; luyện tập: máy chủ trả `node` sau mỗi tầng, xong câu trả `outline` → "Dàn ý lời giải"; kiểm tra / ôn: chọn xong một tầng mới hiện tầng sau, không đổi lại), **C3 điền chỗ trống** (bấm ô → bấm lựa chọn, tô ô sai đầu tiên), **C2 sắp xếp bước** (bấm thêm, ↑ ↓ ×; nhận mọi thứ tự hợp `after`; "Sai từ dòng N").
+- Dòng và lựa chọn được **xáo cố định theo id câu** (`shuffle.ts`), trình duyệt không nhận đáp án; khoá chấm (`lock.ts`) gồm bank / dòng / after.
+- `drawFirst` (hình ẩn tới khi con bấm "Đã vẽ xong"), `worked.analysis` (sơ đồ trong lời giải mẫu), bài hình chứng minh dùng **hết chiều rộng laptop**.
+- Màn **Duyệt** hiện đáp án 3 dạng (tầng + node + dàn ý; ô điền đúng; thứ tự đúng + "có thể đổi chỗ" + bước thừa); **Bài làm** hiện câu trả lời đọc được.
+- **Sổ tay suy ngược**: `content/so-tay.json` (**nháp**: 7 mục tiêu, 4 cấu hình mẫu, chưa có hình SVG), trang con (chỉ khi đã duyệt) / phụ huynh / gia sư; link từ bài hình, Nội dung, Kho bài.
+- `CONTENT_STANDARD.md` §10 + `standard.ts` (bài hình cần ≥ 1 phân tích ngược, ≥ 1 C3, ≥ 1 C2 khi luyện; kho kiểm tra ≥ 1 + ≥ 2).
+
+### Kiểm thử
+- Unit: 156 (thêm `geometry.test.ts` 13, `so-tay.test.ts` 2). E2E: thêm `geometry-flow` (18) + `geometry-parent-flow` (6) trên bài thử `fg-1`; ảnh `e2e/out/geometry/` ở 1366×768.
+
+### Còn mở
+- Sổ tay: soạn hình SVG cho 4 cấu hình + gia sư soát → phụ huynh duyệt (cùng đợt 5/6).
+- Bài hình thật (f3-dongdang, đợt 5) soạn theo §10; C1 (kéo hình) để sau.
 
 ---
 
