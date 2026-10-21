@@ -32,6 +32,8 @@ const Authoring = {
   /** AI2: pre-written hints H1 goal → H2 recognise → H3 tool (practice only). */
   hints: z.tuple([Text, Text, Text]).optional(),
   figure: SvgFigure.optional(),
+  /** S5: the figure stays folded until the student says she drew it on paper. */
+  drawFirst: z.literal(true).optional(),
 };
 
 export const McqItem = z
@@ -110,7 +112,86 @@ export const StepsItem = z
     });
   });
 
-export const Item = z.union([SimpleItem, StepsItem]);
+const issue = (ctx: z.RefinementCtx, message: string) => ctx.addIssue({ code: "custom", message });
+
+/** S5 Phân tích ngược: from the goal, one MCQ per level ("what is needed?") down to a given; then the forward outline. */
+export const AnalysisItem = z
+  .object({
+    id: Id,
+    type: z.literal("analysis"),
+    level: Level,
+    prompt: Text,
+    ...Authoring,
+    goal: Text,
+    steps: z.array(z.object({ ask: Text, node: Text, given: z.literal(true).optional(), item: McqItem }).strict()).min(2).max(5),
+    outline: z.array(Text).min(2).max(6),
+    solution: Text,
+  })
+  .strict()
+  .superRefine((it, ctx) => {
+    it.steps.forEach((st, i) => {
+      if (st.item.id !== `${it.id}-s${i + 1}`) issue(ctx, `${it.id}: tầng ${i + 1} phải có id "${it.id}-s${i + 1}"`);
+      if (st.given && i !== it.steps.length - 1) issue(ctx, `${it.id}: chỉ tầng cuối là giả thiết (given)`);
+    });
+    if (!it.steps[it.steps.length - 1]?.given) issue(ctx, `${it.id}: tầng cuối phải chạm giả thiết (given: true)`);
+  });
+
+const MARK = /\[\[(\d)\]\]/g;
+
+/** S5 C3: a Vietnamese-style proof with [[1]]…[[k]] blanks, each filled from one shared bank. */
+export const ProofItem = z
+  .object({
+    id: Id,
+    type: z.literal("proof"),
+    level: Level,
+    prompt: Text,
+    ...Authoring,
+    lines: z.array(Text).min(2).max(12),
+    bank: z.array(Text).min(3).max(10),
+    blanks: z
+      .array(z.object({ correct: z.number().int().nonnegative(), mistakes: z.record(z.string().regex(/^\d$/), Mistake).optional() }).strict())
+      .min(2)
+      .max(5),
+    solution: Text,
+  })
+  .strict()
+  .superRefine((it, ctx) => {
+    const k = it.blanks.length;
+    const marks = it.lines.flatMap((l) => [...l.matchAll(MARK)].map((m) => Number(m[1])));
+    if (marks.join() !== Array.from({ length: k }, (_, i) => i + 1).join())
+      issue(ctx, `${it.id}: chỗ trống [[1]]…[[${k}]] phải xuất hiện đúng một lần, theo thứ tự`);
+    for (const l of it.lines)
+      for (const seg of l.split(/\[\[\d\]\]/))
+        if ((seg.match(/\$/g) ?? []).length % 2) issue(ctx, `${it.id}: [[n]] không được nằm trong công thức $…$`);
+    if (new Set(it.bank).size !== it.bank.length) issue(ctx, `${it.id}: bank có lựa chọn trùng`);
+    if (it.bank.length < k + 2) issue(ctx, `${it.id}: bank cần ≥ ${k + 2} lựa chọn (số chỗ trống + 2)`);
+    it.blanks.forEach((b, i) => {
+      if (b.correct >= it.bank.length) issue(ctx, `${it.id}: chỗ trống ${i + 1} trỏ ra ngoài bank`);
+      for (const key of Object.keys(b.mistakes ?? {}))
+        if (Number(key) === b.correct || Number(key) >= it.bank.length) issue(ctx, `${it.id}: chỗ trống ${i + 1}: mistakes[${key}] không phải lựa chọn sai hợp lệ`);
+    });
+  });
+
+/** S5 C2: lines to put in order (any order consistent with `after` is right) + 0–3 distractors. */
+export const OrderItem = z
+  .object({
+    id: Id,
+    type: z.literal("order"),
+    level: Level,
+    prompt: Text,
+    ...Authoring,
+    lines: z.array(z.object({ text: Text, after: z.array(z.number().int().nonnegative()).optional() }).strict()).min(3).max(10),
+    distractors: z.array(z.object({ text: Text, code: ErrorCode, feedback: Text }).strict()).max(3),
+    solution: Text,
+  })
+  .strict()
+  .superRefine((it, ctx) => {
+    it.lines.forEach((l, i) => (l.after ?? []).forEach((a) => a >= i && issue(ctx, `${it.id}: dòng ${i + 1}: after chỉ được trỏ tới dòng đứng trước`)));
+    const texts = [...it.lines.map((l) => l.text), ...it.distractors.map((d) => d.text)];
+    if (new Set(texts).size !== texts.length) issue(ctx, `${it.id}: có hai dòng trùng nhau`);
+  });
+
+export const Item = z.union([SimpleItem, StepsItem, AnalysisItem, ProofItem, OrderItem]);
 export type Item = z.infer<typeof Item>;
 
 const WorkedStep = z.object({ text: Text, why: Text.optional() }).strict();
@@ -134,7 +215,15 @@ export const Unit = z
     estMinutes: z.number().int().min(5).max(90),
     figure: Figure.optional(),
     theory: z.array(Text).min(1),
-    worked: z.object({ problem: Text, steps: z.array(WorkedStep).min(2), selfExplain: Text }).strict(),
+    worked: z
+      .object({
+        problem: Text,
+        /** S5: the backward-analysis ladder shown before the write-up (proof KUs). */
+        analysis: z.object({ goal: Text, steps: z.array(z.object({ ask: Text, node: Text }).strict()).min(2).max(5) }).strict().optional(),
+        steps: z.array(WorkedStep).min(2),
+        selfExplain: Text,
+      })
+      .strict(),
     faded: z.object({ problem: Text, steps: z.array(FadedStep).min(2) }).strict(),
     practice: z.array(Item).min(4),
     exit: z.array(Item).min(4),
@@ -144,7 +233,7 @@ export const Unit = z
     if (u.status === "approved" && !u.approvedOn) ctx.addIssue({ code: "custom", message: `${u.id}: approved cần approvedOn` });
     const ids = [
       ...u.faded.steps.flatMap((s) => ("item" in s ? [s.item.id] : [])),
-      ...[...u.practice, ...u.exit].flatMap((i) => [i.id, ...(i.type === "steps" ? i.steps.map((st) => st.item.id) : [])]),
+      ...[...u.practice, ...u.exit].flatMap((i) => [i.id, ...(i.type === "steps" || i.type === "analysis" ? i.steps.map((st) => st.item.id) : [])]),
     ];
     const seen = new Set<string>();
     for (const id of ids) {

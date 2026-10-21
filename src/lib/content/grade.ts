@@ -2,6 +2,11 @@
 // Accepts equivalent exact forms (12/5 = 2,4 = 2.4; 2√3 = √12) but never rounded decimals
 // (3,46 ≠ 2√3) — rounding is only accepted when the item's answer itself is a decimal.
 
+/** S5 C2: the lines that must come before line i — `after`, or by default the previous line. */
+export function afterOf(lines: { after?: number[] }[], i: number): number[] {
+  return lines[i].after ?? (i === 0 ? [] : [i - 1]);
+}
+
 /** Normalise what a student types on a phone or laptop keyboard. */
 function normalise(raw: string): string {
   return raw
