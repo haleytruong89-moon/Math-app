@@ -42,12 +42,12 @@ await sql(`
 await page.goto(`${BASE}/tutor`);
 await page.waitForURL(/\/tutor\/[0-9a-f-]{36}$/);
 const sid = page.url().split("/").pop();
-ok("home: one student opens her workspace on 'Hôm nay'", (await page.getByRole("link", { name: "Hôm nay" }).getAttribute("aria-current")) === "page" && (await page.getByText("Hạnh Nguyên").count()) >= 1);
+ok("home: one student opens her workspace on 'Hôm nay'", (await page.getByRole("navigation", { name: "Bàn làm việc" }).getByRole("link", { name: "Hôm nay" }).getAttribute("aria-current")) === "page" && (await page.getByText("Hạnh Nguyên").count()) >= 1);
 ok("home: unassigned student hidden (RLS)", (await page.getByText("Đăng An").count()) === 0);
 await page.screenshot({ path: `${shots}/1-today.png`, fullPage: true });
 
 // ---- evidence appears on tick, before choosing a level
-await tap(page.getByRole("link", { name: "Buổi dạy" }));
+await tap(page.getByRole("navigation", { name: "Bàn làm việc" }).getByRole("link", { name: "Buổi dạy" }));
 await page.waitForURL(/\/buoi$/);
 const formUrl = page.url();
 ok("form: date defaults to today", (await page.locator('input[name="taughtOn"]').inputValue()) === vnToday);
@@ -131,7 +131,7 @@ await sql(`
   insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct)
     select id, 'htl-1', 'htl-1-p3', 'practice', '1', true from public.students where full_name = 'Hạnh Nguyên';`);
 await page.goto(`${BASE}/tutor/${sid}`);
-await page.getByRole("link", { name: "Bài làm" }).click();
+await page.getByRole("navigation", { name: "Bàn làm việc" }).getByRole("link", { name: "Bài làm" }).click();
 await page.waitForURL(/\/work$/);
 const workUrl = page.url();
 ok("work: unit list with common error E10 × 2", (await page.getByTestId("work-summary-htl-1").getByText("E10 × 2").count()) === 1);

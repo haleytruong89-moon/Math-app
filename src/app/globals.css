@@ -3,14 +3,17 @@
 /*
  * Design tokens — taken from the approved Phase 2 mockups (01/10/2026).
  * Ink-blue on pale ruled-paper background; mastery scale m0..m4 runs grey → ink blue → green.
- * Dark mode follows the OS unless <html data-theme="light|dark"> overrides it.
+ * Dark mode follows the OS unless <html data-theme="light|dark"> overrides it — the root layout sets
+ * data-theme="light" (parent 21/10/2026), so the dark tokens below are kept but not used.
  */
 :root {
-  --bg: #eef2f5;
+  --bg: #f3f5f7;
   --surface: #ffffff;
-  --ink: #1b2430;
+  --ink: #18212b;
   --muted: #5b6b7a;
-  --border: #d7dee3;
+  --border: #dfe4e8;
+  --star: #f5b400;
+  --star-soft: #fffaeb;
   --accent: #2454a6;
   --accent-soft: #e5edf7;
   --on-accent: #ffffff;
@@ -133,6 +136,8 @@
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-star: var(--star);
+  --color-star-soft: var(--star-soft);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);

@@ -6,7 +6,8 @@ export default async function TutorLayout({ children }: { children: React.ReactN
   return (
     <>
       <AppHeader user={user} wide />
-      <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+      {/* v2 (21/10): sans-serif for the workspace; math content (items, lessons) keeps the serif via font-body. */}
+      <main className="mx-auto max-w-6xl px-4 py-6 font-display">{children}</main>
     </>
   );
 }

@@ -23,7 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    // Always light (parent 21/10/2026: everyone is used to white screens; an OS dark mode made the tutor's view hard to read).
+    <html lang="vi" data-theme="light">
       <body className="min-h-dvh antialiased">{children}</body>
     </html>
   );

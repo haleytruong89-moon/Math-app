@@ -32,7 +32,7 @@ const strokeIn = async (scheme) => {
   return page.evaluate(() => getComputedStyle(document.querySelector("[data-testid=svg-figure] path")).stroke);
 };
 const light = await strokeIn("light"), dark = await strokeIn("dark");
-ok("LT7: figure follows the theme (stroke differs light / dark)", light && dark && light !== dark, `${light} / ${dark}`);
+ok("LT7 + 21/10: figure drawn with theme colours, light even when the OS is dark", !!light && light === dark, `${light} / ${dark}`);
 await page.emulateMedia({ colorScheme: "light" });
 await page.screenshot({ path: `${shots}/1-practice.png`, fullPage: true });
 

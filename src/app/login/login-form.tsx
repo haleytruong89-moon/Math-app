@@ -8,9 +8,9 @@ export function LoginForm() {
   const [show, setShow] = useState(false);
 
   return (
-    <form action={action} className="mt-8 flex flex-col gap-4">
+    <form action={action} className="mt-4 flex flex-col gap-4">
       <label className="flex flex-col gap-1.5">
-        <span className="text-sm text-muted">Email</span>
+        <span className="text-sm font-semibold text-ink/80">Email</span>
         <input
           name="email"
           type="email"
@@ -22,7 +22,7 @@ export function LoginForm() {
         />
       </label>
       <label className="flex flex-col gap-1.5">
-        <span className="text-sm text-muted">Mật khẩu</span>
+        <span className="text-sm font-semibold text-ink/80">Mật khẩu</span>
         <span className="flex gap-2">
           <input
             name="password"
