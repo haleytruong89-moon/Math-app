@@ -1,0 +1,376 @@
+{
+  "id": "fg-1",
+  "module": "fx-geo",
+  "order": 4,
+  "title": "Chứng minh thử",
+  "status": "approved",
+  "approvedOn": "2026-10-05",
+  "estMinutes": 10,
+  "theory": [
+    "Lý thuyết thử của Chứng minh thử."
+  ],
+  "worked": {
+    "problem": "Bài mẫu thử.",
+    "steps": [
+      {
+        "text": "Bước 1."
+      },
+      {
+        "text": "Bước 2."
+      }
+    ],
+    "selfExplain": "Vì sao?",
+    "analysis": {
+      "goal": "Điều cần chứng minh thử",
+      "steps": [
+        {
+          "ask": "Cần gì?",
+          "node": "Mốc giữa thử"
+        },
+        {
+          "ask": "Vì sao?",
+          "node": "Giả thiết thử"
+        }
+      ]
+    }
+  },
+  "faded": {
+    "problem": "Bài điền bước thử.",
+    "steps": [
+      {
+        "text": "Bước đầu."
+      },
+      {
+        "prompt": "Điền số 7.",
+        "item": {
+          "id": "fg-1-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Câu thử: nhập số $7$.",
+          "answer": "7",
+          "solution": "Đáp án là $7$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "fg-1-p1",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Chứng minh điều thử.",
+      "goal": "Điều cần chứng minh thử",
+      "steps": [
+        {
+          "ask": "Muốn có điều thử, cần gì?",
+          "node": "Mốc giữa thử",
+          "item": {
+            "id": "fg-1-p1-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn.",
+            "options": [
+              "Hướng đúng thử",
+              "Hướng sai thử",
+              "Hướng lạc thử"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "Hướng này không tới giả thiết."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Hướng này lạc đề."
+              }
+            },
+            "solution": "Vì vậy."
+          }
+        },
+        {
+          "ask": "Vì sao có mốc giữa thử?",
+          "node": "Giả thiết thử",
+          "given": true,
+          "item": {
+            "id": "fg-1-p1-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn.",
+            "options": [
+              "Vì giả thiết thử",
+              "Vì điều cần chứng minh"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Đang dùng điều cần chứng minh."
+              }
+            },
+            "solution": "Vì vậy."
+          }
+        }
+      ],
+      "outline": [
+        "Từ giả thiết thử",
+        "suy ra mốc giữa thử",
+        "suy ra điều cần chứng minh thử"
+      ],
+      "solution": "Lời giải phân tích thử."
+    },
+    {
+      "id": "fg-1-p2",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Điền lời giải thử.",
+      "drawFirst": true,
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Hình chứng minh thử"
+      },
+      "lines": [
+        "Ta có góc thử vuông ([[1]])",
+        "⇒ kết luận thử ([[2]])"
+      ],
+      "bank": [
+        "lí do một",
+        "lí do hai",
+        "lí do ba",
+        "lí do bốn"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "2": {
+              "code": "E09",
+              "feedback": "Lí do ba không khớp bước này."
+            }
+          }
+        },
+        {
+          "correct": 1,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Lí do bốn chưa đúng."
+            }
+          }
+        }
+      ],
+      "solution": "Lời giải điền thử."
+    },
+    {
+      "id": "fg-1-p3",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Sắp xếp lời giải thử.",
+      "lines": [
+        {
+          "text": "Dòng mở đầu thử"
+        },
+        {
+          "text": "Dòng A thử"
+        },
+        {
+          "text": "Dòng B thử",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "Dòng kết luận thử",
+          "after": [
+            1,
+            2
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Dòng thừa thử",
+          "code": "E08",
+          "feedback": "Dòng này là bước thừa."
+        }
+      ],
+      "solution": "Lời giải sắp xếp thử."
+    },
+    {
+      "id": "fg-1-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$."
+    },
+    {
+      "id": "fg-1-p5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "fg-1-x1",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Chứng minh điều thử.",
+      "goal": "Điều cần chứng minh thử",
+      "steps": [
+        {
+          "ask": "Muốn có điều thử, cần gì?",
+          "node": "Mốc giữa thử",
+          "item": {
+            "id": "fg-1-x1-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn.",
+            "options": [
+              "Hướng đúng thử",
+              "Hướng sai thử",
+              "Hướng lạc thử"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "Hướng này không tới giả thiết."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Hướng này lạc đề."
+              }
+            },
+            "solution": "Vì vậy."
+          }
+        },
+        {
+          "ask": "Vì sao có mốc giữa thử?",
+          "node": "Giả thiết thử",
+          "given": true,
+          "item": {
+            "id": "fg-1-x1-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn.",
+            "options": [
+              "Vì giả thiết thử",
+              "Vì điều cần chứng minh"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Đang dùng điều cần chứng minh."
+              }
+            },
+            "solution": "Vì vậy."
+          }
+        }
+      ],
+      "outline": [
+        "Từ giả thiết thử",
+        "suy ra mốc giữa thử",
+        "suy ra điều cần chứng minh thử"
+      ],
+      "solution": "Lời giải phân tích thử."
+    },
+    {
+      "id": "fg-1-x2",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Điền lời giải thử.",
+      "drawFirst": true,
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Hình chứng minh thử"
+      },
+      "lines": [
+        "Ta có góc thử vuông ([[1]])",
+        "⇒ kết luận thử ([[2]])"
+      ],
+      "bank": [
+        "lí do một",
+        "lí do hai",
+        "lí do ba",
+        "lí do bốn"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "2": {
+              "code": "E09",
+              "feedback": "Lí do ba không khớp bước này."
+            }
+          }
+        },
+        {
+          "correct": 1,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Lí do bốn chưa đúng."
+            }
+          }
+        }
+      ],
+      "solution": "Lời giải điền thử."
+    },
+    {
+      "id": "fg-1-x3",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Sắp xếp lời giải thử.",
+      "lines": [
+        {
+          "text": "Dòng mở đầu thử"
+        },
+        {
+          "text": "Dòng A thử"
+        },
+        {
+          "text": "Dòng B thử",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "Dòng kết luận thử",
+          "after": [
+            1,
+            2
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Dòng thừa thử",
+          "code": "E08",
+          "feedback": "Dòng này là bước thừa."
+        }
+      ],
+      "solution": "Lời giải sắp xếp thử."
+    },
+    {
+      "id": "fg-1-x4",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $4$.",
+      "answer": "4",
+      "solution": "Đáp án là $4$."
+    },
+    {
+      "id": "fg-1-x5",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Câu thử: nhập số $5$.",
+      "answer": "5",
+      "solution": "Đáp án là $5$."
+    }
+  ]
+}

@@ -165,6 +165,19 @@
       "priority": "P0"
     },
     {
+      "id": "fg-1",
+      "module": "fx-geo",
+      "title": "Chứng minh thử",
+      "track": "C",
+      "seq": 30,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "partial",
+      "testOut": false,
+      "batch": 1,
+      "priority": "P0"
+    },
+    {
       "id": "fl-1",
       "module": "fx-later",
       "title": "Bài chưa soạn thử",

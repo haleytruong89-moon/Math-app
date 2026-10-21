@@ -1,0 +1,29 @@
+{
+  "status": "approved",
+  "approvedOn": "2026-10-21",
+  "goals": [
+    {
+      "id": "g-thu",
+      "title": "Mục tiêu thử",
+      "tip": "Mẹo thử.",
+      "ways": [
+        {
+          "how": "Cách thử",
+          "sign": "Dấu hiệu thử",
+          "units": [
+            "fg-1"
+          ]
+        }
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "h-thu",
+      "title": "Cấu hình thử",
+      "facts": [
+        "Điều có sẵn thử"
+      ]
+    }
+  ]
+}
