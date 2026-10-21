@@ -17,6 +17,7 @@ await page.goto(`${BASE}/tutor/${sid}/giao?unit=htl-1&mode=items`);
 ok("giao: practice items listed, no exit items", (await page.locator('input[name="item"]').count()) === htl1.practice.length && (await page.locator(`input[value="${htl1.exit[0].id}"]`).count()) === 0);
 await page.locator(`input[name="item"][value="${p1}"]`).check();
 await page.locator(`input[name="item"][value="${p2}"]`).check();
+ok("giao: live count 'Đã chọn 2 câu'", (await page.getByText("Đã chọn 2 câu").count()) === 1);
 await page.screenshot({ path: "e2e/out/assign/1-giao.png", fullPage: true });
 await page.getByRole("button", { name: /Giao cho/ }).click();
 await page.getByText("Đã giao 2 câu.").waitFor();

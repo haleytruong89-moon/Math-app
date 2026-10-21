@@ -7,13 +7,16 @@ const ROLE_LABEL = { parent: "Phụ huynh", tutor: "Gia sư", student: "Học si
 export function AppHeader({
   user,
   nav,
+  wide = false,
 }: {
   user: CurrentUser;
   nav?: { href: string; label: string }[];
+  /** Match a wide page body (the tutor workspace, max-w-6xl). */
+  wide?: boolean;
 }) {
   return (
     <header className="border-b border-border bg-surface">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <div className={`mx-auto flex ${wide ? "max-w-6xl" : "max-w-5xl"} flex-wrap items-center justify-between gap-3 px-4 py-3`}>
         <div className="flex items-baseline gap-3">
           <span className="font-display text-lg font-bold">App Toán</span>
           <span className="font-mono text-xs text-muted">

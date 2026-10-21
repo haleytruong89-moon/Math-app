@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { Unit } from "./schema.ts";
-import { LESSON, fixNotesText, nextToReview, reviewables, shelfStatus, statusOf, studentView, unitReview, type ApprovalRow, type ReviewRow } from "./review.ts";
+import { LESSON, canonicalJson, fixNotesText, nextToReview, reviewables, shelfStatus, statusOf, studentView, unitReview, type ApprovalRow, type ReviewRow } from "./review.ts";
 
 const draft = Unit.parse(JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, "../../../content/xac-suat/b-haib.json"), "utf8")));
 const T = (n: number) => `2026-10-20T0${n}:00:00Z`;
@@ -76,4 +76,14 @@ test("shelf status, next item to review, notes for Claude", () => {
     fixNotesText([{ unitId: "b-haib", unitTitle: "Hai biến cố", itemId: "b-haib-p1", note: "Đổi số", at: "2026-10-20T01:00:00Z" }]),
     "- b-haib (Hai biến cố) / b-haib-p1: Đổi số — 20/10",
   );
+});
+
+test("content hash ignores key order (a schema change must not flip every 'fix' to 'changed')", () => {
+  assert.equal(canonicalJson({ b: 1, a: [{ d: 2, c: 3 }] }), canonicalJson({ a: [{ c: 3, d: 2 }], b: 1 }));
+  assert.equal(canonicalJson({ a: [2, 1] }) === canonicalJson({ a: [1, 2] }), false); // array order still counts
+  const p1 = draft.practice[0];
+  const reordered = Object.fromEntries(Object.entries(p1).reverse());
+  const r1 = reviewables(draft).find((x) => x.id === p1.id)!;
+  const r2 = reviewables({ ...draft, practice: [reordered, ...draft.practice.slice(1)] } as Unit).find((x) => x.id === p1.id)!;
+  assert.equal(r1.contentHash, r2.contentHash);
 });

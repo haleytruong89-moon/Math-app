@@ -19,15 +19,17 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
   const current = rv.items.find((e) => e.id === selected) ?? rv.items.find((e) => e.id === nextToReview(rv)) ?? rv.items[0];
   const label = (id: string) => (id === LESSON ? "Lý thuyết & bài mẫu" : id.replace(`${unitId}-`, ""));
 
+  const progress = `đã xem ${rv.counts.ok + rv.counts.fix}/${rv.items.length} · ${rv.counts.fix} cần sửa`;
   return (
-    <>
+    // Bottom padding: the verdict bar is fixed to the bottom of the screen.
+    <div className={gitApproved ? "" : "pb-32"}>
       <header className="flex flex-wrap items-center gap-3">
         <Link href={backHref} className="text-sm text-accent hover:underline">← Kho bài</Link>
         <h1 className="font-display text-xl font-bold">{f.unit.title}</h1>
         <span className={`rounded-full px-2.5 py-0.5 font-mono text-xs ${gitApproved || rv.approved ? "bg-good-soft text-good" : "bg-warn-soft text-warn"}`}>
           {gitApproved ? `Đã duyệt ${f.unit.approvedOn}` : rv.approved ? "Đã duyệt trên app" : "Chờ duyệt"}
         </span>
-        <span className="font-mono text-xs text-muted" data-testid="review-progress">đã xem {rv.counts.ok + rv.counts.fix}/{rv.items.length} · {rv.counts.fix} cần sửa</span>
+        <span className="font-mono text-xs text-muted" data-testid="review-progress">{progress}</span>
         <Link href={tryHref} className="ml-auto text-sm font-semibold text-accent hover:underline">Làm thử như con ↗</Link>
       </header>
       {!gitApproved && (
@@ -63,9 +65,9 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
             {current.item ? <ItemPanel item={current.item} kind={current.kind as "practice" | "exit"} /> : <LessonPanel unit={f.unit} />}
             {current.status === "changed" && <p className="mt-4 rounded-lg bg-accent-soft px-3 py-2 text-sm">Câu này đã được sửa sau lần xem trước — xem lại.</p>}
           </article>
-          {!gitApproved && <VerdictForm unitId={unitId} itemId={current.id} back={base} note={current.status === "fix" ? current.note : null} />}
+          {!gitApproved && <VerdictForm key={current.id} unitId={unitId} itemId={current.id} back={base} note={current.status === "fix" ? current.note : null} progress={progress} />}
         </section>
       </div>
-    </>
+    </div>
   );
 }

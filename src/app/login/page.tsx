@@ -18,7 +18,7 @@ export default async function LoginPage() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-sm flex-col justify-center px-4 py-12">
       <h1 className="font-display text-3xl font-bold tracking-tight">App Toán</h1>
-      <p className="mt-2 text-muted">Đăng nhập bằng tài khoản phụ huynh đã cấp.</p>
+      <p className="mt-2 text-muted">Dùng email và mật khẩu phụ huynh đã gửi cho bạn.</p>
       <LoginForm />
       <p className="mt-6 text-sm text-muted">
         Quên mật khẩu? Nhắn phụ huynh để được đặt lại.

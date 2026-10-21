@@ -27,7 +27,8 @@
 | Sửa lỗi audit H1 + H2: lượt ôn do server lập (SQL 0011), khoá câu đã duyệt | `p1-audit-fix` | ✅ Merged 20/10 (PR #25), SQL 0011 chạy bằng nút 20/10 |
 | Nút "Áp dụng SQL" (GitHub Actions) | `p1-sql-button` | ✅ Merged 20/10 (PR #28) |
 | S10 — Kho bài, duyệt từng câu, ưu tiên (T7, T8) | `p1-slice-10` | ✅ Merged 20/10 (PR #27), SQL 0012 chạy bằng nút 20/10 |
-| S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | 🟡 PR mở 20/10 — **Áp dụng SQL 0013 (nhánh `p1-slice-11`) trước khi merge** |
+| S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
+| Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | 🟡 PR mở 21/10 — không SQL |
 | S8 — AI giảng bài + báo cáo tuần (SQL **0014**) | `p1-slice-8` | ⬜ code 26/10–06/11, bật ~09/11 (lùi ~1 tuần vì bàn làm việc gia sư) |
 | S4b — Tiến độ tới mốc 8.5/9.5, mở khoá tay | `p1-slice-4b` | ⬜ sau PR #11, ~06/11 |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -49,6 +50,24 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 21/10/2026 — Bàn làm việc gia sư trên laptop (nhánh `p1-tutor-polish`)
+
+Phụ huynh hỏi màn đăng nhập và bố cục trên máy tính; audit 1366×768 + 1920×1080, phụ huynh duyệt 7 chỗ sửa 20/10 (`docs/superpowers/specs/2026-10-21-tutor-laptop-polish-design.md`). Không SQL.
+
+### Đã làm
+- **Duyệt**: nút "Đạt / Cần sửa" nằm trên thanh dính đáy màn hình (không phải cuộn); "Cần sửa" mở ô góp ý ngay trên thanh rồi "Gửi góp ý".
+- **Giao bài**: cột phải dính khi cuộn; "Đã chọn N câu" (nút Giao tắt khi chưa chọn); đổi bài là tự tải, bỏ nút "Chọn".
+- **Làm thử**: khung báo không còn ghi "của phụ huynh"; có tab và "← Về màn duyệt".
+- **Bài làm**: lưới 2–3 cột, bài đã làm lên trước, bài chưa làm gộp "Chưa làm (N)".
+- Đầu trang thẳng lề với nội dung; **Đăng nhập**: "Dùng email và mật khẩu phụ huynh đã gửi cho bạn." + nút Hiện/Ẩn mật khẩu.
+- Mã nội dung của câu (`content_hash`) tính bằng JSON sắp khoá → không đổi khi đổi thứ tự trường. Góp ý "cần sửa" ghi trước bản này có thể hiện "↻ xem lại" một lần.
+
+### Đã tự kiểm
+- `npm run lint`, `npm test` (140), `npm run build`, `./e2e/run.sh` 210 PASS. Mới: thanh duyệt nằm trong màn 1280×720 không cần cuộn; "Đã chọn 2 câu"; đổi bài bằng ô chọn. Ảnh 1366×768 các màn sau khi sửa.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL).
 
 ## 20/10/2026 — S11: Giao bài từng câu, Buổi dạy gọn, Hôm nay (nhánh `p1-slice-11`)
 

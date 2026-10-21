@@ -73,7 +73,7 @@ export function LessonPlayer({
     <div>
       {mode === "preview" && (
         <p className="mb-4 rounded-lg border border-warn bg-warn-soft px-3 py-2 text-sm text-warn">
-          Chế độ xem trước của phụ huynh — bấm thử như học sinh, <b>không ghi dữ liệu</b>.
+          Chế độ xem trước — bấm thử như học sinh, <b>không ghi dữ liệu</b>.
           {unit.status === "draft" ? " Bài này đang là bản nháp, học sinh chưa thấy." : " Bài đã duyệt, học sinh đang thấy."}
         </p>
       )}
