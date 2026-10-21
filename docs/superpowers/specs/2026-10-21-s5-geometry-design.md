@@ -68,7 +68,7 @@ They are added to `Item` (practice / exit), **not** to faded blanks (still `Simp
 ```
 - `[[n]]` markers numbered 1…k in reading order, k = `blanks.length` (2–5); `bank` 3–10 distinct choices, at least
   k + 2; a choice may be right for several blanks. A blank can be a reason or a statement (e.g. a ratio).
-- Answer = bank indices (authored order) joined by `|`. Graded per blank like an MCQ over the bank; right only if all
+- Answer = the **shown positions** of the chosen choices joined by `|` (the server maps them back through the same deterministic shuffle). Graded per blank like an MCQ over the bank; right only if all
   are; feedback / code of the first wrong blank; the result also returns which blanks are wrong. Exit / review:
   an empty blank counts wrong (`blanksWrong`).
 - The browser gets the bank in a **deterministic shuffled order** (seeded by the item id); the server maps back.
