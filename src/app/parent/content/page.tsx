@@ -41,6 +41,9 @@ export default async function ContentPage() {
         Bài <b>Chờ duyệt</b> được gia sư (hoặc phụ huynh) duyệt từng câu trong app; con thấy bài ngay khi duyệt xong,
         trừ những câu &ldquo;cần sửa&rdquo;. &ldquo;Xem trước&rdquo; để bấm thử như học sinh (không ghi dữ liệu).
       </p>
+      <Link href="/parent/content/so-tay" className="mt-2 inline-block font-display text-sm font-semibold text-accent hover:underline">
+        📒 Sổ tay suy ngược (hình học) →
+      </Link>
       {notes.length > 0 && (
         <section className="mt-6 max-w-3xl rounded-xl border border-border bg-surface p-4" data-testid="fix-notes">
           <h2 className="font-display font-semibold">Góp ý cần sửa ({notes.length})</h2>

@@ -81,6 +81,17 @@ export function LessonPlayer({
       )}
       <p className="font-mono text-xs text-muted">{unit.moduleTitle}</p>
       <h1 className="mt-1 font-display text-2xl font-bold">{unit.title}</h1>
+      {unit.proofKu && (
+        <a
+          href={mode === "preview" ? "/parent/content/so-tay" : "/student/so-tay"}
+          target="_blank"
+          rel="noopener"
+          className="mt-1 inline-block font-display text-sm font-semibold text-accent hover:underline"
+          data-testid="so-tay-link"
+        >
+          📒 Mở Sổ tay suy ngược ↗
+        </a>
+      )}
 
       <nav aria-label="Các phần của bài" className="mt-5 grid grid-cols-4 gap-1.5">
         {STAGES.map((s, i) => {

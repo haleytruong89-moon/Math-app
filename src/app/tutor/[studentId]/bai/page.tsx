@@ -53,7 +53,10 @@ export default async function ShelfPage(props: PageProps<"/tutor/[studentId]/bai
                 </Link>
               ))}
             </nav>
-            <form className="ml-auto">
+            <Link href={`/tutor/${student.id}/so-tay`} className="ml-auto font-display text-sm font-semibold text-accent hover:underline">
+              📒 Sổ tay suy ngược
+            </Link>
+            <form>
               <input type="hidden" name="loc" value={filter.id} />
               <input name="q" defaultValue={q} placeholder="Tìm bài…" aria-label="Tìm bài" className="h-10 w-60 rounded-lg border border-border bg-surface px-3 font-display text-sm" />
             </form>
