@@ -10,3 +10,7 @@ edit('src/lib/supabase/admin.ts','export function createAdminClient() {\n','expo
 s=open('next.config.ts').read()
 s=re.sub(r'const nextConfig: NextConfig = \{', 'const nextConfig: NextConfig = {\n  serverExternalPackages: ["@electric-sql/pglite"],', s, count=1)
 open('next.config.ts','w').write(s)
+edit('src/lib/ai/client.ts','export function hasAiKey(): boolean {\n',
+ 'export function hasAiKey(): boolean {\n  if (process.env.E2E_ROLE) return true;\n')
+edit('src/lib/ai/client.ts','export async function callClaude(req: AiRequest): Promise<AiResponse | null> {\n',
+ 'export async function callClaude(req: AiRequest): Promise<AiResponse | null> {\n  if (process.env.E2E_ROLE) { const f = await import("@/lib/e2e-fake"); return f.fakeClaude(req); }\n')

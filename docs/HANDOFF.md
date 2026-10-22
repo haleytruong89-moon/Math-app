@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 22/10/2026 (S4b đã merge; S8 chia S8a/S8b, kế hoạch S8a xong). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 22/10/2026 (S8a code xong, PR mở với SQL 0014). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -16,7 +16,7 @@
 | Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | duyệt trước 08/11 | 🟡 PR mở 15/10, nháp; giải độc lập 109/109; c-dkxd chờ gia sư soát |
 | Đợt 4 (LT19): g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram | `p1-content-4` | duyệt trước 01/11 | 🟡 PR mở 17/10, nháp; giải độc lập 190/190; chờ gia sư soát G |
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ đã merge (PR #34), nháp; giải độc lập 76/76; chờ gia sư soát |
-| Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | 🟡 PR mở 22/10, nháp, không SQL; giải độc lập 78/78; chờ gia sư soát; Sổ tay ✅ duyệt 22/10 |
+| Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | ✅ đã merge (PR #38), nháp; giải độc lập 78/78; chờ gia sư soát; Sổ tay ✅ duyệt 22/10 |
 | Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ⬜ việc kế của phiên Nội dung |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
@@ -28,7 +28,7 @@
 | **1.** S5 — thiết kế | `p1-plan-reorder` (PR #32) | ✅ 21/10 | Spec `docs/superpowers/specs/2026-10-21-s5-geometry-design.md`; mẫu trên design canvas (hàng "S5 · Học hình"); LT21 (52 KU) |
 | **2.** S4b gọn — tiến độ mốc 8,5/9,5, KU trễ lịch (bỏ mở khoá tay) | `p1-slice-4b` | ✅ 22/10 — PR mở, không SQL | Quy tắc mốc chốt 22/10 (`SPEC.md` §0); phép tính ở `src/lib/learning/milestones.ts` |
 | **3.** S5 — code: Phân tích ngược, C3, C2, Sổ tay, tự vẽ hình | `p1-slice-5` | ✅ 21/10 — PR mở, không SQL | Đợt 5 soạn theo `CONTENT_STANDARD.md` §10 (hạn 15/11); Sổ tay cần hình SVG + duyệt |
-| **4a.** S8a — nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | code ngay (từ 22/10) | Kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md`; thiết kế `docs/superpowers/specs/2026-10-22-s8-ai-design.md` (chốt 22/10) |
+| **4a.** S8a — nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ 22/10 — PR #37, SQL 0014 ✅ đã chạy 22/10 | Kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md`; thiết kế `docs/superpowers/specs/2026-10-22-s8-ai-design.md` (chốt 22/10) |
 | **4b.** S8b — AI cho con + bộ test + bật/tắt (không SQL) | `p1-slice-8b` | sau bộ test 02–08/11, bật ~cuối 11 | Viết kế hoạch khi bắt đầu, từ thiết kế §6 và code S8a; dùng lỗi thật của pilot; khoá API đã có trên Vercel (19/10) |
 
 ## Phụ huynh
@@ -36,8 +36,10 @@
 - [ ] Gia sư soát c-dkxd và 5 bài G (giờ làm ngay trên tab Kho bài) + trả lời Q24.
 - [x] Merge PR #33 (S5) và #34 (đợt 5, 22/10).
 - [x] Merge PR #35 (S4b, 22/10).
-- [ ] Merge PR kế hoạch S8 (chỉ tài liệu).
-- [ ] Merge PR đợt 6 (không SQL); gia sư soát 4 KU đợt 6 trước 29/11. Sổ tay ✅ phụ huynh duyệt 22/10 (cùng PR).
+- [x] Merge PR #36 (kế hoạch S8).
+- [x] Merge PR #38 (đợt 6 + Sổ tay đã duyệt, 22/10). Gia sư soát 4 KU đợt 6 trước 29/11.
+- [x] S8a: "Áp dụng SQL" 0014 (22/10, thành công).
+- [ ] S8a: kiểm tra `CRON_SECRET` + `ANTHROPIC_API_KEY` trên Vercel → đối chiếu giá model → đọc 2 lệnh hệ thống ở trang AI → merge PR #37 (chi tiết `PROGRESS.md` 22/10).
 - [ ] Gia sư soát 4 KU đợt 5 (danh sách điểm cần xem: `PROGRESS.md` 22/10).
 - [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).

@@ -30,7 +30,7 @@
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
-| S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ⬜ kế hoạch xong 22/10, code ngay |
+| S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | 🟡 PR #37 mở — SQL 0014 ✅ đã chạy 22/10; chờ merge |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ⬜ sau bộ test 02–08/11, bật ~cuối 11 |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -38,7 +38,7 @@
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ Merged 22/10 (PR #34), vẫn nháp — không SQL; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
-| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | 🟡 PR mở 22/10 — không SQL; giải độc lập 78/78; chờ gia sư soát (hạn 29/11) |
+| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ Merged 22/10 (PR #38), vẫn nháp — không SQL; giải độc lập 78/78; Sổ tay ✅ duyệt 22/10; chờ gia sư soát (hạn 29/11) |
 | Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
@@ -52,6 +52,29 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 22/10/2026 — S8a: nền AI, báo cáo tuần, tóm tắt gia sư (nhánh `p1-slice-8`, SQL 0014)
+
+Theo kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md` (11 task), phụ huynh chọn "làm liền một mạch" 22/10.
+
+### Đã làm
+- **0014**: mọi bảng AI cho S8a + S8b (`ai_settings`, `ai_usage`, `ai_reports`, `ai_messages`, `ai_eval_cases`, `ai_eval_results`), `hint_level` 0–4; RLS + kiểm thử RLS.
+- `src/lib/ai/`: giá model + trần $10 (cảnh báo 90 %, dừng 100 %), **soát số** (mọi số AI viết phải có trong dữ liệu, số nguyên ≤ 10 được phép, từ cấm "chuỗi"/"xếp hạng"), hỏi → soát → hỏi lại 1 lần → không đạt thì chỉ hiện khuôn mẫu; client gọi API bằng `fetch` (khoá chỉ đọc ở máy chủ).
+- **Báo cáo tuần** `/parent/bao-cao`: tự tạo thứ Hai 07:00 (cron `0 0 * * 1`), nút "Tạo lại báo cáo tuần trước"; số liệu (buổi học, kiểm tra, ôn, buổi dạy, bài về nhà, bài vững thêm, ôn quá hạn, lỗi lặp, tiến độ mốc, bài trễ) + "Nhận xét" AI. Link từ Tổng quan, menu "Báo cáo tuần".
+- **Tóm tắt gia sư** trên Buổi dạy: nút "Tạo tóm tắt trước buổi dạy" → bài con làm từ buổi trước (số câu, sai, mã lỗi, mức) + 2–3 điểm "Nên chữa" (AI hoặc tự động từ dữ liệu); lưu lại, mở lại không tốn.
+- **Trang AI** `/parent/ai`: chi phí tháng / $10, bật/tắt AI cho báo cáo + tóm tắt, chọn model (mặc định Haiku 5.5), xem 2 lệnh hệ thống, 20 lượt gọi gần nhất.
+
+### Kiểm thử
+- Unit 189 (thêm 21 test `src/lib/ai/`), `test:db` ALL PASSED (thêm ~27 kiểm tra 0014). E2E 251 PASS (thêm `report-flow` 11 + `brief-flow` 5, AI giả lập); ảnh `e2e/out/s8a/`.
+
+### Phụ huynh cần làm
+1. ✅ "Áp dụng SQL" `0014_p1_ai.sql` — chạy thành công 22/10.
+2. Kiểm tra trên Vercel (Production) có `CRON_SECRET` và `ANTHROPIC_API_KEY` (chỉ xem tên, không dán giá trị vào chat).
+3. Đối chiếu giá Haiku 5.5 / Sonnet 5.5 trên trang giá chính thức của Anthropic; khác spec §3 thì báo để sửa bảng giá.
+4. Đọc 2 lệnh hệ thống ở trang **AI** → "ok" hoặc ghi chỗ cần sửa.
+5. Merge PR. Báo cáo đầu tiên: thứ Hai 26/10 ~07:00 (hoặc bấm "Tạo lại" ngay sau khi merge).
 
 ---
 

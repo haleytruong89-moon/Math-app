@@ -9,6 +9,8 @@ import { reviewNote } from "@/lib/learning/homework";
 import { latestByUnit, type ProposalRow } from "@/lib/learning/overview";
 import { loadStudentState } from "@/lib/learning/state";
 import { parentOwnsStudent } from "@/lib/parent";
+import { buildWeeklyReport } from "@/lib/ai/reports";
+import { isAiModel } from "@/lib/ai/rules";
 import type { ActionState } from "@/components/action-form";
 
 /** "Chốt mức" (D8): display only (P2) — snapshots the current system level and the proposal it answers. */
@@ -65,4 +67,32 @@ export async function unlockUnit(_p: ActionState, fd: FormData): Promise<ActionS
   revalidatePath("/parent/content");
   revalidatePath(`/parent/content/${unitId}`);
   return { ok: "Đã mở khoá cho con." };
+}
+
+/** S8a: make the previous week's report again (overwrites; also used when the Monday run missed). */
+export async function regenerateWeekly(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const studentId = z.uuid().safeParse(fd.get("studentId"));
+  if (!studentId.success || !(await parentOwnsStudent(parent.id, studentId.data))) return { error: "Không tìm thấy học sinh." };
+  const r = await buildWeeklyReport(studentId.data);
+  if (!r.ok) return { error: "Chưa tạo được báo cáo, thử lại sau." };
+  revalidatePath("/parent/bao-cao");
+  return { ok: "Đã tạo báo cáo tuần trước." };
+}
+
+/** S8a: AI for reports and briefs on/off + their model (the student's AI comes with S8b). */
+export async function saveAiSettings(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const model = fd.get("staffModel");
+  if (!isAiModel(model)) return { error: "Chọn một model trong danh sách." };
+  const { error } = await createAdminClient()
+    .from("ai_settings")
+    .update({ staff_enabled: fd.get("staffEnabled") === "on", staff_model: model, updated_by: parent.id, updated_at: new Date().toISOString() })
+    .eq("id", 1);
+  if (error) {
+    console.error("saveAiSettings", error.message);
+    return { error: "Chưa lưu được, thử lại sau." };
+  }
+  revalidatePath("/parent/ai");
+  return { ok: "Đã lưu." };
 }
