@@ -16,7 +16,7 @@
 | Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | duyệt trước 08/11 | 🟡 PR mở 15/10, nháp; giải độc lập 109/109; c-dkxd chờ gia sư soát |
 | Đợt 4 (LT19): g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram | `p1-content-4` | duyệt trước 01/11 | 🟡 PR mở 17/10, nháp; giải độc lập 190/190; chờ gia sư soát G |
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ đã merge (PR #34), nháp; giải độc lập 76/76; chờ gia sư soát |
-| Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | 🟡 PR mở 22/10, nháp, không SQL; giải độc lập 78/78; chờ gia sư soát; Sổ tay duyệt cùng đợt |
+| Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | 🟡 PR mở 22/10, nháp, không SQL; giải độc lập 78/78; chờ gia sư soát; Sổ tay ✅ duyệt 22/10 |
 | Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ⬜ việc kế của phiên Nội dung |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
@@ -37,7 +37,7 @@
 - [x] Merge PR #33 (S5) và #34 (đợt 5, 22/10).
 - [x] Merge PR #35 (S4b, 22/10).
 - [ ] Merge PR kế hoạch S8 (chỉ tài liệu).
-- [ ] Merge PR đợt 6 (không SQL); gia sư soát 4 KU đợt 6 trước 29/11 + đọc Sổ tay → "duyệt Sổ tay".
+- [ ] Merge PR đợt 6 (không SQL); gia sư soát 4 KU đợt 6 trước 29/11. Sổ tay ✅ phụ huynh duyệt 22/10 (cùng PR).
 - [ ] Gia sư soát 4 KU đợt 5 (danh sách điểm cần xem: `PROGRESS.md` 22/10).
 - [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).

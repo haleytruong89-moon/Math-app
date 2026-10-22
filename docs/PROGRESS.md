@@ -61,7 +61,7 @@ Phụ huynh chọn "làm đợt 6 trước rồi làm Sổ tay cùng lúc" (22/1
 
 ### Đã làm
 - 4 KU nháp: **c-rutgon** (20 câu, phần lớn câu nhiều bước: ĐKXĐ → phân tích → quy đồng → kết quả), **c-cauphu** (19 câu: tính giá trị, P = a, bất phương trình, so sánh với 1, x nguyên / x thực để P nguyên — dạng 2c, min/max), **k-goiintiep** và **k-tugiacnt** (19 câu mỗi bài, bài hình §10: phân tích ngược, điền lời giải C3, sắp xếp bước C2, tự vẽ hình; 11–12 hình SVG mỗi bài). Module mới `noi-tiep`; `can-thuc` thêm 2 bài. Nguồn Đề 1–56.
-- **Sổ tay**: vẽ 4 hình mẫu (hai tiếp tuyến + cát tuyến, ba đường cao, nửa đường tròn + tiếp tuyến, đường kính ⊥ dây); "điều có sẵn" ghi theo tên điểm (ví dụ $AB^2 = AM\cdot AN$, $AE\cdot AC = AF\cdot AB$, $AC\cdot BD = R^2$), kiểm bằng toạ độ. Vẫn **nháp** — duyệt cùng đợt 6.
+- **Sổ tay**: vẽ 4 hình mẫu (hai tiếp tuyến + cát tuyến, ba đường cao, nửa đường tròn + tiếp tuyến, đường kính ⊥ dây); "điều có sẵn" ghi theo tên điểm (ví dụ $AB^2 = AM\cdot AN$, $AE\cdot AC = AF\cdot AB$, $AC\cdot BD = R^2$), kiểm bằng toạ độ. **Phụ huynh duyệt 22/10** (`status: approved`, `approvedOn` 2026-10-22) — con thấy Sổ tay sau khi PR này merge.
 - Màn Duyệt: đáp án C3 hiện dạng 【n: …】 (trước đó dấu ** hiện thô khi lựa chọn có công thức).
 
 ### Kiểm tra chất lượng
@@ -76,7 +76,7 @@ Phụ huynh chọn "làm đợt 6 trước rồi làm Sổ tay cùng lúc" (22/1
 - Sổ tay: đọc 7 mục tiêu + 4 hình ở tab Sổ tay.
 
 ### Phụ huynh cần làm
-- Merge PR (không SQL). Gia sư soát 4 bài trước **29/11**; phụ huynh "Duyệt cả bài" trong app. Sổ tay: nói "duyệt Sổ tay" → Claude đổi `status` trong một PR.
+- Merge PR (không SQL). Gia sư soát 4 bài trước **29/11**; phụ huynh "Duyệt cả bài" trong app. Sổ tay: ✅ đã duyệt 22/10 (trong PR này).
 
 ---
 
