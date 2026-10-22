@@ -836,7 +836,7 @@
             "level": "L2",
             "prompt": "Kết luận:",
             "options": [
-              "$x<4$",
+              "$0<x<2$",
               "$0<x<4$",
               "$0 \\le x<4$",
               "$x>4$"
@@ -844,8 +844,8 @@
             "correct": 1,
             "mistakes": {
               "0": {
-                "code": "E14",
-                "feedback": "Kết hợp ĐKXĐ $x>0$: $\\sqrt x$ chỉ xác định khi $x \\ge 0$, và đề còn cho $x \\ne 0$."
+                "code": "E01",
+                "feedback": "Từ $\\sqrt x<2$ phải bình phương hai vế: $x<4$, không phải $x<2$."
               },
               "2": {
                 "code": "E14",
@@ -934,7 +934,7 @@
             "id": "c-cauphu-x6-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Với $x \\ge 0$, $x \\ne 9$, ta có:",
+            "prompt": "Với $x \\ge 0$, $x \\ne 9$, đánh giá **chặt nhất** cho $P$ (chặn cả hai phía, dấu bằng xảy ra được) là:",
             "options": [
               "$P>0$",
               "$0<P<\\dfrac52$",
@@ -945,7 +945,7 @@
             "mistakes": {
               "0": {
                 "code": "E06",
-                "feedback": "Chỉ chặn dưới thì không biết dừng ở số nguyên nào; dùng $\\sqrt x+2 \\ge 2$ để chặn trên."
+                "feedback": "Chỉ chặn dưới thì chưa chặt và không biết dừng ở số nguyên nào; dùng $\\sqrt x+2 \\ge 2$ để chặn trên."
               },
               "1": {
                 "code": "E14",
@@ -953,7 +953,7 @@
               },
               "2": {
                 "code": "E01",
-                "feedback": "Mẫu nhỏ nhất là $\\sqrt0+2$, không phải $1$."
+                "feedback": "Đúng nhưng chưa chặt: mẫu nhỏ nhất là $\\sqrt0+2=2$ (không phải $1$), nên $P \\le \\dfrac52$."
               }
             },
             "solution": "$\\sqrt x+2 \\ge 2 \\Rightarrow 0<P \\le \\dfrac52$, dấu bằng khi $x=0$."
