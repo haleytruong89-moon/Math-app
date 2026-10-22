@@ -65,7 +65,12 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
 
   return (
     <section className="mt-6" data-testid={`overview-${id}`} aria-label={`Tổng quan ${student.full_name}`}>
-      <h2 className="font-display text-lg font-semibold">{student.full_name}</h2>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="font-display text-lg font-semibold">{student.full_name}</h2>
+        <Link href="/parent/bao-cao" className="text-sm text-accent hover:underline" data-testid="weekly-link">
+          Báo cáo tuần →
+        </Link>
+      </div>
 
       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <Stat testid="stat-m3" value={`${m3}/${state.units.length}`} label="Bài đạt M3 trở lên" href="#ban-do" />
