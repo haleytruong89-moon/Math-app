@@ -1,0 +1,1362 @@
+{
+  "id": "c-rutgon",
+  "module": "can-thuc",
+  "order": 4,
+  "title": "Rút gọn biểu thức chứa căn",
+  "status": "draft",
+  "estMinutes": 70,
+  "theory": [
+    "**Cần nhớ trước:** bài **Quy đồng & điều kiện xác định** (mẫu chung, đổi dấu khi trừ), bài **Điều kiện xác định biểu thức căn**, bài **Trục căn thức ở mẫu** (cặp liên hợp: $x-a^2=(\\sqrt x-a)(\\sqrt x+a)$) và **7 hằng đẳng thức**.",
+    "**Quy trình rút gọn:** (1) ĐKXĐ từ mọi căn, mọi mẫu **ban đầu** (đề đã cho thì dùng luôn). (2) Phân tích các mẫu thành nhân tử; mẫu $a-\\sqrt x$ viết thành $-(\\sqrt x-a)$. (3) Chọn mẫu chung, nhân tử phụ. (4) Cộng, trừ các tử, bỏ ngoặc đúng dấu, thu gọn. (5) Phân tích tử, giản ước nhân tử chung **đến tận cùng**. (6) **Kết luận** kèm điều kiện.",
+    "**Vì sao:** với $x \\ge 0$ thì $x=(\\sqrt x)^2$. Coi $\\sqrt x$ như một ẩn $t$, biểu thức trở thành phân thức theo $t$: $x-9=t^2-9=(t-3)(t+3)$, $x-\\sqrt x=t(t-1)$. Vì thế cách làm giống hệt quy đồng, rút gọn phân thức đã học.",
+    "**Bẫy hay gặp:** (1) $\\dfrac{2}{1-\\sqrt x}=-\\dfrac{2}{\\sqrt x-1}$: đổi dấu mẫu thì đổi dấu cả phân thức. (2) $-(3x+9)=-3x-9$: dấu trừ đổi dấu **mọi** hạng tử. (3) $x-1=(\\sqrt x-1)(\\sqrt x+1)$, **không** phải $(\\sqrt x-1)^2$. (4) Tử $3\\sqrt x-9=3(\\sqrt x-3)$ còn nhân tử chung với mẫu thì phải giản ước tiếp. (5) Kết luận thiếu điều kiện bị trừ điểm.",
+    "**Nhận dạng:** “Rút gọn $P$” hay “Chứng minh $P=…$” → biến đổi $P$ theo quy trình tới đúng kết quả (không thay số để thử). Đề cho $A$, $B$ rồi $P=A\\cdot B$ hoặc $P=A:B$ → rút gọn từng biểu thức trước, rồi nhân (chia là nhân nghịch đảo); chỉ có phép nhân thì **không** quy đồng. Thay số chỉ làm sau khi rút gọn.",
+    "**Thẻ mẫu chung** ($x \\ge 0$, $a>0$): $\\begin{array}{l|l} \\text{Mẫu} & \\text{Phân tích} \\\\ \\hline x-a^2 & (\\sqrt x-a)(\\sqrt x+a) \\\\ x-a\\sqrt x & \\sqrt x(\\sqrt x-a) \\\\ x-2\\sqrt x+1 & (\\sqrt x-1)^2 \\\\ x+\\sqrt x-2 & (\\sqrt x-1)(\\sqrt x+2) \\\\ x-3\\sqrt x+2 & (\\sqrt x-1)(\\sqrt x-2) \\\\ a-\\sqrt x & -(\\sqrt x-a) \\end{array}$ **ĐKXĐ:** có $\\sqrt x$ → $x \\ge 0$; mẫu $\\sqrt x-a$ hay $x-a^2$ → $x \\ne a^2$; $\\sqrt x$ là nhân tử của mẫu → $x>0$."
+  ],
+  "worked": {
+    "problem": "Cho biểu thức $B=\\dfrac{\\sqrt x}{\\sqrt x+3}+\\dfrac{2\\sqrt x}{\\sqrt x-3}-\\dfrac{3x+9}{x-9}$. Rút gọn $B$.",
+    "steps": [
+      {
+        "text": "ĐKXĐ: có $\\sqrt x$ nên $x \\ge 0$; $\\sqrt x-3 \\ne 0$ và $x-9 \\ne 0$ nên $x \\ne 9$; mẫu $\\sqrt x+3>0$. Vậy $x \\ge 0$, $x \\ne 9$.",
+        "why": "Lấy điều kiện từ mọi căn, mọi mẫu ban đầu, trước khi biến đổi."
+      },
+      {
+        "text": "Phân tích mẫu: $x-9=(\\sqrt x-3)(\\sqrt x+3)$ chia hết cho hai mẫu kia, nên mẫu chung là $(\\sqrt x-3)(\\sqrt x+3)$.",
+        "why": "Hiệu hai bình phương, vì $x=(\\sqrt x)^2$."
+      },
+      {
+        "text": "Quy đồng: $B=\\dfrac{\\sqrt x(\\sqrt x-3)+2\\sqrt x(\\sqrt x+3)-(3x+9)}{(\\sqrt x-3)(\\sqrt x+3)}$. Tử: $x-3\\sqrt x+2x+6\\sqrt x-3x-9=3\\sqrt x-9$.",
+        "why": "Dấu trừ trước phân thức cuối đổi dấu cả $3x$ lẫn $9$."
+      },
+      {
+        "text": "Rút gọn: $B=\\dfrac{3(\\sqrt x-3)}{(\\sqrt x-3)(\\sqrt x+3)}=\\dfrac{3}{\\sqrt x+3}$.",
+        "why": "Tử $3\\sqrt x-9$ còn nhân tử chung $\\sqrt x-3$ với mẫu nên chưa xong."
+      },
+      {
+        "text": "Kết luận: Vậy $B=\\dfrac{3}{\\sqrt x+3}$ với $x \\ge 0$, $x \\ne 9$.",
+        "why": "Thử $x=0$: đề cho $0+0-\\dfrac{9}{-9}=1$, kết quả cho $\\dfrac{3}{3}=1$."
+      }
+    ],
+    "selfExplain": "Ở bước rút gọn đã giản ước $\\sqrt x-3$, nên kết quả không còn mẫu $\\sqrt x-3$. Vì sao kết luận vẫn phải ghi $x \\ne 9$?"
+  },
+  "faded": {
+    "problem": "Rút gọn $A=\\dfrac{\\sqrt x}{\\sqrt x-1}+\\dfrac{1}{\\sqrt x+2}-\\dfrac{3\\sqrt x}{x+\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 1$.",
+    "steps": [
+      {
+        "text": "ĐKXĐ đề đã cho: $x \\ge 0$, $x \\ne 1$. Mẫu thứ ba $x+\\sqrt x-2$ là tam thức theo $\\sqrt x$, cần phân tích thành nhân tử."
+      },
+      {
+        "prompt": "Phân tích mẫu thứ ba.",
+        "item": {
+          "id": "c-rutgon-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Phân tích $x+\\sqrt x-2$ thành nhân tử:",
+          "options": [
+            "$(\\sqrt x+1)(\\sqrt x-2)$",
+            "$(\\sqrt x-1)(\\sqrt x+2)$",
+            "$(\\sqrt x+1)(\\sqrt x+2)$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Con đặt sai dấu: $(\\sqrt x+1)(\\sqrt x-2)=x-\\sqrt x-2$, hệ số của $\\sqrt x$ thành $-1$.",
+              "review": "f1-pnt"
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "$(\\sqrt x+1)(\\sqrt x+2)=x+3\\sqrt x+2$; cần hai số có tích $-2$ và tổng $1$.",
+              "review": "f1-pnt"
+            }
+          },
+          "solution": "Hai số có tổng $1$, tích $-2$ là $-1$ và $2$, nên $x+\\sqrt x-2=(\\sqrt x-1)(\\sqrt x+2)$."
+        }
+      },
+      {
+        "text": "Mẫu chung là $(\\sqrt x-1)(\\sqrt x+2)$. Quy đồng: $A=\\dfrac{\\sqrt x(\\sqrt x+2)+(\\sqrt x-1)-3\\sqrt x}{(\\sqrt x-1)(\\sqrt x+2)}$."
+      },
+      {
+        "prompt": "Thu gọn tử.",
+        "item": {
+          "id": "c-rutgon-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Tử $\\sqrt x(\\sqrt x+2)+(\\sqrt x-1)-3\\sqrt x$ thu gọn bằng:",
+          "options": [
+            "$x-2\\sqrt x+1$",
+            "$x+6\\sqrt x-1$",
+            "$x-1$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Con nhân thiếu: $\\sqrt x(\\sqrt x+2)=x+2\\sqrt x$, phải nhân $\\sqrt x$ với cả hai hạng tử."
+            },
+            "1": {
+              "code": "E02",
+              "feedback": "Con bỏ sai dấu hạng tử cuối: phải trừ $3\\sqrt x$, không cộng."
+            }
+          },
+          "solution": "$x+2\\sqrt x+\\sqrt x-1-3\\sqrt x=x-1$."
+        }
+      },
+      {
+        "prompt": "Rút gọn.",
+        "item": {
+          "id": "c-rutgon-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Biết tử bằng $x-1$. Rút gọn $A$ đến tận cùng:",
+          "options": [
+            "$\\dfrac{x-1}{x+\\sqrt x-2}$",
+            "$\\dfrac{\\sqrt x+1}{\\sqrt x+2}$",
+            "$\\dfrac{\\sqrt x-1}{\\sqrt x+2}$",
+            "$\\dfrac{\\sqrt x+1}{\\sqrt x-1}$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Chưa đến tận cùng: $x-1=(\\sqrt x-1)(\\sqrt x+1)$ còn nhân tử chung với mẫu."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "$x-1=(\\sqrt x-1)(\\sqrt x+1)$, không phải $(\\sqrt x-1)^2$.",
+              "review": "f1-hdt"
+            },
+            "3": {
+              "code": "E02",
+              "feedback": "Nhân tử bị giản ước là $\\sqrt x-1$; mẫu còn lại là $\\sqrt x+2$."
+            }
+          },
+          "solution": "$A=\\dfrac{(\\sqrt x-1)(\\sqrt x+1)}{(\\sqrt x-1)(\\sqrt x+2)}=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "c-rutgon-f4",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: Vậy $A=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 1$.",
+            "Kết luận: Vậy $A=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$.",
+            "Kết luận: Vậy $A=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$ với mọi $x \\ge 0$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E11",
+              "feedback": "Thiếu điều kiện trong kết luận; bài thi chấm cả phần này."
+            },
+            "2": {
+              "code": "E14",
+              "feedback": "Giá trị $x=1$ làm mẫu ban đầu $\\sqrt x-1$ bằng $0$, nên vẫn bị loại sau khi rút gọn."
+            }
+          },
+          "solution": "Vậy $A=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 1$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "c-rutgon-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Với $x \\ge 0$, $x \\ne 1$, mẫu chung nhỏ nhất của $\\dfrac{1}{\\sqrt x-1}$, $\\dfrac{2}{\\sqrt x+1}$ và $\\dfrac{3}{x-1}$ là:",
+      "hints": [
+        "Cần một mẫu chia hết cho cả ba mẫu, càng gọn càng tốt.",
+        "Mẫu $x-1$ có viết được thành tích hai nhân tử chứa $\\sqrt x$ không?",
+        "Dùng $x=(\\sqrt x)^2$ và hằng đẳng thức hiệu hai bình phương."
+      ],
+      "options": [
+        "$(\\sqrt x-1)^2$",
+        "$\\sqrt x+1$",
+        "$x-1$",
+        "$(\\sqrt x-1)+(\\sqrt x+1)$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "$(\\sqrt x-1)^2=x-2\\sqrt x+1$, khác $x-1$; nó không chia hết cho $\\sqrt x+1$.",
+          "review": "f1-hdt"
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Mẫu chung phải chia hết cho mọi mẫu; $\\sqrt x+1$ chưa chứa $\\sqrt x-1$."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Mẫu chung là tích các nhân tử, không phải tổng các mẫu."
+        }
+      },
+      "solution": "$x-1=(\\sqrt x-1)(\\sqrt x+1)$ chia hết cho cả $\\sqrt x-1$ và $\\sqrt x+1$, nên mẫu chung là $x-1$."
+    },
+    {
+      "id": "c-rutgon-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề: «Rút gọn $P=\\dfrac{\\sqrt x}{\\sqrt x+2}+\\dfrac{3}{\\sqrt x-2}-\\dfrac{12}{x-4}$.» Bước đầu tiên nên làm gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách bắt đầu một bài rút gọn có nhiều phân thức.",
+        "Các phân thức khác mẫu; mẫu $x-4$ liên quan gì tới hai mẫu kia?",
+        "Nhớ quy trình: điều kiện trước, rồi tìm mẫu chung."
+      ],
+      "options": [
+        "Trục căn thức ở mẫu của từng phân thức",
+        "Thay thử một giá trị $x$ để đoán kết quả",
+        "Bình phương cả biểu thức cho mất căn",
+        "Tìm ĐKXĐ, rồi phân tích $x-4=(\\sqrt x-2)(\\sqrt x+2)$ để quy đồng"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Trục căn từng phân thức làm bài dài mà vẫn phải quy đồng; biểu thức chứa $x$ thì quy đồng theo mẫu chung."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Thay số chỉ để kiểm tra lại, không thay được lời giải rút gọn."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Bình phương làm thay đổi giá trị biểu thức; rút gọn phải giữ nguyên giá trị."
+        }
+      },
+      "solution": "Tổng, hiệu các phân thức chứa $\\sqrt x$ → tìm ĐKXĐ ($x \\ge 0$, $x \\ne 4$), nhận ra mẫu chung $x-4=(\\sqrt x-2)(\\sqrt x+2)$, rồi quy đồng."
+    },
+    {
+      "id": "c-rutgon-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Với $x \\ge 0$, $x \\ne 1$, viết $\\dfrac{3}{1-\\sqrt x}$ thành phân thức có mẫu $\\sqrt x-1$:",
+      "hints": [
+        "Cần đổi mẫu $1-\\sqrt x$ thành $\\sqrt x-1$ mà giá trị không đổi.",
+        "Hai mẫu $1-\\sqrt x$ và $\\sqrt x-1$ liên hệ thế nào về dấu?",
+        "Dùng $1-\\sqrt x=-(\\sqrt x-1)$."
+      ],
+      "options": [
+        "$-\\dfrac{3}{\\sqrt x-1}$",
+        "$\\dfrac{3}{\\sqrt x-1}$",
+        "$\\dfrac{3}{\\sqrt x+1}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Con đổi dấu mẫu nhưng quên đổi dấu phân thức: $1-\\sqrt x=-(\\sqrt x-1)$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "$\\sqrt x+1$ là liên hợp, không phải số đối của $1-\\sqrt x$; đổi dấu chỉ đổi thứ tự hai hạng tử."
+        }
+      },
+      "solution": "$1-\\sqrt x=-(\\sqrt x-1)$ nên $\\dfrac{3}{1-\\sqrt x}=\\dfrac{3}{-(\\sqrt x-1)}=-\\dfrac{3}{\\sqrt x-1}$."
+    },
+    {
+      "id": "c-rutgon-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x}{\\sqrt x-1}-\\dfrac{2}{\\sqrt x+1}-\\dfrac{2}{x-1}$. Rút gọn $A$ rồi tính $A$ tại $x=9$.",
+      "hints": [
+        "Cần rút gọn $A$ trước, sau đó mới thay số.",
+        "Ba mẫu: mẫu nào chia hết cho hai mẫu còn lại?",
+        "Phân tích $x-1$, quy đồng, bỏ ngoặc cẩn thận với dấu trừ."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "c-rutgon-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $A$ là:",
+            "options": [
+              "$x \\ne 1$",
+              "$x \\ge 0$, $x \\ne 1$",
+              "$x \\ge 0$",
+              "$x>0$, $x \\ne 1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Con thiếu điều kiện $x \\ge 0$ để $\\sqrt x$ có nghĩa."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu điều kiện từ mẫu: $\\sqrt x-1$ và $x-1$ bằng $0$ khi $x=1$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "$\\sqrt x$ không đứng riêng ở mẫu nên $x=0$ vẫn được; căn chỉ cần $x \\ge 0$."
+              }
+            },
+            "solution": "Cần $x \\ge 0$; $\\sqrt x-1 \\ne 0$ và $x-1 \\ne 0$ cho $x \\ne 1$; $\\sqrt x+1>0$. Vậy $x \\ge 0$, $x \\ne 1$."
+          }
+        },
+        {
+          "prompt": "Quy đồng, thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung là $x-1=(\\sqrt x-1)(\\sqrt x+1)$. Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$x-\\sqrt x-4$",
+              "$-\\sqrt x$",
+              "$x-\\sqrt x$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-2(\\sqrt x-1)=-2\\sqrt x+2$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x+1$ cho tử $\\sqrt x$ của phân thức đầu."
+              }
+            },
+            "solution": "$\\sqrt x(\\sqrt x+1)-2(\\sqrt x-1)-2=x+\\sqrt x-2\\sqrt x+2-2=x-\\sqrt x$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Rút gọn $A$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x}{\\sqrt x+1}$",
+              "$\\dfrac{x-\\sqrt x}{x-1}$",
+              "$\\dfrac{\\sqrt x}{\\sqrt x-1}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: $x-\\sqrt x=\\sqrt x(\\sqrt x-1)$ còn nhân tử chung với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x-1$; mẫu còn lại là $\\sqrt x+1$."
+              }
+            },
+            "solution": "$A=\\dfrac{\\sqrt x(\\sqrt x-1)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x}{\\sqrt x+1}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=9$.",
+          "item": {
+            "id": "c-rutgon-p4-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $A$ tại $x=9$.",
+            "answer": "3/4",
+            "mistakes": [
+              {
+                "answer": "3/2",
+                "code": "E02",
+                "feedback": "Mẫu sau khi giản ước là $\\sqrt x+1$, không phải $\\sqrt x-1$."
+              },
+              {
+                "answer": "9/10",
+                "code": "E04",
+                "feedback": "Con thay $9$ vào chỗ $\\sqrt x$; phải tính $\\sqrt 9$ trước rồi mới thay."
+              }
+            ],
+            "solution": "$x=9$ thỏa ĐKXĐ, $\\sqrt x=3$: $A=\\dfrac{3}{3+1}=\\dfrac34$."
+          }
+        }
+      ],
+      "solution": "ĐKXĐ: $x \\ge 0$, $x \\ne 1$. $A=\\dfrac{\\sqrt x(\\sqrt x+1)-2(\\sqrt x-1)-2}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x(\\sqrt x-1)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x}{\\sqrt x+1}$. Tại $x=9$: $A=\\dfrac34$."
+    },
+    {
+      "id": "c-rutgon-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x}{\\sqrt x+2}+\\dfrac{1}{2-\\sqrt x}+\\dfrac{2\\sqrt x}{x-4}$. Rút gọn $P$.",
+      "hints": [
+        "Cần đưa $P$ về một phân thức gọn nhất.",
+        "Mẫu $2-\\sqrt x$ ngược dấu với $\\sqrt x-2$; mẫu nào là mẫu chung?",
+        "Đổi dấu phân thức thứ hai, quy đồng theo $x-4$, rồi phân tích tử."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "c-rutgon-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $P$ là:",
+            "options": [
+              "$x \\ge 0$, $x \\ne 2$",
+              "$x \\ne 4$",
+              "$x \\ge 0$, $x \\ne 4$",
+              "$x \\ge 0$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Từ $\\sqrt x \\ne 2$ phải bình phương hai vế để tìm $x$ bị loại."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Con thiếu điều kiện $x \\ge 0$ để $\\sqrt x$ có nghĩa."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Con thiếu giá trị làm mẫu $2-\\sqrt x$ và $x-4$ bằng $0$."
+              }
+            },
+            "solution": "Cần $x \\ge 0$; $2-\\sqrt x \\ne 0$ và $x-4 \\ne 0$ cho $x \\ne 4$. Vậy $x \\ge 0$, $x \\ne 4$."
+          }
+        },
+        {
+          "prompt": "Quy đồng, thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-p5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung là $x-4=(\\sqrt x-2)(\\sqrt x+2)$. Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$x+\\sqrt x+2$",
+              "$x-\\sqrt x-2$",
+              "$x-1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $\\dfrac{1}{2-\\sqrt x}=-\\dfrac{1}{\\sqrt x-2}$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x+2$ cho tử của phân thức thứ hai."
+              }
+            },
+            "solution": "$\\dfrac{1}{2-\\sqrt x}=-\\dfrac{1}{\\sqrt x-2}$, nên tử là $\\sqrt x(\\sqrt x-2)-(\\sqrt x+2)+2\\sqrt x=x-\\sqrt x-2$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-p5-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Rút gọn $P$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x-1}{\\sqrt x-2}$",
+              "$\\dfrac{x-\\sqrt x-2}{x-4}$",
+              "$\\dfrac{\\sqrt x+1}{\\sqrt x-2}$",
+              "$\\dfrac{\\sqrt x+1}{\\sqrt x+2}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con phân tích tử sai dấu: $(\\sqrt x+2)(\\sqrt x-1)=x+\\sqrt x-2$, khác tử.",
+                "review": "f1-pnt"
+              },
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử còn nhân tử chung $\\sqrt x-2$ với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x-2$; mẫu còn lại là $\\sqrt x+2$."
+              }
+            },
+            "solution": "$x-\\sqrt x-2=(\\sqrt x-2)(\\sqrt x+1)$, nên $P=\\dfrac{(\\sqrt x-2)(\\sqrt x+1)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$."
+          }
+        }
+      ],
+      "solution": "ĐKXĐ: $x \\ge 0$, $x \\ne 4$. $P=\\dfrac{\\sqrt x(\\sqrt x-2)-(\\sqrt x+2)+2\\sqrt x}{x-4}=\\dfrac{(\\sqrt x-2)(\\sqrt x+1)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 4$."
+    },
+    {
+      "id": "c-rutgon-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $C=\\dfrac{2}{\\sqrt x-1}-\\dfrac{\\sqrt x+1}{x-\\sqrt x}$. Rút gọn $C$.",
+      "hints": [
+        "Cần thu $C$ về một phân thức gọn nhất.",
+        "Mẫu $x-\\sqrt x$ có nhân tử nào? Khi đó $x=0$ có được không?",
+        "Đặt $\\sqrt x$ làm nhân tử chung ở mẫu thứ hai rồi quy đồng."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện xác định.",
+          "item": {
+            "id": "c-rutgon-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Điều kiện xác định của $C$ là:",
+            "options": [
+              "$x>0$, $x \\ne 1$",
+              "$x \\ge 0$, $x \\ne 1$",
+              "$x>0$",
+              "$x \\ne 0$, $x \\ne 1$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Tại $x=0$ mẫu $x-\\sqrt x$ bằng $0$, nên phải có $x>0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con thiếu điều kiện từ mẫu $\\sqrt x-1$: nó bằng $0$ khi $x=1$."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Con thiếu điều kiện để $\\sqrt x$ có nghĩa: số âm không có căn bậc hai."
+              }
+            },
+            "solution": "Cần $x \\ge 0$; $\\sqrt x-1 \\ne 0$ cho $x \\ne 1$; $x-\\sqrt x=\\sqrt x(\\sqrt x-1) \\ne 0$ cho thêm $x \\ne 0$. Vậy $x>0$, $x \\ne 1$."
+          }
+        },
+        {
+          "prompt": "Chọn mẫu chung.",
+          "item": {
+            "id": "c-rutgon-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung nhỏ nhất của hai phân thức là:",
+            "options": [
+              "$\\sqrt x-1$",
+              "$(\\sqrt x-1)(\\sqrt x+1)$",
+              "$\\sqrt x(\\sqrt x-1)$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Mẫu chung phải chia hết cho $x-\\sqrt x=\\sqrt x(\\sqrt x-1)$; $\\sqrt x-1$ còn thiếu nhân tử $\\sqrt x$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con nhầm $x-\\sqrt x$ với $x-1$; đặt nhân tử chung: $x-\\sqrt x=\\sqrt x(\\sqrt x-1)$.",
+                "review": "f1-pnt"
+              }
+            },
+            "solution": "$x-\\sqrt x=\\sqrt x(\\sqrt x-1)$ chia hết cho $\\sqrt x-1$, nên mẫu chung là $\\sqrt x(\\sqrt x-1)$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-p6-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Quy đồng rồi rút gọn $C$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x-1}{x-\\sqrt x}$",
+              "$\\dfrac{\\sqrt x+1}{x-\\sqrt x}$",
+              "$-\\dfrac{1}{\\sqrt x}$",
+              "$\\dfrac{1}{\\sqrt x}$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử $\\sqrt x-1$ còn là nhân tử của mẫu."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-(\\sqrt x+1)=-\\sqrt x-1$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x$ cho tử $2$ của phân thức đầu."
+              }
+            },
+            "solution": "$C=\\dfrac{2\\sqrt x-(\\sqrt x+1)}{\\sqrt x(\\sqrt x-1)}=\\dfrac{\\sqrt x-1}{\\sqrt x(\\sqrt x-1)}=\\dfrac{1}{\\sqrt x}$."
+          }
+        }
+      ],
+      "solution": "ĐKXĐ: $x>0$, $x \\ne 1$. $C=\\dfrac{2\\sqrt x-(\\sqrt x+1)}{\\sqrt x(\\sqrt x-1)}=\\dfrac{\\sqrt x-1}{\\sqrt x(\\sqrt x-1)}=\\dfrac{1}{\\sqrt x}$ với $x>0$, $x \\ne 1$."
+    },
+    {
+      "id": "c-rutgon-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x-2}{\\sqrt x+1}+\\dfrac{2+8\\sqrt x}{x-1}-\\dfrac{2}{1-\\sqrt x}$ với $x>0$, $x \\ne 1$. Rút gọn $P$ rồi tính $P$ tại $x=4$.",
+      "source": "68 đề – Đề 4, Bài 2 ý 2 (chuyển thể: rút gọn thay cho chứng minh, thêm tính giá trị)",
+      "hints": [
+        "Cần rút gọn $P$, rồi mới thay giá trị của $x$.",
+        "Mẫu $1-\\sqrt x$ ngược dấu với $\\sqrt x-1$; mẫu chung là gì?",
+        "Đổi dấu phân thức cuối, quy đồng theo $x-1$, rồi phân tích tử."
+      ],
+      "steps": [
+        {
+          "prompt": "Đổi dấu mẫu.",
+          "item": {
+            "id": "c-rutgon-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Viết $-\\dfrac{2}{1-\\sqrt x}$ thành phân thức có mẫu $\\sqrt x-1$:",
+            "options": [
+              "$-\\dfrac{2}{\\sqrt x-1}$",
+              "$\\dfrac{2}{\\sqrt x+1}$",
+              "$\\dfrac{2}{\\sqrt x-1}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con đổi dấu mẫu nhưng quên đổi dấu phân thức: $1-\\sqrt x=-(\\sqrt x-1)$."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Đổi dấu mẫu $1-\\sqrt x$ được $\\sqrt x-1$, không phải liên hợp $\\sqrt x+1$."
+              }
+            },
+            "solution": "$-\\dfrac{2}{1-\\sqrt x}=-\\dfrac{2}{-(\\sqrt x-1)}=\\dfrac{2}{\\sqrt x-1}$."
+          }
+        },
+        {
+          "prompt": "Quy đồng, thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Mẫu chung là $x-1=(\\sqrt x-1)(\\sqrt x+1)$. Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$x+7\\sqrt x+6$",
+              "$x+3\\sqrt x+2$",
+              "$x+9\\sqrt x+6$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu phân thức cuối: $-\\dfrac{2}{1-\\sqrt x}$ mang dấu cộng khi đổi về mẫu $\\sqrt x-1$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con khai triển sai: $(\\sqrt x-2)(\\sqrt x-1)=x-3\\sqrt x+2$."
+              }
+            },
+            "solution": "$(\\sqrt x-2)(\\sqrt x-1)+(2+8\\sqrt x)+2(\\sqrt x+1)=x-3\\sqrt x+2+2+8\\sqrt x+2\\sqrt x+2=x+7\\sqrt x+6$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $P$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{x+7\\sqrt x+6}{x-1}$",
+              "$\\dfrac{\\sqrt x+6}{\\sqrt x-1}$",
+              "$\\dfrac{\\sqrt x+2}{\\sqrt x-1}$",
+              "$\\dfrac{\\sqrt x+6}{\\sqrt x+1}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử phân tích được và còn nhân tử chung với mẫu."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu phân thức cuối nên tử sai."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x+1$; mẫu còn lại là $\\sqrt x-1$."
+              }
+            },
+            "solution": "$x+7\\sqrt x+6=(\\sqrt x+1)(\\sqrt x+6)$, nên $P=\\dfrac{(\\sqrt x+1)(\\sqrt x+6)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x+6}{\\sqrt x-1}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=4$.",
+          "item": {
+            "id": "c-rutgon-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $P$ tại $x=4$.",
+            "answer": "8",
+            "mistakes": [
+              {
+                "answer": "4",
+                "code": "E02",
+                "feedback": "Con quên đổi dấu phân thức cuối khi quy đồng, nên tử sai."
+              },
+              {
+                "answer": "8/3",
+                "code": "E02",
+                "feedback": "Mẫu sau khi giản ước là $\\sqrt x-1$, không phải $\\sqrt x+1$."
+              }
+            ],
+            "solution": "$x=4$ thỏa điều kiện, $\\sqrt x=2$: $P=\\dfrac{2+6}{2-1}=8$."
+          }
+        }
+      ],
+      "solution": "$P=\\dfrac{(\\sqrt x-2)(\\sqrt x-1)+2+8\\sqrt x+2(\\sqrt x+1)}{x-1}=\\dfrac{x+7\\sqrt x+6}{x-1}=\\dfrac{(\\sqrt x+1)(\\sqrt x+6)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x+6}{\\sqrt x-1}$ với $x>0$, $x \\ne 1$. Tại $x=4$: $P=8$."
+    },
+    {
+      "id": "c-rutgon-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{x-1}{x-2}$ và $B=\\dfrac{\\sqrt x-2}{x-2\\sqrt x+1}+\\dfrac{2+\\sqrt x}{x-1}$ với $x \\ge 0$, $x \\ne 1$, $x \\ne 2$. Rút gọn $P=A\\cdot B$ rồi tính $P$ tại $x=9$.",
+      "source": "68 đề – Đề 21, Bài 2 ý 2 (tách bước, thêm tính giá trị)",
+      "hints": [
+        "Cần rút gọn $B$ trước, rồi nhân với $A$.",
+        "Mẫu $x-2\\sqrt x+1$ là hằng đẳng thức nào? Còn $x-1$?",
+        "Phân tích các mẫu, quy đồng $B$, rồi giản ước khi nhân với $A$."
+      ],
+      "steps": [
+        {
+          "prompt": "Mẫu chung của $B$.",
+          "item": {
+            "id": "c-rutgon-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Mẫu chung nhỏ nhất của hai phân thức trong $B$ là:",
+            "options": [
+              "$(\\sqrt x-1)(\\sqrt x+1)$",
+              "$(\\sqrt x-1)^2$",
+              "$(\\sqrt x-1)^2(\\sqrt x+1)$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x-2\\sqrt x+1=(\\sqrt x-1)^2$ (bình phương một hiệu), không phải $(\\sqrt x-1)(\\sqrt x+1)$.",
+                "review": "f1-hdt"
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Mẫu chung phải chia hết cho $x-1=(\\sqrt x-1)(\\sqrt x+1)$; còn thiếu nhân tử $\\sqrt x+1$."
+              }
+            },
+            "solution": "$x-2\\sqrt x+1=(\\sqrt x-1)^2$ và $x-1=(\\sqrt x-1)(\\sqrt x+1)$, nên mẫu chung là $(\\sqrt x-1)^2(\\sqrt x+1)$."
+          }
+        },
+        {
+          "prompt": "Tử của $B$.",
+          "item": {
+            "id": "c-rutgon-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Sau khi quy đồng, tử của $B$ là $(\\sqrt x-2)(\\sqrt x+1)+(\\sqrt x+2)(\\sqrt x-1)$. Thu gọn tử:",
+            "options": [
+              "$2x-4$",
+              "$2x+2\\sqrt x-4$",
+              "$2x-2\\sqrt x-4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con nhân sai dấu: $(\\sqrt x-2)(\\sqrt x+1)=x-\\sqrt x-2$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con nhân sai dấu: $(\\sqrt x+2)(\\sqrt x-1)=x+\\sqrt x-2$."
+              }
+            },
+            "solution": "$(x-\\sqrt x-2)+(x+\\sqrt x-2)=2x-4=2(x-2)$."
+          }
+        },
+        {
+          "prompt": "Rút gọn $P$.",
+          "item": {
+            "id": "c-rutgon-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Biết $B=\\dfrac{2(x-2)}{(\\sqrt x-1)^2(\\sqrt x+1)}$. Rút gọn $P=A\\cdot B$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2}{\\sqrt x+1}$",
+              "$\\dfrac{2}{\\sqrt x-1}$",
+              "$\\dfrac{2(x-1)}{(\\sqrt x-1)^2(\\sqrt x+1)}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x-1=(\\sqrt x-1)(\\sqrt x+1)$, không phải $(\\sqrt x-1)^2$.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: $x-1=(\\sqrt x-1)(\\sqrt x+1)$ còn giản ước được với mẫu."
+              }
+            },
+            "solution": "$P=\\dfrac{x-1}{x-2}\\cdot\\dfrac{2(x-2)}{(\\sqrt x-1)^2(\\sqrt x+1)}=\\dfrac{2(\\sqrt x-1)(\\sqrt x+1)}{(\\sqrt x-1)^2(\\sqrt x+1)}=\\dfrac{2}{\\sqrt x-1}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=9$.",
+          "item": {
+            "id": "c-rutgon-p8-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $P$ tại $x=9$.",
+            "answer": "1",
+            "mistakes": [
+              {
+                "answer": "1/2",
+                "code": "E03",
+                "feedback": "Con phân tích sai $x-1$ thành $(\\sqrt x-1)^2$ ở bước giản ước.",
+                "review": "f1-hdt"
+              }
+            ],
+            "solution": "$x=9$ thỏa điều kiện, $\\sqrt x=3$: $P=\\dfrac{2}{3-1}=1$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{(\\sqrt x-2)(\\sqrt x+1)+(\\sqrt x+2)(\\sqrt x-1)}{(\\sqrt x-1)^2(\\sqrt x+1)}=\\dfrac{2(x-2)}{(\\sqrt x-1)^2(\\sqrt x+1)}$. $P=\\dfrac{(\\sqrt x-1)(\\sqrt x+1)}{x-2}\\cdot\\dfrac{2(x-2)}{(\\sqrt x-1)^2(\\sqrt x+1)}=\\dfrac{2}{\\sqrt x-1}$ với $x \\ge 0$, $x \\ne 1$, $x \\ne 2$. Tại $x=9$: $P=1$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "c-rutgon-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Điều kiện xác định của $P=\\dfrac{\\sqrt x}{\\sqrt x+1}+\\dfrac{2}{\\sqrt x-1}-\\dfrac{3}{x-1}$ là:",
+      "options": [
+        "$x \\ne 1$",
+        "$x>0$, $x \\ne 1$",
+        "$x \\ge 0$",
+        "$x \\ge 0$, $x \\ne 1$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện $x \\ge 0$ để $\\sqrt x$ có nghĩa."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "$\\sqrt x$ không đứng riêng ở mẫu nên $x=0$ vẫn được; căn chỉ cần $x \\ge 0$."
+        },
+        "2": {
+          "code": "E14",
+          "feedback": "Con thiếu điều kiện từ mẫu: $\\sqrt x-1$ và $x-1$ bằng $0$ khi $x=1$."
+        }
+      },
+      "solution": "Cần $x \\ge 0$; $\\sqrt x-1 \\ne 0$ và $x-1 \\ne 0$ cho $x \\ne 1$; $\\sqrt x+1>0$. Vậy $x \\ge 0$, $x \\ne 1$."
+    },
+    {
+      "id": "c-rutgon-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Với $x \\ge 0$, phân tích $x-3\\sqrt x+2$ thành nhân tử:",
+      "options": [
+        "$(\\sqrt x-1)(\\sqrt x+2)$",
+        "$(\\sqrt x-1)(\\sqrt x-2)$",
+        "$(\\sqrt x+1)(\\sqrt x+2)$",
+        "$(\\sqrt x+1)(\\sqrt x-2)$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$(\\sqrt x-1)(\\sqrt x+2)=x+\\sqrt x-2$; cần hai số có tổng $-3$, tích $2$.",
+          "review": "f1-pnt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "$(\\sqrt x+1)(\\sqrt x+2)=x+3\\sqrt x+2$: sai dấu hạng tử giữa.",
+          "review": "f1-pnt"
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "$(\\sqrt x+1)(\\sqrt x-2)=x-\\sqrt x-2$: tích hai số phải là $+2$.",
+          "review": "f1-pnt"
+        }
+      },
+      "solution": "Hai số có tổng $-3$, tích $2$ là $-1$ và $-2$, nên $x-3\\sqrt x+2=(\\sqrt x-1)(\\sqrt x-2)$."
+    },
+    {
+      "id": "c-rutgon-x3",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $B=\\dfrac{\\sqrt x+2}{\\sqrt x-2}-\\dfrac{3}{\\sqrt x+2}-\\dfrac{12}{x-4}$ với $x \\ge 0$, $x \\ne 4$. Rút gọn $B$ rồi tính $B$ tại $x=9$.",
+      "source": "68 đề – Đề 32, Bài 2 ý 2 (chuyển thể: rút gọn thay cho chứng minh, thêm tính giá trị)",
+      "steps": [
+        {
+          "prompt": "Quy đồng, thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung là $x-4=(\\sqrt x-2)(\\sqrt x+2)$. Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$x-3\\sqrt x-2$",
+              "$x+\\sqrt x-14$",
+              "$x+\\sqrt x-2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$(\\sqrt x+2)^2=x+4\\sqrt x+4$; con thiếu hạng tử $4\\sqrt x$.",
+                "review": "f1-hdt"
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-3(\\sqrt x-2)=-3\\sqrt x+6$."
+              }
+            },
+            "solution": "$(\\sqrt x+2)^2-3(\\sqrt x-2)-12=x+4\\sqrt x+4-3\\sqrt x+6-12=x+\\sqrt x-2$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Rút gọn $B$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x+1}{\\sqrt x+2}$",
+              "$\\dfrac{\\sqrt x-1}{\\sqrt x-2}$",
+              "$\\dfrac{x+\\sqrt x-2}{x-4}$",
+              "$\\dfrac{\\sqrt x-1}{\\sqrt x+2}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con phân tích tử sai dấu: $(\\sqrt x+1)(\\sqrt x-2)=x-\\sqrt x-2$, khác tử.",
+                "review": "f1-pnt"
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử còn nhân tử chung với mẫu."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x+2$; mẫu còn lại là $\\sqrt x-2$."
+              }
+            },
+            "solution": "$x+\\sqrt x-2=(\\sqrt x-1)(\\sqrt x+2)$, nên $B=\\dfrac{(\\sqrt x-1)(\\sqrt x+2)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{\\sqrt x-1}{\\sqrt x-2}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=9$.",
+          "item": {
+            "id": "c-rutgon-x3-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $B$ tại $x=9$.",
+            "answer": "2",
+            "mistakes": [
+              {
+                "answer": "2/5",
+                "code": "E02",
+                "feedback": "Mẫu sau khi giản ước là $\\sqrt x-2$, không phải $\\sqrt x+2$."
+              },
+              {
+                "answer": "4/5",
+                "code": "E02",
+                "feedback": "Con phân tích tử sai dấu nên giản ước nhầm nhân tử.",
+                "review": "f1-pnt"
+              }
+            ],
+            "solution": "$\\sqrt 9=3$: $B=\\dfrac{3-1}{3-2}=2$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{(\\sqrt x+2)^2-3(\\sqrt x-2)-12}{x-4}=\\dfrac{x+\\sqrt x-2}{x-4}=\\dfrac{(\\sqrt x-1)(\\sqrt x+2)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{\\sqrt x-1}{\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 4$. Tại $x=9$: $B=2$."
+    },
+    {
+      "id": "c-rutgon-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $B=\\dfrac{2x-3}{x-3\\sqrt x}-\\dfrac{1}{\\sqrt x}$ với $x>0$, $x \\ne 9$. Rút gọn $B$.",
+      "source": "68 đề – Đề 10, Bài 2 ý 2 (chuyển thể: rút gọn thay cho chứng minh)",
+      "steps": [
+        {
+          "prompt": "Chọn mẫu chung.",
+          "item": {
+            "id": "c-rutgon-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Mẫu chung nhỏ nhất của hai phân thức là:",
+            "options": [
+              "$\\sqrt x(\\sqrt x-3)$",
+              "$(\\sqrt x-3)(\\sqrt x+3)$",
+              "$\\sqrt x-3$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con nhầm $x-3\\sqrt x$ với $x-9$; đặt nhân tử chung: $x-3\\sqrt x=\\sqrt x(\\sqrt x-3)$.",
+                "review": "f1-pnt"
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Mẫu chung phải chia hết cho cả mẫu $\\sqrt x$; $\\sqrt x-3$ còn thiếu nhân tử này."
+              }
+            },
+            "solution": "$x-3\\sqrt x=\\sqrt x(\\sqrt x-3)$ chia hết cho $\\sqrt x$, nên mẫu chung là $\\sqrt x(\\sqrt x-3)$."
+          }
+        },
+        {
+          "prompt": "Thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-x4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$2x-4$",
+              "$2x-\\sqrt x-6$",
+              "$2x-\\sqrt x$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x-3$ cho tử $1$ của phân thức thứ hai."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-(\\sqrt x-3)=-\\sqrt x+3$."
+              }
+            },
+            "solution": "$(2x-3)-(\\sqrt x-3)=2x-\\sqrt x$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-x4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Rút gọn $B$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2x-\\sqrt x}{x-3\\sqrt x}$",
+              "$\\dfrac{2\\sqrt x-1}{\\sqrt x-3}$",
+              "$\\dfrac{2x-1}{x-3}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử và mẫu còn nhân tử chung $\\sqrt x$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Chỉ giản ước được nhân tử chung, không giản ước từng hạng tử: tử là $\\sqrt x(2\\sqrt x-1)$."
+              }
+            },
+            "solution": "$B=\\dfrac{\\sqrt x(2\\sqrt x-1)}{\\sqrt x(\\sqrt x-3)}=\\dfrac{2\\sqrt x-1}{\\sqrt x-3}$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{2x-3-(\\sqrt x-3)}{\\sqrt x(\\sqrt x-3)}=\\dfrac{\\sqrt x(2\\sqrt x-1)}{\\sqrt x(\\sqrt x-3)}=\\dfrac{2\\sqrt x-1}{\\sqrt x-3}$ với $x>0$, $x \\ne 9$."
+    },
+    {
+      "id": "c-rutgon-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Với $x \\ge 0$, $x \\ne 1$, rút gọn đến tận cùng $\\dfrac{1}{\\sqrt x-1}-\\dfrac{2}{x-1}$:",
+      "options": [
+        "$\\dfrac{\\sqrt x-1}{x-1}$",
+        "$-\\dfrac{1}{x-1}$",
+        "$\\dfrac{\\sqrt x+3}{x-1}$",
+        "$\\dfrac{1}{\\sqrt x+1}$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E11",
+          "feedback": "Chưa đến tận cùng: tử $\\sqrt x-1$ còn là nhân tử của mẫu $x-1$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Con quên nhân tử phụ $\\sqrt x+1$ cho tử của phân thức đầu."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Đề là hiệu hai phân thức nhưng con lại cộng tử."
+        }
+      },
+      "solution": "$\\dfrac{\\sqrt x+1-2}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x-1}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{1}{\\sqrt x+1}$."
+    },
+    {
+      "id": "c-rutgon-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $B=\\dfrac{11\\sqrt x+6}{x-4}+\\dfrac{2\\sqrt x}{\\sqrt x+2}-\\dfrac{3}{\\sqrt x-2}$ với $x>0$, $x \\ne 4$. Rút gọn $B$ rồi tính $B$ tại $x=9$.",
+      "source": "68 đề – Đề 49, Bài 2 ý 2 (chuyển thể: rút gọn thay cho chứng minh, thêm tính giá trị)",
+      "steps": [
+        {
+          "prompt": "Quy đồng, thu gọn tử.",
+          "item": {
+            "id": "c-rutgon-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Mẫu chung là $x-4=(\\sqrt x-2)(\\sqrt x+2)$. Tử sau khi quy đồng, thu gọn bằng:",
+            "options": [
+              "$2x+4\\sqrt x$",
+              "$2x+4\\sqrt x+12$",
+              "$10\\sqrt x$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-3(\\sqrt x+2)=-3\\sqrt x-6$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x-2$ cho tử $2\\sqrt x$."
+              }
+            },
+            "solution": "$11\\sqrt x+6+2\\sqrt x(\\sqrt x-2)-3(\\sqrt x+2)=11\\sqrt x+6+2x-4\\sqrt x-3\\sqrt x-6=2x+4\\sqrt x$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "c-rutgon-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $B$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2x+4\\sqrt x}{x-4}$",
+              "$\\dfrac{2\\sqrt x}{\\sqrt x+2}$",
+              "$\\dfrac{2\\sqrt x}{\\sqrt x-2}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: $2x+4\\sqrt x=2\\sqrt x(\\sqrt x+2)$ còn nhân tử chung với mẫu."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x+2$; mẫu còn lại là $\\sqrt x-2$."
+              }
+            },
+            "solution": "$B=\\dfrac{2\\sqrt x(\\sqrt x+2)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{2\\sqrt x}{\\sqrt x-2}$."
+          }
+        },
+        {
+          "prompt": "Thay $x=9$.",
+          "item": {
+            "id": "c-rutgon-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $B$ tại $x=9$.",
+            "answer": "6",
+            "mistakes": [
+              {
+                "answer": "6/5",
+                "code": "E02",
+                "feedback": "Mẫu sau khi giản ước là $\\sqrt x-2$, không phải $\\sqrt x+2$."
+              },
+              {
+                "answer": "18/7",
+                "code": "E04",
+                "feedback": "Con thay $9$ vào chỗ $\\sqrt x$; phải tính $\\sqrt 9$ trước rồi mới thay."
+              }
+            ],
+            "solution": "$\\sqrt 9=3$: $B=\\dfrac{2\\cdot3}{3-2}=6$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{11\\sqrt x+6+2\\sqrt x(\\sqrt x-2)-3(\\sqrt x+2)}{x-4}=\\dfrac{2\\sqrt x(\\sqrt x+2)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{2\\sqrt x}{\\sqrt x-2}$ với $x>0$, $x \\ne 4$. Tại $x=9$: $B=6$."
+    },
+    {
+      "id": "c-rutgon-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{3\\sqrt x}{\\sqrt x+2}+\\dfrac{\\sqrt x}{2-\\sqrt x}+\\dfrac{8\\sqrt x}{x-4}$ và $Q=\\dfrac{1}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 4$. Rút gọn $P$, rồi rút gọn $M=P:Q$.",
+      "source": "68 đề – Đề 8, Bài 2 ý 2–3 (tách bước: rút gọn P rồi M = P:Q)",
+      "steps": [
+        {
+          "prompt": "Đổi dấu mẫu.",
+          "item": {
+            "id": "c-rutgon-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Viết $\\dfrac{\\sqrt x}{2-\\sqrt x}$ thành phân thức có mẫu $\\sqrt x-2$:",
+            "options": [
+              "$\\dfrac{\\sqrt x}{\\sqrt x-2}$",
+              "$-\\dfrac{\\sqrt x}{\\sqrt x-2}$",
+              "$\\dfrac{\\sqrt x}{\\sqrt x+2}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con đổi dấu mẫu nhưng quên đổi dấu phân thức: $2-\\sqrt x=-(\\sqrt x-2)$."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Đổi dấu mẫu $2-\\sqrt x$ được $\\sqrt x-2$, không phải liên hợp $\\sqrt x+2$."
+              }
+            },
+            "solution": "$2-\\sqrt x=-(\\sqrt x-2)$ nên $\\dfrac{\\sqrt x}{2-\\sqrt x}=-\\dfrac{\\sqrt x}{\\sqrt x-2}$."
+          }
+        },
+        {
+          "prompt": "Rút gọn $P$.",
+          "item": {
+            "id": "c-rutgon-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Quy đồng theo mẫu $x-4$ rồi rút gọn $P$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{3x-6\\sqrt x-x-2\\sqrt x+8\\sqrt x}{x-4}$",
+              "$\\dfrac{4x+4\\sqrt x}{x-4}$",
+              "$\\dfrac{2x}{x-4}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Chưa thu gọn: tử còn các hạng tử đồng dạng chưa gộp."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu phân thức thứ hai: tử của nó mang dấu trừ sau khi đổi mẫu."
+              }
+            },
+            "solution": "$P=\\dfrac{3\\sqrt x(\\sqrt x-2)-\\sqrt x(\\sqrt x+2)+8\\sqrt x}{x-4}=\\dfrac{3x-6\\sqrt x-x-2\\sqrt x+8\\sqrt x}{x-4}=\\dfrac{2x}{x-4}$."
+          }
+        },
+        {
+          "prompt": "Rút gọn $M$.",
+          "item": {
+            "id": "c-rutgon-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Biết $P=\\dfrac{2x}{x-4}$. Rút gọn $M=P:Q$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{2x}{\\sqrt x-2}$",
+              "$\\dfrac{2x}{(x-4)(\\sqrt x+2)}$",
+              "$\\dfrac{2x(\\sqrt x+2)}{x-4}$",
+              "$\\dfrac{2x}{\\sqrt x+2}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Chia cho $Q$ là nhân với nghịch đảo $\\sqrt x+2$; con lại nhân với $Q$."
+              },
+              "2": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: $x-4=(\\sqrt x-2)(\\sqrt x+2)$ còn giản ước được với $\\sqrt x+2$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Nhân tử bị giản ước là $\\sqrt x+2$; mẫu còn lại là $\\sqrt x-2$."
+              }
+            },
+            "solution": "$M=\\dfrac{2x}{x-4}\\cdot(\\sqrt x+2)=\\dfrac{2x(\\sqrt x+2)}{(\\sqrt x-2)(\\sqrt x+2)}=\\dfrac{2x}{\\sqrt x-2}$."
+          }
+        }
+      ],
+      "solution": "$P=\\dfrac{3\\sqrt x(\\sqrt x-2)-\\sqrt x(\\sqrt x+2)+8\\sqrt x}{x-4}=\\dfrac{2x}{x-4}$; $M=\\dfrac{2x}{x-4}\\cdot(\\sqrt x+2)=\\dfrac{2x}{\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 4$."
+    },
+    {
+      "id": "c-rutgon-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x}{\\sqrt x-3}$ và $B=\\dfrac{7}{\\sqrt x+1}-\\dfrac{12}{(\\sqrt x+1)(3-\\sqrt x)}$ với $x \\ge 0$, $x \\ne 9$. Rút gọn $M=A-B$.",
+      "source": "68 đề – Đề 48, Bài 2b (tách bước)",
+      "steps": [
+        {
+          "prompt": "Rút gọn $B$.",
+          "item": {
+            "id": "c-rutgon-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Đưa $B$ về mẫu $(\\sqrt x+1)(\\sqrt x-3)$, được:",
+            "options": [
+              "$\\dfrac{7\\sqrt x-33}{(\\sqrt x+1)(\\sqrt x-3)}$",
+              "$\\dfrac{7\\sqrt x-9}{(\\sqrt x+1)(\\sqrt x-3)}$",
+              "$\\dfrac{19}{(\\sqrt x+1)(\\sqrt x-3)}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con đổi $3-\\sqrt x$ thành $\\sqrt x-3$ nhưng quên đổi dấu phân thức thứ hai."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x-3$ cho tử $7$ của phân thức đầu."
+              }
+            },
+            "solution": "$B=\\dfrac{7}{\\sqrt x+1}+\\dfrac{12}{(\\sqrt x+1)(\\sqrt x-3)}=\\dfrac{7(\\sqrt x-3)+12}{(\\sqrt x+1)(\\sqrt x-3)}=\\dfrac{7\\sqrt x-9}{(\\sqrt x+1)(\\sqrt x-3)}$."
+          }
+        },
+        {
+          "prompt": "Tử của $M$.",
+          "item": {
+            "id": "c-rutgon-x8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với mẫu chung $(\\sqrt x+1)(\\sqrt x-3)$, tử của $M=A-B$ thu gọn bằng:",
+            "options": [
+              "$x-6\\sqrt x-9$",
+              "$9-6\\sqrt x$",
+              "$x-6\\sqrt x+9$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Con quên đổi dấu: $-(7\\sqrt x-9)=-7\\sqrt x+9$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con quên nhân tử phụ $\\sqrt x+1$ cho tử $\\sqrt x$ của $A$."
+              }
+            },
+            "solution": "$\\sqrt x(\\sqrt x+1)-(7\\sqrt x-9)=x+\\sqrt x-7\\sqrt x+9=x-6\\sqrt x+9$."
+          }
+        },
+        {
+          "prompt": "Rút gọn $M$.",
+          "item": {
+            "id": "c-rutgon-x8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $M$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x+3}{\\sqrt x+1}$",
+              "$\\dfrac{x-6\\sqrt x+9}{(\\sqrt x+1)(\\sqrt x-3)}$",
+              "$\\dfrac{\\sqrt x-3}{\\sqrt x+1}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x-6\\sqrt x+9=(\\sqrt x-3)^2$ (bình phương một hiệu), không phải $(\\sqrt x-3)(\\sqrt x+3)$.",
+                "review": "f1-hdt"
+              },
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa đến tận cùng: tử là một bình phương, còn nhân tử chung với mẫu."
+              }
+            },
+            "solution": "$M=\\dfrac{(\\sqrt x-3)^2}{(\\sqrt x+1)(\\sqrt x-3)}=\\dfrac{\\sqrt x-3}{\\sqrt x+1}$."
+          }
+        }
+      ],
+      "solution": "$B=\\dfrac{7\\sqrt x-9}{(\\sqrt x+1)(\\sqrt x-3)}$; $M=\\dfrac{\\sqrt x(\\sqrt x+1)-(7\\sqrt x-9)}{(\\sqrt x+1)(\\sqrt x-3)}=\\dfrac{(\\sqrt x-3)^2}{(\\sqrt x+1)(\\sqrt x-3)}=\\dfrac{\\sqrt x-3}{\\sqrt x+1}$ với $x \\ge 0$, $x \\ne 9$."
+    }
+  ]
+}
