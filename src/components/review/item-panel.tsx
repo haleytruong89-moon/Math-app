@@ -2,6 +2,7 @@ import { texToHtml } from "@/lib/content/tex";
 import { errorLabel } from "@/lib/content/errors";
 import type { Item, Unit } from "@/lib/content/schema";
 import { Rich } from "@/components/lesson/rich";
+import { RightTriangleAltitude, SvgFigure } from "@/components/lesson/figure";
 import { afterOf } from "@/lib/content/grade";
 
 const Html = ({ html, className = "" }: { html: string; className?: string }) => <Rich as="div" html={html} className={className} />;
@@ -144,6 +145,12 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
         <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.level} · {TYPE_LABEL[item.type]}</span>
         {item.source && <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.source}</span>}
       </p>
+      {item.figure && (
+        <div className="flex flex-col gap-1">
+          <SvgFigure figure={item.figure} className="max-w-sm" />
+          {item.drawFirst && <p className="text-center font-mono text-xs text-muted">hình ẩn cho tới khi con bấm &ldquo;Đã vẽ xong&rdquo;</p>}
+        </div>
+      )}
       <Html html={texToHtml(item.prompt)} className="font-body text-lg leading-relaxed" />
       <div className="flex flex-col gap-2"><Label>Đáp án đúng</Label><Answer item={item} /></div>
       {item.hints && (
@@ -161,6 +168,8 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
 export function LessonPanel({ unit }: { unit: Unit }) {
   return (
     <div className="flex flex-col gap-5 font-body text-sm">
+      {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-sm" />}
+      {unit.figure && unit.figure !== "right-triangle-altitude" && <SvgFigure figure={unit.figure} className="max-w-sm" />}
       <div className="flex flex-col gap-2"><Label>Lý thuyết</Label>{unit.theory.map((t, i) => <Html key={i} html={texToHtml(t)} />)}</div>
       <div className="flex flex-col gap-2"><Label>Bài mẫu</Label><Html html={texToHtml(unit.worked.problem)} />
         {unit.worked.analysis && (
