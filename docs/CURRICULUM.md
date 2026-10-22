@@ -175,6 +175,8 @@ Bỏ/hạ 10 KU tiết kiệm **~11–13 giờ**, dồn cho hình học (Bài 4.
 
 ### 3.3 Phân bổ theo giai đoạn (LT18: Track C từ tuần 7)
 
+> Giai đoạn của từng KU nằm ở trường `phase` trong `content/curriculum.json` (S4b, 22/10): GĐ1 19 KU (gồm htl-1/2 và 5 bài G theo LT19), GĐ2 13, GĐ3 6 (e-viete, e-vietets, g-honhop, l-tieptuyen, o-chungminh, o-dongdang), GĐ4 5; P2 không có giai đoạn. Bảng dưới là bản gốc theo track.
+
 | GĐ | Tuần | Ngày | Track A | Track B/C | KU mới | Ghi chú |
 |----|------|------|---------|-----------|--------|---------|
 | 1 | 1–6 | 12/10 – 22/11 | F1 backfill (4) | a-tanso, b-phepthu, a-bieudo, b-xsuat, p-trunon, b-haib, p-cau, p-ghep (8) | 12 | Tuần 1: htl-1/2 trên app + F1 với gia sư trên giấy; F1 lên app từ tuần 2 |
