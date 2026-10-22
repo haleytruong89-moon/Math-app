@@ -65,7 +65,8 @@ function norm(v: unknown, type: number): unknown {
   return v;
 }
 
-const lit = (v: unknown) => v;
+// jsonb columns (ai_reports.facts / ai) get plain objects; arrays stay arrays (text[] columns).
+const lit = (v: unknown) => (v && typeof v === "object" && !Array.isArray(v) && !(v instanceof Date) ? JSON.stringify(v) : v);
 
 class Query {
   private op: "select" | "insert" | "update" | "upsert" | "delete" = "select";
@@ -194,4 +195,17 @@ const authAdmin = {
 
 export function fakeClient(uid: string | null) {
   return { from: (t: string) => new Query(t, uid), auth: { admin: authAdmin } } as never;
+}
+
+// S8: a scripted stand-in for the Messages API (no network in e2e). Picks its answer from the system prompt.
+export async function fakeClaude(req: { system: string; user: string }) {
+  let text = "";
+  if (req.system.includes("«Nhận xét»")) {
+    text = "Tuần này con học khá đều và đã làm bài ôn. Tuần tới nên chữa lại các lỗi tính toán trước khi học bài mới.";
+  } else if (req.system.includes("chuẩn bị buổi dạy")) {
+    const facts = JSON.parse(req.user.slice(req.user.indexOf("{"))) as { units: { id: string; title: string; wrong: number }[] };
+    const units = facts.units.filter((u) => u.wrong > 0).slice(0, 2);
+    text = JSON.stringify({ points: units.map((u) => ({ unit: u.id, text: `Chữa lại ${u.title}: cho con làm lại câu sai và nói to từng bước.` })) });
+  }
+  return { text, inputTokens: 1000, outputTokens: 100 };
 }

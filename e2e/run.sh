@@ -9,7 +9,7 @@ mkdir -p src/app/api/e2e/sql && cp e2e/patch/route.ts src/app/api/e2e/sql/route.
 python3 e2e/patch/patch.py
 revert() {
   [ -n "${PID:-}" ] && kill -- "-$PID" 2>/dev/null
-  git checkout -- src/lib/dal.ts src/lib/supabase/server.ts src/lib/supabase/admin.ts next.config.ts src/lib/content/registry.generated.ts
+  git checkout -- src/lib/dal.ts src/lib/supabase/server.ts src/lib/supabase/admin.ts src/lib/ai/client.ts next.config.ts src/lib/content/registry.generated.ts
   rm -rf src/lib/e2e-fake.ts src/app/api/e2e .next/dev
 }
 trap revert EXIT

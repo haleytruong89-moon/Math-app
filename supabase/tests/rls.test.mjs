@@ -255,7 +255,6 @@ check('student reads own item homework', (await as('nguyen@example.com',`select 
 // 0014: AI (S8) — settings, spend, reports/briefs, conversations, test set
 const q14 = (sql) => db.query(sql).then(()=>'ok', e=>'ERROR '+e.message);
 const nguyen14 = `(select id from public.students where full_name='Hạnh Nguyên')`;
-const an14 = `(select id from public.students where full_name='Đăng An')`;
 const tutor14 = `(select id from auth.users where email='trang@example.com')`;
 const parent14 = `(select id from auth.users where email='me@example.com')`;
 check('ai settings: one row, student AI off', (await db.query(`select student_enabled, staff_enabled, staff_model from public.ai_settings`)).rows, [{ student_enabled: false, staff_enabled: true, staff_model: 'claude-haiku-5-5' }]);
