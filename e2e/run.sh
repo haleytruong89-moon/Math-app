@@ -30,6 +30,8 @@ run tutor 3110 e2e/assign-flow.mjs; k=$?
 run student 3111 e2e/assign-student-flow.mjs; l=$?
 run parent 3103 e2e/accounts-flow.mjs; d=$?
 run parent 3104 e2e/overview-flow.mjs; e=$?
+run parent 3114 e2e/report-flow.mjs; o=$?
+run tutor 3115 e2e/brief-flow.mjs; p=$?
 # S6a: curriculum engine on the fixture content (registry swapped, restored right after)
 node scripts/content-index.mjs --fixtures
 run student 3105 e2e/curriculum-flow.mjs; f=$?
@@ -38,4 +40,4 @@ run student 3107 e2e/items-flow.mjs; h=$?
 run student 3112 e2e/geometry-flow.mjs; m=$?
 run parent 3113 e2e/geometry-parent-flow.mjs; n=$?
 node scripts/content-index.mjs
-exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n ))
+exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p ))
