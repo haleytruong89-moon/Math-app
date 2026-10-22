@@ -38,7 +38,8 @@
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ Merged 22/10 (PR #34), vẫn nháp — không SQL; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
-| Nội dung đợt 6–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
+| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | 🟡 PR mở 22/10 — không SQL; giải độc lập 78/78; chờ gia sư soát (hạn 29/11) |
+| Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 
@@ -51,6 +52,31 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 22/10/2026 — Nội dung đợt 6 + hình Sổ tay (nhánh `p1-content-6`, không SQL)
+
+Phụ huynh chọn "làm đợt 6 trước rồi làm Sổ tay cùng lúc" (22/10).
+
+### Đã làm
+- 4 KU nháp: **c-rutgon** (20 câu, phần lớn câu nhiều bước: ĐKXĐ → phân tích → quy đồng → kết quả), **c-cauphu** (19 câu: tính giá trị, P = a, bất phương trình, so sánh với 1, x nguyên / x thực để P nguyên — dạng 2c, min/max), **k-goiintiep** và **k-tugiacnt** (19 câu mỗi bài, bài hình §10: phân tích ngược, điền lời giải C3, sắp xếp bước C2, tự vẽ hình; 11–12 hình SVG mỗi bài). Module mới `noi-tiep`; `can-thuc` thêm 2 bài. Nguồn Đề 1–56.
+- **Sổ tay**: vẽ 4 hình mẫu (hai tiếp tuyến + cát tuyến, ba đường cao, nửa đường tròn + tiếp tuyến, đường kính ⊥ dây); "điều có sẵn" ghi theo tên điểm (ví dụ $AB^2 = AM\cdot AN$, $AE\cdot AC = AF\cdot AB$, $AC\cdot BD = R^2$), kiểm bằng toạ độ. **Phụ huynh duyệt 22/10** (`status: approved`, `approvedOn` 2026-10-22) — con thấy Sổ tay sau khi PR này merge.
+- Màn Duyệt: đáp án C3 hiện dạng 【n: …】 (trước đó dấu ** hiện thô khi lựa chọn có công thức).
+
+### Kiểm tra chất lượng
+- Agent soạn tính lại mọi đáp số và nhiễu bằng sympy / toạ độ: c-rutgon 41 đáp số + 94 nhiễu, c-cauphu 66, k-goiintiep 120 khẳng định hình + 21 số, k-tugiacnt 90 + 27.
+- Giải độc lập (chỉ thấy đề như con): **78/78** khớp. Sửa sau khi giải: c-cauphu x6 bước 1 hỏi "đánh giá chặt nhất" (trước có 3 phương án cùng đúng), x4 bước 3 đổi nhiễu `x<4` thành `0<x<2`; k-tugiacnt p4 tầng 2 đổi nhiễu "vì OC ⊥ AB" (cãi được) thành "vì góc ở tâm COB = 90°". Các thứ tự bước khác người giải tìm ra (k-tugiacnt p7, x6; k-goiintiep p7, x6) app đều chấm đúng.
+
+### Gia sư soát kỹ (tab Kho bài)
+- c-rutgon: p6 chấp nhận kết quả $1/\sqrt x$ (không trục căn); bài mẫu và bài khuyết lấy từ Đề 28, Đề 14 nhưng không ghi nguồn (phần này không có trường `source`).
+- c-cauphu: x8 (Đề 42) khó — x = 5 cho P = 0 nên vẫn tính; p3, p8 giữ ĐKXĐ thừa từ đề gốc; một số mã lỗi (quên bình phương = E01, bỏ trường hợp tử bằng 0 = E04).
+- k-goiintiep: f2 phương án "∠BAD = ∠KAC (cùng chắn một cung)" là mệnh đề đúng nhưng sai lí do (đề hỏi cặp góc **và** lí do); x6 không dùng tứ giác nội tiếp; x7 chứng minh AC = AD bằng trung trực; dùng đồng dạng như đề thi dù f3-dongdang không phải tiên quyết.
+- k-tugiacnt: f1 phương án "hai góc kề bằng nhau" (E, F là đỉnh đối); x8 thực ra không cần tứ giác nội tiếp; số liệu p8, x8 do soạn thêm; p5 cho sẵn "MA ⊥ OA" (chưa dạy tiếp tuyến).
+- Sổ tay: đọc 7 mục tiêu + 4 hình ở tab Sổ tay.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gia sư soát 4 bài trước **29/11**; phụ huynh "Duyệt cả bài" trong app. Sổ tay: ✅ đã duyệt 22/10 (trong PR này).
 
 ---
 

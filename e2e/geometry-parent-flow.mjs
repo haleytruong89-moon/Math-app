@@ -18,7 +18,7 @@ try {
   const a = await panel().innerText();
   ok("analysis key: nodes and outline", a.includes("Mốc giữa thử") && a.includes("suy ra mốc giữa thử") && a.includes("phân tích ngược"), a.slice(0, 200));
   await page.goto(`${BASE}/parent/content/fg-1/duyet?item=fg-1-p2`);
-  ok("C3 key: right fills shown", (await panel().innerText()).includes("[1: lí do một]"));
+  ok("C3 key: right fills shown", (await panel().innerText()).includes("【1: lí do một】"));
   await page.goto(`${BASE}/parent/content/fg-1/duyet?item=fg-1-p3`);
   const t = await panel().innerText();
   ok("C2 key: swap note + distractor", t.includes("có thể đổi chỗ với dòng") && t.includes("bước thừa"), t.slice(0, 300));
