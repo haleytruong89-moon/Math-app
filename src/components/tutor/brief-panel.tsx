@@ -46,7 +46,8 @@ export function BriefPanel({ studentId, row }: { studentId: string; row: BriefRo
               <ol className="mt-1 list-decimal pl-5 text-sm">
                 {points.map((p, i) => (
                   <li key={i} data-testid="brief-point">
-                    <span className="text-muted">{title.get(p.unit)}:</span> {p.text}
+                    {!p.text.startsWith(title.get(p.unit) ?? "\u0000") && <span className="text-muted">{title.get(p.unit)}: </span>}
+                    {p.text}
                   </li>
                 ))}
               </ol>
