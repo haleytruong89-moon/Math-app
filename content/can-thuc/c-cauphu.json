@@ -1,0 +1,1237 @@
+{
+  "id": "c-cauphu",
+  "module": "can-thuc",
+  "order": 5,
+  "title": "Câu phụ sau rút gọn",
+  "status": "draft",
+  "estMinutes": 50,
+  "theory": [
+    "**Cần nhớ trước:** bài **Rút gọn biểu thức chứa căn** — câu phụ (Bài 2.3 đề thi) luôn làm trên $P$ **đã rút gọn** và **giữ nguyên ĐKXĐ** của đề, ví dụ $x \\ge 0$, $x \\ne 4$. Mọi giá trị $x$ tìm được phải đối chiếu lại với điều kiện này trước khi kết luận.",
+    "**Quy tắc:** (1) *Tính giá trị*: kiểm $x$ thoả ĐKXĐ, tính $\\sqrt x$ (ví dụ $4-2\\sqrt3=(\\sqrt3-1)^2$ nên $\\sqrt x=\\sqrt3-1$), thay vào rồi trục căn. (2) *$P=a$*: đưa về phương trình ẩn $\\sqrt x$, loại nghiệm $\\sqrt x<0$, bình phương, đối chiếu ĐK. (3) *$P<a$, $P>a$, so sánh $P$ với $a$*: xét hiệu $P-a$, quy đồng thành **một phân thức**, xét dấu tử và mẫu.",
+    "**Nguyên, lớn nhất, nhỏ nhất:** $x$ **nguyên** → tách $P=k+\\dfrac{m}{\\sqrt x+b}$; $x$ không chính phương thì $\\sqrt x$ vô tỉ (chỉ còn xét trường hợp tử bằng $0$), $x$ chính phương thì $\\sqrt x+b$ là ước của $m$. $x$ **thực** → chặn $P$ nhờ $\\sqrt x \\ge 0$ (ví dụ $0<P \\le 3$), chọn số nguyên trong khoảng rồi giải ngược ra $x$. Lớn nhất / nhỏ nhất: dùng $\\sqrt x \\ge 0$, chỉ ra dấu bằng nằm trong ĐKXĐ.",
+    "**Vì sao:** $\\sqrt x \\ge 0$ nên mẫu $\\sqrt x+3$ luôn dương — nhân hai vế với nó không đổi chiều; còn $\\sqrt x-3$ âm khi $0 \\le x<9$, dương khi $x>9$, nên **không nhân chéo** khi chưa biết dấu mẫu. Cũng nhờ $\\sqrt x \\ge 0$ mà $\\sqrt x+3 \\ge 3$, suy ra $\\dfrac{3}{\\sqrt x+3} \\le 1$: chặn được $P$.",
+    "**Bẫy hay gặp:** (1) Nhân chéo với mẫu có thể âm: $\\dfrac{\\sqrt x+1}{\\sqrt x-2}<1$ **không** suy ra $\\sqrt x+1<\\sqrt x-2$. (2) Quên kết hợp ĐKXĐ: tìm được $x=9$ mà đề cho $x \\ne 9$ thì phải loại. (3) Chỉ xét ước dương, hoặc bỏ sót ước $1$. (4) Nhầm “$x$ nguyên” với “$x$ thực”: hai câu hỏi có hai tập đáp án khác nhau. (5) Giải ra $\\sqrt x=\\dfrac12$ rồi quên bình phương.",
+    "**Nhận dạng — thẻ câu phụ** (luôn giữ ĐKXĐ): $\\begin{array}{l|l} \\text{Đề hỏi} & \\text{Cách làm} \\\\ \\hline P \\text{ tại } x=x_0 & \\text{kiểm ĐK, tính } \\sqrt{x_0}\\text{, thay, trục căn} \\\\ P=a & \\text{giải theo } \\sqrt x \\ge 0\\text{, bình phương, đối chiếu ĐK} \\\\ P<a,\\ P>a,\\ \\text{so sánh} & \\text{dấu của } P-a \\text{ (một phân thức)} \\\\ x \\text{ nguyên},\\ P \\text{ nguyên} & \\text{tách phần nguyên, ước của phần dư} \\\\ x \\text{ thực},\\ P \\text{ nguyên} & \\text{chặn } P\\text{, chọn số nguyên, giải ngược} \\\\ \\text{lớn nhất, nhỏ nhất} & \\sqrt x \\ge 0\\text{, chỉ ra dấu bằng} \\end{array}$ **Không** dùng cách chặn $P$ khi đề hỏi $x$ nguyên; **không** nhân chéo khi mẫu có thể âm."
+  ],
+  "worked": {
+    "problem": "Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 4$. Tìm $x$ để $P<1$.",
+    "steps": [
+      {
+        "text": "Chuyển vế, quy đồng: $P<1 \\Leftrightarrow \\dfrac{\\sqrt x+1}{\\sqrt x-2}-1<0 \\Leftrightarrow \\dfrac{\\sqrt x+1-(\\sqrt x-2)}{\\sqrt x-2}<0 \\Leftrightarrow \\dfrac{3}{\\sqrt x-2}<0$.",
+        "why": "Không nhân chéo: mẫu $\\sqrt x-2$ âm khi $0 \\le x<4$, nhân với số âm phải đổi chiều."
+      },
+      {
+        "text": "Tử $3>0$ nên phân thức âm khi và chỉ khi mẫu âm: $\\sqrt x-2<0 \\Leftrightarrow \\sqrt x<2 \\Leftrightarrow x<4$.",
+        "why": "Hai vế $\\sqrt x$ và $2$ đều không âm nên bình phương giữ nguyên chiều."
+      },
+      {
+        "text": "Kết hợp ĐKXĐ $x \\ge 0$, $x \\ne 4$: được $0 \\le x<4$.",
+        "why": "$x \\ge 0$ là cận dưới; $x=4$ đã nằm ngoài khoảng tìm được."
+      },
+      {
+        "text": "Kết luận: $P<1 \\Leftrightarrow 0 \\le x<4$.",
+        "why": "Thử lại: $x=1$ cho $P=\\dfrac{2}{-1}=-2<1$ (đúng); $x=9$ cho $P=4>1$ (đúng là bị loại)."
+      }
+    ],
+    "selfExplain": "Nếu nhân chéo thành $\\sqrt x+1<\\sqrt x-2$ thì được kết quả gì, và vì sao kết quả đó sai?"
+  },
+  "faded": {
+    "problem": "Cho $P=\\dfrac{4}{\\sqrt x+1}$ với $x \\ge 0$. Tìm tất cả **số thực** $x$ để $P$ có giá trị nguyên.",
+    "steps": [
+      {
+        "text": "Với $x \\ge 0$: $\\sqrt x+1 \\ge 1>0$ và tử $4>0$, nên $P>0$."
+      },
+      {
+        "prompt": "Chặn trên $P$.",
+        "item": {
+          "id": "c-cauphu-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Với $x \\ge 0$, khoảng giá trị đầy đủ của $P=\\dfrac{4}{\\sqrt x+1}$ là:",
+          "options": [
+            "$P>0$",
+            "$0<P<4$",
+            "$0<P \\le 4$",
+            "$0 \\le P \\le 4$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E06",
+              "feedback": "Mới chặn dưới thì không biết dừng ở số nguyên nào; dùng $\\sqrt x+1 \\ge 1$ để chặn trên."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "$x=0$ thoả ĐKXĐ và làm mẫu nhỏ nhất, nên dấu bằng xảy ra."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Tử là $4 \\ne 0$ nên $P$ không bao giờ bằng $0$."
+            }
+          },
+          "solution": "$\\sqrt x+1 \\ge 1 \\Rightarrow \\dfrac{4}{\\sqrt x+1} \\le 4$, dấu bằng khi $x=0$; và $P>0$. Vậy $0<P \\le 4$."
+        }
+      },
+      {
+        "text": "Vậy $P$ nguyên khi $P \\in \\{1;2;3;4\\}$. Mỗi trường hợp: $\\sqrt x+1=\\dfrac4P$, tức $\\sqrt x=\\dfrac4P-1$, rồi bình phương."
+      },
+      {
+        "prompt": "Giải trường hợp $P=3$.",
+        "item": {
+          "id": "c-cauphu-f2",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Với $P=3$, tìm $x$ (nhập số nguyên hoặc phân số).",
+          "answer": "1/9",
+          "mistakes": [
+            {
+              "answer": "1/3",
+              "code": "E01",
+              "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
+            },
+            {
+              "answer": "16/9",
+              "code": "E02",
+              "feedback": "$\\sqrt x+1=\\dfrac43$ thì $\\sqrt x=\\dfrac43-1$; con quên chuyển $1$ sang vế phải."
+            }
+          ],
+          "solution": "$\\dfrac{4}{\\sqrt x+1}=3 \\Rightarrow \\sqrt x+1=\\dfrac43 \\Rightarrow \\sqrt x=\\dfrac13 \\Rightarrow x=\\dfrac19$ (thoả $x \\ge 0$)."
+        }
+      },
+      {
+        "prompt": "Kết luận.",
+        "item": {
+          "id": "c-cauphu-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Kết luận: tập các số thực $x$ để $P$ có giá trị nguyên là:",
+          "options": [
+            "$\\{0;1;9\\}$",
+            "$\\{0;\\frac13;1;3\\}$",
+            "$\\{0;\\frac19;1;9\\}$",
+            "$\\{\\frac19;1;9\\}$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E05",
+              "feedback": "Đề hỏi $x$ **thực**, không chỉ $x$ nguyên: trường hợp $P=3$ cho một $x$ không nguyên vẫn thoả mãn."
+            },
+            "1": {
+              "code": "E01",
+              "feedback": "Từ $\\sqrt x=a$ phải bình phương mới ra $x$."
+            },
+            "3": {
+              "code": "E14",
+              "feedback": "$x=0$ thoả ĐKXĐ và cho $P=4$ là số nguyên; con đừng bỏ trường hợp này."
+            }
+          },
+          "solution": "$P=1 \\Rightarrow x=9$; $P=2 \\Rightarrow x=1$; $P=3 \\Rightarrow x=\\frac19$; $P=4 \\Rightarrow x=0$. Kết luận: $x \\in \\{0;\\frac19;1;9\\}$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "c-cauphu-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 4$. Tính giá trị của $P$ khi $x=9$.",
+      "hints": [
+        "Đề hỏi: giá trị của $P$ tại một $x$ cụ thể.",
+        "$x=9$ có thoả ĐKXĐ không? $9$ là số chính phương.",
+        "Tính $\\sqrt9$ trước rồi thay vào tử và mẫu."
+      ],
+      "answer": "4",
+      "mistakes": [
+        {
+          "answer": "10/7",
+          "code": "E04",
+          "feedback": "Thay $x=9$ thì $\\sqrt x=\\sqrt9$; con đã thay $9$ vào chỗ của $\\sqrt x$."
+        },
+        {
+          "answer": "2/5",
+          "code": "E04",
+          "feedback": "Căn bậc hai số học luôn không âm: $\\sqrt9$ là số dương.",
+          "review": "c-coban"
+        }
+      ],
+      "solution": "$x=9$ thoả ĐKXĐ, $\\sqrt9=3$. $P=\\dfrac{3+1}{3-2}=4$."
+    },
+    {
+      "id": "c-cauphu-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+2}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Để tìm $x$ sao cho $P<1$, bước đầu tiên đúng là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi: cách bắt đầu một bất phương trình chứa căn.",
+        "Mẫu $\\sqrt x-3$ luôn dương hay có thể âm?",
+        "Khi chưa biết dấu mẫu, đưa mọi thứ về một vế rồi xét dấu."
+      ],
+      "options": [
+        "Nhân chéo: $\\sqrt x+2<\\sqrt x-3$",
+        "Bình phương hai vế: $P^2<1$",
+        "Xét hiệu $P-1<0$, quy đồng thành một phân thức rồi xét dấu",
+        "Thay thử vài giá trị $x=0;1;4$ để đoán"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Mẫu $\\sqrt x-3$ âm khi $x<9$; nhân với số âm phải đổi chiều, nên không nhân chéo khi chưa biết dấu mẫu."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Bình phương chỉ giữ chiều khi hai vế không âm, mà $P$ có thể âm. Dạng bất phương trình thì xét hiệu."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Thử vài số chỉ để kiểm tra lại; đề hỏi tất cả $x$ nên phải biến đổi tương đương."
+        }
+      },
+      "solution": "Mẫu $\\sqrt x-3<0$ khi $0 \\le x<9$ nên không nhân chéo. Xét $P-1=\\dfrac{5}{\\sqrt x-3}<0$ rồi xét dấu mẫu."
+    },
+    {
+      "id": "c-cauphu-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $P=\\dfrac{3}{\\sqrt x+3}$ với $x \\ge 0$, $x \\ne 9$. Tìm $x$ để $P=\\dfrac13$.",
+      "source": "68 đề – Đề 7, Bài 2.2 (chuyển thể: cho sẵn P đã rút gọn)",
+      "hints": [
+        "Đề hỏi: giá trị $x$ để $P$ bằng một số cho trước.",
+        "Phương trình có $\\sqrt x$ ở mẫu: đưa về dạng $\\sqrt x=a$.",
+        "Mẫu dương nên nhân chéo được, rồi bình phương và đối chiếu ĐK."
+      ],
+      "answer": "36",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E01",
+          "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
+        },
+        {
+          "answer": "144",
+          "code": "E02",
+          "feedback": "Chuyển $3$ sang vế phải phải đổi dấu: $\\sqrt x=9-3$."
+        }
+      ],
+      "solution": "Mẫu dương nên $\\dfrac{3}{\\sqrt x+3}=\\dfrac13 \\Leftrightarrow \\sqrt x+3=9 \\Leftrightarrow \\sqrt x=6 \\Leftrightarrow x=36$ (thoả ĐKXĐ)."
+    },
+    {
+      "id": "c-cauphu-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x-1}$ với $x \\ge 0$, $x \\ne 1$. Tính giá trị của $P$ khi $x=4-2\\sqrt3$.",
+      "hints": [
+        "Đề hỏi: giá trị của $P$ tại $x=4-2\\sqrt3$.",
+        "$4-2\\sqrt3$ là bình phương của một hiệu.",
+        "Tách $4=3+1$, lấy căn, thay vào rồi nhân liên hợp ở mẫu."
+      ],
+      "steps": [
+        {
+          "prompt": "Tính $\\sqrt x$.",
+          "item": {
+            "id": "c-cauphu-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Với $x=4-2\\sqrt3$ (thoả ĐKXĐ), $\\sqrt x$ bằng:",
+            "options": [
+              "$\\sqrt3-1$",
+              "$1-\\sqrt3$",
+              "$2-\\sqrt3$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "$\\sqrt{A^2}=|A|$: căn bậc hai số học không âm, mà $1-\\sqrt3<0$.",
+                "review": "c-coban"
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$(2-\\sqrt3)^2=7-4\\sqrt3$. Viết $4-2\\sqrt3=(\\sqrt3)^2-2\\sqrt3+1$ để thấy bình phương một hiệu.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$4-2\\sqrt3=(\\sqrt3-1)^2$ nên $\\sqrt x=|\\sqrt3-1|=\\sqrt3-1$."
+          }
+        },
+        {
+          "prompt": "Thay vào và trục căn.",
+          "item": {
+            "id": "c-cauphu-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Giá trị của $P$ (mẫu không còn căn, rút gọn đến tận cùng) là:",
+            "options": [
+              "$\\dfrac{\\sqrt3}{\\sqrt3-2}$",
+              "$3+2\\sqrt3$",
+              "$\\dfrac{3+2\\sqrt3}{7}$",
+              "$-3-2\\sqrt3$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Mẫu còn căn: nhân cả tử và mẫu với liên hợp $\\sqrt3+2$ rồi rút gọn."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Mẫu mới $(\\sqrt3)^2-2^2$ là số âm; con đã bỏ mất dấu trừ."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Tích hai biểu thức liên hợp là **hiệu** hai bình phương, không phải tổng.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$P=\\dfrac{\\sqrt3}{\\sqrt3-2}=\\dfrac{\\sqrt3(\\sqrt3+2)}{3-4}=-(3+2\\sqrt3)=-3-2\\sqrt3$."
+          }
+        }
+      ],
+      "solution": "$x=4-2\\sqrt3=(\\sqrt3-1)^2$ thoả ĐKXĐ, $\\sqrt x=\\sqrt3-1$. $P=\\dfrac{\\sqrt3}{\\sqrt3-2}=\\dfrac{\\sqrt3(\\sqrt3+2)}{3-4}=-3-2\\sqrt3$."
+    },
+    {
+      "id": "c-cauphu-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{2\\sqrt x+1}{\\sqrt x+3}$ với $x \\ge 0$. Tìm $x$ để $P>1$.",
+      "hints": [
+        "Đề hỏi: tất cả $x$ để $P$ lớn hơn $1$.",
+        "Bất phương trình chứa căn: xét hiệu $P-1$.",
+        "Quy đồng $P-1$; mẫu luôn dương thì chỉ còn xét dấu tử."
+      ],
+      "steps": [
+        {
+          "prompt": "Xét hiệu $P-1$.",
+          "item": {
+            "id": "c-cauphu-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$P-1$ bằng:",
+            "options": [
+              "$\\dfrac{\\sqrt x+4}{\\sqrt x+3}$",
+              "$\\dfrac{\\sqrt x-2}{\\sqrt x+3}$",
+              "$\\dfrac{3\\sqrt x+4}{\\sqrt x+3}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Dấu trừ trước ngoặc đổi dấu cả hai hạng tử: $-(\\sqrt x+3)=-\\sqrt x-3$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Hiệu $P-1$: phải **trừ** $\\sqrt x+3$ ở tử, không cộng."
+              }
+            },
+            "solution": "$P-1=\\dfrac{2\\sqrt x+1-(\\sqrt x+3)}{\\sqrt x+3}=\\dfrac{\\sqrt x-2}{\\sqrt x+3}$."
+          }
+        },
+        {
+          "prompt": "Xét dấu.",
+          "item": {
+            "id": "c-cauphu-p5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Vì mẫu $\\sqrt x+3>0$, nên $P>1$ tương đương với:",
+            "options": [
+              "$\\sqrt x-2<0$",
+              "$\\sqrt x-2>0$",
+              "$\\sqrt x+3>0$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Mẫu dương thì phân thức cùng dấu với tử; $P-1>0$ cần tử dương."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "$\\sqrt x+3>0$ luôn đúng, nó chỉ cho biết dấu mẫu; điều cần giải là dấu của tử."
+              }
+            },
+            "solution": "$\\dfrac{\\sqrt x-2}{\\sqrt x+3}>0$ với mẫu dương $\\Leftrightarrow \\sqrt x-2>0$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-p5-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Kết luận: $P>1$ khi và chỉ khi:",
+            "options": [
+              "$x>2$",
+              "$x \\ge 4$",
+              "$0 \\le x<4$",
+              "$x>4$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E01",
+                "feedback": "Từ $\\sqrt x>2$ phải bình phương hai vế không âm mới ra điều kiện của $x$."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Bất phương trình chặt: tại $x=4$ thì $P=1$, không lớn hơn $1$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Đây là chiều ngược: $\\sqrt x-2>0$ nghĩa là $\\sqrt x>2$."
+              }
+            },
+            "solution": "$\\sqrt x>2 \\Leftrightarrow x>4$ (thoả $x \\ge 0$). Kết luận: $x>4$."
+          }
+        }
+      ],
+      "solution": "$P-1=\\dfrac{\\sqrt x-2}{\\sqrt x+3}>0$; mẫu dương nên $\\sqrt x>2 \\Leftrightarrow x>4$. Kết luận: $x>4$."
+    },
+    {
+      "id": "c-cauphu-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x-1}{\\sqrt x+2}$ với $x \\ge 0$. So sánh $P$ với $1$.",
+      "hints": [
+        "Đề hỏi: $P$ lớn hơn hay nhỏ hơn $1$.",
+        "So sánh với một số: xét dấu của hiệu.",
+        "Viết $P-1$ thành một phân thức, xét dấu tử và mẫu."
+      ],
+      "steps": [
+        {
+          "prompt": "Xét hiệu $P-1$.",
+          "item": {
+            "id": "c-cauphu-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$P-1$ bằng:",
+            "options": [
+              "$\\dfrac{1}{\\sqrt x+2}$",
+              "$\\dfrac{-3}{\\sqrt x+2}$",
+              "$\\dfrac{2\\sqrt x+1}{\\sqrt x+2}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Dấu trừ trước ngoặc đổi dấu cả hai hạng tử: $-(\\sqrt x+2)=-\\sqrt x-2$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Hiệu $P-1$: phải **trừ** $\\sqrt x+2$ ở tử, không cộng."
+              }
+            },
+            "solution": "$P-1=\\dfrac{\\sqrt x-1-(\\sqrt x+2)}{\\sqrt x+2}=\\dfrac{-3}{\\sqrt x+2}$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Kết luận:",
+            "options": [
+              "$P<1$ với mọi $x \\ge 0$",
+              "$P>1$ với mọi $x \\ge 0$",
+              "$P \\le 1$, dấu bằng khi $x=0$",
+              "$P<1$ khi $x<1$ và $P>1$ khi $x>1$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Tử $-3$ âm, mẫu dương nên hiệu $P-1$ âm."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Tử của $P-1$ là $-3 \\ne 0$ nên hiệu không bao giờ bằng $0$; không có dấu bằng."
+              },
+              "3": {
+                "code": "E06",
+                "feedback": "Con đang xét dấu tử $\\sqrt x-1$ của $P$; cần xét dấu của hiệu $P-1$."
+              }
+            },
+            "solution": "$-3<0$, $\\sqrt x+2>0$ nên $P-1<0$, tức $P<1$ với mọi $x \\ge 0$."
+          }
+        }
+      ],
+      "solution": "$P-1=\\dfrac{-3}{\\sqrt x+2}<0$ vì tử âm, mẫu dương. Kết luận: $P<1$ với mọi $x \\ge 0$."
+    },
+    {
+      "id": "c-cauphu-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tìm tất cả **số nguyên** $x$ để $P$ có giá trị nguyên.",
+      "hints": [
+        "Đề hỏi: các số nguyên $x$ trong ĐKXĐ để $P$ nguyên.",
+        "Tử, mẫu cùng chứa $\\sqrt x$: tách phần nguyên.",
+        "Khi $\\sqrt x$ nguyên, mẫu là ước của phần dư; nhớ $\\sqrt x \\ge 0$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tách phần nguyên.",
+          "item": {
+            "id": "c-cauphu-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P$ viết được thành:",
+            "options": [
+              "$1+\\dfrac{4}{\\sqrt x-3}$",
+              "$1-\\dfrac{4}{\\sqrt x-3}$",
+              "$1-\\dfrac{2}{\\sqrt x-3}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Phần dư là $(\\sqrt x+1)-(\\sqrt x-3)=1+3$, một số dương."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Dấu trừ trước ngoặc: $-(\\sqrt x-3)=-\\sqrt x+3$."
+              }
+            },
+            "solution": "$\\sqrt x+1=(\\sqrt x-3)+4$ nên $P=1+\\dfrac{4}{\\sqrt x-3}$."
+          }
+        },
+        {
+          "prompt": "Tìm $\\sqrt x-3$.",
+          "item": {
+            "id": "c-cauphu-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$x$ nguyên mà không chính phương thì $\\sqrt x$ vô tỉ, $P$ không nguyên. Với $\\sqrt x$ nguyên, $\\sqrt x-3$ là ước của $4$ và thuộc:",
+            "options": [
+              "$\\{1;2;4\\}$",
+              "$\\{-2;-1;1;2;4\\}$",
+              "$\\{-4;-2;-1;1;2;4\\}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Ước của $4$ gồm cả ước âm; $\\sqrt x-3$ âm được khi $x<9$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "$\\sqrt x \\ge 0$ nên $\\sqrt x-3 \\ge -3$: ước $-4$ cho $\\sqrt x<0$, phải loại."
+              }
+            },
+            "solution": "Ước của $4$: $\\pm1;\\pm2;\\pm4$. Vì $\\sqrt x-3 \\ge -3$ nên loại $-4$: còn $\\{-2;-1;1;2;4\\}$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận: các số nguyên $x$ cần tìm là:",
+            "options": [
+              "$\\{16;25;49\\}$",
+              "$\\{1;2;4;5;7\\}$",
+              "$\\{1;4;16;25;49\\}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Con mới lấy ước dương; ước âm $-2$, $-1$ cũng cho $\\sqrt x \\ge 0$."
+              },
+              "1": {
+                "code": "E01",
+                "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương để ra $x$."
+              }
+            },
+            "solution": "$\\sqrt x \\in \\{1;2;4;5;7\\}$ nên $x \\in \\{1;4;16;25;49\\}$, đều thoả $x \\ne 9$. Thử: $P(1)=-1$, $P(4)=-3$, $P(16)=5$, $P(25)=3$, $P(49)=2$."
+          }
+        }
+      ],
+      "solution": "$P=1+\\dfrac{4}{\\sqrt x-3}$. $x$ không chính phương thì $P$ vô tỉ. $\\sqrt x-3 \\in \\{-2;-1;1;2;4\\}$ $\\Rightarrow \\sqrt x \\in \\{1;2;4;5;7\\}$. Kết luận: $x \\in \\{1;4;16;25;49\\}$."
+    },
+    {
+      "id": "c-cauphu-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+1}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 4$. Tìm giá trị nhỏ nhất của $P$.",
+      "source": "68 đề – Đề 3, Bài 2.3 (chuyển thể: cho sẵn P = M : N đã rút gọn)",
+      "hints": [
+        "Đề hỏi: giá trị nhỏ nhất $P$ đạt được, và tại $x$ nào.",
+        "Tử, mẫu cùng chứa $\\sqrt x$: tách $P$ thành số trừ phân số.",
+        "Dùng $\\sqrt x \\ge 0$ để chặn mẫu, kiểm dấu bằng trong ĐKXĐ."
+      ],
+      "steps": [
+        {
+          "prompt": "Tách phần nguyên.",
+          "item": {
+            "id": "c-cauphu-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P$ viết được thành:",
+            "options": [
+              "$1+\\dfrac{1}{\\sqrt x+2}$",
+              "$1-\\dfrac{1}{\\sqrt x+2}$",
+              "$1-\\dfrac{3}{\\sqrt x+2}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$\\sqrt x+1=(\\sqrt x+2)-1$: phần dư là số âm."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$(\\sqrt x+1)-(\\sqrt x+2)=1-2$, không phải $1-2-2$."
+              }
+            },
+            "solution": "$\\sqrt x+1=(\\sqrt x+2)-1$ nên $P=1-\\dfrac{1}{\\sqrt x+2}$."
+          }
+        },
+        {
+          "prompt": "Khi nào $P$ nhỏ nhất?",
+          "item": {
+            "id": "c-cauphu-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P$ nhỏ nhất khi:",
+            "options": [
+              "$\\dfrac{1}{\\sqrt x+2}$ nhỏ nhất, tức $x$ càng lớn càng tốt",
+              "$\\dfrac{1}{\\sqrt x+2}$ lớn nhất, tức $\\sqrt x+2$ nhỏ nhất",
+              "tử $\\sqrt x+1$ nhỏ nhất và mẫu $\\sqrt x+2$ lớn nhất cùng lúc"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "$P=1-\\dfrac{1}{\\sqrt x+2}$: phần bị trừ càng lớn thì $P$ càng nhỏ."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Tử và mẫu cùng tăng theo $\\sqrt x$, không thể vừa nhỏ vừa lớn; hãy dùng dạng đã tách."
+              }
+            },
+            "solution": "$P$ nhỏ nhất khi $\\dfrac{1}{\\sqrt x+2}$ lớn nhất, tức $\\sqrt x+2$ nhỏ nhất. Vì $\\sqrt x \\ge 0$ nên $\\sqrt x+2 \\ge 2$, dấu bằng khi $x=0$."
+          }
+        },
+        {
+          "prompt": "Giá trị nhỏ nhất.",
+          "item": {
+            "id": "c-cauphu-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá trị nhỏ nhất của $P$ bằng bao nhiêu?",
+            "answer": "1/2",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E04",
+                "feedback": "$P=1-\\dfrac{1}{\\sqrt x+2}$ luôn nhỏ hơn $1$; $1$ không phải giá trị $P$ đạt được."
+              },
+              {
+                "answer": "2/3",
+                "code": "E14",
+                "feedback": "$x=0$ thoả ĐKXĐ $x \\ge 0$; đừng bắt đầu từ $x=1$."
+              }
+            ],
+            "solution": "$\\sqrt x+2 \\ge 2 \\Rightarrow \\dfrac{1}{\\sqrt x+2} \\le \\dfrac12 \\Rightarrow P \\ge \\dfrac12$, dấu bằng khi $x=0$ (thoả ĐKXĐ)."
+          }
+        }
+      ],
+      "solution": "$P=1-\\dfrac{1}{\\sqrt x+2} \\ge 1-\\dfrac12=\\dfrac12$ vì $\\sqrt x+2 \\ge 2$. Dấu bằng khi $x=0$. Kết luận: giá trị nhỏ nhất của $P$ là $\\dfrac12$, tại $x=0$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "c-cauphu-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $P=\\dfrac{\\sqrt x+2}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $P$ khi $x=16$.",
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "18/13",
+          "code": "E04",
+          "feedback": "Thay $x=16$ thì $\\sqrt x=\\sqrt{16}$; con đã thay $16$ vào chỗ của $\\sqrt x$."
+        },
+        {
+          "answer": "2/7",
+          "code": "E04",
+          "feedback": "Căn bậc hai số học luôn không âm: $\\sqrt{16}$ là số dương.",
+          "review": "c-coban"
+        }
+      ],
+      "solution": "$x=16$ thoả ĐKXĐ, $\\sqrt{16}=4$. $P=\\dfrac{4+2}{4-3}=6$."
+    },
+    {
+      "id": "c-cauphu-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $P=\\dfrac{6}{\\sqrt x+2}$ với $x \\ge 0$. Tìm $x$ để $P=1$.",
+      "answer": "16",
+      "mistakes": [
+        {
+          "answer": "4",
+          "code": "E01",
+          "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
+        },
+        {
+          "answer": "64",
+          "code": "E02",
+          "feedback": "Chuyển $2$ sang vế phải phải đổi dấu: $\\sqrt x=6-2$."
+        }
+      ],
+      "solution": "$\\dfrac{6}{\\sqrt x+2}=1 \\Leftrightarrow \\sqrt x+2=6 \\Leftrightarrow \\sqrt x=4 \\Leftrightarrow x=16$ (thoả $x \\ge 0$)."
+    },
+    {
+      "id": "c-cauphu-x3",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{6}{\\sqrt x+1}$ với $x \\ge 0$. Tìm $x$ để $P=\\sqrt x$.",
+      "steps": [
+        {
+          "prompt": "Đưa về phương trình ẩn $t=\\sqrt x$.",
+          "item": {
+            "id": "c-cauphu-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Đặt $t=\\sqrt x$ ($t \\ge 0$). Phương trình $P=\\sqrt x$ trở thành:",
+            "options": [
+              "$t^2+t+6=0$",
+              "$t^2+t-6=0$",
+              "$t^2-6=0$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Chuyển $6$ sang vế trái phải đổi dấu: $t(t+1)-6=0$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$t(t+1)=t^2+t$: nhân $t$ với cả hai hạng tử trong ngoặc."
+              }
+            },
+            "solution": "$\\dfrac{6}{t+1}=t \\Leftrightarrow 6=t(t+1) \\Leftrightarrow t^2+t-6=0$ (mẫu $t+1>0$)."
+          }
+        },
+        {
+          "prompt": "Chọn nghiệm.",
+          "item": {
+            "id": "c-cauphu-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Nghiệm thoả $t \\ge 0$ là:",
+            "options": [
+              "$t=2$ và $t=-3$",
+              "$t=3$",
+              "$t=2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "$t=\\sqrt x \\ge 0$ nên phải loại nghiệm âm."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Phân tích lại: $t^2+t-6=(t-2)(t+3)$; kiểm tra dấu bằng cách nhân ngược."
+              }
+            },
+            "solution": "$t^2+t-6=(t-2)(t+3)=0 \\Rightarrow t=2$ (nhận) hoặc $t=-3$ (loại vì $t \\ge 0$)."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "c-cauphu-x3-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tìm $x$.",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E01",
+                "feedback": "$t=\\sqrt x$; con mới tìm được $\\sqrt x$, bình phương để ra $x$."
+              },
+              {
+                "answer": "9",
+                "code": "E02",
+                "feedback": "Phân tích $t^2+t-6$ sai dấu; nghiệm dương đúng là nghiệm của $(t-2)(t+3)=0$."
+              }
+            ],
+            "solution": "$\\sqrt x=2 \\Rightarrow x=4$ (thoả $x \\ge 0$)."
+          }
+        }
+      ],
+      "solution": "Đặt $t=\\sqrt x \\ge 0$: $t^2+t-6=0 \\Leftrightarrow (t-2)(t+3)=0 \\Rightarrow t=2$. Vậy $x=4$. Thử: $P=\\dfrac{6}{3}=2=\\sqrt4$."
+    },
+    {
+      "id": "c-cauphu-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Với $x>0$, cho $Q=\\dfrac{\\sqrt x+1}{\\sqrt x}$. Tìm $x$ để $Q>\\dfrac32$.",
+      "source": "68 đề – Đề 9, Bài 2.3 (chuyển thể: cho sẵn A : B đã rút gọn)",
+      "steps": [
+        {
+          "prompt": "Xét hiệu.",
+          "item": {
+            "id": "c-cauphu-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$Q-\\dfrac32$ bằng:",
+            "options": [
+              "$\\dfrac{2-\\sqrt x}{2\\sqrt x}$",
+              "$\\dfrac{1-2\\sqrt x}{2\\sqrt x}$",
+              "$\\dfrac{\\sqrt x-2}{2\\sqrt x}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Quy đồng mẫu $2\\sqrt x$ phải nhân cả tử $\\sqrt x+1$ với $2$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Giữ đúng thứ tự trừ: $2(\\sqrt x+1)-3\\sqrt x$."
+              }
+            },
+            "solution": "$Q-\\dfrac32=\\dfrac{2(\\sqrt x+1)-3\\sqrt x}{2\\sqrt x}=\\dfrac{2-\\sqrt x}{2\\sqrt x}$."
+          }
+        },
+        {
+          "prompt": "Xét dấu.",
+          "item": {
+            "id": "c-cauphu-x4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Vì $2\\sqrt x>0$ (do $x>0$), $Q>\\dfrac32$ tương đương với:",
+            "options": [
+              "$\\sqrt x>2$",
+              "$\\sqrt x<2$",
+              "$\\sqrt x \\le 2$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$2-\\sqrt x>0$ chuyển vế thành $2>\\sqrt x$; giữ đúng chiều."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Bất phương trình chặt: $\\sqrt x=2$ cho $Q=\\dfrac32$, không lớn hơn."
+              }
+            },
+            "solution": "Mẫu dương nên cần tử $2-\\sqrt x>0 \\Leftrightarrow \\sqrt x<2$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-x4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Kết luận:",
+            "options": [
+              "$x<4$",
+              "$0<x<4$",
+              "$0 \\le x<4$",
+              "$x>4$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Kết hợp ĐKXĐ $x>0$: $\\sqrt x$ chỉ xác định khi $x \\ge 0$, và đề còn cho $x \\ne 0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "ĐKXĐ của đề là $x>0$, nên $x=0$ bị loại."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "$\\sqrt x<2$ nghĩa là $x$ nhỏ hơn $4$, không lớn hơn."
+              }
+            },
+            "solution": "$\\sqrt x<2 \\Leftrightarrow x<4$; kết hợp $x>0$: $0<x<4$."
+          }
+        }
+      ],
+      "solution": "$Q-\\dfrac32=\\dfrac{2-\\sqrt x}{2\\sqrt x}>0 \\Leftrightarrow \\sqrt x<2 \\Leftrightarrow x<4$. Kết hợp $x>0$: $0<x<4$."
+    },
+    {
+      "id": "c-cauphu-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $P=\\dfrac{4}{\\sqrt x+3}$ với $x \\ge 0$, $x \\ne 9$. Tìm giá trị lớn nhất của $P$.",
+      "source": "68 đề – Đề 7, Bài 2.3 (chuyển thể: đổi P)",
+      "steps": [
+        {
+          "prompt": "Chặn $P$.",
+          "item": {
+            "id": "c-cauphu-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Vì $\\sqrt x \\ge 0$ nên:",
+            "options": [
+              "$\\sqrt x+3 \\ge 3$, suy ra $P \\le \\dfrac43$",
+              "$\\sqrt x+3 \\ge 3$, suy ra $P \\ge \\dfrac43$",
+              "$\\sqrt x+3>3$, suy ra $P<\\dfrac43$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Hai vế dương, lấy nghịch đảo phải đổi chiều: mẫu càng lớn thì phân số càng nhỏ."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "$x=0$ thoả ĐKXĐ nên $\\sqrt x$ bằng $0$ được: dấu bằng xảy ra."
+              }
+            },
+            "solution": "$\\sqrt x+3 \\ge 3>0 \\Rightarrow \\dfrac{4}{\\sqrt x+3} \\le \\dfrac43$."
+          }
+        },
+        {
+          "prompt": "Giá trị lớn nhất.",
+          "item": {
+            "id": "c-cauphu-x5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá trị lớn nhất của $P$ bằng bao nhiêu?",
+            "answer": "4/3",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E14",
+                "feedback": "$x=0$ thoả ĐKXĐ $x \\ge 0$; đừng bắt đầu từ $x=1$."
+              },
+              {
+                "answer": "4",
+                "code": "E01",
+                "feedback": "Mẫu nhỏ nhất là $\\sqrt0+3$, không phải $1$."
+              }
+            ],
+            "solution": "$P \\le \\dfrac43$, dấu bằng khi $\\sqrt x=0 \\Leftrightarrow x=0$ (thoả ĐKXĐ)."
+          }
+        }
+      ],
+      "solution": "$\\sqrt x+3 \\ge 3 \\Rightarrow P \\le \\dfrac43$, dấu bằng khi $x=0$. Kết luận: giá trị lớn nhất của $P$ là $\\dfrac43$, tại $x=0$."
+    },
+    {
+      "id": "c-cauphu-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{5}{\\sqrt x+2}$ với $x \\ge 0$, $x \\ne 9$. Tìm tất cả **số thực** $x$ để $P$ có giá trị nguyên.",
+      "source": "68 đề – Đề 5, Bài 2.3 (chuyển thể: cho sẵn P = A.B đã rút gọn)",
+      "steps": [
+        {
+          "prompt": "Chặn $P$.",
+          "item": {
+            "id": "c-cauphu-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với $x \\ge 0$, $x \\ne 9$, ta có:",
+            "options": [
+              "$P>0$",
+              "$0<P<\\dfrac52$",
+              "$0<P \\le 5$",
+              "$0<P \\le \\dfrac52$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Chỉ chặn dưới thì không biết dừng ở số nguyên nào; dùng $\\sqrt x+2 \\ge 2$ để chặn trên."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "$x=0$ thoả ĐKXĐ và làm mẫu nhỏ nhất, nên dấu bằng xảy ra."
+              },
+              "2": {
+                "code": "E01",
+                "feedback": "Mẫu nhỏ nhất là $\\sqrt0+2$, không phải $1$."
+              }
+            },
+            "solution": "$\\sqrt x+2 \\ge 2 \\Rightarrow 0<P \\le \\dfrac52$, dấu bằng khi $x=0$."
+          }
+        },
+        {
+          "prompt": "Các giá trị nguyên của $P$.",
+          "item": {
+            "id": "c-cauphu-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P$ nguyên thì $P$ thuộc:",
+            "options": [
+              "$\\{1;5\\}$",
+              "$\\{1;2\\}$",
+              "$\\{0;1;2\\}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E05",
+                "feedback": "Lấy ước của $5$ là cách làm khi $x$ nguyên; với $x$ thực, chọn số nguyên trong khoảng vừa chặn."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Tử $5 \\ne 0$ nên $P$ không bằng $0$."
+              }
+            },
+            "solution": "Số nguyên trong $\\left(0;\\dfrac52\\right]$ là $1$ và $2$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-x6-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$x \\in \\{\\frac14;9\\}$",
+              "$x=\\frac14$",
+              "$x \\in \\{\\frac12;3\\}$",
+              "Không có $x$ nào"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Trường hợp $P=1$ cho một $x$ mà ĐKXĐ đã loại; đối chiếu lại $x \\ne 9$."
+              },
+              "2": {
+                "code": "E01",
+                "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương rồi mới đối chiếu ĐKXĐ."
+              },
+              "3": {
+                "code": "E05",
+                "feedback": "Con chỉ xét $x$ nguyên; đề hỏi $x$ thực nên $x$ không nguyên vẫn được nhận."
+              }
+            },
+            "solution": "$P=1 \\Rightarrow \\sqrt x=3 \\Rightarrow x=9$ (loại); $P=2 \\Rightarrow \\sqrt x=\\frac12 \\Rightarrow x=\\frac14$ (nhận)."
+          }
+        }
+      ],
+      "solution": "$0<P \\le \\dfrac52$ nên $P \\in \\{1;2\\}$. $P=1 \\Rightarrow x=9$ (loại vì $x \\ne 9$); $P=2 \\Rightarrow \\sqrt x+2=\\dfrac52 \\Rightarrow x=\\dfrac14$. Kết luận: $x=\\dfrac14$."
+    },
+    {
+      "id": "c-cauphu-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{x}{\\sqrt x-1}$ với $x \\ge 0$, $x \\ne 1$. Tìm tất cả giá trị của $x$ thoả mãn $P \\le 4$.",
+      "source": "68 đề – Đề 36, Bài 2.3 (chuyển thể: cho sẵn P = A.B đã rút gọn)",
+      "steps": [
+        {
+          "prompt": "Xét hiệu $P-4$.",
+          "item": {
+            "id": "c-cauphu-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P-4$ bằng:",
+            "options": [
+              "$\\dfrac{(\\sqrt x-2)^2}{\\sqrt x-1}$",
+              "$\\dfrac{(\\sqrt x+2)^2}{\\sqrt x-1}$",
+              "$\\dfrac{x-4}{\\sqrt x-1}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E03",
+                "feedback": "$x-4\\sqrt x+4$ có hạng tử giữa mang dấu trừ: bình phương của một **hiệu**.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Quy đồng: $4=\\dfrac{4(\\sqrt x-1)}{\\sqrt x-1}$; con quên nhân $4$ với mẫu."
+              }
+            },
+            "solution": "$P-4=\\dfrac{x-4(\\sqrt x-1)}{\\sqrt x-1}=\\dfrac{x-4\\sqrt x+4}{\\sqrt x-1}=\\dfrac{(\\sqrt x-2)^2}{\\sqrt x-1}$."
+          }
+        },
+        {
+          "prompt": "Xét dấu.",
+          "item": {
+            "id": "c-cauphu-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Tử $(\\sqrt x-2)^2 \\ge 0$. Vậy $P-4 \\le 0$ khi và chỉ khi:",
+            "options": [
+              "$\\sqrt x-1<0$",
+              "$\\sqrt x-1>0$",
+              "$\\sqrt x-1<0$ hoặc $\\sqrt x-2=0$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Phân thức cũng bằng $0$ khi tử bằng $0$; dấu $\\le$ cho phép trường hợp đó."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Tử không âm thì phân thức không dương khi mẫu **âm**."
+              }
+            },
+            "solution": "$\\dfrac{(\\sqrt x-2)^2}{\\sqrt x-1} \\le 0 \\Leftrightarrow \\sqrt x-1<0$ hoặc tử $=0$ ($\\sqrt x=2$)."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$x=4$",
+              "$0 \\le x<1$ hoặc $x=4$",
+              "$0 \\le x<1$",
+              "$x<1$ hoặc $x=4$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Nhân chéo $x \\le 4(\\sqrt x-1)$ khi chưa xét dấu mẫu: với $\\sqrt x-1<0$ phải đổi chiều."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Thiếu trường hợp tử bằng $0$: khi đó $P=4$ vẫn thoả $P \\le 4$."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Kết hợp ĐKXĐ $x \\ge 0$."
+              }
+            },
+            "solution": "$\\sqrt x<1 \\Leftrightarrow 0 \\le x<1$; $\\sqrt x=2 \\Leftrightarrow x=4$. Cả hai thoả ĐKXĐ."
+          }
+        }
+      ],
+      "solution": "$P-4=\\dfrac{(\\sqrt x-2)^2}{\\sqrt x-1} \\le 0 \\Leftrightarrow \\sqrt x<1$ hoặc $\\sqrt x=2$. Kết hợp ĐKXĐ: $0 \\le x<1$ hoặc $x=4$."
+    },
+    {
+      "id": "c-cauphu-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{x-5}{\\sqrt x-1}$ với $x>0$, $x \\ne 1$. Tìm tất cả giá trị **nguyên** của $x$ để $P$ có giá trị nguyên.",
+      "source": "68 đề – Đề 42, Bài 2.3 (chuyển thể: cho sẵn P = AB đã rút gọn)",
+      "steps": [
+        {
+          "prompt": "Tách phần nguyên.",
+          "item": {
+            "id": "c-cauphu-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$P$ viết được thành:",
+            "options": [
+              "$\\sqrt x+1+\\dfrac{4}{\\sqrt x-1}$",
+              "$\\sqrt x-1-\\dfrac{4}{\\sqrt x-1}$",
+              "$\\sqrt x+1-\\dfrac{4}{\\sqrt x-1}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$x-5=(x-1)-4$: phần dư là số âm."
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "$x-1=(\\sqrt x-1)(\\sqrt x+1)$ (hiệu hai bình phương), nên thương là $\\sqrt x+1$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$x-5=(\\sqrt x-1)(\\sqrt x+1)-4$ nên $P=\\sqrt x+1-\\dfrac{4}{\\sqrt x-1}$."
+          }
+        },
+        {
+          "prompt": "Trường hợp $x$ chính phương.",
+          "item": {
+            "id": "c-cauphu-x8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Nếu $\\sqrt x$ nguyên thì $\\sqrt x-1$ là ước của $4$. Kết hợp $x>0$, $x \\ne 1$, $\\sqrt x-1$ thuộc:",
+            "options": [
+              "$\\{1;2;4\\}$",
+              "$\\{-1;1;2;4\\}$",
+              "$\\{-4;-2;-1;1;2;4\\}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "$\\sqrt x-1=-1$ cho $x=0$, bị loại vì đề cho $x>0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "$\\sqrt x>0$ nên $\\sqrt x-1>-1$: các ước $-2$, $-4$ cho $\\sqrt x<0$, loại."
+              }
+            },
+            "solution": "$\\sqrt x>0$, $\\sqrt x \\ne 1$ nên $\\sqrt x-1>-1$, $\\ne 0$: còn ước $1;2;4$, tức $\\sqrt x \\in \\{2;3;5\\}$."
+          }
+        },
+        {
+          "prompt": "Trường hợp $x$ không chính phương.",
+          "item": {
+            "id": "c-cauphu-x8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Nếu $x$ nguyên không chính phương thì $\\sqrt x$ vô tỉ, và $P=(\\sqrt x+1)\\cdot\\dfrac{x-5}{x-1}$. Khi đó $P$ nguyên khi:",
+            "options": [
+              "Không có $x$ nào",
+              "$x=5$ (khi đó $P=0$)",
+              "$x=5$ hoặc $x=1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Số vô tỉ nhân với $0$ bằng $0$ là số nguyên: xét khi nào $x-5=0$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "$x=1$ làm mẫu bằng $0$, đã bị loại theo ĐKXĐ."
+              }
+            },
+            "solution": "$\\sqrt x+1$ vô tỉ, $\\dfrac{x-5}{x-1}$ hữu tỉ nên $P$ nguyên chỉ khi $x-5=0$, tức $x=5$, $P=0$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "c-cauphu-x8-s4",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận: các giá trị nguyên của $x$ là:",
+            "options": [
+              "$\\{4;9;25\\}$",
+              "$\\{0;4;5;9;25\\}$",
+              "$\\{4;5;9;25\\}$",
+              "$\\{2;3;5\\}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Thiếu trường hợp tử bằng $0$: tại đó $P=0$ là số nguyên."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "$x=0$ bị loại vì ĐKXĐ là $x>0$."
+              },
+              "3": {
+                "code": "E01",
+                "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương để ra $x$."
+              }
+            },
+            "solution": "Chính phương: $x \\in \\{4;9;25\\}$ ($P=-1;1;5$). Không chính phương: $x=5$ ($P=0$). Kết luận: $x \\in \\{4;5;9;25\\}$."
+          }
+        }
+      ],
+      "solution": "$P=\\sqrt x+1-\\dfrac{4}{\\sqrt x-1}$. $\\sqrt x$ nguyên: $\\sqrt x-1 \\in \\{1;2;4\\} \\Rightarrow x \\in \\{4;9;25\\}$. $x$ không chính phương: $P=(\\sqrt x+1)\\dfrac{x-5}{x-1}$ nguyên chỉ khi $x=5$. Kết luận: $x \\in \\{4;5;9;25\\}$."
+    }
+  ]
+}
