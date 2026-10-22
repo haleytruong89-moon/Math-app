@@ -318,14 +318,14 @@
             "prompt": "Chọn lí do.",
             "options": [
               "$\\widehat{ACB}=90^\\circ$ vì là góc nội tiếp chắn nửa đường tròn",
-              "$\\widehat{ACB}=90^\\circ$ vì $OC \\perp AB$",
+              "$\\widehat{ACB}=90^\\circ$ vì góc ở tâm $\\widehat{COB}=90^\\circ$",
               "$\\widehat{ACB}=90^\\circ$ vì tứ giác $CBKH$ nội tiếp"
             ],
             "correct": 0,
             "mistakes": {
               "1": {
-                "code": "E09",
-                "feedback": "$OC \\perp AB$ cho góc ở tâm $\\widehat{COB}=90^\\circ$, không phải $\\widehat{ACB}$; lí do không khớp."
+                "code": "E04",
+                "feedback": "$\\widehat{COB}$ là góc ở tâm chắn cung $CB$, còn $\\widehat{ACB}$ là góc nội tiếp chắn nửa đường tròn $AB$ — hai góc chắn hai cung khác nhau, không suy ra được nhau."
               },
               "2": {
                 "code": "E09",
