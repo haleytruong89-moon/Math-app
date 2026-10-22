@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 22/10/2026 (S8a code xong, PR mở với SQL 0014). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 23/10/2026 (S8a, đợt 6 và Sổ tay đã merge). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -28,7 +28,7 @@
 | **1.** S5 — thiết kế | `p1-plan-reorder` (PR #32) | ✅ 21/10 | Spec `docs/superpowers/specs/2026-10-21-s5-geometry-design.md`; mẫu trên design canvas (hàng "S5 · Học hình"); LT21 (52 KU) |
 | **2.** S4b gọn — tiến độ mốc 8,5/9,5, KU trễ lịch (bỏ mở khoá tay) | `p1-slice-4b` | ✅ 22/10 — PR mở, không SQL | Quy tắc mốc chốt 22/10 (`SPEC.md` §0); phép tính ở `src/lib/learning/milestones.ts` |
 | **3.** S5 — code: Phân tích ngược, C3, C2, Sổ tay, tự vẽ hình | `p1-slice-5` | ✅ 21/10 — PR mở, không SQL | Đợt 5 soạn theo `CONTENT_STANDARD.md` §10 (hạn 15/11); Sổ tay cần hình SVG + duyệt |
-| **4a.** S8a — nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ 22/10 — PR #37, SQL 0014 ✅ đã chạy 22/10 | Kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md`; thiết kế `docs/superpowers/specs/2026-10-22-s8-ai-design.md` (chốt 22/10) |
+| **4a.** S8a — nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 ✅ | Kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md`; thiết kế `docs/superpowers/specs/2026-10-22-s8-ai-design.md` (chốt 22/10) |
 | **4b.** S8b — AI cho con + bộ test + bật/tắt (không SQL) | `p1-slice-8b` | sau bộ test 02–08/11, bật ~cuối 11 | Viết kế hoạch khi bắt đầu, từ thiết kế §6 và code S8a; dùng lỗi thật của pilot; khoá API đã có trên Vercel (19/10) |
 
 ## Phụ huynh
@@ -39,7 +39,8 @@
 - [x] Merge PR #36 (kế hoạch S8).
 - [x] Merge PR #38 (đợt 6 + Sổ tay đã duyệt, 22/10). Gia sư soát 4 KU đợt 6 trước 29/11.
 - [x] S8a: "Áp dụng SQL" 0014 (22/10, thành công).
-- [ ] S8a: kiểm tra `CRON_SECRET` + `ANTHROPIC_API_KEY` trên Vercel → đối chiếu giá model → đọc 2 lệnh hệ thống ở trang AI → merge PR #37 (chi tiết `PROGRESS.md` 22/10).
+- [x] S8a: `CRON_SECRET` + `ANTHROPIC_API_KEY` có trên Vercel; merge PR #37 (23/10).
+- [ ] S8a: bấm "Tạo lại báo cáo tuần trước" để xem nhận xét AI thật lần đầu; đọc 2 lệnh hệ thống ở trang AI; đối chiếu giá model trên trang giá chính thức.
 - [ ] Gia sư soát 4 KU đợt 5 (danh sách điểm cần xem: `PROGRESS.md` 22/10).
 - [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).
