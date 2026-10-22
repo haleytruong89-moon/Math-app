@@ -174,7 +174,7 @@ export function LessonPanel({ unit }: { unit: Unit }) {
       <div className="flex flex-col gap-2"><Label>Bài mẫu</Label><Html html={texToHtml(unit.worked.problem)} />
         {unit.worked.analysis && (
           <div className="rounded-lg border border-border p-3" data-testid="lesson-analysis">
-            <p className="text-xs font-semibold text-muted">Phân tích ngược: cần chứng minh <Html html={texToHtml(unit.worked.analysis.goal)} className="inline" /></p>
+            <p className="text-xs font-semibold text-muted">Phân tích ngược: cần chứng minh <Rich html={texToHtml(unit.worked.analysis.goal)} /></p>
             <ol className="mt-1 list-decimal pl-5">{unit.worked.analysis.steps.map((s, i) => <li key={i}><Html html={texToHtml(s.ask)} className="text-muted" /><Html html={`⇑ ${texToHtml(s.node)}`} /></li>)}</ol>
           </div>
         )}
