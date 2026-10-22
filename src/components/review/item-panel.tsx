@@ -2,6 +2,7 @@ import { texToHtml } from "@/lib/content/tex";
 import { errorLabel } from "@/lib/content/errors";
 import type { Item, Unit } from "@/lib/content/schema";
 import { Rich } from "@/components/lesson/rich";
+import { RightTriangleAltitude, SvgFigure } from "@/components/lesson/figure";
 import { afterOf } from "@/lib/content/grade";
 
 const Html = ({ html, className = "" }: { html: string; className?: string }) => <Rich as="div" html={html} className={className} />;
@@ -144,6 +145,12 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
         <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.level} · {TYPE_LABEL[item.type]}</span>
         {item.source && <span className="rounded-full bg-bg px-2 py-0.5 text-muted">{item.source}</span>}
       </p>
+      {item.figure && (
+        <div className="flex flex-col gap-1">
+          <SvgFigure figure={item.figure} className="max-w-sm" />
+          {item.drawFirst && <p className="text-center font-mono text-xs text-muted">hình ẩn cho tới khi con bấm &ldquo;Đã vẽ xong&rdquo;</p>}
+        </div>
+      )}
       <Html html={texToHtml(item.prompt)} className="font-body text-lg leading-relaxed" />
       <div className="flex flex-col gap-2"><Label>Đáp án đúng</Label><Answer item={item} /></div>
       {item.hints && (
@@ -161,11 +168,13 @@ export function ItemPanel({ item, kind }: { item: Item; kind: "practice" | "exit
 export function LessonPanel({ unit }: { unit: Unit }) {
   return (
     <div className="flex flex-col gap-5 font-body text-sm">
+      {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-sm" />}
+      {unit.figure && unit.figure !== "right-triangle-altitude" && <SvgFigure figure={unit.figure} className="max-w-sm" />}
       <div className="flex flex-col gap-2"><Label>Lý thuyết</Label>{unit.theory.map((t, i) => <Html key={i} html={texToHtml(t)} />)}</div>
       <div className="flex flex-col gap-2"><Label>Bài mẫu</Label><Html html={texToHtml(unit.worked.problem)} />
         {unit.worked.analysis && (
           <div className="rounded-lg border border-border p-3" data-testid="lesson-analysis">
-            <p className="text-xs font-semibold text-muted">Phân tích ngược: cần chứng minh <Html html={texToHtml(unit.worked.analysis.goal)} className="inline" /></p>
+            <p className="text-xs font-semibold text-muted">Phân tích ngược: cần chứng minh <Rich html={texToHtml(unit.worked.analysis.goal)} /></p>
             <ol className="mt-1 list-decimal pl-5">{unit.worked.analysis.steps.map((s, i) => <li key={i}><Html html={texToHtml(s.ask)} className="text-muted" /><Html html={`⇑ ${texToHtml(s.node)}`} /></li>)}</ol>
           </div>
         )}

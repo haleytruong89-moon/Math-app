@@ -36,7 +36,8 @@
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
-| Nội dung đợt 5–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` H6 (đợt 4–7 cũ → 5–8, giữ ngày) |
+| Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | 🟡 PR mở 22/10 — không SQL; merge **sau** #33; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
+| Nội dung đợt 6–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | 🟡 PR mở 21/10 — không SQL (thiết kế #32) |
 
@@ -49,6 +50,32 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 22/10/2026 — Nội dung đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (nhánh `p1-content-5`, không SQL)
+
+Dựa trên nhánh `p1-slice-5` (cần dạng câu S5) → **merge PR #33 trước**, rồi PR này.
+
+### Đã làm
+- 4 KU nháp, mỗi KU 19 câu (khuyết + 8 luyện + 8 kiểm tra), nguồn Đề 1–56; module mới `backfill-hinh` (F3) và `duong-tron` (J); `can-thuc` thêm c-coban, c-truccan.
+- **f3-dongdang**: bài hình đầu tiên theo §10 — phân tích ngược (p4, x3), C3 (p5, x4, x7), C2 (p7, x6), `drawFirst` (p4, p6, p7), sơ đồ suy ngược trong bài mẫu, 11 hình SVG đúng tỉ lệ. **j-coban**: 5 hình.
+- Màn Duyệt hiện hình của câu (kèm ghi chú "hình ẩn tới khi con vẽ xong") và hình của bài; sửa lỗi lồng thẻ (div trong p) ở sơ đồ suy ngược.
+- `CONTENT_STANDARD.md`: E09 (lập luận vòng) áp dụng cả cho câu chứng minh chấm tự động.
+
+### Kiểm tra chất lượng
+- Mọi đáp số và nhiễu tính lại bằng sympy (c-coban 52, c-truccan 84, j-coban 74, f3 28 + các khẳng định hình).
+- Giải độc lập (người giải chỉ thấy đề như con thấy): **76/76** khớp đáp án. Sửa sau khi giải:
+  - c-coban p6 nói rõ "không còn dấu căn và dấu giá trị tuyệt đối"; f3 "thu gọn đến tận cùng".
+  - c-truccan: câu điền số hỏi **hệ số a** (dạng a√b) — vì ô số chấp nhận dạng tương đương nên 6/√3 cũng được tính đúng; 6 đề ghi "rút gọn đến tận cùng" (giữ nhiễu E11 chưa rút gọn).
+  - f3 x4 ô 1: "⇒ tỉ lệ thức [[1]]" để chỉ có một đáp án.
+- `npm test` 162, build OK, e2e 234 PASS.
+
+### Gia sư soát kỹ (tab Kho bài)
+- c-coban x6: giữ điều kiện x≠4 như Đề 31; chọn mã E03 hay E01 ở vài nhiễu.
+- j-coban: mã lỗi của nhiễu; x7 cho sẵn OH=3 (tránh tiếp tuyến, chưa học).
+- c-truccan p7/x7 hơi nghiêng sang rút gọn biểu thức.
+- f3: p7 nhiễu E09 là một dòng đúng nhưng lập luận vòng; x6 dòng "AE/AB=AF/AC" chưa ghi lí do; p4 tầng 4 đánh dấu giả thiết; x3 tầng 1 có phương án đúng nhưng lạc mục tiêu (E06); x5 có thể dễ.
 
 ---
 

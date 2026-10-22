@@ -1,0 +1,638 @@
+{
+  "id": "c-coban",
+  "module": "can-thuc",
+  "order": 2,
+  "title": "Căn thức cơ bản",
+  "status": "draft",
+  "estMinutes": 43,
+  "theory": [
+    "**Cần nhớ trước:** bài **Điều kiện xác định biểu thức căn** — $\\sqrt A$ chỉ có nghĩa khi $A \\ge 0$ và luôn có $\\sqrt A \\ge 0$; cùng **7 hằng đẳng thức** để nhận ra một bình phương như $(\\sqrt5-2)^2$.",
+    "**Quy tắc:** $\\sqrt{A^2}=|A|$ với mọi $A$. Khai phương một tích: $\\sqrt{ab}=\\sqrt a\\cdot\\sqrt b$ khi $a \\ge 0$, $b \\ge 0$. Khai phương một thương: $\\sqrt{\\dfrac ab}=\\dfrac{\\sqrt a}{\\sqrt b}$ khi $a \\ge 0$, $b>0$. Đọc ngược hai quy tắc này để nhân, chia các căn. Đưa thừa số ra ngoài: $\\sqrt{A^2B}=|A|\\sqrt B$ ($B \\ge 0$). Đưa vào trong: $A\\sqrt B=\\sqrt{A^2B}$ nếu $A \\ge 0$; $A\\sqrt B=-\\sqrt{A^2B}$ nếu $A<0$.",
+    "**Vì sao:** $\\sqrt{A^2}$ là số **không âm** có bình phương bằng $A^2$; số đó là $|A|$, chứ không phải $A$ khi $A<0$: $\\sqrt{(-3)^2}=\\sqrt9=3$. Hai số $\\sqrt{ab}$ và $\\sqrt a\\cdot\\sqrt b$ đều không âm và có cùng bình phương $ab$, nên bằng nhau.",
+    "**Bẫy hay gặp:** $\\sqrt{(1-\\sqrt3)^2}=\\sqrt3-1$, **không** phải $1-\\sqrt3$ (số âm). Căn của một tổng **không** tách được: $\\sqrt{9+16}=5$, còn $\\sqrt9+\\sqrt{16}=7$. Đưa ra ngoài phải đến **tận cùng**: $\\sqrt{48}=4\\sqrt3$; dừng ở $2\\sqrt{12}$ là chưa xong. Đưa số âm vào căn: $-2\\sqrt3=-\\sqrt{12}$, không phải $\\sqrt{12}$.",
+    "**Nhận dạng:** “Tính giá trị của $A$ khi $x=…$” → kiểm tra $x$ thỏa điều kiện, tính riêng $\\sqrt x$, thay vào tử và mẫu, rút gọn. “$x$ thỏa mãn $x^2-16=0$” → giải ra $x$ rồi loại giá trị trái điều kiện. “So sánh $3\\sqrt5$ và $2\\sqrt{11}$” → đưa thừa số vào trong căn. Gặp $\\sqrt{a+b}$: **không** dùng quy tắc tích.",
+    "**Thẻ căn thức** (quy tắc → điều kiện): $\\begin{array}{l|l} \\sqrt{A} \\text{ xác định} & A \\ge 0 \\\\ \\dfrac{B}{\\sqrt{A}} \\text{ xác định} & A>0 \\\\ \\sqrt{A^2}=|A| & \\text{mọi } A \\\\ \\sqrt{ab}=\\sqrt a\\cdot\\sqrt b & a \\ge 0,\\ b \\ge 0 \\\\ \\sqrt{\\dfrac ab}=\\dfrac{\\sqrt a}{\\sqrt b} & a \\ge 0,\\ b>0 \\\\ \\sqrt{A^2B}=|A|\\sqrt B & B \\ge 0 \\\\ A\\sqrt B=\\sqrt{A^2B} & A \\ge 0,\\ B \\ge 0 \\\\ A\\sqrt B=-\\sqrt{A^2B} & A<0,\\ B \\ge 0 \\end{array}$ **Hay gặp:** $\\sqrt{12}=2\\sqrt3$, $\\sqrt{18}=3\\sqrt2$, $\\sqrt{20}=2\\sqrt5$, $\\sqrt{27}=3\\sqrt3$, $\\sqrt{48}=4\\sqrt3$, $\\sqrt{50}=5\\sqrt2$."
+  ],
+  "worked": {
+    "problem": "Cho biểu thức $A=\\dfrac{\\sqrt x+1}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $A$ khi $x=\\dfrac{25}{4}$.",
+    "steps": [
+      {
+        "text": "Kiểm tra: $x=\\dfrac{25}{4} \\ge 0$ và $\\dfrac{25}{4} \\ne 9$, nên thay được.",
+        "why": "Chỉ thay giá trị thỏa điều kiện đề cho; nếu $x=9$ thì mẫu bằng $0$."
+      },
+      {
+        "text": "Tính riêng $\\sqrt x=\\sqrt{\\dfrac{25}{4}}=\\dfrac{\\sqrt{25}}{\\sqrt4}=\\dfrac52$.",
+        "why": "Khai phương một thương: căn tử chia căn mẫu."
+      },
+      {
+        "text": "Thay vào: tử $\\sqrt x+1=\\dfrac52+1=\\dfrac72$; mẫu $\\sqrt x-3=\\dfrac52-3=-\\dfrac12$.",
+        "why": "Tính tử và mẫu riêng giúp tránh sai dấu."
+      },
+      {
+        "text": "$A=\\dfrac72:\\left(-\\dfrac12\\right)=\\dfrac72\\cdot(-2)=-7$.",
+        "why": "Chia cho một phân số là nhân với phân số đảo ngược."
+      },
+      {
+        "text": "Kết luận: khi $x=\\dfrac{25}{4}$ thì $A=-7$.",
+        "why": "Bài thi chấm cả câu kết luận."
+      }
+    ],
+    "selfExplain": "Vì sao phải tính $\\sqrt x=\\dfrac52$ trước, thay vì thay thẳng $x=\\dfrac{25}{4}$ vào chỗ $\\sqrt x$?"
+  },
+  "faded": {
+    "problem": "Tính $\\sqrt{(2-\\sqrt5)^2}+\\sqrt{20}$.",
+    "steps": [
+      {
+        "text": "Hạng tử đầu dùng $\\sqrt{A^2}=|A|$; hạng tử sau đưa thừa số ra ngoài dấu căn."
+      },
+      {
+        "prompt": "Bỏ căn của bình phương.",
+        "item": {
+          "id": "c-coban-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "$\\sqrt{(2-\\sqrt5)^2}$ bằng:",
+          "options": [
+            "$2-\\sqrt5$",
+            "$2+\\sqrt5$",
+            "$\\sqrt5-2$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E04",
+              "feedback": "$\\sqrt{A^2}=|A|$; vì $2<\\sqrt5$ nên $2-\\sqrt5<0$, mà căn bậc hai không âm."
+            },
+            "1": {
+              "code": "E04",
+              "feedback": "$|a-b|$ không phải $a+b$; xét dấu của $2-\\sqrt5$ rồi đổi dấu nếu âm."
+            }
+          },
+          "solution": "$2=\\sqrt4<\\sqrt5$ nên $2-\\sqrt5<0$, do đó $\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|=\\sqrt5-2$."
+        }
+      },
+      {
+        "prompt": "Đưa thừa số ra ngoài dấu căn.",
+        "item": {
+          "id": "c-coban-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Viết $\\sqrt{20}=a\\sqrt5$. Tìm $a$.",
+          "answer": "2",
+          "mistakes": [
+            {
+              "answer": "4",
+              "code": "E04",
+              "feedback": "$\\sqrt{4\\cdot5}=\\sqrt4\\cdot\\sqrt5$: thừa số $4$ ra ngoài phải được khai phương."
+            }
+          ],
+          "solution": "$\\sqrt{20}=\\sqrt{4\\cdot5}=\\sqrt4\\cdot\\sqrt5=2\\sqrt5$, nên $a=2$."
+        }
+      },
+      {
+        "text": "Cộng hai hạng tử: $(\\sqrt5-2)+2\\sqrt5$; gộp các hạng tử chứa $\\sqrt5$."
+      },
+      {
+        "prompt": "Kết luận.",
+        "item": {
+          "id": "c-coban-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Kết luận (thu gọn đến tận cùng): $\\sqrt{(2-\\sqrt5)^2}+\\sqrt{20}$ bằng:",
+          "options": [
+            "$\\sqrt5+2$",
+            "$3\\sqrt5-2$",
+            "$\\sqrt5-2+\\sqrt{20}$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E04",
+              "feedback": "Con bỏ căn thành $2-\\sqrt5$; nhưng $2-\\sqrt5<0$ nên $\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2$."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "Chưa thu gọn đến cùng: đưa $\\sqrt{20}$ ra ngoài dấu căn rồi gộp các hạng tử chứa $\\sqrt5$."
+            }
+          },
+          "solution": "$\\sqrt5-2+2\\sqrt5=3\\sqrt5-2$. Kết luận: biểu thức bằng $3\\sqrt5-2$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "c-coban-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tính $\\sqrt{(1-\\sqrt3)^2}$.",
+      "hints": [
+        "Đề hỏi bỏ dấu căn của một bình phương.",
+        "Căn của bình phương bằng giá trị tuyệt đối; $1-\\sqrt3$ âm hay dương?",
+        "Dùng $\\sqrt{A^2}=|A|$ và so sánh $1=\\sqrt1$ với $\\sqrt3$."
+      ],
+      "options": [
+        "$\\sqrt3-1$",
+        "$1-\\sqrt3$",
+        "$1+\\sqrt3$",
+        "$\\pm(1-\\sqrt3)$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "$1-\\sqrt3<0$, mà căn bậc hai luôn không âm: $\\sqrt{A^2}=|A|$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "$|1-\\sqrt3|$ không phải $1+\\sqrt3$; chỉ đổi dấu cả biểu thức khi nó âm."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Căn bậc hai (số học) chỉ cho **một** giá trị không âm, không có $\\pm$."
+        }
+      },
+      "solution": "$1<\\sqrt3$ nên $1-\\sqrt3<0$. Vậy $\\sqrt{(1-\\sqrt3)^2}=|1-\\sqrt3|=\\sqrt3-1$."
+    },
+    {
+      "id": "c-coban-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính $\\sqrt2\\cdot\\sqrt{18}$.",
+      "hints": [
+        "Đề hỏi kết quả của tích hai căn.",
+        "Hai số dưới căn đều không âm → gộp thành một căn.",
+        "Dùng $\\sqrt a\\cdot\\sqrt b=\\sqrt{ab}$, rồi khai phương."
+      ],
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "36",
+          "code": "E03",
+          "feedback": "Con nhân xong quên khai phương: $\\sqrt2\\cdot\\sqrt{18}=\\sqrt{2\\cdot18}$, còn phải lấy căn."
+        },
+        {
+          "answer": "2√5",
+          "code": "E03",
+          "feedback": "Tích hai căn là căn của **tích**, không phải căn của tổng: $\\sqrt a\\cdot\\sqrt b=\\sqrt{ab}$."
+        }
+      ],
+      "solution": "$\\sqrt2\\cdot\\sqrt{18}=\\sqrt{36}=6$."
+    },
+    {
+      "id": "c-coban-p3",
+      "type": "mcq",
+      "level": "L1",
+      "recognition": true,
+      "prompt": "Đề: «Không dùng máy tính, so sánh $4\\sqrt3$ và $3\\sqrt5$.» Bước đầu tiên nên làm gì?",
+      "hints": [
+        "Đề hỏi số nào lớn hơn, không được bấm máy.",
+        "Hai số có hệ số khác nhau và số dưới căn khác nhau → đưa về cùng một dạng.",
+        "Dạng chung dễ so nhất là một căn duy nhất $\\sqrt{\\dots}$."
+      ],
+      "options": [
+        "So sánh hệ số $4>3$ rồi kết luận ngay",
+        "Trục căn thức ở mẫu",
+        "Đưa thừa số vào trong dấu căn, rồi so sánh hai số dưới căn",
+        "Đưa thừa số ra ngoài dấu căn"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Hệ số lớn hơn chưa đủ: số dưới căn bên kia lại lớn hơn. Phải đưa về cùng dạng."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Không có mẫu chứa căn nên không có gì để trục; đây là dạng so sánh hai căn."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$4\\sqrt3$ và $3\\sqrt5$ đã ở dạng gọn nhất; muốn so sánh thì đưa vào trong căn."
+        }
+      },
+      "solution": "So sánh → đưa vào trong căn: $4\\sqrt3=\\sqrt{48}$, $3\\sqrt5=\\sqrt{45}$; $48>45$ nên $4\\sqrt3>3\\sqrt5$."
+    },
+    {
+      "id": "c-coban-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\sqrt{48}-\\sqrt{12}$ (thu gọn đến tận cùng).",
+      "hints": [
+        "Đề hỏi kết quả gọn nhất của hiệu hai căn.",
+        "Hai căn khác nhau không trừ thẳng được → đưa về cùng một căn.",
+        "Tách $48$ và $12$ thành số chính phương nhân $3$, đưa thừa số ra ngoài."
+      ],
+      "options": [
+        "$6$",
+        "$\\sqrt{12}$",
+        "$12\\sqrt3$",
+        "$2\\sqrt3$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "$\\sqrt a-\\sqrt b \\ne \\sqrt{a-b}$; phải đưa về cùng căn $\\sqrt3$ rồi mới trừ."
+        },
+        "1": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn đến cùng: $\\sqrt{12}=\\sqrt{4\\cdot3}$ còn đưa được thừa số ra ngoài."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Thừa số đưa ra ngoài phải khai phương: $\\sqrt{16\\cdot3}=4\\sqrt3$, không phải $16\\sqrt3$."
+        }
+      },
+      "solution": "$\\sqrt{48}=\\sqrt{16\\cdot3}=4\\sqrt3$; $\\sqrt{12}=\\sqrt{4\\cdot3}=2\\sqrt3$. Hiệu: $4\\sqrt3-2\\sqrt3=2\\sqrt3$."
+    },
+    {
+      "id": "c-coban-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho biểu thức $A=\\dfrac{\\sqrt x+1}{\\sqrt x-2}$ với $x \\ge 0$, $x \\ne 4$. Tính giá trị của $A$ khi $x=\\dfrac{9}{25}$.",
+      "hints": [
+        "Đề hỏi giá trị của $A$ tại một $x$ cho trước; làm từng ô.",
+        "Dạng Bài 2 ý 1: kiểm tra điều kiện → tính $\\sqrt x$ → thay vào.",
+        "Khai phương thương: căn tử chia căn mẫu; tính tử, mẫu riêng rồi chia."
+      ],
+      "steps": [
+        {
+          "prompt": "Kiểm tra điều kiện.",
+          "item": {
+            "id": "c-coban-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Giá trị $x=\\dfrac{9}{25}$ có thay vào $A$ được không?",
+            "options": [
+              "Không: $\\dfrac{9}{25}$ không phải số chính phương nên không tính được $\\sqrt x$",
+              "Được: $\\dfrac{9}{25} \\ge 0$ và $\\dfrac{9}{25} \\ne 4$",
+              "Không cần xét: đề đã cho $x$ thì luôn thay được"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Phân số không âm vẫn khai phương được: căn tử chia căn mẫu."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Phải kiểm tra $x$ thỏa điều kiện đề cho; ví dụ $x=4$ làm mẫu bằng $0$."
+              }
+            },
+            "solution": "$\\dfrac{9}{25} \\ge 0$ và $\\dfrac{9}{25} \\ne 4$: thỏa điều kiện, thay được."
+          }
+        },
+        {
+          "prompt": "Tính $\\sqrt x$.",
+          "item": {
+            "id": "c-coban-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $\\sqrt x$ với $x=\\dfrac{9}{25}$.",
+            "answer": "3/5",
+            "mistakes": [
+              {
+                "answer": "3/25",
+                "code": "E03",
+                "feedback": "Khai phương một thương: lấy căn **cả** tử và mẫu, $\\sqrt{\\dfrac ab}=\\dfrac{\\sqrt a}{\\sqrt b}$."
+              },
+              {
+                "answer": "81/625",
+                "code": "E04",
+                "feedback": "Con đã bình phương; khai phương là tìm số không âm có bình phương bằng $\\dfrac{9}{25}$."
+              }
+            ],
+            "solution": "$\\sqrt{\\dfrac{9}{25}}=\\dfrac{\\sqrt9}{\\sqrt{25}}=\\dfrac35$."
+          }
+        },
+        {
+          "prompt": "Thay vào và tính $A$.",
+          "item": {
+            "id": "c-coban-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính giá trị của $A$ (nhập phân số tối giản).",
+            "answer": "-8/7",
+            "mistakes": [
+              {
+                "answer": "8/7",
+                "code": "E01",
+                "feedback": "Mẫu $\\dfrac35-2$ là số âm; tính lại $\\dfrac35-\\dfrac{10}{5}$."
+              },
+              {
+                "answer": "-56/25",
+                "code": "E02",
+                "feedback": "Chia tử cho mẫu chứ không nhân: chia cho phân số là nhân với phân số đảo ngược."
+              }
+            ],
+            "solution": "Tử $\\dfrac35+1=\\dfrac85$; mẫu $\\dfrac35-2=-\\dfrac75$. $A=\\dfrac85:\\left(-\\dfrac75\\right)=-\\dfrac87$."
+          }
+        }
+      ],
+      "solution": "$x=\\dfrac{9}{25}$ thỏa điều kiện; $\\sqrt x=\\dfrac35$; $A=\\dfrac{\\frac85}{-\\frac75}=-\\dfrac87$. Kết luận: khi $x=\\dfrac{9}{25}$ thì $A=-\\dfrac87$."
+    },
+    {
+      "id": "c-coban-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Với $x<2$, rút gọn $\\sqrt{x^2-4x+4}$ (kết quả không còn dấu căn và không còn dấu giá trị tuyệt đối).",
+      "hints": [
+        "Đề hỏi dạng gọn nhất, không còn căn, không còn dấu giá trị tuyệt đối.",
+        "Biểu thức dưới căn là một hằng đẳng thức → căn của một bình phương.",
+        "Viết thành $\\sqrt{(x-2)^2}=|x-2|$, rồi xét dấu $x-2$ khi $x<2$."
+      ],
+      "options": [
+        "$2-x$",
+        "$x-2$",
+        "$|x-2|$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E04",
+          "feedback": "Với $x<2$ thì $x-2<0$; căn bậc hai không âm nên $\\sqrt{(x-2)^2}=|x-2|$, phải đổi dấu."
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Chưa xong: đề cho $x<2$ để con bỏ dấu giá trị tuyệt đối."
+        }
+      },
+      "solution": "$x^2-4x+4=(x-2)^2$, nên $\\sqrt{(x-2)^2}=|x-2|$. Vì $x<2$ nên $x-2<0$, $|x-2|=2-x$."
+    },
+    {
+      "id": "c-coban-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho biểu thức $A=\\dfrac{\\sqrt x+2}{\\sqrt x-5}$ với $x \\ge 0$, $x \\ne 25$. Tính giá trị của $A$ khi $x$ thỏa mãn $x^2-16=0$ (nhập phân số tối giản).",
+      "source": "68 đề – Đề 43, Bài 2 ý 1",
+      "hints": [
+        "Đề hỏi giá trị của $A$; trước hết cần biết $x$ bằng bao nhiêu.",
+        "$x^2-16=0$ cho hai giá trị; giá trị nào thỏa $x \\ge 0$, $x \\ne 25$?",
+        "Giữ giá trị hợp lệ, tính $\\sqrt x$, thay vào tử và mẫu."
+      ],
+      "answer": "-4/3",
+      "mistakes": [
+        {
+          "answer": "-6",
+          "code": "E04",
+          "feedback": "Từ $x^2=16$ tìm được $x$, chứ không phải $\\sqrt x$; tính $\\sqrt x$ từ giá trị $x$ đó."
+        },
+        {
+          "answer": "4/3",
+          "code": "E01",
+          "feedback": "Mẫu $\\sqrt x-5$ âm, nên $A$ mang dấu âm; tính lại mẫu."
+        }
+      ],
+      "solution": "$x^2=16 \\iff x=4$ hoặc $x=-4$; loại $x=-4$ vì $x \\ge 0$. Với $x=4$: $\\sqrt x=2$, $A=\\dfrac{2+2}{2-5}=-\\dfrac43$."
+    },
+    {
+      "id": "c-coban-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho biểu thức $M=\\dfrac{\\sqrt x-1}{\\sqrt x}$ với $x>0$, $x \\ne 1$. Tính $M$ khi $x=0{,}49$ (nhập phân số tối giản).",
+      "source": "68 đề – Đề 4, Bài 2 ý 1",
+      "hints": [
+        "Đề hỏi giá trị của $M$ tại một số thập phân.",
+        "Cần $\\sqrt{0{,}49}$: số nào bình phương lên được $0{,}49$?",
+        "Viết $0{,}49=\\dfrac{49}{100}$ rồi khai phương thương; thay vào và đổi ra phân số."
+      ],
+      "answer": "-3/7",
+      "mistakes": [
+        {
+          "answer": "-93/7",
+          "code": "E01",
+          "feedback": "$\\sqrt{0{,}49}$: thử bình phương ngược lại; $0{,}07^2=0{,}0049$, chưa đúng."
+        },
+        {
+          "answer": "-51/49",
+          "code": "E04",
+          "feedback": "Con thay $x$ vào chỗ $\\sqrt x$; phải khai phương $0{,}49$ trước rồi mới thay."
+        }
+      ],
+      "solution": "$x=0{,}49$ thỏa điều kiện; $\\sqrt{0{,}49}=\\sqrt{\\dfrac{49}{100}}=\\dfrac{7}{10}=0{,}7$. $M=\\dfrac{0{,}7-1}{0{,}7}=\\dfrac{-0{,}3}{0{,}7}=-\\dfrac37$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "c-coban-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đưa thừa số vào trong dấu căn: $-3\\sqrt2$ bằng",
+      "options": [
+        "$\\sqrt{18}$",
+        "$-\\sqrt{18}$",
+        "$-\\sqrt6$",
+        "$\\sqrt{-18}$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "$-3\\sqrt2$ là số âm, còn $\\sqrt{18}$ dương: thừa số âm thì dấu $-$ để lại bên ngoài."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Thừa số đưa vào trong căn phải bình phương: $3\\sqrt2=\\sqrt{3^2\\cdot2}$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Số dưới căn không được âm; với $A<0$: $A\\sqrt B=-\\sqrt{A^2B}$."
+        }
+      },
+      "solution": "$-3<0$ nên $-3\\sqrt2=-\\sqrt{3^2\\cdot2}=-\\sqrt{18}$."
+    },
+    {
+      "id": "c-coban-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính $\\dfrac{\\sqrt{72}}{\\sqrt2}$.",
+      "answer": "6",
+      "mistakes": [
+        {
+          "answer": "36",
+          "code": "E03",
+          "feedback": "Thương hai căn là căn của thương: $\\dfrac{\\sqrt a}{\\sqrt b}=\\sqrt{\\dfrac ab}$, còn phải khai phương."
+        }
+      ],
+      "solution": "$\\dfrac{\\sqrt{72}}{\\sqrt2}=\\sqrt{\\dfrac{72}{2}}=\\sqrt{36}=6$."
+    },
+    {
+      "id": "c-coban-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Không dùng máy tính, so sánh $5\\sqrt2$ và $4\\sqrt3$. Khẳng định nào đúng (cả kết quả lẫn lí do)?",
+      "options": [
+        "$5\\sqrt2<4\\sqrt3$ vì $10<12$",
+        "$5\\sqrt2<4\\sqrt3$ vì $2<3$",
+        "$5\\sqrt2>4\\sqrt3$ vì $5>4$",
+        "$5\\sqrt2>4\\sqrt3$ vì $50>48$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Đưa thừa số vào trong căn phải bình phương nó: $5\\sqrt2=\\sqrt{5^2\\cdot2}$."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Chỉ so số dưới căn khi hệ số bằng nhau; ở đây hệ số khác nhau."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Kết quả đúng nhưng lí do sai: hệ số lớn hơn chưa đủ, phải đưa cả hai vào trong căn."
+        }
+      },
+      "solution": "$5\\sqrt2=\\sqrt{50}$, $4\\sqrt3=\\sqrt{48}$; $50>48$ nên $5\\sqrt2>4\\sqrt3$."
+    },
+    {
+      "id": "c-coban-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\sqrt{50}+\\sqrt8$ (thu gọn đến tận cùng).",
+      "options": [
+        "$7\\sqrt2$",
+        "$\\sqrt{58}$",
+        "$5\\sqrt2+\\sqrt8$",
+        "$9\\sqrt2$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "$\\sqrt a+\\sqrt b \\ne \\sqrt{a+b}$; đưa cả hai về cùng căn rồi mới cộng."
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Chưa thu gọn đến cùng: $\\sqrt8=\\sqrt{4\\cdot2}$ còn đưa thừa số ra ngoài được."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Thừa số đưa ra ngoài phải khai phương: $\\sqrt{4\\cdot2}=2\\sqrt2$, không phải $4\\sqrt2$."
+        }
+      },
+      "solution": "$\\sqrt{50}=5\\sqrt2$, $\\sqrt8=2\\sqrt2$; tổng $7\\sqrt2$."
+    },
+    {
+      "id": "c-coban-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho biểu thức $A=\\dfrac{2\\sqrt x}{\\sqrt x+3}$ với $x \\ge 0$. Tính giá trị của $A$ khi $x=\\dfrac49$ (nhập phân số tối giản).",
+      "answer": "4/11",
+      "mistakes": [
+        {
+          "answer": "8/31",
+          "code": "E04",
+          "feedback": "Con thay $x$ vào chỗ $\\sqrt x$; phải tính $\\sqrt x$ trước rồi mới thay."
+        },
+        {
+          "answer": "4/29",
+          "code": "E03",
+          "feedback": "Khai phương một thương: lấy căn **cả** tử và mẫu, $\\sqrt{\\dfrac49}=\\dfrac{\\sqrt4}{\\sqrt9}$."
+        }
+      ],
+      "solution": "$x=\\dfrac49 \\ge 0$; $\\sqrt x=\\dfrac23$. $A=\\dfrac{2\\cdot\\frac23}{\\frac23+3}=\\dfrac{\\frac43}{\\frac{11}{3}}=\\dfrac{4}{11}$."
+    },
+    {
+      "id": "c-coban-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho biểu thức $A=\\dfrac{x-\\sqrt x+1}{\\sqrt x-1}$ với $x \\ge 0$, $x \\ne 1$, $x \\ne 4$. Tính giá trị của $A$ khi $x$ thỏa mãn $(x-5)^3=64$ (nhập phân số tối giản).",
+      "source": "68 đề – Đề 31, Bài 2 ý 1",
+      "answer": "7/2",
+      "mistakes": [
+        {
+          "answer": "13/2",
+          "code": "E02",
+          "feedback": "Tử là $x-\\sqrt x+1$: hạng tử $\\sqrt x$ mang dấu trừ."
+        },
+        {
+          "answer": "1/8",
+          "code": "E04",
+          "feedback": "Con thay $x$ vào chỗ $\\sqrt x$; tìm $x$ rồi tính $\\sqrt x$ riêng."
+        }
+      ],
+      "solution": "$(x-5)^3=64=4^3 \\iff x-5=4 \\iff x=9$, thỏa điều kiện. $\\sqrt x=3$; $A=\\dfrac{9-3+1}{3-1}=\\dfrac72$."
+    },
+    {
+      "id": "c-coban-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho biểu thức $A=\\dfrac{x+2}{\\sqrt x}$ với $x>0$, $x \\ne 1$. Tính giá trị của $A$ khi $x$ thỏa mãn $x^2-81=0$.",
+      "source": "68 đề – Đề 11, Bài 2 ý 1",
+      "steps": [
+        {
+          "prompt": "Tìm $x$ dùng được.",
+          "item": {
+            "id": "c-coban-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Từ $x^2-81=0$ và điều kiện $x>0$, $x \\ne 1$, giá trị $x$ để thay vào $A$ là:",
+            "options": [
+              "$x=9$ hoặc $x=-9$",
+              "$x=81$",
+              "$x=9$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Còn phải đối chiếu điều kiện $x>0$: một giá trị bị loại."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "$x^2=81$ nghĩa là $x$ bình phương bằng $81$, không phải $x=81$."
+              }
+            },
+            "solution": "$x^2=81 \\iff x=9$ hoặc $x=-9$; điều kiện $x>0$ loại $x=-9$. Vậy $x=9$."
+          }
+        },
+        {
+          "prompt": "Tính $A$.",
+          "item": {
+            "id": "c-coban-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thay giá trị $x$ vừa tìm, tính $A$ (nhập phân số tối giản).",
+            "answer": "11/3",
+            "mistakes": [
+              {
+                "answer": "11/9",
+                "code": "E04",
+                "feedback": "Mẫu là $\\sqrt x$, không phải $x$: tính $\\sqrt x$ trước rồi mới thay."
+              },
+              {
+                "answer": "83/9",
+                "code": "E04",
+                "feedback": "Con đã dùng $x=81$; từ $x^2=81$ phải tìm $x$ trước."
+              }
+            ],
+            "solution": "$x=9$, $\\sqrt x=3$: $A=\\dfrac{9+2}{3}=\\dfrac{11}{3}$."
+          }
+        }
+      ],
+      "solution": "$x^2=81 \\iff x=\\pm9$; điều kiện $x>0$ giữ $x=9$. $A=\\dfrac{9+2}{\\sqrt9}=\\dfrac{11}{3}$. Kết luận: $A=\\dfrac{11}{3}$."
+    },
+    {
+      "id": "c-coban-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho biểu thức $A=\\dfrac{\\sqrt x}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $A$ khi $x=\\dfrac94$.",
+      "source": "68 đề – Đề 48, Bài 2 ý a",
+      "answer": "-1",
+      "mistakes": [
+        {
+          "answer": "-1/3",
+          "code": "E03",
+          "feedback": "Khai phương một thương: lấy căn **cả** tử và mẫu, $\\sqrt{\\dfrac94}=\\dfrac{\\sqrt9}{\\sqrt4}$."
+        },
+        {
+          "answer": "1",
+          "code": "E01",
+          "feedback": "Mẫu $\\sqrt x-3$ âm, nên $A$ mang dấu âm; tính lại mẫu."
+        }
+      ],
+      "solution": "$x=\\dfrac94$ thỏa điều kiện; $\\sqrt x=\\dfrac32$. $A=\\dfrac{\\frac32}{\\frac32-3}=\\dfrac{\\frac32}{-\\frac32}=-1$."
+    }
+  ]
+}

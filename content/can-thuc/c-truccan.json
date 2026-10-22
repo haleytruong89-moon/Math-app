@@ -1,0 +1,746 @@
+{
+  "id": "c-truccan",
+  "module": "can-thuc",
+  "order": 3,
+  "title": "Trục căn thức ở mẫu",
+  "status": "draft",
+  "estMinutes": 42,
+  "theory": [
+    "**Cần nhớ trước:** bài **7 hằng đẳng thức** — hiệu hai bình phương $(x-y)(x+y)=x^2-y^2$; bài **Căn thức cơ bản** — $\\sqrt a\\cdot\\sqrt a=(\\sqrt a)^2=a$ với $a \\ge 0$.",
+    "**Quy tắc:** trục căn thức ở mẫu là nhân **cả tử và mẫu** với cùng một biểu thức khác $0$ để mẫu hết căn. Với $B>0$: $\\dfrac{A}{\\sqrt B}=\\dfrac{A\\sqrt B}{B}$. Với $B \\ge 0$, $B \\ne C^2$: $\\dfrac{A}{\\sqrt B \\pm C}=\\dfrac{A(\\sqrt B \\mp C)}{B-C^2}$. Với $B, C \\ge 0$, $B \\ne C$: $\\dfrac{A}{\\sqrt B \\pm \\sqrt C}=\\dfrac{A(\\sqrt B \\mp \\sqrt C)}{B-C}$. Hai biểu thức chỉ khác dấu ở giữa, như $\\sqrt B+C$ và $\\sqrt B-C$, gọi là **liên hợp** của nhau.",
+    "**Vì sao:** nhân tử và mẫu với cùng một số khác $0$ thì giá trị phân số không đổi. Nhân $\\sqrt b$ với chính nó được $b$, hết căn. Mẫu là tổng hoặc hiệu thì nhân với liên hợp: $(\\sqrt b+c)(\\sqrt b-c)=(\\sqrt b)^2-c^2=b-c^2$, vì hai tích chéo $+c\\sqrt b$ và $-c\\sqrt b$ triệt tiêu nhau.",
+    "**Bẫy hay gặp:** (1) Nhân với chính mẫu: $(\\sqrt3+1)^2=4+2\\sqrt3$ vẫn còn căn — phải **đổi dấu** ở giữa. (2) Mẫu mới là **hiệu** bình phương và giữ đúng thứ tự: $(\\sqrt5+\\sqrt2)(\\sqrt5-\\sqrt2)=5-2$, không phải $5+2$; $(\\sqrt2-3)(\\sqrt2+3)=2-9=-7$. (3) Chỉ nhân mẫu mà quên nhân tử thì giá trị bị đổi. (4) Rút gọn đến cùng: $\\dfrac{6(\\sqrt2+1)}{3}=2(\\sqrt2+1)$, đừng dừng ở phân số còn ước chung.",
+    "**Nhận dạng:** đề ghi “trục căn thức ở mẫu”, “khử căn ở mẫu”, hoặc phải tính một giá trị có căn ở mẫu (như khi thay $x$ vào mẫu $\\sqrt x+a$) → trục căn. **Không cần trục** khi tử có sẵn thừa số giống mẫu: $\\dfrac{\\sqrt{10}+\\sqrt2}{\\sqrt5+1}=\\dfrac{\\sqrt2(\\sqrt5+1)}{\\sqrt5+1}=\\sqrt2$; với $x \\ge 0$: $\\dfrac{x-4}{\\sqrt x+2}=\\dfrac{(\\sqrt x-2)(\\sqrt x+2)}{\\sqrt x+2}=\\sqrt x-2$. Rút gọn biểu thức chứa $x$ thì **quy đồng**, không trục căn từng phân thức; liên hợp giúp tìm mẫu chung.",
+    "**Thẻ trục căn** ($a, b, c>0$): $\\begin{array}{l|l|l} \\text{Mẫu} & \\text{Nhân tử và mẫu với} & \\text{Mẫu mới} \\\\ \\hline \\sqrt b & \\sqrt b & b \\\\ a\\sqrt b & \\sqrt b & ab \\\\ \\sqrt b+c & \\sqrt b-c & b-c^2 \\\\ \\sqrt b-c & \\sqrt b+c & b-c^2 \\\\ c-\\sqrt b & c+\\sqrt b & c^2-b \\\\ \\sqrt b+\\sqrt c & \\sqrt b-\\sqrt c & b-c \\\\ \\sqrt b-\\sqrt c & \\sqrt b+\\sqrt c & b-c \\\\ \\sqrt x+a & \\sqrt x-a & x-a^2\\ (x \\ne a^2) \\end{array}$ **Mẫu chung nhờ liên hợp:** $\\sqrt x-a$ và $\\sqrt x+a$ có mẫu chung $x-a^2$; $a-\\sqrt x$ và $a+\\sqrt x$ có mẫu chung $a^2-x$."
+  ],
+  "worked": {
+    "problem": "Trục căn thức ở mẫu: $\\dfrac{6}{\\sqrt5+\\sqrt2}$.",
+    "steps": [
+      {
+        "text": "Mẫu $\\sqrt5+\\sqrt2$ là tổng hai căn → nhân cả tử và mẫu với biểu thức liên hợp $\\sqrt5-\\sqrt2$ (khác $0$).",
+        "why": "Hiệu hai bình phương $(x+y)(x-y)=x^2-y^2$ làm mất cả hai căn."
+      },
+      {
+        "text": "Mẫu mới: $(\\sqrt5+\\sqrt2)(\\sqrt5-\\sqrt2)=(\\sqrt5)^2-(\\sqrt2)^2=5-2=3$.",
+        "why": "$(\\sqrt5)^2=5$ và $(\\sqrt2)^2=2$; lấy hiệu, đúng thứ tự."
+      },
+      {
+        "text": "Tử mới: $6(\\sqrt5-\\sqrt2)$. Vậy $\\dfrac{6}{\\sqrt5+\\sqrt2}=\\dfrac{6(\\sqrt5-\\sqrt2)}{3}=2(\\sqrt5-\\sqrt2)$.",
+        "why": "Tử và mẫu còn ước chung $3$: rút gọn đến cùng."
+      },
+      {
+        "text": "Kết luận: $\\dfrac{6}{\\sqrt5+\\sqrt2}=2\\sqrt5-2\\sqrt2$.",
+        "why": "Thử bằng máy tính: hai vế cùng xấp xỉ $1{,}644$."
+      }
+    ],
+    "selfExplain": "Vì sao nhân với $\\sqrt5-\\sqrt2$ mà không nhân với chính mẫu $\\sqrt5+\\sqrt2$?"
+  },
+  "faded": {
+    "problem": "Trục căn thức ở mẫu: $\\dfrac{4}{3-\\sqrt5}$.",
+    "steps": [
+      {
+        "text": "Mẫu $3-\\sqrt5$ là hiệu của một số và một căn."
+      },
+      {
+        "prompt": "Chọn biểu thức để nhân cả tử và mẫu.",
+        "item": {
+          "id": "c-truccan-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Để mẫu $3-\\sqrt5$ hết căn, nhân cả tử và mẫu với:",
+          "options": [
+            "$3-\\sqrt5$",
+            "$3+\\sqrt5$",
+            "$\\sqrt5$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E03",
+              "feedback": "Nhân với chính mẫu được $(3-\\sqrt5)^2=14-6\\sqrt5$, vẫn còn căn; phải đổi dấu ở giữa để dùng hiệu hai bình phương.",
+              "review": "f1-hdt"
+            },
+            "2": {
+              "code": "E05",
+              "feedback": "Nhân $\\sqrt5$ chỉ hợp với mẫu là một căn; ở đây $\\sqrt5(3-\\sqrt5)=3\\sqrt5-5$ vẫn còn căn."
+            }
+          },
+          "solution": "Liên hợp của $3-\\sqrt5$ là $3+\\sqrt5$."
+        }
+      },
+      {
+        "prompt": "Tính mẫu sau khi nhân.",
+        "item": {
+          "id": "c-truccan-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Mẫu mới $(3-\\sqrt5)(3+\\sqrt5)$ bằng bao nhiêu?",
+          "answer": "4",
+          "mistakes": [
+            {
+              "answer": "14",
+              "code": "E03",
+              "feedback": "Tích hai biểu thức liên hợp là **hiệu** hai bình phương: $(a+b)(a-b)=a^2-b^2$, không phải tổng.",
+              "review": "f1-hdt"
+            },
+            {
+              "answer": "-2",
+              "code": "E03",
+              "feedback": "Con quên bình phương số hạng $3$ trong hiệu hai bình phương.",
+              "review": "f1-hdt"
+            },
+            {
+              "answer": "-4",
+              "code": "E02",
+              "feedback": "Giữ đúng thứ tự: số hạng đứng trước trong $3-\\sqrt5$ là $3$, nên lấy bình phương của nó trừ $(\\sqrt5)^2$."
+            }
+          ],
+          "solution": "$(3-\\sqrt5)(3+\\sqrt5)=3^2-(\\sqrt5)^2=9-5=4$."
+        }
+      },
+      {
+        "text": "Tử mới: $4(3+\\sqrt5)$; ghép với mẫu vừa tính rồi rút gọn."
+      },
+      {
+        "prompt": "Kết luận.",
+        "item": {
+          "id": "c-truccan-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Kết luận: $\\dfrac{4}{3-\\sqrt5}$ bằng (rút gọn đến tận cùng):",
+          "options": [
+            "$\\dfrac{4(3+\\sqrt5)}{4}$",
+            "$1$",
+            "$3+\\sqrt5$",
+            "$\\dfrac{2(3+\\sqrt5)}{7}$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Tử và mẫu còn thừa số chung; con rút gọn đến cùng rồi mới kết luận."
+            },
+            "1": {
+              "code": "E04",
+              "feedback": "Con mới nhân mẫu mà quên nhân tử; phải nhân **cả** tử và mẫu thì giá trị phân số mới không đổi."
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "Mẫu là hiệu hai bình phương $9-5$, không phải tổng $9+5$.",
+              "review": "f1-hdt"
+            }
+          },
+          "solution": "$\\dfrac{4}{3-\\sqrt5}=\\dfrac{4(3+\\sqrt5)}{9-5}=\\dfrac{4(3+\\sqrt5)}{4}=3+\\sqrt5$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "c-truccan-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Trục căn thức ở mẫu rồi rút gọn $\\dfrac{6}{\\sqrt3}$, viết kết quả dạng $a\\sqrt3$ (không còn căn ở mẫu). Nhập $a$.",
+      "hints": [
+        "Đề hỏi: viết lại phân số sao cho mẫu không còn căn.",
+        "Mẫu chỉ là một căn $\\sqrt3$: nhân với gì để hết căn?",
+        "Nhân cả tử và mẫu với $\\sqrt3$, dùng $\\sqrt3\\cdot\\sqrt3=3$, rồi rút gọn."
+      ],
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "Con nhân tử với $\\sqrt3$ nhưng chưa nhân mẫu; mẫu cũng phải nhân $\\sqrt3$ để thành $\\sqrt3\\cdot\\sqrt3$."
+        },
+        {
+          "answer": "2/3",
+          "code": "E04",
+          "feedback": "$\\sqrt3\\cdot\\sqrt3=(\\sqrt3)^2=3$, không phải $9$."
+        }
+      ],
+      "solution": "$\\dfrac{6}{\\sqrt3}=\\dfrac{6\\sqrt3}{\\sqrt3\\cdot\\sqrt3}=\\dfrac{6\\sqrt3}{3}=2\\sqrt3$, nên $a=2$."
+    },
+    {
+      "id": "c-truccan-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Trục căn thức ở mẫu rồi rút gọn $\\dfrac{5}{2\\sqrt5}$, viết kết quả dạng $a\\sqrt5$ (không còn căn ở mẫu). Nhập $a$ (số nguyên hoặc phân số).",
+      "hints": [
+        "Đề hỏi: khử căn ở mẫu $2\\sqrt5$, viết gọn nhất.",
+        "Mẫu có dạng $a\\sqrt b$: chỉ cần nhân thêm phần căn.",
+        "Nhân cả tử và mẫu với $\\sqrt5$; mẫu thành $2\\cdot5$. Rút gọn với tử."
+      ],
+      "answer": "1/2",
+      "mistakes": [
+        {
+          "answer": "1",
+          "code": "E01",
+          "feedback": "Mẫu $2\\sqrt5\\cdot\\sqrt5=2\\cdot5$; con quên hệ số $2$."
+        },
+        {
+          "answer": "1/10",
+          "code": "E02",
+          "feedback": "Rút gọn phân số phải chia **cả** tử và mẫu cho cùng một số."
+        }
+      ],
+      "solution": "$\\dfrac{5}{2\\sqrt5}=\\dfrac{5\\sqrt5}{2\\sqrt5\\cdot\\sqrt5}=\\dfrac{5\\sqrt5}{10}=\\dfrac{1}{2}\\sqrt5$, nên $a=\\dfrac12$."
+    },
+    {
+      "id": "c-truccan-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Để trục căn thức ở mẫu của $\\dfrac{3}{\\sqrt7-2}$, con nhân cả tử và mẫu với biểu thức nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi: chọn biểu thức nhân vào để mẫu hết căn.",
+        "Mẫu là hiệu của một căn và một số: dòng nào trong thẻ trục căn?",
+        "Hằng đẳng thức nào biến tích hai biểu thức chứa căn thành số không còn căn?"
+      ],
+      "options": [
+        "$\\sqrt7$",
+        "$\\sqrt7-2$",
+        "$2-\\sqrt7$",
+        "$\\sqrt7+2$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Nhân $\\sqrt7$ chỉ hợp với mẫu là một căn; $\\sqrt7(\\sqrt7-2)=7-2\\sqrt7$ vẫn còn căn."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Nhân với chính mẫu được $(\\sqrt7-2)^2=11-4\\sqrt7$, vẫn còn căn; mẫu là tổng/hiệu thì dùng hiệu hai bình phương."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "$(\\sqrt7-2)(2-\\sqrt7)=-(\\sqrt7-2)^2$, vẫn còn căn; biểu thức liên hợp giữ nguyên hai số hạng, chỉ đổi dấu ở giữa."
+        }
+      },
+      "solution": "Mẫu $\\sqrt7-2$ → nhân với liên hợp $\\sqrt7+2$: $(\\sqrt7-2)(\\sqrt7+2)=7-4=3$, hết căn. Kết quả $\\dfrac{3(\\sqrt7+2)}{3}=\\sqrt7+2$."
+    },
+    {
+      "id": "c-truccan-p4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Trục căn thức ở mẫu: $\\dfrac{2}{\\sqrt3+1}$ bằng (rút gọn đến tận cùng):",
+      "hints": [
+        "Đề hỏi: viết lại phân số với mẫu không còn căn, gọn nhất.",
+        "Mẫu là tổng $\\sqrt3+1$: biểu thức liên hợp của nó là gì?",
+        "Dùng $(a+b)(a-b)=a^2-b^2$ cho mẫu, rồi rút gọn với tử."
+      ],
+      "options": [
+        "$\\sqrt3-1$",
+        "$\\dfrac{\\sqrt3-1}{2}$",
+        "$\\sqrt3+1$",
+        "$\\dfrac{2(\\sqrt3-1)}{2}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Mẫu là hiệu hai bình phương: $(\\sqrt3+1)(\\sqrt3-1)=3-1$, không phải $3+1$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con nhân tử với $\\sqrt3+1$, khác biểu thức đã nhân ở mẫu; tử và mẫu phải nhân **cùng** biểu thức liên hợp (đổi dấu)."
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Tử và mẫu còn ước chung $2$; con rút gọn đến cùng."
+        }
+      },
+      "solution": "$\\dfrac{2}{\\sqrt3+1}=\\dfrac{2(\\sqrt3-1)}{(\\sqrt3+1)(\\sqrt3-1)}=\\dfrac{2(\\sqrt3-1)}{3-1}=\\sqrt3-1$."
+    },
+    {
+      "id": "c-truccan-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Với $x \\ge 0$, rút gọn đến tận cùng $\\dfrac{x-1}{\\sqrt x+1}$.",
+      "hints": [
+        "Đề hỏi: viết biểu thức gọn nhất, không còn phân số.",
+        "Tử $x-1$ có viết được thành tích chứa $\\sqrt x+1$ không?",
+        "Với $x \\ge 0$ thì $x=(\\sqrt x)^2$: dùng hiệu hai bình phương cho tử rồi giản ước."
+      ],
+      "options": [
+        "$\\sqrt x+1$",
+        "$\\sqrt x-1$",
+        "$\\dfrac{(x-1)(\\sqrt x-1)}{x-1}$",
+        "$\\dfrac{x-1}{x+1}$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Con giản ước nhầm thừa số: chỉ thừa số giống hệt mẫu $\\sqrt x+1$ mới được giản ước, thừa số còn lại giữ nguyên."
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Kết quả còn thừa số chung $x-1$ ở tử và mẫu; rút gọn tiếp. Nhanh hơn: phân tích tử thành nhân tử rồi giản ước."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Không được bỏ dấu căn ở mẫu: $\\sqrt x+1$ khác $x+1$."
+        }
+      },
+      "solution": "Với $x \\ge 0$: $x-1=(\\sqrt x)^2-1=(\\sqrt x-1)(\\sqrt x+1)$ và $\\sqrt x+1>0$. Nên $\\dfrac{x-1}{\\sqrt x+1}=\\sqrt x-1$. (Trục căn bằng cách nhân $\\sqrt x-1$ thì phải thêm $x \\ne 1$ và dài hơn.)"
+    },
+    {
+      "id": "c-truccan-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Trục căn thức ở mẫu: $\\dfrac{3}{\\sqrt5-\\sqrt2}$.",
+      "hints": [
+        "Đề hỏi: viết lại phân số với mẫu không còn căn, làm từng bước.",
+        "Mẫu là hiệu hai căn: cần biểu thức liên hợp.",
+        "Liên hợp đổi dấu ở giữa; mẫu mới tính bằng $a^2-b^2$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn biểu thức để nhân cả tử và mẫu.",
+          "item": {
+            "id": "c-truccan-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Nhân cả tử và mẫu với:",
+            "options": [
+              "$\\sqrt5-\\sqrt2$",
+              "$\\sqrt5$",
+              "$\\sqrt5+\\sqrt2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "Nhân với chính mẫu được $(\\sqrt5-\\sqrt2)^2=7-2\\sqrt{10}$, vẫn còn căn; phải đổi dấu ở giữa.",
+                "review": "f1-hdt"
+              },
+              "1": {
+                "code": "E05",
+                "feedback": "$\\sqrt5(\\sqrt5-\\sqrt2)=5-\\sqrt{10}$ vẫn còn căn; mẫu là hiệu hai căn thì dùng biểu thức liên hợp."
+              }
+            },
+            "solution": "Liên hợp của $\\sqrt5-\\sqrt2$ là $\\sqrt5+\\sqrt2$."
+          }
+        },
+        {
+          "prompt": "Tính mẫu mới.",
+          "item": {
+            "id": "c-truccan-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Mẫu mới $(\\sqrt5-\\sqrt2)(\\sqrt5+\\sqrt2)$ bằng bao nhiêu?",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E03",
+                "feedback": "Tích hai biểu thức liên hợp là **hiệu** hai bình phương: $(a+b)(a-b)=a^2-b^2$, không phải tổng.",
+                "review": "f1-hdt"
+              },
+              {
+                "answer": "-3",
+                "code": "E02",
+                "feedback": "Giữ đúng thứ tự: bình phương số hạng đứng trước trừ bình phương số hạng đứng sau."
+              }
+            ],
+            "solution": "$(\\sqrt5)^2-(\\sqrt2)^2=5-2=3$."
+          }
+        },
+        {
+          "prompt": "Viết kết quả gọn nhất.",
+          "item": {
+            "id": "c-truccan-p6-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Kết quả trục căn là (rút gọn đến tận cùng):",
+            "options": [
+              "$\\sqrt5+\\sqrt2$",
+              "$\\dfrac{3(\\sqrt5+\\sqrt2)}{3}$",
+              "$\\dfrac{3(\\sqrt5+\\sqrt2)}{7}$",
+              "$-(\\sqrt5+\\sqrt2)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Tử và mẫu còn ước chung $3$; con rút gọn đến cùng."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Mẫu là **hiệu** hai bình phương $5-2$, không phải $5+2$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Mẫu là $5-2$, không phải $2-5$: giữ đúng thứ tự trong hiệu hai bình phương."
+              }
+            },
+            "solution": "$\\dfrac{3(\\sqrt5+\\sqrt2)}{5-2}=\\sqrt5+\\sqrt2$."
+          }
+        }
+      ],
+      "solution": "$\\dfrac{3}{\\sqrt5-\\sqrt2}=\\dfrac{3(\\sqrt5+\\sqrt2)}{(\\sqrt5-\\sqrt2)(\\sqrt5+\\sqrt2)}=\\dfrac{3(\\sqrt5+\\sqrt2)}{3}=\\sqrt5+\\sqrt2$."
+    },
+    {
+      "id": "c-truccan-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho biểu thức $M=\\left(\\dfrac{1}{3-\\sqrt x}-\\dfrac{1}{\\sqrt x+3}\\right)\\cdot\\dfrac{\\sqrt x+3}{\\sqrt x}$ với $x>0$, $x \\ne 9$. Rút gọn $M$.",
+      "source": "68 đề – Đề 20, Bài 2.2a (tách bước)",
+      "hints": [
+        "Đề hỏi: viết $M$ gọn nhất; làm phép tính trong ngoặc trước.",
+        "Hai mẫu $3-\\sqrt x$ và $\\sqrt x+3$ là liên hợp của nhau: tích của chúng ra gì?",
+        "Quy đồng với mẫu chung là tích hai mẫu, rồi nhân với phân thức thứ hai và giản ước."
+      ],
+      "steps": [
+        {
+          "prompt": "Tìm mẫu chung trong ngoặc.",
+          "item": {
+            "id": "c-truccan-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Mẫu chung của $\\dfrac{1}{3-\\sqrt x}$ và $\\dfrac{1}{\\sqrt x+3}$ là:",
+            "options": [
+              "$x-9$",
+              "$9+x$",
+              "$3-x$",
+              "$9-x$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$(3-\\sqrt x)(3+\\sqrt x)$: số hạng đứng trước là $3$, nên bình phương của $3$ đứng trước trong hiệu."
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "Tích hai biểu thức liên hợp là **hiệu** hai bình phương: $(a+b)(a-b)=a^2-b^2$, không phải tổng.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Con quên bình phương số hạng $3$ trong hiệu hai bình phương.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$(3-\\sqrt x)(\\sqrt x+3)=3^2-(\\sqrt x)^2=9-x$."
+          }
+        },
+        {
+          "prompt": "Quy đồng và trừ.",
+          "item": {
+            "id": "c-truccan-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Biểu thức trong ngoặc $\\dfrac{1}{3-\\sqrt x}-\\dfrac{1}{\\sqrt x+3}$ bằng:",
+            "options": [
+              "$0$",
+              "$\\dfrac{2\\sqrt x}{9-x}$",
+              "$\\dfrac{-2\\sqrt x}{9-x}$",
+              "$\\dfrac{6}{9-x}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Dấu trừ trước phân thức thứ hai đổi dấu cả tử: $-(3-\\sqrt x)=-3+\\sqrt x$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Con đặt nhầm thừa số phụ: phân thức có mẫu $3-\\sqrt x$ nhân thêm $\\sqrt x+3$, phân thức kia nhân thêm $3-\\sqrt x$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con cộng hai tử thay vì trừ; trong ngoặc là hiệu hai phân thức, tử thứ hai đứng sau dấu trừ."
+              }
+            },
+            "solution": "$\\dfrac{(\\sqrt x+3)-(3-\\sqrt x)}{9-x}=\\dfrac{2\\sqrt x}{9-x}$."
+          }
+        },
+        {
+          "prompt": "Nhân với phân thức thứ hai và rút gọn.",
+          "item": {
+            "id": "c-truccan-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $M$ được (rút gọn đến tận cùng):",
+            "options": [
+              "$\\dfrac{2(\\sqrt x+3)}{9-x}$",
+              "$\\dfrac{2}{\\sqrt x+3}$",
+              "$\\dfrac{2}{3-\\sqrt x}$",
+              "$\\dfrac{2\\sqrt x}{3-\\sqrt x}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E11",
+                "feedback": "Mẫu $9-x$ còn thừa số chung với tử; phân tích mẫu bằng hiệu hai bình phương rồi rút gọn đến cùng."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con giản ước nhầm thừa số: chỉ thừa số giống hệt nhau ở tử và mẫu mới được giản ước."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Con quên mẫu $\\sqrt x$ của phân thức thứ hai; nhân hai phân thức thì tử nhân tử, mẫu nhân mẫu."
+              }
+            },
+            "solution": "$M=\\dfrac{2\\sqrt x}{(3-\\sqrt x)(3+\\sqrt x)}\\cdot\\dfrac{\\sqrt x+3}{\\sqrt x}=\\dfrac{2}{3-\\sqrt x}$."
+          }
+        }
+      ],
+      "solution": "Mẫu chung $(3-\\sqrt x)(3+\\sqrt x)=9-x$. Trong ngoặc: $\\dfrac{(\\sqrt x+3)-(3-\\sqrt x)}{9-x}=\\dfrac{2\\sqrt x}{9-x}$. Nên $M=\\dfrac{2\\sqrt x}{(3-\\sqrt x)(3+\\sqrt x)}\\cdot\\dfrac{\\sqrt x+3}{\\sqrt x}=\\dfrac{2}{3-\\sqrt x}$."
+    },
+    {
+      "id": "c-truccan-p8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{x}{\\sqrt x+1}$ với $x \\ge 0$. Tính giá trị của $A$ khi $x=2$ (viết kết quả với mẫu không còn căn).",
+      "source": "68 đề – Đề 36, Bài 2.1 (chuyển thể: thay x = 2)",
+      "hints": [
+        "Đề hỏi: thay $x=2$ rồi viết kết quả gọn, mẫu không còn căn.",
+        "Sau khi thay, mẫu có dạng một căn cộng một số: cần biểu thức liên hợp.",
+        "Nhân cả tử và mẫu với liên hợp của mẫu, dùng hiệu hai bình phương."
+      ],
+      "options": [
+        "$2\\sqrt2-2$",
+        "$\\dfrac{2\\sqrt2-2}{3}$",
+        "$2\\sqrt2+2$",
+        "$\\dfrac{2}{3}$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Mẫu là hiệu hai bình phương: $(\\sqrt2+1)(\\sqrt2-1)=2-1$, không phải $2+1$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Tử và mẫu phải nhân **cùng** biểu thức liên hợp (đổi dấu ở giữa); con nhân tử với biểu thức khác."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Thay $x=2$ thì $\\sqrt x$ thành $\\sqrt2$, không phải $2$; mẫu là $\\sqrt2+1$."
+        }
+      },
+      "solution": "$A=\\dfrac{2}{\\sqrt2+1}=\\dfrac{2(\\sqrt2-1)}{(\\sqrt2+1)(\\sqrt2-1)}=\\dfrac{2(\\sqrt2-1)}{2-1}=2\\sqrt2-2$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "c-truccan-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Trục căn thức ở mẫu rồi rút gọn $\\dfrac{10}{\\sqrt5}$, viết kết quả dạng $a\\sqrt5$ (không còn căn ở mẫu). Nhập $a$.",
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "10",
+          "code": "E04",
+          "feedback": "Con nhân tử với $\\sqrt5$ nhưng chưa nhân mẫu; mẫu cũng phải nhân $\\sqrt5$."
+        },
+        {
+          "answer": "2/5",
+          "code": "E04",
+          "feedback": "$\\sqrt5\\cdot\\sqrt5=(\\sqrt5)^2=5$, không phải $25$."
+        }
+      ],
+      "solution": "$\\dfrac{10}{\\sqrt5}=\\dfrac{10\\sqrt5}{5}=2\\sqrt5$, nên $a=2$."
+    },
+    {
+      "id": "c-truccan-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Trục căn thức ở mẫu: $\\dfrac{1}{\\sqrt2-1}$ bằng:",
+      "options": [
+        "$\\sqrt2-1$",
+        "$\\dfrac{\\sqrt2+1}{3}$",
+        "$-\\sqrt2-1$",
+        "$\\sqrt2+1$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Tử và mẫu phải nhân **cùng** biểu thức liên hợp (đổi dấu ở giữa); con nhân tử với biểu thức khác."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Mẫu là hiệu hai bình phương $2-1$, không phải tổng $2+1$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Mẫu là $(\\sqrt2)^2-1^2$, không phải $1-2$: giữ đúng thứ tự trong hiệu hai bình phương."
+        }
+      },
+      "solution": "$\\dfrac{1}{\\sqrt2-1}=\\dfrac{\\sqrt2+1}{(\\sqrt2-1)(\\sqrt2+1)}=\\dfrac{\\sqrt2+1}{2-1}=\\sqrt2+1$."
+    },
+    {
+      "id": "c-truccan-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Rút gọn $\\dfrac{\\sqrt{15}-\\sqrt5}{\\sqrt3-1}$, viết kết quả dạng $a\\sqrt5$ (không còn căn ở mẫu). Nhập $a$ (số nguyên hoặc phân số).",
+      "answer": "1",
+      "mistakes": [
+        {
+          "answer": "1/2",
+          "code": "E03",
+          "feedback": "Mẫu $(\\sqrt3-1)(\\sqrt3+1)$ là hiệu hai bình phương, không phải tổng.",
+          "review": "f1-hdt"
+        },
+        {
+          "answer": "-1",
+          "code": "E02",
+          "feedback": "Mẫu là $3-1$, không phải $1-3$: giữ đúng thứ tự trong hiệu hai bình phương."
+        }
+      ],
+      "solution": "Cách 1: $\\sqrt{15}-\\sqrt5=\\sqrt5(\\sqrt3-1)$, nên phân số bằng $\\sqrt5$. Cách 2: nhân tử và mẫu với $\\sqrt3+1$: tử $\\sqrt{45}+\\sqrt{15}-\\sqrt{15}-\\sqrt5=2\\sqrt5$, mẫu $3-1=2$, được $\\sqrt5$. Vậy $a=1$."
+    },
+    {
+      "id": "c-truccan-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Trục căn thức ở mẫu: $\\dfrac{2}{3-\\sqrt7}$ bằng:",
+      "options": [
+        "$\\dfrac{3+\\sqrt7}{8}$",
+        "$3+\\sqrt7$",
+        "$3-\\sqrt7$",
+        "$-3-\\sqrt7$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Mẫu là hiệu hai bình phương $9-7$, không phải tổng $9+7$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Tử và mẫu phải nhân **cùng** biểu thức liên hợp (đổi dấu ở giữa); con nhân tử với biểu thức khác."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Mẫu là $3^2-(\\sqrt7)^2$, không phải $7-9$: giữ đúng thứ tự trong hiệu hai bình phương."
+        }
+      },
+      "solution": "$\\dfrac{2}{3-\\sqrt7}=\\dfrac{2(3+\\sqrt7)}{9-7}=3+\\sqrt7$."
+    },
+    {
+      "id": "c-truccan-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Với $x \\ge 0$, $x \\ne 1$, trục căn thức ở mẫu của $\\dfrac{2}{\\sqrt x+1}$ được:",
+      "options": [
+        "$\\dfrac{2(\\sqrt x-1)}{x+1}$",
+        "$\\dfrac{2(\\sqrt x+1)}{x-1}$",
+        "$\\dfrac{2(\\sqrt x-1)}{x-1}$",
+        "$\\dfrac{2(\\sqrt x-1)}{1-x}$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Mẫu $(\\sqrt x+1)(\\sqrt x-1)$ là hiệu hai bình phương, không phải tổng.",
+          "review": "f1-hdt"
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Tử và mẫu phải nhân **cùng** biểu thức liên hợp (đổi dấu ở giữa); con nhân tử với biểu thức khác."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Mẫu là $(\\sqrt x)^2-1^2$: giữ đúng thứ tự, số hạng đứng trước bình phương trước."
+        }
+      },
+      "solution": "Nhân tử và mẫu với $\\sqrt x-1 \\ne 0$ (vì $x \\ne 1$): $\\dfrac{2(\\sqrt x-1)}{(\\sqrt x+1)(\\sqrt x-1)}=\\dfrac{2(\\sqrt x-1)}{x-1}$."
+    },
+    {
+      "id": "c-truccan-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x+4}{\\sqrt x+1}$ với $x>0$. Tính giá trị của $A$ khi $x=2$ (viết kết quả với mẫu không còn căn).",
+      "source": "68 đề – Đề 34, Bài 2a",
+      "options": [
+        "$3\\sqrt2-2$",
+        "$\\dfrac{3\\sqrt2-2}{3}$",
+        "$3\\sqrt2+6$",
+        "$4$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Mẫu $(\\sqrt2+1)(\\sqrt2-1)$ là hiệu hai bình phương $2-1$, không phải $2+1$.",
+          "review": "f1-hdt"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Phá ngoặc $(\\sqrt2+4)(\\sqrt2-1)$ sai dấu: $4\\cdot(-1)=-4$."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Không được giản ước $\\sqrt x$ khi nó nằm trong một tổng; chỉ giản ước thừa số chung của tử và mẫu."
+        }
+      },
+      "solution": "$A=\\dfrac{\\sqrt2+4}{\\sqrt2+1}=\\dfrac{(\\sqrt2+4)(\\sqrt2-1)}{2-1}=2-\\sqrt2+4\\sqrt2-4=3\\sqrt2-2$."
+    },
+    {
+      "id": "c-truccan-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Tính $P=\\sqrt{20}-3\\sqrt{45}+\\dfrac{\\sqrt{55}+\\sqrt5}{\\sqrt{11}+1}$. Viết $P$ dạng $a\\sqrt5$ rồi nhập $a$.",
+      "source": "68 đề – Đề 20, Bài 2.1",
+      "answer": "-6",
+      "mistakes": [
+        {
+          "answer": "-4",
+          "code": "E03",
+          "feedback": "Đưa thừa số ra ngoài dấu căn: $\\sqrt{20}=\\sqrt{4\\cdot5}$, lấy căn của thừa số chính phương $4$.",
+          "review": "c-coban"
+        },
+        {
+          "answer": "-37/6",
+          "code": "E03",
+          "feedback": "Mẫu $(\\sqrt{11}+1)(\\sqrt{11}-1)$ là hiệu hai bình phương, không phải tổng.",
+          "review": "f1-hdt"
+        }
+      ],
+      "solution": "$\\sqrt{20}=2\\sqrt5$; $3\\sqrt{45}=9\\sqrt5$; $\\dfrac{\\sqrt{55}+\\sqrt5}{\\sqrt{11}+1}=\\dfrac{\\sqrt5(\\sqrt{11}+1)}{\\sqrt{11}+1}=\\sqrt5$ (hoặc trục căn: $\\dfrac{(\\sqrt{55}+\\sqrt5)(\\sqrt{11}-1)}{10}=\\dfrac{10\\sqrt5}{10}$). Vậy $P=2\\sqrt5-9\\sqrt5+\\sqrt5=-6\\sqrt5$, nên $a=-6$."
+    },
+    {
+      "id": "c-truccan-x8",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{\\sqrt x}{\\sqrt x-3}$ với $x \\ge 0$, $x \\ne 9$. Tính giá trị của $A$ khi $x=3$ (viết kết quả với mẫu không còn căn, rút gọn đến tận cùng).",
+      "source": "68 đề – Đề 48, Bài 2a (chuyển thể: thay x = 3)",
+      "options": [
+        "$\\dfrac{1+\\sqrt3}{2}$",
+        "$-\\dfrac{3+3\\sqrt3}{6}$",
+        "$\\dfrac{1+\\sqrt3}{4}$",
+        "$-\\dfrac{1+\\sqrt3}{2}$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Mẫu là $(\\sqrt3)^2-3^2$, không phải $9-3$: giữ đúng thứ tự, nên mẫu mới là số âm."
+        },
+        "1": {
+          "code": "E11",
+          "feedback": "Tử và mẫu còn ước chung $3$; con rút gọn đến cùng."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Mẫu $(\\sqrt3-3)(\\sqrt3+3)$ là hiệu hai bình phương, không phải tổng.",
+          "review": "f1-hdt"
+        }
+      },
+      "solution": "$A=\\dfrac{\\sqrt3}{\\sqrt3-3}=\\dfrac{\\sqrt3(\\sqrt3+3)}{3-9}=\\dfrac{3+3\\sqrt3}{-6}=-\\dfrac{1+\\sqrt3}{2}$."
+    }
+  ]
+}
