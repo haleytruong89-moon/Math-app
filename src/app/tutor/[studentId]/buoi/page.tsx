@@ -10,8 +10,10 @@ import { loadStudentState } from "@/lib/learning/state";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
 import { TutorTabs } from "@/components/tutor/tutor-tabs";
 import { SessionShort, type ChipUnit } from "@/components/tutor/session-short";
+import { BriefPanel, type BriefRow } from "@/components/tutor/brief-panel";
 
 export const metadata: Metadata = { title: "Buổi dạy — App Toán" };
+export const maxDuration = 60; // "Tạo tóm tắt" waits for AI (2 tries × ≤ 25 s)
 
 const ddmm = (iso: string) => iso.slice(0, 10).split("-").reverse().slice(0, 2).join("/");
 
@@ -25,10 +27,11 @@ export default async function SessionPage(props: PageProps<"/tutor/[studentId]/b
   const { data: student } = await supabase.from("students").select("id, full_name").eq("id", studentId).maybeSingle();
   if (!student) notFound();
 
-  const [state, sessions, confRows] = await Promise.all([
+  const [state, sessions, confRows, brief] = await Promise.all([
     loadStudentState(supabase, student.id, { includeDrafts: true }),
     supabase.from("teaching_sessions").select("id, taught_on, note, created_at").eq("student_id", student.id).eq("tutor_id", tutor.id).order("created_at", { ascending: false }).limit(5),
     supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", student.id).limit(500),
+    supabase.from("ai_reports").select("period, facts, ai, comment_status, created_at").eq("kind", "brief").eq("student_id", student.id).eq("tutor_id", tutor.id).order("created_at", { ascending: false }).limit(1),
   ]);
   const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   const ids = (sessions.data ?? []).map((s) => s.id as string);
@@ -61,6 +64,9 @@ export default async function SessionPage(props: PageProps<"/tutor/[studentId]/b
   return (
     <>
       <TutorTabs studentId={student.id} studentName={student.full_name} active="buoi" />
+      <div className="mx-auto mb-6 max-w-3xl">
+        <BriefPanel studentId={student.id} row={((brief.data ?? [])[0] as BriefRow | undefined) ?? null} />
+      </div>
       <SessionShort studentId={student.id} today={today} minDate={addDays(today, -SESSION_RULES.maxBackdateDays)} units={units} />
       <section className="mx-auto mt-8 max-w-3xl">
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-muted">Buổi bạn đã ghi gần đây</h2>

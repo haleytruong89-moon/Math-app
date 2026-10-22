@@ -12,6 +12,7 @@ import { parseAssignment, parseHomework, readHomeworkForm, reviewNote } from "@/
 import type { ActionState } from "@/components/action-form";
 import { z } from "zod";
 import { loadStudentState } from "@/lib/learning/state";
+import { buildBrief } from "@/lib/ai/reports";
 
 export type SaveSessionState = { ok?: string; error?: string; savedAt?: string };
 
@@ -164,4 +165,16 @@ export async function assignHomework(_p: ActionState, fd: FormData): Promise<Act
   revalidatePath(`/tutor/${studentId.data}`, "layout");
   revalidatePath("/student");
   return { ok: v.items ? `Đã giao ${v.items.length} câu.` : "Đã giao bài." };
+}
+
+/** S8a: the pre-session brief (spec §5.2), stored; the tutor must be actively assigned. */
+export async function createBrief(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const tutor = await requireRole("tutor");
+  const studentId = z.uuid().safeParse(fd.get("studentId"));
+  if (!studentId.success) return { error: "Không tìm thấy học sinh." };
+  if (!(await activeAssignment(createAdminClient(), tutor.id, studentId.data))) return { error: NOT_ASSIGNED };
+  const r = await buildBrief(tutor.id, studentId.data);
+  if (!r.ok) return { error: "Chưa tạo được tóm tắt, thử lại sau." };
+  revalidatePath(`/tutor/${studentId.data}/buoi`);
+  return { ok: "Đã tạo tóm tắt." };
 }
