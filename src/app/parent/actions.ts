@@ -79,3 +79,20 @@ export async function regenerateWeekly(_p: ActionState, fd: FormData): Promise<A
   revalidatePath("/parent/bao-cao");
   return { ok: "Đã tạo báo cáo tuần trước." };
 }
+
+/** S8a: AI for reports and briefs on/off + their model (the student's AI comes with S8b). */
+export async function saveAiSettings(_p: ActionState, fd: FormData): Promise<ActionState> {
+  const parent = await requireRole("parent");
+  const model = fd.get("staffModel");
+  if (!isAiModel(model)) return { error: "Chọn một model trong danh sách." };
+  const { error } = await createAdminClient()
+    .from("ai_settings")
+    .update({ staff_enabled: fd.get("staffEnabled") === "on", staff_model: model, updated_by: parent.id, updated_at: new Date().toISOString() })
+    .eq("id", 1);
+  if (error) {
+    console.error("saveAiSettings", error.message);
+    return { error: "Chưa lưu được, thử lại sau." };
+  }
+  revalidatePath("/parent/ai");
+  return { ok: "Đã lưu." };
+}
