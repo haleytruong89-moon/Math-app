@@ -1,4 +1,4 @@
-// The 48-KU roadmap (LT1, LT17; docs/CURRICULUM.md). Pure module (no Next/React imports) so `node --test` loads it.
+// The 52-KU roadmap (LT1, LT17, LT21; docs/CURRICULUM.md). Pure module (no Next/React imports) so `node --test` loads it.
 import { z } from "zod";
 
 const Id = z.string().regex(/^[a-z0-9-]+$/);
@@ -21,14 +21,30 @@ export const CurriculumUnit = z
     testOut: z.boolean(), // LT4
     batch: z.number().int().min(0).max(10), // content batch (CURRICULUM.md H6)
     priority: z.enum(["P0", "P1", "P2"]), // LT17: P2 = "Học thêm khi dư thời gian", suggested after the track's core
+    phase: z.number().int().min(1).max(4).nullable(), // S4b: study phase of CURRICULUM.md §3.3 (null = P2, no date)
   })
   .strict();
+/** S4b: a study phase (CURRICULUM.md §3.3); a core KU is late once its phase is over and it is not solid (< M3). */
+export const CurriculumPhase = z.object({ n: z.number().int().min(1).max(4), from: IsoDate, to: IsoDate }).strict();
+/** S4b: an exam milestone (CURRICULUM.md §4): every core KU of `phases` solid (≥ M3) by `due`; `mustSolid` = the KUs §4 names. */
+export const CurriculumMilestone = z
+  .object({ id: z.string().min(1), title: z.string().min(1), due: IsoDate, phases: z.array(z.number().int().min(1).max(4)).min(1), mustSolid: z.array(Id) })
+  .strict();
 export const Curriculum = z
-  .object({ start: IsoDate, learnBy: IsoDate, modules: z.array(CurriculumModule).min(1), units: z.array(CurriculumUnit).min(1) })
+  .object({
+    start: IsoDate,
+    learnBy: IsoDate,
+    phases: z.array(CurriculumPhase).min(1),
+    milestones: z.array(CurriculumMilestone),
+    modules: z.array(CurriculumModule).min(1),
+    units: z.array(CurriculumUnit).min(1),
+  })
   .strict();
 
 export type CurriculumModule = z.infer<typeof CurriculumModule>;
 export type CurriculumUnit = z.infer<typeof CurriculumUnit>;
+export type CurriculumPhase = z.infer<typeof CurriculumPhase>;
+export type CurriculumMilestone = z.infer<typeof CurriculumMilestone>;
 export type Curriculum = z.infer<typeof Curriculum>;
 
 type FileModule = { mod: { id: string; domains: string[]; units: string[] }; units: { id: string; module: string; title: string }[] };
@@ -45,6 +61,31 @@ export function checkCurriculum(c: Curriculum, files: FileModule[]): string[] {
   for (const u of c.units)
     if (u.priority !== "P2")
       for (const p of u.prereq) if (byId.get(p)?.priority === "P2") errs.push(`${u.id}: bài lõi ${u.priority} phụ thuộc bài P2 ${p}`);
+  // S4b: phases follow each other; every core KU has one, P2 none; a KU never comes before a prerequisite's phase.
+  const phaseNs = new Set(c.phases.map((p) => p.n));
+  c.phases.forEach((p, i) => {
+    if (p.from > p.to) errs.push(`giai đoạn ${p.n}: from sau to`);
+    if (i > 0 && p.from <= c.phases[i - 1].to) errs.push(`giai đoạn ${p.n}: chồng lên giai đoạn ${c.phases[i - 1].n}`);
+  });
+  if (c.phases.length && c.phases[0].from !== c.start) errs.push(`giai đoạn đầu phải bắt đầu ngày ${c.start}`);
+  for (const u of c.units) {
+    if ((u.phase === null) !== (u.priority === "P2")) errs.push(`${u.id}: ${u.priority === "P2" ? "bài P2 không có giai đoạn" : "bài lõi phải có giai đoạn"}`);
+    if (u.phase !== null && !phaseNs.has(u.phase)) errs.push(`${u.id}: giai đoạn ${u.phase} không có`);
+    for (const p of u.prereq) {
+      const q = byId.get(p);
+      if (u.phase !== null && q?.phase != null && q.phase > u.phase) errs.push(`${u.id}: giai đoạn ${u.phase} trước tiên quyết ${p} (giai đoạn ${q.phase})`);
+    }
+  }
+  for (const m of c.milestones) {
+    for (const n of m.phases) if (!phaseNs.has(n)) errs.push(`mốc ${m.id}: giai đoạn ${n} không có`);
+    const last = c.phases.find((p) => p.n === Math.max(...m.phases));
+    if (last && last.to !== m.due) errs.push(`mốc ${m.id}: hạn ${m.due} phải là ngày cuối giai đoạn ${last.n} (${last.to})`);
+    for (const id of m.mustSolid) {
+      const q = byId.get(id);
+      if (!q) errs.push(`mốc ${m.id}: bài "${id}" không có`);
+      else if (q.phase === null || !m.phases.includes(q.phase)) errs.push(`mốc ${m.id}: bài "${id}" không thuộc các giai đoạn của mốc`);
+    }
+  }
   const mods = new Map(c.modules.map((m) => [m.id, m]));
   if (mods.size !== c.modules.length) errs.push("module id trùng");
 

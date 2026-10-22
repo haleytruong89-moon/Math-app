@@ -1,6 +1,72 @@
 {
   "start": "2026-10-12",
   "learnBy": "2027-03-31",
+  "phases": [
+    {
+      "n": 1,
+      "from": "2026-10-12",
+      "to": "2026-11-22"
+    },
+    {
+      "n": 2,
+      "from": "2026-11-23",
+      "to": "2027-01-10"
+    },
+    {
+      "n": 3,
+      "from": "2027-01-11",
+      "to": "2027-02-21"
+    },
+    {
+      "n": 4,
+      "from": "2027-02-22",
+      "to": "2027-03-31"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "8.5",
+      "title": "Mốc 8,5",
+      "due": "2027-02-21",
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "mustSolid": [
+        "c-rutgon",
+        "c-cauphu",
+        "e-vietets",
+        "k-tugiacnt",
+        "l-tieptuyen",
+        "o-chungminh",
+        "o-dongdang",
+        "p-ghep",
+        "g-giaihpt",
+        "g-chuso",
+        "g-chuyendong",
+        "g-nangsuat",
+        "g-phantram",
+        "g-honhop"
+      ]
+    },
+    {
+      "id": "9.5",
+      "title": "Mốc 9,5",
+      "due": "2027-03-31",
+      "phases": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "mustSolid": [
+        "c-cauphu",
+        "o-thanghang",
+        "o-nangcao"
+      ]
+    }
+  ],
   "modules": [
     {
       "id": "backfill-dai-so",
@@ -136,7 +202,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "f1-pnt",
@@ -151,7 +218,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "f1-tgon",
@@ -167,7 +235,8 @@
       "grading": "scaffolded",
       "testOut": true,
       "batch": 2,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "f1-qd",
@@ -182,7 +251,8 @@
       "grading": "scaffolded",
       "testOut": true,
       "batch": 2,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "c-dkxd",
@@ -197,7 +267,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 3,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "c-coban",
@@ -212,7 +283,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 5,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "c-truccan",
@@ -227,7 +299,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 5,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "c-rutgon",
@@ -242,7 +315,8 @@
       "grading": "scaffolded",
       "testOut": false,
       "batch": 6,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "c-cauphu",
@@ -257,7 +331,8 @@
       "grading": "scaffolded",
       "testOut": false,
       "batch": 6,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "d-ptbh",
@@ -272,7 +347,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 7,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "d-nhamnghiem",
@@ -287,7 +363,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 7,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 2
     },
     {
       "id": "d-thamso",
@@ -302,7 +379,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 7,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "e-viete",
@@ -317,7 +395,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 8,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 3
     },
     {
       "id": "e-vietets",
@@ -333,7 +412,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 8,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 3
     },
     {
       "id": "g-giaihpt",
@@ -346,7 +426,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 4,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "g-chuso",
@@ -361,7 +442,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 4,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 1
     },
     {
       "id": "g-chuyendong",
@@ -376,7 +458,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 4,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "g-nangsuat",
@@ -391,7 +474,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 4,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "g-phantram",
@@ -406,7 +490,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 4,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 1
     },
     {
       "id": "g-honhop",
@@ -421,7 +506,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 8,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 3
     },
     {
       "id": "hq-amgm",
@@ -436,7 +522,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 9,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 4
     },
     {
       "id": "hq-doanhthu",
@@ -452,7 +539,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 10,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 4
     },
     {
       "id": "hq-hinhhoc",
@@ -467,7 +555,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 10,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 4
     },
     {
       "id": "e-giaodiem",
@@ -482,7 +571,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "a-tanso",
@@ -495,7 +585,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "b-phepthu",
@@ -508,7 +599,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "a-bieudo",
@@ -523,7 +615,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 2,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "b-xsuat",
@@ -538,7 +631,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 2,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "p-trunon",
@@ -551,7 +645,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 3,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "b-haib",
@@ -566,7 +661,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 3,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 1
     },
     {
       "id": "p-cau",
@@ -581,7 +677,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 3,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 1
     },
     {
       "id": "p-ghep",
@@ -597,7 +694,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 3,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "htl-1",
@@ -610,7 +708,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 0,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "htl-2",
@@ -625,7 +724,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 0,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "i-giaitgv",
@@ -640,7 +740,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "i-ungdung",
@@ -655,7 +756,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "f-hamso",
@@ -668,7 +770,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "f-parabol",
@@ -683,7 +786,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "f3-dongdang",
@@ -696,7 +800,8 @@
       "grading": "partial",
       "testOut": true,
       "batch": 5,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "f3-tugiac",
@@ -709,7 +814,8 @@
       "grading": "partial",
       "testOut": true,
       "batch": 7,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "j-coban",
@@ -722,7 +828,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 5,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "k-goiintiep",
@@ -737,7 +844,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 6,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "k-tugiacnt",
@@ -752,7 +860,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 6,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 2
     },
     {
       "id": "l-tieptuyen",
@@ -767,7 +876,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 7,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 3
     },
     {
       "id": "o-chungminh",
@@ -783,7 +893,8 @@
       "grading": "tutor",
       "testOut": false,
       "batch": 8,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 3
     },
     {
       "id": "o-dongdang",
@@ -799,7 +910,8 @@
       "grading": "tutor",
       "testOut": false,
       "batch": 8,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 3
     },
     {
       "id": "o-thanghang",
@@ -815,7 +927,8 @@
       "grading": "tutor",
       "testOut": false,
       "batch": 9,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 4
     },
     {
       "id": "o-nangcao",
@@ -830,7 +943,8 @@
       "grading": "tutor",
       "testOut": false,
       "batch": 9,
-      "priority": "P1"
+      "priority": "P1",
+      "phase": 4
     },
     {
       "id": "j-cung",
@@ -845,7 +959,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "m-vitri",
@@ -860,7 +975,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "n-ngoainoi",
@@ -875,7 +991,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "q-dagiac",
@@ -890,7 +1007,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 10,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     }
   ]
 }

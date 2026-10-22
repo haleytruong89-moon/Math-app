@@ -31,15 +31,15 @@
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
 | S8 — AI giảng bài + báo cáo tuần | `p1-slice-8` | ⬜ code ~12–28/11, bật ~cuối 11 (thứ tự 21/10: sau S5) |
-| S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ⬜ 25–27/10 |
+| S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | 🟡 PR mở 22/10 — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
-| Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | 🟡 PR mở 22/10 — không SQL; merge **sau** #33; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
+| Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ Merged 22/10 (PR #34), vẫn nháp — không SQL; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
 | Nội dung đợt 6–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
-| S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | 🟡 PR mở 21/10 — không SQL (thiết kế #32) |
+| S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -50,6 +50,23 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 22/10/2026 — S4b gọn: tiến độ tới mốc 8,5 / 9,5 và bài trễ lịch (nhánh `p1-slice-4b`, không SQL)
+
+Phụ huynh chốt 22/10 (popup): mốc 8,5 = 38 bài lõi GĐ1–3, mốc 9,5 = đủ 43 bài lõi; trễ = hết giai đoạn mà dưới M3. Ghi ở `SPEC.md` §0.
+
+### Đã làm
+- `curriculum.json`: thêm `phases` (4 giai đoạn §3.3), `milestones` (8,5 hạn 21/02/2027; 9,5 hạn 31/03/2027; bài ★ theo §4) và `phase` cho từng KU; `checkCurriculum` kiểm tra (P2 không có giai đoạn, bài không đứng trước giai đoạn của tiên quyết, hạn mốc = ngày cuối giai đoạn).
+- `src/lib/learning/milestones.ts` (thuần, S8 dùng lại): số bài vững (mức hiển thị ≥ M3), bài ★, "theo lịch lẽ ra đã vững", số bài cần/tuần, bài trễ.
+- Tổng quan phụ huynh: mục **Tiến độ tới mốc** (2 thẻ, thanh tiến độ có vạch "theo lịch"), **Cần chú ý** thêm một mục gom các bài trễ (ghi rõ bài con chưa mở được vì chưa soạn / chưa duyệt), ô bài trễ tô vàng.
+
+### Kiểm thử
+- Unit 168 (thêm `milestones.test.ts` 4, `curriculum.test.ts` +2). E2E 235 PASS (`overview-flow` +1: 0/38, 0/43, giai đoạn, nhịp; sau chốt 1/38). Đã xem thử trạng thái trễ bằng ngày giả (không commit).
+
+### Còn mở
+- Số tuần còn lại tính cả 2 tuần Tết (17–18) — nếu muốn trừ Tết thì sửa một chỗ trong `milestones.ts`.
 
 ---
 
