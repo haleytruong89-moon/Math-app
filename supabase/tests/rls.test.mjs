@@ -28,6 +28,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0010_p1_hints.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0011_p1_review_runs.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0012_p1_content_review.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0013_p1_item_homework.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0014_p1_ai.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -208,7 +209,7 @@ check('student reads own test-out state', (await as('nguyen@example.com',`select
 // 0010: attempts.hint_level (S6b, AI2)
 const hl = (v) => db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, hint_level) select id, 'htl-1', 'htl-1-p1', 'practice', '1', true, ${v} from public.students where full_name='Hạnh Nguyên'`).then(()=>'ok', e=>'ERROR '+e.message);
 check('hint_level 0–3 accepted', [await hl(0), await hl(3)], ['ok', 'ok']);
-check('hint_level outside 0–3 refused', [isErr(await hl(4)), isErr(await hl(-1))], [true, true]);
+check('hint_level outside 0–4 refused (0–3 in 0010, 4 = AI since 0014)', [isErr(await hl(5)), isErr(await hl(-1))], [true, true]);
 check('hint_level defaults to 0 for older writers', (await db.query(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct) select id, 'htl-1', 'htl-1-p2', 'practice', '1', true from public.students where full_name='Hạnh Nguyên' returning hint_level`)).rows[0].hint_level, 0);
 check('student reads own hint_level', (await as('nguyen@example.com',`select max(hint_level)::int m from public.attempts where item_id = 'htl-1-p1'`))[0]?.m, 3);
 // 0011: review_runs (audit H1) — server-planned review runs, one open run per student
@@ -251,6 +252,38 @@ check('items need a unit', isErr(await q13(`insert into public.homework (student
 check('items: 1–20, no empty list', isErr(await q13(`insert into public.homework (student_id, tutor_id, unit_id, items, task, due_on) values (${nguyen13}, ${tutor13}, 'g-giaihpt', '{}', 'x', current_date)`)), true);
 check('items must belong to the unit', isErr(await q13(`insert into public.homework (student_id, tutor_id, unit_id, items, task, due_on) values (${nguyen13}, ${tutor13}, 'g-giaihpt', array['htl-1-p1'], 'x', current_date)`)), true);
 check('student reads own item homework', (await as('nguyen@example.com',`select cardinality(items)::int n from public.homework where items is not null`))[0]?.n, 2);
+// 0014: AI (S8) — settings, spend, reports/briefs, conversations, test set
+const q14 = (sql) => db.query(sql).then(()=>'ok', e=>'ERROR '+e.message);
+const nguyen14 = `(select id from public.students where full_name='Hạnh Nguyên')`;
+const an14 = `(select id from public.students where full_name='Đăng An')`;
+const tutor14 = `(select id from auth.users where email='trang@example.com')`;
+const parent14 = `(select id from auth.users where email='me@example.com')`;
+check('ai settings: one row, student AI off', (await db.query(`select student_enabled, staff_enabled, staff_model from public.ai_settings`)).rows, [{ student_enabled: false, staff_enabled: true, staff_model: 'claude-haiku-5-5' }]);
+check('ai settings: no second row', isErr(await q14(`insert into public.ai_settings (id) values (2)`)), true);
+check('ai settings: student AI needs a passed prompt version', isErr(await q14(`update public.ai_settings set student_enabled = true`)), true);
+check('parent reads ai settings', (await as('me@example.com','select count(*)::int c from public.ai_settings'))[0].c, 1);
+check('tutor and student read no ai settings', [(await as('trang@example.com','select count(*)::int c from public.ai_settings'))[0].c, (await as('nguyen@example.com','select count(*)::int c from public.ai_settings'))[0].c], [0, 0]);
+check('service_role logs a call', await q14(`insert into public.ai_usage (kind, student_id, model, input_tokens, output_tokens, cost_micros, month) values ('weekly', ${nguyen14}, 'claude-haiku-5-5', 1000, 100, 150, '2026-10')`), 'ok');
+check('usage: unknown kind refused', isErr(await q14(`insert into public.ai_usage (kind, model, input_tokens, output_tokens, cost_micros, month) values ('chat', 'claude-haiku-5-5', 1, 1, 1, '2026-10')`)), true);
+check('only the parent reads usage', [(await as('me@example.com','select count(*)::int c from public.ai_usage'))[0].c, (await as('trang@example.com','select count(*)::int c from public.ai_usage'))[0].c, (await as('nguyen@example.com','select count(*)::int c from public.ai_usage'))[0].c], [1, 0, 0]);
+check('weekly report saved', await q14(`insert into public.ai_reports (kind, student_id, period, facts, comment_status) values ('weekly', ${nguyen14}, '2026-10-19', '{}', 'off')`), 'ok');
+check('one weekly report per student and week', isErr(await q14(`insert into public.ai_reports (kind, student_id, period, facts, comment_status) values ('weekly', ${nguyen14}, '2026-10-19', '{}', 'off')`)), true);
+check('a brief needs its tutor', isErr(await q14(`insert into public.ai_reports (kind, student_id, period, facts, comment_status) values ('brief', ${nguyen14}, 'x/2026-10-08/2026-10-22', '{}', 'none')`)), true);
+check('status ok needs the AI part', isErr(await q14(`insert into public.ai_reports (kind, student_id, period, facts, comment_status) values ('weekly', ${nguyen14}, '2026-10-12', '{}', 'ok')`)), true);
+check('brief saved', await q14(`insert into public.ai_reports (kind, student_id, tutor_id, period, facts, ai, comment_status, model) values ('brief', ${nguyen14}, ${tutor14}, 'trang/2026-10-08/2026-10-22', '{}', '{"points":[]}', 'ok', 'claude-haiku-5-5')`), 'ok');
+check('parent reads reports and briefs', (await as('me@example.com','select count(*)::int c from public.ai_reports'))[0].c, 2);
+check('tutor reads only her briefs', (await as('trang@example.com','select kind from public.ai_reports')), [{ kind: 'brief' }]);
+check('student reads no reports', (await as('nguyen@example.com','select count(*)::int c from public.ai_reports'))[0].c, 0);
+check('hint level 4 (AI before answering) accepted', await q14(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, hint_level) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', '1', true, 4)`), 'ok');
+check('hint level 5 refused', isErr(await q14(`insert into public.attempts (student_id, unit_id, item_id, mode, answer, correct, hint_level) values (${nguyen14}, 'htl-1', 'htl-1-p2', 'practice', '1', true, 5)`)), true);
+check('ai message saved', await q14(`insert into public.ai_messages (student_id, unit_id, item_id, mode, thread, role, content, day) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', gen_random_uuid(), 'student', 'Con chưa hiểu bước 2', current_date)`), 'ok');
+check('ai message: unknown role refused', isErr(await q14(`insert into public.ai_messages (student_id, unit_id, item_id, mode, thread, role, content, day) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', gen_random_uuid(), 'teacher', 'x', current_date)`)), true);
+check('ai message: a flag needs its time', isErr(await q14(`insert into public.ai_messages (student_id, unit_id, item_id, mode, thread, role, content, day, flag) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', gen_random_uuid(), 'ai', 'x', current_date, 'student')`)), true);
+check('ai messages: student own, parent, tutor; not another student', [(await as('nguyen@example.com','select count(*)::int c from public.ai_messages'))[0].c, (await as('me@example.com','select count(*)::int c from public.ai_messages'))[0].c, (await as('trang@example.com','select count(*)::int c from public.ai_messages'))[0].c, (await as('an@example.com','select count(*)::int c from public.ai_messages'))[0].c], [1, 1, 1, 0]);
+check('eval case saved', await q14(`insert into public.ai_eval_cases (unit_id, item_id, mode, stage, answer, error_code, question, created_by) values ('htl-1', 'htl-1-p1', 'practice', 'after', '2', 'E01', 'Con chưa hiểu vì sao sai', ${parent14})`), 'ok');
+check('eval result: 6 scores 0–2 or none', [isErr(await q14(`insert into public.ai_eval_results (case_id, model, prompt_version, output, scores, math_wrong, scored_at) values ((select max(id) from public.ai_eval_cases), 'claude-haiku-5-5', '0123456789ab', 'x', '{2,2,2,2,2}', false, now())`)), await q14(`insert into public.ai_eval_results (case_id, model, prompt_version, output) values ((select max(id) from public.ai_eval_cases), 'claude-haiku-5-5', '0123456789ab', 'x')`)], [true, 'ok']);
+check('only the parent reads the test set', [(await as('me@example.com','select count(*)::int c from public.ai_eval_results'))[0].c, (await as('trang@example.com','select count(*)::int c from public.ai_eval_cases'))[0].c], [1, 0]);
+check('nobody writes AI tables directly', [isErr(await as('me@example.com',`update public.ai_settings set staff_enabled = false`)) || (await db.query(`select staff_enabled from public.ai_settings`)).rows[0].staff_enabled === true, isErr(await as('nguyen@example.com',`insert into public.ai_messages (student_id, unit_id, item_id, mode, thread, role, content, day) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', gen_random_uuid(), 'student', 'x', current_date)`))], [true, true]);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor reads no item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
 check('locked tutor reads no priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);
@@ -258,4 +291,6 @@ check('locked tutor sees no review runs', (await as('trang@example.com','select 
 check('locked tutor sees no sessions', (await as('trang@example.com','select count(*)::int c from public.teaching_sessions'))[0].c, 0);
 check('locked tutor sees no homework', (await as('trang@example.com','select count(*)::int c from public.homework'))[0].c, 0);
 check('locked tutor sees no confirmations', (await as('trang@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);
+check('locked tutor reads no briefs', (await as('trang@example.com','select count(*)::int c from public.ai_reports'))[0].c, 0);
+check('locked tutor reads no ai messages', (await as('trang@example.com','select count(*)::int c from public.ai_messages'))[0].c, 0);
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);
