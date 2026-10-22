@@ -27,6 +27,12 @@ await sql(`
 
 await page.goto(`${BASE}/parent`);
 ok("numbers: 0/10 at M3+, 0 overdue, 1 flag", (await page.getByTestId("stat-m3").innerText()).includes("0/10") && (await page.getByTestId("stat-overdue").innerText()).includes("0") && (await page.getByTestId("stat-flags").innerText()).includes("1"));
+// S4b: milestone cards over the whole roadmap (38 / 43 core KUs), the current phase, a pace figure.
+ok("milestones: 0/38 to 8.5, 0/43 to 9.5, phase and pace shown",
+  (await page.getByTestId("milestone-8.5").getByTestId("milestone-solid").innerText()).startsWith("0/38") &&
+  (await page.getByTestId("milestone-9.5").getByTestId("milestone-solid").innerText()).startsWith("0/43") &&
+  /giai đoạn \d|Đã hết lịch/.test(await page.getByTestId("phase").innerText()) &&
+  /bài\/tuần|bài$/.test(await page.getByTestId("milestone-8.5").getByTestId("milestone-pace").innerText()));
 const flag = page.getByTestId("flag-htl-1");
 ok("flag: proposal vs system + session note", (await flag.getByText(/đề xuất M3/).count()) === 1 && (await flag.getByText(/Hệ thống M1/).count()) === 1 && (await flag.getByText(/Con làm tốt trên lớp/).count()) === 1);
 ok("missed: yesterday's scheduled session", (await page.getByTestId("missed").count()) === 1 && (await page.getByTestId("missed").getByText(/chưa ghi buổi dạy/).count()) === 1);
@@ -38,7 +44,7 @@ await flag.waitFor({ state: "detached" });
 const c = await sql(`select level, system_level, note, proposal_session_id is not null as linked from public.parent_confirmations`);
 ok("db: confirmation saved with system snapshot", c.length === 1 && c[0].level === 3 && c[0].system_level === 1 && c[0].linked === true && c[0].note === "Đã xem bài trên lớp", JSON.stringify(c));
 await page.reload();
-ok("after confirm: 1/10 at M3+, no flag, map says 'bố mẹ chốt'", (await page.getByTestId("stat-m3").innerText()).includes("1/10") && (await page.getByTestId("stat-flags").innerText()).includes("0") && (await page.getByTestId("unit-htl-1").getByText(/bố mẹ chốt/).count()) === 1);
+ok("after confirm: 1/10 at M3+, 1/38 to 8.5, no flag, map says 'bố mẹ chốt'", (await page.getByTestId("stat-m3").innerText()).includes("1/10") && (await page.getByTestId("milestone-8.5").getByTestId("milestone-solid").innerText()).startsWith("1/38") && (await page.getByTestId("stat-flags").innerText()).includes("0") && (await page.getByTestId("unit-htl-1").getByText(/bố mẹ chốt/).count()) === 1);
 await page.screenshot({ path: `${shots}/2-after-confirm.png`, fullPage: true });
 
 await sql(`insert into public.teaching_sessions (student_id, tutor_id, taught_on) select student_id, tutor_id, '${yesterday}' from public.tutor_assignments where ended_at is null`);

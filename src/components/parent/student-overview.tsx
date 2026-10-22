@@ -6,6 +6,9 @@ import { confirmLevel } from "@/app/parent/actions";
 import { loadStudentState } from "@/lib/learning/state";
 import { RULES, vnDate, type AttemptRow, type Level } from "@/lib/learning/rules";
 import { needsTutor } from "@/lib/content/curriculum";
+import { curriculum } from "@/lib/content";
+import { currentPhase, lateUnits, milestoneProgress } from "@/lib/learning/milestones";
+import { LateNotice, MilestoneCards } from "@/components/parent/milestones";
 import {
   displayLevel, isoWeekday, latestByUnit, mismatchFlags, missedSessions, weekSummary,
   type AssignmentRow, type ConfirmationRow, type ProposalRow,
@@ -50,6 +53,13 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
   });
   const m3 = units.filter((x) => x.shown.level >= 3).length;
   const overdue = state.units.filter((u) => u.review?.dueOn && u.review.dueOn < today).length;
+  // S4b: milestones over the whole roadmap; a KU the student can't see yet counts at M0.
+  const roadmap = curriculum();
+  const visible = new Set(state.units.map((u) => u.unit.id));
+  const milestoneInput = { levels: new Map(units.map(({ u, shown }) => [u.unit.id, shown.level as Level])), withContent: visible, today };
+  const progress = milestoneProgress(roadmap, milestoneInput);
+  const late = lateUnits(roadmap, milestoneInput);
+  const lateIds = new Set(late.map((u) => u.id));
   const unitOf = (uid: string) => state.units.find((u) => u.unit.id === uid);
   const workHref = (uid?: string) => `/parent/students/${id}/work${uid ? `?unit=${uid}` : ""}`;
 
@@ -62,6 +72,8 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
         <Stat testid="stat-overdue" value={String(overdue)} label="Bài ôn quá hạn" href="#ban-do" warn={overdue > 0} />
         <Stat testid="stat-flags" value={String(flags.length)} label="Cờ lệch đánh giá cần chốt" href="#can-chu-y" warn={flags.length > 0} />
       </div>
+
+      <MilestoneCards progress={progress} phase={currentPhase(roadmap.phases, today)} />
 
       <h3 id="can-chu-y" className="mt-8 font-display text-base font-semibold">Cần chú ý</h3>
       <ul className="mt-3 flex flex-col gap-3">
@@ -117,7 +129,8 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
             : {tutorName.get(m.tutorId) ?? "Gia sư"} chưa ghi buổi dạy.
           </li>
         ))}
-        {!flags.length && !missed.length && (
+        <LateNotice late={late} visible={visible} />
+        {!flags.length && !missed.length && !late.length && (
           <li className="rounded-xl border border-dashed border-border p-4 text-sm text-muted">Không có gì cần chú ý.</li>
         )}
       </ul>
@@ -126,7 +139,10 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
       <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Bản đồ các bài">
         {units.map(({ u, shown }) => (
           <li key={u.unit.id} data-testid={`unit-${u.unit.id}`}>
-            <Link href={workHref(u.unit.id)} className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3 hover:border-accent">
+            <Link
+              href={workHref(u.unit.id)}
+              className={`flex items-center gap-3 rounded-xl border p-3 hover:border-accent ${lateIds.has(u.unit.id) ? "border-warn bg-warn-soft" : "border-border bg-surface"}`}
+            >
               <span
                 className={`grid size-9 shrink-0 place-items-center rounded-full font-mono text-xs font-medium ${LEVEL_BG[shown.level as Level]} ${shown.level >= 2 ? "text-on-accent" : "text-ink"}`}
               >
@@ -139,6 +155,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
                   {shown.confirmed && " · bố mẹ chốt"}
                   {u.entry && needsTutor(u.entry) && <span className="text-warn" data-testid="tutor-badge"> · cần gia sư xác nhận</span>}
                   {u.review?.dueOn && u.review.dueOn < today && " · ôn quá hạn"}
+                  {lateIds.has(u.unit.id) && <span className="text-warn" data-testid="late-badge"> · trễ lịch</span>}
                 </span>
               </span>
             </Link>

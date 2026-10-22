@@ -77,10 +77,12 @@ for (const m of modules) {
   fs.writeFileSync(path.join(root, m.id, "module.json"), JSON.stringify({ id: m.id, title: m.title, domains: m.domains, units: m.units.map(([u]) => u) }, null, 2) + "\n");
   m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : u === "fg-1" ? fg1() : unit(u, m.id, i + 1, t), null, 2) + "\n"));
 }
-const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0", grading = "full") => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading, testOut, batch, priority });
+const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0", grading = "full", phase = 1) => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading, testOut, batch, priority, phase: priority === "P2" ? null : phase });
 const curriculum = {
   start: "2026-10-12",
   learnBy: "2027-03-31",
+  phases: [{ n: 1, from: "2026-10-12", to: "2027-03-31" }],
+  milestones: [{ id: "8.5", title: "Mốc 8,5", due: "2027-03-31", phases: [1], mustSolid: ["fa-2"] }],
   modules: modules.map(({ id, title, domains }) => ({ id, title, domains })).concat([{ id: "fx-later", title: "Chưa soạn thử", domains: ["Q"] }]),
   units: [
     C("fz-1", "backfill-fx", "Bù lỗ hổng thử 1", "A", 10, 1, [], true),

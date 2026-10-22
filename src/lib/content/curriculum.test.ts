@@ -73,3 +73,24 @@ test("LT17: each KU's priority matches CURRICULUM.md; no core (P0/P1) KU depends
   c.units.find((u) => u.priority === "P0")!.prereq.push(c.units.find((u) => u.priority === "P2")!.id);
   assert.match(checkCurriculum(c, files()).join(), /phụ thuộc bài P2/);
 });
+
+test("S4b: phases and milestones are checked (P2 has no phase, prerequisites not later, due = last phase end)", () => {
+  const bad = structuredClone(curriculum);
+  bad.units.find((x) => x.id === "j-cung")!.phase = 2; // P2
+  bad.units.find((x) => x.id === "c-dkxd")!.phase = null; // core
+  bad.units.find((x) => x.id === "f1-hdt")!.phase = 3; // f1-pnt (phase 1) needs it
+  bad.milestones[0].due = "2027-03-01";
+  bad.milestones[0].mustSolid.push("o-nangcao"); // phase 4, not in 8.5
+  const errs = checkCurriculum(bad, files()).join("\n");
+  assert.match(errs, /j-cung: bài P2 không có giai đoạn/);
+  assert.match(errs, /c-dkxd: bài lõi phải có giai đoạn/);
+  assert.match(errs, /f1-pnt: giai đoạn 1 trước tiên quyết f1-hdt/);
+  assert.match(errs, /mốc 8.5: hạn 2027-03-01 phải là ngày cuối giai đoạn 3/);
+  assert.match(errs, /mốc 8.5: bài "o-nangcao" không thuộc/);
+});
+
+test("S4b: phases match CURRICULUM.md §3.3 (43 core KUs: 19 / 13 / 6 / 5)", () => {
+  const n = (k: number) => curriculum.units.filter((u) => u.phase === k).length;
+  assert.deepEqual([n(1), n(2), n(3), n(4)], [19, 13, 6, 5]);
+  assert.deepEqual(curriculum.phases.map((p) => p.to), ["2026-11-22", "2027-01-10", "2027-02-21", "2027-03-31"]);
+});
