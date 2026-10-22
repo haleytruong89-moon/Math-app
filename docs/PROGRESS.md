@@ -30,8 +30,9 @@
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
-| S8 — AI giảng bài + báo cáo tuần | `p1-slice-8` | ⬜ code ~12–28/11, bật ~cuối 11 (thứ tự 21/10: sau S5) |
-| S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | 🟡 PR mở 22/10 — không SQL |
+| S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ⬜ kế hoạch xong 22/10, code ngay |
+| S8b — AI cho con + bộ test | `p1-slice-8b` | ⬜ sau bộ test 02–08/11, bật ~cuối 11 |
+| S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
