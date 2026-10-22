@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 21/10/2026 (S5 code xong, PR mở). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 22/10/2026 (đợt 5 nội dung xong, PR mở). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -15,7 +15,8 @@
 | Đợt 2: f1-tgon, f1-qd, a-bieudo, b-xsuat | `p1-content-2` | duyệt trước 25/10 | ✅ đã merge (PR #18); giải độc lập 103/103 + sửa; phụ huynh duyệt 15/10 (PR #20) |
 | Đợt 3: p-trunon, p-cau, p-ghep, b-haib, c-dkxd | `p1-content-3` | duyệt trước 08/11 | 🟡 PR mở 15/10, nháp; giải độc lập 109/109; c-dkxd chờ gia sư soát |
 | Đợt 4 (LT19): g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram | `p1-content-4` | duyệt trước 01/11 | 🟡 PR mở 17/10, nháp; giải độc lập 190/190; chờ gia sư soát G |
-| Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | 15/11 | ⬜ |
+| Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | 🟡 PR mở 22/10, nháp, không SQL; merge sau #33; giải độc lập 76/76; chờ gia sư soát |
+| Đợt 6 theo `CURRICULUM.md` §6 | `p1-content-6` | — | ⬜ việc kế của phiên Nội dung |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
 ## Phiên Code (VS Code / cloud)
@@ -31,6 +32,7 @@
 ## Phụ huynh
 - [x] Merge #20–#23 (đợt 2–4, S9).
 - [ ] Gia sư soát c-dkxd và 5 bài G (giờ làm ngay trên tab Kho bài) + trả lời Q24.
+- [ ] Merge PR #33 (S5) **rồi** PR đợt 5; gia sư soát 4 KU đợt 5 (danh sách điểm cần xem: `PROGRESS.md` 22/10).
 - [ ] Trong pilot: báo câu nào con sai nhiều / làm quá lâu ở 8 bài mới (thay cho phần làm thử trên bản xem trước).
 - [ ] Điền kết quả bài kiểm tra đầu vào 11/10 vào bảng "Quyết định" (tài liệu trong Project).
 - [x] Tạo khoá Anthropic API hạn mức 10 USD/tháng, dán vào Vercel (xong 19/10).
