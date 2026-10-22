@@ -1,6 +1,26 @@
 {
   "start": "2026-10-12",
   "learnBy": "2027-03-31",
+  "phases": [
+    {
+      "n": 1,
+      "from": "2026-10-12",
+      "to": "2027-03-31"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "8.5",
+      "title": "Mốc 8,5",
+      "due": "2027-03-31",
+      "phases": [
+        1
+      ],
+      "mustSolid": [
+        "fa-2"
+      ]
+    }
+  ],
   "modules": [
     {
       "id": "fx-alg",
@@ -50,7 +70,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fa-1",
@@ -65,7 +86,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fa-2",
@@ -80,7 +102,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fb-1",
@@ -93,7 +116,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fb-2",
@@ -108,7 +132,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fb-3",
@@ -121,7 +146,8 @@
       "grading": "full",
       "testOut": true,
       "batch": 2,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fc-1",
@@ -134,7 +160,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fc-9",
@@ -147,7 +174,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 1,
-      "priority": "P2"
+      "priority": "P2",
+      "phase": null
     },
     {
       "id": "fs-1",
@@ -162,7 +190,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fg-1",
@@ -175,7 +204,8 @@
       "grading": "partial",
       "testOut": false,
       "batch": 1,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     },
     {
       "id": "fl-1",
@@ -190,7 +220,8 @@
       "grading": "full",
       "testOut": false,
       "batch": 9,
-      "priority": "P0"
+      "priority": "P0",
+      "phase": 1
     }
   ]
 }
