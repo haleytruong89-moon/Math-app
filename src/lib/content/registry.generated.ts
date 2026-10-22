@@ -19,6 +19,8 @@ import m3 from "../../../content/can-thuc/module.json";
 import m3u0 from "../../../content/can-thuc/c-dkxd.json";
 import m3u1 from "../../../content/can-thuc/c-coban.json";
 import m3u2 from "../../../content/can-thuc/c-truccan.json";
+import m3u3 from "../../../content/can-thuc/c-rutgon.json";
+import m3u4 from "../../../content/can-thuc/c-cauphu.json";
 import m4 from "../../../content/duong-tron/module.json";
 import m4u0 from "../../../content/duong-tron/j-coban.json";
 import m5 from "../../../content/he-thuc-luong/module.json";
@@ -28,13 +30,16 @@ import m6 from "../../../content/hinh-khoi/module.json";
 import m6u0 from "../../../content/hinh-khoi/p-trunon.json";
 import m6u1 from "../../../content/hinh-khoi/p-cau.json";
 import m6u2 from "../../../content/hinh-khoi/p-ghep.json";
-import m7 from "../../../content/thong-ke/module.json";
-import m7u0 from "../../../content/thong-ke/a-tanso.json";
-import m7u1 from "../../../content/thong-ke/a-bieudo.json";
-import m8 from "../../../content/xac-suat/module.json";
-import m8u0 from "../../../content/xac-suat/b-phepthu.json";
-import m8u1 from "../../../content/xac-suat/b-xsuat.json";
-import m8u2 from "../../../content/xac-suat/b-haib.json";
+import m7 from "../../../content/noi-tiep/module.json";
+import m7u0 from "../../../content/noi-tiep/k-goiintiep.json";
+import m7u1 from "../../../content/noi-tiep/k-tugiacnt.json";
+import m8 from "../../../content/thong-ke/module.json";
+import m8u0 from "../../../content/thong-ke/a-tanso.json";
+import m8u1 from "../../../content/thong-ke/a-bieudo.json";
+import m9 from "../../../content/xac-suat/module.json";
+import m9u0 from "../../../content/xac-suat/b-phepthu.json";
+import m9u1 from "../../../content/xac-suat/b-xsuat.json";
+import m9u2 from "../../../content/xac-suat/b-haib.json";
 
 export const CONTENT_SOURCE = "content";
 export const CURRICULUM: unknown = curriculum;
@@ -43,10 +48,11 @@ export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m0, units: [m0u0, m0u1, m0u2, m0u3] },
   { module: m1, units: [m1u0] },
   { module: m2, units: [m2u0, m2u1, m2u2, m2u3, m2u4] },
-  { module: m3, units: [m3u0, m3u1, m3u2] },
+  { module: m3, units: [m3u0, m3u1, m3u2, m3u3, m3u4] },
   { module: m4, units: [m4u0] },
   { module: m5, units: [m5u0, m5u1] },
   { module: m6, units: [m6u0, m6u1, m6u2] },
   { module: m7, units: [m7u0, m7u1] },
-  { module: m8, units: [m8u0, m8u1, m8u2] },
+  { module: m8, units: [m8u0, m8u1] },
+  { module: m9, units: [m9u0, m9u1, m9u2] },
 ];

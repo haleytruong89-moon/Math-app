@@ -61,7 +61,7 @@ function Answer({ item }: { item: Item }) {
       <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-1 font-body">
           {item.lines.map((l, i) => (
-            <Html key={i} html={texToHtml(l.replace(/\[\[(\d)\]\]/g, (_, n: string) => `**[${n}: ${item.bank[item.blanks[Number(n) - 1].correct]}]**`))} />
+            <Html key={i} html={texToHtml(l.replace(/\[\[(\d)\]\]/g, (_, n: string) => `【${n}: ${item.bank[item.blanks[Number(n) - 1].correct]}】`))} />
           ))}
         </div>
         <p className="text-xs text-muted">

@@ -30,7 +30,7 @@
 | S11 — Giao từng câu, Buổi dạy gọn, Hôm nay (T9) | `p1-slice-11` | ✅ Merged 20/10 (PR #29), SQL 0013 chạy bằng nút |
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
-| S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | 🟡 PR mở 22/10 — **SQL 0014** (phụ huynh bấm "Áp dụng SQL" trước khi merge) |
+| S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | 🟡 PR #37 mở — SQL 0014 ✅ đã chạy 22/10; chờ merge |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ⬜ sau bộ test 02–08/11, bật ~cuối 11 |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -38,7 +38,8 @@
 | Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ Merged 22/10 (PR #34), vẫn nháp — không SQL; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
-| Nội dung đợt 6–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
+| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ Merged 22/10 (PR #38), vẫn nháp — không SQL; giải độc lập 78/78; Sổ tay ✅ duyệt 22/10; chờ gia sư soát (hạn 29/11) |
+| Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 
@@ -69,11 +70,36 @@ Theo kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md` (11 task
 - Unit 189 (thêm 21 test `src/lib/ai/`), `test:db` ALL PASSED (thêm ~27 kiểm tra 0014). E2E 251 PASS (thêm `report-flow` 11 + `brief-flow` 5, AI giả lập); ảnh `e2e/out/s8a/`.
 
 ### Phụ huynh cần làm
-1. Bấm **"Áp dụng SQL"** cho `0014_p1_ai.sql` trên nhánh `p1-slice-8` (sao lưu trước, một lần).
+1. ✅ "Áp dụng SQL" `0014_p1_ai.sql` — chạy thành công 22/10.
 2. Kiểm tra trên Vercel (Production) có `CRON_SECRET` và `ANTHROPIC_API_KEY` (chỉ xem tên, không dán giá trị vào chat).
 3. Đối chiếu giá Haiku 5.5 / Sonnet 5.5 trên trang giá chính thức của Anthropic; khác spec §3 thì báo để sửa bảng giá.
 4. Đọc 2 lệnh hệ thống ở trang **AI** → "ok" hoặc ghi chỗ cần sửa.
 5. Merge PR. Báo cáo đầu tiên: thứ Hai 26/10 ~07:00 (hoặc bấm "Tạo lại" ngay sau khi merge).
+
+---
+
+## 22/10/2026 — Nội dung đợt 6 + hình Sổ tay (nhánh `p1-content-6`, không SQL)
+
+Phụ huynh chọn "làm đợt 6 trước rồi làm Sổ tay cùng lúc" (22/10).
+
+### Đã làm
+- 4 KU nháp: **c-rutgon** (20 câu, phần lớn câu nhiều bước: ĐKXĐ → phân tích → quy đồng → kết quả), **c-cauphu** (19 câu: tính giá trị, P = a, bất phương trình, so sánh với 1, x nguyên / x thực để P nguyên — dạng 2c, min/max), **k-goiintiep** và **k-tugiacnt** (19 câu mỗi bài, bài hình §10: phân tích ngược, điền lời giải C3, sắp xếp bước C2, tự vẽ hình; 11–12 hình SVG mỗi bài). Module mới `noi-tiep`; `can-thuc` thêm 2 bài. Nguồn Đề 1–56.
+- **Sổ tay**: vẽ 4 hình mẫu (hai tiếp tuyến + cát tuyến, ba đường cao, nửa đường tròn + tiếp tuyến, đường kính ⊥ dây); "điều có sẵn" ghi theo tên điểm (ví dụ $AB^2 = AM\cdot AN$, $AE\cdot AC = AF\cdot AB$, $AC\cdot BD = R^2$), kiểm bằng toạ độ. **Phụ huynh duyệt 22/10** (`status: approved`, `approvedOn` 2026-10-22) — con thấy Sổ tay sau khi PR này merge.
+- Màn Duyệt: đáp án C3 hiện dạng 【n: …】 (trước đó dấu ** hiện thô khi lựa chọn có công thức).
+
+### Kiểm tra chất lượng
+- Agent soạn tính lại mọi đáp số và nhiễu bằng sympy / toạ độ: c-rutgon 41 đáp số + 94 nhiễu, c-cauphu 66, k-goiintiep 120 khẳng định hình + 21 số, k-tugiacnt 90 + 27.
+- Giải độc lập (chỉ thấy đề như con): **78/78** khớp. Sửa sau khi giải: c-cauphu x6 bước 1 hỏi "đánh giá chặt nhất" (trước có 3 phương án cùng đúng), x4 bước 3 đổi nhiễu `x<4` thành `0<x<2`; k-tugiacnt p4 tầng 2 đổi nhiễu "vì OC ⊥ AB" (cãi được) thành "vì góc ở tâm COB = 90°". Các thứ tự bước khác người giải tìm ra (k-tugiacnt p7, x6; k-goiintiep p7, x6) app đều chấm đúng.
+
+### Gia sư soát kỹ (tab Kho bài)
+- c-rutgon: p6 chấp nhận kết quả $1/\sqrt x$ (không trục căn); bài mẫu và bài khuyết lấy từ Đề 28, Đề 14 nhưng không ghi nguồn (phần này không có trường `source`).
+- c-cauphu: x8 (Đề 42) khó — x = 5 cho P = 0 nên vẫn tính; p3, p8 giữ ĐKXĐ thừa từ đề gốc; một số mã lỗi (quên bình phương = E01, bỏ trường hợp tử bằng 0 = E04).
+- k-goiintiep: f2 phương án "∠BAD = ∠KAC (cùng chắn một cung)" là mệnh đề đúng nhưng sai lí do (đề hỏi cặp góc **và** lí do); x6 không dùng tứ giác nội tiếp; x7 chứng minh AC = AD bằng trung trực; dùng đồng dạng như đề thi dù f3-dongdang không phải tiên quyết.
+- k-tugiacnt: f1 phương án "hai góc kề bằng nhau" (E, F là đỉnh đối); x8 thực ra không cần tứ giác nội tiếp; số liệu p8, x8 do soạn thêm; p5 cho sẵn "MA ⊥ OA" (chưa dạy tiếp tuyến).
+- Sổ tay: đọc 7 mục tiêu + 4 hình ở tab Sổ tay.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gia sư soát 4 bài trước **29/11**; phụ huynh "Duyệt cả bài" trong app. Sổ tay: ✅ đã duyệt 22/10 (trong PR này).
 
 ---
 
