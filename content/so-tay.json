@@ -6,10 +6,35 @@
       "title": "Tứ giác nội tiếp",
       "tip": "Hỏi: trong hình có những góc vuông nào? Hai góc vuông là dấu hiệu thường gặp nhất.",
       "ways": [
-        { "how": "Tổng hai góc đối bằng $180^\\circ$", "sign": "hai góc vuông ở hai đỉnh đối nhau (ví dụ chân hai đường cao)", "units": ["k-tugiacnt"] },
-        { "how": "Hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau", "sign": "hai góc vuông cùng nhìn một đoạn thẳng", "units": ["k-tugiacnt"] },
-        { "how": "Góc ngoài tại một đỉnh bằng góc trong ở đỉnh đối", "sign": "có tia đối hoặc góc kề bù đã biết số đo", "units": ["k-tugiacnt"] },
-        { "how": "Bốn đỉnh cách đều một điểm", "sign": "trung điểm cạnh huyền của tam giác vuông, hoặc tâm đường tròn đã có", "units": ["j-coban", "k-tugiacnt"] }
+        {
+          "how": "Tổng hai góc đối bằng $180^\\circ$",
+          "sign": "hai góc vuông ở hai đỉnh đối nhau (ví dụ chân hai đường cao)",
+          "units": [
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "how": "Hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau",
+          "sign": "hai góc vuông cùng nhìn một đoạn thẳng",
+          "units": [
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "how": "Góc ngoài tại một đỉnh bằng góc trong ở đỉnh đối",
+          "sign": "có tia đối hoặc góc kề bù đã biết số đo",
+          "units": [
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "how": "Bốn đỉnh cách đều một điểm",
+          "sign": "trung điểm cạnh huyền của tam giác vuông, hoặc tâm đường tròn đã có",
+          "units": [
+            "j-coban",
+            "k-tugiacnt"
+          ]
+        }
       ]
     },
     {
@@ -17,9 +42,28 @@
       "title": "Hai tam giác đồng dạng",
       "tip": "Viết đúng thứ tự đỉnh tương ứng ngay từ đầu — sai thứ tự là sai cả tỉ số phía sau.",
       "ways": [
-        { "how": "Góc – góc (g.g)", "sign": "góc chung + góc vuông; hoặc hai góc nội tiếp cùng chắn một cung", "units": ["f3-dongdang", "k-goiintiep"] },
-        { "how": "Cạnh – góc – cạnh (c.g.c)", "sign": "góc chung + đã có một đẳng thức tích, đổi thành tỉ số hai cạnh kề", "units": ["f3-dongdang"] },
-        { "how": "Tam giác vuông: cạnh huyền – cạnh góc vuông tỉ lệ", "sign": "hai tam giác vuông, biết tỉ số hai cạnh huyền và hai cạnh góc vuông", "units": ["f3-dongdang"] }
+        {
+          "how": "Góc – góc (g.g)",
+          "sign": "góc chung + góc vuông; hoặc hai góc nội tiếp cùng chắn một cung",
+          "units": [
+            "f3-dongdang",
+            "k-goiintiep"
+          ]
+        },
+        {
+          "how": "Cạnh – góc – cạnh (c.g.c)",
+          "sign": "góc chung + đã có một đẳng thức tích, đổi thành tỉ số hai cạnh kề",
+          "units": [
+            "f3-dongdang"
+          ]
+        },
+        {
+          "how": "Tam giác vuông: cạnh huyền – cạnh góc vuông tỉ lệ",
+          "sign": "hai tam giác vuông, biết tỉ số hai cạnh huyền và hai cạnh góc vuông",
+          "units": [
+            "f3-dongdang"
+          ]
+        }
       ]
     },
     {
@@ -27,8 +71,21 @@
       "title": "Đẳng thức tích $MA\\cdot MB = MC\\cdot MD$",
       "tip": "Đổi tích thành tỉ số, rồi tìm hai tam giác chứa đúng các đoạn đó.",
       "ways": [
-        { "how": "Đưa về $\\frac{MA}{MC} = \\frac{MD}{MB}$, chứng minh $\\Delta MAD \\backsim \\Delta MCB$", "sign": "bốn đoạn chung một đầu mút M, nằm trên hai đường thẳng qua M", "units": ["o-dongdang"] },
-        { "how": "Hai vế cùng bằng một đại lượng thứ ba", "sign": "có tam giác vuông với đường cao → hai vế cùng bằng một bình phương", "units": ["htl-1", "o-dongdang"] }
+        {
+          "how": "Đưa về $\\frac{MA}{MC} = \\frac{MD}{MB}$, chứng minh $\\Delta MAD \\backsim \\Delta MCB$",
+          "sign": "bốn đoạn chung một đầu mút M, nằm trên hai đường thẳng qua M",
+          "units": [
+            "o-dongdang"
+          ]
+        },
+        {
+          "how": "Hai vế cùng bằng một đại lượng thứ ba",
+          "sign": "có tam giác vuông với đường cao → hai vế cùng bằng một bình phương",
+          "units": [
+            "htl-1",
+            "o-dongdang"
+          ]
+        }
       ]
     },
     {
@@ -36,10 +93,34 @@
       "title": "Hai góc bằng nhau",
       "tip": "Thử lần lượt: cùng chắn một cung? cùng nhìn một cạnh của tứ giác nội tiếp? góc tương ứng của hai tam giác đồng dạng?",
       "ways": [
-        { "how": "Hai góc nội tiếp cùng chắn một cung", "sign": "hai góc có đỉnh trên đường tròn, cạnh đi qua cùng hai điểm", "units": ["k-goiintiep"] },
-        { "how": "Cùng nhìn một cạnh trong tứ giác nội tiếp", "sign": "đã chứng minh được (hoặc đề cho) tứ giác nội tiếp", "units": ["k-tugiacnt"] },
-        { "how": "Góc tương ứng của hai tam giác đồng dạng", "sign": "hai góc ở vị trí tương ứng của hai tam giác đã chứng minh đồng dạng", "units": ["f3-dongdang"] },
-        { "how": "Cùng phụ (hoặc cùng bù) với một góc", "sign": "nhiều góc vuông dùng chung một góc nhọn", "units": ["o-chungminh"] }
+        {
+          "how": "Hai góc nội tiếp cùng chắn một cung",
+          "sign": "hai góc có đỉnh trên đường tròn, cạnh đi qua cùng hai điểm",
+          "units": [
+            "k-goiintiep"
+          ]
+        },
+        {
+          "how": "Cùng nhìn một cạnh trong tứ giác nội tiếp",
+          "sign": "đã chứng minh được (hoặc đề cho) tứ giác nội tiếp",
+          "units": [
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "how": "Góc tương ứng của hai tam giác đồng dạng",
+          "sign": "hai góc ở vị trí tương ứng của hai tam giác đã chứng minh đồng dạng",
+          "units": [
+            "f3-dongdang"
+          ]
+        },
+        {
+          "how": "Cùng phụ (hoặc cùng bù) với một góc",
+          "sign": "nhiều góc vuông dùng chung một góc nhọn",
+          "units": [
+            "o-chungminh"
+          ]
+        }
       ]
     },
     {
@@ -47,9 +128,27 @@
       "title": "Vuông góc · tiếp tuyến",
       "tip": "Tiếp tuyến luôn đi kèm bán kính vuông góc tại tiếp điểm.",
       "ways": [
-        { "how": "Góc nội tiếp chắn nửa đường tròn bằng $90^\\circ$", "sign": "đề có đường kính và một điểm trên đường tròn", "units": ["k-goiintiep"] },
-        { "how": "Đường thẳng vuông góc với bán kính tại điểm trên đường tròn là tiếp tuyến", "sign": "cần chứng minh một đường là tiếp tuyến", "units": ["l-tieptuyen"] },
-        { "how": "Hai tiếp tuyến cắt nhau: $AB = AC$, $AO$ là phân giác, $AO \\perp BC$", "sign": "từ một điểm ngoài kẻ hai tiếp tuyến tới đường tròn", "units": ["l-tieptuyen"] }
+        {
+          "how": "Góc nội tiếp chắn nửa đường tròn bằng $90^\\circ$",
+          "sign": "đề có đường kính và một điểm trên đường tròn",
+          "units": [
+            "k-goiintiep"
+          ]
+        },
+        {
+          "how": "Đường thẳng vuông góc với bán kính tại điểm trên đường tròn là tiếp tuyến",
+          "sign": "cần chứng minh một đường là tiếp tuyến",
+          "units": [
+            "l-tieptuyen"
+          ]
+        },
+        {
+          "how": "Hai tiếp tuyến cắt nhau: $AB = AC$, $AO$ là phân giác, $AO \\perp BC$",
+          "sign": "từ một điểm ngoài kẻ hai tiếp tuyến tới đường tròn",
+          "units": [
+            "l-tieptuyen"
+          ]
+        }
       ]
     },
     {
@@ -57,9 +156,29 @@
       "title": "Trung điểm · song song",
       "tip": "Thấy trung điểm, nghĩ ngay tới đường trung bình và hình bình hành.",
       "ways": [
-        { "how": "Đường trung bình của tam giác / hình thang", "sign": "có hai trung điểm, hoặc một trung điểm và một đường song song", "units": ["f3-tugiac", "o-thanghang"] },
-        { "how": "Hai đường chéo hình bình hành cắt nhau tại trung điểm mỗi đường", "sign": "tứ giác có hai cặp cạnh song song, hoặc một cặp cạnh song song và bằng nhau", "units": ["f3-tugiac", "o-thanghang"] },
-        { "how": "Cùng vuông góc với một đường thẳng thì song song", "sign": "hai đường cùng vuông góc với một cạnh hay một bán kính", "units": ["o-chungminh"] }
+        {
+          "how": "Đường trung bình của tam giác / hình thang",
+          "sign": "có hai trung điểm, hoặc một trung điểm và một đường song song",
+          "units": [
+            "f3-tugiac",
+            "o-thanghang"
+          ]
+        },
+        {
+          "how": "Hai đường chéo hình bình hành cắt nhau tại trung điểm mỗi đường",
+          "sign": "tứ giác có hai cặp cạnh song song, hoặc một cặp cạnh song song và bằng nhau",
+          "units": [
+            "f3-tugiac",
+            "o-thanghang"
+          ]
+        },
+        {
+          "how": "Cùng vuông góc với một đường thẳng thì song song",
+          "sign": "hai đường cùng vuông góc với một cạnh hay một bán kính",
+          "units": [
+            "o-chungminh"
+          ]
+        }
       ]
     },
     {
@@ -67,41 +186,87 @@
       "title": "Ba điểm thẳng hàng",
       "tip": "Đưa về một góc bẹt, hoặc chứng minh hai đường thẳng trùng nhau.",
       "ways": [
-        { "how": "Tổng hai góc kề bằng $180^\\circ$", "sign": "ba điểm nằm trên hai tia ngược chiều qua điểm giữa", "units": ["o-thanghang"] },
-        { "how": "Cùng song song (hoặc cùng vuông góc) với một đường thẳng, qua cùng một điểm", "sign": "hai đường qua cùng một điểm, cùng song song / vuông góc với một đường", "units": ["o-thanghang"] },
-        { "how": "Điểm thứ ba thuộc một đường đặc biệt (trung trực, phân giác, đường kính)", "sign": "đề cho trung điểm hoặc tâm đường tròn", "units": ["o-thanghang"] }
+        {
+          "how": "Tổng hai góc kề bằng $180^\\circ$",
+          "sign": "ba điểm nằm trên hai tia ngược chiều qua điểm giữa",
+          "units": [
+            "o-thanghang"
+          ]
+        },
+        {
+          "how": "Cùng song song (hoặc cùng vuông góc) với một đường thẳng, qua cùng một điểm",
+          "sign": "hai đường qua cùng một điểm, cùng song song / vuông góc với một đường",
+          "units": [
+            "o-thanghang"
+          ]
+        },
+        {
+          "how": "Điểm thứ ba thuộc một đường đặc biệt (trung trực, phân giác, đường kính)",
+          "sign": "đề cho trung điểm hoặc tâm đường tròn",
+          "units": [
+            "o-thanghang"
+          ]
+        }
       ]
     }
   ],
   "figures": [
     {
       "id": "hai-tiep-tuyen",
-      "title": "Điểm ngoài đường tròn kẻ hai tiếp tuyến (và một cát tuyến)",
+      "title": "Từ điểm $A$ ngoài $(O)$ kẻ hai tiếp tuyến $AB$, $AC$ và cát tuyến $AMN$",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 199\" role=\"img\"><title>Từ điểm A ngoài đường tròn (O) kẻ hai tiếp tuyến AB, AC và cát tuyến AMN; BC cắt AO tại H</title><circle cx=\"99.5\" cy=\"99.5\" r=\"67.4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"261.2\" y1=\"99.5\" x2=\"127.5\" y2=\"38.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"261.2\" y1=\"99.5\" x2=\"127.5\" y2=\"160.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"99.5\" y1=\"99.5\" x2=\"261.2\" y2=\"99.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"127.5\" y1=\"38.2\" x2=\"127.5\" y2=\"160.7\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"99.5\" y1=\"99.5\" x2=\"127.5\" y2=\"38.2\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"99.5\" y1=\"99.5\" x2=\"127.5\" y2=\"160.7\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"261.2\" y1=\"99.5\" x2=\"39.7\" y2=\"68.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"124.2,45.5 131.4,48.8 134.8,41.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"124.2,153.4 131.4,150.1 134.8,157.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"135.5,99.5 135.5,91.5 127.5,91.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><circle cx=\"99.5\" cy=\"99.5\" r=\"2\" fill=\"currentColor\"/><circle cx=\"261.2\" cy=\"99.5\" r=\"2\" fill=\"currentColor\"/><circle cx=\"127.5\" cy=\"38.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"127.5\" cy=\"160.7\" r=\"2\" fill=\"currentColor\"/><circle cx=\"127.5\" cy=\"99.5\" r=\"2\" fill=\"currentColor\"/><circle cx=\"165.5\" cy=\"86.0\" r=\"2\" fill=\"currentColor\"/><circle cx=\"39.7\" cy=\"68.4\" r=\"2\" fill=\"currentColor\"/><text x=\"93.8\" y=\"108.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"272.2\" y=\"99.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"132.1\" y=\"28.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"132.1\" y=\"170.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"120.9\" y=\"108.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"168.7\" y=\"75.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"29.9\" y=\"63.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text></svg>",
+        "alt": "Từ điểm A ngoài đường tròn (O) kẻ hai tiếp tuyến AB, AC và cát tuyến AMN; BC cắt AO tại H"
+      },
       "facts": [
         "$AB = AC$, $AO$ là phân giác góc $BAC$",
         "$AO \\perp BC$ tại $H$, $H$ là trung điểm $BC$",
-        "Tứ giác $ABOC$ nội tiếp (hai góc vuông tại $B$, $C$)",
-        "$AB^2 = AH\\cdot AO$, $OH\\cdot OA = R^2$ (hệ thức lượng)"
+        "Tứ giác $ABOC$ nội tiếp ($\\angle ABO + \\angle ACO = 180^\\circ$)",
+        "$AB^2 = AH\\cdot AO$, $OH\\cdot OA = R^2$ (hệ thức lượng trong tam giác vuông $ABO$)",
+        "$AB^2 = AM\\cdot AN$ (vì $\\Delta ABM \\backsim \\Delta ANB$)"
       ]
     },
     {
       "id": "ba-duong-cao",
-      "title": "Tam giác có ba đường cao và trực tâm $H$",
+      "title": "Tam giác $ABC$ nhọn, ba đường cao $AD$, $BE$, $CF$ cắt nhau tại trực tâm $H$",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 258\" role=\"img\"><title>Tam giác ABC nhọn có ba đường cao AD, BE, CF cắt nhau tại trực tâm H</title><line x1=\"101.6\" y1=\"39.3\" x2=\"39.3\" y2=\"219.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"39.3\" y1=\"219.2\" x2=\"260.7\" y2=\"219.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"260.7\" y1=\"219.2\" x2=\"101.6\" y2=\"39.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"101.6\" y1=\"39.3\" x2=\"101.6\" y2=\"219.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"39.3\" y1=\"219.2\" x2=\"163.5\" y2=\"109.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"260.7\" y1=\"219.2\" x2=\"63.0\" y2=\"150.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"163.5\" y1=\"109.3\" x2=\"63.0\" y2=\"150.7\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"101.6,211.2 109.6,211.2 109.6,219.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"157.5,114.6 162.8,120.6 168.8,115.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"70.6,153.3 67.9,160.9 60.4,158.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><circle cx=\"101.6\" cy=\"39.3\" r=\"2\" fill=\"currentColor\"/><circle cx=\"39.3\" cy=\"219.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"260.7\" cy=\"219.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"101.6\" cy=\"219.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"163.5\" cy=\"109.3\" r=\"2\" fill=\"currentColor\"/><circle cx=\"63.0\" cy=\"150.7\" r=\"2\" fill=\"currentColor\"/><circle cx=\"101.6\" cy=\"164.1\" r=\"2\" fill=\"currentColor\"/><text x=\"98.7\" y=\"28.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"30.0\" y=\"225.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"270.6\" y=\"223.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"101.6\" y=\"230.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"172.9\" y=\"103.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"52.5\" y=\"147.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"112.5\" y=\"165.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text></svg>",
+        "alt": "Tam giác ABC nhọn có ba đường cao AD, BE, CF cắt nhau tại trực tâm H"
+      },
       "facts": [
-        "Có sẵn nhiều tứ giác nội tiếp: mỗi cặp chân đường cao cùng hai đỉnh",
-        "Nhiều cặp góc bằng nhau (cùng phụ một góc)",
-        "Nhiều cặp tam giác vuông đồng dạng có chung một góc"
+        "Tứ giác $BCEF$ nội tiếp đường tròn đường kính $BC$ ($E$, $F$ cùng nhìn $BC$ dưới góc vuông)",
+        "Tứ giác $AEHF$ nội tiếp đường tròn đường kính $AH$ (hai góc vuông đối nhau)",
+        "$\\angle AEF = \\angle ABC$ ⇒ $\\Delta AEF \\backsim \\Delta ABC$ ⇒ $AE\\cdot AC = AF\\cdot AB$",
+        "Nhiều cặp góc cùng phụ một góc, ví dụ $\\angle BAD = \\angle BCF$ (cùng phụ $\\angle ABC$)"
       ]
     },
     {
       "id": "nua-duong-tron",
-      "title": "Nửa đường tròn đường kính $AB$ và tiếp tuyến $Ax$",
-      "facts": ["Điểm trên nửa đường tròn nhìn $AB$ dưới góc vuông", "$Ax \\perp AB$", "Hai tiếp tuyến cắt nhau: các đoạn tiếp tuyến bằng nhau"]
+      "title": "Nửa đường tròn $(O)$ đường kính $AB$, tiếp tuyến $Ax$, $By$; tiếp tuyến tại $M$ cắt $Ax$, $By$ tại $C$, $D$",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 254\" role=\"img\"><title>Nửa đường tròn (O) đường kính AB; tiếp tuyến Ax, By; tiếp tuyến tại M cắt Ax, By tại C, D</title><path d=\"M244.8 213.0 A94.8 94.8 0 0 0 55.2 213.0\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.2\" y1=\"213.0\" x2=\"244.8\" y2=\"213.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.2\" y1=\"213.0\" x2=\"55.2\" y2=\"31.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"244.8\" y1=\"213.0\" x2=\"244.8\" y2=\"31.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.2\" y1=\"55.2\" x2=\"244.8\" y2=\"156.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"150.0\" y1=\"213.0\" x2=\"55.2\" y2=\"55.2\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"150.0\" y1=\"213.0\" x2=\"244.8\" y2=\"156.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"150.0\" y1=\"213.0\" x2=\"194.5\" y2=\"129.3\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"55.2\" y1=\"213.0\" x2=\"194.5\" y2=\"129.3\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"194.5\" y1=\"129.3\" x2=\"244.8\" y2=\"213.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"63.2,213.0 63.2,205.0 55.2,205.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"236.8,213.0 236.8,205.0 244.8,205.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"145.9,206.1 152.7,202.0 156.9,208.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><circle cx=\"150.0\" cy=\"213.0\" r=\"2\" fill=\"currentColor\"/><circle cx=\"55.2\" cy=\"213.0\" r=\"2\" fill=\"currentColor\"/><circle cx=\"244.8\" cy=\"213.0\" r=\"2\" fill=\"currentColor\"/><circle cx=\"194.5\" cy=\"129.3\" r=\"2\" fill=\"currentColor\"/><circle cx=\"55.2\" cy=\"55.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"244.8\" cy=\"156.0\" r=\"2\" fill=\"currentColor\"/><text x=\"150.0\" y=\"224.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"47.4\" y=\"220.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"252.6\" y=\"220.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"199.7\" y=\"119.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"44.2\" y=\"55.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"255.8\" y=\"156.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"48.0\" y=\"26.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><text x=\"252.0\" y=\"26.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">y</text></svg>",
+        "alt": "Nửa đường tròn (O) đường kính AB; tiếp tuyến Ax, By; tiếp tuyến tại M cắt Ax, By tại C, D"
+      },
+      "facts": [
+        "$\\angle AMB = 90^\\circ$ (góc nội tiếp chắn nửa đường tròn)",
+        "$CA = CM$, $DB = DM$ ⇒ $CD = AC + BD$",
+        "$OC$, $OD$ là phân giác của hai góc kề bù $\\angle AOM$, $\\angle BOM$ ⇒ $\\angle COD = 90^\\circ$",
+        "$AC\\cdot BD = CM\\cdot MD = OM^2 = R^2$ (hệ thức lượng trong tam giác vuông $COD$)",
+        "Tứ giác $ACMO$ và $BDMO$ nội tiếp (hai góc vuông đối nhau)"
+      ]
     },
     {
       "id": "duong-kinh-day",
-      "title": "Đường kính và dây vuông góc",
-      "facts": ["Đường kính vuông góc với dây thì đi qua trung điểm dây", "Hai cung bị chắn bằng nhau → các góc nội tiếp chắn chúng bằng nhau"]
+      "title": "Đường kính $AB$ vuông góc với dây $CD$ tại $H$",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 280\" role=\"img\"><title>Đường tròn (O) đường kính AB vuông góc với dây CD tại H</title><circle cx=\"150.0\" cy=\"139.8\" r=\"102.4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"47.6\" y1=\"139.8\" x2=\"252.4\" y2=\"139.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"196.1\" y1=\"48.3\" x2=\"196.1\" y2=\"231.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"47.6\" y1=\"139.8\" x2=\"196.1\" y2=\"48.3\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"47.6\" y1=\"139.8\" x2=\"196.1\" y2=\"231.2\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"252.4\" y1=\"139.8\" x2=\"196.1\" y2=\"48.3\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"252.4\" y1=\"139.8\" x2=\"196.1\" y2=\"231.2\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"204.1,139.8 204.1,131.8 196.1,131.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><circle cx=\"150.0\" cy=\"139.8\" r=\"2\" fill=\"currentColor\"/><circle cx=\"47.6\" cy=\"139.8\" r=\"2\" fill=\"currentColor\"/><circle cx=\"252.4\" cy=\"139.8\" r=\"2\" fill=\"currentColor\"/><circle cx=\"196.1\" cy=\"48.3\" r=\"2\" fill=\"currentColor\"/><circle cx=\"196.1\" cy=\"231.2\" r=\"2\" fill=\"currentColor\"/><circle cx=\"196.1\" cy=\"139.8\" r=\"2\" fill=\"currentColor\"/><text x=\"150.0\" y=\"150.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"36.6\" y=\"139.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"263.4\" y=\"139.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"201.0\" y=\"38.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"201.1\" y=\"241.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"198.8\" y=\"150.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text></svg>",
+        "alt": "Đường tròn (O) đường kính AB vuông góc với dây CD tại H"
+      },
+      "facts": [
+        "$H$ là trung điểm $CD$; $AB$ là trung trực của $CD$ nên $AC = AD$, $BC = BD$",
+        "Cung $BC$ = cung $BD$ ⇒ $\\angle CAB = \\angle DAB$ (hai góc nội tiếp chắn hai cung bằng nhau)",
+        "$\\angle ACB = 90^\\circ$ ⇒ $HC^2 = HA\\cdot HB$ (hệ thức lượng)"
+      ]
     }
   ]
 }
