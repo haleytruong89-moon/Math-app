@@ -53,7 +53,10 @@ export default async function ShelfPage(props: PageProps<"/tutor/[studentId]/bai
                 </Link>
               ))}
             </nav>
-            <Link href={`/tutor/${student.id}/so-tay`} className="ml-auto font-display text-sm font-semibold text-accent hover:underline">
+            <Link href={`/tutor/${student.id}/luyen-de`} className="ml-auto font-display text-sm font-semibold text-accent hover:underline" data-testid="drill-link">
+              📐 Luyện đề hình
+            </Link>
+            <Link href={`/tutor/${student.id}/so-tay`} className="font-display text-sm font-semibold text-accent hover:underline">
               📒 Sổ tay suy ngược
             </Link>
             <form>

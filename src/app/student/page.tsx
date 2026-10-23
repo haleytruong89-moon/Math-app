@@ -11,6 +11,7 @@ import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning
 import { HomeHeader } from "@/components/student/home-header";
 import { needsTutor } from "@/lib/content/curriculum";
 import { masteryOf } from "@/components/student/mastery";
+import { studentDrills } from "@/lib/learning/drills";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -29,11 +30,12 @@ export default async function StudentHome() {
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
   const cols = "id, unit_id, items, task, links, due_on, done_at, reviewed_at, review_note";
-  const [state, open, recent, confRows] = await Promise.all([
+  const [state, open, recent, confRows, drillRows] = await Promise.all([
     loadStudentState(supabase, me.id),
     supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
     supabase.from("homework").select(cols).eq("student_id", me.id).order("created_at", { ascending: false }).limit(20),
     supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", me.id).limit(500),
+    studentDrills(supabase, me.id),
   ]);
   const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
@@ -51,7 +53,24 @@ export default async function StudentHome() {
       <h2 className="mt-6 text-base font-semibold">Hôm nay cần làm</h2>
       <TodayList state={state} homework={homework} shown={shown} />
       {state.units.length > 0 && <JourneyTeaser m3={m3} total={state.units.length} />}
+      {drillRows.length > 0 && <DrillTeaser rows={drillRows.map((r) => r.state.status)} />}
     </>
+  );
+}
+
+/** Luyện đề 4.2: how many problems wait for her now (new, started, due again). */
+function DrillTeaser({ rows }: { rows: string[] }) {
+  const now = rows.filter((s) => s === "new" || s === "doing" || s === "redo").length;
+  const done = rows.filter((s) => s === "done").length;
+  return (
+    <Link href="/student/luyen-de" className="mt-3 flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-4 py-3.5" data-testid="drill-teaser">
+      <span aria-hidden>📐</span>
+      <span className="flex-1">
+        <span className="block text-sm font-semibold">Luyện đề hình</span>
+        <span className="block text-xs text-muted">{now ? `${now} bài đang chờ con` : "Chưa có bài mới"} · đã xong {done}</span>
+      </span>
+      <span className="text-[11px] font-medium text-accent">Mở →</span>
+    </Link>
   );
 }
 

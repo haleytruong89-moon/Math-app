@@ -6,7 +6,7 @@ import { z } from "zod";
 import { getCurrentUser } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { fadedItems, findItem, getUnit } from "@/lib/content";
+import { fadedItems, findItem, getUnit, isDrillId } from "@/lib/content";
 import { studentUnit } from "@/lib/content/approvals";
 import { gradeItem } from "@/lib/content/grade";
 import { texToHtml } from "@/lib/content/tex";
@@ -17,6 +17,8 @@ import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning
 import { exitHistory, findOpenRun, loadStudentState, reviewSession } from "@/lib/learning/state";
 import { masteryHistory } from "@/lib/learning/sequence";
 import { exitDrawFor } from "@/lib/learning/exit-draw";
+import { studentDrills } from "@/lib/learning/drills";
+import { drillOpen } from "@/lib/learning/drill-plan";
 
 /** S6a (LT2): a locked KU can't be started; returns the unit's roadmap state for a student. */
 async function roadmapState(studentId: string, unitId: string) {
@@ -165,7 +167,13 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
   const item = findItem(found.unit, v.itemId, v.mode);
   if (!item) return DENIED;
 
-  if (who.kind === "student") {
+  const drill = isDrillId(v.unitId);
+  if (drill && v.mode !== "practice") return DENIED;
+  if (who.kind === "student" && drill) {
+    // Luyện đề 4.2: only a problem that is open for her now (needed KUs at M3 or ★, weekly cap) takes answers.
+    const rows = await studentDrills(createAdminClient(), who.studentId);
+    if (!drillOpen(rows.find((r) => r.problem.id === v.unitId)?.state)) return { ok: false, message: "Bài luyện này chưa mở." };
+  } else if (who.kind === "student") {
     const viaHomework = v.mode === "practice" && !!v.homeworkId && (await homeworkAllows(who.studentId, v.homeworkId, v.unitId, v.itemId));
     if (!viaHomework) {
       // §2.7: no self-solving before the worked example has been viewed in full.
@@ -237,7 +245,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
     at: g.at,
     outlineHtml: item.type === "analysis" && showSolution ? item.outline.map(texToHtml) : undefined,
     review: g.correct ? undefined : await reviewLink(who, g.review),
-    mastery: who.kind === "student" && v.mode === "practice" ? await practiceMastery(who.studentId, v.unitId) : undefined,
+    mastery: who.kind === "student" && v.mode === "practice" && !drill ? await practiceMastery(who.studentId, v.unitId) : undefined,
   };
 }
 

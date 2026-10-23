@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getUnit } from "@/lib/content";
+import { getUnit, isDrillId } from "@/lib/content";
 import { reviewOf } from "@/lib/content/approvals";
 import { LESSON, nextToReview, type ItemStatus } from "@/lib/content/review";
 import { ActionForm } from "@/components/action-form";
@@ -16,6 +16,7 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
   const rv = await reviewOf(unitId);
   if (!f || !rv) notFound();
   const gitApproved = f.unit.status === "approved";
+  const drill = isDrillId(unitId); // Luyện đề 4.2: approved in git by the parent only (no exit test to approve in the app)
   const current = rv.items.find((e) => e.id === selected) ?? rv.items.find((e) => e.id === nextToReview(rv)) ?? rv.items[0];
   const label = (id: string) => (id === LESSON ? "Lý thuyết & bài mẫu" : id.replace(`${unitId}-`, ""));
 
@@ -37,7 +38,12 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
           Bài đã duyệt — con đang học được. Vẫn soát được: câu đánh &ldquo;Cần sửa&rdquo; tạm ẩn với con cho tới khi Claude sửa xong và bản sửa được merge.
         </p>
       )}
-      {!gitApproved && (
+      {drill && !gitApproved && (
+        <p className="mt-3 rounded-lg bg-bg px-3 py-2 text-sm text-muted" data-testid="drill-draft-note">
+          Bài luyện đề (nháp): soát từng câu ở đây; phụ huynh duyệt bằng cách nói &ldquo;duyệt luyện đề&rdquo; với Claude.
+        </p>
+      )}
+      {!gitApproved && !drill && (
         <div className="mt-3 flex flex-wrap gap-3">
           {rv.canApprove.ok && !rv.approved ? (
             <ActionForm action={approveUnit} submitLabel="Duyệt cả bài"><input type="hidden" name="unitId" value={unitId} /></ActionForm>
