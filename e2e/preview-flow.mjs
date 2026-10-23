@@ -15,7 +15,7 @@ for (const scheme of ["light", "dark"]) {
   await page.goto(`${BASE}/parent/content`);
   await page.screenshot({ path: `${shots}/${scheme}-1-content-list.png`, fullPage: true });
   if (scheme === "dark") { await ctx.close(); continue; }
-  ok("content list shows 10 approved units", (await page.getByText(/^Đã duyệt \d/).count()) === 10);
+  ok("content list shows 28 approved units", (await page.getByText(/^Đã duyệt \d/).count()) === 28);
 
   await page.locator('a[href$="/htl-2"]').filter({ hasText: "Xem trước" }).click();
   await page.waitForURL(/htl-2/);
