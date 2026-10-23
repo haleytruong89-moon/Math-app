@@ -22,7 +22,7 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
   const progress = `đã xem ${rv.counts.ok + rv.counts.fix}/${rv.items.length} · ${rv.counts.fix} cần sửa`;
   return (
     // Bottom padding: the verdict bar is fixed to the bottom of the screen.
-    <div className={gitApproved ? "" : "pb-32"}>
+    <div className="pb-32">
       <header className="flex flex-wrap items-center gap-3">
         <Link href={backHref} className="text-sm text-accent hover:underline">← Kho bài</Link>
         <h1 className="font-display text-xl font-bold">{f.unit.title}</h1>
@@ -32,6 +32,11 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
         <span className="font-mono text-xs text-muted" data-testid="review-progress">{progress}</span>
         <Link href={tryHref} className="ml-auto text-sm font-semibold text-accent hover:underline">Làm thử như con ↗</Link>
       </header>
+      {gitApproved && (
+        <p className="mt-3 rounded-lg bg-bg px-3 py-2 text-sm text-muted" data-testid="approved-review-note">
+          Bài đã duyệt — con đang học được. Vẫn soát được: câu đánh &ldquo;Cần sửa&rdquo; tạm ẩn với con cho tới khi Claude sửa xong và bản sửa được merge.
+        </p>
+      )}
       {!gitApproved && (
         <div className="mt-3 flex flex-wrap gap-3">
           {rv.canApprove.ok && !rv.approved ? (
@@ -65,7 +70,7 @@ export async function ReviewWorkbench({ unitId, base, selected, tryHref, backHre
             {current.item ? <ItemPanel item={current.item} kind={current.kind as "practice" | "exit"} /> : <LessonPanel unit={f.unit} />}
             {current.status === "changed" && <p className="mt-4 rounded-lg bg-accent-soft px-3 py-2 text-sm">Câu này đã được sửa sau lần xem trước — xem lại.</p>}
           </article>
-          {!gitApproved && <VerdictForm key={current.id} unitId={unitId} itemId={current.id} back={base} note={current.status === "fix" ? current.note : null} progress={progress} />}
+          <VerdictForm key={current.id} unitId={unitId} itemId={current.id} back={base} note={current.status === "fix" ? current.note : null} progress={progress} />
         </section>
       </div>
     </div>

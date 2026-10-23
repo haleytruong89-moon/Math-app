@@ -83,11 +83,21 @@ export function unitReview(unit: Unit, rows: ReviewRow[], approvals: ApprovalRow
 }
 
 /**
- * The unit as a student may see it: git-approved units whole (the H2 lock protects them); DB-approved units
- * with only their "ok" items, and only while the lesson block is ok and enough items remain.
+ * The unit as a student may see it. Git-approved units: whole, except items a reviewer marked "Cần sửa" on
+ * their current content (23/10: hidden until the fix is merged — an edit makes them "changed" and visible again);
+ * a "Cần sửa" lesson block or too few items left hides the unit. DB-approved units: only their "ok" items, and
+ * only while the lesson block is ok and enough items remain.
  */
 export function studentView(unit: Unit, review: UnitReview | null): Unit | null {
-  if (unit.status === "approved") return unit;
+  if (unit.status === "approved") {
+    const fix = new Set((review?.items ?? []).filter((i) => i.status === "fix").map((i) => i.id));
+    if (!fix.size) return unit;
+    if (fix.has(LESSON)) return null;
+    const practice = unit.practice.filter((i) => !fix.has(i.id));
+    const exit = unit.exit.filter((i) => !fix.has(i.id));
+    if (practice.length < REVIEW_RULES.minPractice || exit.length < REVIEW_RULES.minExit) return null;
+    return { ...unit, practice, exit };
+  }
   if (!review?.approved || !review.okIds.has(LESSON)) return null;
   const practice = unit.practice.filter((i) => review.okIds.has(i.id));
   const exit = unit.exit.filter((i) => review.okIds.has(i.id));
@@ -97,7 +107,7 @@ export function studentView(unit: Unit, review: UnitReview | null): Unit | null 
 
 export function shelfStatus(unit: Unit | null, review: UnitReview | null): ShelfStatus {
   if (!unit) return "none";
-  if (unit.status === "approved") return "approved";
+  if (unit.status === "approved") return studentView(unit, review) ? "approved" : "reapprove";
   if (review?.approved) return studentView(unit, review) ? "approved" : "reapprove";
   return "waiting";
 }
@@ -108,6 +118,16 @@ export function nextToReview(review: UnitReview, afterId?: string): string | nul
   const i = afterId ? review.items.findIndex((e) => e.id === afterId) : -1;
   const order = [...review.items.slice(i + 1), ...review.items.slice(0, i + 1)];
   return order.find(todo)?.id ?? null;
+}
+
+/** 23/10: a "Cần sửa" note = why it is wrong + how Claude should fix it, stored as one text. */
+export const FIX_PART_MAX = 240;
+export function fixNote(reason: string, how: string): string {
+  return `Lý do: ${reason.trim()} — Sửa: ${how.trim()}`;
+}
+export function splitFixNote(note: string | null): { reason: string; how: string } {
+  const m = note?.match(/^Lý do: ([\s\S]*?) — Sửa: ([\s\S]*)$/);
+  return m ? { reason: m[1], how: m[2] } : { reason: note ?? "", how: "" };
 }
 
 /** "Cần sửa" notes as one block the parent pastes to a Claude content session. */
