@@ -35,10 +35,10 @@
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
-| Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ Merged (PR #21), vẫn nháp — không SQL; giải độc lập 109/109; chờ phụ huynh duyệt (hạn 08/11), c-dkxd chờ gia sư soát |
-| LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ Merged (PR #22), vẫn nháp — không SQL; lộ trình 50 KU; giải độc lập 190/190; chờ gia sư soát G + phụ huynh duyệt (hạn 01/11) |
-| Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ Merged 22/10 (PR #34), vẫn nháp — không SQL; giải độc lập 76/76; chờ gia sư soát (hạn 15/11) |
-| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ Merged 22/10 (PR #38), vẫn nháp — không SQL; giải độc lập 78/78; Sổ tay ✅ duyệt 22/10; chờ gia sư soát (hạn 29/11) |
+| Nội dung đợt 3 — p-trunon, p-cau, p-ghep, b-haib, c-dkxd (nháp) | `p1-content-3` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
+| LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
+| Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
+| Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
@@ -52,6 +52,24 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 23/10/2026 — Phụ huynh duyệt 18 bài nháp; gia sư soát sau trên bài đã duyệt (nhánh `p1-approve-23`, không SQL)
+
+Phụ huynh 23/10: "Phụ huynh đã duyệt, GS review sau" cho 9 bài GĐ1 + 9 bài GĐ2; "Cần sửa kèm lý do và hướng dẫn Claude sửa".
+
+### Đã làm
+- 18 KU đợt 3–6 đổi sang `approved` (approvedOn 2026-10-23), khoá đáp án (`approved.lock.json`: 28 bài, 541 câu). Con học được ngay cả 28 bài (bài nào còn khoá theo tiên quyết thì mở dần như thường).
+- **"Cần sửa" trên bài đã duyệt**: gia sư / phụ huynh vẫn đánh giá từng câu trên tab Kho bài (trước đây ô đánh giá bị ẩn với bài duyệt trong git). Câu "Cần sửa" **tạm ẩn với con** cho tới khi Claude sửa và PR được merge (nội dung đổi → câu hiện lại); "Cần sửa" ở phần lý thuyết, hoặc ẩn tới mức còn < 4 câu luyện / < 5 câu kiểm tra → cả bài tạm ẩn.
+- Ô "Cần sửa" tách 2 phần bắt buộc: **Lý do** và **Hướng dẫn Claude sửa** (lưu thành "Lý do: … — Sửa: …"); danh sách ghi chú ở trang Nội dung gồm cả bài đã duyệt.
+- E2E duyệt bài chạy trên 2 bài nháp giả lập (fd-1, fd-2) vì nội dung thật không còn bài nháp.
+
+### Kiểm thử
+- Unit 196 (review +2), e2e PASS (review-flow +2 kiểm tra bài đã duyệt, review-student-flow +1).
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gửi gia sư danh sách điểm cần soát kỹ (mục đợt 5, đợt 6 bên dưới). Ghi chú "Cần sửa" gom ở trang **Nội dung** → nút sao chép → dán cho Claude.
 
 ---
 
