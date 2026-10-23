@@ -1,0 +1,375 @@
+{
+  "problems": [
+    {
+      "id": "ld-d01",
+      "order": 1,
+      "title": "Đề 1 thử — Bài 4.2a",
+      "source": "68 đề – Đề 1, Bài 4.2a (thử)",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "fc-1"
+      ],
+      "status": "approved",
+      "approvedOn": "2026-10-23",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Hình đề thử"
+      },
+      "problem": "Cho đề thử. a) Chứng minh điều thử.",
+      "items": [
+        {
+          "id": "ld-d01-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Chứng minh điều thử.",
+          "goal": "Điều cần chứng minh thử",
+          "steps": [
+            {
+              "ask": "Muốn có điều thử, cần gì?",
+              "node": "Mốc giữa thử",
+              "item": {
+                "id": "ld-d01-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Hướng đúng thử",
+                  "Hướng sai thử",
+                  "Hướng lạc thử"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E06",
+                    "feedback": "Hướng này không tới giả thiết."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Hướng này lạc đề."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            },
+            {
+              "ask": "Vì sao có mốc giữa thử?",
+              "node": "Giả thiết thử",
+              "given": true,
+              "item": {
+                "id": "ld-d01-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Vì giả thiết thử",
+                  "Vì điều cần chứng minh"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E09",
+                    "feedback": "Đang dùng điều cần chứng minh."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            }
+          ],
+          "outline": [
+            "Từ giả thiết thử",
+            "suy ra mốc giữa thử",
+            "suy ra điều cần chứng minh thử"
+          ],
+          "solution": "Lời giải phân tích thử."
+        },
+        {
+          "id": "ld-d01-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền lời giải thử.",
+          "lines": [
+            "Ta có góc thử vuông ([[1]])",
+            "⇒ kết luận thử ([[2]])"
+          ],
+          "bank": [
+            "lí do một",
+            "lí do hai",
+            "lí do ba",
+            "lí do bốn"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "2": {
+                  "code": "E09",
+                  "feedback": "Lí do ba không khớp bước này."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "3": {
+                  "code": "E09",
+                  "feedback": "Lí do bốn chưa đúng."
+                }
+              }
+            }
+          ],
+          "solution": "Lời giải điền thử."
+        }
+      ],
+      "solution": "Kết luận: lời giải đề thử."
+    },
+    {
+      "id": "ld-d02",
+      "order": 2,
+      "title": "Đề 2 thử — Bài 4.2a",
+      "source": "68 đề – Đề 2, Bài 4.2a (thử)",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "fc-1"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Hình đề thử"
+      },
+      "problem": "Cho đề thử. a) Chứng minh điều thử.",
+      "items": [
+        {
+          "id": "ld-d02-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Chứng minh điều thử.",
+          "goal": "Điều cần chứng minh thử",
+          "steps": [
+            {
+              "ask": "Muốn có điều thử, cần gì?",
+              "node": "Mốc giữa thử",
+              "item": {
+                "id": "ld-d02-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Hướng đúng thử",
+                  "Hướng sai thử",
+                  "Hướng lạc thử"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E06",
+                    "feedback": "Hướng này không tới giả thiết."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Hướng này lạc đề."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            },
+            {
+              "ask": "Vì sao có mốc giữa thử?",
+              "node": "Giả thiết thử",
+              "given": true,
+              "item": {
+                "id": "ld-d02-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Vì giả thiết thử",
+                  "Vì điều cần chứng minh"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E09",
+                    "feedback": "Đang dùng điều cần chứng minh."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            }
+          ],
+          "outline": [
+            "Từ giả thiết thử",
+            "suy ra mốc giữa thử",
+            "suy ra điều cần chứng minh thử"
+          ],
+          "solution": "Lời giải phân tích thử."
+        },
+        {
+          "id": "ld-d02-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền lời giải thử.",
+          "lines": [
+            "Ta có góc thử vuông ([[1]])",
+            "⇒ kết luận thử ([[2]])"
+          ],
+          "bank": [
+            "lí do một",
+            "lí do hai",
+            "lí do ba",
+            "lí do bốn"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "2": {
+                  "code": "E09",
+                  "feedback": "Lí do ba không khớp bước này."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "3": {
+                  "code": "E09",
+                  "feedback": "Lí do bốn chưa đúng."
+                }
+              }
+            }
+          ],
+          "solution": "Lời giải điền thử."
+        }
+      ],
+      "solution": "Kết luận: lời giải đề thử."
+    },
+    {
+      "id": "ld-d03",
+      "order": 3,
+      "title": "Đề 3 thử — Bài 4.2a",
+      "source": "68 đề – Đề 3, Bài 4.2a (thử)",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "fs-1"
+      ],
+      "status": "approved",
+      "approvedOn": "2026-10-23",
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\"><title>Tam giác thử</title><path d=\"M10 50 L90 50 L10 10 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"4\" y=\"58\" fill=\"var(--muted)\">A</text></svg>",
+        "alt": "Hình đề thử"
+      },
+      "problem": "Cho đề thử. a) Chứng minh điều thử.",
+      "items": [
+        {
+          "id": "ld-d03-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Chứng minh điều thử.",
+          "goal": "Điều cần chứng minh thử",
+          "steps": [
+            {
+              "ask": "Muốn có điều thử, cần gì?",
+              "node": "Mốc giữa thử",
+              "item": {
+                "id": "ld-d03-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Hướng đúng thử",
+                  "Hướng sai thử",
+                  "Hướng lạc thử"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E06",
+                    "feedback": "Hướng này không tới giả thiết."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Hướng này lạc đề."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            },
+            {
+              "ask": "Vì sao có mốc giữa thử?",
+              "node": "Giả thiết thử",
+              "given": true,
+              "item": {
+                "id": "ld-d03-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn.",
+                "options": [
+                  "Vì giả thiết thử",
+                  "Vì điều cần chứng minh"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E09",
+                    "feedback": "Đang dùng điều cần chứng minh."
+                  }
+                },
+                "solution": "Vì vậy."
+              }
+            }
+          ],
+          "outline": [
+            "Từ giả thiết thử",
+            "suy ra mốc giữa thử",
+            "suy ra điều cần chứng minh thử"
+          ],
+          "solution": "Lời giải phân tích thử."
+        },
+        {
+          "id": "ld-d03-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền lời giải thử.",
+          "lines": [
+            "Ta có góc thử vuông ([[1]])",
+            "⇒ kết luận thử ([[2]])"
+          ],
+          "bank": [
+            "lí do một",
+            "lí do hai",
+            "lí do ba",
+            "lí do bốn"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "2": {
+                  "code": "E09",
+                  "feedback": "Lí do ba không khớp bước này."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "3": {
+                  "code": "E09",
+                  "feedback": "Lí do bốn chưa đúng."
+                }
+              }
+            }
+          ],
+          "solution": "Lời giải điền thử."
+        }
+      ],
+      "solution": "Kết luận: lời giải đề thử."
+    }
+  ]
+}

@@ -44,6 +44,9 @@ export default async function ContentPage() {
       <Link href="/parent/content/so-tay" className="mt-2 inline-block font-display text-sm font-semibold text-accent hover:underline">
         📒 Sổ tay suy ngược (hình học) →
       </Link>
+      <Link href="/parent/content/luyen-de" className="ml-4 mt-2 inline-block font-display text-sm font-semibold text-accent hover:underline">
+        📐 Luyện đề hình 4.2 →
+      </Link>
       {notes.length > 0 && (
         <section className="mt-6 max-w-3xl rounded-xl border border-border bg-surface p-4" data-testid="fix-notes">
           <h2 className="font-display font-semibold">Góp ý cần sửa ({notes.length})</h2>

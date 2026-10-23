@@ -309,7 +309,20 @@ function FadedStage({ unit, alreadyDone, onDone }: { unit: PublicUnit; alreadyDo
 // ---------------------------------------------------------------------
 
 /** Practice of a unit — or (T9) the items of a homework: `homeworkId` lets the server skip the worked-example gate. */
-export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: PublicUnit; onDone: () => void; recapHref: (id: string) => string; homeworkId?: string }) {
+export function PracticeStage({
+  unit,
+  onDone,
+  recapHref,
+  homeworkId,
+  drill,
+}: {
+  unit: PublicUnit;
+  onDone: () => void;
+  recapHref: (id: string) => string;
+  homeworkId?: string;
+  /** Luyện đề 4.2: a drill problem — no exit test after it. */
+  drill?: boolean;
+}) {
   // One graded try per item; items answered wrong come back once at the end.
   const [queue, setQueue] = useState<PublicItem[]>(unit.practice);
   const [pos, setPos] = useState(0);
@@ -368,15 +381,19 @@ export function PracticeStage({ unit, onDone, recapHref, homeworkId }: { unit: P
     const right = Object.values(firstTry).filter(Boolean).length;
     return (
       <Card>
-        <h2 className="font-display text-lg font-bold">{homeworkId ? "Xong bài về nhà" : "Xong phần luyện tập"}</h2>
+        <h2 className="font-display text-lg font-bold">{drill ? "Xong bài luyện đề" : homeworkId ? "Xong bài về nhà" : "Xong phần luyện tập"}</h2>
         <p className="mt-2">
           Đúng ngay lần đầu: <b className="tabular-nums">{right}/{unit.practice.length}</b> câu.
         </p>
         <p className="mt-1 text-sm text-muted">
-          {homeworkId ? "Thầy/cô xem được kết quả này." : "Phần tiếp theo là bài kiểm tra ngắn: không có gợi ý, xem đáp án sau khi nộp."}
+          {drill
+            ? "Đọc lời giải đầy đủ bên dưới rồi so với bài con viết trên giấy."
+            : homeworkId
+              ? "Thầy/cô xem được kết quả này."
+              : "Phần tiếp theo là bài kiểm tra ngắn: không có gợi ý, xem đáp án sau khi nộp."}
         </p>
         <PrimaryButton className="mt-4 w-full" onClick={onDone}>
-          {homeworkId ? "Về trang chính" : "Làm bài kiểm tra"}
+          {drill ? "Xem lời giải đầy đủ" : homeworkId ? "Về trang chính" : "Làm bài kiểm tra"}
         </PrimaryButton>
       </Card>
     );

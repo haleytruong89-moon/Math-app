@@ -103,6 +103,18 @@ const curriculum = {
   ],
 };
 fs.writeFileSync(path.join(root, "curriculum.json"), JSON.stringify(curriculum, null, 2) + "\n");
+// Luyện đề 4.2 (23/10): ld-d01 approved, needs fc-1; ld-d02 a draft; ld-d03 approved, needs fs-1 (locked).
+const drillProblem = (n, needs, status) => {
+  const id = `ld-d0${n}`;
+  const { figure: _f, drawFirst: _d, ...c3 } = proofItem(`${id}-2`);
+  return {
+    id, order: n, title: `Đề ${n} thử — Bài 4.2a`, source: `68 đề – Đề ${n}, Bài 4.2a (thử)`, parts: ["a"], needs, status,
+    ...(status === "approved" ? { approvedOn: "2026-10-23" } : {}),
+    figure: { svg: SVG, alt: "Hình đề thử" }, problem: "Cho đề thử. a) Chứng minh điều thử.",
+    items: [analysisItem(`${id}-1`), c3], solution: "Kết luận: lời giải đề thử.",
+  };
+};
+fs.writeFileSync(path.join(root, "luyen-de-42.json"), JSON.stringify({ problems: [drillProblem(1, ["fc-1"], "approved"), drillProblem(2, ["fc-1"], "draft"), drillProblem(3, ["fs-1"], "approved")] }, null, 2) + "\n");
 // S5: an approved fixture Sổ tay.
 fs.writeFileSync(
   path.join(root, "so-tay.json"),

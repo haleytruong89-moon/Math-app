@@ -40,5 +40,7 @@ run parent 3106 e2e/curriculum-parent-flow.mjs; g=$?
 run student 3107 e2e/items-flow.mjs; h=$?
 run student 3112 e2e/geometry-flow.mjs; m=$?
 run parent 3113 e2e/geometry-parent-flow.mjs; n=$?
+run student 3116 e2e/drill-flow.mjs; q=$?
+run tutor 3117 e2e/drill-tutor-flow.mjs; r=$?
 node scripts/content-index.mjs
-exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p ))
+exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p || q || r ))

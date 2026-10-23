@@ -42,6 +42,7 @@
 | Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
+| Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42` | 🟡 PR mở 23/10 — không SQL; chờ phụ huynh "duyệt luyện đề" |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -54,6 +55,24 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 23/10/2026 — Luyện đề hình 4.2: code + đợt đầu 9 bài ý a (nhánh `p1-ld42`, không SQL)
+
+Phụ huynh "làm luôn" (23/10). Thiết kế: `docs/superpowers/specs/2026-10-23-luyen-de-42-design.md` (§4 = bản đã làm).
+
+| Phần | Kết quả |
+|---|---|
+| Con | mục **"📐 Luyện đề hình"** (`/student/luyen-de`, thẻ ở trang chủ): đọc đề → tự vẽ hình → xem hình mẫu → phân tích ngược → điền lời giải (C3) → sắp xếp bước (C2) → lời giải đầy đủ. Không ảnh hưởng mức M của bài học |
+| Quy tắc mở | bài mở khi mọi bài học nó cần đạt M3 hoặc có ★ của gia sư; tối đa 3 bài mới/tuần (T2–CN); làm sai → "Làm lại sau" 7 ngày. Server chặn trả lời bài chưa mở |
+| Gia sư / phụ huynh | Kho bài → "📐 Luyện đề hình" (`/tutor/[id]/luyen-de`), Nội dung → "📐 Luyện đề hình 4.2" (`/parent/content/luyen-de`): danh sách bài, trạng thái của con, "Xem đáp án · soát" = bàn duyệt quen thuộc ("Cần sửa" = lý do + hướng dẫn) |
+| Duyệt | chỉ trong git (phụ huynh nói "duyệt luyện đề"); app không có nút duyệt bài luyện đề |
+| Đợt đầu (nháp) | Đề 3, 5, 6, 8, 28, 31, 35, 46, 52 — mỗi đề 3 câu (phân tích ngược 3 tầng, C3, C2 cách khác) + hình SVG kiểm toạ độ. Đề 16 thay bằng Đề 46 (ý a của Đề 16 cần điểm E chỉ có ở ý b) |
+| Kiểm tra | soạn: kiểm toạ độ 59 + 56 + 82 mệnh đề, chấm thử mọi phương án sai; **giải độc lập 27/27**; sau đó sửa 4 phương án sai ở tầng 1 (d31, d35, d46, d52) vốn là dấu hiệu đúng nhưng không đi tới giả thiết → đổi thành "hai góc đối bằng nhau" (sai thật, E04) |
+| Kiểm thử | `npm test` 201 ✓, e2e đủ (thêm `drill-flow`, `drill-tutor-flow` trên dữ liệu thử) ✓ |
+
+**Gia sư nên soát:** Đề 28 trùng hình bài mẫu của k-tugiacnt (AEHF với ba đường cao) — vẫn giữ vì là đề thật; Đề 52 cùng cấu hình Đề 29 (câu p4 của k-tugiacnt); Đề 8 câu C2 dùng "trung tuyến ứng với cạnh huyền" (lớp 8); vài phương án sai "tổng hai góc kề = 180°" (đúng về số nhưng sai dấu hiệu, E04) — xem con có hiểu vì sao sai.
+
+**Việc kế:** phụ huynh merge (#40 → #41 → PR này), soát, nói "duyệt luyện đề"; đợt 2 (9–10 bài ý a) trước 07/12; ý b từ 01/2027 (o-dongdang ở đợt 8).
 
 ## 23/10/2026 — Phụ huynh duyệt 18 bài nháp; gia sư soát sau trên bài đã duyệt (nhánh `p1-approve-23`, không SQL)
 

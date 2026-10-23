@@ -2,6 +2,7 @@
 // Regenerate with `npm run content:index` after adding or removing a content file.
 import curriculum from "../../../content/curriculum.json";
 import soTay from "../../../content/so-tay.json";
+import drills from "../../../content/luyen-de-42.json";
 import m0 from "../../../content/backfill-dai-so/module.json";
 import m0u0 from "../../../content/backfill-dai-so/f1-hdt.json";
 import m0u1 from "../../../content/backfill-dai-so/f1-pnt.json";
@@ -44,6 +45,7 @@ import m9u2 from "../../../content/xac-suat/b-haib.json";
 export const CONTENT_SOURCE = "content";
 export const CURRICULUM: unknown = curriculum;
 export const SO_TAY: unknown = soTay;
+export const DRILLS: unknown = drills;
 export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m0, units: [m0u0, m0u1, m0u2, m0u3] },
   { module: m1, units: [m1u0] },
