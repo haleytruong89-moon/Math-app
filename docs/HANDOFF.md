@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 23/10/2026 (28 bài đã duyệt; Luyện đề 4.2: 19 bài nháp đã merge — #40–#43). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 23/10/2026 (28 bài đã duyệt; Luyện đề 4.2: 19 bài luyện đề đã duyệt). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -18,7 +18,7 @@
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ⬜ việc kế của phiên Nội dung |
-| Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt 1 (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52) + đợt 2 (9 + 10 bài ý a, nháp) | `p1-ld42`, `p1-ld42-2` | đợt đầu trước 23/11 | ✅ Merged 23/10 (PR #42 code + đợt 1, #43 đợt 2: Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56) — 19 bài, phụ huynh duyệt 23/10, không SQL. Kế: phụ huynh "duyệt luyện đề"; đợt 3 = bài ý a có tiếp tuyến (Đề 1, 2, 10, 14, 21, 23, 27…) sau l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027 khi có o-dongdang |
+| Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt 1 (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52) + đợt 2 (9 + 10 bài ý a, nháp) | `p1-ld42`, `p1-ld42-2` | đợt đầu trước 23/11 | ✅ Merged 23/10 (PR #42 code + đợt 1, #43 đợt 2: Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56) — 19 bài, phụ huynh duyệt 23/10, không SQL. Kế: gia sư soát; đợt 3 = bài ý a có tiếp tuyến (Đề 1, 2, 10, 14, 21, 23, 27…) sau l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027 khi có o-dongdang |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
 ## Phiên Code (VS Code / cloud)
