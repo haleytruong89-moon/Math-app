@@ -32,7 +32,7 @@ export function DrillPlayer({
       <h1 className="font-display text-xl font-bold">{unit.title}</h1>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <section className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-4" aria-label="Đề bài">
-          <Rich as="div" html={problemHtml} className="font-body leading-relaxed" />
+          <Rich as="div" html={problemHtml} className="whitespace-pre-line font-body leading-relaxed" />
           {drawn ? (
             <SvgFigure figure={figure} className="mx-auto max-w-[360px]" />
           ) : (
@@ -50,7 +50,7 @@ export function DrillPlayer({
           ) : (
             <div className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-4" data-testid="drill-solution">
               <h2 className="font-display text-lg font-bold">Lời giải đầy đủ</h2>
-              <Rich as="div" html={solutionHtml} className="font-body leading-relaxed" />
+              <Rich as="div" html={solutionHtml} className="whitespace-pre-line font-body leading-relaxed" />
               <Link href={backHref} className={`text-center ${btn}`}>
                 Về Luyện đề hình
               </Link>

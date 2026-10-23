@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 23/10/2026 (28 bài đã duyệt; "Cần sửa" trên bài đã duyệt). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 23/10/2026 (28 bài đã duyệt; "Cần sửa" trên bài đã duyệt; Luyện đề 4.2 đợt đầu). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -18,7 +18,7 @@
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ⬜ việc kế của phiên Nội dung |
-| Luyện đề 4.2: thiết kế ✅ 23/10 (`docs/superpowers/specs/2026-10-23-luyen-de-42-design.md`) → kế hoạch + code nhỏ → đợt đầu 9 bài ý a | `p1-ld42-*` | đợt đầu trước 23/11 | ⬜ chờ phụ huynh "làm luôn" |
+| Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt đầu 9 bài ý a (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52, nháp) | `p1-ld42` | đợt đầu trước 23/11 | ✅ PR mở 23/10 (không SQL). Kế: phụ huynh "duyệt luyện đề"; đợt 2 (9–10 bài ý a) trước 07/12; ý b từ 01/2027 khi có o-dongdang |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
 ## Phiên Code (VS Code / cloud)
@@ -35,6 +35,7 @@
 ## Phụ huynh
 - [x] Merge #20–#23 (đợt 2–4, S9).
 - [x] Phụ huynh duyệt 18 bài đợt 3–6 (23/10). Merge PR `p1-approve-23`.
+- [ ] Merge PR Luyện đề 4.2 (`p1-ld42`, sau #40 → #41); soát 9 bài nháp ở Kho bài → "📐 Luyện đề hình", rồi nói "duyệt luyện đề" (con thấy từ khi k-tugiacnt đạt M3 hoặc có ★).
 - [ ] Gia sư soát các bài đã duyệt trên Kho bài ("Cần sửa" = lý do + hướng dẫn sửa) + trả lời Q24.
 - [x] Merge PR #33 (S5) và #34 (đợt 5, 22/10).
 - [x] Merge PR #35 (S4b, 22/10).

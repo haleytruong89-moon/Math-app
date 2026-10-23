@@ -1,7 +1,7 @@
 # Luyện đề hình 4.2 — drill bank of real exam proofs
 
 > Designed 23/10/2026 with the parent (proposal + 2 popup answers). Decision: `docs/SPEC.md` §0 row of 23/10 ("Luyện đề 4.2").
-> Status: design only — the implementation plan is written when the parent says go.
+> Status: built 23/10 on branch `p1-ld42` (parent "làm luôn"); first batch of 9 part-a problems as drafts. As-built notes in §4.
 
 ## 1. Why
 
@@ -28,3 +28,14 @@ cyclic quadrilateral" is in 64/68 papers) needs many varied full problems. Targe
 ## 3. Out of scope
 
 Part c; free-text proof grading; mock exams (Đề 57–68); AI help on these items (comes with S8b if the test set passes).
+
+## 4. As built (23/10)
+
+| Topic | Shape |
+|---|---|
+| Format | one file `content/luyen-de-42.json`; one problem = `{id ld-dNN, order, title, source, parts, needs, status, approvedOn?, figure, problem, items (2–4), solution}` (`src/lib/content/drill.ts`) |
+| Reuse | `getUnit()` returns a Unit-shaped `drillUnit` for `ld-*` ids → review workbench, "Cần sửa" notes, `checkAnswer`, `attempts` all work unchanged. Per-problem review (not per batch) |
+| Opening | `drillPlan` (pure, tested): locked / waiting / new / doing / later / redo / done; weekly slots counted Monday–Sunday by first answer; `drillOpen` gates answers on the server |
+| Approval | git only (parent says "duyệt luyện đề"); the app never approves a drill |
+| Batch 1 (part a) | Đề 3, 5, 6, 8, 28, 31, 35, 46, 52 (Đề 16 replaced by 46: its part a needs a point defined in part b). Each = analysis (3 levels) + C3 + C2 with another method where possible |
+| Tests | `drill.test.ts`, `drill-plan.test.ts`; e2e `drill-flow.mjs` (student) and `drill-tutor-flow.mjs` (tutor) on fixture drills |

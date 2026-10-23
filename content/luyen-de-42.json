@@ -1,3 +1,2140 @@
 {
-  "problems": []
+  "problems": [
+    {
+      "id": "ld-d03",
+      "order": 1,
+      "title": "Đề 3 — Bài 4.2a",
+      "source": "68 đề – Đề 3, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Đường tròn (O), tam giác ABC, đường cao CD, đường kính AM, CE vuông góc AM, trực tâm H</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"106.3\" y1=\"23.5\" x2=\"28.2\" y2=\"158.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"28.2\" y1=\"158.9\" x2=\"219.8\" y2=\"158.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"219.8\" y1=\"158.9\" x2=\"106.3\" y2=\"23.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"106.3\" y1=\"23.5\" x2=\"141.7\" y2=\"224.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"219.8\" y1=\"158.9\" x2=\"76.1\" y2=\"75.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"219.8\" y1=\"158.9\" x2=\"132.9\" y2=\"174.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"28.2\" y1=\"158.9\" x2=\"140.6\" y2=\"64.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"79.6,69.8 85.6,73.3 82.1,79.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"131.6,167.3 138.5,166.1 139.7,173\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"103.9\" y=\"11.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"17\" y=\"163.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"231\" y=\"163.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"146.2\" y=\"235.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"64.2\" y=\"74.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"121.4\" y=\"177.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"104.5\" y=\"105.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"151.4\" y=\"59.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"112.2\" y=\"126.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"106.3\" cy=\"23.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"28.2\" cy=\"158.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"219.8\" cy=\"158.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"141.7\" cy=\"224.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"76.1\" cy=\"75.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"132.9\" cy=\"174.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"106.3\" cy=\"93.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"140.6\" cy=\"64.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn (O); tam giác nhọn ABC nội tiếp, AB < AC; đường cao CD (D trên AB); đường kính AM; CE vuông góc AM tại E; H là trực tâm, BH cắt AC tại K."
+      },
+      "problem": "Cho đường tròn $(O;R)$ và dây cung $BC$ cố định ($BC<2R$). Điểm $A$ di động trên $(O;R)$ sao cho $\\triangle ABC$ có ba góc nhọn và $AB<AC$. Vẽ đường cao $CD$ của $\\triangle ABC$ và đường kính $AM$. Hạ $CE$ vuông góc với $AM$ tại $E$, gọi $H$ là trực tâm của $\\triangle ABC$, $BH$ cắt $AC$ tại $K$. a) Chứng minh rằng tứ giác $ADEC$ nội tiếp được một đường tròn.",
+      "items": [
+        {
+          "id": "ld-d03-1",
+          "type": "analysis",
+          "level": "L2",
+          "source": "68 đề – Đề 3, Bài 4.2a",
+          "prompt": "Phân tích ngược để chứng minh tứ giác $ADEC$ nội tiếp: từ điều cần chứng minh, mỗi tầng chọn điều cần có trước.",
+          "goal": "Tứ giác $ADEC$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $ADEC$ nội tiếp, cần chứng minh gì?",
+              "node": "$D$ và $E$ (hai đỉnh kề) cùng nhìn cạnh $AC$ dưới góc $90^\\circ$: $\\widehat{ADC}=\\widehat{AEC}=90^\\circ$",
+              "item": {
+                "id": "ld-d03-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{ADC}+\\widehat{AEC}=180^\\circ$ vì đó là hai góc đối",
+                  "$D$ và $E$ cùng nhìn cạnh $AC$ dưới góc $90^\\circ$",
+                  "$AH \\perp BC$ vì $H$ là trực tâm"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "Theo thứ tự $A$–$D$–$E$–$C$, $D$ và $E$ là hai đỉnh **kề** (cùng nằm trên cạnh $DE$), không phải hai đỉnh đối. Tổng hai góc ở hai đỉnh kề không phải dấu hiệu nội tiếp."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "$AH \\perp BC$ đúng, nhưng không nói gì về bốn điểm $A$, $D$, $E$, $C$; hướng này không dẫn tới tứ giác cần chứng minh."
+                  }
+                },
+                "solution": "Hai góc vuông có sẵn ở $D$ ($CD$ là đường cao) và ở $E$ ($CE \\perp AM$), cùng nhìn cạnh $AC$; $D$, $E$ là hai đỉnh kề."
+              }
+            },
+            {
+              "ask": "Vì sao $\\widehat{ADC}=90^\\circ$?",
+              "node": "$CD$ là đường cao của $\\triangle ABC$ (gt) ⇒ $CD \\perp AB$ tại $D$ ⇒ $\\widehat{ADC}=90^\\circ$",
+              "item": {
+                "id": "ld-d03-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "$CD$ là đường cao của $\\triangle ABC$ (gt)",
+                  "$\\widehat{ADC}$ là góc nội tiếp chắn nửa đường tròn $(O)$",
+                  "Tứ giác $ADEC$ nội tiếp đường tròn đường kính $AC$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E08",
+                    "feedback": "$D$ không nằm trên $(O)$ và $AC$ không phải đường kính của $(O)$, nên $\\widehat{ADC}$ không phải góc nội tiếp chắn nửa đường tròn $(O)$."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "Lập luận vòng: tứ giác $ADEC$ nội tiếp chính là điều đang cần chứng minh."
+                  }
+                },
+                "solution": "Đường cao $CD$ vuông góc với $AB$ tại $D$, mà $A \\in AB$ nên $\\widehat{ADC}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{AEC}=90^\\circ$ thì vì sao?",
+              "node": "$CE \\perp AM$ tại $E$ (gt) ⇒ $\\widehat{AEC}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d03-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{ACM}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn)",
+                  "Vì $E$ là trung điểm của $AM$",
+                  "Vì $CE \\perp AM$ tại $E$ (gt)"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{ACM}=90^\\circ$ đúng, nhưng đó là góc ở đỉnh $C$; cần góc ở đỉnh $E$ là $\\widehat{AEC}$."
+                  },
+                  "1": {
+                    "code": "E08",
+                    "feedback": "Trung điểm của đường kính $AM$ là tâm $O$, không phải $E$; $E$ là chân đường vuông góc hạ từ $C$."
+                  }
+                },
+                "solution": "Đề cho $CE$ vuông góc với $AM$ tại $E$, nên $\\widehat{AEC}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{ADC}=90^\\circ$ ($CD$ là đường cao)",
+            "$\\widehat{AEC}=90^\\circ$ ($CE \\perp AM$)",
+            "⇒ hai đỉnh kề $D$, $E$ cùng nhìn cạnh $AC$ dưới góc $90^\\circ$",
+            "⇒ tứ giác $ADEC$ nội tiếp (đường tròn đường kính $AC$)"
+          ],
+          "solution": "$\\widehat{ADC}=90^\\circ$ ($CD$ là đường cao), $\\widehat{AEC}=90^\\circ$ ($CE \\perp AM$). Hai đỉnh kề $D$, $E$ cùng nhìn $AC$ dưới góc vuông ⇒ $ADEC$ nội tiếp đường tròn đường kính $AC$."
+        },
+        {
+          "id": "ld-d03-2",
+          "type": "proof",
+          "level": "L2",
+          "source": "68 đề – Đề 3, Bài 4.2a",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: chứng minh tứ giác $ADEC$ nội tiếp.",
+          "lines": [
+            "Xét tứ giác $ADEC$ có: $\\widehat{ADC}=90^\\circ$ (vì [[1]]);",
+            "$\\widehat{AEC}=90^\\circ$ (vì [[2]]);",
+            "⇒ $D$ và $E$ là hai đỉnh [[3]] cùng nhìn cạnh $AC$ dưới góc $90^\\circ$.",
+            "⇒ Tứ giác $ADEC$ nội tiếp đường tròn đường kính [[4]]."
+          ],
+          "bank": [
+            "$CD$ là đường cao của $\\triangle ABC$ (gt)",
+            "$CE \\perp AM$ tại $E$ (gt)",
+            "góc nội tiếp chắn nửa đường tròn $(O)$",
+            "kề nhau",
+            "đối nhau",
+            "$AC$",
+            "$AM$",
+            "$DE$"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E09",
+                  "feedback": "$CE \\perp AM$ cho góc vuông ở $E$, không cho góc ở $D$: lí do không khớp bước."
+                },
+                "2": {
+                  "code": "E08",
+                  "feedback": "$D$ không nằm trên $(O)$ nên $\\widehat{ADC}$ không phải góc nội tiếp của $(O)$; góc vuông ở $D$ có từ đường cao $CD$."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "0": {
+                  "code": "E09",
+                  "feedback": "Đường cao $CD$ cho góc vuông ở $D$, đã dùng ở dòng trên; góc ở $E$ cần lí do khác."
+                },
+                "2": {
+                  "code": "E08",
+                  "feedback": "$E$ không nằm trên $(O)$ nên $\\widehat{AEC}$ không phải góc nội tiếp của $(O)$ (góc nội tiếp chắn nửa đường tròn là $\\widehat{ACM}$)."
+                }
+              }
+            },
+            {
+              "correct": 3,
+              "mistakes": {
+                "4": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $A$–$D$–$E$–$C$: $D$ đứng ngay trước $E$ nên $D$, $E$ là hai đỉnh kề; hai đỉnh đối là $A$–$E$ và $D$–$C$."
+                }
+              }
+            },
+            {
+              "correct": 5,
+              "mistakes": {
+                "6": {
+                  "code": "E08",
+                  "feedback": "Đường tròn đường kính $AM$ chính là $(O)$, mà $D$, $E$ không nằm trên $(O)$. Hai góc vuông cùng nhìn $AC$ nên $AC$ là đường kính."
+                },
+                "7": {
+                  "code": "E08",
+                  "feedback": "$DE$ là một cạnh của tứ giác, không phải cạnh mà hai góc vuông cùng nhìn."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{ADC}=90^\\circ$ (đường cao $CD$), $\\widehat{AEC}=90^\\circ$ ($CE \\perp AM$); $D$, $E$ là hai đỉnh kề cùng nhìn $AC$ dưới góc vuông ⇒ $ADEC$ nội tiếp đường tròn đường kính $AC$."
+        },
+        {
+          "id": "ld-d03-3",
+          "type": "order",
+          "level": "L3",
+          "source": "68 đề – Đề 3, Bài 4.2a",
+          "prompt": "Sắp xếp các dòng thành lời giải chứng minh bốn điểm $A$, $D$, $E$, $C$ cùng thuộc một đường tròn và chỉ ra tâm của đường tròn đó (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "$\\widehat{ADC}=90^\\circ$ (vì $CD$ là đường cao của $\\triangle ABC$)",
+              "after": []
+            },
+            {
+              "text": "⇒ $D$ thuộc đường tròn đường kính $AC$",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\widehat{AEC}=90^\\circ$ (vì $CE \\perp AM$ tại $E$)",
+              "after": []
+            },
+            {
+              "text": "⇒ $E$ thuộc đường tròn đường kính $AC$",
+              "after": [
+                2
+              ]
+            },
+            {
+              "text": "⇒ Bốn điểm $A$, $D$, $E$, $C$ cùng thuộc đường tròn đường kính $AC$",
+              "after": [
+                1,
+                3
+              ]
+            },
+            {
+              "text": "Kết luận: tứ giác $ADEC$ nội tiếp đường tròn có tâm là trung điểm của $AC$."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\widehat{AEC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn $(O)$)",
+              "code": "E08",
+              "feedback": "$E$ không nằm trên $(O)$; góc vuông ở $E$ có được vì đề cho $CE \\perp AM$."
+            },
+            {
+              "text": "⇒ Bốn điểm $A$, $D$, $E$, $C$ cùng thuộc đường tròn đường kính $AM$",
+              "code": "E08",
+              "feedback": "Đường tròn đường kính $AM$ là $(O)$, mà $D$, $E$ không nằm trên $(O)$. Hai góc vuông cùng nhìn $AC$, nên đường kính là $AC$."
+            }
+          ],
+          "solution": "$\\widehat{ADC}=\\widehat{AEC}=90^\\circ$ nên $D$, $E$ cùng thuộc đường tròn đường kính $AC$; tâm là trung điểm của $AC$. Hai cặp dòng về $D$ và về $E$ đổi chỗ được (mỗi dòng «⇒ … thuộc» đứng sau góc vuông của nó)."
+        }
+      ],
+      "solution": "Vì $CD$ là đường cao của $\\triangle ABC$ nên $CD \\perp AB$ tại $D$ ⇒ $\\widehat{ADC}=90^\\circ$. Vì $CE \\perp AM$ tại $E$ nên $\\widehat{AEC}=90^\\circ$. Xét tứ giác $ADEC$ có $\\widehat{ADC}=\\widehat{AEC}=90^\\circ$, hai đỉnh kề $D$ và $E$ cùng nhìn cạnh $AC$ dưới góc $90^\\circ$ ⇒ $D$, $E$ cùng thuộc đường tròn đường kính $AC$. Kết luận: tứ giác $ADEC$ nội tiếp đường tròn đường kính $AC$ (tâm là trung điểm của $AC$)."
+    },
+    {
+      "id": "ld-d05",
+      "order": 2,
+      "title": "Đề 5 — Bài 4.2a",
+      "source": "68 đề – Đề 5, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn (O), ba đường cao AD, BF, CE cắt nhau tại H</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"106.3\" y1=\"23.5\" x2=\"31.6\" y2=\"167.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"31.6\" y1=\"167.1\" x2=\"212.3\" y2=\"175\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"212.3\" y1=\"175\" x2=\"106.3\" y2=\"23.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"106.3\" y1=\"23.5\" x2=\"99.9\" y2=\"170.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"31.6\" y1=\"167.1\" x2=\"149.2\" y2=\"84.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"212.3\" y1=\"175\" x2=\"66.9\" y2=\"99.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"100.2,163.1 107.2,163.4 106.9,170.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"63.6,105.5 69.8,108.7 73.1,102.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"153.2,90.5 147.4,94.5 143.4,88.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"106.3\" y=\"11.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"20.4\" y=\"171.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"223.5\" y=\"179.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"101.7\" y=\"182\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"55.4\" y=\"95.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"160.1\" y=\"79.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"107.1\" y=\"128.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"135.8\" y=\"121.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"106.3\" cy=\"23.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"31.6\" cy=\"167.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"212.3\" cy=\"175\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"99.9\" cy=\"170.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"66.9\" cy=\"99.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"149.2\" cy=\"84.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102.2\" cy=\"117.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC nội tiếp đường tròn (O); ba đường cao AD (D trên BC), BF (F trên AC), CE (E trên AB) cắt nhau tại H."
+      },
+      "problem": "Cho $\\triangle ABC$ có ba góc nhọn nội tiếp $(O;R)$. Các đường cao $AD$, $BF$, $CE$ của tam giác cắt nhau tại $H$. a) Chứng minh tứ giác $BEHD$ nội tiếp một đường tròn.",
+      "items": [
+        {
+          "id": "ld-d05-1",
+          "type": "analysis",
+          "level": "L2",
+          "source": "68 đề – Đề 5, Bài 4.2a",
+          "prompt": "Phân tích ngược để chứng minh tứ giác $BEHD$ nội tiếp: từ điều cần chứng minh, mỗi tầng chọn điều cần có trước.",
+          "goal": "Tứ giác $BEHD$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $BEHD$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{BEH}+\\widehat{BDH}=180^\\circ$ (hai góc đối, tại $E$ và $D$)",
+              "item": {
+                "id": "ld-d05-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{BEH}+\\widehat{EHD}=180^\\circ$",
+                  "$\\triangle BEH \\backsim \\triangle BFA$",
+                  "$\\widehat{BEH}+\\widehat{BDH}=180^\\circ$"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "Theo thứ tự $B$–$E$–$H$–$D$, $E$ và $H$ là hai đỉnh **kề**; tổng hai góc ở hai đỉnh kề không phải dấu hiệu nội tiếp. Hai đỉnh đối của $E$ là $D$."
+                  },
+                  "1": {
+                    "code": "E06",
+                    "feedback": "Cặp tam giác này đồng dạng thật, nhưng nó cho tỉ số / đẳng thức tích, không cho bốn điểm $B$, $E$, $H$, $D$ cùng thuộc một đường tròn."
+                  }
+                },
+                "solution": "Thứ tự $B$–$E$–$H$–$D$: $E$ đối với $D$. Ở cả hai đỉnh này đều có góc vuông (chân đường cao), nên dùng tổng hai góc đối."
+              }
+            },
+            {
+              "ask": "Muốn có tổng đó, trước hết vì sao $\\widehat{BEH}=90^\\circ$?",
+              "node": "$CE$ là đường cao (gt) ⇒ $CE \\perp AB$ tại $E$ ⇒ $\\widehat{BEH}=90^\\circ$",
+              "item": {
+                "id": "ld-d05-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "$\\widehat{BEC}$ là góc nội tiếp chắn nửa đường tròn $(O)$",
+                  "$CE$ là đường cao của $\\triangle ABC$ nên $CE \\perp AB$ (gt)",
+                  "$\\widehat{BEH}=\\widehat{BDH}$ vì cùng nhìn cạnh $BH$"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$E$ không nằm trên $(O)$ và $BC$ không phải đường kính của $(O)$; góc vuông ở $E$ có được vì $CE$ là đường cao."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "Hai góc cùng nhìn $BH$ bằng nhau chỉ khi đã biết $B$, $E$, $H$, $D$ cùng thuộc một đường tròn: lập luận vòng."
+                  }
+                },
+                "solution": "$H$ nằm trên đường cao $CE$, mà $CE \\perp AB$ tại $E$, nên $\\widehat{BEH}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{BDH}=90^\\circ$ thì vì sao?",
+              "node": "$AD$ là đường cao (gt) ⇒ $AD \\perp BC$ tại $D$ ⇒ $\\widehat{BDH}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d05-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "$AD$ là đường cao của $\\triangle ABC$ nên $AD \\perp BC$ (gt)",
+                  "$BF$ là đường cao của $\\triangle ABC$ nên $BF \\perp AC$ (gt)",
+                  "$H$ là trực tâm nên $\\widehat{BHD}=90^\\circ$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E08",
+                    "feedback": "$BF \\perp AC$ cho góc vuông ở $F$, không phải ở $D$. Góc ở $D$ do đường cao $AD$."
+                  },
+                  "2": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{BHD}$ là góc ở đỉnh $H$ và không bằng $90^\\circ$; trực tâm chỉ cho các góc vuông ở chân đường cao $D$, $E$, $F$."
+                  }
+                },
+                "solution": "$H$ nằm trên đường cao $AD$, mà $AD \\perp BC$ tại $D$, nên $\\widehat{BDH}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{BEH}=90^\\circ$ ($CE \\perp AB$)",
+            "$\\widehat{BDH}=90^\\circ$ ($AD \\perp BC$)",
+            "⇒ $\\widehat{BEH}+\\widehat{BDH}=180^\\circ$, hai góc đối",
+            "⇒ tứ giác $BEHD$ nội tiếp"
+          ],
+          "solution": "$\\widehat{BEH}=90^\\circ$ ($CE \\perp AB$), $\\widehat{BDH}=90^\\circ$ ($AD \\perp BC$). Tứ giác $BEHD$ có tổng hai góc đối $\\widehat{BEH}+\\widehat{BDH}=180^\\circ$ ⇒ nội tiếp."
+        },
+        {
+          "id": "ld-d05-2",
+          "type": "proof",
+          "level": "L2",
+          "source": "68 đề – Đề 5, Bài 4.2a",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: chứng minh tứ giác $BEHD$ nội tiếp.",
+          "lines": [
+            "Xét tứ giác $BEHD$ có:",
+            "$\\widehat{BEH}=90^\\circ$ (vì [[1]]);",
+            "$\\widehat{BDH}=90^\\circ$ (vì [[2]]);",
+            "⇒ $\\widehat{BEH}+\\widehat{BDH}=180^\\circ$, mà $\\widehat{BEH}$ và $\\widehat{BDH}$ là hai góc [[3]]",
+            "⇒ Tứ giác $BEHD$ nội tiếp ([[4]])."
+          ],
+          "bank": [
+            "$CE$ là đường cao của $\\triangle ABC$ (gt)",
+            "$AD$ là đường cao của $\\triangle ABC$ (gt)",
+            "$BF$ là đường cao của $\\triangle ABC$ (gt)",
+            "góc nội tiếp chắn nửa đường tròn",
+            "đối nhau",
+            "kề nhau",
+            "tổng hai góc đối bằng $180^\\circ$",
+            "hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "2": {
+                  "code": "E08",
+                  "feedback": "$BF \\perp AC$ cho góc vuông ở $F$; góc ở $E$ do đường cao $CE$."
+                },
+                "3": {
+                  "code": "E08",
+                  "feedback": "$E$ không nằm trên $(O)$ nên $\\widehat{BEH}$ không phải góc nội tiếp; góc vuông có từ đường cao $CE$."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "0": {
+                  "code": "E09",
+                  "feedback": "Đường cao $CE$ cho góc vuông ở $E$ (dòng trên), không cho góc ở $D$: lí do không khớp bước."
+                },
+                "2": {
+                  "code": "E08",
+                  "feedback": "$BF \\perp AC$ cho góc vuông ở $F$; góc ở $D$ do đường cao $AD$."
+                }
+              }
+            },
+            {
+              "correct": 4,
+              "mistakes": {
+                "5": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $B$–$E$–$H$–$D$: $E$ kề $B$ và $H$; $E$ và $D$ là hai đỉnh đối."
+                }
+              }
+            },
+            {
+              "correct": 6,
+              "mistakes": {
+                "7": {
+                  "code": "E09",
+                  "feedback": "Dòng trên vừa dùng tổng hai góc đối, không phải hai đỉnh kề cùng nhìn một cạnh: lí do không khớp bước."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{BEH}=90^\\circ$ (đường cao $CE$), $\\widehat{BDH}=90^\\circ$ (đường cao $AD$) ⇒ tổng hai góc đối bằng $180^\\circ$ ⇒ $BEHD$ nội tiếp."
+        },
+        {
+          "id": "ld-d05-3",
+          "type": "order",
+          "level": "L3",
+          "source": "68 đề – Đề 5, Bài 4.2a",
+          "prompt": "Sắp xếp các dòng thành một cách chứng minh khác: bốn điểm $B$, $E$, $H$, $D$ cùng thuộc một đường tròn, và chỉ ra tâm (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "$CE \\perp AB$ (gt) ⇒ $\\widehat{BEH}=90^\\circ$",
+              "after": []
+            },
+            {
+              "text": "⇒ $E$ thuộc đường tròn đường kính $BH$",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$AD \\perp BC$ (gt) ⇒ $\\widehat{BDH}=90^\\circ$",
+              "after": []
+            },
+            {
+              "text": "⇒ $D$ thuộc đường tròn đường kính $BH$",
+              "after": [
+                2
+              ]
+            },
+            {
+              "text": "⇒ Bốn điểm $B$, $E$, $H$, $D$ cùng thuộc đường tròn đường kính $BH$",
+              "after": [
+                1,
+                3
+              ]
+            },
+            {
+              "text": "Kết luận: tứ giác $BEHD$ nội tiếp đường tròn có tâm là trung điểm của $BH$."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "⇒ $D$ thuộc đường tròn đường kính $BC$",
+              "code": "E08",
+              "feedback": "Góc vuông ở $D$ là $\\widehat{BDH}$, nhìn đoạn $BH$; $D$ nằm trên chính đoạn $BC$ nên không nhìn $BC$ dưới góc vuông."
+            },
+            {
+              "text": "Kết luận: tứ giác $BEHD$ nội tiếp đường tròn có tâm là trung điểm của $ED$.",
+              "code": "E08",
+              "feedback": "Hai góc vuông ở $E$, $D$ cùng nhìn $BH$, nên $BH$ là đường kính; $ED$ là đường chéo kia, trung điểm của nó không cách đều bốn điểm."
+            }
+          ],
+          "solution": "$\\widehat{BEH}=\\widehat{BDH}=90^\\circ$ ⇒ $E$, $D$ cùng thuộc đường tròn đường kính $BH$ ⇒ $BEHD$ nội tiếp, tâm là trung điểm của $BH$. Hai cặp dòng về $E$ và về $D$ đổi chỗ được."
+        }
+      ],
+      "solution": "Vì $CE$ là đường cao của $\\triangle ABC$ nên $CE \\perp AB$ tại $E$ ⇒ $\\widehat{BEH}=90^\\circ$. Vì $AD$ là đường cao của $\\triangle ABC$ nên $AD \\perp BC$ tại $D$ ⇒ $\\widehat{BDH}=90^\\circ$. Xét tứ giác $BEHD$ có $\\widehat{BEH}+\\widehat{BDH}=90^\\circ+90^\\circ=180^\\circ$, mà $\\widehat{BEH}$ và $\\widehat{BDH}$ là hai góc đối nhau. Kết luận: tứ giác $BEHD$ nội tiếp (đường tròn đường kính $BH$)."
+    },
+    {
+      "id": "ld-d06",
+      "order": 3,
+      "title": "Đề 6 — Bài 4.2a",
+      "source": "68 đề – Đề 6, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Tứ giác ABCD nội tiếp đường tròn tâm O đường kính AD, hai đường chéo cắt nhau tại E, EF vuông góc AD</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"124\" x2=\"61.2\" y2=\"43.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"61.2\" y1=\"43.6\" x2=\"171.9\" y2=\"33.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"171.9\" y1=\"33.9\" x2=\"226\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"124\" x2=\"226\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"124\" x2=\"171.9\" y2=\"33.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"61.2\" y1=\"43.6\" x2=\"226\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"113.4\" y1=\"69.1\" x2=\"113.4\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"171.9\" y1=\"33.9\" x2=\"61.2\" y2=\"204.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"113.4,117 120.4,117 120.4,124\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"10\" y=\"124\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"55.8\" y=\"32.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"177.3\" y=\"23.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"238\" y=\"124\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"113.4\" y=\"57.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"105.2\" y=\"115.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"57.8\" y=\"215.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"150.8\" y=\"76.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"128.5\" y=\"135.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"22\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"61.2\" cy=\"43.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"171.9\" cy=\"33.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"226\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"113.4\" cy=\"69.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"113.4\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"61.2\" cy=\"204.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"140.5\" cy=\"82.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tứ giác ABCD nội tiếp đường tròn tâm O đường kính AD; hai đường chéo AC, BD cắt nhau tại E; EF vuông góc AD tại F; CF cắt đường tròn tại M, cắt BD tại N."
+      },
+      "problem": "Tứ giác $ABCD$ nội tiếp đường tròn tâm $O$ đường kính $AD$. Hai đường chéo $AC$, $BD$ cắt nhau tại $E$. Từ $E$ kẻ $EF$ vuông góc với $AD$ ($F \\in AD$). Đường thẳng $CF$ cắt đường tròn tại điểm thứ hai là $M$. Giao điểm của $BD$ và $CF$ là $N$. Chứng minh: a) $CEFD$ là tứ giác nội tiếp.",
+      "items": [
+        {
+          "id": "ld-d06-1",
+          "type": "analysis",
+          "level": "L2",
+          "source": "68 đề – Đề 6, Bài 4.2a",
+          "prompt": "Phân tích ngược để chứng minh tứ giác $CEFD$ nội tiếp: từ điều cần chứng minh, mỗi tầng chọn điều cần có trước.",
+          "goal": "Tứ giác $CEFD$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $CEFD$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{ECD}+\\widehat{EFD}=180^\\circ$ (hai góc đối, tại $C$ và $F$)",
+              "item": {
+                "id": "ld-d06-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{ECD}+\\widehat{EFD}=180^\\circ$",
+                  "$\\widehat{CEF}+\\widehat{EFD}=180^\\circ$",
+                  "$\\triangle AFE \\backsim \\triangle ACD$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E08",
+                    "feedback": "Theo thứ tự $C$–$E$–$F$–$D$, $E$ và $F$ là hai đỉnh **kề**; tổng hai góc ở hai đỉnh kề không phải dấu hiệu nội tiếp. Đỉnh đối của $F$ là $C$."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Cặp tam giác này đồng dạng thật, nhưng nó cho tỉ số / đẳng thức tích, không cho bốn điểm $C$, $E$, $F$, $D$ cùng thuộc một đường tròn."
+                  }
+                },
+                "solution": "Thứ tự $C$–$E$–$F$–$D$: $C$ đối với $F$. Ở $C$ có góc nội tiếp chắn nửa đường tròn, ở $F$ có $EF \\perp AD$."
+              }
+            },
+            {
+              "ask": "Muốn có tổng đó, trước hết vì sao $\\widehat{ECD}=90^\\circ$?",
+              "node": "$\\widehat{ECD}=\\widehat{ACD}=90^\\circ$ ($E$ thuộc $AC$; góc nội tiếp chắn nửa đường tròn đường kính $AD$)",
+              "item": {
+                "id": "ld-d06-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $EF \\perp AD$ (gt)",
+                  "Vì $\\widehat{ECD}=\\widehat{EFD}$ (cùng nhìn cạnh $ED$)",
+                  "Vì $\\widehat{ACD}$ là góc nội tiếp chắn nửa đường tròn đường kính $AD$"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$EF \\perp AD$ cho góc vuông ở $F$, không phải ở $C$."
+                  },
+                  "1": {
+                    "code": "E09",
+                    "feedback": "Hai góc cùng nhìn $ED$ bằng nhau chỉ khi đã biết $C$, $E$, $F$, $D$ cùng thuộc một đường tròn: lập luận vòng."
+                  }
+                },
+                "solution": "$C$ nằm trên đường tròn đường kính $AD$ nên $\\widehat{ACD}=90^\\circ$; $E$ thuộc đoạn $AC$ nên $\\widehat{ECD}=\\widehat{ACD}$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{EFD}=90^\\circ$ thì vì sao?",
+              "node": "$EF \\perp AD$ tại $F$ (gt) ⇒ $\\widehat{EFD}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d06-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $F$ là trung điểm của $AD$",
+                  "Vì $EF \\perp AD$ tại $F$ (gt)",
+                  "Vì $\\widehat{ABD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn)"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "Trung điểm của đường kính $AD$ là tâm $O$, không phải $F$; $F$ là chân đường vuông góc hạ từ $E$."
+                  },
+                  "2": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{ABD}=90^\\circ$ đúng, nhưng đó là góc ở đỉnh $B$; cần góc ở đỉnh $F$ là $\\widehat{EFD}$."
+                  }
+                },
+                "solution": "Đề cho $EF$ vuông góc với $AD$ tại $F$, nên $\\widehat{EFD}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{ACD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{ECD}=90^\\circ$",
+            "$\\widehat{EFD}=90^\\circ$ ($EF \\perp AD$)",
+            "⇒ $\\widehat{ECD}+\\widehat{EFD}=180^\\circ$, hai góc đối",
+            "⇒ tứ giác $CEFD$ nội tiếp"
+          ],
+          "solution": "$\\widehat{ECD}=\\widehat{ACD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn), $\\widehat{EFD}=90^\\circ$ ($EF \\perp AD$). Tứ giác $CEFD$ có tổng hai góc đối bằng $180^\\circ$ ⇒ nội tiếp."
+        },
+        {
+          "id": "ld-d06-2",
+          "type": "proof",
+          "level": "L2",
+          "source": "68 đề – Đề 6, Bài 4.2a",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: chứng minh tứ giác $CEFD$ nội tiếp.",
+          "lines": [
+            "Xét đường tròn $(O)$ đường kính $AD$ có $\\widehat{ACD}=90^\\circ$ ([[1]]), mà $E \\in AC$ nên $\\widehat{ECD}=90^\\circ$.",
+            "Lại có $\\widehat{EFD}=90^\\circ$ (vì [[2]]).",
+            "Xét tứ giác $CEFD$ có $\\widehat{ECD}+\\widehat{EFD}=180^\\circ$, mà hai góc này ở [[3]]",
+            "⇒ Tứ giác $CEFD$ nội tiếp ([[4]])."
+          ],
+          "bank": [
+            "góc nội tiếp chắn nửa đường tròn",
+            "$EF \\perp AD$ (gt)",
+            "tứ giác $ABCD$ nội tiếp",
+            "hai đỉnh đối nhau",
+            "hai đỉnh kề nhau",
+            "tổng hai góc đối bằng $180^\\circ$",
+            "hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau",
+            "tứ giác $CEFD$ nội tiếp"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E09",
+                  "feedback": "$EF \\perp AD$ cho góc vuông ở $F$, không cho góc ở $C$: lí do không khớp bước."
+                },
+                "2": {
+                  "code": "E04",
+                  "feedback": "Tứ giác $ABCD$ nội tiếp cho tổng hai góc đối của $ABCD$ bằng $180^\\circ$, không cho riêng $\\widehat{ACD}=90^\\circ$. Góc vuông có được vì $\\widehat{ACD}$ chắn nửa đường tròn."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "0": {
+                  "code": "E08",
+                  "feedback": "$F$ nằm trên đường kính $AD$, không nằm trên đường tròn, nên $\\widehat{EFD}$ không phải góc nội tiếp."
+                },
+                "7": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: tứ giác $CEFD$ nội tiếp chính là điều đang cần chứng minh."
+                }
+              }
+            },
+            {
+              "correct": 3,
+              "mistakes": {
+                "4": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $C$–$E$–$F$–$D$: $C$ kề $E$ và $D$; $C$ và $F$ là hai đỉnh đối."
+                }
+              }
+            },
+            {
+              "correct": 5,
+              "mistakes": {
+                "6": {
+                  "code": "E09",
+                  "feedback": "Dòng trên vừa dùng tổng hai góc đối, không phải hai đỉnh kề cùng nhìn một cạnh: lí do không khớp bước."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{ACD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{ECD}=90^\\circ$; $\\widehat{EFD}=90^\\circ$ ($EF \\perp AD$); $C$, $F$ là hai đỉnh đối ⇒ $CEFD$ nội tiếp."
+        },
+        {
+          "id": "ld-d06-3",
+          "type": "order",
+          "level": "L3",
+          "source": "68 đề – Đề 6, Bài 4.2a",
+          "prompt": "Sắp xếp các dòng thành một cách chứng minh khác: bốn điểm $C$, $E$, $F$, $D$ cùng thuộc một đường tròn, và chỉ ra tâm (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "$\\widehat{ACD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{ECD}=90^\\circ$",
+              "after": []
+            },
+            {
+              "text": "⇒ $C$ thuộc đường tròn đường kính $ED$",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$EF \\perp AD$ (gt) ⇒ $\\widehat{EFD}=90^\\circ$",
+              "after": []
+            },
+            {
+              "text": "⇒ $F$ thuộc đường tròn đường kính $ED$",
+              "after": [
+                2
+              ]
+            },
+            {
+              "text": "⇒ Bốn điểm $C$, $E$, $F$, $D$ cùng thuộc đường tròn đường kính $ED$",
+              "after": [
+                1,
+                3
+              ]
+            },
+            {
+              "text": "Kết luận: tứ giác $CEFD$ nội tiếp đường tròn có tâm là trung điểm của $ED$."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "⇒ $F$ thuộc đường tròn đường kính $AD$",
+              "code": "E08",
+              "feedback": "$F$ nằm trên đoạn $AD$ (bên trong đường tròn $(O)$), không nằm trên đường tròn đường kính $AD$. Góc vuông ở $F$ là $\\widehat{EFD}$, nhìn đoạn $ED$."
+            },
+            {
+              "text": "Kết luận: tứ giác $CEFD$ nội tiếp đường tròn $(O)$.",
+              "code": "E08",
+              "feedback": "$E$ và $F$ nằm bên trong $(O)$, không nằm trên $(O)$. Hai góc vuông ở $C$, $F$ cùng nhìn $ED$, nên tâm là trung điểm của $ED$."
+            }
+          ],
+          "solution": "$\\widehat{ECD}=\\widehat{EFD}=90^\\circ$ ⇒ $C$, $F$ cùng thuộc đường tròn đường kính $ED$ ⇒ $CEFD$ nội tiếp, tâm là trung điểm của $ED$. Hai cặp dòng về $C$ và về $F$ đổi chỗ được."
+        }
+      ],
+      "solution": "Xét đường tròn $(O)$ đường kính $AD$ có $\\widehat{ACD}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn), mà $E \\in AC$ nên $\\widehat{ECD}=90^\\circ$. Vì $EF \\perp AD$ tại $F$ nên $\\widehat{EFD}=90^\\circ$. Xét tứ giác $CEFD$ có $\\widehat{ECD}+\\widehat{EFD}=90^\\circ+90^\\circ=180^\\circ$, mà $\\widehat{ECD}$ và $\\widehat{EFD}$ là hai góc đối nhau. Kết luận: tứ giác $CEFD$ nội tiếp (đường tròn đường kính $ED$)."
+    },
+    {
+      "id": "ld-d08",
+      "order": 4,
+      "title": "Đề 8 — Bài 4.2a",
+      "source": "68 đề – Đề 8, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn O, đường cao BE, EH vuông góc AB, EK vuông góc BC</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"106.3\" y1=\"23.5\" x2=\"40.4\" y2=\"182.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"40.4\" y1=\"182.5\" x2=\"207.6\" y2=\"182.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"207.6\" y1=\"182.5\" x2=\"106.3\" y2=\"23.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"40.4\" y1=\"182.5\" x2=\"159.3\" y2=\"106.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"159.3\" y1=\"106.8\" x2=\"84.6\" y2=\"75.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"159.3\" y1=\"106.8\" x2=\"159.3\" y2=\"182.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"153.4,110.5 157.2,116.4 163.1,112.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"81.9,82.3 88.4,85 91.1,78.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"159.3,175.5 166.3,175.5 166.3,182.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"106.3\" y=\"11.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"29.3\" y=\"187\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"218.7\" y=\"187\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"126.4\" y=\"112.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"170.3\" y=\"101.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"73.5\" y=\"71.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"159.3\" y=\"194.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"106.3\" cy=\"23.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"40.4\" cy=\"182.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"207.6\" cy=\"182.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"159.3\" cy=\"106.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84.6\" cy=\"75.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"159.3\" cy=\"182.5\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC nội tiếp đường tròn tâm O; đường cao BE (E trên AC); từ E kẻ EH vuông góc với AB tại H và EK vuông góc với BC tại K."
+      },
+      "problem": "Cho tam giác $ABC$ có ba góc nhọn nội tiếp đường tròn $(O)$, kẻ đường cao $BE$ của $\\triangle ABC$. Gọi $H$ và $K$ lần lượt là chân các đường vuông góc kẻ từ $E$ đến $AB$ và $BC$.\n\na) Chứng minh tứ giác $BHEK$ là tứ giác nội tiếp.",
+      "items": [
+        {
+          "id": "ld-d08-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược ý a: đi từ điều cần chứng minh về giả thiết.",
+          "goal": "Tứ giác $BHEK$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $BHEK$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{BHE}+\\widehat{BKE}=180^\\circ$ (hai góc đối, tại $H$ và $K$)",
+              "item": {
+                "id": "ld-d08-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$BH\\cdot BA=BK\\cdot BC$",
+                  "$\\widehat{HBK}+\\widehat{BKE}=180^\\circ$",
+                  "$\\widehat{BHE}+\\widehat{BKE}=180^\\circ$"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E06",
+                    "feedback": "Đẳng thức này đúng (đó là ý b), nhưng nó cho bốn điểm $A$, $H$, $K$, $C$ cùng thuộc một đường tròn, không cho tứ giác $BHEK$ nội tiếp."
+                  },
+                  "1": {
+                    "code": "E04",
+                    "feedback": "$\\widehat{HBK}$ và $\\widehat{BKE}$ ở hai đỉnh **kề** $B$, $K$; tổng hai góc kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp."
+                  }
+                },
+                "solution": "Thứ tự $B$–$H$–$E$–$K$: $H$ đối với $K$. Ở cả hai đỉnh này đều có góc vuông, nên chọn tổng $\\widehat{BHE}+\\widehat{BKE}$."
+              }
+            },
+            {
+              "ask": "Muốn có $\\widehat{BHE}+\\widehat{BKE}=180^\\circ$, trước hết vì sao $\\widehat{BHE}=90^\\circ$?",
+              "node": "$\\widehat{BHE}=90^\\circ$ ($EH \\perp AB$ tại $H$)",
+              "item": {
+                "id": "ld-d08-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $EH \\perp AB$ tại $H$ (gt)",
+                  "Vì $BE \\perp AC$ ($BE$ là đường cao)",
+                  "Vì $H$ nằm trên đường tròn đường kính $BE$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E09",
+                    "feedback": "$BE \\perp AC$ cho góc vuông tại $E$ ($\\widehat{BEA}$, $\\widehat{BEC}$), không cho góc tại $H$; lí do không khớp bước."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "$H$ nằm trên đường tròn đường kính $BE$ chính là điều đang cần chứng minh; lập luận vòng."
+                  }
+                },
+                "solution": "$H$ là chân đường vuông góc kẻ từ $E$ đến $AB$ nên $EH \\perp AB$, tức $\\widehat{BHE}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{BKE}=90^\\circ$ thì vì sao?",
+              "node": "$K$ là chân đường vuông góc kẻ từ $E$ đến $BC$ (gt) ⇒ $\\widehat{BKE}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d08-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{BKE}=\\widehat{BHE}$ (cùng nhìn cạnh $BE$)",
+                  "Vì $EK \\perp BC$ tại $K$ (gt)",
+                  "Vì $\\widehat{BKE}=\\widehat{BEC}$ (hai góc đồng vị)"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E09",
+                    "feedback": "Hai góc cùng nhìn cạnh $BE$ bằng nhau chỉ khi đã biết bốn điểm cùng thuộc một đường tròn; lập luận vòng."
+                  },
+                  "2": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{BKE}$ và $\\widehat{BEC}$ không phải cặp góc đồng vị (không có hai đường thẳng song song nào ở đây). Đọc lại hình: góc vuông tại $K$ đến từ giả thiết $EK \\perp BC$."
+                  }
+                },
+                "solution": "$K$ là chân đường vuông góc kẻ từ $E$ đến $BC$ nên $EK \\perp BC$, tức $\\widehat{BKE}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{BHE}=90^\\circ$ ($EH \\perp AB$, gt)",
+            "$\\widehat{BKE}=90^\\circ$ ($EK \\perp BC$, gt)",
+            "⇒ $\\widehat{BHE}+\\widehat{BKE}=180^\\circ$, hai góc đối",
+            "⇒ tứ giác $BHEK$ nội tiếp"
+          ],
+          "solution": "Tứ giác $BHEK$ có $\\widehat{BHE}=90^\\circ$ ($EH \\perp AB$) và $\\widehat{BKE}=90^\\circ$ ($EK \\perp BC$); hai góc này đối nhau và có tổng $180^\\circ$ ⇒ $BHEK$ nội tiếp. Đường cao $BE$ chỉ dùng để có điểm $E$; ý a không cần $BE \\perp AC$."
+        },
+        {
+          "id": "ld-d08-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải ý a.",
+          "lines": [
+            "Xét tứ giác $BHEK$ có:",
+            "$\\widehat{BHE}=90^\\circ$ ([[1]])",
+            "$\\widehat{BKE}=90^\\circ$ ($EK \\perp BC$ tại $K$)",
+            "⇒ $\\widehat{BHE}+\\widehat{BKE}=180^\\circ$, mà $\\widehat{BHE}$ và $\\widehat{BKE}$ là hai góc ở vị trí [[2]]",
+            "⇒ Tứ giác $BHEK$ nội tiếp ([[3]])."
+          ],
+          "bank": [
+            "$EH \\perp AB$ tại $H$ (gt)",
+            "$BE \\perp AC$ tại $E$ (gt)",
+            "đối nhau",
+            "kề nhau",
+            "tứ giác có tổng hai góc đối bằng $180^\\circ$",
+            "tứ giác có hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau",
+            "tứ giác $BHEK$ nội tiếp"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E09",
+                  "feedback": "$BE \\perp AC$ cho góc vuông tại $E$, không cho góc tại $H$; lí do không khớp bước."
+                },
+                "6": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+                }
+              }
+            },
+            {
+              "correct": 2,
+              "mistakes": {
+                "3": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $B$–$H$–$E$–$K$: $H$ kề $B$ và $E$; $H$ và $K$ là hai đỉnh đối."
+                }
+              }
+            },
+            {
+              "correct": 4,
+              "mistakes": {
+                "5": {
+                  "code": "E09",
+                  "feedback": "Dòng trên vừa dùng tổng hai góc đối bằng $180^\\circ$, không phải hai góc bằng nhau cùng nhìn một cạnh; lí do không khớp bước."
+                },
+                "6": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{BHE}=90^\\circ$ ($EH \\perp AB$), $\\widehat{BKE}=90^\\circ$ ($EK \\perp BC$); $H$, $K$ là hai đỉnh đối ⇒ tổng hai góc đối bằng $180^\\circ$ ⇒ $BHEK$ nội tiếp."
+        },
+        {
+          "id": "ld-d08-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Một cách khác cho ý a: chứng minh bốn điểm $B$, $H$, $E$, $K$ cách đều trung điểm $I$ của $BE$. Sắp xếp các dòng thành lời giải (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Gọi $I$ là trung điểm của $BE$."
+            },
+            {
+              "text": "$IB=IE=\\frac{1}{2}BE$ (vì $I$ là trung điểm của $BE$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\triangle BHE$ vuông tại $H$ ($EH \\perp AB$), $HI$ là trung tuyến ứng với cạnh huyền ⇒ $IH=\\frac{1}{2}BE$;",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\triangle BKE$ vuông tại $K$ ($EK \\perp BC$), $KI$ là trung tuyến ứng với cạnh huyền ⇒ $IK=\\frac{1}{2}BE$;",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "⇒ $IB=IH=IE=IK=\\frac{1}{2}BE$",
+              "after": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "text": "Kết luận: bốn điểm $B$, $H$, $E$, $K$ cùng thuộc đường tròn tâm $I$, bán kính $\\frac{BE}{2}$, nên tứ giác $BHEK$ nội tiếp."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\triangle ABE$ vuông tại $E$ ($BE \\perp AC$), $AI$ là trung tuyến ứng với cạnh huyền ⇒ $IA=\\frac{1}{2}BE$;",
+              "code": "E08",
+              "feedback": "Trong $\\triangle ABE$ vuông tại $E$, cạnh huyền là $AB$, không phải $BE$; $I$ là trung điểm cạnh góc vuông $BE$ nên $AI$ không phải trung tuyến ứng với cạnh huyền (và $A$ không cần cho ý a)."
+            },
+            {
+              "text": "⇒ Tứ giác $BHEK$ nội tiếp vì $\\widehat{HBK}+\\widehat{HEK}=180^\\circ$.",
+              "code": "E09",
+              "feedback": "Tổng $\\widehat{HBK}+\\widehat{HEK}=180^\\circ$ chỉ có được khi đã biết tứ giác nội tiếp; dùng nó là lập luận vòng."
+            }
+          ],
+          "solution": "Gọi $I$ là trung điểm của $BE$: $IB=IE=\\frac{BE}{2}$; trong hai tam giác vuông $BHE$ (tại $H$) và $BKE$ (tại $K$), trung tuyến ứng với cạnh huyền $BE$ bằng nửa cạnh huyền nên $IH=IK=\\frac{BE}{2}$ ⇒ $B$, $H$, $E$, $K$ cùng thuộc đường tròn $(I;\\frac{BE}{2})$. Ba dòng về $IB=IE$, $IH$, $IK$ đổi chỗ cho nhau được."
+        }
+      ],
+      "solution": "**a)** Xét tứ giác $BHEK$ có:\n$\\widehat{BHE}=90^\\circ$ (vì $EH \\perp AB$ tại $H$);\n$\\widehat{BKE}=90^\\circ$ (vì $EK \\perp BC$ tại $K$).\n⇒ $\\widehat{BHE}+\\widehat{BKE}=90^\\circ+90^\\circ=180^\\circ$.\nMà $\\widehat{BHE}$ và $\\widehat{BKE}$ là hai góc đối của tứ giác $BHEK$.\nKết luận: tứ giác $BHEK$ là tứ giác nội tiếp (tổng hai góc đối bằng $180^\\circ$); tâm đường tròn là trung điểm của $BE$."
+    },
+    {
+      "id": "ld-d28",
+      "order": 5,
+      "title": "Đề 28 — Bài 4.2a",
+      "source": "68 đề – Đề 28, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn O, ba đường cao AD, BE, CF đồng quy tại H</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"97.6\" y1=\"25.5\" x2=\"40.4\" y2=\"182.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"40.4\" y1=\"182.5\" x2=\"212.3\" y2=\"175\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"212.3\" y1=\"175\" x2=\"97.6\" y2=\"25.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"97.6\" y1=\"25.5\" x2=\"104.3\" y2=\"179.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"40.4\" y1=\"182.5\" x2=\"152.3\" y2=\"96.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"212.3\" y1=\"175\" x2=\"63\" y2=\"120.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"104,172.7 111,172.4 111.3,179.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"146.7,101 151,106.5 156.5,102.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"69.5,123 67.1,129.6 60.6,127.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"97.6\" y=\"13.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"29.3\" y=\"187\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"223.5\" y=\"179.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"135.5\" y=\"120.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"104.3\" y=\"191.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"163\" y=\"91.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"51.8\" y=\"116.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"95.2\" y=\"125.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"97.6\" cy=\"25.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"40.4\" cy=\"182.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"212.3\" cy=\"175\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"104.3\" cy=\"179.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"152.3\" cy=\"96.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"63\" cy=\"120.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102.4\" cy=\"135\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC (AB < AC) nội tiếp đường tròn tâm O; ba đường cao AD, BE, CF (D trên BC, E trên AC, F trên AB) đồng quy tại H."
+      },
+      "problem": "Cho tam giác nhọn $ABC$ $(AB<AC)$ nội tiếp đường tròn $(O)$, với các đường cao $AD$, $BE$ và $CF$ đồng quy tại $H$.\n\na) Chứng minh tứ giác $AEHF$ nội tiếp.",
+      "items": [
+        {
+          "id": "ld-d28-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược ý a: đi từ điều cần chứng minh về giả thiết.",
+          "goal": "Tứ giác $AEHF$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $AEHF$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{AEH}+\\widehat{AFH}=180^\\circ$ (hai góc đối, tại $E$ và $F$)",
+              "item": {
+                "id": "ld-d28-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{AEH}+\\widehat{AFH}=180^\\circ$",
+                  "$\\widehat{AEF}=\\widehat{ABC}$",
+                  "$\\widehat{AEH}+\\widehat{EHF}=180^\\circ$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E06",
+                    "feedback": "Đẳng thức này đúng, nhưng nó đến từ tứ giác $BCEF$ nội tiếp, không chứng minh được $A$, $E$, $H$, $F$ cùng thuộc một đường tròn."
+                  },
+                  "2": {
+                    "code": "E04",
+                    "feedback": "$\\widehat{AEH}$ và $\\widehat{EHF}$ ở hai đỉnh **kề** $E$, $H$; tổng hai góc kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp."
+                  }
+                },
+                "solution": "Thứ tự $A$–$E$–$H$–$F$: $E$ đối với $F$, và ở cả hai đỉnh này có góc vuông (chân đường cao)."
+              }
+            },
+            {
+              "ask": "Muốn có $\\widehat{AEH}+\\widehat{AFH}=180^\\circ$, trước hết vì sao $\\widehat{AEH}=90^\\circ$?",
+              "node": "$\\widehat{AEH}=\\widehat{AEB}=90^\\circ$ ($BE \\perp AC$, $H \\in BE$)",
+              "item": {
+                "id": "ld-d28-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $AD \\perp BC$ ($AD$ là đường cao)",
+                  "Vì $E$ nằm trên đường tròn đường kính $AH$",
+                  "Vì $BE \\perp AC$ tại $E$ ($BE$ là đường cao) và $H$ nằm trên $BE$"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$AD \\perp BC$ cho góc vuông tại $D$, không cho góc tại $E$; đọc lại đường cao nào đi qua $E$."
+                  },
+                  "1": {
+                    "code": "E09",
+                    "feedback": "$E$ nằm trên đường tròn đường kính $AH$ chính là điều đang cần chứng minh; lập luận vòng."
+                  }
+                },
+                "solution": "$BE$ là đường cao nên $BE \\perp AC$ tại $E$; $H$ nằm trên đoạn $BE$ nên $\\widehat{AEH}=\\widehat{AEB}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{AFH}=90^\\circ$ thì vì sao?",
+              "node": "$CF$ là đường cao (gt) ⇒ $CF \\perp AB$ tại $F$ ⇒ $\\widehat{AFH}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d28-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{AFH}=\\widehat{BDH}$ (hai góc đối đỉnh)",
+                  "Vì $CF \\perp AB$ tại $F$ ($CF$ là đường cao, gt)",
+                  "Vì $\\triangle AFH=\\triangle AEH$"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{AFH}$ (đỉnh $F$) và $\\widehat{BDH}$ (đỉnh $D$) không chung đỉnh nên không phải hai góc đối đỉnh."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "Hai tam giác này không bằng nhau ($AB<AC$ nên $AF \\ne AE$); lí do không đúng."
+                  }
+                },
+                "solution": "$CF$ là đường cao nên $CF \\perp AB$ tại $F$; $H$ nằm trên $CF$ nên $\\widehat{AFH}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{AEH}=90^\\circ$ ($BE \\perp AC$)",
+            "$\\widehat{AFH}=90^\\circ$ ($CF \\perp AB$)",
+            "⇒ $\\widehat{AEH}+\\widehat{AFH}=180^\\circ$, hai góc đối",
+            "⇒ tứ giác $AEHF$ nội tiếp"
+          ],
+          "solution": "$\\widehat{AEH}=90^\\circ$ ($BE \\perp AC$) và $\\widehat{AFH}=90^\\circ$ ($CF \\perp AB$); $E$, $F$ là hai đỉnh đối của $AEHF$ ⇒ tổng hai góc đối bằng $180^\\circ$ ⇒ $AEHF$ nội tiếp. Đường cao $AD$ không cần cho ý a."
+        },
+        {
+          "id": "ld-d28-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Một cách trình bày khác cho ý a: dùng đường tròn đường kính. Điền vào chỗ trống.",
+          "lines": [
+            "Vì $BE$ là đường cao của $\\triangle ABC$ nên $BE \\perp AC$ ⇒ $\\widehat{AEH}=90^\\circ$",
+            "⇒ $E$ thuộc đường tròn đường kính [[1]] (vì [[2]]).",
+            "Tương tự, $CF \\perp AB$ ⇒ $\\widehat{AFH}=90^\\circ$ ⇒ $F$ cũng thuộc đường tròn đó.",
+            "⇒ Bốn điểm $A$, $E$, $H$, $F$ cùng thuộc một đường tròn, tâm là [[3]].",
+            "Kết luận: tứ giác $AEHF$ nội tiếp."
+          ],
+          "bank": [
+            "$AH$",
+            "$BC$",
+            "$EF$",
+            "$E$ nhìn đoạn $AH$ dưới một góc vuông",
+            "góc nội tiếp chắn nửa đường tròn",
+            "trung điểm của $AH$",
+            "trung điểm của $EF$",
+            "trung điểm của $BC$"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E06",
+                  "feedback": "$E$ cũng thuộc đường tròn đường kính $BC$ (vì $\\widehat{BEC}=90^\\circ$), nhưng $A$ và $H$ không nằm trên đường tròn đó; góc vuông đang xét là $\\widehat{AEH}$, nhìn đoạn $AH$."
+                },
+                "2": {
+                  "code": "E08",
+                  "feedback": "Góc vuông $\\widehat{AEH}$ có hai cạnh đi qua $A$ và $H$, nên nó nhìn đoạn $AH$; $E$ là một đầu mút của $EF$, không phải điểm nhìn $EF$."
+                }
+              }
+            },
+            {
+              "correct": 3,
+              "mistakes": {
+                "4": {
+                  "code": "E04",
+                  "feedback": "\"Góc nội tiếp chắn nửa đường tròn\" là chiều thuận: đã biết điểm nằm trên đường tròn thì suy ra góc vuông. Ở đây đi chiều ngược lại: có góc vuông nhìn đoạn $AH$ ⇒ điểm nằm trên đường tròn đường kính $AH$."
+                }
+              }
+            },
+            {
+              "correct": 5,
+              "mistakes": {
+                "6": {
+                  "code": "E08",
+                  "feedback": "$EF$ không phải đường kính của đường tròn này; hai góc vuông tại $E$, $F$ cùng nhìn $AH$ nên $AH$ là đường kính."
+                },
+                "7": {
+                  "code": "E06",
+                  "feedback": "Trung điểm của $BC$ là tâm đường tròn qua $B$, $C$, $E$, $F$ (tứ giác $BCEF$), không phải của $AEHF$."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{AEH}=\\widehat{AFH}=90^\\circ$ nên $E$, $F$ cùng nhìn đoạn $AH$ dưới góc vuông ⇒ $E$, $F$ thuộc đường tròn đường kính $AH$ ⇒ $A$, $E$, $H$, $F$ cùng thuộc đường tròn tâm là trung điểm của $AH$ ⇒ $AEHF$ nội tiếp."
+        },
+        {
+          "id": "ld-d28-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Sắp xếp các dòng thành lời giải ý a theo dấu hiệu tổng hai góc đối (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Xét tứ giác $AEHF$ có:"
+            },
+            {
+              "text": "$\\widehat{AEH}=90^\\circ$ (vì $BE \\perp AC$ tại $E$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\widehat{AFH}=90^\\circ$ (vì $CF \\perp AB$ tại $F$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "⇒ $\\widehat{AEH}+\\widehat{AFH}=180^\\circ$.",
+              "after": [
+                1,
+                2
+              ]
+            },
+            {
+              "text": "Mà $\\widehat{AEH}$ và $\\widehat{AFH}$ là hai góc đối của tứ giác $AEHF$."
+            },
+            {
+              "text": "Kết luận: tứ giác $AEHF$ nội tiếp (tổng hai góc đối bằng $180^\\circ$)."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\widehat{AEH}=90^\\circ$ (vì $AD \\perp BC$ tại $D$);",
+              "code": "E08",
+              "feedback": "$AD \\perp BC$ cho góc vuông tại $D$; góc vuông tại $E$ đến từ đường cao $BE$."
+            },
+            {
+              "text": "Mà $\\widehat{AEH}$ và $\\widehat{AFH}$ là hai góc kề một cạnh của tứ giác $AEHF$.",
+              "code": "E08",
+              "feedback": "Thứ tự $A$–$E$–$H$–$F$: $E$ và $F$ không đứng cạnh nhau, chúng là hai đỉnh đối."
+            }
+          ],
+          "solution": "$\\widehat{AEH}=90^\\circ$ ($BE \\perp AC$), $\\widehat{AFH}=90^\\circ$ ($CF \\perp AB$) ⇒ tổng bằng $180^\\circ$; hai góc này đối nhau ⇒ $AEHF$ nội tiếp. Hai dòng về $\\widehat{AEH}$ và $\\widehat{AFH}$ đổi chỗ được."
+        }
+      ],
+      "solution": "**a)** Vì $BE$, $CF$ là các đường cao của $\\triangle ABC$ nên $BE \\perp AC$ tại $E$, $CF \\perp AB$ tại $F$.\nXét tứ giác $AEHF$ có:\n$\\widehat{AEH}=90^\\circ$ (vì $BE \\perp AC$);\n$\\widehat{AFH}=90^\\circ$ (vì $CF \\perp AB$).\n⇒ $\\widehat{AEH}+\\widehat{AFH}=180^\\circ$.\nMà $\\widehat{AEH}$ và $\\widehat{AFH}$ là hai góc đối của tứ giác $AEHF$.\nKết luận: tứ giác $AEHF$ nội tiếp (tổng hai góc đối bằng $180^\\circ$); tâm đường tròn là trung điểm của $AH$."
+    },
+    {
+      "id": "ld-d31",
+      "order": 6,
+      "title": "Đề 31 — Bài 4.2a",
+      "source": "68 đề – Đề 31, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 263.9 215.9\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn tâm O, ba đường cao AM, BN, CK cắt nhau tại H, NK cắt BC tại G</title><circle cx=\"155.9\" cy=\"108\" r=\"86\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"113.9\" y1=\"33\" x2=\"80.9\" y2=\"150\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"80.9\" y1=\"150\" x2=\"230.9\" y2=\"150\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"230.9\" y1=\"150\" x2=\"113.9\" y2=\"33\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"113.9\" y1=\"33\" x2=\"113.9\" y2=\"150\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"80.9\" y1=\"150\" x2=\"155.9\" y2=\"75\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"230.9\" y1=\"150\" x2=\"92\" y2=\"110.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"150\" x2=\"80.9\" y2=\"150\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"150\" x2=\"155.9\" y2=\"75\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"113.9,143 120.9,143 120.9,150\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"151,79.9 155.9,84.9 160.8,79.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"98.7,112.7 96.8,119.4 90.1,117.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"109.9\" y=\"22\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"78.9\" y=\"162\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"241.9\" y=\"156\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"116.9\" y=\"162\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"165.9\" y=\"70\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"81\" y=\"107.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"121.9\" y=\"129\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"21\" y=\"162\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">G</text><text x=\"164.9\" y=\"104\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"113.9\" cy=\"33\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"80.9\" cy=\"150\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"230.9\" cy=\"150\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"113.9\" cy=\"150\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"155.9\" cy=\"75\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"92\" cy=\"110.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"113.9\" cy=\"117\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"150\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"155.9\" cy=\"108\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, AB nhỏ hơn AC, nội tiếp đường tròn tâm O; ba đường cao AM, BN, CK cắt nhau tại H (M trên BC, N trên AC, K trên AB); đường thẳng NK cắt đường thẳng BC tại G nằm ngoài đoạn BC, về phía B."
+      },
+      "problem": "Cho tam giác $ABC$ nhọn có $AB<AC$, nội tiếp đường tròn $(O)$. Gọi $H$ là giao điểm ba đường cao $AM$, $BN$ và $CK$ của $\\triangle ABC$. Gọi $G$ là giao điểm của đường thẳng $NK$ và đường thẳng $BC$. a) Chứng minh $BCNK$, $BMHK$ là các tứ giác nội tiếp đường tròn.",
+      "items": [
+        {
+          "id": "ld-d31-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược để chứng minh tứ giác $BCNK$ nội tiếp.",
+          "goal": "Tứ giác $BCNK$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $BCNK$ nội tiếp, cần chứng minh gì?",
+              "node": "$N$, $K$ cùng thuộc đường tròn đường kính $BC$ (hai đỉnh kề $N$, $K$ cùng nhìn cạnh $BC$ dưới góc vuông)",
+              "item": {
+                "id": "ld-d31-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{KBC}+\\widehat{KNC}=180^\\circ$",
+                  "$\\widehat{BNC}+\\widehat{BKC}=180^\\circ$",
+                  "$N$, $K$ cùng thuộc đường tròn đường kính $BC$",
+                  "$N$, $K$ cùng thuộc đường tròn $(O)$"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E06",
+                    "feedback": "Đó là một dấu hiệu nội tiếp, nhưng $\\widehat{KBC}$ và $\\widehat{KNC}$ không tính được từ giả thiết — giả thiết chỉ cho các góc vuông ở chân đường cao. Hướng này không đi tới giả thiết."
+                  },
+                  "1": {
+                    "code": "E04",
+                    "feedback": "$N$ và $K$ là hai đỉnh **kề** nhau trong $BCNK$; tổng hai góc ở hai đỉnh kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp. Hai góc vuông này phải dùng theo kiểu \"cùng nhìn cạnh $BC$\"."
+                  },
+                  "3": {
+                    "code": "E08",
+                    "feedback": "$N$, $K$ là chân đường cao, nằm trên cạnh $AC$, $AB$ chứ không nằm trên đường tròn $(O)$ (xem hình)."
+                  }
+                },
+                "solution": "Thứ tự $B$–$C$–$N$–$K$: $N$, $K$ là hai đỉnh kề, cùng nhìn cạnh $BC$. Cần chứng minh $N$, $K$ thuộc đường tròn đường kính $BC$."
+              }
+            },
+            {
+              "ask": "Muốn $N$ thuộc đường tròn đường kính $BC$, cần góc nào bằng $90^\\circ$?",
+              "node": "$\\widehat{BNC}=90^\\circ$ (tương tự cho $K$: $\\widehat{BKC}=90^\\circ$)",
+              "item": {
+                "id": "ld-d31-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn góc.",
+                "options": [
+                  "$\\widehat{BNC}=90^\\circ$",
+                  "$\\widehat{BCN}=90^\\circ$",
+                  "$\\widehat{BHC}=90^\\circ$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E08",
+                    "feedback": "Góc vuông phải ở đỉnh $N$ (đỉnh \"nhìn\" đoạn $BC$); $\\widehat{BCN}$ là góc ở đỉnh $C$ của tam giác, nhọn theo giả thiết."
+                  },
+                  "2": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{BHC}$ là góc ở $H$, không nói gì về điểm $N$; hơn nữa $\\widehat{BHC}=180^\\circ-\\widehat{BAC}$ là góc tù."
+                  }
+                },
+                "solution": "$N$ thuộc đường tròn đường kính $BC$ khi và chỉ khi $\\widehat{BNC}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Vì sao $\\widehat{BNC}=\\widehat{BKC}=90^\\circ$?",
+              "node": "$BN$, $CK$ là đường cao của $\\triangle ABC$ (gt) ⇒ $BN\\perp AC$, $CK\\perp AB$",
+              "given": true,
+              "item": {
+                "id": "ld-d31-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $N$, $K$ cùng thuộc đường tròn đường kính $BC$",
+                  "Vì $BN\\perp AC$, $CK\\perp AB$ ($BN$, $CK$ là đường cao, gt)",
+                  "Vì đó là các góc nội tiếp chắn nửa đường tròn $(O)$"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E09",
+                    "feedback": "Lập luận vòng: $N$, $K$ thuộc đường tròn đường kính $BC$ chính là điều đang cần chứng minh."
+                  },
+                  "2": {
+                    "code": "E04",
+                    "feedback": "$BC$ không phải đường kính của $(O)$ và $N$, $K$ không nằm trên $(O)$, nên không có góc nội tiếp chắn nửa đường tròn ở đây."
+                  }
+                },
+                "solution": "$BN$, $CK$ là đường cao nên $BN\\perp AC$ tại $N$, $CK\\perp AB$ tại $K$."
+              }
+            }
+          ],
+          "outline": [
+            "$BN$, $CK$ là đường cao ⇒ $\\widehat{BNC}=\\widehat{BKC}=90^\\circ$",
+            "⇒ $N$, $K$ cùng nhìn cạnh $BC$ dưới góc vuông ⇒ $N$, $K$ thuộc đường tròn đường kính $BC$",
+            "⇒ $B$, $C$, $N$, $K$ cùng thuộc một đường tròn ⇒ tứ giác $BCNK$ nội tiếp"
+          ],
+          "solution": "$\\widehat{BNC}=90^\\circ$ ($BN$ là đường cao), $\\widehat{BKC}=90^\\circ$ ($CK$ là đường cao). Hai đỉnh kề $N$, $K$ cùng nhìn cạnh $BC$ dưới góc vuông ⇒ tứ giác $BCNK$ nội tiếp đường tròn đường kính $BC$."
+        },
+        {
+          "id": "ld-d31-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: tứ giác $BCNK$ nội tiếp.",
+          "lines": [
+            "Xét tứ giác $BCNK$ có: $\\widehat{BNC}=90^\\circ$ ([[1]]);",
+            "$\\widehat{BKC}=90^\\circ$ ($CK$ là đường cao).",
+            "⇒ $N$ và $K$ là hai đỉnh [[2]] cùng nhìn cạnh $BC$ dưới góc $90^\\circ$",
+            "⇒ Tứ giác $BCNK$ nội tiếp đường tròn đường kính [[3]] ([[4]])."
+          ],
+          "bank": [
+            "$BN$ là đường cao (gt)",
+            "tứ giác $BCNK$ nội tiếp",
+            "kề nhau",
+            "đối nhau",
+            "$BC$",
+            "$NK$",
+            "hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau",
+            "tổng hai góc đối bằng $180^\\circ$",
+            "$CK$ là đường cao (gt)"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+                },
+                "8": {
+                  "code": "E08",
+                  "feedback": "$CK$ là đường cao cho góc vuông ở $K$; góc vuông ở $N$ là do $BN\\perp AC$."
+                }
+              }
+            },
+            {
+              "correct": 2,
+              "mistakes": {
+                "3": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $B$–$C$–$N$–$K$: $N$ đứng ngay trước $K$, nên $N$, $K$ là hai đỉnh kề; hai đỉnh đối với $N$ là $B$."
+                }
+              }
+            },
+            {
+              "correct": 4,
+              "mistakes": {
+                "5": {
+                  "code": "E08",
+                  "feedback": "Hai góc vuông ở $N$, $K$ cùng nhìn đoạn $BC$, nên $BC$ là đường kính; $NK$ là cạnh nối hai đỉnh nhìn."
+                }
+              }
+            },
+            {
+              "correct": 6,
+              "mistakes": {
+                "7": {
+                  "code": "E09",
+                  "feedback": "Lí do không khớp bước: ở trên dùng hai đỉnh kề $N$, $K$ cùng nhìn $BC$, không phải tổng hai góc đối."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{BNC}=\\widehat{BKC}=90^\\circ$ ($BN$, $CK$ là đường cao) ⇒ hai đỉnh kề $N$, $K$ cùng nhìn cạnh $BC$ dưới góc vuông ⇒ $BCNK$ nội tiếp đường tròn đường kính $BC$."
+        },
+        {
+          "id": "ld-d31-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Sắp xếp các dòng thành lời giải chứng minh tứ giác $BMHK$ nội tiếp (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Xét tứ giác $BMHK$ có:"
+            },
+            {
+              "text": "$\\widehat{BMH}=90^\\circ$ ($AM$ là đường cao của $\\triangle ABC$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\widehat{BKH}=90^\\circ$ ($CK$ là đường cao của $\\triangle ABC$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "⇒ $\\widehat{BMH}+\\widehat{BKH}=180^\\circ$, mà $M$ và $K$ là hai đỉnh đối nhau",
+              "after": [
+                1,
+                2
+              ]
+            },
+            {
+              "text": "⇒ Tứ giác $BMHK$ nội tiếp (tổng hai góc đối bằng $180^\\circ$)."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\widehat{BMH}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn $(O)$);",
+              "code": "E04",
+              "feedback": "$M$ không nằm trên $(O)$ và $BH$ không phải đường kính của $(O)$; $\\widehat{BMH}=90^\\circ$ là vì $AM$ là đường cao."
+            },
+            {
+              "text": "⇒ $\\widehat{BMH}+\\widehat{BKH}=180^\\circ$, mà $M$ và $K$ là hai đỉnh kề nhau",
+              "code": "E08",
+              "feedback": "Thứ tự $B$–$M$–$H$–$K$: $M$ và $K$ cách nhau một đỉnh nên là hai đỉnh đối; nếu kề nhau thì tổng $180^\\circ$ không có ý nghĩa."
+            },
+            {
+              "text": "⇒ $\\widehat{MBK}+\\widehat{MHK}=180^\\circ$",
+              "code": "E09",
+              "feedback": "Tổng này chỉ có được sau khi đã biết $BMHK$ nội tiếp; dòng này không suy ra từ hai góc vuông ở trên."
+            }
+          ],
+          "solution": "$\\widehat{BMH}=90^\\circ$ ($AM\\perp BC$), $\\widehat{BKH}=90^\\circ$ ($CK\\perp AB$) ⇒ tổng hai góc đối ở $M$, $K$ bằng $180^\\circ$ ⇒ $BMHK$ nội tiếp (đường tròn đường kính $BH$). Hai dòng về góc vuông đổi chỗ được."
+        }
+      ],
+      "solution": "a) • Tứ giác $BCNK$: Vì $BN$, $CK$ là các đường cao của $\\triangle ABC$ nên $\\widehat{BNC}=90^\\circ$, $\\widehat{BKC}=90^\\circ$. Xét tứ giác $BCNK$ có hai đỉnh kề $N$, $K$ cùng nhìn cạnh $BC$ dưới góc $90^\\circ$ ⇒ $N$, $K$ cùng thuộc đường tròn đường kính $BC$ ⇒ tứ giác $BCNK$ nội tiếp đường tròn đường kính $BC$. • Tứ giác $BMHK$: Vì $AM$, $CK$ là các đường cao nên $\\widehat{BMH}=90^\\circ$, $\\widehat{BKH}=90^\\circ$. Xét tứ giác $BMHK$ có $\\widehat{BMH}+\\widehat{BKH}=90^\\circ+90^\\circ=180^\\circ$, mà hai góc này ở hai đỉnh đối nhau $M$, $K$ ⇒ tứ giác $BMHK$ nội tiếp (đường tròn đường kính $BH$). Kết luận: $BCNK$ và $BMHK$ là các tứ giác nội tiếp."
+    },
+    {
+      "id": "ld-d35",
+      "order": 7,
+      "title": "Đề 35 — Bài 4.2a",
+      "source": "68 đề – Đề 35, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 216.8 216.8\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn tâm O, hai đường cao AH và BE cắt nhau tại D, I là trung điểm BC</title><circle cx=\"108.4\" cy=\"108.4\" r=\"86.4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"75.4\" y1=\"28.6\" x2=\"30.4\" y2=\"145.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"30.4\" y1=\"145.6\" x2=\"186.4\" y2=\"145.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"186.4\" y1=\"145.6\" x2=\"75.4\" y2=\"28.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"75.4\" y1=\"28.6\" x2=\"75.4\" y2=\"145.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"30.4\" y1=\"145.6\" x2=\"112.5\" y2=\"67.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"75.4,138.6 82.4,138.6 82.4,145.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"107.4,72.5 112.2,77.6 117.3,72.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"71.4\" y=\"17.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"19.4\" y=\"151.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"197.4\" y=\"151.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"75.4\" y=\"157.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"122.5\" y=\"62.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"65.4\" y=\"104.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"108.4\" y=\"157.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"117.4\" y=\"104.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"75.4\" cy=\"28.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"30.4\" cy=\"145.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"186.4\" cy=\"145.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"75.4\" cy=\"145.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"112.5\" cy=\"67.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"75.4\" cy=\"102.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"108.4\" cy=\"145.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"108.4\" cy=\"108.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, AB nhỏ hơn AC, nội tiếp đường tròn tâm O; hai đường cao AH (H trên BC) và BE (E trên AC) cắt nhau tại D; I là trung điểm của BC, nằm giữa H và C."
+      },
+      "problem": "Cho tam giác nhọn $ABC$ ($AB<AC$) nội tiếp đường tròn $(O)$, hai đường cao $AH$ và $BE$ cắt nhau tại $D$. Gọi $I$ là trung điểm của $BC$. a) Chứng minh $ABHE$ là tứ giác nội tiếp.",
+      "items": [
+        {
+          "id": "ld-d35-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược để chứng minh tứ giác $ABHE$ nội tiếp.",
+          "goal": "Tứ giác $ABHE$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $ABHE$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{AHB}=\\widehat{AEB}=90^\\circ$: hai đỉnh kề $H$, $E$ cùng nhìn cạnh $AB$ dưới góc vuông",
+              "item": {
+                "id": "ld-d35-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{AHB}+\\widehat{AEB}=180^\\circ$",
+                  "$H$, $E$ cùng nhìn cạnh $AB$ dưới góc vuông",
+                  "$\\widehat{ABH}+\\widehat{AEH}=180^\\circ$",
+                  "$\\widehat{DHC}+\\widehat{DEC}=180^\\circ$"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E04",
+                    "feedback": "$H$ và $E$ là hai đỉnh **kề** trong $ABHE$; tổng hai góc ở hai đỉnh kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Đó là dấu hiệu tổng hai góc đối, nhưng $\\widehat{ABH}$, $\\widehat{AEH}$ không tính được từ giả thiết. Hướng này không đi tới giả thiết."
+                  },
+                  "3": {
+                    "code": "E06",
+                    "feedback": "Tổng này đúng, nhưng nó chứng minh tứ giác $DHCE$ nội tiếp — một tứ giác khác, không phải $ABHE$."
+                  }
+                },
+                "solution": "Thứ tự $A$–$B$–$H$–$E$: $H$, $E$ là hai đỉnh kề, cùng nhìn cạnh $AB$. Cần $\\widehat{AHB}=\\widehat{AEB}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Vì sao $\\widehat{AHB}=90^\\circ$?",
+              "node": "$AH$ là đường cao (gt) ⇒ $\\widehat{AHB}=90^\\circ$",
+              "item": {
+                "id": "ld-d35-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{AHB}$ là góc nội tiếp chắn nửa đường tròn $(O)$",
+                  "Vì $H$ là trung điểm của $BC$",
+                  "Vì $AH\\perp BC$ ($AH$ là đường cao, gt)"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$H$ không nằm trên $(O)$ và $AB$ không phải đường kính của $(O)$ (xem hình)."
+                  },
+                  "1": {
+                    "code": "E08",
+                    "feedback": "Trung điểm của $BC$ là $I$, không phải $H$; vì $AB<AC$ nên $H$ nằm giữa $B$ và $I$."
+                  }
+                },
+                "solution": "$AH$ là đường cao nên $AH\\perp BC$ tại $H$ ⇒ $\\widehat{AHB}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{AEB}=90^\\circ$ thì vì sao?",
+              "node": "$BE$ là đường cao (gt) ⇒ $\\widehat{AEB}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d35-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $BE\\perp AC$ ($BE$ là đường cao, gt)",
+                  "Vì tứ giác $ABHE$ nội tiếp nên $\\widehat{AEB}=\\widehat{AHB}=90^\\circ$",
+                  "Vì $\\widehat{AEB}$ là góc nội tiếp của $(O)$ chắn cung $AB$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E09",
+                    "feedback": "Lập luận vòng: dùng điều đang cần chứng minh để suy ra góc vuông."
+                  },
+                  "2": {
+                    "code": "E08",
+                    "feedback": "$E$ nằm trên cạnh $AC$, không nằm trên $(O)$, nên $\\widehat{AEB}$ không phải góc nội tiếp của $(O)$."
+                  }
+                },
+                "solution": "$BE$ là đường cao nên $BE\\perp AC$ tại $E$ ⇒ $\\widehat{AEB}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$AH$, $BE$ là đường cao ⇒ $\\widehat{AHB}=\\widehat{AEB}=90^\\circ$",
+            "⇒ $H$, $E$ cùng nhìn cạnh $AB$ dưới góc vuông ⇒ $H$, $E$ thuộc đường tròn đường kính $AB$",
+            "⇒ tứ giác $ABHE$ nội tiếp"
+          ],
+          "solution": "$\\widehat{AHB}=90^\\circ$ ($AH$ là đường cao), $\\widehat{AEB}=90^\\circ$ ($BE$ là đường cao). Hai đỉnh kề $H$, $E$ cùng nhìn cạnh $AB$ dưới góc vuông ⇒ tứ giác $ABHE$ nội tiếp đường tròn đường kính $AB$."
+        },
+        {
+          "id": "ld-d35-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: tứ giác $ABHE$ nội tiếp.",
+          "lines": [
+            "Xét tứ giác $ABHE$ có:",
+            "$\\widehat{AHB}=90^\\circ$ ([[1]]);",
+            "$\\widehat{AEB}=90^\\circ$ ([[2]]).",
+            "⇒ $H$, $E$ cùng thuộc đường tròn đường kính [[3]].",
+            "⇒ Bốn điểm $A$, $B$, $H$, $E$ cùng thuộc đường tròn có tâm là [[4]], hay tứ giác $ABHE$ nội tiếp."
+          ],
+          "bank": [
+            "$AH$ là đường cao (gt)",
+            "$BE$ là đường cao (gt)",
+            "góc nội tiếp chắn nửa đường tròn $(O)$",
+            "$AB$",
+            "$HE$",
+            "$BC$",
+            "trung điểm của $AB$",
+            "điểm $I$ (trung điểm của $BC$)"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E08",
+                  "feedback": "$BE$ là đường cao cho góc vuông ở $E$; góc vuông ở $H$ là do $AH\\perp BC$."
+                },
+                "2": {
+                  "code": "E04",
+                  "feedback": "$AB$ không phải đường kính của $(O)$ và $H$ không nằm trên $(O)$."
+                }
+              }
+            },
+            {
+              "correct": 1,
+              "mistakes": {
+                "0": {
+                  "code": "E08",
+                  "feedback": "$AH$ là đường cao cho góc vuông ở $H$; góc vuông ở $E$ là do $BE\\perp AC$."
+                }
+              }
+            },
+            {
+              "correct": 3,
+              "mistakes": {
+                "4": {
+                  "code": "E08",
+                  "feedback": "$HE$ nối hai đỉnh \"nhìn\"; đoạn được nhìn dưới góc vuông là $AB$ (hai cạnh của mỗi góc đi qua $A$ và $B$)."
+                },
+                "5": {
+                  "code": "E08",
+                  "feedback": "Góc vuông ở $H$ nằm trên $BC$ chứ không nhìn $BC$; cả hai góc vuông đều nhìn đoạn $AB$."
+                }
+              }
+            },
+            {
+              "correct": 6,
+              "mistakes": {
+                "7": {
+                  "code": "E08",
+                  "feedback": "$I$ cách đều $B$, $C$, $E$ (vì $\\widehat{BEC}=90^\\circ$) nhưng $IA\\ne IB$; đường kính ở đây là $AB$ nên tâm là trung điểm của $AB$."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{AHB}=90^\\circ$ ($AH$ là đường cao), $\\widehat{AEB}=90^\\circ$ ($BE$ là đường cao) ⇒ $H$, $E$ thuộc đường tròn đường kính $AB$ ⇒ $A$, $B$, $H$, $E$ cùng thuộc đường tròn tâm là trung điểm của $AB$."
+        },
+        {
+          "id": "ld-d35-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Cách khác (dùng trung tuyến ứng với cạnh huyền): sắp xếp các dòng thành lời giải chứng minh tứ giác $ABHE$ nội tiếp (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Gọi $J$ là trung điểm của $AB$."
+            },
+            {
+              "text": "$\\triangle AHB$ vuông tại $H$ ($AH$ là đường cao) có $HJ$ là đường trung tuyến ứng với cạnh huyền ⇒ $HJ=\\dfrac{AB}{2}$;",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\triangle AEB$ vuông tại $E$ ($BE$ là đường cao) có $EJ$ là đường trung tuyến ứng với cạnh huyền ⇒ $EJ=\\dfrac{AB}{2}$;",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "⇒ $JA=JB=JH=JE=\\dfrac{AB}{2}$",
+              "after": [
+                1,
+                2
+              ]
+            },
+            {
+              "text": "⇒ $A$, $B$, $H$, $E$ cùng thuộc đường tròn tâm $J$ bán kính $\\dfrac{AB}{2}$, tức tứ giác $ABHE$ nội tiếp."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\triangle AHB$ vuông tại $H$ có $HJ$ là đường trung tuyến ⇒ $HJ=\\dfrac{BC}{2}$;",
+              "code": "E08",
+              "feedback": "Cạnh huyền của $\\triangle AHB$ (vuông tại $H$) là $AB$, nên $HJ=\\dfrac{AB}{2}$; $BC$ không phải cạnh của tam giác này."
+            },
+            {
+              "text": "$JH=JE$ vì $J$ là trung điểm của $HE$;",
+              "code": "E08",
+              "feedback": "$J$ là trung điểm của $AB$, không nằm trên $HE$ (xem hình)."
+            }
+          ],
+          "solution": "Gọi $J$ là trung điểm $AB$. Trong hai tam giác vuông $AHB$ (tại $H$) và $AEB$ (tại $E$), trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền: $HJ=EJ=\\dfrac{AB}{2}=JA=JB$ ⇒ $A$, $B$, $H$, $E$ cùng thuộc đường tròn $(J)$. Hai dòng về $HJ$, $EJ$ đổi chỗ được."
+        }
+      ],
+      "solution": "a) Vì $AH$ là đường cao của $\\triangle ABC$ nên $AH\\perp BC$ ⇒ $\\widehat{AHB}=90^\\circ$. Vì $BE$ là đường cao nên $BE\\perp AC$ ⇒ $\\widehat{AEB}=90^\\circ$. Xét tứ giác $ABHE$ có hai đỉnh kề $H$, $E$ cùng nhìn cạnh $AB$ dưới góc $90^\\circ$ ⇒ $H$, $E$ cùng thuộc đường tròn đường kính $AB$. Kết luận: tứ giác $ABHE$ nội tiếp (đường tròn đường kính $AB$, tâm là trung điểm của $AB$)."
+    },
+    {
+      "id": "ld-d46",
+      "order": 8,
+      "title": "Đề 46 — Bài 4.2a",
+      "source": "68 đề – Đề 46, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 248 248\" role=\"img\"><title>Đường tròn O đường kính BC, tam giác ABC, D trên cung nhỏ AC, BD cắt AC tại E, EF vuông góc BC</title><circle cx=\"124\" cy=\"124\" r=\"102\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"65.5\" y1=\"40.4\" x2=\"22\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"124\" x2=\"226\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"226\" y1=\"124\" x2=\"65.5\" y2=\"40.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"124\" x2=\"212.3\" y2=\"73\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"156.7\" y1=\"87.9\" x2=\"156.7\" y2=\"124\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"156.7,117 163.7,117 163.7,124\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"62\" y=\"29\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10\" y=\"124\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"238\" y=\"124\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"124\" y=\"136\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"218.5\" y=\"62.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"156.7\" y=\"75.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"156.7\" y=\"136\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><circle cx=\"65.5\" cy=\"40.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"226\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"124\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"212.3\" cy=\"73\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"156.7\" cy=\"87.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"156.7\" cy=\"124\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính BC; A trên đường tròn với AB < AC; D trên cung nhỏ AC; BD cắt AC tại E; EF vuông góc với BC tại F."
+      },
+      "problem": "Cho $\\triangle ABC$ $(AB<AC)$ nội tiếp $(O;R)$ đường kính $BC$, trên cung nhỏ $AC$ lấy điểm $D$, $BD$ cắt $AC$ tại $E$, từ $E$ vẽ $EF \\perp BC$ tại $F$.\n\na) Chứng minh tứ giác $BAEF$ nội tiếp đường tròn.",
+      "items": [
+        {
+          "id": "ld-d46-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược ý a: đi từ điều cần chứng minh về giả thiết.",
+          "goal": "Tứ giác $BAEF$ nội tiếp",
+          "steps": [
+            {
+              "ask": "Muốn tứ giác $BAEF$ nội tiếp, cần chứng minh gì?",
+              "node": "$\\widehat{BAE}+\\widehat{BFE}=180^\\circ$ (hai góc đối, tại $A$ và $F$)",
+              "item": {
+                "id": "ld-d46-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{ABF}+\\widehat{AEF}=180^\\circ$",
+                  "$\\widehat{BAE}+\\widehat{BFE}=180^\\circ$",
+                  "$\\widehat{BAE}+\\widehat{AEF}=180^\\circ$"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E06",
+                    "feedback": "Đúng là hai góc đối (tại $B$ và $E$), nhưng đề không cho gì để tính hai góc này; các góc vuông nằm ở $A$ và $F$."
+                  },
+                  "2": {
+                    "code": "E04",
+                    "feedback": "$\\widehat{BAE}$ và $\\widehat{AEF}$ ở hai đỉnh **kề** $A$, $E$; tổng hai góc kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp."
+                  }
+                },
+                "solution": "Thứ tự $B$–$A$–$E$–$F$: $A$ đối với $F$, và ở hai đỉnh này có thể chỉ ra góc vuông."
+              }
+            },
+            {
+              "ask": "Muốn có $\\widehat{BAE}+\\widehat{BFE}=180^\\circ$, trước hết vì sao $\\widehat{BAE}=90^\\circ$?",
+              "node": "$\\widehat{BAE}=\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn, $E \\in AC$)",
+              "item": {
+                "id": "ld-d46-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) và $E$ nằm trên $AC$",
+                  "Vì $\\widehat{BDC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn)",
+                  "Vì tứ giác $BAEF$ nội tiếp đường tròn đường kính $BE$"
+                ],
+                "correct": 0,
+                "mistakes": {
+                  "1": {
+                    "code": "E08",
+                    "feedback": "$\\widehat{BDC}=90^\\circ$ đúng, nhưng đó là góc tại $D$; góc cần có là góc tại $A$."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "Lập luận vòng: dùng chính điều cần chứng minh."
+                  }
+                },
+                "solution": "$BC$ là đường kính nên $\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn); $E$ nằm trên đoạn $AC$ nên $\\widehat{BAE}=\\widehat{BAC}=90^\\circ$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{BFE}=90^\\circ$ thì vì sao?",
+              "node": "$EF \\perp BC$ tại $F$ (gt) ⇒ $\\widehat{BFE}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d46-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{BFE}=\\widehat{BAE}$ (cùng nhìn cạnh $BE$)",
+                  "Vì $\\widehat{BFE}$ là góc nội tiếp chắn nửa đường tròn $(O)$",
+                  "Vì $EF \\perp BC$ tại $F$ (gt)"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E09",
+                    "feedback": "Hai góc cùng nhìn cạnh $BE$ bằng nhau chỉ khi đã biết bốn điểm cùng thuộc một đường tròn; lập luận vòng."
+                  },
+                  "1": {
+                    "code": "E04",
+                    "feedback": "$F$ nằm trên đường kính $BC$, không nằm trên đường tròn $(O)$, nên $\\widehat{BFE}$ không phải góc nội tiếp của $(O)$."
+                  }
+                },
+                "solution": "Đề cho $EF \\perp BC$ tại $F$ nên $\\widehat{BFE}=90^\\circ$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{BAE}=90^\\circ$",
+            "$\\widehat{BFE}=90^\\circ$ ($EF \\perp BC$, gt)",
+            "⇒ $\\widehat{BAE}+\\widehat{BFE}=180^\\circ$, hai góc đối",
+            "⇒ tứ giác $BAEF$ nội tiếp"
+          ],
+          "solution": "$\\widehat{BAE}=\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) và $\\widehat{BFE}=90^\\circ$ ($EF \\perp BC$); $A$, $F$ là hai đỉnh đối ⇒ tổng hai góc đối bằng $180^\\circ$ ⇒ $BAEF$ nội tiếp."
+        },
+        {
+          "id": "ld-d46-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải ý a.",
+          "lines": [
+            "Xét $(O)$ có $BC$ là đường kính, $A \\in (O)$ ⇒ $\\widehat{BAC}=90^\\circ$ ([[1]]).",
+            "Vì $E$ nằm trên cạnh $AC$ nên $\\widehat{BAE}=90^\\circ$.",
+            "Lại có $\\widehat{BFE}=90^\\circ$ ([[2]]).",
+            "Xét tứ giác $BAEF$ có $\\widehat{BAE}+\\widehat{BFE}=180^\\circ$, mà $\\widehat{BAE}$ và $\\widehat{BFE}$ là hai góc [[3]]",
+            "⇒ Tứ giác $BAEF$ nội tiếp ([[4]])."
+          ],
+          "bank": [
+            "góc nội tiếp chắn nửa đường tròn",
+            "góc ở tâm chắn nửa đường tròn",
+            "$EF \\perp BC$ tại $F$ (gt)",
+            "$\\widehat{BDC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn)",
+            "đối nhau",
+            "kề nhau",
+            "tứ giác có tổng hai góc đối bằng $180^\\circ$",
+            "tứ giác có hai đỉnh kề cùng nhìn một cạnh dưới hai góc bằng nhau"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E04",
+                  "feedback": "Đỉnh của $\\widehat{BAC}$ là $A$, nằm trên đường tròn, nên đây là góc nội tiếp; góc ở tâm có đỉnh là $O$."
+                }
+              }
+            },
+            {
+              "correct": 2,
+              "mistakes": {
+                "0": {
+                  "code": "E04",
+                  "feedback": "$F$ không nằm trên $(O)$ nên $\\widehat{BFE}$ không phải góc nội tiếp; góc vuông tại $F$ là do giả thiết $EF \\perp BC$."
+                },
+                "3": {
+                  "code": "E08",
+                  "feedback": "$\\widehat{BDC}=90^\\circ$ là góc tại $D$, không cho góc tại $F$."
+                }
+              }
+            },
+            {
+              "correct": 4,
+              "mistakes": {
+                "5": {
+                  "code": "E08",
+                  "feedback": "Thứ tự $B$–$A$–$E$–$F$: $A$ kề $B$ và $E$; $A$ và $F$ là hai đỉnh đối."
+                }
+              }
+            },
+            {
+              "correct": 6,
+              "mistakes": {
+                "7": {
+                  "code": "E09",
+                  "feedback": "Dòng trên vừa dùng tổng hai góc đối bằng $180^\\circ$, không phải hai góc bằng nhau cùng nhìn một cạnh; lí do không khớp bước."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{BAE}=90^\\circ$; $\\widehat{BFE}=90^\\circ$ ($EF \\perp BC$); $A$, $F$ đối nhau ⇒ tổng hai góc đối bằng $180^\\circ$ ⇒ $BAEF$ nội tiếp."
+        },
+        {
+          "id": "ld-d46-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Một cách khác cho ý a: chỉ ra hai đỉnh cùng nhìn một đoạn thẳng dưới góc vuông. Sắp xếp các dòng thành lời giải (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Ta có $\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn $(O)$)."
+            },
+            {
+              "text": "Mà $E$ nằm trên $AC$ nên $\\widehat{BAE}=90^\\circ$ ⇒ $A$ thuộc đường tròn đường kính $BE$."
+            },
+            {
+              "text": "$\\widehat{BFE}=90^\\circ$ (vì $EF \\perp BC$ tại $F$) ⇒ $F$ thuộc đường tròn đường kính $BE$.",
+              "after": []
+            },
+            {
+              "text": "⇒ Bốn điểm $B$, $A$, $E$, $F$ cùng thuộc đường tròn đường kính $BE$.",
+              "after": [
+                1,
+                2
+              ]
+            },
+            {
+              "text": "Kết luận: tứ giác $BAEF$ nội tiếp đường tròn tâm là trung điểm của $BE$."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\widehat{BFE}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn $(O)$) ⇒ $F$ thuộc đường tròn đường kính $BE$.",
+              "code": "E04",
+              "feedback": "$F$ không nằm trên $(O)$ nên $\\widehat{BFE}$ không phải góc nội tiếp; góc vuông tại $F$ là do $EF \\perp BC$."
+            },
+            {
+              "text": "⇒ Bốn điểm $B$, $A$, $E$, $F$ cùng thuộc đường tròn đường kính $AF$.",
+              "code": "E08",
+              "feedback": "Hai góc vuông tại $A$ và $F$ cùng nhìn đoạn $BE$, nên $BE$ là đường kính; $AF$ là đường chéo còn lại."
+            }
+          ],
+          "solution": "$\\widehat{BAE}=90^\\circ$ (vì $\\widehat{BAC}$ chắn nửa đường tròn, $E \\in AC$) và $\\widehat{BFE}=90^\\circ$ ($EF \\perp BC$) ⇒ $A$, $F$ cùng nhìn $BE$ dưới góc vuông ⇒ $B$, $A$, $E$, $F$ thuộc đường tròn đường kính $BE$. Dòng về $\\widehat{BFE}$ có thể đặt ở đầu hoặc xen trước dòng về $\\widehat{BAE}$."
+        }
+      ],
+      "solution": "**a)** Xét đường tròn $(O)$ có $BC$ là đường kính, $A \\in (O)$ ⇒ $\\widehat{BAC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn).\nVì $E$ nằm trên cạnh $AC$ nên $\\widehat{BAE}=90^\\circ$.\nLại có $EF \\perp BC$ tại $F$ nên $\\widehat{BFE}=90^\\circ$.\nXét tứ giác $BAEF$ có $\\widehat{BAE}+\\widehat{BFE}=90^\\circ+90^\\circ=180^\\circ$, mà $\\widehat{BAE}$ và $\\widehat{BFE}$ là hai góc đối.\nKết luận: tứ giác $BAEF$ nội tiếp đường tròn (tổng hai góc đối bằng $180^\\circ$); tâm đường tròn là trung điểm của $BE$."
+    },
+    {
+      "id": "ld-d52",
+      "order": 9,
+      "title": "Đề 52 — Bài 4.2a",
+      "source": "68 đề – Đề 52, Bài 4.2a",
+      "parts": [
+        "a"
+      ],
+      "needs": [
+        "k-tugiacnt"
+      ],
+      "status": "draft",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 236 236\" role=\"img\"><title>Đường tròn tâm O đường kính AB, bán kính OC vuông góc AB, M trên cung nhỏ AC, MB cắt AC tại H, K là hình chiếu của H trên AB</title><circle cx=\"118\" cy=\"118\" r=\"96\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"118\" x2=\"214\" y2=\"118\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"118\" y1=\"118\" x2=\"118\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"118\" x2=\"118\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"118\" y1=\"22\" x2=\"214\" y2=\"118\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"62.9\" y1=\"39.4\" x2=\"214\" y2=\"118\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.7\" y1=\"52.3\" x2=\"87.7\" y2=\"118\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"87.7,111 94.7,111 94.7,118\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"118,112 124,112 124,118\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"11\" y=\"118\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"225\" y=\"118\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"118\" y=\"11\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"123\" y=\"129\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"53.9\" y=\"31.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"88.7\" y=\"40.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"87.7\" y=\"130\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"22\" cy=\"118\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"214\" cy=\"118\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"118\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"118\" cy=\"118\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"62.9\" cy=\"39.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"87.7\" cy=\"52.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"87.7\" cy=\"118\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính AB, bán kính OC vuông góc với AB; M trên cung nhỏ AC; MB cắt AC tại H; HK vuông góc với AB tại K (K nằm giữa A và O); có vẽ dây CB."
+      },
+      "problem": "Cho $(O;R)$ đường kính $AB$. Bán kính $CO$ vuông góc với $AB$, $M$ là điểm bất kì trên cung nhỏ $AC$ ($M$ khác $A$ và $C$), $MB$ cắt $AC$ tại $H$. Gọi $K$ là hình chiếu của $H$ trên $AB$. a) Chứng minh bốn điểm $C$, $B$, $H$, $K$ cùng thuộc một đường tròn.",
+      "items": [
+        {
+          "id": "ld-d52-1",
+          "type": "analysis",
+          "level": "L2",
+          "prompt": "Phân tích ngược để chứng minh bốn điểm $C$, $B$, $H$, $K$ cùng thuộc một đường tròn.",
+          "goal": "Bốn điểm $C$, $B$, $H$, $K$ cùng thuộc một đường tròn",
+          "steps": [
+            {
+              "ask": "Muốn $C$, $B$, $H$, $K$ cùng thuộc một đường tròn, cần chứng minh gì?",
+              "node": "$C$, $K$ cùng nhìn đoạn $HB$ dưới góc vuông ⇒ $C$, $K$ thuộc đường tròn đường kính $HB$",
+              "item": {
+                "id": "ld-d52-1-s1",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn hướng.",
+                "options": [
+                  "$\\widehat{AMB}=90^\\circ$",
+                  "$C$, $H$ cùng nhìn đoạn $BK$ dưới góc vuông",
+                  "$\\widehat{CHK}+\\widehat{CBK}=180^\\circ$",
+                  "$C$, $K$ cùng nhìn đoạn $HB$ dưới góc vuông"
+                ],
+                "correct": 3,
+                "mistakes": {
+                  "0": {
+                    "code": "E06",
+                    "feedback": "Đúng là $\\widehat{AMB}=90^\\circ$, nhưng $M$ không thuộc bốn điểm cần xét; điều này không giúp đưa $C$, $B$, $H$, $K$ lên một đường tròn."
+                  },
+                  "1": {
+                    "code": "E08",
+                    "feedback": "Đọc hình sai: góc vuông nằm ở $C$ và $K$, không ở $H$; $\\widehat{BCK}$ và $\\widehat{BHK}$ đều không vuông."
+                  },
+                  "2": {
+                    "code": "E06",
+                    "feedback": "Đó là dấu hiệu tổng hai góc đối, nhưng $\\widehat{CHK}$, $\\widehat{CBK}$ không tính được trực tiếp từ giả thiết; các góc vuông lại nằm ở $C$ và $K$."
+                  }
+                },
+                "solution": "Hai góc vuông ở $C$ ($\\widehat{HCB}$) và ở $K$ ($\\widehat{HKB}$) cùng nhìn đoạn $HB$ ⇒ $C$, $K$ thuộc đường tròn đường kính $HB$."
+              }
+            },
+            {
+              "ask": "Vì sao $\\widehat{HCB}=90^\\circ$?",
+              "node": "$\\widehat{HCB}=\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn, $H$ thuộc đoạn $AC$)",
+              "item": {
+                "id": "ld-d52-1-s2",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $OC\\perp AB$ (gt)",
+                  "Vì $\\widehat{ACB}$ là góc nội tiếp chắn nửa đường tròn và $H$ thuộc đoạn $AC$",
+                  "Vì $C$, $B$, $H$, $K$ cùng thuộc một đường tròn"
+                ],
+                "correct": 1,
+                "mistakes": {
+                  "0": {
+                    "code": "E04",
+                    "feedback": "$OC\\perp AB$ cho góc ở tâm $\\widehat{COB}=90^\\circ$ (đỉnh $O$), không cho góc ở đỉnh $C$."
+                  },
+                  "2": {
+                    "code": "E09",
+                    "feedback": "Lập luận vòng: đó chính là điều đang cần chứng minh."
+                  }
+                },
+                "solution": "$AB$ là đường kính nên $\\widehat{ACB}=90^\\circ$; $H$ nằm trên đoạn $AC$ nên $\\widehat{HCB}=\\widehat{ACB}$."
+              }
+            },
+            {
+              "ask": "Còn $\\widehat{HKB}=90^\\circ$ thì vì sao?",
+              "node": "$K$ là hình chiếu của $H$ trên $AB$ (gt) ⇒ $\\widehat{HKB}=90^\\circ$",
+              "given": true,
+              "item": {
+                "id": "ld-d52-1-s3",
+                "type": "mcq",
+                "level": "L2",
+                "prompt": "Chọn lí do.",
+                "options": [
+                  "Vì $\\widehat{HKB}$ là góc nội tiếp chắn nửa đường tròn $(O)$",
+                  "Vì $HK\\parallel OC$",
+                  "Vì $K$ là hình chiếu của $H$ trên $AB$ (gt)"
+                ],
+                "correct": 2,
+                "mistakes": {
+                  "0": {
+                    "code": "E08",
+                    "feedback": "$K$ nằm trên đường kính $AB$, không nằm trên đường tròn $(O)$, nên $\\widehat{HKB}$ không phải góc nội tiếp của $(O)$."
+                  },
+                  "1": {
+                    "code": "E09",
+                    "feedback": "$HK\\parallel OC$ được suy ra từ $HK\\perp AB$, nên không dùng ngược lại làm lí do."
+                  }
+                },
+                "solution": "Hình chiếu của $H$ trên $AB$ là chân đường vuông góc: $HK\\perp AB$ tại $K$."
+              }
+            }
+          ],
+          "outline": [
+            "$\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn), $H\\in AC$ ⇒ $\\widehat{HCB}=90^\\circ$",
+            "$K$ là hình chiếu của $H$ trên $AB$ ⇒ $\\widehat{HKB}=90^\\circ$",
+            "⇒ $C$, $K$ cùng nhìn $HB$ dưới góc vuông ⇒ $C$, $K$ thuộc đường tròn đường kính $HB$",
+            "⇒ $C$, $B$, $H$, $K$ cùng thuộc đường tròn đường kính $HB$"
+          ],
+          "solution": "$\\widehat{HCB}=\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn), $\\widehat{HKB}=90^\\circ$ ($HK\\perp AB$). $C$, $K$ cùng nhìn $HB$ dưới góc vuông ⇒ $C$, $B$, $H$, $K$ cùng thuộc đường tròn đường kính $HB$."
+        },
+        {
+          "id": "ld-d52-2",
+          "type": "proof",
+          "level": "L2",
+          "prompt": "Điền vào chỗ trống để hoàn thành lời giải: bốn điểm $C$, $B$, $H$, $K$ cùng thuộc một đường tròn.",
+          "lines": [
+            "Ta có $\\widehat{ACB}=90^\\circ$ ([[1]]), mà $H$ thuộc đoạn $AC$ ⇒ $\\widehat{HCB}=90^\\circ$",
+            "⇒ $C$ thuộc đường tròn đường kính [[2]]. (1)",
+            "$\\widehat{HKB}=90^\\circ$ ([[3]]) ⇒ $K$ thuộc đường tròn đường kính $HB$. (2)",
+            "Từ (1) và (2) ⇒ bốn điểm $C$, $B$, $H$, $K$ cùng thuộc đường tròn đường kính $HB$, có tâm là [[4]]."
+          ],
+          "bank": [
+            "góc nội tiếp chắn nửa đường tròn",
+            "$OC\\perp AB$ (gt)",
+            "$HB$",
+            "$CB$",
+            "$K$ là hình chiếu của $H$ trên $AB$ (gt)",
+            "$C$, $B$, $H$, $K$ cùng thuộc một đường tròn",
+            "trung điểm của $HB$",
+            "điểm $O$"
+          ],
+          "blanks": [
+            {
+              "correct": 0,
+              "mistakes": {
+                "1": {
+                  "code": "E04",
+                  "feedback": "$OC\\perp AB$ cho góc ở tâm $\\widehat{COB}=90^\\circ$, không cho góc ở đỉnh $C$."
+                },
+                "5": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+                }
+              }
+            },
+            {
+              "correct": 2,
+              "mistakes": {
+                "3": {
+                  "code": "E08",
+                  "feedback": "Góc vuông ở đỉnh $C$ nhìn đoạn nối hai điểm còn lại $H$, $B$; $C$ nằm trên $CB$ nên không \"nhìn\" $CB$ được."
+                }
+              }
+            },
+            {
+              "correct": 4,
+              "mistakes": {
+                "1": {
+                  "code": "E08",
+                  "feedback": "$OC\\perp AB$ nói về bán kính $OC$; góc vuông ở $K$ có được vì $HK\\perp AB$ ($K$ là hình chiếu của $H$)."
+                },
+                "5": {
+                  "code": "E09",
+                  "feedback": "Lập luận vòng: dùng điều đang cần chứng minh làm lí do."
+                }
+              }
+            },
+            {
+              "correct": 6,
+              "mistakes": {
+                "7": {
+                  "code": "E08",
+                  "feedback": "$O$ là tâm của $(O)$; $OC=OB$ nhưng $OK\\ne OB$. Đường tròn này có đường kính $HB$ nên tâm là trung điểm của $HB$."
+                }
+              }
+            }
+          ],
+          "solution": "$\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{HCB}=90^\\circ$ ⇒ $C$ thuộc đường tròn đường kính $HB$; $\\widehat{HKB}=90^\\circ$ ($K$ là hình chiếu của $H$) ⇒ $K$ thuộc đường tròn đó. Tâm là trung điểm của $HB$."
+        },
+        {
+          "id": "ld-d52-3",
+          "type": "order",
+          "level": "L3",
+          "prompt": "Cách khác (tổng hai góc đối): sắp xếp các dòng thành lời giải chứng minh $C$, $B$, $H$, $K$ cùng thuộc một đường tròn (có dòng thừa, không dùng).",
+          "lines": [
+            {
+              "text": "Xét tứ giác $CBKH$ có:"
+            },
+            {
+              "text": "$\\widehat{HCB}=\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "$\\widehat{HKB}=90^\\circ$ ($K$ là hình chiếu của $H$ trên $AB$);",
+              "after": [
+                0
+              ]
+            },
+            {
+              "text": "⇒ $\\widehat{HCB}+\\widehat{HKB}=180^\\circ$, mà $C$ và $K$ là hai đỉnh đối nhau",
+              "after": [
+                1,
+                2
+              ]
+            },
+            {
+              "text": "⇒ Tứ giác $CBKH$ nội tiếp, tức bốn điểm $C$, $B$, $H$, $K$ cùng thuộc một đường tròn."
+            }
+          ],
+          "distractors": [
+            {
+              "text": "$\\widehat{HCB}=90^\\circ$ vì $OC\\perp AB$ (gt);",
+              "code": "E04",
+              "feedback": "$OC\\perp AB$ cho góc ở tâm $\\widehat{COB}=90^\\circ$; góc ở đỉnh $C$ vuông vì nó chắn nửa đường tròn."
+            },
+            {
+              "text": "⇒ $\\widehat{HCB}+\\widehat{HKB}=180^\\circ$, mà $C$ và $K$ là hai đỉnh kề nhau",
+              "code": "E08",
+              "feedback": "Thứ tự $C$–$B$–$K$–$H$: $C$ và $K$ cách nhau đỉnh $B$ nên là hai đỉnh đối; với hai đỉnh kề thì tổng $180^\\circ$ không phải dấu hiệu."
+            }
+          ],
+          "solution": "$\\widehat{HCB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn, $H\\in AC$), $\\widehat{HKB}=90^\\circ$ ($HK\\perp AB$) ⇒ tổng hai góc đối của $CBKH$ bằng $180^\\circ$ ⇒ $CBKH$ nội tiếp. Hai dòng về góc vuông đổi chỗ được."
+        }
+      ],
+      "solution": "a) Xét $(O)$ có $\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn), mà $H$ thuộc đoạn $AC$ ⇒ $\\widehat{HCB}=90^\\circ$ ⇒ $C$ thuộc đường tròn đường kính $HB$. Vì $K$ là hình chiếu của $H$ trên $AB$ nên $HK\\perp AB$ ⇒ $\\widehat{HKB}=90^\\circ$ ⇒ $K$ thuộc đường tròn đường kính $HB$. Kết luận: bốn điểm $C$, $B$, $H$, $K$ cùng thuộc đường tròn đường kính $HB$."
+    }
+  ]
 }
