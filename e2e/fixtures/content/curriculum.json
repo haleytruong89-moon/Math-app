@@ -222,6 +222,34 @@
       "batch": 9,
       "priority": "P0",
       "phase": 1
+    },
+    {
+      "id": "fd-1",
+      "module": "fx-quick",
+      "title": "Bài nháp thử 1",
+      "track": "B",
+      "seq": 40,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 9,
+      "priority": "P0",
+      "phase": 1
+    },
+    {
+      "id": "fd-2",
+      "module": "fx-quick",
+      "title": "Bài nháp thử 2",
+      "track": "B",
+      "seq": 50,
+      "prereq": [],
+      "examWeight": 0.5,
+      "grading": "full",
+      "testOut": false,
+      "batch": 9,
+      "priority": "P0",
+      "phase": 1
     }
   ]
 }

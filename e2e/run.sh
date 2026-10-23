@@ -24,8 +24,6 @@ mkdir -p e2e/out
 run parent 3100 e2e/preview-flow.mjs; a=$?
 run student 3101 e2e/student-flow.mjs; b=$?
 run tutor 3102 e2e/tutor-flow.mjs; c=$?
-run tutor 3108 e2e/review-flow.mjs; i=$?
-run student 3109 e2e/review-student-flow.mjs; j=$?
 run tutor 3110 e2e/assign-flow.mjs; k=$?
 run student 3111 e2e/assign-student-flow.mjs; l=$?
 run parent 3103 e2e/accounts-flow.mjs; d=$?
@@ -34,6 +32,9 @@ run parent 3114 e2e/report-flow.mjs; o=$?
 run tutor 3115 e2e/brief-flow.mjs; p=$?
 # S6a: curriculum engine on the fixture content (registry swapped, restored right after)
 node scripts/content-index.mjs --fixtures
+# S10 review flows need draft KUs: the fixtures have fd-1, fd-2 (real content is all approved since 23/10)
+run tutor 3108 e2e/review-flow.mjs; i=$?
+run student 3109 e2e/review-student-flow.mjs; j=$?
 run student 3105 e2e/curriculum-flow.mjs; f=$?
 run parent 3106 e2e/curriculum-parent-flow.mjs; g=$?
 run student 3107 e2e/items-flow.mjs; h=$?
