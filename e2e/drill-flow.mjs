@@ -33,8 +33,7 @@ try {
 
   // Item 1: backward analysis, right at both levels.
   await page.getByTestId("level-1").getByRole("button", { name: "Hướng đúng thử" }).click();
-  const up = page.getByRole("button", { name: "Tầng tiếp theo ⇑" });
-  if (await up.isVisible().catch(() => false)) await up.click();
+  await page.getByRole("button", { name: "Tầng tiếp theo ⇑" }).click();
   await page.getByTestId("level-2").getByRole("button", { name: "Vì giả thiết thử" }).click();
   await page.getByText("Chạm giả thiết ✓").waitFor();
   await page.getByRole("button", { name: /Hoàn thành — lật thành dàn ý/ }).click();
