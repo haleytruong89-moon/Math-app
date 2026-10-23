@@ -42,7 +42,7 @@
 | Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
-| Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42` | 🟡 PR mở 23/10 — không SQL; chờ phụ huynh "duyệt luyện đề" |
+| Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42` (#42), `p1-ld42-2` | 🟡 PR mở 23/10 — không SQL; đợt 2 thêm 10 bài (19 bài nháp); chờ phụ huynh "duyệt luyện đề" |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -55,6 +55,23 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 23/10/2026 — Luyện đề hình 4.2 đợt 2: 10 bài ý a (nhánh `p1-ld42-2`, không SQL, không code)
+
+Phụ huynh "làm luôn" + danh sách theo đề xuất (23/10). Kho có **19 bài ý a** (đợt 1: 9, đợt 2: 10), đều nháp.
+
+| Phần | Kết quả |
+|---|---|
+| Đề | Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56 — không dùng tiếp tuyến (bài tiếp tuyến chờ l-tieptuyen, đợt 7); không cần đề dự phòng |
+| Mỗi bài | phân tích ngược (2–3 tầng) + C3 + C2; C2 **đổi cách** từng bài: góc ngoài = góc trong đối diện (Đề 7, 26, 41), trung tuyến ứng với cạnh huyền / tâm cách đều (19, 36, 38), hai đỉnh kề nhìn cạnh dưới góc bằng nhau (24, 25), tổng hai góc đối (32, 56) |
+| Bài học đợt 1 áp dụng | không phương án sai nào là dấu hiệu nội tiếp đúng; câu hỏi từng tầng nói rõ đang hỏi gì |
+| Kiểm tra | kiểm toạ độ 89 + 67 (thêm 2680 cấu hình ngẫu nhiên) + 101 mệnh đề; chấm thử mọi phương án sai / mọi thứ tự C2; KaTeX 2050 chuỗi; **giải độc lập 30/30** |
+| Sửa sau giải độc lập | Đề 26 "cắt **đường thẳng** $BC$ tại $E$", Đề 38 "cắt **đường thẳng** $BE$" (điểm nằm trên phần kéo dài); phản hồi rõ hơn ở d24-1, d25-1 (tổng đúng về số nhưng hai đỉnh kề, góc không phải góc của tứ giác), d56-3 |
+| Chuẩn hoá đề gốc | Đề 7, 19, 25, 41: lỗi đánh máy (ngoặc, thiếu chữ, ký hiệu tam giác). **Đề 32 in nhầm** "chân đường vuông góc từ $E$ đến $AB$, $AC$" → sửa "$AB$, $BC$" (ý b xác nhận $K$ thuộc $BC$), ghi chú đầu lời giải |
+
+**Gia sư nên soát:** Đề 32 cùng cấu hình Đề 8 (đợt 1) — C2 đổi hướng; Đề 19 và 24 cùng hình (đường kính $AK$), C3/C2 khác cách; d24-3 cần điểm phụ $N$ (L3); d41-3 góc ngoài (L3, khó hơn lời giải chính); Đề 36, 56 có tiếp tuyến trong phần mở đầu (ý a không dùng) — con vẽ hình có thể bỏ qua tiếp tuyến nếu chưa học; Đề 26: $\widehat{BAC}=45^\circ$ nên C2 tính thẳng được.
+
+**Việc kế:** merge #40 → #41 → #42 → PR này; soát rồi "duyệt luyện đề" (cả 19 bài); đợt 3 (bài ý a có tiếp tuyến) sau khi có l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027.
 
 ## 23/10/2026 — Luyện đề hình 4.2: code + đợt đầu 9 bài ý a (nhánh `p1-ld42`, không SQL)
 
