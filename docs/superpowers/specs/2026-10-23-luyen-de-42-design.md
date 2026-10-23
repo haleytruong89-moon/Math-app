@@ -38,4 +38,5 @@ Part c; free-text proof grading; mock exams (Đề 57–68); AI help on these it
 | Opening | `drillPlan` (pure, tested): locked / waiting / new / doing / later / redo / done; weekly slots counted Monday–Sunday by first answer; `drillOpen` gates answers on the server |
 | Approval | git only (parent says "duyệt luyện đề"); the app never approves a drill |
 | Batch 1 (part a) | Đề 3, 5, 6, 8, 28, 31, 35, 46, 52 (Đề 16 replaced by 46: its part a needs a point defined in part b). Each = analysis (3 levels) + C3 + C2 with another method where possible |
+| Batch 2 (part a) | Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56 (no tangents); C2 varied per problem; orders 10–19. Part-a problems that need tangents wait for l-tieptuyen (batch 7) |
 | Tests | `drill.test.ts`, `drill-plan.test.ts`; e2e `drill-flow.mjs` (student) and `drill-tutor-flow.mjs` (tutor) on fixture drills |
