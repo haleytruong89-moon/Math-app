@@ -42,7 +42,7 @@
 | Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
-| Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2` | ✅ Merged 23/10 (PR #42, #43) — không SQL; 19 bài nháp, chờ phụ huynh "duyệt luyện đề" |
+| Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
 
 ### Câu hỏi đang mở
 | # | Câu hỏi | Mặc định nếu chưa trả lời |
@@ -55,6 +55,12 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 23/10/2026 — Phụ huynh duyệt 19 bài Luyện đề 4.2; khoá đáp án bài luyện đề (nhánh `p1-approve-ld42`, không SQL)
+
+- "duyệt 19 bài luyện đề hình 4.2" (phụ huynh, 23/10): cả 19 bài `approved`, `approvedOn: 2026-10-23`. Con thấy bài khi k-tugiacnt đạt M3 hoặc có ★ của gia sư (tối đa 3 bài mới/tuần). Gia sư soát sau: "Cần sửa" trên bài đã duyệt tạm ẩn câu đó với con.
+- `npm run content:lock` và `lock.test.ts` nay khoá cả bài luyện đề đã duyệt (598 câu, 47 bài): đổi đáp án/thứ tự phương án của câu con đã làm sẽ bị test chặn.
+- Kiểm thử: `npm test` 201 ✓, build ✓, e2e đủ ✓.
 
 ## 23/10/2026 — Luyện đề hình 4.2 đợt 2: 10 bài ý a (nhánh `p1-ld42-2`, không SQL, không code)
 
