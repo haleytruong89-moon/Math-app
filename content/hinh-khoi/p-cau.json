@@ -3,7 +3,8 @@
   "module": "hinh-khoi",
   "order": 2,
   "title": "Hình cầu & hình bán cầu",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **Hình trụ & hình nón: công thức** — diện tích hình tròn $\\pi R^2$, chu vi đường tròn $2\\pi R$, đổi đơn vị thể tích ($1$ cm³ $=1$ ml, $1$ dm³ $=1$ lít).",

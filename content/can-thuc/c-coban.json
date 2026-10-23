@@ -3,7 +3,8 @@
   "module": "can-thuc",
   "order": 2,
   "title": "Căn thức cơ bản",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 43,
   "theory": [
     "**Cần nhớ trước:** bài **Điều kiện xác định biểu thức căn** — $\\sqrt A$ chỉ có nghĩa khi $A \\ge 0$ và luôn có $\\sqrt A \\ge 0$; cùng **7 hằng đẳng thức** để nhận ra một bình phương như $(\\sqrt5-2)^2$.",

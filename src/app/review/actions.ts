@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { curriculumUnit, getUnit } from "@/lib/content";
-import { LESSON, REVIEW_RULES, nextToReview, reviewables, unitReview } from "@/lib/content/review";
+import { FIX_PART_MAX, LESSON, REVIEW_RULES, fixNote, nextToReview, reviewables, unitReview } from "@/lib/content/review";
 import { loadReviewData } from "@/lib/content/approvals";
 import { editPriorityList } from "@/lib/learning/priorities";
 import { activeAssignment, reviewerOf } from "@/lib/access";
@@ -30,14 +30,17 @@ function refresh(unitId: string) {
 export async function reviewItem(_p: ActionState, fd: FormData): Promise<ActionState> {
   const who = await reviewerOf();
   if (!who) return NO_RIGHT;
-  const v = z.object({ unitId: UnitId, itemId: ItemId, verdict: z.enum(["ok", "fix"]), note: Note.optional(), back: Back }).safeParse(Object.fromEntries(fd));
-  if (!v.success) return { error: "Thiếu thông tin, tải lại trang." };
+  const Part = z.string().trim().max(FIX_PART_MAX).optional();
+  const v = z.object({ unitId: UnitId, itemId: ItemId, verdict: z.enum(["ok", "fix"]), reason: Part, how: Part, back: Back }).safeParse(Object.fromEntries(fd));
+  if (!v.success) return { error: `Thiếu thông tin hoặc ghi quá ${FIX_PART_MAX} ký tự một ô.` };
   const f = getUnit(v.data.unitId);
   const r = f && reviewables(f.unit).find((x) => x.id === v.data.itemId);
   if (!f || !r) return { error: "Không tìm thấy câu này." };
-  if (v.data.verdict === "fix" && !v.data.note) return { error: "Ghi ngắn cần sửa gì để Claude sửa được." };
+  // 23/10: "Cần sửa" needs both why it is wrong and how Claude should fix it.
+  if (v.data.verdict === "fix" && (!v.data.reason || !v.data.how)) return { error: "Ghi cả lý do và hướng dẫn sửa để Claude sửa đúng." };
+  const note = v.data.verdict === "fix" ? Note.parse(fixNote(v.data.reason!, v.data.how!)) : null;
   const { error } = await createAdminClient().from("item_reviews").insert({
-    unit_id: f.unit.id, item_id: r.id, verdict: v.data.verdict, note: v.data.note || null,
+    unit_id: f.unit.id, item_id: r.id, verdict: v.data.verdict, note,
     grading_hash: r.gradingHash, content_hash: r.contentHash, reviewer_id: who.id,
   });
   if (error) {
@@ -46,7 +49,7 @@ export async function reviewItem(_p: ActionState, fd: FormData): Promise<ActionS
   }
   refresh(f.unit.id);
   const d = await loadReviewData(); // cached before the insert in this request: add the new verdict by hand
-  const rv = unitReview(f.unit, [...d.rows, { unit_id: f.unit.id, item_id: r.id, verdict: v.data.verdict, note: v.data.note || null, grading_hash: r.gradingHash, content_hash: r.contentHash, reviewer_id: who.id, created_at: new Date().toISOString() }], d.approvals);
+  const rv = unitReview(f.unit, [...d.rows, { unit_id: f.unit.id, item_id: r.id, verdict: v.data.verdict, note, grading_hash: r.gradingHash, content_hash: r.contentHash, reviewer_id: who.id, created_at: new Date().toISOString() }], d.approvals);
   redirect(`${v.data.back}?item=${encodeURIComponent(nextToReview(rv, r.id) ?? r.id)}`);
 }
 

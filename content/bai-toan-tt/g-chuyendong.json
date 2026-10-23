@@ -3,7 +3,8 @@
   "module": "bai-toan-tt",
   "order": 3,
   "title": "Chuyển động & dòng nước",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** (phương pháp thế, cộng đại số) và đổi thời gian: $1$ giờ $=60$ phút, nên $20$ phút $=\\dfrac13$ giờ.",

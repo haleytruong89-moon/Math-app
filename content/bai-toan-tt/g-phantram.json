@@ -3,7 +3,8 @@
   "module": "bai-toan-tt",
   "order": 5,
   "title": "Giá bán, lãi suất, tăng giảm %",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** (phương pháp thế, cộng đại số). Nhớ: $a\\%$ của $x$ là $\\dfrac{a}{100}x$, ví dụ $15\\%$ của $x$ là $0{,}15x$.",

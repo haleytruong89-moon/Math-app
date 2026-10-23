@@ -65,17 +65,19 @@ const fg1 = () => {
   u.exit = [analysisItem("fg-1-x1"), proofItem("fg-1-x2"), orderItem("fg-1-x3"), ...u.exit.slice(3)];
   return u;
 };
+// S10/23-10: fd-1, fd-2 are drafts — the review flows approve fd-1 in the app; fd-2 stays a draft.
+const draft = ({ approvedOn, ...u }) => ({ ...u, status: "draft" });
 const modules = [
   { id: "fx-alg", title: "Đại số thử", domains: ["C"], units: [["fa-1", "Đại số thử 1"], ["fa-2", "Đại số thử 2"]] },
   { id: "backfill-fx", title: "Bù lỗ hổng thử", domains: ["F1"], units: [["fz-1", "Bù lỗ hổng thử 1"]] },
-  { id: "fx-quick", title: "Ghi điểm thử", domains: ["A"], units: [["fb-1", "Ghi điểm thử 1"], ["fb-2", "Ghi điểm thử 2"], ["fb-3", "Ghi điểm thử 3"]] },
+  { id: "fx-quick", title: "Ghi điểm thử", domains: ["A"], units: [["fb-1", "Ghi điểm thử 1"], ["fb-2", "Ghi điểm thử 2"], ["fb-3", "Ghi điểm thử 3"], ["fd-1", "Bài nháp thử 1"], ["fd-2", "Bài nháp thử 2"]] },
   { id: "fx-geo", title: "Hình học thử", domains: ["J"], units: [["fc-1", "Hình học thử 1"], ["fc-9", "Học thêm thử"], ["fs-1", "Nhiều bước thử"], ["fg-1", "Chứng minh thử"]] },
 ];
 fs.rmSync(root, { recursive: true, force: true });
 for (const m of modules) {
   fs.mkdirSync(path.join(root, m.id), { recursive: true });
   fs.writeFileSync(path.join(root, m.id, "module.json"), JSON.stringify({ id: m.id, title: m.title, domains: m.domains, units: m.units.map(([u]) => u) }, null, 2) + "\n");
-  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : u === "fg-1" ? fg1() : unit(u, m.id, i + 1, t), null, 2) + "\n"));
+  m.units.forEach(([u, t], i) => fs.writeFileSync(path.join(root, m.id, `${u}.json`), JSON.stringify(u === "fs-1" ? fs1() : u === "fg-1" ? fg1() : u.startsWith("fd-") ? draft(unit(u, m.id, i + 1, t)) : unit(u, m.id, i + 1, t), null, 2) + "\n"));
 }
 const C = (id, module, title, track, seq, batch, prereq = [], testOut = false, priority = "P0", grading = "full", phase = 1) => ({ id, module, title, track, seq, prereq, examWeight: 0.5, grading, testOut, batch, priority, phase: priority === "P2" ? null : phase });
 const curriculum = {
@@ -96,6 +98,8 @@ const curriculum = {
     C("fs-1", "fx-geo", "Nhiều bước thử", "C", 20, 1, ["fc-1"], false, "P0", "partial"), // S6b, locked until unlocked by hand
     C("fg-1", "fx-geo", "Chứng minh thử", "C", 30, 1, [], false, "P0", "partial"), // S5 proof KU, open
     C("fl-1", "fx-later", "Bài chưa soạn thử", "A", 40, 9, ["fa-2"]),
+    C("fd-1", "fx-quick", "Bài nháp thử 1", "B", 40, 9),
+    C("fd-2", "fx-quick", "Bài nháp thử 2", "B", 50, 9),
   ],
 };
 fs.writeFileSync(path.join(root, "curriculum.json"), JSON.stringify(curriculum, null, 2) + "\n");

@@ -3,7 +3,8 @@
   "module": "can-thuc",
   "order": 5,
   "title": "Câu phụ sau rút gọn",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **Rút gọn biểu thức chứa căn** — câu phụ (Bài 2.3 đề thi) luôn làm trên $P$ **đã rút gọn** và **giữ nguyên ĐKXĐ** của đề, ví dụ $x \\ge 0$, $x \\ne 4$. Mọi giá trị $x$ tìm được phải đối chiếu lại với điều kiện này trước khi kết luận.",

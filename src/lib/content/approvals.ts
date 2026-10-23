@@ -48,7 +48,7 @@ export async function studentModules(opts: { includeDrafts?: boolean } = {}): Pr
   return listModules().map((m) => ({
     ...m,
     unitList: m.unitList.flatMap((u) => {
-      const v = studentView(u, u.status === "approved" ? null : unitReview(u, d.rows, d.approvals));
+      const v = studentView(u, unitReview(u, d.rows, d.approvals));
       return v ? [v] : opts.includeDrafts ? [u] : [];
     }),
   }));
@@ -58,7 +58,7 @@ export async function studentUnit(unitId: string): Promise<{ unit: Unit; module:
   const f = getUnit(unitId);
   if (!f) return null;
   const d = await loadReviewData();
-  const v = studentView(f.unit, f.unit.status === "approved" ? null : unitReview(f.unit, d.rows, d.approvals));
+  const v = studentView(f.unit, unitReview(f.unit, d.rows, d.approvals));
   return v ? { unit: v, module: f.module } : null;
 }
 
@@ -71,7 +71,7 @@ export async function shelf(): Promise<ShelfRow[]> {
   const title = new Map(modules.map((m) => [m.id, m.title]));
   return units.map((e) => {
     const f = getUnit(e.id);
-    const rv = f && f.unit.status !== "approved" ? unitReview(f.unit, d.rows, d.approvals) : null;
+    const rv = f ? unitReview(f.unit, d.rows, d.approvals) : null;
     return {
       id: e.id,
       title: e.title,

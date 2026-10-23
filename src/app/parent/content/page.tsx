@@ -28,7 +28,7 @@ export default async function ContentPage() {
   const status = new Map(rows.map((r) => [r.id, r]));
   const notes = units.flatMap((c) => {
     const f = getUnit(c.id);
-    if (!f || f.unit.status === "approved") return [];
+    if (!f) return []; // 23/10: approved units take "Cần sửa" notes too
     return unitReview(f.unit, d.rows, d.approvals)
       .items.filter((e) => e.status === "fix" && e.note)
       .map((e) => ({ unitId: c.id, unitTitle: c.title, itemId: e.id, note: e.note!, at: e.reviewedAt! }));

@@ -3,9 +3,14 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { Unit } from "./schema.ts";
-import { LESSON, canonicalJson, fixNotesText, nextToReview, reviewables, shelfStatus, statusOf, studentView, unitReview, type ApprovalRow, type ReviewRow } from "./review.ts";
+import { LESSON, canonicalJson, fixNote, fixNotesText, splitFixNote, nextToReview, reviewables, shelfStatus, statusOf, studentView, unitReview, type ApprovalRow, type ReviewRow } from "./review.ts";
 
-const draft = Unit.parse(JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, "../../../content/xac-suat/b-haib.json"), "utf8")));
+// b-haib was approved in git on 23/10; the tests use its content as a draft.
+const draft = (() => {
+  const raw = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, "../../../content/xac-suat/b-haib.json"), "utf8"));
+  delete raw.approvedOn;
+  return Unit.parse({ ...raw, status: "draft" });
+})();
 const T = (n: number) => `2026-10-20T0${n}:00:00Z`;
 const row = (item_id: string, verdict: "ok" | "fix", r = reviewables(draft).find((x) => x.id === item_id)!, at = T(1)): ReviewRow => ({
   unit_id: draft.id, item_id, verdict, note: verdict === "fix" ? "Đổi số" : null, grading_hash: r.gradingHash, content_hash: r.contentHash, reviewer_id: "t", created_at: at,
@@ -86,4 +91,32 @@ test("content hash ignores key order (a schema change must not flip every 'fix' 
   const r1 = reviewables(draft).find((x) => x.id === p1.id)!;
   const r2 = reviewables({ ...draft, practice: [reordered, ...draft.practice.slice(1)] } as Unit).find((x) => x.id === p1.id)!;
   assert.equal(r1.contentHash, r2.contentHash);
+});
+
+test("23/10: git-approved units — a 'Cần sửa' item is hidden until its content changes; a fixed lesson or too few items hide the unit", () => {
+  const git = { ...draft, status: "approved", approvedOn: "2026-10-23" } as Unit;
+  const gitRow = (id: string, verdict: "ok" | "fix", at = T(1)) => ({ ...row(id, verdict, reviewables(git).find((x) => x.id === id)!, at), unit_id: git.id });
+  const fixId = git.practice[0].id;
+  assert.equal(studentView(git, unitReview(git, [], [])), git); // no verdicts: whole unit
+  const v = studentView(git, unitReview(git, [gitRow(fixId, "fix")], []))!;
+  assert.ok(!v.practice.some((i) => i.id === fixId));
+  assert.equal(v.practice.length, git.practice.length - 1);
+  assert.equal(v.status, "approved");
+  assert.equal(shelfStatus(git, unitReview(git, [gitRow(fixId, "fix")], [])), "approved");
+  // Claude's fix is merged: the content changed, the item is "changed" and visible again.
+  const p1 = git.practice[0];
+  const fixed = { ...git, practice: [{ ...p1, prompt: p1.prompt + " (đã sửa)" }, ...git.practice.slice(1)] } as Unit;
+  assert.ok(studentView(fixed, unitReview(fixed, [gitRow(fixId, "fix")], []))!.practice.some((i) => i.id === fixId));
+  assert.equal(studentView(git, unitReview(git, [gitRow(LESSON, "fix")], [])), null);
+  const tooFew = git.exit.slice(0, git.exit.length - 4).map((it) => gitRow(it.id, "fix"));
+  assert.equal(studentView(git, unitReview(git, tooFew, [])), null);
+  assert.equal(shelfStatus(git, unitReview(git, tooFew, [])), "reapprove");
+});
+
+test("23/10: a 'Cần sửa' note carries the reason and how Claude should fix it", () => {
+  const n = fixNote(" Phương án C cũng đúng ", "Đổi C thành 2√3 ");
+  assert.equal(n, "Lý do: Phương án C cũng đúng — Sửa: Đổi C thành 2√3");
+  assert.deepEqual(splitFixNote(n), { reason: "Phương án C cũng đúng", how: "Đổi C thành 2√3" });
+  assert.deepEqual(splitFixNote("Đổi số"), { reason: "Đổi số", how: "" }); // notes written before 23/10
+  assert.deepEqual(splitFixNote(null), { reason: "", how: "" });
 });
