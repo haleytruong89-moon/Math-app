@@ -3,7 +3,8 @@
   "module": "duong-tron",
   "order": 1,
   "title": "Đường tròn: tâm, bán kính, dây, góc ở tâm",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 40,
   "figure": {
     "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" role=\"img\" aria-label=\"Đường tròn tâm O, dây AB, OH vuông góc với AB tại H\"><circle cx=\"120\" cy=\"100\" r=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"48\" y1=\"154\" x2=\"192\" y2=\"154\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"120\" y1=\"100\" x2=\"48\" y2=\"154\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"100\" x2=\"120\" y2=\"154\" stroke=\"var(--warn)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M 120 146 L 128 146 L 128 154\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"120\" cy=\"100\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"48\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"192\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"154\" r=\"2.5\" fill=\"currentColor\"/><text x=\"124\" y=\"93\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">O</text><text x=\"42\" y=\"158\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"198\" y=\"158\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"169\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">H</text><text x=\"76\" y=\"125\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">R</text><text x=\"126\" y=\"131\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--warn)\">d</text><text x=\"84\" y=\"148\" font-size=\"11\" text-anchor=\"middle\" fill=\"var(--accent)\">l/2</text></svg>",

@@ -3,7 +3,8 @@
   "module": "can-thuc",
   "order": 3,
   "title": "Trục căn thức ở mẫu",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 42,
   "theory": [
     "**Cần nhớ trước:** bài **7 hằng đẳng thức** — hiệu hai bình phương $(x-y)(x+y)=x^2-y^2$; bài **Căn thức cơ bản** — $\\sqrt a\\cdot\\sqrt a=(\\sqrt a)^2=a$ với $a \\ge 0$.",

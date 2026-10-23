@@ -3,7 +3,8 @@
   "module": "can-thuc",
   "order": 1,
   "title": "Điều kiện xác định biểu thức căn",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 42,
   "theory": [
     "**Cần nhớ trước:** bài **Quy đồng & điều kiện xác định** — phân thức $\\dfrac{A}{B}$ xác định khi $B \\ne 0$; có nhiều phân thức thì **mọi** mẫu đều khác $0$.",

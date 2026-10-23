@@ -3,7 +3,8 @@
   "module": "bai-toan-tt",
   "order": 4,
   "title": "Năng suất, làm chung, vòi nước",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **Giải hệ phương trình bậc nhất hai ẩn** — phương pháp thế, cộng đại số và đặt ẩn phụ $u=\\dfrac1x$, $v=\\dfrac1y$.",

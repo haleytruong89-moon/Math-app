@@ -3,7 +3,8 @@
   "module": "xac-suat",
   "order": 3,
   "title": "Xác suất hai bước & công cụ đếm",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **Xác suất cổ điển & một bước** ($P(A)=\\dfrac{n(A)}{n(\\Omega)}$, $P(\\overline{A})=1-P(A)$) và bài **phép thử & không gian mẫu** (cặp có thứ tự hay không thứ tự, có lặp hay không).",

@@ -3,7 +3,8 @@
   "module": "bai-toan-tt",
   "order": 1,
   "title": "Giải hệ PT bậc nhất hai ẩn",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-10-23",
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** chuyển vế phải đổi dấu; nhân hai vế với cùng một số khác $0$ (giải phương trình bậc nhất một ẩn, lớp 8). Đây là bài mở đầu mạch **giải bài toán bằng cách lập phương trình, hệ phương trình**.",
