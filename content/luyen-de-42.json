@@ -1226,7 +1226,7 @@
                 "level": "L2",
                 "prompt": "Chọn hướng.",
                 "options": [
-                  "$\\widehat{KBC}+\\widehat{KNC}=180^\\circ$",
+                  "$\\widehat{KBC}=\\widehat{KNC}$",
                   "$\\widehat{BNC}+\\widehat{BKC}=180^\\circ$",
                   "$N$, $K$ cùng thuộc đường tròn đường kính $BC$",
                   "$N$, $K$ cùng thuộc đường tròn $(O)$"
@@ -1234,8 +1234,8 @@
                 "correct": 2,
                 "mistakes": {
                   "0": {
-                    "code": "E06",
-                    "feedback": "Đó là một dấu hiệu nội tiếp, nhưng $\\widehat{KBC}$ và $\\widehat{KNC}$ không tính được từ giả thiết — giả thiết chỉ cho các góc vuông ở chân đường cao. Hướng này không đi tới giả thiết."
+                    "code": "E04",
+                    "feedback": "Dấu hiệu nội tiếp là **tổng** hai góc đối bằng $180^\\circ$, không phải hai góc đối bằng nhau (hình bình hành có hai góc đối bằng nhau mà không nội tiếp). Hơn nữa đề không cho gì để tính $\\widehat{KBC}$, $\\widehat{KNC}$."
                   },
                   "1": {
                     "code": "E04",
@@ -1468,7 +1468,7 @@
                 "options": [
                   "$\\widehat{AHB}+\\widehat{AEB}=180^\\circ$",
                   "$H$, $E$ cùng nhìn cạnh $AB$ dưới góc vuông",
-                  "$\\widehat{ABH}+\\widehat{AEH}=180^\\circ$",
+                  "$\\widehat{ABH}=\\widehat{AEH}$",
                   "$\\widehat{DHC}+\\widehat{DEC}=180^\\circ$"
                 ],
                 "correct": 1,
@@ -1478,8 +1478,8 @@
                     "feedback": "$H$ và $E$ là hai đỉnh **kề** trong $ABHE$; tổng hai góc ở hai đỉnh kề bằng $180^\\circ$ không phải dấu hiệu nội tiếp."
                   },
                   "2": {
-                    "code": "E06",
-                    "feedback": "Đó là dấu hiệu tổng hai góc đối, nhưng $\\widehat{ABH}$, $\\widehat{AEH}$ không tính được từ giả thiết. Hướng này không đi tới giả thiết."
+                    "code": "E04",
+                    "feedback": "Dấu hiệu nội tiếp là **tổng** hai góc đối bằng $180^\\circ$, không phải hai góc đối bằng nhau (hình bình hành có hai góc đối bằng nhau mà không nội tiếp). Hơn nữa đề không cho gì để tính $\\widehat{ABH}$, $\\widehat{AEH}$."
                   },
                   "3": {
                     "code": "E06",
@@ -1705,15 +1705,15 @@
                 "level": "L2",
                 "prompt": "Chọn hướng.",
                 "options": [
-                  "$\\widehat{ABF}+\\widehat{AEF}=180^\\circ$",
+                  "$\\widehat{ABF}=\\widehat{AEF}$",
                   "$\\widehat{BAE}+\\widehat{BFE}=180^\\circ$",
                   "$\\widehat{BAE}+\\widehat{AEF}=180^\\circ$"
                 ],
                 "correct": 1,
                 "mistakes": {
                   "0": {
-                    "code": "E06",
-                    "feedback": "Đúng là hai góc đối (tại $B$ và $E$), nhưng đề không cho gì để tính hai góc này; các góc vuông nằm ở $A$ và $F$."
+                    "code": "E04",
+                    "feedback": "Dấu hiệu nội tiếp là **tổng** hai góc đối bằng $180^\\circ$, không phải hai góc đối bằng nhau (hình bình hành có hai góc đối bằng nhau mà không nội tiếp). Hơn nữa đề không cho gì để tính $\\widehat{ABF}$, $\\widehat{AEF}$."
                   },
                   "2": {
                     "code": "E04",
@@ -1933,7 +1933,7 @@
                 "options": [
                   "$\\widehat{AMB}=90^\\circ$",
                   "$C$, $H$ cùng nhìn đoạn $BK$ dưới góc vuông",
-                  "$\\widehat{CHK}+\\widehat{CBK}=180^\\circ$",
+                  "$\\widehat{CHK}=\\widehat{CBK}$",
                   "$C$, $K$ cùng nhìn đoạn $HB$ dưới góc vuông"
                 ],
                 "correct": 3,
@@ -1947,8 +1947,8 @@
                     "feedback": "Đọc hình sai: góc vuông nằm ở $C$ và $K$, không ở $H$; $\\widehat{BCK}$ và $\\widehat{BHK}$ đều không vuông."
                   },
                   "2": {
-                    "code": "E06",
-                    "feedback": "Đó là dấu hiệu tổng hai góc đối, nhưng $\\widehat{CHK}$, $\\widehat{CBK}$ không tính được trực tiếp từ giả thiết; các góc vuông lại nằm ở $C$ và $K$."
+                    "code": "E04",
+                    "feedback": "Dấu hiệu nội tiếp là **tổng** hai góc đối bằng $180^\\circ$, không phải hai góc đối bằng nhau (hình bình hành có hai góc đối bằng nhau mà không nội tiếp). Hơn nữa đề không cho gì để tính $\\widehat{CHK}$, $\\widehat{CBK}$."
                   }
                 },
                 "solution": "Hai góc vuông ở $C$ ($\\widehat{HCB}$) và ở $K$ ($\\widehat{HKB}$) cùng nhìn đoạn $HB$ ⇒ $C$, $K$ thuộc đường tròn đường kính $HB$."
