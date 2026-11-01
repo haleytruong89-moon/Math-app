@@ -7,6 +7,7 @@ import { studentUnit } from "@/lib/content/approvals";
 import { LessonPlayer } from "@/components/lesson/lesson-player";
 import { exitHistory, loadStudentState } from "@/lib/learning/state";
 import { exitDrawFor } from "@/lib/learning/exit-draw";
+import { aiSettings, studentAiOff } from "@/lib/ai/usage";
 
 export const metadata: Metadata = { title: "Học bài — App Toán" };
 
@@ -32,6 +33,8 @@ export default async function LearnPage(props: PageProps<"/student/learn/[unitId
   if (!history) throw new Error("exit history unavailable"); // error page with retry, never a wrong draw
   const drawn = new Set(exitDrawFor(me.id, found.unit, history));
   const unit = { ...found.unit, exit: found.unit.exit.filter((i) => drawn.has(i.id)) };
+  // S8b: "Hỏi thêm" only when the parent's switch is on for a prompt version that passed the test set, within the cap.
+  const ai = !(await studentAiOff(await aiSettings()));
 
   return (
     <LessonPlayer
@@ -40,6 +43,7 @@ export default async function LearnPage(props: PageProps<"/student/learn/[unitId
       initial={{ workedViewed: u.workedViewed, fadedDone: u.fadedDone }}
       backHref="/student"
       testOut={testOut}
+      ai={ai}
     />
   );
 }

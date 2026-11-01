@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { toPublicUnit } from "@/lib/content";
 import { studentUnit } from "@/lib/content/approvals";
 import { HomeworkPractice } from "@/components/lesson/homework-practice";
+import { aiSettings, studentAiOff } from "@/lib/ai/usage";
 
 export const metadata: Metadata = { title: "Bài về nhà — App Toán" };
 
@@ -29,7 +30,7 @@ export default async function HomeworkPage(props: PageProps<"/student/homework/[
       <Link href="/student" className="text-sm text-accent hover:underline">← Trang chính</Link>
       <p className="font-mono text-xs text-muted">Bài về nhà · {found.unit.title} · {items.length} câu</p>
       <p className="whitespace-pre-line">{hw.task as string}</p>
-      <HomeworkPractice unit={{ ...pub, practice: items }} homeworkId={hw.id as string} />
+      <HomeworkPractice unit={{ ...pub, practice: items }} homeworkId={hw.id as string} ai={!(await studentAiOff(await aiSettings()))} />
     </div>
   );
 }

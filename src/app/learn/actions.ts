@@ -150,6 +150,17 @@ async function homeworkAllows(studentId: string, homeworkId: string, unitId: str
   return !!data && data.unit_id === unitId && Array.isArray(data.items) && (data.items as string[]).includes(itemId);
 }
 
+/** S8b: a student question to "Hỏi thêm" about this item today, after her last practice answer to it (if any). */
+async function askedAiBefore(studentId: string, itemId: string): Promise<boolean> {
+  const admin = createAdminClient();
+  const { data: last } = await admin.from("attempts").select("created_at").eq("student_id", studentId).eq("item_id", itemId).eq("mode", "practice").order("created_at", { ascending: false }).limit(1).maybeSingle();
+  let q = admin.from("ai_messages").select("id").eq("student_id", studentId).eq("item_id", itemId).eq("role", "student").eq("day", vnDate());
+  if (last?.created_at) q = q.gt("created_at", last.created_at as string);
+  const { data, error } = await q.limit(1);
+  if (error) console.error("askedAiBefore", error.message);
+  return !!data?.length;
+}
+
 /** LT16: "Ôn lại: …" — only to a KU the viewer can open (what the student sees, or any in a preview). */
 async function reviewLink(who: Learner, unitId: string | undefined) {
   if (!unitId) return undefined;
@@ -211,6 +222,9 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
   if (!g.understood) return { ok: true, understood: false };
 
   if (who.kind === "student") {
+    // S8b: asked AI about this item today since her last answer to it → hint_level 4 (decided here, not by the browser).
+    const askedAi = v.mode === "practice" && !drill && (await askedAiBefore(who.studentId, v.itemId));
+    const hintLevel = askedAi ? 4 : v.mode === "practice" ? (v.hintLevel ?? 0) : 0;
     const { error } = await createAdminClient().from("attempts").insert({
       student_id: who.studentId,
       unit_id: v.unitId,
@@ -220,7 +234,7 @@ export async function checkAnswer(input: z.input<typeof CheckInput>): Promise<Ch
       correct: g.correct,
       error_code: g.errorCode ?? null,
       duration_ms: v.durationMs ?? null,
-      ...(v.mode === "practice" && v.hintLevel ? { hint_level: v.hintLevel } : {}),
+      ...(hintLevel ? { hint_level: hintLevel } : {}),
     });
     if (error) {
       console.error("checkAnswer insert", error.message);

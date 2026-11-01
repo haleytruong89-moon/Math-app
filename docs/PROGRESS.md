@@ -31,7 +31,7 @@
 | Bàn làm việc gia sư trên laptop (audit 20/10) | `p1-tutor-polish` | ✅ Merged 21/10 (PR #30) |
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
-| S8b — AI cho con + bộ test | `p1-slice-8b` | ⬜ sau bộ test 02–08/11, bật ~cuối 11 |
+| S8b — AI cho con + bộ test | `p1-slice-8b` | 🟡 PR mở 01/11 — không SQL; bật sau khi phụ huynh chấm bộ test đạt |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -55,6 +55,21 @@
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
 
 ---
+
+## 01/11/2026 — S8b: "Hỏi thêm" cho con + bộ test (nhánh `p1-slice-8b`, không SQL)
+
+Phụ huynh "ok" (01/11): làm S8b ngay, giữ cổng bộ test ngắn thay vì chờ vài tuần pilot.
+
+| Phần | Kết quả |
+|---|---|
+| Con | Luyện tập: nút **"Vẫn chưa hiểu? Hỏi thêm"** sau khi mở hết H1–H3, **"Con chưa hiểu chỗ sai? Hỏi thêm"** sau khi trả lời sai; ôn tập: chỉ sau khi sai. Câu mcq / số / nhiều bước (chưa cho bài hình chứng minh, luyện đề). 6 lượt / câu / ngày, 20 lượt / ngày. Mỗi tin AI có **"AI nói sai?"** |
+| An toàn (5 lớp) | Gói ngữ cảnh chỉ có nội dung đã duyệt + câu trả lời của con; máy chủ chặn: JSON, số lạ (> 10, không có trong dữ liệu), **lộ đáp án trước khi con trả lời**, > 80 chữ, > 1 câu hỏi, từ cấm; trượt → hỏi lại 1 lần → hiện **gợi ý viết sẵn kế tiếp / lời giải đã duyệt** + cờ. Hỏi AI trước khi trả lời → `hint_level = 4` do máy chủ ghi (không tính "đúng ngay lần đầu") |
+| Phụ huynh | `/parent/ai/bo-test`: tạo bộ test từ lỗi thật (bù bằng đáp án sai đã soạn nếu < 20), sửa câu hỏi, chạy theo model (6 câu / lần), chấm 6 tiêu chí + "sai toán", thẻ Đạt / Chưa đạt. `/parent/ai`: công tắc "Hỏi thêm" chỉ bật được khi model đạt với bản lệnh hiện tại; đổi lệnh → tự tắt tới khi chấm lại; mục "Tin AI bị báo". Tổng quan: "Cần chú ý" khi con báo "AI nói sai?" |
+| Kiểm thử | unit `student.test.ts` (9); e2e `ai-student-flow` (tắt → không nút; bật → hỏi, chặn + gợi ý viết sẵn, báo sai, `hint_level` 4, sau khi sai) + `ai-eval-flow` (từ chối bật khi chưa đạt → tạo, chạy, chấm 20 → đạt → bật). Fake client e2e thêm `gt` và upsert nhiều dòng |
+
+**Việc của phụ huynh sau khi merge:** vào AI → Bộ test → "Tạo bộ test từ lỗi thật của con" → chạy (Haiku trước, rẻ) → đọc và chấm ~20–25 câu (~30 phút) → nếu Đạt, bật "Hỏi thêm" ở trang AI. Chi phí chạy bộ test vài cent.
+
+**Chưa làm (v1.1):** "Giải thích cách khác" ở bài mẫu; tóm tắt hội thoại AI trong báo cáo tuần; gia sư đọc hội thoại; bài hình chứng minh.
 
 ## 23/10/2026 — Phụ huynh duyệt 19 bài Luyện đề 4.2; khoá đáp án bài luyện đề (nhánh `p1-approve-ld42`, không SQL)
 

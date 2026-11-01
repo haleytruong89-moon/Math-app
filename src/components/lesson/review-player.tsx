@@ -10,6 +10,7 @@ import { FORMAT_HINT, ItemInput, isBlank } from "./item-input";
 import { Rich } from "./rich";
 import { Card, ErrorLine, PrimaryButton, useAction, useStartTime } from "./parts";
 import { QuestionFeedback } from "@/components/student/question-feedback";
+import { AiHelp } from "./ai-help";
 import { sessionTally } from "@/lib/learning/student-ux";
 
 const STAGE_LABEL = { 1: "D+1", 2: "D+7", 3: "D+21", 4: "duy trì" } as const;
@@ -25,12 +26,15 @@ export function ReviewPlayer({
   answered,
   units,
   hasFigure,
+  ai = false,
 }: {
   questions: ReviewQuestion[];
   /** Answers already given in this run before a reload; they count and aren't asked again. */
   answered: { unitId: string; correct: boolean }[];
   units: { id: string; title: string; stage: 1 | 2 | 3 | 4 }[];
   hasFigure: boolean;
+  /** S8b: "Hỏi thêm" after a wrong answer (never before answering in a review). */
+  ai?: boolean;
 }) {
   const [pos, setPos] = useState(0);
   const [value, setValue] = useState("");
@@ -191,6 +195,9 @@ export function ReviewPlayer({
           at={result?.at}
           onEnter={() => !result && check()}
         />
+        {result && ai && !result.correct && (q.item.type === "mcq" || q.item.type === "numeric" || q.item.type === "steps") && (
+          <AiHelp key={`ai-${q.item.id}-${pos}`} unitId={q.unitId} itemId={q.item.id} mode="review" stage="after" shownHints={0} />
+        )}
         {result ? (
           <QuestionFeedback
             result={result}
