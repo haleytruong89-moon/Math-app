@@ -23,8 +23,9 @@ await sql(`delete from public.item_reviews; delete from public.unit_approvals; d
   insert into public.tutor_priorities (student_id, unit_id, position, set_by) select id, 'fd-1', 1, ${tutor} from public.students where full_name = 'Hạnh Nguyên';`);
 
 await page.goto(`${BASE}/student`);
-const first = page.getByRole("link", { name: "Học bài mới" }).first();
-ok("Bài mới: the tutor's priority KU first", (await first.getAttribute("href")) === "/student/learn/fd-1", await first.getAttribute("href"));
+// 01/11: a starred KU now surfaces in the "Cần tập trung" block (pick card), not first in "Bài mới".
+const focusPick = page.getByTestId("focus-group").getByRole("link", { name: "Học bài này" }).first();
+ok("focus: the tutor's priority KU shows in 'Cần tập trung'", (await focusPick.getAttribute("href")) === "/student/learn/fd-1", await focusPick.getAttribute("href"));
 const r = await page.goto(`${BASE}/student/learn/fd-1`);
 ok("learn: app-approved fd-1 opens (priority opens it at once)", r.status() === 200, String(r.status()));
 const html = await page.content();
