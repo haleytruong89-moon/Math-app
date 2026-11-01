@@ -15,6 +15,11 @@ function contentUnits() {
     for (const f of fs.readdirSync(mdir).sort())
       if (f.endsWith(".json") && f !== "module.json") units.push(JSON.parse(fs.readFileSync(path.join(mdir, f), "utf8")));
   }
+  // Luyện đề 4.2 (23/10): approved drill problems are locked like units (their items are recorded in attempts).
+  const drills = path.join(root, "luyen-de-42.json");
+  if (fs.existsSync(drills))
+    for (const p of JSON.parse(fs.readFileSync(drills, "utf8")).problems)
+      units.push({ id: p.id, status: p.status, faded: { steps: [] }, practice: p.items, exit: [] });
   return units;
 }
 
