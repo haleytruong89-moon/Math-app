@@ -519,7 +519,10 @@ function StepsPractice({
             <p className="font-mono text-[11px] text-muted">
               Bước {i + 1}/{steps.length}
             </p>
-            <Rich as="div" html={st.promptHtml} className="mt-1 leading-relaxed" />
+            <Rich as="p" html={st.promptHtml} className="mt-1 font-display text-sm font-semibold" />
+            {st.item.promptHtml && st.item.promptHtml !== st.promptHtml && (
+              <Rich as="div" html={st.item.promptHtml} className="mt-1 leading-relaxed" />
+            )}
             <ItemInput
               item={st.item}
               value={parts[i]}
