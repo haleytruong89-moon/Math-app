@@ -159,7 +159,13 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
   // LT8: at most 5 units, one session a day. LT3: up to 2 suggestions (track A + track B/C), none with 2 in progress.
   const { units: due, later } = todaysReview(state);
   const inProgress = state.units.filter((u) => u.inProgress);
-  const suggestions = state.suggestions;
+  // Order 01/11: "Cần tập trung" — every open, not-yet-mastered KU the tutor/parent starred (★), grouped by
+  // chủ đề. The child picks one; nothing is forced. Shown above "Bài mới" and deduped from it.
+  const focusIds = new Set(state.priorities);
+  const focus = state.priorities
+    .map((id) => state.units.find((u) => u.unit.id === id))
+    .filter((u): u is UnitState => !!u && u.status === "open" && !u.inProgress && (shown.get(u.unit.id) ?? u.mastery.level) < 3);
+  const suggestions = state.suggestions.filter((u) => !focusIds.has(u.unit.id));
   const questions = due.length * RULES.reviewItemsPerUnit;
   const overdue = due.filter((u) => daysBetween(u.review!.dueOn!, state.today) > 0).length;
 
@@ -208,6 +214,44 @@ function TodayList({ state, homework, shown }: { state: StudentState; homework: 
         ))}
       </Group>,
     );
+  if (focus.length) {
+    const byModule: { title: string; list: UnitState[] }[] = [];
+    for (const u of focus) {
+      const g = byModule.find((x) => x.title === u.moduleTitle);
+      if (g) g.list.push(u);
+      else byModule.push({ title: u.moduleTitle, list: [u] });
+    }
+    cards.push(
+      <section key="g-focus" className="mt-3" aria-label="Cần tập trung" data-testid="focus-group">
+        <div className="mb-2 flex flex-wrap items-center gap-1.5">
+          <span className="rounded-full bg-star-soft px-2.5 py-0.5 text-[11px] font-bold text-star">★ Cần tập trung</span>
+          <span className="text-xs text-muted">Thầy/cô và bố mẹ gợi ý · con chọn bài để học, không bắt buộc</span>
+        </div>
+        <div className="flex flex-col gap-3">
+          {byModule.map((g) => (
+            <div key={g.title}>
+              {byModule.length > 1 && <p className="mb-1 text-xs font-semibold text-muted">{g.title}</p>}
+              <ul className="flex flex-col gap-2">
+                {g.list.map((u) => (
+                  <TodayCard
+                    key={u.unit.id}
+                    title={u.unit.title}
+                    level={levelOf(u)}
+                    note="Xem lời giải mẫu trước khi tự làm"
+                    minutes={u.unit.estMinutes}
+                    href={`/student/learn/${u.unit.id}`}
+                    cta="Học bài này"
+                    tutor={!!u.entry && needsTutor(u.entry)}
+                    extra={u.entry?.testOut && !u.testout.tried ? { href: `/student/learn/${u.unit.id}?testout=1`, label: "Đã biết rồi? Làm bài kiểm tra luôn" } : undefined}
+                  />
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>,
+    );
+  }
   if (suggestions.length)
     cards.push(
       <Group key="g-new" kind="new" note={suggestions.length > 1 ? "Chọn 1 bài" : undefined}>
