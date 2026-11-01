@@ -39,7 +39,8 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
-| Nội dung đợt 7–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
+| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | 🟡 01/11 — PR mở, không SQL; giải độc lập 80/80; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
+| Nội dung đợt 8–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -53,6 +54,34 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 01/11/2026 — Nội dung đợt 7: PT bậc hai, tiếp tuyến, tứ giác (nhánh `p1-content-7`, không SQL)
+
+Phụ huynh chọn "làm luôn cả hai, ưu tiên đợt 7" (01/11), song song với S8b.
+
+### Đã làm
+- 5 KU nháp, mỗi bài 8 câu luyện + 8 câu kiểm tra, 3 gợi ý mỗi câu, mã lỗi E01–E15:
+  - Module mới **pt-bac-hai**: **d-ptbh** (Δ, Δ', công thức nghiệm), **d-nhamnghiem** (a+b+c=0, a−b+c=0, phân tích nhân tử qua nghiệm), **d-thamso** (điều kiện có nghiệm / hai nghiệm phân biệt / nghiệm kép, biết một nghiệm tìm m).
+  - **f3-tugiac** (bù lớp 8: dấu hiệu hình bình hành – chữ nhật – thoi – vuông, đường trung bình, Thalès, phân giác) — thêm vào module `backfill-hinh` sau f3-dongdang; bài hình §10 (phân tích ngược, C3, C2), 12 hình SVG.
+  - Module mới **tiep-tuyen**: **l-tieptuyen** (dấu hiệu tiếp tuyến, hai tiếp tuyến từ một điểm, gộp L4–L5 theo LT21), 14 hình SVG.
+- Nguồn: Đề 1–56 (d-thamso: Đề 27, 37; f3-tugiac: Đề 1, 12, 20, 25; l-tieptuyen: Đề 14, 16, 20, 34, 35, 38); câu còn lại soạn theo dạng đề, ghi rõ trong `source`.
+
+### Kiểm tra chất lượng
+- Agent soạn tính lại mọi đáp số, nhiễu và khẳng định hình bằng sympy / toạ độ.
+- Giải độc lập (chỉ thấy đề như con, chấm bằng `gradeItem`): **80/80** khớp. Các thứ tự bước khác người giải tìm ra (f3-tugiac p7, x6) app đều chấm đúng.
+- Sửa sau khi giải: l-tieptuyen p5 mô tả hình chép từ p6 (lộ "bán kính 3 cm, góc 60°") → viết lại; bỏ chữ "Bước n:" lặp trong câu nhiều bước p8, x8 (app đã tự ghi "Bước n/3").
+
+### Gia sư soát kỹ (tab Kho bài)
+- d-ptbh: không có câu từ đề thật (bước giải PT trong đề luôn nằm trong bài khác); x4 có $a=-1$; p7 hơi chồng với Viète; p1 gán E01.
+- d-nhamnghiem: p8, x7 có căn; có câu chứa tham số; xem lại cách chọn mã lỗi.
+- d-thamso: x7 ($a=m$, "có nghiệm") tính cả $m=0$ (PT bậc nhất); câu chứng minh chấm theo từng bước; nhiễu dạng bình phương.
+- f3-tugiac: p8 nặng; `SOURCE_INDEX.md` không có mục f3-tugiac (LT21: không có câu riêng trong 68 đề).
+- l-tieptuyen: dùng góc nội tiếp / hệ thức lượng dù k-goiintiep chưa là tiên quyết (cân nhắc thêm k-goiintiep vào tiên quyết); x7 chồng với o-dongdang; p7, x6 chuyển thể nhiều; nhiễu 45°; x4 dễ.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gia sư soát 5 bài trước **13/12**; phụ huynh "Duyệt cả bài" trong app (hoặc duyệt git như đợt 3–6).
 
 ---
 

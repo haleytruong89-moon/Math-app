@@ -1,0 +1,1095 @@
+{
+  "id": "f3-tugiac",
+  "module": "backfill-hinh",
+  "order": 2,
+  "title": "Tứ giác đặc biệt, đường trung bình & Thalès",
+  "status": "draft",
+  "estMinutes": 50,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 314.0 246.5\" role=\"img\"><title>Tứ giác ABCD và tứ giác MNPQ nối trung điểm các cạnh</title><line x1=\"55.8\" y1=\"55.8\" x2=\"224.5\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"224.5\" y1=\"22.0\" x2=\"292.0\" y2=\"190.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"292.0\" y1=\"190.8\" x2=\"22.0\" y2=\"224.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"224.5\" x2=\"55.8\" y2=\"55.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.8\" y1=\"55.8\" x2=\"292.0\" y2=\"190.8\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"140.1\" y1=\"38.9\" x2=\"258.2\" y2=\"106.4\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"258.2\" y1=\"106.4\" x2=\"157.0\" y2=\"207.6\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"157.0\" y1=\"207.6\" x2=\"38.9\" y2=\"140.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"38.9\" y1=\"140.1\" x2=\"140.1\" y2=\"38.9\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"49.2\" y=\"44.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"233.7\" y=\"12.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"304.2\" y=\"195.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"12.8\" y=\"233.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"137.9\" y=\"26.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"270.5\" y=\"101.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"157.0\" y=\"220.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"25.9\" y=\"140.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">Q</text><circle cx=\"55.8\" cy=\"55.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"224.5\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"292.0\" cy=\"190.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"224.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"140.1\" cy=\"38.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"258.2\" cy=\"106.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"157.0\" cy=\"207.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"38.9\" cy=\"140.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+    "alt": "Tứ giác ABCD; M, N, P, Q là trung điểm của AB, BC, CD, DA; tứ giác MNPQ tô màu; đường chéo AC vẽ nét đứt."
+  },
+  "theory": [
+    "**Cần nhớ trước** (lớp 7): hai đường thẳng cùng vuông góc với một đường thẳng thì song song; một đường thẳng cắt hai đường song song tạo các cặp góc đồng vị, so le trong bằng nhau; ba trường hợp bằng nhau của tam giác (c.c.c, c.g.c, g.c.g).",
+    "**Dấu hiệu hình bình hành:** tứ giác có hai cặp cạnh đối song song; hai cặp cạnh đối bằng nhau; **một cặp cạnh đối song song và bằng nhau**; hai cặp góc đối bằng nhau; hoặc **hai đường chéo cắt nhau tại trung điểm mỗi đường**. Thêm góc vuông hoặc đường chéo bằng nhau → **hình chữ nhật**; thêm hai cạnh kề bằng nhau hoặc đường chéo vuông góc → **hình thoi**; vừa chữ nhật vừa thoi → **hình vuông**.",
+    "**Đường trung bình:** $M$, $N$ là trung điểm của $AB$, $AC$ ⇒ $MN \\parallel BC$ và $MN = \\dfrac{BC}{2}$. Đảo lại: đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì **đi qua trung điểm cạnh thứ ba**. Hình thang $ABCD$ ($AB \\parallel CD$) có $E$, $F$ là trung điểm hai cạnh bên ⇒ $EF \\parallel AB$ và $EF = \\dfrac{AB+CD}{2}$.",
+    "**Thalès và phân giác:** $M \\in AB$, $N \\in AC$, $MN \\parallel BC$ ⇒ $\\dfrac{AM}{AB}=\\dfrac{AN}{AC}$, $\\dfrac{AM}{MB}=\\dfrac{AN}{NC}$; đảo lại, có tỉ số bằng nhau như vậy thì $MN \\parallel BC$. Hệ quả: $\\dfrac{AM}{AB}=\\dfrac{AN}{AC}=\\dfrac{MN}{BC}$. $AD$ là phân giác của $\\triangle ABC$ ($D \\in BC$) ⇒ $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$. **Vì sao:** $\\triangle AMN$ là $\\triangle ABC$ thu nhỏ; đường trung bình là trường hợp tỉ số $\\dfrac{1}{2}$.",
+    "**Bẫy hay gặp:** (1) viết $\\dfrac{MN}{BC}=\\dfrac{AM}{MB}$ — đoạn $MN$ đi với cả cạnh $BC$ thì $AM$ phải đi với cả cạnh $AB$; (2) đường trung bình hình thang lấy **hiệu** hai đáy hoặc quên chia 2; (3) phân giác viết ngược $\\dfrac{DB}{DC}=\\dfrac{AC}{AB}$ — đoạn kề $B$ đi với cạnh kề $B$; (4) tứ giác có một cặp cạnh song song và cặp **kia** bằng nhau chưa chắc là hình bình hành (có thể là hình thang cân).",
+    "**Nhận dạng:** “chứng minh trung điểm” → định lí đảo của đường trung bình, đường chéo hình bình hành, hoặc hai tỉ số Thalès chung một tỉ số trung gian; “chứng minh hình bình hành” → hai đường **cùng vuông góc** một đường; “tam giác cân” → hai cạnh là nửa của hai đoạn bằng nhau. **Cấu hình mẫu:** $H$ là trực tâm $\\triangle ABC$, $IB \\perp AB$, $IC \\perp AC$ ⇒ $BHCI$ là hình bình hành, trung điểm $BC$ cũng là trung điểm $HI$."
+  ],
+  "worked": {
+    "problem": "Cho tứ giác $ABCD$. Gọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm của $AB$, $BC$, $CD$, $DA$. Chứng minh tứ giác $MNPQ$ là hình bình hành.",
+    "analysis": {
+      "goal": "$MNPQ$ là hình bình hành",
+      "steps": [
+        {
+          "ask": "Muốn $MNPQ$ là hình bình hành, dùng dấu hiệu nào?",
+          "node": "$MN \\parallel QP$ và $MN = QP$ (một cặp cạnh đối song song và bằng nhau)"
+        },
+        {
+          "ask": "Muốn có $MN \\parallel QP$ và $MN = QP$, so sánh cả hai với đoạn nào?",
+          "node": "Cùng song song với $AC$ và cùng bằng $\\dfrac{AC}{2}$ — kẻ thêm đường chéo $AC$"
+        },
+        {
+          "ask": "Vì sao $MN \\parallel AC$, $MN = \\dfrac{AC}{2}$ (và tương tự với $QP$)?",
+          "node": "$MN$ là đường trung bình của $\\triangle ABC$, $QP$ là đường trung bình của $\\triangle ADC$ — có từ giả thiết trung điểm"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "text": "Kẻ đường chéo $AC$. Xét $\\triangle ABC$ có $M$, $N$ là trung điểm của $AB$, $BC$ ⇒ $MN$ là đường trung bình ⇒ $MN \\parallel AC$ và $MN = \\dfrac{AC}{2}$.",
+        "why": "$MN$ và $QP$ không liên hệ trực tiếp; đường chéo $AC$ là cạnh chung của hai tam giác chứa chúng."
+      },
+      {
+        "text": "Xét $\\triangle ADC$ có $Q$, $P$ là trung điểm của $AD$, $DC$ ⇒ $QP$ là đường trung bình ⇒ $QP \\parallel AC$ và $QP = \\dfrac{AC}{2}$.",
+        "why": "Cùng một lí do, áp dụng cho tam giác ở phía bên kia đường chéo."
+      },
+      {
+        "text": "⇒ $MN \\parallel QP$ (cùng song song với $AC$) và $MN = QP$ (cùng bằng $\\dfrac{AC}{2}$).",
+        "why": "Hai đường thẳng phân biệt cùng song song với đường thứ ba thì song song với nhau."
+      },
+      {
+        "text": "⇒ Tứ giác $MNPQ$ có một cặp cạnh đối song song và bằng nhau.",
+        "why": "$MN$ và $QP$ không chung đỉnh nên là hai cạnh **đối** của $MNPQ$ — kiểm tra điều này trước khi dùng dấu hiệu."
+      },
+      {
+        "text": "Kết luận: $MNPQ$ là hình bình hành.",
+        "why": "Viết lại đúng điều đề yêu cầu chứng minh."
+      }
+    ],
+    "selfExplain": "Vì sao chỉ cần cặp cạnh $MN$, $QP$ mà không phải chứng minh thêm $MQ \\parallel NP$?"
+  },
+  "faded": {
+    "problem": "Cho $\\triangle ABC$ có $AB = 6$ cm, $AC = 9$ cm, $BC = 10$ cm; $AD$ là tia phân giác của $\\widehat{BAC}$ ($D \\in BC$). Qua $D$ kẻ đường thẳng song song với $AB$, cắt $AC$ tại $E$. Tính $DB$, $DC$ và $DE$.",
+    "steps": [
+      {
+        "prompt": "$AD$ là phân giác của $\\triangle ABC$: áp dụng tính chất đường phân giác.",
+        "item": {
+          "id": "f3-tugiac-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Tỉ lệ thức nào đúng?",
+          "options": [
+            "$\\dfrac{DB}{DC}=\\dfrac{AC}{AB}$",
+            "$\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$",
+            "$\\dfrac{DB}{BC}=\\dfrac{AB}{AC}$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E03",
+              "feedback": "Con viết ngược: đoạn $DB$ kề đỉnh $B$ nên đi với cạnh $AB$ cũng kề đỉnh $B$."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Tính chất phân giác so sánh hai đoạn $DB$, $DC$ do chân phân giác chia ra, không so với cả cạnh $BC$."
+            }
+          },
+          "solution": "Chân phân giác chia cạnh đối diện thành hai đoạn tỉ lệ với hai cạnh kề: $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}=\\dfrac{6}{9}=\\dfrac{2}{3}$."
+        }
+      },
+      {
+        "prompt": "Từ $\\dfrac{DB}{DC}=\\dfrac{2}{3}$ và $DB + DC = BC = 10$ cm, tính $DB$.",
+        "item": {
+          "id": "f3-tugiac-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Tính $DB$.",
+          "answer": "4",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "6",
+              "code": "E03",
+              "feedback": "Con lấy nhầm phần của $DC$: $DB$ chiếm 2 phần trong tổng $2+3=5$ phần."
+            },
+            {
+              "answer": "20/3",
+              "code": "E06",
+              "feedback": "Con lấy $\\dfrac{2}{3}$ của cả $BC$; tỉ số $\\dfrac{2}{3}$ là của $DB$ so với $DC$, nên chia $BC$ thành $2+3$ phần."
+            }
+          ],
+          "solution": "$DB = \\dfrac{2}{5}\\cdot 10 = 4$ (cm), $DC = 10 - 4 = 6$ (cm)."
+        }
+      },
+      {
+        "prompt": "$DE \\parallel AB$ ($E \\in AC$): áp dụng hệ quả định lí Thalès trong $\\triangle CAB$.",
+        "item": {
+          "id": "f3-tugiac-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Tỉ lệ thức nào đúng?",
+          "options": [
+            "$\\dfrac{DE}{AB}=\\dfrac{CD}{CB}$",
+            "$\\dfrac{DE}{AB}=\\dfrac{CD}{DB}$",
+            "$\\dfrac{DE}{AB}=\\dfrac{BD}{BC}$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E08",
+              "feedback": "$DE$ đi với cả cạnh $AB$ thì $CD$ phải đi với cả cạnh $CB$, không đi với đoạn $DB$."
+            },
+            "2": {
+              "code": "E08",
+              "feedback": "Tam giác nhỏ $CDE$ có đỉnh chung $C$ với $\\triangle CBA$: các đoạn phải tính từ $C$, không tính từ $B$."
+            }
+          },
+          "solution": "$\\triangle CDE$ là $\\triangle CBA$ thu nhỏ (chung đỉnh $C$): $\\dfrac{DE}{BA}=\\dfrac{CD}{CB}=\\dfrac{CE}{CA}$."
+        }
+      },
+      {
+        "prompt": "Tính $DE$.",
+        "item": {
+          "id": "f3-tugiac-f4",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Tính $DE$.",
+          "answer": "3,6",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "9",
+              "code": "E08",
+              "feedback": "Con dùng $\\dfrac{CD}{DB}$; đoạn $DE$ đi với cả cạnh $AB$ thì $CD$ phải đi với cả cạnh $CB$."
+            },
+            {
+              "answer": "2,4",
+              "code": "E08",
+              "feedback": "Con dùng $\\dfrac{BD}{BC}$; tam giác nhỏ có đỉnh chung $C$, nên tỉ số là $\\dfrac{CD}{CB}$."
+            }
+          ],
+          "solution": "$DE = AB\\cdot\\dfrac{CD}{CB} = 6\\cdot\\dfrac{6}{10} = 3,6$ (cm)."
+        }
+      },
+      {
+        "text": "Kết luận: $DB = 4$ cm, $DC = 6$ cm, $DE = 3,6$ cm."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "f3-tugiac-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho $\\triangle ABC$, $O$ là trung điểm của $AB$. Đường thẳng qua $O$ song song với $BC$ cắt $AC$ tại $I$. Để chứng minh $I$ là trung điểm của $AC$, nên dùng cách nào?",
+      "recognition": true,
+      "hints": [
+        "Đề cần chứng minh $I$ là trung điểm của $AC$.",
+        "Đề cho một trung điểm và một đường song song: đó là dấu hiệu của định lí nào?",
+        "Nhớ lại định lí đảo của đường trung bình trong tam giác."
+      ],
+      "options": [
+        "Tính chất đường phân giác: $\\dfrac{IA}{IC}=\\dfrac{OA}{OB}$",
+        "Định lí đường trung bình (đảo): đường thẳng qua trung điểm một cạnh, song song với cạnh thứ hai",
+        "Dấu hiệu hình bình hành: hai đường chéo cắt nhau tại trung điểm mỗi đường",
+        "Hệ thức lượng trong tam giác vuông"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "$OI$ không phải tia phân giác của góc nào trong đề, nên không dùng được tính chất phân giác."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề không có tứ giác nào với hai đường chéo; dấu hiệu này dùng khi cần chứng minh hình bình hành."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đề không có góc vuông; hệ thức lượng chỉ dùng trong tam giác vuông có đường cao."
+        }
+      },
+      "solution": "$O$ là trung điểm $AB$, $OI \\parallel BC$ ⇒ $OI$ đi qua trung điểm của $AC$ (định lí đường trung bình đảo), tức $I$ là trung điểm của $AC$."
+    },
+    {
+      "id": "f3-tugiac-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Hình thang $ABCD$ ($AB \\parallel CD$) có $AB = 6$ cm, $CD = 14$ cm. Gọi $E$, $F$ lần lượt là trung điểm của $AD$ và $BC$. Tính $EF$.",
+      "hints": [
+        "Cần tính $EF$, đoạn nối trung điểm hai cạnh bên.",
+        "$EF$ là đường gì của hình thang $ABCD$?",
+        "Dùng $EF = \\dfrac{AB+CD}{2}$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324.0 144.0\" role=\"img\"><title>Hình thang ABCD, EF nối trung điểm hai cạnh bên</title><line x1=\"82.0\" y1=\"22.0\" x2=\"202.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"202.0\" y1=\"22.0\" x2=\"302.0\" y2=\"122.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302.0\" y1=\"122.0\" x2=\"22.0\" y2=\"122.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"122.0\" x2=\"82.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"52.0\" y1=\"72.0\" x2=\"252.0\" y2=\"72.0\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"77.6\" y=\"9.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"206.4\" y=\"9.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"313.3\" y=\"128.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"10.7\" y=\"128.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"39.0\" y=\"72.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"265.0\" y=\"72.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><circle cx=\"82.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"202.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302.0\" cy=\"122.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"122.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"52.0\" cy=\"72.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"252.0\" cy=\"72.0\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Hình thang ABCD có đáy nhỏ AB ở trên, đáy lớn CD ở dưới; E, F là trung điểm hai cạnh bên AD, BC."
+      },
+      "answer": "10",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "4",
+          "code": "E03",
+          "feedback": "Con lấy hiệu hai đáy; đường trung bình của hình thang bằng **nửa tổng** hai đáy."
+        },
+        {
+          "answer": "20",
+          "code": "E03",
+          "feedback": "Con quên chia 2: đường trung bình bằng nửa tổng hai đáy."
+        }
+      ],
+      "solution": "$EF$ là đường trung bình của hình thang $ABCD$ ⇒ $EF = \\dfrac{AB+CD}{2} = \\dfrac{6+14}{2} = 10$ (cm)."
+    },
+    {
+      "id": "f3-tugiac-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Hình bình hành $ABCD$ có hai đường chéo $AC$ và $BD$. Thêm điều kiện nào thì $ABCD$ là hình thoi?",
+      "hints": [
+        "Đề hỏi: thêm điều kiện gì để hình bình hành thành hình thoi?",
+        "Hình thoi khác hình bình hành thường ở cạnh hay ở góc?",
+        "Nhớ dấu hiệu hình thoi về hai cạnh kề, hoặc về hai đường chéo."
+      ],
+      "options": [
+        "$AC = BD$",
+        "$\\widehat{A} = 90^\\circ$",
+        "$AC \\perp BD$",
+        "$AB \\parallel CD$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật, không phải hình thoi."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Một góc vuông cho hình chữ nhật; hình thoi cần hai cạnh kề bằng nhau hoặc hai đường chéo vuông góc."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Hình bình hành nào cũng có $AB \\parallel CD$; điều kiện này không thêm gì."
+        }
+      },
+      "solution": "Hình bình hành có hai đường chéo vuông góc là hình thoi. ($AC = BD$ hay $\\widehat A = 90^\\circ$ cho hình chữ nhật.)"
+    },
+    {
+      "id": "f3-tugiac-p4",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của $AB$, $AC$, $BC$. Phân tích ngược để chứng minh tứ giác $BMNP$ là hình bình hành.",
+      "hints": [
+        "Cần chứng minh $BMNP$ là hình bình hành.",
+        "Đề cho ba trung điểm: đoạn nào là đường trung bình?",
+        "So sánh $MN$ với $BP$: cả hai đều liên quan tới cạnh $BC$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324.0 230.7\" role=\"img\"><title>Tam giác ABC với M, N, P là trung điểm ba cạnh</title><line x1=\"115.3\" y1=\"22.0\" x2=\"22.0\" y2=\"208.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"208.7\" x2=\"302.0\" y2=\"208.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302.0\" y1=\"208.7\" x2=\"115.3\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"68.7\" y1=\"115.3\" x2=\"208.7\" y2=\"115.3\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"208.7\" y1=\"115.3\" x2=\"162.0\" y2=\"208.7\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"115.3\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"215.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"313.3\" y=\"215.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"56.5\" y=\"110.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"219.9\" y=\"108.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"162.0\" y=\"221.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><circle cx=\"115.3\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"208.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302.0\" cy=\"208.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"68.7\" cy=\"115.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"208.7\" cy=\"115.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"162.0\" cy=\"208.7\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC; M, N, P lần lượt là trung điểm của AB, AC, BC; các đoạn MN, NP tô màu."
+      },
+      "drawFirst": true,
+      "goal": "$BMNP$ là hình bình hành",
+      "steps": [
+        {
+          "ask": "Muốn $BMNP$ là hình bình hành, dùng dấu hiệu nào?",
+          "node": "$MN \\parallel BP$ và $MN = BP$",
+          "item": {
+            "id": "f3-tugiac-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn dấu hiệu.",
+            "options": [
+              "$MN \\parallel BP$ và $BM = NP$",
+              "$MN \\parallel BP$ và $MN = BP$",
+              "$MN = BP$ và $MP = BN$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Một cặp cạnh song song và cặp **kia** bằng nhau chưa đủ (có thể là hình thang cân); cần cùng một cặp vừa song song vừa bằng nhau."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$MP$ và $BN$ là hai đường chéo của $BMNP$, không phải cặp cạnh đối."
+              }
+            },
+            "solution": "$MN$ và $BP$ là hai cạnh đối; chúng song song và bằng nhau thì $BMNP$ là hình bình hành."
+          }
+        },
+        {
+          "ask": "Muốn có $MN \\parallel BP$ và $MN = BP$, cần biết gì về $MN$?",
+          "node": "$MN \\parallel BC$ và $MN = \\dfrac{BC}{2}$; còn $BP = \\dfrac{BC}{2}$",
+          "item": {
+            "id": "f3-tugiac-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn điều cần có.",
+            "options": [
+              "$MN = AM$",
+              "$MN \\perp AB$",
+              "$MN \\parallel BC$ và $MN = \\dfrac{BC}{2}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "$MN = AM$ không liên quan tới $BP$, nên không dẫn tới điều cần chứng minh."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "Đề không cho góc vuông nào; $MN$ không vuông góc với $AB$."
+              }
+            },
+            "solution": "$BP$ nằm trên $BC$ và bằng $\\dfrac{BC}{2}$; nếu $MN \\parallel BC$ và $MN = \\dfrac{BC}{2}$ thì $MN \\parallel BP$, $MN = BP$."
+          }
+        },
+        {
+          "ask": "Vì sao $MN \\parallel BC$, $MN = \\dfrac{BC}{2}$ và $BP = \\dfrac{BC}{2}$?",
+          "node": "$M$, $N$ là trung điểm $AB$, $AC$ ⇒ $MN$ là đường trung bình của $\\triangle ABC$; $P$ là trung điểm $BC$ (giả thiết)",
+          "given": true,
+          "item": {
+            "id": "f3-tugiac-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "$MN$ là đường trung bình của $\\triangle ABC$; $P$ là trung điểm $BC$ (gt)",
+              "Vì $BMNP$ là hình bình hành",
+              "Vì $MN$ là đường trung bình của $\\triangle ABP$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng chính điều cần chứng minh làm lí do."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$N$ là trung điểm của $AC$, không nằm trên cạnh của $\\triangle ABP$; $MN$ là đường trung bình của $\\triangle ABC$."
+              }
+            },
+            "solution": "$M$, $N$ là trung điểm của $AB$, $AC$ nên $MN$ là đường trung bình của $\\triangle ABC$; $P$ là trung điểm $BC$ nên $BP = \\dfrac{BC}{2}$."
+          }
+        }
+      ],
+      "outline": [
+        "$M$, $N$ là trung điểm $AB$, $AC$ ⇒ $MN \\parallel BC$, $MN = \\dfrac{BC}{2}$ (đường trung bình)",
+        "$P$ là trung điểm $BC$ ⇒ $BP = \\dfrac{BC}{2}$",
+        "⇒ $MN \\parallel BP$ và $MN = BP$",
+        "⇒ $BMNP$ là hình bình hành (một cặp cạnh đối song song và bằng nhau)"
+      ],
+      "solution": "$MN$ là đường trung bình của $\\triangle ABC$ ⇒ $MN \\parallel BC$, $MN = \\dfrac{BC}{2} = BP$. Tứ giác $BMNP$ có $MN \\parallel BP$ và $MN = BP$ ⇒ $BMNP$ là hình bình hành."
+    },
+    {
+      "id": "f3-tugiac-p5",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ có $BC = 10$ cm. Lấy $D$ trên cạnh $AB$, $E$ trên cạnh $AC$ với $AD = 3$ cm, $DB = 2$ cm, $AE = 6$ cm, $EC = 4$ cm. Điền vào chỗ trống để chứng minh $DE \\parallel BC$ và tính $DE$.",
+      "hints": [
+        "Cần chứng minh $DE \\parallel BC$ rồi tính $DE$.",
+        "Có hai tỉ số bằng nhau trên hai cạnh: định lí nào suy ra song song?",
+        "Khi đã song song, $\\dfrac{DE}{BC}$ bằng tỉ số của đoạn nào với cả cạnh $AB$?"
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 334.0 184.4\" role=\"img\"><title>Tam giác ABC, D trên AB, E trên AC</title><line x1=\"58.2\" y1=\"22.0\" x2=\"22.0\" y2=\"162.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"162.4\" x2=\"312.0\" y2=\"162.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"312.0\" y1=\"162.4\" x2=\"58.2\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"36.5\" y1=\"106.2\" x2=\"210.5\" y2=\"106.2\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"56.0\" y=\"9.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"168.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"323.3\" y=\"168.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"23.5\" y=\"106.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"217.0\" y=\"95.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"58.2\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"162.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"312.0\" cy=\"162.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"36.5\" cy=\"106.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"210.5\" cy=\"106.2\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vẽ đúng tỉ lệ AB = 5, AC = 10, BC = 10; D trên AB, E trên AC, đoạn DE."
+      },
+      "lines": [
+        "Ta có $\\dfrac{AD}{DB}=\\dfrac{3}{2}$ và $\\dfrac{AE}{EC}=\\dfrac{6}{4}=\\dfrac{3}{2}$",
+        "⇒ $\\dfrac{AD}{DB}=\\dfrac{AE}{EC}$ ⇒ $DE \\parallel BC$ ([[1]])",
+        "⇒ $\\dfrac{DE}{BC}$ = [[2]] $=\\dfrac{3}{5}$ ([[3]], với $AB = 3 + 2 = 5$ cm)",
+        "⇒ $DE = \\dfrac{3}{5}\\cdot 10 = 6$ (cm).",
+        "Kết luận: $DE \\parallel BC$ và $DE = 6$ cm."
+      ],
+      "bank": [
+        "định lí Thalès đảo",
+        "định lí Thalès (thuận)",
+        "$\\dfrac{AD}{AB}$",
+        "$\\dfrac{AD}{DB}$",
+        "hệ quả của định lí Thalès",
+        "tính chất đường phân giác",
+        "tính chất đường trung bình"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Định lí thuận đi từ song song ra tỉ số; ở đây ta đi từ tỉ số ra song song nên phải dùng định lí đảo."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "$D$, $E$ không phải trung điểm ($AD \\ne DB$), nên không có đường trung bình nào."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "$DE$ đi với cả cạnh $BC$ thì $AD$ phải đi với cả cạnh $AB$, không đi với đoạn $DB$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "0": {
+              "code": "E09",
+              "feedback": "Định lí Thalès đảo chỉ cho $DE \\parallel BC$; tỉ số có cạnh $DE$, $BC$ là của **hệ quả** định lí Thalès."
+            },
+            "5": {
+              "code": "E09",
+              "feedback": "Đề không có tia phân giác nào; tỉ số $\\dfrac{DE}{BC}$ có được từ $DE \\parallel BC$."
+            }
+          }
+        }
+      ],
+      "solution": "$\\dfrac{AD}{DB}=\\dfrac{AE}{EC}=\\dfrac{3}{2}$ ⇒ $DE \\parallel BC$ (định lí Thalès đảo) ⇒ $\\dfrac{DE}{BC}=\\dfrac{AD}{AB}=\\dfrac{3}{5}$ (hệ quả định lí Thalès) ⇒ $DE = 6$ cm."
+    },
+    {
+      "id": "f3-tugiac-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ có $AC = 15$ cm. Trên cạnh $AB$ lấy điểm $M$ với $AM = 4$ cm, $MB = 6$ cm. Đường thẳng qua $M$ song song với $BC$ cắt $AC$ tại $N$. Tính $NC$.",
+      "hints": [
+        "Cần tính $NC$, một đoạn trên cạnh $AC$.",
+        "Có $MN \\parallel BC$: định lí nào nối các đoạn trên $AB$ với các đoạn trên $AC$?",
+        "Đoạn $NC$ ứng với đoạn nào trên $AB$? Lập tỉ số với cả cạnh."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 304.0 223.6\" role=\"img\"><title>Tam giác ABC, MN song song với BC</title><line x1=\"69.1\" y1=\"22.0\" x2=\"22.0\" y2=\"201.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"201.6\" x2=\"282.0\" y2=\"201.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"282.0\" y1=\"201.6\" x2=\"69.1\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"50.3\" y1=\"93.9\" x2=\"154.3\" y2=\"93.9\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"69.1\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"208.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"293.3\" y=\"208.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"37.3\" y=\"93.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"165.5\" y=\"87.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><circle cx=\"69.1\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"201.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"282.0\" cy=\"201.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"50.3\" cy=\"93.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"154.3\" cy=\"93.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC; M trên AB, N trên AC, đoạn MN song song với BC."
+      },
+      "drawFirst": true,
+      "answer": "9",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E08",
+          "feedback": "Con ghép $NC$ với $AM$; đoạn $NC$ nằm cùng phía cạnh $BC$ như $MB$, nên $\\dfrac{NC}{AC}=\\dfrac{MB}{AB}$."
+        },
+        {
+          "answer": "10",
+          "code": "E08",
+          "feedback": "Con lập $\\dfrac{NC}{AC}=\\dfrac{AM}{MB}$: tỉ số đoạn với cả cạnh phải đi với tỉ số đoạn với cả cạnh."
+        }
+      ],
+      "solution": "$MN \\parallel BC$ ⇒ $\\dfrac{NC}{AC}=\\dfrac{MB}{AB}$ (định lí Thalès), với $AB = 4 + 6 = 10$ cm ⇒ $NC = \\dfrac{6\\cdot 15}{10} = 9$ (cm)."
+    },
+    {
+      "id": "f3-tugiac-p7",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho đoạn thẳng $AB$ có trung điểm $O$. Trên tia $Ax$ vuông góc với $AB$ tại $A$ lấy điểm $P$. Đường thẳng qua $B$ song song với $OP$ cắt đường thẳng vuông góc với $AB$ tại $O$ ở điểm $N$ ($N$, $P$ cùng phía đối với $AB$). Sắp xếp các dòng thành lời giải chứng minh tứ giác $OBNP$ là hình bình hành (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 12, Bài 4.2b (chuyển thể, bỏ đường tròn)",
+      "hints": [
+        "Cần chứng minh $OBNP$ là hình bình hành; đã có sẵn $OP \\parallel BN$.",
+        "Đã có một cặp cạnh đối song song: cần thêm điều gì về chính cặp đó?",
+        "Chứng minh $OP = BN$ bằng hai tam giác vuông $PAO$ và $NOB$ bằng nhau."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 274.0 233.8\" role=\"img\"><title>Đoạn AB, trung điểm O, tia Ax vuông góc AB, tứ giác OBNP</title><line x1=\"22.0\" y1=\"211.8\" x2=\"252.0\" y2=\"211.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"211.8\" x2=\"22.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"137.0\" y1=\"211.8\" x2=\"22.0\" y2=\"68.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"252.0\" y1=\"211.8\" x2=\"137.0\" y2=\"68.0\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"137.0\" y1=\"211.8\" x2=\"137.0\" y2=\"68.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"137.0\" y1=\"68.0\" x2=\"22.0\" y2=\"68.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"30.0,211.8 30.0,203.8 22.0,203.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"145.0,211.8 145.0,203.8 137.0,203.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12.8\" y=\"220.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"261.2\" y=\"220.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"137.0\" y=\"224.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"9.0\" y=\"68.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"146.2\" y=\"58.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"31.0\" y=\"22.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><circle cx=\"22.0\" cy=\"211.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"252.0\" cy=\"211.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.0\" cy=\"211.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"68.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.0\" cy=\"68.0\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đoạn AB có trung điểm O; tia Ax vuông góc với AB tại A, P trên Ax; đường thẳng qua B song song với OP cắt đường vuông góc với AB tại O ở N."
+      },
+      "drawFirst": true,
+      "lines": [
+        {
+          "text": "Xét $\\triangle PAO$ và $\\triangle NOB$ có:"
+        },
+        {
+          "text": "$\\widehat{PAO}=\\widehat{NOB}=90^\\circ$ (gt);"
+        },
+        {
+          "text": "$AO = OB$ ($O$ là trung điểm $AB$);",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "$\\widehat{POA}=\\widehat{NBO}$ (đồng vị, $OP \\parallel BN$);",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "⇒ $\\triangle PAO = \\triangle NOB$ (g.c.g) ⇒ $OP = BN$",
+          "after": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "text": "Tứ giác $OBNP$ có $OP \\parallel BN$ và $OP = BN$"
+        },
+        {
+          "text": "Kết luận: $OBNP$ là hình bình hành (một cặp cạnh đối song song và bằng nhau)."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Tứ giác $OBNP$ có $OB = NP$ và $OP \\parallel BN$",
+          "code": "E09",
+          "feedback": "Một cặp cạnh song song và cặp kia bằng nhau chưa đủ (có thể là hình thang cân); cần $OP = BN$ — đúng cặp đã song song."
+        },
+        {
+          "text": "⇒ $\\triangle PAO = \\triangle NOB$ (c.g.c) ⇒ $OP = BN$",
+          "code": "E09",
+          "feedback": "Ta có hai cặp góc và cạnh xen giữa ($AO = OB$), không có hai cặp cạnh: trường hợp phải là g.c.g."
+        }
+      ],
+      "solution": "$\\triangle PAO$ và $\\triangle NOB$ có $\\widehat{PAO}=\\widehat{NOB}=90^\\circ$, $AO = OB$, $\\widehat{POA}=\\widehat{NBO}$ (đồng vị) ⇒ $\\triangle PAO = \\triangle NOB$ (g.c.g) ⇒ $OP = BN$. Cùng với $OP \\parallel BN$ ⇒ $OBNP$ là hình bình hành. Ba dòng góc vuông, $AO = OB$, góc đồng vị đổi chỗ cho nhau được."
+    },
+    {
+      "id": "f3-tugiac-p8",
+      "type": "analysis",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABN$ vuông tại $A$, $O$ là trung điểm của $AB$. Đường thẳng qua $O$ song song với $BN$ cắt $AN$ tại $M$. Lấy điểm $C$ trên cạnh $BN$ ($C \\ne B$, $C \\ne N$), kẻ $CH \\perp AB$ ($H \\in AB$); $BM$ cắt $CH$ tại $K$. Phân tích ngược để chứng minh $K$ là trung điểm của $CH$.",
+      "source": "68 đề – Đề 20, Bài 4.2 ý 3 (chuyển thể, bỏ đường tròn)",
+      "hints": [
+        "Cần chứng minh $KH = KC$.",
+        "$CH$ và $AN$ cùng vuông góc với $AB$: có cặp đường song song nào?",
+        "Dùng hệ quả Thalès trong $\\triangle BAM$ và $\\triangle BNM$, chung tỉ số $\\dfrac{BK}{BM}$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 334.0 247.0\" role=\"img\"><title>Tam giác ABN vuông tại A, OM song song BN, CH vuông góc AB, BM cắt CH tại K</title><line x1=\"22.0\" y1=\"225.0\" x2=\"312.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"225.0\" x2=\"22.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"22.0\" x2=\"312.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"167.0\" y1=\"225.0\" x2=\"22.0\" y2=\"123.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"312.0\" y1=\"225.0\" x2=\"22.0\" y2=\"123.5\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"196.0\" y1=\"143.8\" x2=\"196.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"30.0,225.0 30.0,217.0 22.0,217.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"204.0,225.0 204.0,217.0 196.0,217.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12.8\" y=\"234.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"323.3\" y=\"231.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"22.0\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"167.0\" y=\"238.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"9.0\" y=\"123.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"205.2\" y=\"134.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"196.0\" y=\"238.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"206.6\" y=\"176.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"22.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"312.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"167.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"123.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"143.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"184.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABN vuông tại A; O là trung điểm AB, OM song song với BN (M trên AN); C trên BN, CH vuông góc với AB tại H; BM cắt CH tại K."
+      },
+      "drawFirst": true,
+      "goal": "$KH = KC$",
+      "steps": [
+        {
+          "ask": "Muốn có $KH = KC$, cần gì?",
+          "node": "$\\dfrac{KH}{AM}=\\dfrac{KC}{NM}$ và $AM = NM$",
+          "item": {
+            "id": "f3-tugiac-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "$\\dfrac{KH}{AM}=\\dfrac{KC}{NM}$ và $AM = NM$",
+              "$\\triangle BHK = \\triangle BCK$",
+              "$K$ là trung điểm của $BM$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "Hai tam giác này không bằng nhau ($BH < BC$); hướng này không tới được giả thiết."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "Đọc hình: $K$ nói chung không phải trung điểm $BM$; đề hỏi trung điểm của $CH$."
+              }
+            },
+            "solution": "Nếu hai tỉ số bằng nhau và hai mẫu $AM$, $NM$ bằng nhau thì hai tử $KH$, $KC$ bằng nhau."
+          }
+        },
+        {
+          "ask": "Muốn có $\\dfrac{KH}{AM}=\\dfrac{KC}{NM}$, cần gì?",
+          "node": "$CH \\parallel AN$ (cùng vuông góc $AB$) ⇒ theo hệ quả Thalès, hai tỉ số cùng bằng $\\dfrac{BK}{BM}$",
+          "item": {
+            "id": "f3-tugiac-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn điều cần có.",
+            "options": [
+              "$BM$ là tia phân giác của $\\widehat{ABN}$",
+              "$CH \\parallel AN$, để hai tỉ số cùng bằng $\\dfrac{BK}{BM}$",
+              "$\\dfrac{KH}{KC}=1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Đề không cho $BM$ là phân giác; đọc lại giả thiết."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "$\\dfrac{KH}{KC}=1$ chính là $KH = KC$ — điều đang cần chứng minh."
+              }
+            },
+            "solution": "$HK \\parallel AM$ trong $\\triangle BAM$ và $CK \\parallel NM$ trong $\\triangle BNM$ ⇒ $\\dfrac{KH}{AM}=\\dfrac{BK}{BM}=\\dfrac{KC}{NM}$."
+          }
+        },
+        {
+          "ask": "Còn $AM = NM$: vì sao?",
+          "node": "$O$ là trung điểm $AB$ và $OM \\parallel BN$ (gt) ⇒ $M$ là trung điểm $AN$ (đường trung bình, định lí đảo)",
+          "given": true,
+          "item": {
+            "id": "f3-tugiac-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $K$ là trung điểm của $CH$",
+              "Vì $OM \\perp AN$",
+              "Vì $OM$ đi qua trung điểm $O$ của $AB$ và song song với $BN$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng chính điều cần chứng minh."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "$OM$ song song với $BN$, không vuông góc với $AN$; đọc lại hình."
+              }
+            },
+            "solution": "Trong $\\triangle ABN$: $OM$ qua trung điểm $O$ của $AB$, song song với $BN$ ⇒ $M$ là trung điểm của $AN$."
+          }
+        }
+      ],
+      "outline": [
+        "$O$ là trung điểm $AB$, $OM \\parallel BN$ ⇒ $M$ là trung điểm $AN$: $AM = NM$",
+        "$CH \\perp AB$, $AN \\perp AB$ ⇒ $CH \\parallel AN$",
+        "Hệ quả Thalès: $\\dfrac{KH}{AM}=\\dfrac{BK}{BM}=\\dfrac{KC}{NM}$",
+        "Mà $AM = NM$ ⇒ $KH = KC$: $K$ là trung điểm của $CH$"
+      ],
+      "solution": "$M$ là trung điểm $AN$ (đường trung bình đảo trong $\\triangle ABN$). $CH \\parallel AN$ (cùng $\\perp AB$) ⇒ $\\dfrac{KH}{AM}=\\dfrac{BK}{BM}$ ($\\triangle BAM$) và $\\dfrac{KC}{NM}=\\dfrac{BK}{BM}$ ($\\triangle BNM$) ⇒ $\\dfrac{KH}{AM}=\\dfrac{KC}{NM}$; mà $AM = NM$ ⇒ $KH = KC$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "f3-tugiac-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Tứ giác có hai đường chéo bằng nhau và cắt nhau tại trung điểm của mỗi đường là hình gì?",
+      "options": [
+        "Hình thoi",
+        "Hình thang cân",
+        "Hình vuông",
+        "Hình chữ nhật"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Hình thoi có hai đường chéo vuông góc, không nhất thiết bằng nhau."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Hai đường chéo của hình thang cân bằng nhau nhưng không cắt nhau tại trung điểm mỗi đường."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Chưa biết hai đường chéo có vuông góc không, nên chưa đủ để là hình vuông."
+        }
+      },
+      "solution": "Hai đường chéo cắt nhau tại trung điểm mỗi đường ⇒ hình bình hành; thêm hai đường chéo bằng nhau ⇒ hình chữ nhật."
+    },
+    {
+      "id": "f3-tugiac-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $\\triangle ABC$ có $AB = 4$ cm, $AC = 6$ cm; $AD$ là tia phân giác của $\\widehat{BAC}$ ($D \\in BC$) và $DB = 3$ cm. Tính $DC$.",
+      "answer": "4,5",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2",
+          "code": "E03",
+          "feedback": "Con viết ngược tỉ số: $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$ — đoạn kề $B$ đi với cạnh kề $B$."
+        },
+        {
+          "answer": "5",
+          "code": "E04",
+          "feedback": "Tính chất phân giác là tỉ lệ (nhân, chia), không phải cộng thêm hiệu $AC - AB$."
+        }
+      ],
+      "solution": "$\\dfrac{DB}{DC}=\\dfrac{AB}{AC}=\\dfrac{2}{3}$ ⇒ $DC = \\dfrac{3}{2}\\cdot 3 = 4,5$ (cm)."
+    },
+    {
+      "id": "f3-tugiac-x3",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ vuông tại $A$, $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$. Phân tích ngược để chứng minh tứ giác $ABDC$ là hình chữ nhật.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 304.0 206.5\" role=\"img\"><title>Tam giác ABC vuông tại A, M trung điểm BC, D đối xứng A qua M</title><line x1=\"22.0\" y1=\"184.5\" x2=\"22.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"22.0\" x2=\"282.0\" y2=\"184.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"282.0\" y1=\"184.5\" x2=\"22.0\" y2=\"184.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"184.5\" x2=\"282.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"22.0\" x2=\"282.0\" y2=\"22.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"282.0\" y1=\"184.5\" x2=\"282.0\" y2=\"22.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"22.0,176.5 30.0,176.5 30.0,184.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12.8\" y=\"193.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"12.8\" y=\"12.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"291.2\" y=\"193.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"291.2\" y=\"12.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"152.0\" y=\"89.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><circle cx=\"22.0\" cy=\"184.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"282.0\" cy=\"184.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"282.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"152.0\" cy=\"103.2\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vuông tại A; M là trung điểm BC; D trên tia đối của tia MA với MD = MA; các đoạn BD, CD vẽ nét đứt."
+      },
+      "goal": "$ABDC$ là hình chữ nhật",
+      "steps": [
+        {
+          "ask": "Muốn $ABDC$ là hình chữ nhật, cần gì?",
+          "node": "$ABDC$ là hình bình hành và $\\widehat{BAC}=90^\\circ$",
+          "item": {
+            "id": "f3-tugiac-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn điều cần có.",
+            "options": [
+              "$AD = BC$",
+              "$AB \\parallel CD$",
+              "$ABDC$ là hình bình hành và $\\widehat{BAC}=90^\\circ$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Hai đường chéo bằng nhau chỉ đủ khi đã biết $ABDC$ là hình bình hành (hình thang cân cũng có hai đường chéo bằng nhau)."
+              },
+              "1": {
+                "code": "E09",
+                "feedback": "Một cặp cạnh đối song song mới cho hình thang, chưa đủ để là hình chữ nhật."
+              }
+            },
+            "solution": "Hình bình hành có một góc vuông là hình chữ nhật; góc vuông $\\widehat{BAC}$ đã có từ giả thiết."
+          }
+        },
+        {
+          "ask": "Muốn $ABDC$ là hình bình hành, dùng dấu hiệu nào?",
+          "node": "Hai đường chéo $AD$ và $BC$ cắt nhau tại trung điểm $M$ của mỗi đường",
+          "item": {
+            "id": "f3-tugiac-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn dấu hiệu.",
+            "options": [
+              "Hai đường chéo $AD$ và $BC$ cắt nhau tại trung điểm $M$ của mỗi đường",
+              "$AB = AC$",
+              "Hai đường chéo $AB$ và $CD$ bằng nhau"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "$AB = AC$ không có trong đề và không dẫn tới hình bình hành."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$AB$, $CD$ là hai cạnh đối của $ABDC$; hai đường chéo là $AD$ và $BC$."
+              }
+            },
+            "solution": "Đề cho trung điểm của $BC$ và $MD = MA$: dấu hiệu về hai đường chéo dùng thẳng được."
+          }
+        },
+        {
+          "ask": "Vì sao $M$ là trung điểm của cả $AD$ và $BC$?",
+          "node": "$MB = MC$ ($M$ là trung điểm $BC$) và $MA = MD$ (gt)",
+          "given": true,
+          "item": {
+            "id": "f3-tugiac-x3-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $ABDC$ là hình chữ nhật",
+              "Vì $MB = MC$ và $MA = MD$ (gt)",
+              "Vì $AM$ là tia phân giác của $\\widehat{BAC}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng chính điều cần chứng minh."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$AM$ là đường trung tuyến, không phải phân giác; đọc lại giả thiết."
+              }
+            },
+            "solution": "$M$ là trung điểm $BC$ (gt) và $D$ trên tia đối của tia $MA$ với $MD = MA$ (gt)."
+          }
+        }
+      ],
+      "outline": [
+        "$MB = MC$, $MA = MD$ ⇒ hai đường chéo $AD$, $BC$ cắt nhau tại trung điểm mỗi đường",
+        "⇒ $ABDC$ là hình bình hành",
+        "Có thêm $\\widehat{BAC}=90^\\circ$ ⇒ $ABDC$ là hình chữ nhật"
+      ],
+      "solution": "$M$ là trung điểm của $BC$ và của $AD$ ⇒ $ABDC$ là hình bình hành; hình bình hành có $\\widehat{BAC}=90^\\circ$ ⇒ $ABDC$ là hình chữ nhật."
+    },
+    {
+      "id": "f3-tugiac-x4",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ cân tại $A$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của $AB$, $AC$, $BC$. Điền vào chỗ trống để chứng minh tứ giác $AMPN$ là hình thoi.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 294.0 231.5\" role=\"img\"><title>Tam giác ABC cân tại A, M, N, P là trung điểm ba cạnh</title><line x1=\"147.0\" y1=\"22.0\" x2=\"22.0\" y2=\"209.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"209.5\" x2=\"272.0\" y2=\"209.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"272.0\" y1=\"209.5\" x2=\"147.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"84.5\" y1=\"115.8\" x2=\"147.0\" y2=\"209.5\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"147.0\" y1=\"209.5\" x2=\"209.5\" y2=\"115.8\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"147.0\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"216.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"283.3\" y=\"216.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"72.3\" y=\"111.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"221.7\" y=\"111.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"147.0\" y=\"222.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><circle cx=\"147.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"209.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"272.0\" cy=\"209.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84.5\" cy=\"115.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"209.5\" cy=\"115.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"147.0\" cy=\"209.5\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC cân tại A; M, N, P lần lượt là trung điểm của AB, AC, BC; các đoạn MP, PN tô màu."
+      },
+      "lines": [
+        "$M$, $P$ là trung điểm của $AB$, $BC$ ⇒ $MP \\parallel AC$ và $MP = \\dfrac{AC}{2}$ ([[1]])",
+        "Mà $N$ là trung điểm $AC$ nên $AN = \\dfrac{AC}{2}$ ⇒ $MP \\parallel AN$ và $MP = AN$",
+        "⇒ $AMPN$ là hình bình hành ([[2]])",
+        "Lại có $AM = \\dfrac{AB}{2} = \\dfrac{AC}{2} = AN$ ($\\triangle ABC$ cân tại $A$) ⇒ hai cạnh kề bằng nhau",
+        "Kết luận: $AMPN$ là [[3]]."
+      ],
+      "bank": [
+        "tính chất đường trung bình của tam giác",
+        "định lí Thalès đảo",
+        "một cặp cạnh đối song song và bằng nhau",
+        "hai đường chéo cắt nhau tại trung điểm mỗi đường",
+        "hình thoi",
+        "hình chữ nhật",
+        "hình vuông"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Định lí Thalès đảo chỉ cho song song, không cho $MP = \\dfrac{AC}{2}$; cả hai điều có từ tính chất đường trung bình."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Ta vừa có $MP \\parallel AN$ và $MP = AN$ — một cặp cạnh đối, chưa nói gì về hai đường chéo."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E04",
+              "feedback": "Hình bình hành có hai cạnh kề bằng nhau là hình thoi; hình chữ nhật cần một góc vuông."
+            },
+            "6": {
+              "code": "E04",
+              "feedback": "Chưa có góc vuông nào ($\\widehat A$ chưa biết bằng $90^\\circ$), nên chưa đủ để là hình vuông."
+            }
+          }
+        }
+      ],
+      "solution": "$MP$ là đường trung bình của $\\triangle ABC$ ⇒ $MP \\parallel AN$, $MP = AN = \\dfrac{AC}{2}$ ⇒ $AMPN$ là hình bình hành; $AM = AN$ (vì $AB = AC$) ⇒ hình bình hành có hai cạnh kề bằng nhau ⇒ $AMPN$ là hình thoi."
+    },
+    {
+      "id": "f3-tugiac-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Hình thang $ABCD$ ($AB \\parallel CD$) có đáy lớn $CD = 15$ cm và đường trung bình $EF = 11$ cm. Tính đáy nhỏ $AB$.",
+      "answer": "7",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "4",
+          "code": "E03",
+          "feedback": "Con coi đường trung bình bằng hiệu hai đáy; thật ra $EF = \\dfrac{AB+CD}{2}$."
+        },
+        {
+          "answer": "13",
+          "code": "E03",
+          "feedback": "Con tính ngược công thức sai (lấy trung bình của $EF$ và $CD$); từ $EF = \\dfrac{AB+CD}{2}$ suy ra $AB = 2EF - CD$."
+        }
+      ],
+      "solution": "$EF = \\dfrac{AB+CD}{2}$ ⇒ $AB = 2EF - CD = 22 - 15 = 7$ (cm)."
+    },
+    {
+      "id": "f3-tugiac-x6",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABC$ nhọn có ba đường cao $AD$, $BE$, $CF$ cắt nhau tại $H$. Lấy điểm $I$ sao cho $IB \\perp AB$ và $IC \\perp AC$; gọi $O$ là trung điểm của $AI$ và $M$ là trung điểm của $BC$. Sắp xếp các dòng thành lời giải chứng minh $BHCI$ là hình bình hành và $AH = 2OM$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 25, Bài 4.2b (chuyển thể, bỏ đường tròn)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 274.0 279.8\" role=\"img\"><title>Tam giác ABC, trực tâm H, điểm I với IB vuông góc AB, IC vuông góc AC</title><line x1=\"102.5\" y1=\"22.0\" x2=\"22.0\" y2=\"183.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"183.0\" x2=\"252.0\" y2=\"183.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"252.0\" y1=\"183.0\" x2=\"102.5\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"102.5\" y1=\"22.0\" x2=\"102.5\" y2=\"183.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"183.0\" x2=\"145.5\" y2=\"68.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"252.0\" y1=\"183.0\" x2=\"68.0\" y2=\"91.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"183.0\" x2=\"171.5\" y2=\"257.8\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"252.0\" y1=\"183.0\" x2=\"171.5\" y2=\"257.8\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"102.5\" y1=\"22.0\" x2=\"171.5\" y2=\"257.8\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"102.5\" y1=\"108.2\" x2=\"171.5\" y2=\"257.8\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"137.0\" y1=\"139.9\" x2=\"137.0\" y2=\"183.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"25.1,176.7 31.4,179.9 28.3,186.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"247.2,177.9 242.1,182.6 246.9,187.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"102.5\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"9.8\" y=\"187.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"264.8\" y=\"185.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"171.5\" y=\"270.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"102.5\" y=\"196.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"89.7\" y=\"110.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"149.2\" y=\"144.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"129.5\" y=\"193.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"154.7\" y=\"59.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"55.8\" y=\"86.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><circle cx=\"102.5\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"183.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"252.0\" cy=\"183.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"171.5\" cy=\"257.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102.5\" cy=\"183.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102.5\" cy=\"108.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.0\" cy=\"139.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.0\" cy=\"183.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"145.5\" cy=\"68.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"68.0\" cy=\"91.0\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC nhọn, ba đường cao AD, BE, CF cắt nhau tại H; điểm I phía dưới BC với IB vuông góc AB, IC vuông góc AC; O là trung điểm AI, M là trung điểm BC; HI và AI vẽ nét đứt."
+      },
+      "lines": [
+        {
+          "text": "$BH \\perp AC$ ($BE$ là đường cao), $CI \\perp AC$ (gt) ⇒ $BH \\parallel CI$;"
+        },
+        {
+          "text": "$CH \\perp AB$ ($CF$ là đường cao), $BI \\perp AB$ (gt) ⇒ $CH \\parallel BI$;",
+          "after": []
+        },
+        {
+          "text": "⇒ $BHCI$ là hình bình hành (hai cặp cạnh đối song song)",
+          "after": [
+            0,
+            1
+          ]
+        },
+        {
+          "text": "⇒ trung điểm $M$ của đường chéo $BC$ cũng là trung điểm của đường chéo $HI$"
+        },
+        {
+          "text": "$\\triangle AHI$ có $O$, $M$ lần lượt là trung điểm của $AI$, $HI$ ⇒ $OM$ là đường trung bình ⇒ $OM = \\dfrac{AH}{2}$"
+        },
+        {
+          "text": "Kết luận: $BHCI$ là hình bình hành và $AH = 2OM$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "⇒ $BHCI$ là hình bình hành (hai đường chéo bằng nhau)",
+          "code": "E09",
+          "feedback": "Ta mới có hai cặp cạnh đối song song, chưa có gì về độ dài hai đường chéo; lí do không khớp."
+        },
+        {
+          "text": "$\\triangle ABC$ có $O$, $M$ là trung điểm ⇒ $OM$ là đường trung bình của $\\triangle ABC$",
+          "code": "E08",
+          "feedback": "$O$ là trung điểm của $AI$, không nằm trên cạnh nào của $\\triangle ABC$; $OM$ là đường trung bình của $\\triangle AHI$."
+        }
+      ],
+      "solution": "$BH \\parallel CI$ (cùng $\\perp AC$), $CH \\parallel BI$ (cùng $\\perp AB$) ⇒ $BHCI$ là hình bình hành ⇒ $M$ (trung điểm $BC$) là trung điểm $HI$ ⇒ $OM$ là đường trung bình của $\\triangle AHI$ ⇒ $AH = 2OM$. Hai dòng đầu đổi chỗ cho nhau được."
+    },
+    {
+      "id": "f3-tugiac-x7",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Cho tứ giác $ABCD$ có $AD = BC$ ($AD$ không song song với $BC$). Gọi $M$, $N$, $I$ lần lượt là trung điểm của $AB$, $CD$, $BD$. Điền vào chỗ trống để chứng minh $\\triangle MIN$ cân.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (câu tam giác cân dùng đường trung bình)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 324.0 184.0\" role=\"img\"><title>Tứ giác ABCD có AD = BC, M, N, I là trung điểm AB, CD, BD</title><line x1=\"64.0\" y1=\"22.0\" x2=\"218.2\" y2=\"42.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218.2\" y1=\"42.3\" x2=\"302.0\" y2=\"162.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"302.0\" y1=\"162.0\" x2=\"22.0\" y2=\"162.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"162.0\" x2=\"64.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218.2\" y1=\"42.3\" x2=\"22.0\" y2=\"162.0\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"141.1\" y1=\"32.1\" x2=\"120.1\" y2=\"102.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"120.1\" y1=\"102.1\" x2=\"162.0\" y2=\"162.0\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"141.1\" y1=\"32.1\" x2=\"162.0\" y2=\"162.0\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"57.5\" y=\"10.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"224.7\" y=\"31.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"313.3\" y=\"168.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"10.7\" y=\"168.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"141.1\" y=\"19.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"162.0\" y=\"175.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"133.9\" y=\"104.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><circle cx=\"64.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218.2\" cy=\"42.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"302.0\" cy=\"162.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"162.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"141.1\" cy=\"32.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"162.0\" cy=\"162.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120.1\" cy=\"102.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tứ giác ABCD có AD = BC; M, N, I lần lượt là trung điểm của AB, CD, BD; đường chéo BD vẽ nét đứt; tam giác MIN tô màu."
+      },
+      "lines": [
+        "Xét $\\triangle ABD$ có $M$, $I$ là trung điểm của $AB$, $BD$ ⇒ $MI$ là đường trung bình ⇒ $MI$ = [[1]]",
+        "Xét $\\triangle BCD$ có $N$, $I$ là trung điểm của $CD$, $BD$ ⇒ $NI$ là [[2]] ⇒ $NI = \\dfrac{BC}{2}$",
+        "Mà $AD = BC$ (gt) ⇒ $MI = NI$",
+        "Kết luận: $\\triangle MIN$ [[3]]."
+      ],
+      "bank": [
+        "$\\dfrac{AD}{2}$",
+        "$\\dfrac{AB}{2}$",
+        "đường trung bình của $\\triangle BCD$",
+        "đường trung bình của $\\triangle ABD$",
+        "cân tại $I$",
+        "cân tại $M$",
+        "đều"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E08",
+              "feedback": "Đường trung bình $MI$ bằng nửa cạnh thứ ba — cạnh không chứa $M$, $I$, tức là $AD$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "$N$ là trung điểm của $CD$, không nằm trên $\\triangle ABD$; $NI$ nằm trong $\\triangle BCD$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "Hai cạnh bằng nhau là $IM$ và $IN$, chung đỉnh $I$: tam giác cân tại $I$."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "Ta mới có hai cạnh bằng nhau, chưa có gì về cạnh $MN$."
+            }
+          }
+        }
+      ],
+      "solution": "$MI$ là đường trung bình của $\\triangle ABD$ ⇒ $MI = \\dfrac{AD}{2}$; $NI$ là đường trung bình của $\\triangle BCD$ ⇒ $NI = \\dfrac{BC}{2}$; $AD = BC$ ⇒ $MI = NI$ ⇒ $\\triangle MIN$ cân tại $I$."
+    },
+    {
+      "id": "f3-tugiac-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một tấm bìa hình tam giác $ABC$ có $AB = 6$ dm, $AC = 9$ dm, $BC = 12$ dm. Tại điểm $D$ trên cạnh $BC$ với $BD = 4$ dm, người ta cắt theo hai đường thẳng qua $D$ lần lượt song song với $AC$ (cắt $AB$ tại $F$) và song song với $AB$ (cắt $AC$ tại $E$); phần bìa còn lại là tứ giác $AFDE$. Tính chu vi tứ giác $AFDE$.",
+      "source": "68 đề – Đề 1, Bài 5 (chuyển thể: thêm số liệu, hỏi chu vi thay cho diện tích lớn nhất)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 334.0 149.3\" role=\"img\"><title>Tam giác ABC, D trên BC, DF song song AC, DE song song AB</title><line x1=\"121.7\" y1=\"22.0\" x2=\"22.0\" y2=\"127.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"127.3\" x2=\"312.0\" y2=\"127.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"312.0\" y1=\"127.3\" x2=\"121.7\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"118.7\" y1=\"127.3\" x2=\"55.2\" y2=\"92.2\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"118.7\" y1=\"127.3\" x2=\"185.1\" y2=\"57.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"121.7\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"133.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"323.3\" y=\"133.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"118.7\" y=\"140.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"43.0\" y=\"87.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"196.4\" y=\"50.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"121.7\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"312.0\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"118.7\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"55.2\" cy=\"92.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"185.1\" cy=\"57.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vẽ đúng tỉ lệ AB = 6, AC = 9, BC = 12; D trên BC; DF song song với AC (F trên AB), DE song song với AB (E trên AC); AFDE là hình bình hành."
+      },
+      "steps": [
+        {
+          "prompt": "Vì sao $AFDE$ là hình bình hành?",
+          "item": {
+            "id": "f3-tugiac-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn dấu hiệu.",
+            "options": [
+              "Hai cặp cạnh đối song song: $DF \\parallel AE$, $DE \\parallel AF$",
+              "Hai đường chéo $AD$ và $EF$ bằng nhau",
+              "Một cặp cạnh đối song song, cặp kia bằng nhau"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Hai đường chéo bằng nhau không phải dấu hiệu hình bình hành (và đề không cho điều đó)."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Một cặp song song, cặp kia bằng nhau chưa đủ (có thể là hình thang cân)."
+              }
+            },
+            "solution": "$DF \\parallel AC$ nên $DF \\parallel AE$; $DE \\parallel AB$ nên $DE \\parallel AF$ ⇒ $AFDE$ có hai cặp cạnh đối song song."
+          }
+        },
+        {
+          "prompt": "$DF \\parallel AC$: tính $DF$ (dm).",
+          "item": {
+            "id": "f3-tugiac-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $DF$.",
+            "answer": "3",
+            "unit": "dm",
+            "mistakes": [
+              {
+                "answer": "4,5",
+                "code": "E08",
+                "feedback": "Con dùng $\\dfrac{BD}{DC}$; đoạn $DF$ đi với cả cạnh $AC$ thì $BD$ phải đi với cả cạnh $BC$."
+              },
+              {
+                "answer": "6",
+                "code": "E08",
+                "feedback": "Con dùng $\\dfrac{DC}{BC}$; tam giác nhỏ $BFD$ có đỉnh chung $B$, nên tỉ số là $\\dfrac{BD}{BC}$."
+              }
+            ],
+            "solution": "$DF \\parallel AC$ ⇒ $\\dfrac{DF}{AC}=\\dfrac{BD}{BC}=\\dfrac{4}{12}=\\dfrac{1}{3}$ ⇒ $DF = 3$ dm."
+          }
+        },
+        {
+          "prompt": "Tính $AF$ (dm).",
+          "item": {
+            "id": "f3-tugiac-x8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $AF$.",
+            "answer": "4",
+            "unit": "dm",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E08",
+                "feedback": "Đó là $BF$ (đoạn tính từ $B$); cạnh $AF$ của hình bình hành là phần còn lại $AB - BF$."
+              }
+            ],
+            "solution": "$\\dfrac{BF}{BA}=\\dfrac{BD}{BC}=\\dfrac{1}{3}$ ⇒ $BF = 2$ dm ⇒ $AF = 6 - 2 = 4$ dm."
+          }
+        },
+        {
+          "prompt": "Tính chu vi hình bình hành $AFDE$ (dm).",
+          "item": {
+            "id": "f3-tugiac-x8-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chu vi $AFDE$ bằng bao nhiêu?",
+            "answer": "14",
+            "unit": "dm",
+            "mistakes": [
+              {
+                "answer": "7",
+                "code": "E03",
+                "feedback": "Con chỉ cộng hai cạnh kề; chu vi hình bình hành là $2(AF + FD)$."
+              }
+            ],
+            "solution": "Chu vi $= 2(AF + FD) = 2(4 + 3) = 14$ (dm)."
+          }
+        }
+      ],
+      "solution": "$AFDE$ là hình bình hành (hai cặp cạnh đối song song). $DF \\parallel AC$ ⇒ $\\dfrac{DF}{AC}=\\dfrac{BF}{BA}=\\dfrac{BD}{BC}=\\dfrac{1}{3}$ ⇒ $DF = 3$ dm, $BF = 2$ dm, $AF = 4$ dm. Chu vi $= 2(4+3) = 14$ dm."
+    }
+  ]
+}

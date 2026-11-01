@@ -1,0 +1,1079 @@
+{
+  "id": "l-tieptuyen",
+  "module": "tiep-tuyen",
+  "order": 1,
+  "title": "Tiếp tuyến: dấu hiệu & hai TT từ một điểm",
+  "status": "draft",
+  "estMinutes": 50,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 191\" role=\"img\"><title>Đường tròn tâm O, tiếp tuyến MA, dây AB vuông góc với OM tại H, đoạn MB</title><circle cx=\"95.5\" cy=\"95.5\" r=\"73.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"218\" y1=\"95.5\" x2=\"139.6\" y2=\"36.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"95.5\" x2=\"139.6\" y2=\"154.3\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"95.5\" y1=\"95.5\" x2=\"139.6\" y2=\"36.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"95.5\" y1=\"95.5\" x2=\"139.6\" y2=\"154.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"139.6\" y1=\"36.7\" x2=\"139.6\" y2=\"154.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"95.5\" y1=\"95.5\" x2=\"218\" y2=\"95.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"135.4,42.3 141,46.5 145.2,40.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"139.6,88.5 146.6,88.5 146.6,95.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"83.5\" y=\"95.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"230\" y=\"95.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"146.8\" y=\"27.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"146.8\" y=\"163.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"128.1\" y=\"105.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"95.5\" cy=\"95.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"95.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"139.6\" cy=\"36.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"139.6\" cy=\"154.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"139.6\" cy=\"95.5\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+    "alt": "Đường tròn tâm O, điểm M nằm ngoài; MA là tiếp tuyến tại A (MA vuông góc OA), dây AB vuông góc với OM tại H; nối MB, OB."
+  },
+  "theory": [
+    "**Cần nhớ trước** (bài *Đường tròn: tâm, bán kính, dây, góc ở tâm*): mọi điểm của $(O;R)$ cách $O$ đúng $R$; định lí Pythagore. **Định nghĩa:** đường thẳng chỉ có **một** điểm chung $A$ với đường tròn là **tiếp tuyến**, $A$ là **tiếp điểm**. Gọi $h$ là khoảng cách từ $O$ đến đường thẳng: $h<R$ thì cắt tại hai điểm, $h=R$ thì tiếp xúc, $h>R$ thì không có điểm chung.",
+    "**Tính chất và dấu hiệu:** tiếp tuyến **vuông góc** với bán kính tại tiếp điểm. Ngược lại, đường thẳng đi qua một điểm $A$ **nằm trên** đường tròn và vuông góc với bán kính $OA$ **tại $A$** là tiếp tuyến. **Hai tiếp tuyến** $MA$, $MB$ cắt nhau tại $M$: $MA=MB$; $MO$ là tia phân giác của $\\widehat{AMB}$, $OM$ là tia phân giác của $\\widehat{AOB}$; $OM$ là đường trung trực của $AB$ nên $OM\\perp AB$ tại trung điểm $H$ của $AB$. Độ dài tiếp tuyến: $MA^2=MO^2-R^2$.",
+    "**Góc tạo bởi tiếp tuyến và dây:** $Ax$ là tia tiếp tuyến tại $A$, $AB$ là dây thì $\\widehat{xAB}$ bằng **nửa** số đo cung $AB$ nằm trong góc, nên bằng góc nội tiếp chắn cung đó: $\\widehat{xAB}=\\widehat{ACB}$ ($C$ nằm trên cung còn lại). **Vì sao:** $\\triangle OAB$ cân tại $O$ nên $\\widehat{xAB}=90^\\circ-\\widehat{OAB}=\\frac12\\widehat{AOB}$. Với hai tiếp tuyến: $\\triangle OAM=\\triangle OBM$ (cạnh huyền $OM$ chung, $OA=OB$) cho ngay $MA=MB$ và các cặp góc bằng nhau.",
+    "**Bẫy hay gặp:** (1) chứng minh $DC\\perp OC$ nhưng không nói $C$ **nằm trên** đường tròn — dấu hiệu cần đủ hai điều; đường vuông góc với $OA$ tại trung điểm của $OA$ **không** là tiếp tuyến. (2) Viết “$DC=DB$ (hai tiếp tuyến cắt nhau)” khi đang cần chứng minh $DC$ là tiếp tuyến: lập luận vòng. (3) Cạnh huyền là $MO$, nên $MA^2=MO^2-R^2$, không cộng. (4) $H$ là trung điểm của $AB$, không phải của $OM$. (5) Góc tạo bởi tiếp tuyến và dây bằng **nửa** cung, không bằng góc ở tâm.",
+    "**Nhận dạng:** đề “chứng minh $d$ là tiếp tuyến của $(O)$” → chọn điểm chung $C$ **đã biết** nằm trên $(O)$, rồi chứng minh $d\\perp OC$ tại $C$ bằng: tam giác bằng nhau (so với một góc vuông có sẵn), cộng góc thành $90^\\circ$, hoặc tứ giác nội tiếp. Đề “từ $M$ kẻ hai tiếp tuyến $MA$, $MB$” → viết ngay $MA=MB$, $OM\\perp AB$ tại trung điểm $H$, $MAOB$ nội tiếp. Có tiếp tuyến và độ dài → tam giác vuông tại tiếp điểm, dùng Pythagore. **Không** dùng tính chất $MA=MB$ khi chưa biết cả hai đường là tiếp tuyến.",
+    "**Thẻ cấu hình đề thi:** (a) tiếp tuyến tại $B$ cắt đường thẳng qua $O$ vuông góc với dây $BC$ tại $D$ ⇒ $\\triangle OBD=\\triangle OCD$ (c.g.c) ⇒ $DC$ là tiếp tuyến. (b) $AB$ là đường kính, hai tiếp tuyến $MA$, $MC$ ⇒ $OM\\perp AC$ và $BC\\perp AC$ ⇒ $OM\\parallel BC$; $OI\\cdot OM=R^2$ ($I$ là giao của $OM$ và $AC$). (c) Hai tiếp tuyến tại $B$, $C$ cắt nhau tại $M$, $A$ trên cung lớn $BC$ ⇒ $\\widehat{MBC}=\\widehat{MCB}=\\widehat{BAC}$. (d) Tiếp tuyến $MA$, cát tuyến $MBC$ ⇒ $\\triangle MAB\\backsim\\triangle MCA$ ⇒ $MA^2=MB\\cdot MC$."
+  ],
+  "worked": {
+    "problem": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ tiếp tuyến $MA$ ($A$ là tiếp điểm). Kẻ dây $AB$ vuông góc với $OM$ tại $H$. Chứng minh $MB$ là tiếp tuyến của $(O)$ và $MA=MB$.",
+    "analysis": {
+      "goal": "$MB$ là tiếp tuyến của $(O)$",
+      "steps": [
+        {
+          "ask": "Muốn $MB$ là tiếp tuyến của $(O)$, cần gì?",
+          "node": "$B$ nằm trên $(O)$ (có sẵn) và $MB\\perp OB$, tức $\\widehat{OBM}=90^\\circ$"
+        },
+        {
+          "ask": "Góc vuông có sẵn nào để so sánh với $\\widehat{OBM}$?",
+          "node": "$\\widehat{OAM}=90^\\circ$ ($MA$ là tiếp tuyến) — cần $\\triangle OBM=\\triangle OAM$"
+        },
+        {
+          "ask": "Muốn $\\triangle OBM=\\triangle OAM$ (c.g.c), ngoài $OA=OB$ và $OM$ chung còn thiếu gì?",
+          "node": "$\\widehat{AOM}=\\widehat{BOM}$ — vì $\\triangle OAB$ cân tại $O$ có đường cao $OH$ (gt: $AB\\perp OM$) cũng là đường phân giác"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "text": "$OA=OB=R$ ⇒ $\\triangle OAB$ cân tại $O$; mà $OH\\perp AB$ (gt) nên $OH$ vừa là đường cao vừa là đường phân giác ⇒ $\\widehat{AOM}=\\widehat{BOM}$.",
+        "why": "Bắt đầu từ tầng cuối của sơ đồ phân tích: điều có ngay từ giả thiết."
+      },
+      {
+        "text": "Xét $\\triangle AOM$ và $\\triangle BOM$ có: $OA=OB$ ($=R$); $\\widehat{AOM}=\\widehat{BOM}$ (cmt); $OM$ là cạnh chung ⇒ $\\triangle AOM=\\triangle BOM$ (c.g.c).",
+        "why": "Góc tại $O$ xen giữa hai cạnh $OA$, $OM$ (và $OB$, $OM$) nên đúng trường hợp c.g.c."
+      },
+      {
+        "text": "⇒ $\\widehat{OBM}=\\widehat{OAM}=90^\\circ$ ($MA$ là tiếp tuyến tại $A$) và $MB=MA$ (hai cạnh tương ứng).",
+        "why": "Góc vuông có sẵn nhờ tính chất tiếp tuyến chuyển sang đỉnh B qua hai tam giác bằng nhau."
+      },
+      {
+        "text": "⇒ $MB\\perp OB$ tại $B$, mà $B$ nằm trên $(O)$ ⇒ $MB$ là tiếp tuyến của $(O)$.",
+        "why": "Dấu hiệu nhận biết cần đủ hai điều: điểm nằm trên đường tròn và vuông góc với bán kính tại điểm đó."
+      },
+      {
+        "text": "Kết luận: $MB$ là tiếp tuyến của $(O)$ và $MA=MB$.",
+        "why": "Viết lại đủ hai điều đề yêu cầu."
+      }
+    ],
+    "selfExplain": "Vì sao không được viết “$MA=MB$ vì là hai tiếp tuyến cắt nhau” ngay từ đầu bài này?"
+  },
+  "faded": {
+    "problem": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ bán kính $3$ cm, $OM=5$ cm, kẻ hai tiếp tuyến $MA$, $MB$ ($A$, $B$ là tiếp điểm); $OM$ cắt $AB$ tại $H$. Chứng minh $OM\\perp AB$ tại trung điểm $H$ của $AB$, rồi tính $AB$.",
+    "steps": [
+      {
+        "text": "Ta có $MA=MB$ (tính chất hai tiếp tuyến cắt nhau) và $OA=OB=R$."
+      },
+      {
+        "prompt": "Chọn kết luận từ hai đẳng thức trên.",
+        "item": {
+          "id": "l-tieptuyen-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "$M$ và $O$ cùng cách đều $A$, $B$. Suy ra:",
+          "options": [
+            "$AB$ là đường trung trực của $OM$",
+            "$OM$ là tia phân giác của $\\widehat{AOB}$ nên $H$ là trung điểm của $OM$",
+            "$OM$ là đường trung trực của $AB$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E08",
+              "feedback": "Đảo vai: $M$, $O$ cách đều $A$, $B$ nên đường $OM$ là trung trực của đoạn $AB$, không phải ngược lại."
+            },
+            "1": {
+              "code": "E04",
+              "feedback": "$OM$ đúng là phân giác của $\\widehat{AOB}$, nhưng điều đó cho $H$ là trung điểm của $AB$, không phải của $OM$."
+            }
+          },
+          "solution": "Hai điểm $M$, $O$ cùng cách đều $A$, $B$ ⇒ $OM$ là đường trung trực của $AB$ ⇒ $OM\\perp AB$ tại trung điểm $H$ của $AB$."
+        }
+      },
+      {
+        "text": "⇒ $OM\\perp AB$ tại $H$, $H$ là trung điểm của $AB$. $\\triangle OAM$ vuông tại $A$ ($MA\\perp OA$)."
+      },
+      {
+        "prompt": "Tính độ dài tiếp tuyến.",
+        "item": {
+          "id": "l-tieptuyen-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Tính $MA$.",
+          "answer": "4",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "√34",
+              "code": "E03",
+              "feedback": "Cạnh huyền là $OM$: $MA^2=OM^2-OA^2$, con đã cộng."
+            },
+            {
+              "answer": "2",
+              "code": "E03",
+              "feedback": "Định lí Pythagore dùng bình phương độ dài: $MA^2=OM^2-OA^2$, không trừ thẳng hai độ dài."
+            }
+          ],
+          "solution": "$MA=\\sqrt{OM^2-OA^2}=\\sqrt{25-9}=4$ (cm)."
+        }
+      },
+      {
+        "text": "Trong $\\triangle OAM$ vuông tại $A$ có đường cao $AH$: $AH\\cdot OM=OA\\cdot AM$ (hệ thức lượng / hai cách tính diện tích)."
+      },
+      {
+        "prompt": "Tính $AB$.",
+        "item": {
+          "id": "l-tieptuyen-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Tính $AB$.",
+          "answer": "24/5",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "12/5",
+              "code": "E11",
+              "feedback": "Con mới tính $AH$; $H$ là trung điểm nên $AB=2AH$."
+            },
+            {
+              "answer": "15/2",
+              "code": "E03",
+              "feedback": "Hệ thức đúng là $AH\\cdot OM=OA\\cdot AM$ (đường cao nhân cạnh huyền bằng tích hai cạnh góc vuông)."
+            }
+          ],
+          "solution": "$AH=\\dfrac{OA\\cdot AM}{OM}=\\dfrac{3\\cdot4}{5}=\\dfrac{12}{5}$ ⇒ $AB=2AH=\\dfrac{24}{5}$ (cm)."
+        }
+      },
+      {
+        "text": "Kết luận: $OM\\perp AB$ tại trung điểm $H$ của $AB$, và $AB=2AH$ bằng giá trị vừa tính."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "l-tieptuyen-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$, điểm $C$ nằm trên đường tròn và điểm $D$ nằm ngoài đường tròn. Đề yêu cầu chứng minh $DC$ là tiếp tuyến của $(O)$. Nên nhắm tới điều gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi: chứng minh $DC$ là tiếp tuyến tại điểm $C$.",
+        "$C$ đã nằm trên đường tròn; dấu hiệu nhận biết tiếp tuyến còn cần điều gì?",
+        "Tiếp tuyến tại $C$ có quan hệ gì với bán kính $OC$?"
+      ],
+      "options": [
+        "Tính độ dài $DC$ bằng định lí Pythagore",
+        "Chứng minh $DC\\perp OC$, tức $\\widehat{OCD}=90^\\circ$",
+        "Chứng minh ba điểm $D$, $C$, $O$ thẳng hàng",
+        "Chứng minh $\\triangle ODC$ đồng dạng với một tam giác khác để có đẳng thức tích"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Tiếp tuyến được nhận biết qua góc vuông tại điểm trên đường tròn, không qua một độ dài tính được."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Nếu $D$, $C$, $O$ thẳng hàng thì $DC$ nằm trên đường thẳng qua tâm, cắt đường tròn tại hai điểm, không phải tiếp tuyến."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đồng dạng để lập tỉ số, đẳng thức tích; đề này cần một góc vuông tại tiếp điểm."
+        }
+      },
+      "solution": "$C$ nằm trên $(O)$; dấu hiệu nhận biết: $DC\\perp OC$ tại $C$ ⇒ $DC$ là tiếp tuyến. Vậy cần chứng minh $\\widehat{OCD}=90^\\circ$."
+    },
+    {
+      "id": "l-tieptuyen-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ bán kính $5$ cm và điểm $M$ với $OM=13$ cm. Kẻ tiếp tuyến $MA$ ($A$ là tiếp điểm). Tính $MA$.",
+      "hints": [
+        "Cần tìm $MA$, độ dài tiếp tuyến.",
+        "Tiếp tuyến vuông góc với bán kính tại tiếp điểm: tam giác nào vuông, cạnh huyền là cạnh nào?",
+        "Dùng $MA^2=OM^2-OA^2$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 250 158.4\" role=\"img\"><title>Đường tròn tâm O, tiếp tuyến MA</title><circle cx=\"79.2\" cy=\"79.2\" r=\"57.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"79.2\" y1=\"79.2\" x2=\"101.2\" y2=\"26.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"101.2\" y1=\"26.4\" x2=\"228\" y2=\"79.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"79.2\" y1=\"79.2\" x2=\"228\" y2=\"79.2\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"98.5,32.9 105,35.6 107.7,29.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"70.7\" y=\"87.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"240\" y=\"79.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"105.8\" y=\"15.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><circle cx=\"79.2\" cy=\"79.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"228\" cy=\"79.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"101.2\" cy=\"26.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O bán kính 5 cm; điểm M ngoài đường tròn, OM = 13 cm (nét đứt); MA là tiếp tuyến, vuông góc với OA tại A."
+      },
+      "answer": "12",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "√194",
+          "code": "E03",
+          "feedback": "$\\triangle OAM$ vuông tại $A$, cạnh huyền là $OM$: $MA^2=OM^2-OA^2$, con đã cộng."
+        },
+        {
+          "answer": "8",
+          "code": "E03",
+          "feedback": "Pythagore dùng bình phương: $MA^2=OM^2-OA^2$, không trừ thẳng hai độ dài."
+        }
+      ],
+      "solution": "$MA\\perp OA$ ⇒ $\\triangle OAM$ vuông tại $A$: $MA=\\sqrt{OM^2-OA^2}=\\sqrt{169-25}=\\sqrt{144}=12$ (cm)."
+    },
+    {
+      "id": "l-tieptuyen-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$, tiếp tuyến $x'x$ tại $A$ và dây $AB$ với $\\widehat{AOB}=100^\\circ$. Tia $Ax$ được chọn sao cho góc $\\widehat{xAB}$ chắn cung nhỏ $AB$. Số đo $\\widehat{xAB}$ là:",
+      "hints": [
+        "Cần số đo góc tạo bởi tia tiếp tuyến và dây.",
+        "Góc này chắn cung nào? Số đo cung nhỏ bằng góc ở tâm nào?",
+        "Góc tạo bởi tiếp tuyến và dây bằng nửa số đo cung bị chắn."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 171.8\" role=\"img\"><title>Đường tròn tâm O, tiếp tuyến xx' tại A, dây AB</title><circle cx=\"120\" cy=\"85.9\" r=\"63.9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"149.8\" x2=\"218\" y2=\"149.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"149.8\" x2=\"182.9\" y2=\"74.8\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"85.9\" x2=\"120\" y2=\"149.8\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><line x1=\"120\" y1=\"85.9\" x2=\"182.9\" y2=\"74.8\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"113,149.8 113,142.8 120,142.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><path d=\"M 136 149.8 A 16 16 0 0 0 130.3 137.6\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.3\"/><text x=\"108.2\" y=\"83.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"120\" y=\"161.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"194.8\" y=\"72.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"218\" y=\"139.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><text x=\"22\" y=\"139.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x'</text><circle cx=\"120\" cy=\"85.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"149.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"182.9\" cy=\"74.8\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; đường thẳng x'x tiếp xúc với đường tròn tại A; dây AB, góc xAB được đánh dấu; hai bán kính OA, OB nét đứt, góc AOB = 100°."
+      },
+      "options": [
+        "$100^\\circ$",
+        "$40^\\circ$",
+        "$50^\\circ$",
+        "$130^\\circ$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Góc tạo bởi tiếp tuyến và dây bằng **nửa** số đo cung bị chắn, không bằng góc ở tâm."
+        },
+        "1": {
+          "code": "E08",
+          "feedback": "Con vừa tính $\\widehat{OAB}$ trong tam giác cân $OAB$; góc cần tìm nằm giữa tia $Ax$ và dây $AB$."
+        },
+        "3": {
+          "code": "E08",
+          "feedback": "Đó là góc giữa tia $Ax'$ và dây $AB$, chắn cung lớn; góc $\\widehat{xAB}$ chắn cung nhỏ."
+        }
+      },
+      "solution": "Cung nhỏ $AB$ có số đo $100^\\circ$ (bằng góc ở tâm) ⇒ $\\widehat{xAB}=\\frac12\\cdot100^\\circ=50^\\circ$. Kiểm tra: $\\widehat{OAB}=40^\\circ$, $\\widehat{xAB}=90^\\circ-40^\\circ=50^\\circ$."
+    },
+    {
+      "id": "l-tieptuyen-p4",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho nửa đường tròn $(O)$ đường kính $AB$, $Ax$ là tia tiếp tuyến tại $A$. Từ điểm $M$ trên $Ax$ kẻ tiếp tuyến thứ hai $MC$ ($C$ là tiếp điểm); $OM$ cắt $AC$ tại $I$. Phân tích ngược để chứng minh $OM\\parallel BC$.",
+      "source": "68 đề – Đề 20, Bài 4.2 ý 2 (chuyển thể)",
+      "hints": [
+        "Cần chứng minh hai đường thẳng $OM$ và $BC$ song song.",
+        "Có đường thẳng nào cùng vuông góc với cả $OM$ và $BC$ không?",
+        "Hai tiếp tuyến $MA$, $MC$ cho gì với $AC$? $AB$ là đường kính cho góc nào vuông?"
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Nửa đường tròn đường kính AB, hai tiếp tuyến MA, MC, OM cắt AC tại I</title><path d=\"M 22 218 A 98 98 0 0 1 218 218\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"218\" x2=\"218\" y2=\"218\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"218\" x2=\"22\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"54.7\" x2=\"166.1\" y2=\"131.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"218\" x2=\"22\" y2=\"54.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"218\" x2=\"166.1\" y2=\"131.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"218\" x2=\"166.1\" y2=\"131.5\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"218\" x2=\"166.1\" y2=\"131.5\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"29,218 29,211 22,211\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"162.8,137.7 156.6,134.4 159.9,128.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"10.7\" y=\"222.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"229.3\" y=\"222.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"230\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"10\" y=\"54.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"22\" y=\"13\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><text x=\"171.8\" y=\"120.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"91.1\" y=\"186.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><circle cx=\"120\" cy=\"218\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"218\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"218\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"54.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"166.1\" cy=\"131.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"94.1\" cy=\"174.8\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Nửa đường tròn tâm O đường kính AB; tia tiếp tuyến Ax vuông góc AB tại A; M trên Ax; MC tiếp xúc nửa đường tròn tại C; OM cắt AC tại I; đoạn BC."
+      },
+      "drawFirst": true,
+      "goal": "$OM\\parallel BC$",
+      "steps": [
+        {
+          "ask": "Muốn $OM\\parallel BC$, cần chứng minh gì?",
+          "node": "$OM\\perp AC$ và $BC\\perp AC$ (cùng vuông góc với $AC$)",
+          "item": {
+            "id": "l-tieptuyen-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "$OM\\perp AC$ và $BC\\perp AC$",
+              "Tứ giác $AMCO$ nội tiếp",
+              "$I$ là trung điểm của $OM$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "Tứ giác này nội tiếp thật, nhưng điều đó không cho quan hệ song song giữa $OM$ và $BC$."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$I$ là trung điểm của $AC$ (vì $OM$ là trung trực của $AC$), không phải của $OM$."
+              }
+            },
+            "solution": "Hai đường thẳng cùng vuông góc với $AC$ thì song song: cần $OM\\perp AC$ và $BC\\perp AC$."
+          }
+        },
+        {
+          "ask": "Vì sao $OM\\perp AC$?",
+          "node": "$MA=MC$ (hai tiếp tuyến cắt nhau) và $OA=OC$ ⇒ $OM$ là đường trung trực của $AC$",
+          "item": {
+            "id": "l-tieptuyen-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $OM\\parallel BC$ mà $BC\\perp AC$",
+              "Vì $MA=MC$ và $OA=OC$ nên $OM$ là trung trực của $AC$",
+              "Vì $\\widehat{MAO}=90^\\circ$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng chính điều cần chứng minh."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "$\\widehat{MAO}=90^\\circ$ cho $MA\\perp OA$, không nói gì về $OM$ và $AC$; lí do không khớp."
+              }
+            },
+            "solution": "$M$ và $O$ cùng cách đều $A$, $C$ ⇒ $OM$ là trung trực của $AC$ ⇒ $OM\\perp AC$."
+          }
+        },
+        {
+          "ask": "Còn $BC\\perp AC$ thì vì sao?",
+          "node": "$\\widehat{ACB}=90^\\circ$: góc nội tiếp chắn nửa đường tròn ($AB$ là đường kính, gt)",
+          "given": true,
+          "item": {
+            "id": "l-tieptuyen-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $BC$ là tiếp tuyến của $(O)$",
+              "Vì $OM\\parallel BC$",
+              "Vì $\\widehat{ACB}$ là góc nội tiếp chắn nửa đường tròn"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "$B$, $C$ đều nằm trên đường tròn nên $BC$ là dây, không phải tiếp tuyến."
+              },
+              "1": {
+                "code": "E09",
+                "feedback": "Lập luận vòng: đang dùng chính điều cần chứng minh."
+              }
+            },
+            "solution": "$AB$ là đường kính, $C$ nằm trên nửa đường tròn ⇒ $\\widehat{ACB}=90^\\circ$."
+          }
+        }
+      ],
+      "outline": [
+        "$MA=MC$, $OA=OC$ ⇒ $OM$ là trung trực của $AC$ ⇒ $OM\\perp AC$",
+        "$\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $BC\\perp AC$",
+        "⇒ $OM\\parallel BC$ (cùng vuông góc với $AC$)"
+      ],
+      "solution": "$MA=MC$ (tính chất hai tiếp tuyến cắt nhau), $OA=OC$ ⇒ $OM$ là đường trung trực của $AC$ ⇒ $OM\\perp AC$. $\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $BC\\perp AC$. Vậy $OM\\parallel BC$."
+    },
+    {
+      "id": "l-tieptuyen-p5",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ hai tiếp tuyến $MA$, $MB$ ($A$, $B$ là tiếp điểm). Điền vào chỗ trống để chứng minh $MA=MB$ và $MO$ là tia phân giác của $\\widehat{AMB}$.",
+      "hints": [
+        "Cần hai đoạn bằng nhau và hai góc bằng nhau: tìm hai tam giác bằng nhau.",
+        "Hai tam giác $OAM$, $OBM$ có góc nào vuông, vì sao?",
+        "Hai tam giác vuông có chung cạnh huyền $OM$ và một cặp cạnh góc vuông bằng nhau."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 174.7\" role=\"img\"><title>Hai tiếp tuyến MA, MB của đường tròn tâm O, góc AMB = 60°</title><circle cx=\"87.3\" cy=\"87.3\" r=\"65.3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"218\" y1=\"87.3\" x2=\"120\" y2=\"30.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"87.3\" x2=\"120\" y2=\"143.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"120\" y2=\"30.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"120\" y2=\"143.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"218\" y2=\"87.3\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"116.5,36.8 122.6,40.3 126.1,34.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"116.5,137.9 122.6,134.4 126.1,140.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><path d=\"M 202.4 78.3 A 18 18 0 0 0 202.4 96.3\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.3\"/><text x=\"75.3\" y=\"87.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"230\" y=\"87.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"126\" y=\"20.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"126\" y=\"154.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><circle cx=\"87.3\" cy=\"87.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"87.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"30.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"143.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; từ M ngoài đường tròn kẻ hai tiếp tuyến MA, MB (A, B là tiếp điểm); đoạn OM nét đứt."
+      },
+      "lines": [
+        "Xét $\\triangle OAM$ và $\\triangle OBM$ có: $\\widehat{OAM}=\\widehat{OBM}=90^\\circ$ ([[1]]);",
+        "$OA=OB$ ([[2]]); $OM$ là cạnh chung",
+        "⇒ $\\triangle OAM=\\triangle OBM$ ([[3]])",
+        "⇒ $MA=MB$ ([[4]]) và $\\widehat{AMO}=\\widehat{BMO}$ ([[5]]).",
+        "Kết luận: $MA=MB$ và $MO$ là tia phân giác của $\\widehat{AMB}$."
+      ],
+      "bank": [
+        "tiếp tuyến vuông góc với bán kính tại tiếp điểm",
+        "$MA=MB$ (tính chất hai tiếp tuyến cắt nhau)",
+        "cùng bằng bán kính",
+        "cạnh huyền – cạnh góc vuông",
+        "c.g.c",
+        "hai cạnh tương ứng",
+        "hai góc tương ứng"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Lập luận vòng: $MA=MB$ là điều đang cần chứng minh."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E09",
+              "feedback": "Lí do không khớp: dòng này nói về độ dài $OA$, $OB$, không nói về góc vuông."
+            }
+          }
+        },
+        {
+          "correct": 3,
+          "mistakes": {
+            "4": {
+              "code": "E09",
+              "feedback": "c.g.c cần góc xen giữa hai cạnh đã biết; góc vuông tại $A$ không xen giữa $OA$ và $OM$."
+            }
+          }
+        },
+        {
+          "correct": 5,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Lập luận vòng: dùng điều cần chứng minh làm lí do."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "$MA$, $MB$ là hai cạnh, nên lí do là hai cạnh tương ứng."
+            }
+          }
+        },
+        {
+          "correct": 6,
+          "mistakes": {
+            "5": {
+              "code": "E09",
+              "feedback": "$\\widehat{AMO}$, $\\widehat{BMO}$ là hai góc, nên lí do là hai góc tương ứng."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat{OAM}=\\widehat{OBM}=90^\\circ$ (tiếp tuyến ⊥ bán kính), $OA=OB=R$, $OM$ chung ⇒ $\\triangle OAM=\\triangle OBM$ (cạnh huyền – cạnh góc vuông) ⇒ $MA=MB$ (hai cạnh tương ứng), $\\widehat{AMO}=\\widehat{BMO}$ (hai góc tương ứng) ⇒ $MO$ là tia phân giác của $\\widehat{AMB}$."
+    },
+    {
+      "id": "l-tieptuyen-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ bán kính $3$ cm kẻ hai tiếp tuyến $MA$, $MB$ sao cho $\\widehat{AMB}=60^\\circ$. Tính $MA$.",
+      "hints": [
+        "Cần tìm $MA$; biết bán kính và góc giữa hai tiếp tuyến.",
+        "$MO$ là gì của $\\widehat{AMB}$? Từ đó $\\widehat{AMO}$ bằng bao nhiêu?",
+        "Tam giác vuông có góc $30^\\circ$: cạnh đối bằng nửa cạnh huyền; tính $OM$ trước."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 174.7\" role=\"img\"><title>Hai tiếp tuyến MA, MB của đường tròn tâm O, góc AMB = 60°</title><circle cx=\"87.3\" cy=\"87.3\" r=\"65.3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"218\" y1=\"87.3\" x2=\"120\" y2=\"30.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"87.3\" x2=\"120\" y2=\"143.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"120\" y2=\"30.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"120\" y2=\"143.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.3\" y1=\"87.3\" x2=\"218\" y2=\"87.3\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"116.5,36.8 122.6,40.3 126.1,34.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"116.5,137.9 122.6,134.4 126.1,140.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><path d=\"M 202.4 78.3 A 18 18 0 0 0 202.4 96.3\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.3\"/><text x=\"75.3\" y=\"87.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"230\" y=\"87.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"126\" y=\"20.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"126\" y=\"154.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><circle cx=\"87.3\" cy=\"87.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"87.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"30.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"143.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O bán kính 3 cm; hai tiếp tuyến MA, MB vuông góc với OA, OB; góc AMB (đánh dấu) bằng 60°; đoạn OM nét đứt."
+      },
+      "answer": "3√3",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E08",
+          "feedback": "Đó là $OM$ (cạnh huyền); đề hỏi $MA$, cạnh góc vuông."
+        },
+        {
+          "answer": "3√5",
+          "code": "E03",
+          "feedback": "Cạnh huyền là $OM$: $MA^2=OM^2-OA^2$, con đã cộng."
+        },
+        {
+          "answer": "√3",
+          "code": "E03",
+          "feedback": "Con dùng $\\widehat{AMO}=60^\\circ$; $MO$ là tia phân giác nên $\\widehat{AMO}=\\frac12\\widehat{AMB}$."
+        }
+      ],
+      "solution": "$MO$ là tia phân giác ⇒ $\\widehat{AMO}=30^\\circ$. $\\triangle OAM$ vuông tại $A$ có góc $30^\\circ$ ⇒ $OA=\\frac12 OM$ ⇒ $OM=6$ cm. $MA=\\sqrt{OM^2-OA^2}=\\sqrt{36-9}=\\sqrt{27}=3\\sqrt3$ (cm)."
+    },
+    {
+      "id": "l-tieptuyen-p7",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Từ điểm $K$ nằm ngoài đường tròn $(O)$ kẻ tiếp tuyến $KM$ ($M$ là tiếp điểm). Điểm $E$ nằm trên $(O)$, $E\\ne M$, sao cho $KE=KM$ (đã chứng minh ở câu trước). Sắp xếp các dòng thành lời giải chứng minh $KE$ là tiếp tuyến của $(O)$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 16, Bài 4.2c (chuyển thể: cho sẵn KE = KM)",
+      "hints": [
+        "Cần chứng minh $KE\\perp OE$ tại $E$.",
+        "Góc vuông có sẵn ở đâu? Hai tam giác nào chứa góc đó và góc cần chứng minh?",
+        "Hai tam giác $OEK$, $OMK$ có ba cặp cạnh bằng nhau."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 193\" role=\"img\"><title>Đường tròn tâm O, tiếp tuyến KM, điểm E trên đường tròn với KE = KM</title><circle cx=\"96.5\" cy=\"96.5\" r=\"74.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"218\" y1=\"153.1\" x2=\"160.2\" y2=\"57.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"153.1\" x2=\"107.8\" y2=\"170.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"96.5\" y1=\"96.5\" x2=\"160.2\" y2=\"57.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"96.5\" y1=\"96.5\" x2=\"107.8\" y2=\"170.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"96.5\" y1=\"96.5\" x2=\"218\" y2=\"153.1\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"154.2,61.5 157.8,67.5 163.8,63.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"84.5\" y=\"96.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"228.9\" y=\"158.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"170.4\" y=\"51.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"109.6\" y=\"182\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"96.5\" cy=\"96.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"153.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"160.2\" cy=\"57.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"107.8\" cy=\"170.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; điểm K ở ngoài; KM tiếp xúc đường tròn tại M (KM vuông góc OM); E là điểm khác trên đường tròn, nối KE, OE; đoạn OK nét đứt."
+      },
+      "lines": [
+        {
+          "text": "Xét $\\triangle OEK$ và $\\triangle OMK$ có:"
+        },
+        {
+          "text": "$OE=OM$ ($=R$);"
+        },
+        {
+          "text": "$KE=KM$ (cmt);",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "$OK$ là cạnh chung",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "⇒ $\\triangle OEK=\\triangle OMK$ (c.c.c)",
+          "after": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "text": "⇒ $\\widehat{OEK}=\\widehat{OMK}=90^\\circ$ ($KM$ là tiếp tuyến tại $M$)"
+        },
+        {
+          "text": "Kết luận: $KE\\perp OE$ tại $E$, mà $E$ nằm trên $(O)$, nên $KE$ là tiếp tuyến của $(O)$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "⇒ $\\triangle OEK=\\triangle OMK$ (c.g.c)",
+          "code": "E09",
+          "feedback": "Ba dòng trên là ba cặp cạnh bằng nhau, chưa có góc xen giữa: lí do phải là c.c.c."
+        },
+        {
+          "text": "$\\widehat{OEK}=90^\\circ$ vì $KE$ là tiếp tuyến của $(O)$;",
+          "code": "E09",
+          "feedback": "Lập luận vòng: $KE$ là tiếp tuyến chính là điều cần chứng minh."
+        }
+      ],
+      "solution": "$OE=OM$, $KE=KM$, $OK$ chung ⇒ $\\triangle OEK=\\triangle OMK$ (c.c.c) ⇒ $\\widehat{OEK}=\\widehat{OMK}=90^\\circ$ ⇒ $KE\\perp OE$ tại $E\\in(O)$ ⇒ $KE$ là tiếp tuyến. Ba dòng nêu ba cặp cạnh đổi chỗ được."
+    },
+    {
+      "id": "l-tieptuyen-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho tam giác $ABC$ nội tiếp đường tròn $(O)$ đường kính $BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $P$ sao cho $PB=BO=2$ cm ($B$ nằm giữa $P$ và $O$). Tính độ dài $PA$ và số đo $\\widehat{APC}$.",
+      "source": "68 đề – Đề 14, Bài 4.2b (chuyển thể)",
+      "hints": [
+        "Cần $PA$ và $\\widehat{APC}$; điểm $C$ nằm trên tia $PO$.",
+        "Tiếp tuyến tại $A$ cho tam giác nào vuông? Biết những cạnh nào của nó?",
+        "Tính $PO$, dùng Pythagore; so sánh $OA$ với $PO$ để tìm góc tại $P$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 250 181.3\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn đường kính BC, tiếp tuyến tại A cắt BC tại P</title><circle cx=\"159.3\" cy=\"90.7\" r=\"68.7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"90.7\" x2=\"228\" y2=\"90.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"90.7\" x2=\"125\" y2=\"31.2\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"159.3\" y1=\"90.7\" x2=\"125\" y2=\"31.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"125\" y1=\"31.2\" x2=\"90.7\" y2=\"90.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"125\" y1=\"31.2\" x2=\"228\" y2=\"90.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"128.5,37.3 122.4,40.8 118.9,34.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"10\" y=\"90.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"83.8\" y=\"100.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"159.3\" y=\"102.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"240\" y=\"90.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"124\" y=\"19.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><circle cx=\"22\" cy=\"90.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"90.7\" cy=\"90.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"159.3\" cy=\"90.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"228\" cy=\"90.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"125\" cy=\"31.2\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính BC; A trên đường tròn; tiếp tuyến tại A cắt đường thẳng BC tại P nằm ngoài, theo thứ tự P, B, O, C; PB = BO = 2 cm."
+      },
+      "drawFirst": true,
+      "steps": [
+        {
+          "prompt": "Tam giác vuông.",
+          "item": {
+            "id": "l-tieptuyen-p8-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Tam giác $OAP$ có đặc điểm gì?",
+            "options": [
+              "Vuông tại $A$",
+              "Vuông tại $O$",
+              "Vuông tại $P$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "Góc vuông nằm ở tiếp điểm $A$, giữa bán kính $OA$ và tiếp tuyến $PA$, không ở tâm."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$P$ là giao điểm của tiếp tuyến với $BC$; góc vuông ở tiếp điểm $A$."
+              }
+            },
+            "solution": "$PA$ là tiếp tuyến tại $A$ ⇒ $PA\\perp OA$ ⇒ $\\triangle OAP$ vuông tại $A$."
+          }
+        },
+        {
+          "prompt": "Tính $PA$.",
+          "item": {
+            "id": "l-tieptuyen-p8-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $PA$.",
+            "answer": "2√3",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "2√5",
+                "code": "E03",
+                "feedback": "Cạnh huyền là $PO$: $PA^2=PO^2-OA^2$, con đã cộng."
+              },
+              {
+                "answer": "2",
+                "code": "E04",
+                "feedback": "$PB$ không phải tiếp tuyến ($B$ nằm trên đường thẳng qua tâm), nên không có $PA=PB$."
+              }
+            ],
+            "solution": "$PO=PB+BO=4$ cm, $OA=2$ cm ⇒ $PA=\\sqrt{16-4}=\\sqrt{12}=2\\sqrt3$ (cm)."
+          }
+        },
+        {
+          "prompt": "Tính $\\widehat{APC}$.",
+          "item": {
+            "id": "l-tieptuyen-p8-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính số đo $\\widehat{APC}$.",
+            "answer": "30",
+            "unit": "độ",
+            "mistakes": [
+              {
+                "answer": "60",
+                "code": "E08",
+                "feedback": "$60^\\circ$ là $\\widehat{AOP}$, góc tại tâm; góc cần tìm ở đỉnh $P$."
+              },
+              {
+                "answer": "45",
+                "code": "E04",
+                "feedback": "Tam giác $OAP$ không cân ($OA\\ne PA$), nên góc tại $P$ không phải $45^\\circ$."
+              }
+            ],
+            "solution": "$C$ nằm trên tia $PO$ nên $\\widehat{APC}=\\widehat{APO}$. Trong $\\triangle OAP$ vuông tại $A$: $OA=\\frac12 PO$ ⇒ $\\widehat{APO}=30^\\circ$."
+          }
+        }
+      ],
+      "solution": "$PA\\perp OA$ ⇒ $\\triangle OAP$ vuông tại $A$; $PO=4$ cm ⇒ $PA=\\sqrt{4^2-2^2}=2\\sqrt3$ cm. $OA=\\frac12PO$ ⇒ $\\widehat{APO}=30^\\circ$, mà $C$ thuộc tia $PO$ ⇒ $\\widehat{APC}=30^\\circ$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "l-tieptuyen-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O;R)$ và điểm $A$ nằm trên đường tròn. Đường thẳng $d$ đi qua $A$ là tiếp tuyến của $(O)$ khi:",
+      "options": [
+        "$d$ đi qua tâm $O$",
+        "$d$ cắt đường tròn tại thêm một điểm $B$",
+        "$d$ tạo với $OA$ một góc $45^\\circ$",
+        "$d$ vuông góc với $OA$ tại $A$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Đường thẳng qua tâm cắt đường tròn tại hai điểm (hai đầu một đường kính), không phải tiếp tuyến."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Đường thẳng có hai điểm chung với đường tròn là cát tuyến; tiếp tuyến chỉ có một điểm chung."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Tiếp tuyến phải vuông góc với bán kính tại tiếp điểm, góc với $OA$ là $90^\\circ$."
+        }
+      },
+      "solution": "Dấu hiệu nhận biết: $A\\in(O)$ và $d\\perp OA$ tại $A$ ⇒ $d$ là tiếp tuyến."
+    },
+    {
+      "id": "l-tieptuyen-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ hai tiếp tuyến $MA$, $MB$ ($A$, $B$ là tiếp điểm), $\\widehat{AMB}=50^\\circ$. Tính số đo $\\widehat{AOB}$.",
+      "answer": "130",
+      "unit": "độ",
+      "mistakes": [
+        {
+          "answer": "50",
+          "code": "E04",
+          "feedback": "Tứ giác $MAOB$ có hai góc vuông tại $A$, $B$ nên $\\widehat{AOB}$ **bù** với $\\widehat{AMB}$, không bằng."
+        },
+        {
+          "answer": "65",
+          "code": "E08",
+          "feedback": "Con vừa tính $\\widehat{AOM}$, một nửa của $\\widehat{AOB}$."
+        }
+      ],
+      "solution": "$\\widehat{OAM}=\\widehat{OBM}=90^\\circ$ ⇒ trong tứ giác $MAOB$: $\\widehat{AOB}=360^\\circ-90^\\circ-90^\\circ-50^\\circ=130^\\circ$."
+    },
+    {
+      "id": "l-tieptuyen-x3",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho nửa đường tròn $(O)$ đường kính $AB$, điểm $C$ trên nửa đường tròn; $K$ là trung điểm của dây $BC$. Tiếp tuyến tại $B$ của $(O)$ cắt tia $OK$ tại $D$. Phân tích ngược để chứng minh $DC$ là tiếp tuyến của $(O)$.",
+      "source": "68 đề – Đề 34, Bài 4.2b (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 155.1\" role=\"img\"><title>Nửa đường tròn đường kính AB, K là trung điểm dây BC, tiếp tuyến tại B cắt OK tại D</title><path d=\"M 22 120 A 98 98 0 0 1 218 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"120\" x2=\"218\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"120\" x2=\"153.5\" y2=\"27.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"120\" x2=\"153.5\" y2=\"27.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"120\" x2=\"218\" y2=\"51.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"133.1\" x2=\"218\" y2=\"31.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"51.4\" x2=\"153.5\" y2=\"27.9\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><polyline points=\"211,120 211,113 218,113\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"10.7\" y=\"124.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"227.8\" y=\"126.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"132\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"157.6\" y=\"16.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"183.2\" y=\"88.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"229.8\" y=\"49.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"153.5\" cy=\"27.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"185.8\" cy=\"74\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"51.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Nửa đường tròn tâm O đường kính AB; C trên nửa đường tròn; K là trung điểm của dây BC; tiếp tuyến tại B (vuông góc AB) cắt tia OK tại D; nối DC."
+      },
+      "drawFirst": true,
+      "goal": "$DC$ là tiếp tuyến của $(O)$",
+      "steps": [
+        {
+          "ask": "$C$ nằm trên $(O)$. Muốn $DC$ là tiếp tuyến, cần chứng minh gì?",
+          "node": "$\\widehat{OCD}=90^\\circ$, tức $DC\\perp OC$ tại $C$",
+          "item": {
+            "id": "l-tieptuyen-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "$\\widehat{ODC}=90^\\circ$",
+              "$\\widehat{OCD}=90^\\circ$",
+              "Tứ giác $ACDB$ nội tiếp"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Góc vuông phải ở tiếp điểm $C$, giữa bán kính $OC$ và $DC$; $D$ không nằm trên đường tròn."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Hướng này không dẫn tới góc vuông tại $C$ (và $D$ không nằm trên $(O)$ nên bốn điểm này không cùng thuộc một đường tròn)."
+              }
+            },
+            "solution": "Dấu hiệu: $C\\in(O)$ và $DC\\perp OC$ ⇒ cần $\\widehat{OCD}=90^\\circ$."
+          }
+        },
+        {
+          "ask": "Muốn $\\widehat{OCD}=90^\\circ$, so sánh với góc vuông có sẵn nào?",
+          "node": "$\\widehat{OBD}=90^\\circ$ ($DB$ là tiếp tuyến tại $B$) — cần $\\triangle OCD=\\triangle OBD$",
+          "item": {
+            "id": "l-tieptuyen-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "Chứng minh $\\triangle OCD=\\triangle OBD$",
+              "Tứ giác $OBDC$ nội tiếp nên $\\widehat{OCD}+\\widehat{OBD}=180^\\circ$",
+              "$\\widehat{OCD}=\\widehat{ACB}$ (hai góc đối đỉnh)"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Muốn có $OBDC$ nội tiếp lại phải biết trước $\\widehat{OCD}=90^\\circ$: lập luận vòng."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$\\widehat{OCD}$ và $\\widehat{ACB}$ không có cạnh là hai tia đối nhau, nên không đối đỉnh."
+              }
+            },
+            "solution": "$\\widehat{OBD}=90^\\circ$ có sẵn; nếu $\\triangle OCD=\\triangle OBD$ thì $\\widehat{OCD}=\\widehat{OBD}=90^\\circ$."
+          }
+        },
+        {
+          "ask": "Muốn $\\triangle OCD=\\triangle OBD$ (c.g.c), ngoài $OC=OB$ và $OD$ chung còn cần gì?",
+          "node": "$\\widehat{COD}=\\widehat{BOD}$: $\\triangle OBC$ cân tại $O$, $OK$ là trung tuyến ($K$ là trung điểm $BC$, gt) nên cũng là phân giác",
+          "given": true,
+          "item": {
+            "id": "l-tieptuyen-x3-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "$DC=DB$ (tính chất hai tiếp tuyến cắt nhau)",
+              "$\\widehat{OCD}=\\widehat{OBD}$",
+              "$\\widehat{COD}=\\widehat{BOD}$ vì $OK$ là trung tuyến của $\\triangle OBC$ cân tại $O$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Chưa biết $DC$ là tiếp tuyến nên chưa dùng được tính chất hai tiếp tuyến: lập luận vòng."
+              },
+              "1": {
+                "code": "E09",
+                "feedback": "Đây chính là điều đang cần suy ra từ hai tam giác bằng nhau: lập luận vòng."
+              }
+            },
+            "solution": "$OB=OC$ ⇒ $\\triangle OBC$ cân tại $O$; $K$ là trung điểm $BC$ ⇒ $OK$ là trung tuyến, cũng là phân giác ⇒ $\\widehat{COD}=\\widehat{BOD}$."
+          }
+        }
+      ],
+      "outline": [
+        "$\\triangle OBC$ cân tại $O$, $OK$ là trung tuyến ⇒ $\\widehat{COD}=\\widehat{BOD}$",
+        "$OC=OB$, $OD$ chung ⇒ $\\triangle OCD=\\triangle OBD$ (c.g.c)",
+        "⇒ $\\widehat{OCD}=\\widehat{OBD}=90^\\circ$",
+        "⇒ $DC\\perp OC$ tại $C\\in(O)$ ⇒ $DC$ là tiếp tuyến"
+      ],
+      "solution": "$\\triangle OBC$ cân tại $O$ có trung tuyến $OK$ cũng là phân giác ⇒ $\\widehat{COD}=\\widehat{BOD}$. $\\triangle OCD=\\triangle OBD$ (c.g.c: $OC=OB$, góc bằng nhau, $OD$ chung) ⇒ $\\widehat{OCD}=\\widehat{OBD}=90^\\circ$ ⇒ $DC\\perp OC$ tại $C\\in(O)$ ⇒ $DC$ là tiếp tuyến của $(O)$."
+    },
+    {
+      "id": "l-tieptuyen-x4",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho $\\triangle ABC$ vuông tại $A$, đường cao $AH$. Vẽ đường tròn tâm $A$ bán kính $AH$; từ $B$ kẻ tiếp tuyến $BD$ với đường tròn đó ($D$ là tiếp điểm, $D\\ne H$). Điền vào chỗ trống để chứng minh $BC$ là tiếp tuyến của đường tròn $(A;AH)$ và $BD=BH$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 250 220.6\" role=\"img\"><title>Tam giác ABC vuông tại A, đường cao AH, đường tròn tâm A bán kính AH, tiếp tuyến BD</title><circle cx=\"110.3\" cy=\"110.3\" r=\"88.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\" stroke-dasharray=\"5 4\"/><line x1=\"110.3\" y1=\"110.3\" x2=\"44.1\" y2=\"198.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"110.3\" y1=\"110.3\" x2=\"228\" y2=\"198.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"44.1\" y1=\"198.6\" x2=\"228\" y2=\"198.6\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"110.3\" y1=\"110.3\" x2=\"110.3\" y2=\"198.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"44.1\" y1=\"198.6\" x2=\"25.5\" y2=\"135\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"110.3\" y1=\"110.3\" x2=\"25.5\" y2=\"135\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"106.1,115.9 111.7,120.1 115.9,114.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"110.3,191.6 117.3,191.6 117.3,198.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"116.3\" y=\"99.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"32.8\" y=\"202.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"239.3\" y=\"202.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"110.3\" y=\"210.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"14\" y=\"138.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><circle cx=\"110.3\" cy=\"110.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"44.1\" cy=\"198.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"228\" cy=\"198.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"110.3\" cy=\"198.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"25.5\" cy=\"135\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác ABC vuông tại A, đường cao AH; đường tròn nét đứt tâm A bán kính AH; BD tiếp xúc đường tròn tại D (D khác H)."
+      },
+      "lines": [
+        "$AH$ là bán kính của đường tròn $(A;AH)$ ⇒ điểm $H$ [[1]];",
+        "$BC\\perp AH$ tại $H$ ([[2]]);",
+        "⇒ $BC$ là tiếp tuyến của đường tròn $(A;AH)$ tại $H$ ([[3]]).",
+        "$BD$, $BH$ là hai tiếp tuyến cắt nhau tại $B$ ⇒ $BD=BH$ ([[4]])."
+      ],
+      "bank": [
+        "nằm trên đường tròn $(A;AH)$",
+        "nằm trong đường tròn $(A;AH)$",
+        "$AH$ là đường cao của $\\triangle ABC$ (gt)",
+        "$BC$ tiếp xúc với đường tròn $(A;AH)$",
+        "dấu hiệu nhận biết tiếp tuyến",
+        "tính chất hai tiếp tuyến cắt nhau"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "$H$ cách tâm $A$ đúng bằng bán kính $AH$ nên nằm **trên** đường tròn."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Lập luận vòng: đó là điều đang cần chứng minh."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E09",
+              "feedback": "Tính chất hai tiếp tuyến dùng khi đã có hai tiếp tuyến; ở đây đang cần nhận biết một tiếp tuyến."
+            }
+          }
+        },
+        {
+          "correct": 5,
+          "mistakes": {
+            "4": {
+              "code": "E09",
+              "feedback": "Dòng này suy ra hai đoạn bằng nhau từ hai tiếp tuyến: đó là tính chất, không phải dấu hiệu."
+            }
+          }
+        }
+      ],
+      "solution": "$H$ cách $A$ đúng $AH$ ⇒ $H$ nằm trên $(A;AH)$; $BC\\perp AH$ tại $H$ (đường cao) ⇒ $BC$ là tiếp tuyến tại $H$ (dấu hiệu nhận biết). $BD$, $BH$ là hai tiếp tuyến kẻ từ $B$ ⇒ $BD=BH$ (tính chất hai tiếp tuyến cắt nhau)."
+    },
+    {
+      "id": "l-tieptuyen-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho tam giác nhọn $ABC$ nội tiếp đường tròn $(O)$, $\\widehat{BAC}=55^\\circ$. Hai tiếp tuyến của $(O)$ tại $B$ và $C$ cắt nhau tại $M$. Tính số đo $\\widehat{BMC}$.",
+      "source": "68 đề – Đề 35, Bài 4.2c (chuyển thể: thêm số đo, tính góc)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 223.3 290\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn tâm O, hai tiếp tuyến tại B và C cắt nhau tại M</title><circle cx=\"111.7\" cy=\"111.7\" r=\"89.7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"96.1\" y1=\"23.4\" x2=\"38.2\" y2=\"163.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"96.1\" y1=\"23.4\" x2=\"185.1\" y2=\"163.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"38.2\" y1=\"163.1\" x2=\"185.1\" y2=\"163.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"111.7\" y1=\"268\" x2=\"38.2\" y2=\"163.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"111.7\" y1=\"268\" x2=\"185.1\" y2=\"163.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"111.7\" y1=\"111.7\" x2=\"38.2\" y2=\"163.1\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><line x1=\"111.7\" y1=\"111.7\" x2=\"185.1\" y2=\"163.1\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"44,159.1 48,164.8 42.2,168.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"179.4,159.1 175.4,164.8 181.1,168.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"94\" y=\"11.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"26.9\" y=\"167.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"196.4\" y=\"167.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"111.7\" y=\"280\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"111.7\" y=\"100.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"111.7\" cy=\"111.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"96.1\" cy=\"23.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"38.2\" cy=\"163.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"185.1\" cy=\"163.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"111.7\" cy=\"268\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC nội tiếp đường tròn tâm O; hai tiếp tuyến tại B và C (vuông góc OB, OC) cắt nhau tại M phía dưới BC."
+      },
+      "answer": "70",
+      "unit": "độ",
+      "mistakes": [
+        {
+          "answer": "110",
+          "code": "E08",
+          "feedback": "$110^\\circ$ là góc ở tâm $\\widehat{BOC}$; góc cần tìm ở đỉnh $M$."
+        },
+        {
+          "answer": "55",
+          "code": "E11",
+          "feedback": "Con mới tính $\\widehat{MBC}$ (góc tạo bởi tiếp tuyến và dây); còn phải tính góc ở đỉnh $M$ của $\\triangle MBC$."
+        },
+        {
+          "answer": "125",
+          "code": "E04",
+          "feedback": "$ABMC$ không phải tứ giác nội tiếp ($M$ nằm ngoài đường tròn), nên $\\widehat{BMC}$ không bù với $\\widehat{BAC}$."
+        }
+      ],
+      "solution": "$\\widehat{MBC}=\\widehat{MCB}=\\widehat{BAC}=55^\\circ$ (góc tạo bởi tiếp tuyến và dây bằng góc nội tiếp cùng chắn cung $BC$) ⇒ $\\widehat{BMC}=180^\\circ-2\\cdot55^\\circ=70^\\circ$. (Cách khác: $\\widehat{BOC}=110^\\circ$, tứ giác $MBOC$ có hai góc vuông ⇒ $\\widehat{BMC}=70^\\circ$.)"
+    },
+    {
+      "id": "l-tieptuyen-x6",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O)$ đường kính $AB$, điểm $C$ trên đường tròn; $D$ là một điểm trên dây $BC$. Tia $AD$ cắt cung nhỏ $BC$ tại $E$, tia $AC$ cắt tia $BE$ tại $F$. Bốn điểm $F$, $C$, $D$, $E$ cùng thuộc đường tròn tâm $I$ (trung điểm của $FD$) và $\\widehat{CFD}=\\widehat{OCB}$ (đã chứng minh). Sắp xếp các dòng thành lời giải chứng minh $IC$ là tiếp tuyến của $(O)$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 38, Bài 4.2c (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 280 276.7\" role=\"img\"><title>Đường tròn đường kính AB, C, D trên dây BC, E, F, đường tròn tâm I qua F, C, D, E</title><circle cx=\"137.8\" cy=\"139\" r=\"115.8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><circle cx=\"224.6\" cy=\"55.4\" r=\"33.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\" stroke-dasharray=\"5 4\"/><line x1=\"22\" y1=\"139\" x2=\"253.5\" y2=\"139\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"139\" x2=\"224.6\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"253.5\" y1=\"139\" x2=\"224.6\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"139\" x2=\"240.2\" y2=\"85\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"253.5\" y1=\"139\" x2=\"195.6\" y2=\"38.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"224.6\" y1=\"22\" x2=\"224.6\" y2=\"88.8\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><line x1=\"137.8\" y1=\"139\" x2=\"195.6\" y2=\"38.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"224.6\" y1=\"55.4\" x2=\"195.6\" y2=\"38.7\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"10\" y=\"139\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"265.3\" y=\"141\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"137.8\" y=\"151\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"185.2\" y=\"32.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"218.7\" y=\"101.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"251.4\" y=\"89.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"228.7\" y=\"10.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"236.4\" y=\"53.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><circle cx=\"137.8\" cy=\"139\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"139\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"253.5\" cy=\"139\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"195.6\" cy=\"38.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"224.6\" cy=\"88.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"240.2\" cy=\"85\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"224.6\" cy=\"22\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"224.6\" cy=\"55.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính AB; C trên đường tròn; D trên dây BC; tia AD cắt cung nhỏ BC tại E; tia AC cắt tia BE tại F; đường tròn nét đứt tâm I (trung điểm FD) qua F, C, D, E; nối IC, OC."
+      },
+      "drawFirst": true,
+      "lines": [
+        {
+          "text": "$IC=IF$ (bán kính đường tròn tâm $I$) ⇒ $\\triangle ICF$ cân tại $I$ ⇒ $\\widehat{ICF}=\\widehat{IFC}$;"
+        },
+        {
+          "text": "mà $\\widehat{IFC}=\\widehat{CFD}=\\widehat{OCB}$ (cmt) ⇒ $\\widehat{ICF}=\\widehat{OCB}$;"
+        },
+        {
+          "text": "$\\widehat{FCD}=90^\\circ$ (vì $\\widehat{ACB}=90^\\circ$, góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{ICF}+\\widehat{ICD}=90^\\circ$;",
+          "after": []
+        },
+        {
+          "text": "⇒ $\\widehat{ICO}=\\widehat{ICD}+\\widehat{DCO}=\\widehat{ICD}+\\widehat{ICF}=90^\\circ$",
+          "after": [
+            1,
+            2
+          ]
+        },
+        {
+          "text": "Kết luận: $IC\\perp OC$ tại $C$, mà $C$ nằm trên $(O)$, nên $IC$ là tiếp tuyến của $(O)$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "$\\widehat{ICO}=90^\\circ$ vì $IC$ là tiếp tuyến của $(O)$;",
+          "code": "E09",
+          "feedback": "Lập luận vòng: $IC$ là tiếp tuyến chính là điều cần chứng minh."
+        },
+        {
+          "text": "$IC=ID$ ⇒ $\\triangle ICD$ cân tại $I$ ⇒ $\\widehat{ICD}=\\widehat{OCB}$;",
+          "code": "E09",
+          "feedback": "Tam giác $ICD$ cân cho $\\widehat{ICD}=\\widehat{IDC}$, không cho bằng $\\widehat{OCB}$; lí do không khớp."
+        }
+      ],
+      "solution": "$\\triangle ICF$ cân tại $I$ ⇒ $\\widehat{ICF}=\\widehat{IFC}=\\widehat{CFD}=\\widehat{OCB}$. $\\widehat{FCD}=90^\\circ$ ⇒ $\\widehat{ICF}+\\widehat{ICD}=90^\\circ$. Tia $CB$ (chứa $D$) nằm giữa $CI$ và $CO$ ⇒ $\\widehat{ICO}=\\widehat{ICD}+\\widehat{OCB}=\\widehat{ICD}+\\widehat{ICF}=90^\\circ$ ⇒ $IC\\perp OC$ tại $C\\in(O)$ ⇒ $IC$ là tiếp tuyến. Dòng về $\\widehat{FCD}=90^\\circ$ đặt ở đâu trước dòng cộng góc cũng được."
+    },
+    {
+      "id": "l-tieptuyen-x7",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ tiếp tuyến $MA$ ($A$ là tiếp điểm) và cát tuyến $MBC$ không đi qua $O$ ($B$ nằm giữa $M$ và $C$). Điền vào chỗ trống để chứng minh $MA^2=MB\\cdot MC$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 250 174.1\" role=\"img\"><title>Tiếp tuyến MA và cát tuyến MBC của đường tròn tâm O</title><circle cx=\"87.1\" cy=\"87.1\" r=\"65.1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"228\" y1=\"87.1\" x2=\"117.1\" y2=\"29.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"228\" y1=\"87.1\" x2=\"31.9\" y2=\"121.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"117.1\" y1=\"29.3\" x2=\"150.7\" y2=\"100.7\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"117.1\" y1=\"29.3\" x2=\"31.9\" y2=\"121.6\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"87.1\" y1=\"87.1\" x2=\"117.1\" y2=\"29.3\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"113.8,35.6 120.1,38.8 123.3,32.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"76.7\" y=\"81.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"240\" y=\"87.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"116\" y=\"17.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"153.8\" y=\"112.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"20.7\" y=\"125.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><circle cx=\"87.1\" cy=\"87.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"228\" cy=\"87.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"117.1\" cy=\"29.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"150.7\" cy=\"100.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"31.9\" cy=\"121.6\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; từ M ở ngoài kẻ tiếp tuyến MA và cát tuyến MBC (B nằm giữa M và C, cát tuyến không qua O); nối AB, AC."
+      },
+      "lines": [
+        "Xét $\\triangle MAB$ và $\\triangle MCA$ có: $\\widehat{AMC}$ là góc chung;",
+        "$\\widehat{MAB}=\\widehat{MCA}$ ([[1]])",
+        "⇒ $\\triangle MAB\\backsim$ [[2]] (g.g)",
+        "⇒ $\\dfrac{MA}{MC}=$ [[3]] ⇒ $MA^2=MB\\cdot MC$."
+      ],
+      "bank": [
+        "góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp cùng chắn cung $AB$",
+        "hai góc nội tiếp cùng chắn cung $AB$",
+        "$\\triangle MCA$",
+        "$\\triangle MAC$",
+        "$\\dfrac{MB}{MA}$",
+        "$\\dfrac{MA}{MB}$",
+        "$MA=MB$ (tính chất tiếp tuyến)"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "$\\widehat{MAB}$ có cạnh $AM$ là tiếp tuyến, không phải dây, nên nó không phải góc nội tiếp."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "Sai thứ tự đỉnh: $\\widehat{MAB}=\\widehat{MCA}$ nên $A\\leftrightarrow C$, $B\\leftrightarrow A$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "Theo thứ tự đỉnh, $MA\\leftrightarrow MC$ và $MB\\leftrightarrow MA$: tỉ số bằng $\\dfrac{MA}{MC}$ có $MB$ ở tử."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat{MAB}=\\widehat{MCA}$ (góc tạo bởi tiếp tuyến và dây bằng góc nội tiếp cùng chắn cung $AB$), $\\widehat{M}$ chung ⇒ $\\triangle MAB\\backsim\\triangle MCA$ (g.g) ⇒ $\\dfrac{MA}{MC}=\\dfrac{MB}{MA}$ ⇒ $MA^2=MB\\cdot MC$."
+    },
+    {
+      "id": "l-tieptuyen-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho nửa đường tròn $(O)$ bán kính $3$ cm, đường kính $AB$, $Ax$ là tia tiếp tuyến tại $A$. Lấy $M$ trên $Ax$ với $MA=4$ cm, kẻ tiếp tuyến thứ hai $MC$ ($C$ là tiếp điểm); $OM$ cắt $AC$ tại $I$. Tính $OM$, $OI$ rồi tính $BC$.",
+      "source": "68 đề – Đề 20, Bài 4.2 ý 2 (chuyển thể: R = 3 cm, MA = 4 cm, thêm câu tính)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 207.3\" role=\"img\"><title>Nửa đường tròn đường kính AB, hai tiếp tuyến MA, MC, OM cắt AC tại I</title><path d=\"M 22 185.3 A 98 98 0 0 1 218 185.3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"22\" y1=\"185.3\" x2=\"218\" y2=\"185.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"185.3\" x2=\"22\" y2=\"22\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"54.7\" x2=\"147.4\" y2=\"91.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"185.3\" x2=\"22\" y2=\"54.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22\" y1=\"185.3\" x2=\"147.4\" y2=\"91.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"218\" y1=\"185.3\" x2=\"147.4\" y2=\"91.3\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"185.3\" x2=\"147.4\" y2=\"91.3\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><polyline points=\"29,185.3 29,178.3 22,178.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"145.5,98 138.8,96 140.7,89.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"10.7\" y=\"189.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"229.3\" y=\"189.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"197.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"10\" y=\"54.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"22\" y=\"13\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><text x=\"150.8\" y=\"79.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"83\" y=\"150.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><circle cx=\"120\" cy=\"185.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"185.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"218\" cy=\"185.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22\" cy=\"54.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"147.4\" cy=\"91.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84.7\" cy=\"138.3\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Nửa đường tròn tâm O bán kính 3 cm, đường kính AB; M trên tia tiếp tuyến Ax với MA = 4 cm; MC tiếp xúc tại C; OM cắt AC tại I; đoạn BC."
+      },
+      "drawFirst": true,
+      "steps": [
+        {
+          "prompt": "Tính $OM$.",
+          "item": {
+            "id": "l-tieptuyen-x8-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $OM$.",
+            "answer": "5",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "√7",
+                "code": "E03",
+                "feedback": "$OM$ là cạnh huyền của $\\triangle OAM$ vuông tại $A$: $OM^2=OA^2+MA^2$, con đã trừ."
+              },
+              {
+                "answer": "7",
+                "code": "E03",
+                "feedback": "Pythagore dùng bình phương: $OM^2=OA^2+MA^2$, không cộng thẳng hai độ dài."
+              }
+            ],
+            "solution": "$MA\\perp OA$ ⇒ $OM=\\sqrt{3^2+4^2}=5$ (cm)."
+          }
+        },
+        {
+          "prompt": "Tính $OI$.",
+          "item": {
+            "id": "l-tieptuyen-x8-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$OM\\perp AC$ tại $I$. Tính $OI$.",
+            "answer": "9/5",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "16/5",
+                "code": "E08",
+                "feedback": "Con vừa tính $MI$ (hình chiếu của $MA$); $OI$ là hình chiếu của $OA$: $OI\\cdot OM=OA^2$."
+              },
+              {
+                "answer": "12/5",
+                "code": "E08",
+                "feedback": "Đó là $AI$, đường cao của $\\triangle OAM$; $OI$ là hình chiếu của $OA$ trên $OM$."
+              }
+            ],
+            "solution": "$\\triangle OAM$ vuông tại $A$, đường cao $AI$: $OI\\cdot OM=OA^2$ ⇒ $OI=\\dfrac{9}{5}$ (cm)."
+          }
+        },
+        {
+          "prompt": "Tính $BC$.",
+          "item": {
+            "id": "l-tieptuyen-x8-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $BC$.",
+            "answer": "18/5",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "9/10",
+                "code": "E03",
+                "feedback": "Đường trung bình bằng **nửa** cạnh đáy: $OI=\\frac12 BC$, tức $BC=2\\cdot OI$."
+              },
+              {
+                "answer": "24/5",
+                "code": "E08",
+                "feedback": "Đó là $AC=2AI$; đề hỏi $BC$."
+              }
+            ],
+            "solution": "$O$ là trung điểm $AB$, $I$ là trung điểm $AC$ ($OM$ là trung trực của $AC$) ⇒ $OI$ là đường trung bình của $\\triangle ABC$ ⇒ $BC=2\\cdot OI=\\dfrac{18}{5}$ (cm)."
+          }
+        }
+      ],
+      "solution": "$OM=\\sqrt{9+16}=5$ cm. $OI\\cdot OM=OA^2$ ⇒ $OI=\\frac95$ cm. $OI$ là đường trung bình của $\\triangle ABC$ ⇒ $BC=2\\cdot\\frac95=\\frac{18}{5}$ cm (kiểm: $AC=\\frac{24}{5}$, $AC^2+BC^2=36=AB^2$)."
+    }
+  ]
+}
