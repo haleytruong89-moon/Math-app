@@ -22,7 +22,7 @@ try {
   // The switch can't go on before the test set passes.
   await page.goto(`${BASE}/parent/ai`);
   await page.getByTestId("student-enabled").check();
-  await page.getByTestId("student-ai").getByRole("button", { name: "Lưu" }).click();
+  await page.getByTestId("student-ai").getByRole("button", { name: "Lưu cài đặt Hỏi thêm" }).click();
   await msg("chưa đạt bộ test");
   ok("switch refused before the test set passes", (await sql(`select student_enabled from public.ai_settings where id = 1`))[0].student_enabled === false);
 
@@ -54,7 +54,7 @@ try {
 
   await page.goto(`${BASE}/parent/ai`);
   await page.getByTestId("student-enabled").check();
-  await page.getByTestId("student-ai").getByRole("button", { name: "Lưu" }).click();
+  await page.getByTestId("student-ai").getByRole("button", { name: "Lưu cài đặt Hỏi thêm" }).click();
   await msg("Đã bật Hỏi thêm cho con.");
   const s = (await sql(`select student_enabled, student_model, student_prompt_version from public.ai_settings where id = 1`))[0];
   ok("switch on for the passed model + current prompt version", s.student_enabled === true && s.student_model === "claude-haiku-5-5" && /^[0-9a-f]{12}$/.test(s.student_prompt_version ?? ""), JSON.stringify(s));

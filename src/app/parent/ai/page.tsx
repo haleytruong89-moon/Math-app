@@ -99,7 +99,7 @@ export default async function AiPage() {
             </li>
           ))}
         </ul>
-        <ActionForm action={saveStudentAi} submitLabel="Lưu" className="mt-3 flex flex-col gap-3">
+        <ActionForm action={saveStudentAi} submitLabel="Lưu cài đặt Hỏi thêm" className="mt-3 flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" name="studentEnabled" defaultChecked={!!s?.student_enabled} data-testid="student-enabled" /> Bật &ldquo;Hỏi thêm&rdquo; cho con
           </label>
