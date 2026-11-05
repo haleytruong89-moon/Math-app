@@ -1,0 +1,821 @@
+{
+  "id": "d-ptbh",
+  "module": "pt-bac-hai",
+  "order": 1,
+  "title": "PT bậc hai: biệt thức & công thức nghiệm",
+  "status": "draft",
+  "estMinutes": 43,
+  "theory": [
+    "**Cần nhớ trước:** bài **Quy đồng & điều kiện xác định** và **7 hằng đẳng thức** — chuyển vế phải đổi dấu, khai triển và thu gọn để đưa phương trình về dạng chuẩn $ax^2+bx+c=0$ ($a \\ne 0$).",
+    "**Công thức nghiệm:** $\\Delta=b^2-4ac$. Nếu $\\Delta>0$: hai nghiệm phân biệt $x_{1,2}=\\dfrac{-b \\pm \\sqrt{\\Delta}}{2a}$. Nếu $\\Delta=0$: nghiệm kép $x_1=x_2=-\\dfrac{b}{2a}$. Nếu $\\Delta<0$: phương trình vô nghiệm. **Thu gọn** (khi $b=2b'$, ví dụ $b$ chẵn): $\\Delta'=b'^2-ac$; $\\Delta'>0$ thì $x_{1,2}=\\dfrac{-b' \\pm \\sqrt{\\Delta'}}{a}$; $\\Delta'=0$ thì $x=-\\dfrac{b'}{a}$; $\\Delta'<0$ thì vô nghiệm.",
+    "**Vì sao:** $ax^2+bx+c=a\\left[\\left(x+\\dfrac{b}{2a}\\right)^2-\\dfrac{\\Delta}{4a^2}\\right]$, nên dấu của $\\Delta$ quyết định số nghiệm. Vì $\\Delta=4\\Delta'$, hai biệt thức luôn cùng dấu. Nếu $a$ và $c$ trái dấu ($ac<0$) thì $-4ac>0$, nên $\\Delta>0$: phương trình **luôn** có hai nghiệm phân biệt.",
+    "**Bẫy hay gặp:** đọc hệ số **kèm dấu**: với $b=-5$ thì $-b=5$ và $b^2=25$ (không phải $-25$). Khi $c<0$, $-4ac$ là số **dương**. Chia **cả tử** $-b \\pm \\sqrt{\\Delta}$ cho $2a$: $\\dfrac{4 \\pm 2\\sqrt5}{2}=2 \\pm \\sqrt5$, không phải $2 \\pm 2\\sqrt5$. $\\Delta'$ dùng $ac$ (không phải $4ac$) và chia cho $a$ (không phải $2a$).",
+    "**Nhận dạng:** chuyển vế được về $ax^2+bx+c=0$ với $a \\ne 0$ → tính $\\Delta$; $b$ chẵn → dùng $\\Delta'$ cho số gọn. Chỉ hỏi **số nghiệm** → xét dấu $\\Delta$ (hoặc thấy $ac<0$), không cần giải. Thiếu $c$ → đặt nhân tử chung $x$; thiếu $b$ → chuyển vế rồi lấy căn. Có $a+b+c=0$ → nhẩm nghiệm nhanh hơn (bài sau).",
+    "**Phiếu giải:** (1) đưa về dạng chuẩn; (2) ghi $a$, $b$, $c$ kèm dấu; (3) chọn $\\Delta$ hay $\\Delta'$; (4) xét dấu, kết luận số nghiệm; (5) tính nghiệm, rút gọn $\\sqrt{\\Delta}$ và phân số đến tận cùng; (6) viết **Kết luận** đủ các nghiệm."
+  ],
+  "worked": {
+    "problem": "Giải phương trình $2x^2-5x-3=0$.",
+    "steps": [
+      {
+        "text": "Phương trình đã ở dạng chuẩn với $a=2$, $b=-5$, $c=-3$.",
+        "why": "Dấu trừ đứng trước số nào thì thuộc về hệ số đó."
+      },
+      {
+        "text": "$\\Delta=(-5)^2-4 \\cdot 2 \\cdot (-3)=25+24=49>0$, nên phương trình có hai nghiệm phân biệt.",
+        "why": "$c$ âm nên $-4ac$ thành $+24$; $(-5)^2$ là số dương."
+      },
+      {
+        "text": "$\\sqrt{\\Delta}=7$. $x_1=\\dfrac{5+7}{4}=3$; $x_2=\\dfrac{5-7}{4}=-\\dfrac{1}{2}$.",
+        "why": "$-b=5$; chia cả tử cho $2a=4$."
+      },
+      {
+        "text": "Kết luận: phương trình có hai nghiệm phân biệt $x_1=3$, $x_2=-\\dfrac{1}{2}$."
+      }
+    ],
+    "selfExplain": "Vì sao ở bước tính $\\Delta$, phần $-4ac$ lại bằng $+24$, và vì sao $-b$ bằng $5$ chứ không phải $-5$?"
+  },
+  "faded": {
+    "problem": "Giải phương trình $x^2-6x+7=0$ bằng công thức nghiệm thu gọn.",
+    "steps": [
+      {
+        "text": "$a=1$, $b=-6$ chẵn nên $b'=-3$; $c=7$."
+      },
+      {
+        "prompt": "Tính $\\Delta'$.",
+        "item": {
+          "id": "d-ptbh-f1",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Tính $\\Delta'$ của phương trình $x^2-6x+7=0$.",
+          "answer": "2",
+          "mistakes": [
+            {
+              "answer": "-19",
+              "code": "E03",
+              "feedback": "Con dùng $4ac$: biệt thức thu gọn là $\\Delta'=b'^2-ac$."
+            },
+            {
+              "answer": "8",
+              "code": "E03",
+              "feedback": "Con đã tính $\\Delta=b^2-4ac$; đề hỏi $\\Delta'=b'^2-ac$ với $b'=-3$."
+            },
+            {
+              "answer": "16",
+              "code": "E02",
+              "feedback": "$c=7$ dương nên $-ac=-7$, con viết nhầm thành $+7$."
+            }
+          ],
+          "solution": "$\\Delta'=(-3)^2-1 \\cdot 7=9-7=2$."
+        }
+      },
+      {
+        "text": "$\\Delta'=2>0$ nên phương trình có hai nghiệm phân biệt; $\\sqrt{\\Delta'}=\\sqrt2$."
+      },
+      {
+        "prompt": "Tính hai nghiệm.",
+        "item": {
+          "id": "d-ptbh-f2",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Hai nghiệm của phương trình $x^2-6x+7=0$ là:",
+          "options": [
+            "$x=3 \\pm \\sqrt2$",
+            "$x=-3 \\pm \\sqrt2$",
+            "$x=\\dfrac{3 \\pm \\sqrt2}{2}$",
+            "$x=6 \\pm \\sqrt2$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E02",
+              "feedback": "$b'=-3$ nên $-b'=3$; con quên đổi dấu."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Với $\\Delta'$, nghiệm là $\\dfrac{-b' \\pm \\sqrt{\\Delta'}}{a}$: chia cho $a$, không chia cho $2a$."
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "Công thức thu gọn dùng $-b'$, không dùng $-b$."
+            }
+          },
+          "solution": "$x=\\dfrac{-b' \\pm \\sqrt{\\Delta'}}{a}=\\dfrac{3 \\pm \\sqrt2}{1}=3 \\pm \\sqrt2$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "d-ptbh-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: phương trình có nghiệm $x=3+\\sqrt2$.",
+            "Kết luận: phương trình có hai nghiệm phân biệt $x_1=3+\\sqrt2$, $x_2=3-\\sqrt2$.",
+            "Kết luận: $\\Delta'=2>0$ nên phương trình có hai nghiệm phân biệt."
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "$\\Delta'>0$ nên có **hai** nghiệm; con thiếu nghiệm với dấu trừ."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "Mới nêu số nghiệm, chưa viết ra các nghiệm."
+            }
+          },
+          "solution": "Phải ghi đủ cả hai nghiệm: $x_1=3+\\sqrt2$, $x_2=3-\\sqrt2$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "d-ptbh-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính biệt thức $\\Delta$ của phương trình $3x^2-4x-2=0$.",
+      "hints": [
+        "Đề chỉ hỏi $\\Delta$, chưa cần tìm nghiệm.",
+        "Ghi $a$, $b$, $c$ kèm dấu của từng hệ số.",
+        "Dùng $\\Delta=b^2-4ac$; để ý $c$ âm thì $-4ac$ đổi dấu."
+      ],
+      "answer": "40",
+      "mistakes": [
+        {
+          "answer": "-8",
+          "code": "E02",
+          "feedback": "$c=-2$ âm nên $-4ac=-4 \\cdot 3 \\cdot (-2)$ là số dương."
+        },
+        {
+          "answer": "8",
+          "code": "E01",
+          "feedback": "$(-4)^2$ là số dương: bình phương của số âm luôn dương."
+        }
+      ],
+      "solution": "$a=3$, $b=-4$, $c=-2$: $\\Delta=(-4)^2-4 \\cdot 3 \\cdot (-2)=16+24=40$."
+    },
+    {
+      "id": "d-ptbh-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $x^2+2x+5=0$:",
+      "hints": [
+        "Đề hỏi số nghiệm, không cần tìm nghiệm.",
+        "Số nghiệm do dấu của biệt thức quyết định.",
+        "$b=2$ chẵn: tính $\\Delta'=b'^2-ac$ rồi xét dấu."
+      ],
+      "options": [
+        "Có hai nghiệm phân biệt",
+        "Có nghiệm kép",
+        "Vô nghiệm",
+        "Có vô số nghiệm"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$c=5$ dương nên $-4ac=-20$; con viết thành $+20$."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Phương trình bậc hai có nhiều nhất hai nghiệm, không thể có vô số nghiệm."
+        }
+      },
+      "solution": "$\\Delta'=1^2-1 \\cdot 5=-4<0$ nên phương trình vô nghiệm."
+    },
+    {
+      "id": "d-ptbh-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Để giải phương trình $3x^2-7x+2=0$, bước đầu tiên nên làm là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi chọn cách giải, chưa cần giải.",
+        "Phương trình có thiếu $b$, thiếu $c$, hay có $a+b+c=0$ không?",
+        "Cách nhanh nào cũng cần dấu hiệu riêng; không có dấu hiệu thì cách nào luôn dùng được?"
+      ],
+      "options": [
+        "Đặt nhân tử chung $x$",
+        "Nhẩm nghiệm theo dấu hiệu $a+b+c=0$",
+        "Chuyển $2$ sang vế phải rồi lấy căn hai vế",
+        "Xác định $a=3$, $b=-7$, $c=2$ rồi tính $\\Delta$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Chỉ đặt được nhân tử chung $x$ khi thiếu hạng tử tự do ($c=0$); ở đây $c=2$."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Ở đây $a+b+c=3-7+2 \\ne 0$ nên không nhẩm theo dấu hiệu đó được."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Lấy căn hai vế chỉ dùng khi thiếu hạng tử bậc nhất ($b=0$); ở đây có $-7x$."
+        }
+      },
+      "solution": "Phương trình đủ ba hệ số, không có dấu hiệu đặc biệt nào: ghi $a=3$, $b=-7$, $c=2$ rồi tính $\\Delta=49-24=25$."
+    },
+    {
+      "id": "d-ptbh-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Giải phương trình $2x^2=3x+2$.",
+      "hints": [
+        "Đề hỏi hai nghiệm; điền từng ô theo thứ tự.",
+        "Phương trình chưa ở dạng chuẩn: chuyển hết sang vế trái trước.",
+        "Chuyển vế đổi dấu, ghi $a$, $b$, $c$, rồi dùng $\\Delta=b^2-4ac$."
+      ],
+      "steps": [
+        {
+          "prompt": "Đưa về dạng chuẩn.",
+          "item": {
+            "id": "d-ptbh-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chuyển vế về dạng $ax^2+bx+c=0$, các hệ số là:",
+            "options": [
+              "$a=2$, $b=3$, $c=2$",
+              "$a=2$, $b=-3$, $c=-2$",
+              "$a=2$, $b=-3$, $c=2$",
+              "$a=2$, $b=3$, $c=-2$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Chuyển $3x$ và $2$ sang vế trái phải đổi dấu cả hai."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Chuyển $2$ sang vế trái phải đổi dấu thành $-2$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Chuyển $3x$ sang vế trái phải đổi dấu thành $-3x$."
+              }
+            },
+            "solution": "$2x^2-3x-2=0$: $a=2$, $b=-3$, $c=-2$."
+          }
+        },
+        {
+          "prompt": "Tính $\\Delta$.",
+          "item": {
+            "id": "d-ptbh-p4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $\\Delta$.",
+            "answer": "25",
+            "mistakes": [
+              {
+                "answer": "-7",
+                "code": "E02",
+                "feedback": "$c=-2$ âm nên $-4ac=+16$."
+              }
+            ],
+            "solution": "$\\Delta=(-3)^2-4 \\cdot 2 \\cdot (-2)=9+16=25$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm lớn hơn.",
+          "item": {
+            "id": "d-ptbh-p4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm lớn hơn.",
+            "answer": "2",
+            "mistakes": [
+              {
+                "answer": "1/2",
+                "code": "E02",
+                "feedback": "$b=-3$ nên $-b=3$; con quên đổi dấu."
+              },
+              {
+                "answer": "4",
+                "code": "E03",
+                "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+              }
+            ],
+            "solution": "$x_1=\\dfrac{3+5}{4}=2$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm nhỏ hơn.",
+          "item": {
+            "id": "d-ptbh-p4-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm nhỏ hơn.",
+            "answer": "-1/2",
+            "mistakes": [
+              {
+                "answer": "-2",
+                "code": "E02",
+                "feedback": "$b=-3$ nên $-b=3$; con quên đổi dấu."
+              },
+              {
+                "answer": "-1",
+                "code": "E03",
+                "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+              }
+            ],
+            "solution": "$x_2=\\dfrac{3-5}{4}=-\\dfrac12$."
+          }
+        }
+      ],
+      "solution": "$2x^2-3x-2=0$; $\\Delta=25$, $\\sqrt{\\Delta}=5$; $x_1=\\dfrac{3+5}{4}=2$, $x_2=\\dfrac{3-5}{4}=-\\dfrac12$."
+    },
+    {
+      "id": "d-ptbh-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Giải phương trình $3x^2-10x+3=0$ bằng công thức nghiệm thu gọn.",
+      "hints": [
+        "Đề hỏi hai nghiệm, tính bằng $\\Delta'$.",
+        "$b=-10$ chẵn: $b'$ bằng nửa $b$, giữ dấu.",
+        "$\\Delta'=b'^2-ac$, nghiệm $\\dfrac{-b' \\pm \\sqrt{\\Delta'}}{a}$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta'$.",
+          "item": {
+            "id": "d-ptbh-p5-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $\\Delta'$.",
+            "answer": "16",
+            "mistakes": [
+              {
+                "answer": "-11",
+                "code": "E03",
+                "feedback": "Con dùng $4ac$: biệt thức thu gọn là $\\Delta'=b'^2-ac$."
+              },
+              {
+                "answer": "64",
+                "code": "E03",
+                "feedback": "Con đã tính $\\Delta=b^2-4ac$; đề hỏi $\\Delta'=b'^2-ac$ với $b'=-5$."
+              }
+            ],
+            "solution": "$b'=-5$: $\\Delta'=(-5)^2-3 \\cdot 3=25-9=16$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm lớn hơn.",
+          "item": {
+            "id": "d-ptbh-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm lớn hơn.",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "3/2",
+                "code": "E03",
+                "feedback": "Với $\\Delta'$, chia cho $a$, không chia cho $2a$."
+              },
+              {
+                "answer": "-1/3",
+                "code": "E02",
+                "feedback": "$b'=-5$ nên $-b'=5$; con quên đổi dấu."
+              }
+            ],
+            "solution": "$x_1=\\dfrac{5+4}{3}=3$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm nhỏ hơn.",
+          "item": {
+            "id": "d-ptbh-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm nhỏ hơn.",
+            "answer": "1/3",
+            "mistakes": [
+              {
+                "answer": "1/6",
+                "code": "E03",
+                "feedback": "Với $\\Delta'$, chia cho $a$, không chia cho $2a$."
+              },
+              {
+                "answer": "-3",
+                "code": "E02",
+                "feedback": "$b'=-5$ nên $-b'=5$; con quên đổi dấu."
+              }
+            ],
+            "solution": "$x_2=\\dfrac{5-4}{3}=\\dfrac13$."
+          }
+        }
+      ],
+      "solution": "$a=3$, $b'=-5$, $c=3$: $\\Delta'=16$, $\\sqrt{\\Delta'}=4$; $x_1=\\dfrac{5+4}{3}=3$, $x_2=\\dfrac{5-4}{3}=\\dfrac13$."
+    },
+    {
+      "id": "d-ptbh-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Nghiệm của phương trình $x^2-4x-1=0$ là:",
+      "hints": [
+        "Đề hỏi hai nghiệm, có thể chứa căn.",
+        "$b=-4$ chẵn: dùng $\\Delta'$ cho số gọn.",
+        "Nếu dùng $\\Delta$, nhớ chia cả tử cho $2a$ khi rút gọn."
+      ],
+      "options": [
+        "$x=-2 \\pm \\sqrt5$",
+        "$x=2 \\pm 2\\sqrt5$",
+        "$x=2 \\pm \\sqrt5$",
+        "$x=2 \\pm \\sqrt3$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$-b'=2$ (hoặc $-b=4$); con quên đổi dấu của $b$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Rút gọn sai: phải chia **cả tử** $4 \\pm 2\\sqrt5$ cho $2$, kể cả phần căn."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "$c=-1$ âm nên $-ac=+1$; con viết thành $-1$."
+        }
+      },
+      "solution": "$b'=-2$: $\\Delta'=4+1=5$, $x=2 \\pm \\sqrt5$. (Dùng $\\Delta=20$: $x=\\dfrac{4 \\pm 2\\sqrt5}{2}=2 \\pm \\sqrt5$.)"
+    },
+    {
+      "id": "d-ptbh-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Biết phương trình $x^2-5x+c=0$ có một nghiệm là $x=2$. Tìm nghiệm còn lại.",
+      "source": "Soạn mới (dạng hỏi ngược, kiểu câu tham số trong đề tuyển sinh 10 Hà Nội)",
+      "hints": [
+        "Đề hỏi nghiệm thứ hai; trước hết cần biết $c$.",
+        "Một số là nghiệm thì thay vào phương trình được đẳng thức đúng.",
+        "Thay $x=2$ tìm $c$, rồi giải bằng công thức nghiệm."
+      ],
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E11",
+          "feedback": "Con mới tìm được $c$; còn phải giải phương trình để ra nghiệm kia."
+        },
+        {
+          "answer": "-3",
+          "code": "E02",
+          "feedback": "$b=-5$ nên $-b=5$; con quên đổi dấu (thử lại: $x=2$ phải là một nghiệm)."
+        }
+      ],
+      "solution": "Thay $x=2$: $4-10+c=0$ nên $c=6$. Phương trình $x^2-5x+6=0$ có $\\Delta=25-24=1$, $x=\\dfrac{5 \\pm 1}{2}$, tức $x=3$ hoặc $x=2$. Nghiệm còn lại là $3$."
+    },
+    {
+      "id": "d-ptbh-p8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Khi giải bài toán về một mảnh vườn hình chữ nhật, gọi chiều rộng là $x$ (m), ta được phương trình $x(x+3)=40$. Tìm chiều rộng của mảnh vườn.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (bước giải phương trình trong bài toán lập phương trình)",
+      "hints": [
+        "Đề hỏi chiều rộng: một số dương, đơn vị mét.",
+        "Phá ngoặc, chuyển vế để có phương trình bậc hai dạng chuẩn.",
+        "Giải bằng $\\Delta$, rồi đối chiếu điều kiện $x>0$."
+      ],
+      "answer": "5",
+      "unit": "m",
+      "mistakes": [
+        {
+          "answer": "-8",
+          "code": "E14",
+          "feedback": "Chiều rộng phải dương: loại nghiệm âm."
+        },
+        {
+          "answer": "8",
+          "code": "E02",
+          "feedback": "$b=3$ nên $-b=-3$; con quên đổi dấu."
+        },
+        {
+          "answer": "10",
+          "code": "E03",
+          "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+        }
+      ],
+      "solution": "$x^2+3x-40=0$, $\\Delta=9+160=169$, $x=\\dfrac{-3 \\pm 13}{2}$: $x=5$ hoặc $x=-8$. Vì $x>0$ nên chiều rộng là $5$ m."
+    }
+  ],
+  "exit": [
+    {
+      "id": "d-ptbh-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tính $\\Delta'$ của phương trình $x^2-10x+21=0$.",
+      "answer": "4",
+      "mistakes": [
+        {
+          "answer": "16",
+          "code": "E03",
+          "feedback": "Con đã tính $\\Delta=b^2-4ac$; đề hỏi $\\Delta'=b'^2-ac$."
+        },
+        {
+          "answer": "-59",
+          "code": "E03",
+          "feedback": "Con dùng $4ac$: biệt thức thu gọn là $\\Delta'=b'^2-ac$."
+        }
+      ],
+      "solution": "$b'=-5$: $\\Delta'=25-21=4$."
+    },
+    {
+      "id": "d-ptbh-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $4x^2-4x+1=0$:",
+      "options": [
+        "Có hai nghiệm phân biệt",
+        "Có nghiệm kép",
+        "Vô nghiệm"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$c=1$ dương nên $-4ac=-16$; con viết thành $+16$."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Con dùng $4ac$ trong $\\Delta'$: đúng là $\\Delta'=b'^2-ac$."
+        }
+      },
+      "solution": "$b'=-2$: $\\Delta'=4-4=0$, phương trình có nghiệm kép $x=\\dfrac12$."
+    },
+    {
+      "id": "d-ptbh-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phương trình nào sau đây có hai nghiệm phân biệt?",
+      "options": [
+        "$x^2-2x+3=0$",
+        "$x^2+4x+4=0$",
+        "$x^2+x+1=0$",
+        "$2x^2+x-7=0$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$c=3$ dương nên $\\Delta'=1-3$, con viết thành $1+3$."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "$\\Delta'=0$ cho nghiệm kép: hai nghiệm trùng nhau, không phải hai nghiệm phân biệt."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "$c=1$ dương nên $-4ac=-4$; con viết thành $+4$."
+        }
+      },
+      "solution": "$2x^2+x-7=0$ có $a=2$, $c=-7$ trái dấu nên $\\Delta=1+56>0$. Ba phương trình kia: $\\Delta'=-2$, $\\Delta'=0$, $\\Delta=-3$."
+    },
+    {
+      "id": "d-ptbh-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Giải phương trình $-x^2+4x+5=0$.",
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta'$.",
+          "item": {
+            "id": "d-ptbh-x4-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $\\Delta'$.",
+            "answer": "9",
+            "mistakes": [
+              {
+                "answer": "-1",
+                "code": "E02",
+                "feedback": "$a=-1$, không phải $1$: $-ac=-(-1) \\cdot 5=+5$."
+              },
+              {
+                "answer": "36",
+                "code": "E03",
+                "feedback": "Con đã tính $\\Delta=b^2-4ac$; đề hỏi $\\Delta'=b'^2-ac$."
+              }
+            ],
+            "solution": "$a=-1$, $b'=2$, $c=5$: $\\Delta'=4-(-1) \\cdot 5=9$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm lớn hơn.",
+          "item": {
+            "id": "d-ptbh-x4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm lớn hơn.",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E02",
+                "feedback": "Mẫu là $a=-1$; con chia cho $1$ nên sai dấu cả hai nghiệm."
+              }
+            ],
+            "solution": "$x=\\dfrac{-2 \\pm 3}{-1}$: $x_1=\\dfrac{-2-3}{-1}=5$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm nhỏ hơn.",
+          "item": {
+            "id": "d-ptbh-x4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Nhập nghiệm nhỏ hơn.",
+            "answer": "-1",
+            "mistakes": [
+              {
+                "answer": "-5",
+                "code": "E02",
+                "feedback": "Mẫu là $a=-1$; con chia cho $1$ nên sai dấu cả hai nghiệm."
+              }
+            ],
+            "solution": "$x_2=\\dfrac{-2+3}{-1}=-1$."
+          }
+        }
+      ],
+      "solution": "$a=-1$, $b'=2$, $c=5$: $\\Delta'=9$; $x=\\dfrac{-2 \\pm 3}{-1}$, tức $x=5$ hoặc $x=-1$. (Có thể nhân hai vế với $-1$: $x^2-4x-5=0$.)"
+    },
+    {
+      "id": "d-ptbh-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Tìm nghiệm âm của phương trình $2x^2+3x-5=0$.",
+      "answer": "-5/2",
+      "mistakes": [
+        {
+          "answer": "-5",
+          "code": "E03",
+          "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+        },
+        {
+          "answer": "-1",
+          "code": "E02",
+          "feedback": "$b=3$ nên $-b=-3$; con quên đổi dấu."
+        }
+      ],
+      "solution": "$\\Delta=9+40=49$, $x=\\dfrac{-3 \\pm 7}{4}$: $x=1$ hoặc $x=-\\dfrac52$. Nghiệm âm là $-\\dfrac52$."
+    },
+    {
+      "id": "d-ptbh-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Giải phương trình $(x+2)^2=3x+10$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (phương trình đưa về bậc hai)",
+      "steps": [
+        {
+          "prompt": "Đưa về dạng chuẩn.",
+          "item": {
+            "id": "d-ptbh-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Khai triển và chuyển vế, phương trình trở thành:",
+            "options": [
+              "$x^2+x-6=0$",
+              "$x^2-3x-6=0$",
+              "$x^2-x-6=0$",
+              "$x^2+x+14=0$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E12",
+                "feedback": "$(x+2)^2 \\ne x^2+4$: con thiếu hạng tử $2 \\cdot x \\cdot 2$.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E12",
+                "feedback": "Hạng tử giữa là $2 \\cdot x \\cdot 2=4x$, không phải $2x$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Chuyển $10$ sang vế trái phải đổi dấu thành $-10$."
+              }
+            },
+            "solution": "$x^2+4x+4-3x-10=0$, tức $x^2+x-6=0$."
+          }
+        },
+        {
+          "prompt": "Tính $\\Delta$.",
+          "item": {
+            "id": "d-ptbh-x6-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $\\Delta$.",
+            "answer": "25",
+            "mistakes": [
+              {
+                "answer": "-23",
+                "code": "E02",
+                "feedback": "$c=-6$ âm nên $-4ac=+24$."
+              }
+            ],
+            "solution": "$\\Delta=1+24=25$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm lớn hơn.",
+          "item": {
+            "id": "d-ptbh-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Nhập nghiệm lớn hơn.",
+            "answer": "2",
+            "mistakes": [
+              {
+                "answer": "3",
+                "code": "E02",
+                "feedback": "$b=1$ nên $-b=-1$; con quên đổi dấu."
+              },
+              {
+                "answer": "4",
+                "code": "E03",
+                "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+              }
+            ],
+            "solution": "$x_1=\\dfrac{-1+5}{2}=2$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm nhỏ hơn.",
+          "item": {
+            "id": "d-ptbh-x6-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Nhập nghiệm nhỏ hơn.",
+            "answer": "-3",
+            "mistakes": [
+              {
+                "answer": "-2",
+                "code": "E02",
+                "feedback": "$b=1$ nên $-b=-1$; con quên đổi dấu."
+              },
+              {
+                "answer": "-6",
+                "code": "E03",
+                "feedback": "Mẫu của công thức nghiệm là $2a$, không phải $a$."
+              }
+            ],
+            "solution": "$x_2=\\dfrac{-1-5}{2}=-3$."
+          }
+        }
+      ],
+      "solution": "$(x+2)^2=x^2+4x+4$ nên $x^2+x-6=0$; $\\Delta=25$; $x=\\dfrac{-1 \\pm 5}{2}$: $x=2$ hoặc $x=-3$."
+    },
+    {
+      "id": "d-ptbh-x7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng $4$ m và diện tích $96$ m². Gọi chiều rộng là $x$ (m), ta có phương trình $x(x+4)=96$. Tìm chiều rộng mảnh đất.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (bước giải phương trình trong bài toán lập phương trình)",
+      "answer": "8",
+      "unit": "m",
+      "mistakes": [
+        {
+          "answer": "-12",
+          "code": "E14",
+          "feedback": "Chiều rộng phải dương: loại nghiệm âm."
+        },
+        {
+          "answer": "12",
+          "code": "E02",
+          "feedback": "$b'=2$ nên $-b'=-2$; con quên đổi dấu."
+        },
+        {
+          "answer": "4",
+          "code": "E03",
+          "feedback": "Với $\\Delta'$, chia cho $a$, không chia cho $2a$."
+        }
+      ],
+      "solution": "$x^2+4x-96=0$, $\\Delta'=4+96=100$, $x=-2 \\pm 10$: $x=8$ hoặc $x=-12$. Vì $x>0$ nên chiều rộng là $8$ m."
+    },
+    {
+      "id": "d-ptbh-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Giải phương trình $x^2-2\\sqrt3x+3=0$ (nhập nghiệm).",
+      "answer": "√3",
+      "mistakes": [
+        {
+          "answer": "-√3",
+          "code": "E02",
+          "feedback": "$b'=-\\sqrt3$ nên $-b'=\\sqrt3$; con quên đổi dấu."
+        },
+        {
+          "answer": "2√3",
+          "code": "E03",
+          "feedback": "Nghiệm kép là $-\\dfrac{b'}{a}$ (hay $-\\dfrac{b}{2a}$), không phải $-\\dfrac{b}{a}$."
+        }
+      ],
+      "solution": "$b'=-\\sqrt3$: $\\Delta'=3-3=0$, nghiệm kép $x_1=x_2=-\\dfrac{b'}{a}=\\sqrt3$."
+    }
+  ]
+}

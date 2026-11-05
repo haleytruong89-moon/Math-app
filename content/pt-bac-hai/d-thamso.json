@@ -1,0 +1,905 @@
+{
+  "id": "d-thamso",
+  "module": "pt-bac-hai",
+  "order": 3,
+  "title": "PT bậc hai chứa tham số",
+  "status": "draft",
+  "estMinutes": 50,
+  "theory": [
+    "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — với $ax^2+bx+c=0$ ($a \\ne 0$): $\\Delta=b^2-4ac$; khi $b=2b'$ dùng $\\Delta'=b'^2-ac$ (cùng dấu với $\\Delta$). Có tham số $m$ thì các hệ số chứa $m$, nên $\\Delta'$ là một biểu thức của $m$.",
+    "**Quy tắc (xét dấu $\\Delta'$ theo $m$):** hai nghiệm phân biệt $\\Leftrightarrow \\Delta'>0$; **có nghiệm** $\\Leftrightarrow \\Delta' \\ge 0$; nghiệm kép $\\Leftrightarrow \\Delta'=0$, khi đó $x_1=x_2=-\\dfrac{b'}{a}$; vô nghiệm $\\Leftrightarrow \\Delta'<0$. **Nghiệm cho trước:** PT có nghiệm $x=x_0$ thì thay $x=x_0$ vào PT, giải PT ẩn $m$; muốn tìm nghiệm còn lại, thay $m$ vào rồi giải PT.",
+    "**Luôn có nghiệm với mọi $m$:** viết $\\Delta'=(m-k)^2+d$. Nếu $d>0$ thì $\\Delta'>0$: luôn có hai nghiệm phân biệt; nếu $\\Delta'=(m-k)^2 \\ge 0$: luôn có nghiệm. Cách nhanh: $a$, $c$ trái dấu thì $\\Delta=b^2-4ac>0$. **Hệ số $a$ chứa $m$:** “hai nghiệm phân biệt”, “nghiệm kép” cần thêm $a \\ne 0$; “có nghiệm” phải xét riêng $a=0$ (PT bậc nhất).",
+    "**Vì sao:** công thức nghiệm $x=\\dfrac{-b \\pm \\sqrt\\Delta}{2a}$ chỉ dùng được khi $\\sqrt\\Delta$ có nghĩa, tức $\\Delta \\ge 0$; $\\Delta>0$ cho hai giá trị khác nhau, $\\Delta=0$ cho hai giá trị trùng nhau. Một bình phương cộng thêm số dương không bao giờ bằng $0$, nên $(m-k)^2+d>0$ với mọi $m$ khi $d>0$.",
+    "**Bẫy hay gặp:** (1) $(m-1)^2 \\ne m^2-1$. (2) $-(m-3)=-m+3$, không phải $-m-3$. (3) $\\Delta'$ dùng $b'$ (nửa hệ số $b$), không dùng $b$. (4) “Có nghiệm” là $\\Delta' \\ge 0$, khác “hai nghiệm phân biệt” $\\Delta'>0$. (5) Chia bất PT cho số âm phải **đổi chiều**: $-2m>0 \\Leftrightarrow m<0$. (6) Chỉ ra $\\Delta' \\ge 0$ hoặc thử một giá trị $m$ thì chưa chứng minh được $\\Delta'>0$ với mọi $m$.",
+    "**Nhận dạng:** “có nghiệm / hai nghiệm phân biệt / nghiệm kép / vô nghiệm / luôn có nghiệm với mọi $m$” → xét dấu $\\Delta'$. “Có một nghiệm bằng $x_0$” → thay $x_0$ vào PT. **Khi nào chưa đủ:** đề hỏi tổng, tích, hệ thức giữa $x_1$, $x_2$ hay dấu các nghiệm → bài **Viète** (điều kiện $\\Delta'$ chỉ là bước đầu)."
+  ],
+  "worked": {
+    "problem": "Cho phương trình $x^2-2(m+1)x+m^2+3=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình: a) có hai nghiệm phân biệt; b) có nghiệm kép, tính nghiệm kép đó.",
+    "steps": [
+      {
+        "text": "Hệ số: $a=1$, $b=-2(m+1)$ nên $b'=-(m+1)$, $c=m^2+3$.",
+        "why": "$b$ có dạng $-2(\\dots)$ nên dùng $\\Delta'$ cho gọn; $b'$ là nửa hệ số $b$."
+      },
+      {
+        "text": "$\\Delta'=b'^2-ac=(m+1)^2-(m^2+3)=m^2+2m+1-m^2-3=2m-2$.",
+        "why": "Khai triển $(m+1)^2$ bằng hằng đẳng thức, phá ngoặc $-(m^2+3)$ đổi dấu cả hai hạng tử."
+      },
+      {
+        "text": "a) Hai nghiệm phân biệt $\\Leftrightarrow \\Delta'>0 \\Leftrightarrow 2m-2>0 \\Leftrightarrow m>1$.",
+        "why": "Chia hai vế cho $2>0$ nên giữ nguyên chiều."
+      },
+      {
+        "text": "b) Nghiệm kép $\\Leftrightarrow \\Delta'=0 \\Leftrightarrow m=1$. Khi đó $x_1=x_2=-\\dfrac{b'}{a}=m+1=2$.",
+        "why": "Thử lại: $m=1$ cho $x^2-4x+4=0$, tức $(x-2)^2=0$."
+      },
+      {
+        "text": "Kết luận: $m>1$ thì phương trình có hai nghiệm phân biệt; $m=1$ thì phương trình có nghiệm kép $x_1=x_2=2$.",
+        "why": "Trả lời đủ cả hai ý của đề."
+      }
+    ],
+    "selfExplain": "Nếu đề hỏi “tìm $m$ để phương trình **có nghiệm**” thì điều kiện là gì, và vì sao khác câu a?"
+  },
+  "faded": {
+    "problem": "Cho phương trình $x^2-2(m+1)x+m-4=0$ (ẩn $x$, tham số $m$). Chứng minh phương trình luôn có hai nghiệm phân biệt với mọi $m$.",
+    "steps": [
+      {
+        "text": "Hệ số: $a=1$, $b'=-(m+1)$, $c=m-4$."
+      },
+      {
+        "prompt": "Tính $\\Delta'$.",
+        "item": {
+          "id": "d-thamso-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "$\\Delta'$ của phương trình bằng:",
+          "options": [
+            "$m^2+m-3$",
+            "$m^2+m+5$",
+            "$m^2-m+5$",
+            "$4m^2+7m+8$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Phá ngoặc $-(m-4)$ phải đổi dấu cả $-4$ thành $+4$."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Con nhớ thiếu: $(m+1)^2=m^2+2m+1$.",
+              "review": "f1-hdt"
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "$\\Delta'$ dùng $b'$ là nửa hệ số $b$, không dùng $b$.",
+              "review": "d-ptbh"
+            }
+          },
+          "solution": "$\\Delta'=(m+1)^2-(m-4)=m^2+2m+1-m+4=m^2+m+5$."
+        }
+      },
+      {
+        "prompt": "Viết $\\Delta'$ thành bình phương cộng một số.",
+        "item": {
+          "id": "d-thamso-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "$m^2+m+5$ viết được thành:",
+          "options": [
+            "$\\left(m+\\frac12\\right)^2+\\frac{21}{4}$",
+            "$\\left(m-\\frac12\\right)^2+\\frac{19}{4}$",
+            "$\\left(m+\\frac12\\right)^2+\\frac{19}{4}$",
+            "$(m+1)^2+4$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "$\\left(m+\\frac12\\right)^2$ đã có sẵn $\\frac14$, nên phải lấy $5$ **trừ** $\\frac14$."
+            },
+            "1": {
+              "code": "E02",
+              "feedback": "Hạng tử $+m$ mang dấu cộng nên bình phương là của một tổng."
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "$(m+1)^2=m^2+2m+1$; số hạng thứ hai phải là nửa hệ số của $m$.",
+              "review": "f1-hdt"
+            }
+          },
+          "solution": "$m^2+m+5=m^2+2\\cdot m\\cdot\\frac12+\\frac14+\\frac{19}{4}=\\left(m+\\frac12\\right)^2+\\frac{19}{4}$."
+        }
+      },
+      {
+        "text": "Vì $\\left(m+\\frac12\\right)^2 \\ge 0$ với mọi $m$ nên $\\Delta' \\ge \\frac{19}{4}>0$ với mọi $m$."
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "d-thamso-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng?",
+          "options": [
+            "Kết luận: phương trình luôn có hai nghiệm phân biệt với mọi $m$.",
+            "Kết luận: phương trình có hai nghiệm phân biệt khi $m \\ne -\\frac12$.",
+            "Kết luận: phương trình có nghiệm kép khi $m=-\\frac12$.",
+            "Kết luận: phương trình có hai nghiệm phân biệt khi $m>-\\frac12$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "Tại $m=-\\frac12$ chỉ phần bình phương bằng $0$, còn $\\Delta'$ vẫn dương."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "Nghiệm kép cần $\\Delta'=0$, mà $\\Delta'$ luôn lớn hơn hoặc bằng $\\frac{19}{4}$."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Bình phương không âm với **mọi** $m$, không cần $m$ lớn hơn số nào."
+            }
+          },
+          "solution": "$\\Delta'=\\left(m+\\frac12\\right)^2+\\frac{19}{4}>0$ với mọi $m$. Kết luận: phương trình luôn có hai nghiệm phân biệt với mọi $m$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "d-thamso-p1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-6x+m=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có nghiệm kép.",
+      "hints": [
+        "Đề hỏi: giá trị $m$ để phương trình có nghiệm kép.",
+        "Nghiệm kép ứng với dấu nào của $\\Delta'$?",
+        "Tính $\\Delta'=b'^2-ac$ với $b'=-3$, $c=m$, cho bằng $0$."
+      ],
+      "answer": "9",
+      "mistakes": [
+        {
+          "answer": "36",
+          "code": "E03",
+          "feedback": "$\\Delta'$ dùng $b'$ là nửa hệ số $b$, tức $b'=-3$, không dùng $b=-6$.",
+          "review": "d-ptbh"
+        },
+        {
+          "answer": "-9",
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $\\Delta'=b'^2-ac$.",
+          "review": "d-ptbh"
+        }
+      ],
+      "solution": "$b'=-3$, $\\Delta'=9-m$. Nghiệm kép $\\Leftrightarrow 9-m=0 \\Leftrightarrow m=9$. Kết luận: $m=9$."
+    },
+    {
+      "id": "d-thamso-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-2(m+1)x+m^2=0$. Đề hỏi: “Tìm $m$ để phương trình có hai nghiệm phân biệt”. Bước đầu tiên đúng là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi: phương trình có **bao nhiêu** nghiệm.",
+        "Số nghiệm của phương trình bậc hai do đại lượng nào quyết định?",
+        "Biệt thức chứa $m$ thì đặt điều kiện cho nó rồi giải theo $m$."
+      ],
+      "options": [
+        "Nhẩm nghiệm bằng $a+b+c=0$",
+        "Tính tổng và tích hai nghiệm theo Viète",
+        "Thay $x=0$ vào phương trình để tìm $m$",
+        "Tính $\\Delta'$ theo $m$ rồi giải bất phương trình $\\Delta'>0$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Nhẩm nghiệm chỉ dùng khi hệ số là số cụ thể thoả $a+b+c=0$; câu hỏi về số nghiệm thì xét dấu $\\Delta'$."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Viète chỉ dùng khi phương trình đã có nghiệm; điều kiện có hai nghiệm phân biệt đến từ $\\Delta'$."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Thay $x$ là cách cho dạng “biết một nghiệm”; đề này hỏi số nghiệm nên xét dấu $\\Delta'$."
+        }
+      },
+      "solution": "“Hai nghiệm phân biệt” $\\Leftrightarrow \\Delta'>0$: tính $\\Delta'=(m+1)^2-m^2=2m+1$ rồi giải $2m+1>0$."
+    },
+    {
+      "id": "d-thamso-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $x^2-2x+m=0$ (ẩn $x$, tham số $m$) **có nghiệm** khi và chỉ khi:",
+      "hints": [
+        "Đề hỏi: điều kiện để phương trình có nghiệm.",
+        "“Có nghiệm” ứng với $\\Delta'>0$ hay $\\Delta' \\ge 0$?",
+        "Tính $\\Delta'=b'^2-ac$ với $b'=-1$ rồi giải bất phương trình."
+      ],
+      "options": [
+        "$m<1$",
+        "$m \\le 1$",
+        "$m \\ge 1$",
+        "$m \\le 4$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "“Có nghiệm” gồm cả trường hợp nghiệm kép, nên dùng $\\Delta' \\ge 0$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Chuyển $m$ sang vế kia thì chiều bất đẳng thức giữ nguyên; con đã đổi chiều sai."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "$\\Delta'$ dùng $b'=-1$, không dùng $b=-2$.",
+          "review": "d-ptbh"
+        }
+      },
+      "solution": "$\\Delta'=1-m$. Có nghiệm $\\Leftrightarrow 1-m \\ge 0 \\Leftrightarrow m \\le 1$. Kết luận: $m \\le 1$."
+    },
+    {
+      "id": "d-thamso-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-(m+3)x+2m+2=0$ (ẩn $x$, tham số $m$). Tìm $m$ biết phương trình có một nghiệm $x=3$.",
+      "hints": [
+        "Đề hỏi: giá trị $m$ khi biết trước một nghiệm.",
+        "“$x=3$ là nghiệm” nghĩa là thay $x=3$ vào thì được đẳng thức đúng.",
+        "Thay $x=3$, phá ngoặc cẩn thận dấu, được phương trình bậc nhất ẩn $m$."
+      ],
+      "answer": "2",
+      "mistakes": [
+        {
+          "answer": "20",
+          "code": "E02",
+          "feedback": "Phá ngoặc $-3(m+3)=-3m-9$: số $9$ cũng phải mang dấu trừ."
+        },
+        {
+          "answer": "-1",
+          "code": "E01",
+          "feedback": "Thay $x=3$ thì $x^2=3^2=9$, không phải $6$."
+        }
+      ],
+      "solution": "Thay $x=3$: $9-3(m+3)+2m+2=0 \\Leftrightarrow 9-3m-9+2m+2=0 \\Leftrightarrow 2-m=0 \\Leftrightarrow m=2$. Kết luận: $m=2$."
+    },
+    {
+      "id": "d-thamso-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phương trình $x^2-2(m-1)x+m^2+1=0$ (ẩn $x$, tham số $m$) **vô nghiệm** khi và chỉ khi:",
+      "hints": [
+        "Đề hỏi: điều kiện để phương trình vô nghiệm.",
+        "Vô nghiệm ứng với dấu nào của $\\Delta'$?",
+        "Khai triển $(m-1)^2$ đủ ba hạng tử; chia cho số âm nhớ đổi chiều."
+      ],
+      "options": [
+        "$m<0$",
+        "$m \\ge 0$",
+        "$m>0$",
+        "Mọi giá trị của $m$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Chia hai vế của $-2m<0$ cho số âm $-2$ thì phải đổi chiều."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Vô nghiệm là $\\Delta'<0$ (dấu nhỏ hơn hẳn); $\\Delta'=0$ là nghiệm kép."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu: $(m-1)^2=m^2-2m+1$.",
+          "review": "f1-hdt"
+        }
+      },
+      "solution": "$\\Delta'=(m-1)^2-(m^2+1)=-2m$. Vô nghiệm $\\Leftrightarrow -2m<0 \\Leftrightarrow m>0$. Kết luận: $m>0$."
+    },
+    {
+      "id": "d-thamso-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-2(m-1)x+m^2-4=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có nghiệm kép và tính nghiệm kép đó.",
+      "hints": [
+        "Đề hỏi hai thứ: giá trị $m$, rồi nghiệm kép ứng với $m$ đó.",
+        "Nghiệm kép khi $\\Delta'=0$; nghiệm kép tính bằng công thức theo $b'$ và $a$.",
+        "$\\Delta'=(m-1)^2-(m^2-4)$; nghiệm kép $x=-\\dfrac{b'}{a}$ với $b'=-(m-1)$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tìm $m$.",
+          "item": {
+            "id": "d-thamso-p6-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá trị của $m$ để phương trình có nghiệm kép là (nhập số nguyên hoặc phân số):",
+            "answer": "5/2",
+            "mistakes": [
+              {
+                "answer": "-3/2",
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m^2-4)$ phải đổi dấu cả $-4$ thành $+4$."
+              },
+              {
+                "answer": "-5/2",
+                "code": "E02",
+                "feedback": "Chuyển số $5$ sang vế kia phải đổi dấu."
+              }
+            ],
+            "solution": "$\\Delta'=(m-1)^2-(m^2-4)=m^2-2m+1-m^2+4=-2m+5$. $\\Delta'=0 \\Leftrightarrow m=\\frac52$."
+          }
+        },
+        {
+          "prompt": "Tính nghiệm kép.",
+          "item": {
+            "id": "d-thamso-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Với $m$ vừa tìm, nghiệm kép $x_1=x_2$ bằng (nhập số hoặc phân số):",
+            "answer": "3/2",
+            "mistakes": [
+              {
+                "answer": "-3/2",
+                "code": "E03",
+                "feedback": "Nghiệm kép là $-\\dfrac{b'}{a}$ với $b'=-(m-1)$: con quên dấu trừ phía trước.",
+                "review": "d-ptbh"
+              },
+              {
+                "answer": "3",
+                "code": "E03",
+                "feedback": "Nghiệm kép là $-\\dfrac{b}{2a}$ hoặc $-\\dfrac{b'}{a}$; con dùng $b$ mà quên chia $2$.",
+                "review": "d-ptbh"
+              }
+            ],
+            "solution": "$x_1=x_2=-\\dfrac{b'}{a}=m-1=\\frac52-1=\\frac32$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=-2m+5=0 \\Leftrightarrow m=\\frac52$; nghiệm kép $x_1=x_2=m-1=\\frac32$. Kết luận: $m=\\frac52$, nghiệm kép $x=\\frac32$."
+    },
+    {
+      "id": "d-thamso-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $(m-1)x^2-2mx+m+2=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm phân biệt.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội",
+      "hints": [
+        "Đề hỏi: điều kiện để có hai nghiệm phân biệt; để ý hệ số của $x^2$.",
+        "Hệ số $a$ chứa $m$: khi nào phương trình không còn là bậc hai?",
+        "Cần đồng thời $a \\ne 0$ và $\\Delta'>0$, với $b'=-m$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta'$.",
+          "item": {
+            "id": "d-thamso-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Khi $m \\ne 1$, $\\Delta'$ bằng:",
+            "options": [
+              "$2-m$",
+              "$-m-2$",
+              "$3m^2-m+2$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "$(m-1)(m+2)=m^2+m-2$; phá ngoặc $-(m^2+m-2)$ phải đổi dấu mọi hạng tử, kể cả $-2$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$\\Delta'$ dùng $b'=-m$ (nửa hệ số $b$), không dùng $b=-2m$.",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=m^2-(m-1)(m+2)=m^2-(m^2+m-2)=2-m$."
+          }
+        },
+        {
+          "prompt": "Kết luận điều kiện.",
+          "item": {
+            "id": "d-thamso-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m<2$",
+              "$m<2$ và $m \\ne 1$",
+              "$m>2$ và $m \\ne 1$",
+              "$m \\le 2$ và $m \\ne 1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Hệ số $a=m-1$ chứa $m$: với $m=1$ phương trình thành bậc nhất, chỉ có một nghiệm."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Chuyển $m$ sang vế kia thì chiều bất đẳng thức giữ nguyên; con đã đổi chiều sai."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$; $\\Delta'=0$ là nghiệm kép."
+              }
+            },
+            "solution": "Cần $a=m-1 \\ne 0$ và $\\Delta'=2-m>0$. Kết luận: $m<2$ và $m \\ne 1$."
+          }
+        }
+      ],
+      "solution": "Phương trình có hai nghiệm phân biệt $\\Leftrightarrow a \\ne 0$ và $\\Delta'>0 \\Leftrightarrow m \\ne 1$ và $2-m>0$. Kết luận: $m<2$ và $m \\ne 1$."
+    },
+    {
+      "id": "d-thamso-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-2(m-1)x+m-3=0$ (ẩn $x$, tham số $m$). Chứng minh phương trình luôn có hai nghiệm phân biệt với mọi $m$.",
+      "source": "68 đề – Đề 27, Bài 3.3 (chuyển thể: chỉ phần điều kiện nghiệm)",
+      "hints": [
+        "Đề hỏi: chứng minh một điều đúng với **mọi** $m$.",
+        "Hai nghiệm phân biệt với mọi $m$ nghĩa là $\\Delta'$ luôn dương.",
+        "Tính $\\Delta'$, rồi viết thành một bình phương cộng một số dương."
+      ],
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta'$.",
+          "item": {
+            "id": "d-thamso-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$\\Delta'$ của phương trình bằng:",
+            "options": [
+              "$m^2-3m-2$",
+              "$m^2-m+2$",
+              "$m^2-3m+4$",
+              "$4m^2-9m+7$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m-3)$ phải đổi dấu cả $-3$ thành $+3$."
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "Con nhớ thiếu: $(m-1)^2=m^2-2m+1$.",
+                "review": "f1-hdt"
+              },
+              "3": {
+                "code": "E03",
+                "feedback": "$\\Delta'$ dùng $b'=-(m-1)$, không dùng $b=-2(m-1)$.",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=(m-1)^2-(m-3)=m^2-2m+1-m+3=m^2-3m+4$."
+          }
+        },
+        {
+          "prompt": "Chọn lập luận.",
+          "item": {
+            "id": "d-thamso-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Lập luận nào chứng minh được $\\Delta'>0$ với **mọi** $m$?",
+            "options": [
+              "$\\left(m-\\frac32\\right)^2 \\ge 0$ nên $\\Delta' \\ge 0$",
+              "Thay $m=0$ được $\\Delta'=4>0$",
+              "$\\Delta'=(m-3)^2-5$",
+              "$\\Delta'=\\left(m-\\frac32\\right)^2+\\frac74>0$ với mọi $m$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Bỏ mất phần $+\\frac74$ thì chỉ được $\\Delta' \\ge 0$ — mới là “có nghiệm”, chưa chắc phân biệt."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Một giá trị $m$ không chứng minh được cho mọi $m$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Số hạng thứ hai trong bình phương là **nửa** hệ số của $m$; khai triển lại để thử."
+              }
+            },
+            "solution": "$m^2-3m+4=\\left(m-\\frac32\\right)^2+\\frac74$, mà $\\left(m-\\frac32\\right)^2 \\ge 0$ nên $\\Delta' \\ge \\frac74>0$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=m^2-3m+4=\\left(m-\\frac32\\right)^2+\\frac74>0$ với mọi $m$. Kết luận: phương trình luôn có hai nghiệm phân biệt với mọi $m$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "d-thamso-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $x^2-4x+m-1=0$ (ẩn $x$, tham số $m$) **vô nghiệm** khi và chỉ khi:",
+      "options": [
+        "$m>5$",
+        "$m<5$",
+        "$m>17$",
+        "$m \\ge 5$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E02",
+          "feedback": "Chuyển $m$ sang vế kia thì chiều bất đẳng thức giữ nguyên; con đã đổi chiều sai."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "$\\Delta'$ dùng $b'=-2$, không dùng $b=-4$.",
+          "review": "d-ptbh"
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Vô nghiệm là $\\Delta'<0$; $\\Delta'=0$ là nghiệm kép."
+        }
+      },
+      "solution": "$\\Delta'=4-(m-1)=5-m$. Vô nghiệm $\\Leftrightarrow 5-m<0 \\Leftrightarrow m>5$. Kết luận: $m>5$."
+    },
+    {
+      "id": "d-thamso-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tìm $m$ để phương trình $x^2+2x+m-3=0$ (ẩn $x$, tham số $m$) có nghiệm kép.",
+      "answer": "4",
+      "mistakes": [
+        {
+          "answer": "-2",
+          "code": "E02",
+          "feedback": "Phá ngoặc $-(m-3)$ phải đổi dấu cả $-3$ thành $+3$."
+        },
+        {
+          "answer": "7",
+          "code": "E03",
+          "feedback": "$\\Delta'$ dùng $b'=1$, không dùng $b=2$.",
+          "review": "d-ptbh"
+        }
+      ],
+      "solution": "$\\Delta'=1-(m-3)=4-m$. Nghiệm kép $\\Leftrightarrow 4-m=0 \\Leftrightarrow m=4$. Kết luận: $m=4$."
+    },
+    {
+      "id": "d-thamso-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2+(m-1)x-2m+3=0$ (ẩn $x$, tham số $m$). Tìm $m$ biết phương trình có một nghiệm $x=-3$.",
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "9/5",
+          "code": "E02",
+          "feedback": "$(m-1)\\cdot(-3)=-3m+3$: số $-1$ nhân $-3$ thành $+3$."
+        },
+        {
+          "answer": "-9",
+          "code": "E10",
+          "feedback": "Đề cho nghiệm $x=-3$, con đã thay $x=3$."
+        }
+      ],
+      "solution": "Thay $x=-3$: $9-3(m-1)-2m+3=0 \\Leftrightarrow 15-5m=0 \\Leftrightarrow m=3$. Kết luận: $m=3$."
+    },
+    {
+      "id": "d-thamso-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phương trình $x^2-2(m-2)x+m^2-3=0$ (ẩn $x$, tham số $m$) có hai nghiệm phân biệt khi và chỉ khi:",
+      "options": [
+        "$m>\\frac74$",
+        "$m<\\frac74$",
+        "$m \\le \\frac74$",
+        "Không có giá trị nào của $m$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "Chia hai vế của $-4m+7>0$ cho số âm thì phải đổi chiều."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$; $\\Delta'=0$ là nghiệm kép."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu: $(m-2)^2=m^2-4m+4$.",
+          "review": "f1-hdt"
+        }
+      },
+      "solution": "$\\Delta'=(m-2)^2-(m^2-3)=-4m+7$. Hai nghiệm phân biệt $\\Leftrightarrow -4m+7>0 \\Leftrightarrow m<\\frac74$. Kết luận: $m<\\frac74$."
+    },
+    {
+      "id": "d-thamso-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-(m+2)x+2m=0$ (ẩn $x$, tham số $m$). Chứng minh phương trình luôn có nghiệm với mọi $m$.",
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta$.",
+          "item": {
+            "id": "d-thamso-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$\\Delta$ của phương trình bằng:",
+            "options": [
+              "$m^2+2m+4$",
+              "$m^2-8m+4$",
+              "$(m-2)^2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$\\Delta=b^2-4ac$: con quên nhân $4$.",
+                "review": "d-ptbh"
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "Con nhớ thiếu: $(m+2)^2=m^2+4m+4$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$\\Delta=(m+2)^2-4\\cdot2m=m^2+4m+4-8m=m^2-4m+4=(m-2)^2$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "d-thamso-x5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Từ $\\Delta$ vừa tính, kết luận đúng là:",
+            "options": [
+              "Kết luận: $\\Delta \\ge 0$ với mọi $m$ nên phương trình luôn có nghiệm",
+              "Kết luận: phương trình luôn có hai nghiệm phân biệt",
+              "Kết luận: phương trình có nghiệm khi $m \\ne 2$",
+              "Kết luận: phương trình có nghiệm khi $m>2$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "$\\Delta \\ge 0$ cho phép $\\Delta=0$ (nghiệm kép), nên chưa chắc phân biệt."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "$\\Delta=0$ thì phương trình vẫn có nghiệm (nghiệm kép)."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Bình phương không âm với **mọi** $m$, không cần $m$ lớn hơn số nào."
+              }
+            },
+            "solution": "$\\Delta=(m-2)^2 \\ge 0$ với mọi $m$. Kết luận: phương trình luôn có nghiệm."
+          }
+        }
+      ],
+      "solution": "$\\Delta=(m+2)^2-8m=(m-2)^2 \\ge 0$ với mọi $m$. Kết luận: phương trình luôn có nghiệm với mọi $m$."
+    },
+    {
+      "id": "d-thamso-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-2mx+m^2-5m+6=0$ (ẩn $x$, tham số $m$). Tìm giá trị của $m$ để phương trình có hai nghiệm phân biệt.",
+      "source": "68 đề – Đề 37, Bài 3.3 (chuyển thể: chỉ phần điều kiện hai nghiệm phân biệt)",
+      "steps": [
+        {
+          "prompt": "Tính $\\Delta'$.",
+          "item": {
+            "id": "d-thamso-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$\\Delta'$ của phương trình bằng:",
+            "options": [
+              "$-5m-6$",
+              "$5m-6$",
+              "$3m^2+5m-6$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m^2-5m+6)$ phải đổi dấu mọi hạng tử: $-5m$ thành $+5m$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$\\Delta'$ dùng $b'=-m$, không dùng $b=-2m$.",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=m^2-(m^2-5m+6)=5m-6$."
+          }
+        },
+        {
+          "prompt": "Giải điều kiện.",
+          "item": {
+            "id": "d-thamso-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m<\\frac65$",
+              "$m \\ge \\frac65$",
+              "$m>\\frac56$",
+              "$m>\\frac65$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Chuyển $-6$ sang vế phải rồi chia cho số dương $5$: chiều bất đẳng thức giữ nguyên."
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$; $\\Delta'=0$ là nghiệm kép."
+              },
+              "2": {
+                "code": "E01",
+                "feedback": "Con chia ngược: phải lấy vế phải chia cho hệ số của $m$."
+              }
+            },
+            "solution": "$5m-6>0 \\Leftrightarrow m>\\frac65$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=m^2-(m^2-5m+6)=5m-6>0 \\Leftrightarrow m>\\frac65$. Kết luận: $m>\\frac65$."
+    },
+    {
+      "id": "d-thamso-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $mx^2-2(m+1)x+m+4=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình **có nghiệm**.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội",
+      "steps": [
+        {
+          "prompt": "Xét $m=0$.",
+          "item": {
+            "id": "d-thamso-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Khi $m=0$:",
+            "options": [
+              "Phương trình thành $4=0$, vô nghiệm",
+              "Bỏ qua $m=0$ vì phương trình bậc hai cần $a \\ne 0$",
+              "Phương trình thành $-2x+4=0$, có nghiệm $x=2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$-2(m+1)x$ với $m=0$ là $-2x$, không mất đi."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Đề hỏi “phương trình có nghiệm”, không bắt buộc bậc hai: phải xét cả $a=0$."
+              }
+            },
+            "solution": "$m=0$: $-2x+4=0 \\Leftrightarrow x=2$. Vậy $m=0$ thoả mãn."
+          }
+        },
+        {
+          "prompt": "Xét $m \\ne 0$.",
+          "item": {
+            "id": "d-thamso-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Khi $m \\ne 0$, phương trình có nghiệm khi và chỉ khi:",
+            "options": [
+              "$\\Delta'=1-2m \\ge 0$, tức $m \\le \\frac12$",
+              "$\\Delta'=1-2m>0$, tức $m<\\frac12$",
+              "$\\Delta'=6m+1 \\ge 0$, tức $m \\ge -\\frac16$",
+              "$\\Delta'=1-2m \\ge 0$, tức $m \\ge \\frac12$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "“Có nghiệm” gồm cả nghiệm kép, nên dùng $\\Delta' \\ge 0$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$-m(m+4)=-m^2-4m$: con quên đổi dấu hạng tử $4m$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Chia hai vế cho số âm $-2$ thì phải đổi chiều."
+              }
+            },
+            "solution": "$\\Delta'=(m+1)^2-m(m+4)=m^2+2m+1-m^2-4m=1-2m \\ge 0 \\Leftrightarrow m \\le \\frac12$ (với $m \\ne 0$)."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "d-thamso-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận: phương trình có nghiệm khi và chỉ khi:",
+            "options": [
+              "$m \\le \\frac12$ và $m \\ne 0$",
+              "$m \\le \\frac12$",
+              "$m<\\frac12$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Trường hợp $m=0$ phương trình vẫn có nghiệm, phải gộp vào."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Tại $\\Delta'=0$ phương trình có nghiệm kép, vẫn là có nghiệm."
+              }
+            },
+            "solution": "$m=0$ thoả mãn; $m \\ne 0$ cần $m \\le \\frac12$. Gộp lại: $m \\le \\frac12$."
+          }
+        }
+      ],
+      "solution": "$m=0$: $-2x+4=0$ có nghiệm $x=2$. $m \\ne 0$: $\\Delta'=1-2m \\ge 0 \\Leftrightarrow m \\le \\frac12$. Kết luận: $m \\le \\frac12$."
+    },
+    {
+      "id": "d-thamso-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-2(m+1)x+4m=0$ (ẩn $x$, tham số $m$). Biết phương trình có một nghiệm $x=-1$. Tìm $m$ và nghiệm còn lại.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội",
+      "steps": [
+        {
+          "prompt": "Tìm $m$.",
+          "item": {
+            "id": "d-thamso-x8-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá trị của $m$ là (nhập số hoặc phân số):",
+            "answer": "-1/2",
+            "mistakes": [
+              {
+                "answer": "1/2",
+                "code": "E02",
+                "feedback": "Thay $x=-1$: $-2(m+1)\\cdot(-1)=+2(m+1)$, con để sai dấu."
+              },
+              {
+                "answer": "-1/6",
+                "code": "E01",
+                "feedback": "$(-1)^2=1$, không phải $-1$."
+              }
+            ],
+            "solution": "Thay $x=-1$: $1+2(m+1)+4m=0 \\Leftrightarrow 6m+3=0 \\Leftrightarrow m=-\\frac12$."
+          }
+        },
+        {
+          "prompt": "Tìm nghiệm còn lại.",
+          "item": {
+            "id": "d-thamso-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Với $m$ vừa tìm, nghiệm còn lại của phương trình là:",
+            "answer": "2",
+            "mistakes": [
+              {
+                "answer": "-1",
+                "code": "E10",
+                "feedback": "Đó là nghiệm đề đã cho; đề hỏi nghiệm còn lại."
+              },
+              {
+                "answer": "-2",
+                "code": "E02",
+                "feedback": "Từ thừa số $x-a=0$ suy ra $x=a$, giữ nguyên dấu của $a$; con đã đổi dấu."
+              }
+            ],
+            "solution": "$m=-\\frac12$: $x^2-x-2=0 \\Leftrightarrow (x+1)(x-2)=0 \\Leftrightarrow x=-1$ hoặc $x=2$. Nghiệm còn lại là $x=2$."
+          }
+        }
+      ],
+      "solution": "Thay $x=-1$: $6m+3=0 \\Leftrightarrow m=-\\frac12$. Khi đó $x^2-x-2=0$ có hai nghiệm $-1$ và $2$. Kết luận: $m=-\\frac12$, nghiệm còn lại $x=2$."
+    }
+  ]
+}

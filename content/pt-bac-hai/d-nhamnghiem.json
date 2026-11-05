@@ -1,0 +1,718 @@
+{
+  "id": "d-nhamnghiem",
+  "module": "pt-bac-hai",
+  "order": 2,
+  "title": "Nhẩm nghiệm & phân tích nhân tử qua nghiệm",
+  "status": "draft",
+  "estMinutes": 40,
+  "theory": [
+    "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — đưa phương trình về dạng $ax^2+bx+c=0$ ($a \\ne 0$), đọc đúng $a$, $b$, $c$ **kèm dấu**.",
+    "**Quy tắc nhẩm nghiệm:** nếu $a+b+c=0$ thì phương trình có nghiệm $x_1=1$, $x_2=\\dfrac{c}{a}$. Nếu $a-b+c=0$ thì có nghiệm $x_1=-1$, $x_2=-\\dfrac{c}{a}$. **Phân tích nhân tử qua nghiệm:** nếu $ax^2+bx+c=0$ có hai nghiệm $x_1$, $x_2$ thì $ax^2+bx+c=a(x-x_1)(x-x_2)$. Điều kiện: vế phải đã bằng $0$.",
+    "**Vì sao:** thay $x=1$ vào vế trái được đúng $a+b+c$; thay $x=-1$ được $a-b+c$. Khi $a+b+c=0$ thì $b=-(a+c)$, nên $ax^2+bx+c=(x-1)(ax-c)$; nghiệm còn lại là $\\dfrac{c}{a}$. Khi $a-b+c=0$ thì $ax^2+bx+c=(x+1)(ax+c)$.",
+    "**Bẫy hay gặp:** quên hệ số $a$: $2x^2-3x+1 \\ne (x-1)\\left(x-\\frac12\\right)$, đúng là $2(x-1)\\left(x-\\frac12\\right)=(x-1)(2x-1)$. Nghiệm thứ hai là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$; trường hợp $a-b+c=0$ phải có dấu trừ. Nghiệm $x_1$ cho thừa số $x-x_1$: nghiệm $-1$ cho $x+1$.",
+    "**Nhận dạng:** trước khi tính $\\Delta$, cộng thử $a+b+c$ và $a-b+c$ — bằng $0$ thì nhẩm, nhanh hơn công thức nghiệm. Cả hai khác $0$ → tính $\\Delta$ như bài trước. Đề “phân tích thành nhân tử” một tam thức bậc hai không có hằng đẳng thức → tìm hai nghiệm rồi viết $a(x-x_1)(x-x_2)$. Không dùng khi $\\Delta<0$: tam thức không phân tích được.",
+    "**Phiếu nhẩm nghiệm:** (1) chuyển hết về vế trái, ghi $a$, $b$, $c$ kèm dấu; (2) tính $a+b+c$, rồi $a-b+c$; (3) viết hai nghiệm; (4) thử lại một nghiệm; (5) phân tích $a(x-x_1)(x-x_2)$, nhân $a$ vào một ngoặc cho gọn; (6) viết **Kết luận**. Biểu thức chứa $\\sqrt x$ như $x-5\\sqrt x+4$: coi $t=\\sqrt x$, làm như trên."
+  ],
+  "worked": {
+    "problem": "Giải phương trình $3x^2-7x+4=0$, rồi phân tích $3x^2-7x+4$ thành nhân tử.",
+    "steps": [
+      {
+        "text": "Ta có $a=3$, $b=-7$, $c=4$ và $a+b+c=3-7+4=0$.",
+        "why": "Cộng thử $a+b+c$ trước khi tính $\\Delta$; nhớ $b$ mang dấu âm."
+      },
+      {
+        "text": "Vì $a+b+c=0$ nên phương trình có nghiệm $x_1=1$, $x_2=\\dfrac{c}{a}=\\dfrac43$.",
+        "why": "Thay $x=1$ vào vế trái được đúng $a+b+c=0$."
+      },
+      {
+        "text": "Thử lại: $3 \\cdot \\dfrac{16}{9}-7 \\cdot \\dfrac43+4=\\dfrac{16-28+12}{3}=0$.",
+        "why": "Thử nghiệm phân số để chắc không nhầm $\\dfrac{c}{a}$ với $\\dfrac{a}{c}$."
+      },
+      {
+        "text": "Phân tích: $3x^2-7x+4=3(x-1)\\left(x-\\dfrac43\\right)=(x-1)(3x-4)$.",
+        "why": "Giữ hệ số $a=3$, nhân nó vào ngoặc thứ hai để hết phân số."
+      },
+      {
+        "text": "Kết luận: phương trình có hai nghiệm $x=1$, $x=\\dfrac43$; $3x^2-7x+4=(x-1)(3x-4)$.",
+        "why": "Nhân lại: $(x-1)(3x-4)=3x^2-4x-3x+4=3x^2-7x+4$."
+      }
+    ],
+    "selfExplain": "Bạn viết $3x^2-7x+4=(x-1)\\left(x-\\frac43\\right)$. Nhân ra thử: kết quả khác đề ở đâu, và vì sao?"
+  },
+  "faded": {
+    "problem": "Giải phương trình $2x^2+7x+5=0$, rồi phân tích $2x^2+7x+5$ thành nhân tử.",
+    "steps": [
+      {
+        "text": "Ta có $a=2$, $b=7$, $c=5$; $a+b+c=14 \\ne 0$ nên $1$ không phải nghiệm."
+      },
+      {
+        "prompt": "Thử tổng thứ hai.",
+        "item": {
+          "id": "d-nhamnghiem-f1",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Tính $a-b+c$. Kết luận nào đúng?",
+          "options": [
+            "$a-b+c=0$ nên phương trình có nghiệm $x_1=-1$",
+            "$a-b+c=0$ nên phương trình có nghiệm $x_1=1$",
+            "$a-b+c=14$ nên phải dùng $\\Delta$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "Con nhầm hai trường hợp: $a-b+c=0$ ứng với thay $x=-1$, không phải $x=1$."
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Con đổi dấu sai: $b=7$ nên $a-b+c=2-7+5$."
+            }
+          },
+          "solution": "$a-b+c=2-7+5=0$, nên phương trình có nghiệm $x_1=-1$."
+        }
+      },
+      {
+        "prompt": "Tìm nghiệm còn lại.",
+        "item": {
+          "id": "d-nhamnghiem-f2",
+          "type": "numeric",
+          "level": "L1",
+          "prompt": "Nghiệm còn lại $x_2$ bằng bao nhiêu?",
+          "answer": "-5/2",
+          "mistakes": [
+            {
+              "answer": "5/2",
+              "code": "E03",
+              "feedback": "Khi $a-b+c=0$, nghiệm còn lại là $-\\dfrac{c}{a}$; con quên dấu trừ."
+            },
+            {
+              "answer": "-2/5",
+              "code": "E03",
+              "feedback": "Con lấy ngược: nghiệm còn lại là $-\\dfrac{c}{a}$, không phải $-\\dfrac{a}{c}$."
+            }
+          ],
+          "solution": "$x_2=-\\dfrac{c}{a}=-\\dfrac52$."
+        }
+      },
+      {
+        "prompt": "Phân tích thành nhân tử.",
+        "item": {
+          "id": "d-nhamnghiem-f3",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "$2x^2+7x+5$ phân tích thành:",
+          "options": [
+            "$(x+1)\\left(x+\\frac52\\right)$",
+            "$(x-1)(2x-5)$",
+            "$(x+1)(2x+5)$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E03",
+              "feedback": "Con quên hệ số $a=2$: $ax^2+bx+c=a(x-x_1)(x-x_2)$."
+            },
+            "1": {
+              "code": "E02",
+              "feedback": "Nghiệm $x_1$ cho thừa số $x-x_1$; nghiệm âm thì thừa số có dấu cộng."
+            }
+          },
+          "solution": "$2x^2+7x+5=2(x+1)\\left(x+\\frac52\\right)=(x+1)(2x+5)$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "d-nhamnghiem-f4",
+          "type": "mcq",
+          "level": "L1",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: phương trình có nghiệm $x=-1$.",
+            "Kết luận: phương trình có hai nghiệm $x=-1$, $x=-\\frac52$; $2x^2+7x+5=(x+1)(2x+5)$.",
+            "Kết luận: phương trình có hai nghiệm $x=-1$, $x=-\\frac52$; $2x^2+7x+5=(x+1)\\left(x+\\frac52\\right)$."
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Kết luận còn thiếu: phương trình bậc hai này có hai nghiệm, và đề còn hỏi phân tích."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Phần phân tích quên hệ số $a=2$ đứng trước."
+            }
+          },
+          "solution": "Hai nghiệm $x=-1$, $x=-\\frac52$ và $2x^2+7x+5=(x+1)(2x+5)$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "d-nhamnghiem-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $x^2-6x+5=0$ có hai nghiệm là:",
+      "hints": [
+        "Đề hỏi cả hai nghiệm của phương trình.",
+        "Cộng thử $a+b+c$ và $a-b+c$: tổng nào bằng $0$?",
+        "Khi $a+b+c=0$: một nghiệm là $1$, nghiệm kia là $\\frac{c}{a}$."
+      ],
+      "options": [
+        "$x=-1$ và $x=-5$",
+        "$x=1$ và $x=\\frac15$",
+        "$x=1$ và $x=-5$",
+        "$x=1$ và $x=5$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Con nhầm trường hợp: ở đây $a+b+c=0$, nên có nghiệm $x=1$."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Khi $a+b+c=0$, nghiệm còn lại là $\\dfrac{c}{a}$, không có dấu trừ."
+        }
+      },
+      "solution": "$a+b+c=1-6+5=0$ nên $x_1=1$, $x_2=\\dfrac{c}{a}=5$."
+    },
+    {
+      "id": "d-nhamnghiem-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Phương trình $x^2+8x+7=0$ có một nghiệm $x_1=-1$. Tìm nghiệm còn lại $x_2$.",
+      "hints": [
+        "Đề cho sẵn một nghiệm, cần tìm nghiệm kia.",
+        "Nghiệm $-1$ ứng với tổng nào của $a$, $b$, $c$ bằng $0$?",
+        "Khi $a-b+c=0$, nghiệm còn lại là $-\\frac{c}{a}$."
+      ],
+      "answer": "-7",
+      "mistakes": [
+        {
+          "answer": "7",
+          "code": "E03",
+          "feedback": "Khi $a-b+c=0$, nghiệm còn lại là $-\\dfrac{c}{a}$; con quên dấu trừ."
+        },
+        {
+          "answer": "-1/7",
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $-\\dfrac{c}{a}$, không phải $-\\dfrac{a}{c}$."
+        }
+      ],
+      "solution": "$a-b+c=1-8+7=0$ nên $x_2=-\\dfrac{c}{a}=-7$."
+    },
+    {
+      "id": "d-nhamnghiem-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Giải phương trình $5x^2-3x-2=0$. Cách nào **nhanh nhất**?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi chọn cách giải, chưa cần giải.",
+        "Có cách nào biết nghiệm mà không tính $\\Delta$?",
+        "Cộng thử $a+b+c$ và $a-b+c$."
+      ],
+      "options": [
+        "Đặt nhân tử chung $x$",
+        "Thấy $a+b+c=0$ nên nhẩm nghiệm",
+        "Dùng hằng đẳng thức $A^2-B^2$",
+        "Tính $\\Delta$ rồi dùng công thức nghiệm"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Hệ số $c=-2 \\ne 0$, không có nhân tử chung $x$."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Vế trái có hạng tử $-3x$, không có dạng $A^2-B^2$."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Công thức nghiệm vẫn đúng nhưng chậm; cộng thử $a+b+c$ trước khi tính $\\Delta$."
+        }
+      },
+      "solution": "$a+b+c=5-3-2=0$ nên nhẩm ngay $x_1=1$, $x_2=\\dfrac{c}{a}=-\\dfrac25$."
+    },
+    {
+      "id": "d-nhamnghiem-p4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Giải phương trình $x^2+3=4x$. Nhập nghiệm **lớn hơn**.",
+      "hints": [
+        "Cần giải phương trình rồi chọn nghiệm lớn hơn.",
+        "Phương trình đã có dạng $ax^2+bx+c=0$ chưa?",
+        "Chuyển hết sang vế trái, ghi $a$, $b$, $c$ kèm dấu, rồi cộng thử."
+      ],
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "-1",
+          "code": "E02",
+          "feedback": "Chuyển $4x$ sang vế trái phải đổi dấu thành $-4x$.",
+          "review": "d-ptbh"
+        },
+        {
+          "answer": "1",
+          "code": "E10",
+          "feedback": "Con nhập nghiệm nhỏ hơn; đề hỏi nghiệm lớn hơn."
+        }
+      ],
+      "solution": "$x^2-4x+3=0$; $a+b+c=1-4+3=0$ nên $x_1=1$, $x_2=\\dfrac{c}{a}=3$. Nghiệm lớn hơn là $3$."
+    },
+    {
+      "id": "d-nhamnghiem-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phân tích $2x^2-3x+1$ thành nhân tử.",
+      "hints": [
+        "Cần viết tam thức thành tích hai thừa số.",
+        "Tìm hai nghiệm của $2x^2-3x+1=0$ trước — nhẩm được không?",
+        "Viết $a(x-x_1)(x-x_2)$; đừng bỏ hệ số $a$."
+      ],
+      "options": [
+        "$(x-1)(2x-1)$",
+        "$(x-1)\\left(x-\\frac12\\right)$",
+        "$(x+1)(2x+1)$",
+        "$(x-1)(x-2)$"
+      ],
+      "correct": 0,
+      "mistakes": {
+        "1": {
+          "code": "E03",
+          "feedback": "Con quên hệ số $a=2$: $ax^2+bx+c=a(x-x_1)(x-x_2)$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con viết $x+x_1$; nghiệm $x_1$ cho thừa số $x-x_1$."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+        }
+      },
+      "solution": "$a+b+c=2-3+1=0$ nên hai nghiệm là $1$ và $\\dfrac12$. Vậy $2x^2-3x+1=2(x-1)\\left(x-\\frac12\\right)=(x-1)(2x-1)$."
+    },
+    {
+      "id": "d-nhamnghiem-p6",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\dfrac{x^2-7x+6}{x^2-1}$ với $x \\ne \\pm 1$ đến tận cùng.",
+      "hints": [
+        "Cần rút gọn phân thức đến tận cùng.",
+        "Muốn rút gọn phải phân tích tử và mẫu; tử là tam thức bậc hai.",
+        "Nhẩm nghiệm tử để phân tích; mẫu dùng hằng đẳng thức."
+      ],
+      "options": [
+        "$\\dfrac{x+6}{x+1}$",
+        "$\\dfrac{x-6}{x-1}$",
+        "$\\dfrac{x-6}{x+1}$",
+        "$\\dfrac{x^2-7x+6}{x^2-1}$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Khi $a+b+c=0$, nghiệm còn lại là $\\dfrac{c}{a}$, không có dấu trừ."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Con nhớ sai: $x^2-1=(x-1)(x+1)$, không phải $(x-1)^2$.",
+          "review": "f1-hdt"
+        },
+        "3": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn: tử và mẫu đều phân tích được và còn nhân tử chung.",
+          "review": "f1-tgon"
+        }
+      },
+      "solution": "$a+b+c=1-7+6=0$ nên $x^2-7x+6=(x-1)(x-6)$; $x^2-1=(x-1)(x+1)$. Vậy biểu thức bằng $\\dfrac{x-6}{x+1}$."
+    },
+    {
+      "id": "d-nhamnghiem-p7",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-(m+3)x+m+2=0$ ($m$ là tham số). Phương trình luôn có nghiệm $x=1$. Tìm $m$ để nghiệm còn lại bằng $-4$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (PT bậc hai chứa tham số, nghiệm nhẩm được)",
+      "hints": [
+        "Cần tìm $m$ để nghiệm khác $1$ bằng số đề cho.",
+        "Cộng $a+b+c$ theo $m$: được bao nhiêu?",
+        "Nghiệm còn lại là $\\frac{c}{a}$ viết theo $m$; cho nó bằng số đề cho."
+      ],
+      "answer": "-6",
+      "mistakes": [
+        {
+          "answer": "2",
+          "code": "E03",
+          "feedback": "Khi $a+b+c=0$, nghiệm còn lại là $\\dfrac{c}{a}$, không có dấu trừ."
+        },
+        {
+          "answer": "-2",
+          "code": "E02",
+          "feedback": "Chuyển vế phải đổi dấu: từ $m+2=-4$ trừ $2$ ở cả hai vế."
+        }
+      ],
+      "solution": "$a+b+c=1-(m+3)+m+2=0$ với mọi $m$, nên $x_1=1$, $x_2=\\dfrac{c}{a}=m+2$. Cho $m+2=-4$ được $m=-6$. Kết luận: $m=-6$."
+    },
+    {
+      "id": "d-nhamnghiem-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $P=\\dfrac{x-5\\sqrt x+4}{\\sqrt x-1}$ với $x \\ge 0$, $x \\ne 1$. Rút gọn $P$, rồi tìm $x$ để $P=2$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (Bài 1: rút gọn biểu thức chứa căn)",
+      "hints": [
+        "Đề yêu cầu rút gọn $P$ trước, rồi mới tìm $x$.",
+        "Tử $x-5\\sqrt x+4$ là tam thức bậc hai theo $\\sqrt x$.",
+        "Đặt $t=\\sqrt x$, nhẩm nghiệm $t^2-5t+4=0$ rồi phân tích tử."
+      ],
+      "steps": [
+        {
+          "prompt": "Nhẩm nghiệm của tử.",
+          "item": {
+            "id": "d-nhamnghiem-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Đặt $t=\\sqrt x$, tử là $t^2-5t+4$. Phương trình $t^2-5t+4=0$ có hai nghiệm:",
+            "options": [
+              "$t=-1$ và $t=-4$",
+              "$t=1$ và $t=4$",
+              "$t=1$ và $t=\\frac14$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Con nhầm trường hợp: ở đây $a+b+c=0$, nên có nghiệm $t=1$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+              }
+            },
+            "solution": "$1-5+4=0$ nên $t=1$, $t=\\dfrac{c}{a}=4$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "d-nhamnghiem-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $P$ đến tận cùng:",
+            "options": [
+              "$\\sqrt x-4$",
+              "$\\dfrac{(\\sqrt x-1)(\\sqrt x-4)}{\\sqrt x-1}$",
+              "$\\sqrt x+4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa rút gọn hết: tử và mẫu còn nhân tử chung $\\sqrt x-1$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Nghiệm $t_2$ cho thừa số $\\sqrt x-t_2$; con viết sai dấu."
+              }
+            },
+            "solution": "$x-5\\sqrt x+4=(\\sqrt x-1)(\\sqrt x-4)$, nên $P=\\sqrt x-4$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "d-nhamnghiem-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $x$ để $P=2$.",
+            "answer": "36",
+            "mistakes": [
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Con mới tìm được $\\sqrt x$; còn phải bình phương để ra $x$."
+              }
+            ],
+            "solution": "$\\sqrt x-4=2 \\Rightarrow \\sqrt x=6 \\Rightarrow x=36$ (thỏa $x \\ge 0$, $x \\ne 1$)."
+          }
+        }
+      ],
+      "solution": "$P=\\dfrac{(\\sqrt x-1)(\\sqrt x-4)}{\\sqrt x-1}=\\sqrt x-4$. $P=2 \\Leftrightarrow \\sqrt x=6 \\Leftrightarrow x=36$ (thỏa điều kiện). Kết luận: $x=36$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "d-nhamnghiem-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Phương trình $x^2+4x+3=0$ có hai nghiệm là:",
+      "options": [
+        "$x=1$ và $x=3$",
+        "$x=-1$ và $x=3$",
+        "$x=-1$ và $x=-3$",
+        "$x=-1$ và $x=-\\frac13$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Con nhầm trường hợp: ở đây $a-b+c=0$, nên có nghiệm $x=-1$."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Khi $a-b+c=0$, nghiệm còn lại là $-\\dfrac{c}{a}$; con quên dấu trừ."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $-\\dfrac{c}{a}$, không phải $-\\dfrac{a}{c}$."
+        }
+      },
+      "solution": "$a-b+c=1-4+3=0$ nên $x_1=-1$, $x_2=-\\dfrac{c}{a}=-3$."
+    },
+    {
+      "id": "d-nhamnghiem-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Phương trình $7x^2-9x+2=0$ có một nghiệm $x_1=1$. Tìm nghiệm còn lại $x_2$.",
+      "answer": "2/7",
+      "mistakes": [
+        {
+          "answer": "7/2",
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+        },
+        {
+          "answer": "-2/7",
+          "code": "E04",
+          "feedback": "Con nhầm trường hợp: nghiệm $1$ ứng với $a+b+c=0$, nghiệm kia là $\\dfrac{c}{a}$, không có dấu trừ."
+        }
+      ],
+      "solution": "$a+b+c=7-9+2=0$ nên $x_2=\\dfrac{c}{a}=\\dfrac27$."
+    },
+    {
+      "id": "d-nhamnghiem-x3",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phân tích $3x^2+x-4$ thành nhân tử.",
+      "options": [
+        "$(x-1)\\left(x+\\frac43\\right)$",
+        "$(x+1)(3x-4)$",
+        "$(x-1)(3x-4)$",
+        "$(x-1)(3x+4)$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Con quên hệ số $a=3$: $ax^2+bx+c=a(x-x_1)(x-x_2)$."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Nghiệm $x_1$ cho thừa số $x-x_1$; con viết ngược dấu cả hai thừa số."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Con bỏ mất dấu của $c=-4$: nghiệm còn lại $\\dfrac{c}{a}$ là số âm."
+        }
+      },
+      "solution": "$a+b+c=3+1-4=0$ nên hai nghiệm là $1$ và $-\\dfrac43$. Vậy $3x^2+x-4=3(x-1)\\left(x+\\frac43\\right)=(x-1)(3x+4)$."
+    },
+    {
+      "id": "d-nhamnghiem-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Phân tích $x^2-x-6$ thành nhân tử.",
+      "options": [
+        "$(x-1)(x+6)$",
+        "$(x-3)(x+2)$",
+        "$(x+3)(x-2)$",
+        "$(x+1)(x-6)$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Ở đây $a+b+c=-6 \\ne 0$, không nhẩm được nghiệm $1$; phải tính $\\Delta$.",
+          "review": "d-ptbh"
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Nghiệm $x_1$ cho thừa số $x-x_1$; con viết ngược dấu cả hai thừa số."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Ở đây $a-b+c=-4 \\ne 0$, không nhẩm được nghiệm $-1$; phải tính $\\Delta$.",
+          "review": "d-ptbh"
+        }
+      },
+      "solution": "$a+b+c \\ne 0$, $a-b+c \\ne 0$ nên tính $\\Delta=1+24=25$, nghiệm $x=\\dfrac{1 \\pm 5}{2}$, tức $3$ và $-2$. Vậy $x^2-x-6=(x-3)(x+2)$."
+    },
+    {
+      "id": "d-nhamnghiem-x5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Rút gọn $\\dfrac{2x^2+3x+1}{x+1}$ với $x \\ne -1$ đến tận cùng.",
+      "options": [
+        "$x+\\frac12$",
+        "$2x-1$",
+        "$\\dfrac{(x+1)(2x+1)}{x+1}$",
+        "$2x+1$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Con quên hệ số $a=2$ khi phân tích tử."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Khi $a-b+c=0$, nghiệm còn lại là $-\\dfrac{c}{a}$; con quên dấu trừ."
+        },
+        "2": {
+          "code": "E11",
+          "feedback": "Chưa rút gọn hết: tử và mẫu còn nhân tử chung $x+1$.",
+          "review": "f1-tgon"
+        }
+      },
+      "solution": "$a-b+c=2-3+1=0$ nên tử có nghiệm $-1$ và $-\\dfrac12$: $2x^2+3x+1=(x+1)(2x+1)$. Vậy biểu thức bằng $2x+1$."
+    },
+    {
+      "id": "d-nhamnghiem-x6",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-(m+4)x+m+3=0$ ($m$ là tham số). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thỏa mãn $|x_1-x_2|=4$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (PT bậc hai chứa tham số, nghiệm nhẩm được)",
+      "options": [
+        "$m=2$",
+        "$m=2$ hoặc $m=-6$",
+        "$m=0$ hoặc $m=-8$",
+        "$m=-2$ hoặc $m=6$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "$|A|=4$ cho hai trường hợp $A=4$ và $A=-4$; con mới xét một."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Khi $a+b+c=0$, nghiệm còn lại là $\\dfrac{c}{a}$, không có dấu trừ."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Chuyển vế phải đổi dấu: từ $m+2=\\pm 4$ trừ $2$ ở cả hai vế."
+        }
+      },
+      "solution": "$a+b+c=1-(m+4)+m+3=0$ nên hai nghiệm là $1$ và $m+3$. $|x_1-x_2|=|m+2|=4 \\Leftrightarrow m=2$ hoặc $m=-6$ (khi đó hai nghiệm khác nhau)."
+    },
+    {
+      "id": "d-nhamnghiem-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $A=\\dfrac{x+\\sqrt x-2}{x-1}$ với $x \\ge 0$, $x \\ne 1$. Rút gọn $A$, rồi tìm $x$ để $A=\\dfrac54$.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (Bài 1: rút gọn biểu thức chứa căn)",
+      "steps": [
+        {
+          "prompt": "Phân tích tử.",
+          "item": {
+            "id": "d-nhamnghiem-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Tử $x+\\sqrt x-2$ phân tích thành:",
+            "options": [
+              "$(\\sqrt x+1)(\\sqrt x-2)$",
+              "$(\\sqrt x-1)(\\sqrt x-2)$",
+              "$(\\sqrt x-1)(\\sqrt x+2)$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Con nhầm trường hợp: ở đây $a+b+c=1+1-2=0$, nên có nghiệm $t=1$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Con bỏ mất dấu của $c=-2$: nghiệm còn lại $\\dfrac{c}{a}$ là số âm."
+              }
+            },
+            "solution": "Đặt $t=\\sqrt x$: $t^2+t-2$ có $a+b+c=0$, nghiệm $1$ và $-2$. Vậy tử bằng $(\\sqrt x-1)(\\sqrt x+2)$."
+          }
+        },
+        {
+          "prompt": "Rút gọn.",
+          "item": {
+            "id": "d-nhamnghiem-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Rút gọn $A$ đến tận cùng:",
+            "options": [
+              "$\\dfrac{\\sqrt x+2}{\\sqrt x+1}$",
+              "$\\dfrac{(\\sqrt x-1)(\\sqrt x+2)}{x-1}$",
+              "$\\dfrac{\\sqrt x+2}{\\sqrt x-1}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E11",
+                "feedback": "Chưa rút gọn hết: mẫu $x-1$ còn phân tích được."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Con nhớ sai: $x-1=(\\sqrt x-1)(\\sqrt x+1)$, không phải $(\\sqrt x-1)^2$.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$A=\\dfrac{(\\sqrt x-1)(\\sqrt x+2)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x+2}{\\sqrt x+1}$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "d-nhamnghiem-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tìm $x$ để $A=\\dfrac54$.",
+            "answer": "9",
+            "mistakes": [
+              {
+                "answer": "3",
+                "code": "E10",
+                "feedback": "Con mới tìm được $\\sqrt x$; còn phải bình phương để ra $x$."
+              }
+            ],
+            "solution": "$4(\\sqrt x+2)=5(\\sqrt x+1) \\Rightarrow \\sqrt x=3 \\Rightarrow x=9$ (thỏa $x \\ge 0$, $x \\ne 1$)."
+          }
+        }
+      ],
+      "solution": "$A=\\dfrac{(\\sqrt x-1)(\\sqrt x+2)}{(\\sqrt x-1)(\\sqrt x+1)}=\\dfrac{\\sqrt x+2}{\\sqrt x+1}$. $A=\\dfrac54 \\Leftrightarrow 4\\sqrt x+8=5\\sqrt x+5 \\Leftrightarrow \\sqrt x=3 \\Leftrightarrow x=9$ (thỏa điều kiện). Kết luận: $x=9$."
+    },
+    {
+      "id": "d-nhamnghiem-x8",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Biết phương trình $3x^2-8x+c=0$ có một nghiệm bằng $1$. Tìm nghiệm còn lại.",
+      "source": "Soạn theo dạng đề tuyển sinh 10 Hà Nội (hỏi ngược: biết một nghiệm, tìm hệ số và nghiệm kia)",
+      "answer": "5/3",
+      "mistakes": [
+        {
+          "answer": "3/5",
+          "code": "E03",
+          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+        },
+        {
+          "answer": "5",
+          "code": "E03",
+          "feedback": "Nghiệm còn lại là $\\dfrac{c}{a}$; con quên chia cho $a$."
+        }
+      ],
+      "solution": "Nghiệm $1$ nên $3-8+c=0$, tức $c=5$. Khi đó $a+b+c=0$ nên nghiệm còn lại là $\\dfrac{c}{a}=\\dfrac53$."
+    }
+  ]
+}

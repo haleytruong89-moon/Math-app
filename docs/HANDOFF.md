@@ -17,7 +17,7 @@
 | Đợt 4 (LT19): g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram | `p1-content-4` | duyệt trước 01/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
-| Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ⬜ việc kế của phiên Nội dung |
+| Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | 🟡 01/11 PR mở (nháp, giải độc lập 80/80); chờ gia sư soát + phụ huynh duyệt. Kế: đợt 8 theo `CURRICULUM.md` §6 |
 | Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt 1 (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52) + đợt 2 (9 + 10 bài ý a, nháp) | `p1-ld42`, `p1-ld42-2` | đợt đầu trước 23/11 | ✅ Merged 23/10 (PR #42 code + đợt 1, #43 đợt 2: Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56) — 19 bài, phụ huynh duyệt 23/10, không SQL. Kế: gia sư soát; đợt 3 = bài ý a có tiếp tuyến (Đề 1, 2, 10, 14, 21, 23, 27…) sau l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027 khi có o-dongdang |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
@@ -30,7 +30,7 @@
 | **2.** S4b gọn — tiến độ mốc 8,5/9,5, KU trễ lịch (bỏ mở khoá tay) | `p1-slice-4b` | ✅ 22/10 — PR mở, không SQL | Quy tắc mốc chốt 22/10 (`SPEC.md` §0); phép tính ở `src/lib/learning/milestones.ts` |
 | **3.** S5 — code: Phân tích ngược, C3, C2, Sổ tay, tự vẽ hình | `p1-slice-5` | ✅ 21/10 — PR mở, không SQL | Đợt 5 soạn theo `CONTENT_STANDARD.md` §10 (hạn 15/11); Sổ tay cần hình SVG + duyệt |
 | **4a.** S8a — nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 ✅ | Kế hoạch `docs/superpowers/plans/2026-10-22-s8a-ai-reports.md`; thiết kế `docs/superpowers/specs/2026-10-22-s8-ai-design.md` (chốt 22/10) |
-| **4b.** S8b — AI cho con + bộ test + bật/tắt (không SQL) | `p1-slice-8b` | ✅ PR mở 01/11 | Kế hoạch `docs/superpowers/plans/2026-11-01-s8b-student-ai.md`. Phụ huynh: merge → `/parent/ai/bo-test` tạo bộ test, chạy, chấm 20 câu → bật ở `/parent/ai`. Việc sau: "giải thích cách khác", tóm tắt hội thoại trong báo cáo tuần, bài hình chứng minh, gia sư xem hội thoại |
+| **4b.** S8b — AI cho con + bộ test + bật/tắt (không SQL) | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) | Kế hoạch `docs/superpowers/plans/2026-11-01-s8b-student-ai.md`. Phụ huynh: merge → `/parent/ai/bo-test` tạo bộ test, chạy, chấm 20 câu → bật ở `/parent/ai`. Việc sau: "giải thích cách khác", tóm tắt hội thoại trong báo cáo tuần, bài hình chứng minh, gia sư xem hội thoại |
 
 ## Phụ huynh
 - [x] Merge #20–#23 (đợt 2–4, S9).
