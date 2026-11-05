@@ -12,14 +12,16 @@ await page.goto(`${BASE}/parent/content`);
 ok("content: grouped by batch", (await page.getByTestId("batch-1").count()) === 1 && (await page.getByTestId("batch-9").getByText("Chưa soạn", { exact: true }).count()) === 1);
 ok("content: P2 KUs in their own group (LT17)", (await page.getByTestId("extra").getByText("Học thêm thử").count()) === 1 && (await page.getByTestId("batch-1").getByText("Học thêm thử").count()) === 0);
 await page.goto(`${BASE}/parent/content/fa-2`);
-const box = page.getByTestId("unlock-box");
-ok("unit page: locked for the child → unlock offered", (await box.count()) === 1);
-await box.getByRole("button", { name: "Mở khoá cho con" }).click();
-await box.waitFor({ state: "detached" }); // the page re-renders without the box once the KU is open
+// Since 01/11 (focus): unlock lives in the "Chủ đề này cho con" box, next to the ★ toggle.
+const box = page.getByTestId("focus-box");
+const unlock = box.getByRole("button", { name: "Mở khoá", exact: true });
+ok("unit page: locked for the child → unlock offered", (await unlock.count()) === 1);
+await unlock.click();
+await unlock.waitFor({ state: "detached" }); // the page re-renders without the button once the KU is open
 const row = await sql(`select unit_id from public.unit_unlocks`);
 ok("db: unlock saved", row.length === 1 && row[0].unit_id === "fa-2", JSON.stringify(row));
 await page.reload();
-ok("unit page: no unlock box once open", (await page.getByTestId("unlock-box").count()) === 0);
+ok("unit page: no unlock button once open", (await page.getByTestId("focus-box").getByRole("button", { name: "Mở khoá", exact: true }).count()) === 0);
 ok("no browser errors", errors.length === 0, errors.join(" | "));
 await browser.close();
 console.log(res.join("\n"));

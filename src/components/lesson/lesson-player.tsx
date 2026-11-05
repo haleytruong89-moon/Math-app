@@ -15,6 +15,7 @@ import { QuestionFeedback } from "@/components/student/question-feedback";
 import { sessionTally } from "@/lib/learning/student-ux";
 import { RULES } from "@/lib/learning/rules";
 import { errorLabel } from "@/lib/content/errors";
+import { AiHelp } from "./ai-help";
 
 // One knowledge unit, in the order fixed by §3.5:
 // worked example (must be viewed in full) → faded example → practice L1→L2 → exit test.
@@ -34,6 +35,7 @@ export function LessonPlayer({
   backHref,
   testOut = false,
   previewBase = "/parent/content",
+  ai = false,
 }: {
   unit: PublicUnit;
   mode: "student" | "preview";
@@ -43,6 +45,8 @@ export function LessonPlayer({
   testOut?: boolean;
   /** Preview only: where "Ôn lại" links go (the parent's or the tutor's preview, T7). */
   previewBase?: string;
+  /** S8b: "Hỏi thêm" is on for this student (the server checked the switch, the test-set version and the cap). */
+  ai?: boolean;
 }) {
   const [workedViewed, setWorkedViewed] = useState(initial.workedViewed);
   const [fadedDone, setFadedDone] = useState(initial.fadedDone);
@@ -141,7 +145,7 @@ export function LessonPlayer({
             }}
           />
         )}
-        {stage === "practice" && <PracticeStage unit={unit} onDone={() => setStage("exit")} recapHref={recapHref} />}
+        {stage === "practice" && <PracticeStage unit={unit} onDone={() => setStage("exit")} recapHref={recapHref} ai={ai && mode === "student"} />}
         {stage === "exit" && <ExitStage unit={unit} backHref={backHref} />}
       </div>
     </div>
@@ -315,6 +319,7 @@ export function PracticeStage({
   recapHref,
   homeworkId,
   drill,
+  ai = false,
 }: {
   unit: PublicUnit;
   onDone: () => void;
@@ -322,6 +327,8 @@ export function PracticeStage({
   homeworkId?: string;
   /** Luyện đề 4.2: a drill problem — no exit test after it. */
   drill?: boolean;
+  /** S8b: show "Hỏi thêm" (never for drills; mcq / numeric / steps items only). */
+  ai?: boolean;
 }) {
   // One graded try per item; items answered wrong come back once at the end.
   const [queue, setQueue] = useState<PublicItem[]>(unit.practice);
@@ -338,6 +345,8 @@ export function PracticeStage({
 
   const finished = pos >= queue.length;
   const item = queue[pos];
+  // S8b: v1 helps on mcq / numeric / multi-step items, never on drills.
+  const aiOn = ai && !drill && !!item && (item.type === "mcq" || item.type === "numeric" || item.type === "steps");
 
   const check = (answer: string = value) =>
     run(async () => {
@@ -443,17 +452,23 @@ export function PracticeStage({
           onEnter={() => !result && check()}
         />
       )}
+      {aiOn && !result && item.hintsHtml && hintLevel >= item.hintsHtml.length && (
+        <AiHelp key={`ai-b-${item.id}-${pos}`} unitId={unit.id} itemId={item.id} mode="practice" stage="before" shownHints={hintLevel} />
+      )}
       {result ? (
-        <QuestionFeedback
-          result={result}
-          mode="practice"
-          tally={sessionTally(results)}
-          index={results.length - 1}
-          requeued={requeued}
-          nextLabel="Câu tiếp theo"
-          onNext={next}
-          recapHref={recapHref}
-        />
+        <>
+          {aiOn && !result.correct && <AiHelp key={`ai-a-${item.id}-${pos}`} unitId={unit.id} itemId={item.id} mode="practice" stage="after" shownHints={hintLevel} />}
+          <QuestionFeedback
+            result={result}
+            mode="practice"
+            tally={sessionTally(results)}
+            index={results.length - 1}
+            requeued={requeued}
+            nextLabel="Câu tiếp theo"
+            onNext={next}
+            recapHref={recapHref}
+          />
+        </>
       ) : (
         item.type !== "steps" &&
         item.type !== "analysis" && (

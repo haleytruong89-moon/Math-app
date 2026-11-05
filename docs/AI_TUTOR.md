@@ -77,7 +77,7 @@ Trả lời ──► sai ──► lời nhắc theo mã lỗi (đã duyệt) �
 | **S6b** | Gợi ý viết sẵn H1–H3 trong luyện tập; ghi `hint_level` (migration **0010**); câu dùng gợi ý H2+ không tính đúng lần đầu | 23/10 |
 | Nội dung | Mọi câu luyện tập từ đợt 1 có `hints` H1–H3 (`CONTENT_STANDARD.md` §3) | từ đợt 1 |
 | **S8a** | Nền AI (client, chi phí `ai_usage`, trần $10, soát số), báo cáo tuần (thứ Hai ~07:00 + nút tạo lại, xem trong app), tóm tắt gia sư (nút trên Buổi dạy), trang AI phụ huynh; migration **0014** gồm mọi bảng AI | ✅ code xong 22/10 — PR mở (SQL 0014) |
-| **S8b** | Hội thoại AI cho con + soát câu trả lời + nhật ký + nút "AI nói sai?" + trang chấm bộ test + bật/tắt theo bộ test; tóm tắt hội thoại trong báo cáo tuần | sau bộ test (02–08/11) |
+| **S8b** | Hội thoại AI cho con + soát câu trả lời + nhật ký + nút "AI nói sai?" + trang chấm bộ test + bật/tắt theo bộ test (v1: chưa có tóm tắt hội thoại trong báo cáo tuần, "giải thích cách khác", bài hình chứng minh) | ✅ code 01/11 (`p1-slice-8b`, không SQL) — bật sau khi phụ huynh chấm bộ test đạt |
 | Bộ test | Gom 20–30 lỗi thật từ pilot tuần 1–3 → phụ huynh chấm | 02–08/11 |
 | **Bật AI cho con** | Sau khi đạt bộ test + phụ huynh duyệt lệnh hệ thống | **~cuối 11/2026** (lùi từ ~09/11, quyết định 21/10) |
 

@@ -44,7 +44,7 @@ try {
   ok("AI page: spend and the call", (await page.getByTestId("ai-spend").innerText()).includes("1 lượt gọi") && (await page.getByTestId("ai-calls").innerText()).includes("Báo cáo tuần"));
   await page.screenshot({ path: `${shots}/2-ai-page.png`, fullPage: true });
   await page.getByTestId("staff-enabled").uncheck();
-  await page.getByRole("button", { name: "Lưu" }).click();
+  await page.getByRole("button", { name: "Lưu", exact: true }).click();
   await page.getByText("Đã lưu.").waitFor();
 
   await page.goto(`${BASE}/parent/bao-cao`);
