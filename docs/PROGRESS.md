@@ -71,6 +71,19 @@ Phụ huynh "ok" (01/11): làm S8b ngay, giữ cổng bộ test ngắn thay vì 
 
 **Chưa làm (v1.1):** "Giải thích cách khác" ở bài mẫu; tóm tắt hội thoại AI trong báo cáo tuần; gia sư đọc hội thoại; bài hình chứng minh.
 
+---
+
+## 01/11/2026 — "Cần tập trung": phụ huynh đánh dấu ★ + mục chọn bài cho con (nhánh `p1-focus`, không SQL)
+
+Order của gia sư (01/11): con có vài chủ đề cần tập trung (GS **hoặc** phụ huynh chọn) và con tự pick bài, không bị ép.
+
+- **Phụ huynh đánh dấu ★**: trang xem bài `/parent/content/[unitId]` thêm hộp **"Chủ đề này cho con"** — mỗi con một nút ★ "Cần tập trung" (dùng `editPriorities`, backend vốn đã cho phụ huynh; **không SQL**). Mở khoá và ★ nằm cùng chỗ.
+- **Trang chính của con**: thêm mục **"★ Cần tập trung"** (trên "Bài mới") liệt kê **mọi** KU ★ đang mở và chưa đạt M3, gom theo chủ đề, dạng thẻ con tự chọn ("Học bài này"). Không ép buộc; đã tách và khử trùng với "Bài mới".
+- Nút ★ thêm biến thể `wide` (pill có chữ) cho phía phụ huynh; phía gia sư giữ nguyên.
+- Kiểm thử: lint, test 201, build; e2e thêm `focus-flow` (con) + `focus-parent-flow` (phụ huynh).
+
+**Chưa làm (bàn sau):** "lộ trình học" có cấu trúc nhiều bước (hiện mới ở mức danh sách ★ ưu tiên có thứ tự).
+
 ## 23/10/2026 — Phụ huynh duyệt 19 bài Luyện đề 4.2; khoá đáp án bài luyện đề (nhánh `p1-approve-ld42`, không SQL)
 
 - "duyệt 19 bài luyện đề hình 4.2" (phụ huynh, 23/10): cả 19 bài `approved`, `approvedOn: 2026-10-23`. Con thấy bài khi k-tugiacnt đạt M3 hoặc có ★ của gia sư (tối đa 3 bài mới/tuần). Gia sư soát sau: "Cần sửa" trên bài đã duyệt tạm ẩn câu đó với con.

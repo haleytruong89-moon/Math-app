@@ -42,7 +42,9 @@ run student 3112 e2e/geometry-flow.mjs; m=$?
 run parent 3113 e2e/geometry-parent-flow.mjs; n=$?
 run student 3116 e2e/drill-flow.mjs; q=$?
 run tutor 3117 e2e/drill-tutor-flow.mjs; r=$?
+run student 3118 e2e/focus-flow.mjs; s1=$?
+run parent 3119 e2e/focus-parent-flow.mjs; s2=$?
 run student 3120 e2e/ai-student-flow.mjs; t1=$?
 run parent 3121 e2e/ai-eval-flow.mjs; t2=$?
 node scripts/content-index.mjs
-exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p || q || r || t1 || t2 ))
+exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p || q || r || s1 || s2 || t1 || t2 ))
