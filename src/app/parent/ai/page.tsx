@@ -6,7 +6,10 @@ import { saveAiSettings } from "@/app/parent/actions";
 import { hasAiKey } from "@/lib/ai/client";
 import { monthSpendRows } from "@/lib/ai/usage";
 import { AI_MODELS, AI_RULES, MODEL_LABEL, budget, monthKey, spendByKind, usdLabel } from "@/lib/ai/rules";
-import { BRIEF_SYSTEM, WEEKLY_SYSTEM, promptVersion } from "@/lib/ai/prompts";
+import { BRIEF_SYSTEM, STUDENT_SYSTEM, WEEKLY_SYSTEM, promptVersion } from "@/lib/ai/prompts";
+import Link from "next/link";
+import { saveStudentAi, evalStatus } from "./actions";
+import { getUnit } from "@/lib/content";
 import { vnDate } from "@/lib/learning/rules";
 
 export const metadata: Metadata = { title: "AI — App Toán" };
@@ -18,11 +21,17 @@ export default async function AiPage() {
   await requireRole("parent");
   const supabase = await createClient();
   const month = monthKey(vnDate());
-  const [settings, rows, recent] = await Promise.all([
-    supabase.from("ai_settings").select("staff_enabled, staff_model, student_enabled").eq("id", 1).maybeSingle(),
+  const [settings, rows, recent, flagged, passHaiku, passSonnet] = await Promise.all([
+    supabase.from("ai_settings").select("staff_enabled, staff_model, student_enabled, student_model, student_prompt_version").eq("id", 1).maybeSingle(),
     monthSpendRows(month),
     supabase.from("ai_usage").select("kind, model, input_tokens, output_tokens, cost_micros, created_at").order("created_at", { ascending: false }).limit(20),
+    // S8b: messages flagged by the student ("AI nói sai?") or by the guard, newest first.
+    supabase.from("ai_messages").select("id, unit_id, item_id, role, content, flag, flagged_at").in("flag", ["student", "guard"]).order("flagged_at", { ascending: false }).limit(20),
+    evalStatus("claude-haiku-5-5"),
+    evalStatus("claude-sonnet-5-5"),
   ]);
+  const pass: Record<string, Awaited<ReturnType<typeof evalStatus>>> = { "claude-haiku-5-5": passHaiku, "claude-sonnet-5-5": passSonnet };
+  const studentVersion = promptVersion(STUDENT_SYSTEM);
   const spend = spendByKind(rows);
   const b = budget(spend.total);
   const s = settings.data;
@@ -72,7 +81,58 @@ export default async function AiPage() {
             </select>
           </label>
         </ActionForm>
-        <p className="mt-3 text-sm text-muted">AI cho con: {s?.student_enabled ? "đang bật" : "chưa bật (làm ở lát S8b, sau khi bộ test đạt)"}.</p>
+      </section>
+
+      <section className="mt-6 rounded-xl border border-border bg-surface p-4" data-testid="student-ai">
+        <h2 className="font-display text-base font-semibold">&ldquo;Hỏi thêm&rdquo; cho con</h2>
+        <p className="mt-1 text-sm text-muted">
+          Con hỏi AI sau khi đã mở hết gợi ý viết sẵn, hoặc sau khi trả lời sai. Máy chủ chặn câu trả lời lộ đáp án, có số lạ hoặc quá dài; con có nút &ldquo;AI nói sai?&rdquo;. Chỉ bật được cho model đã đạt{" "}
+          <Link href="/parent/ai/bo-test" className="text-accent hover:underline">bộ test</Link> với bản lệnh hiện tại.
+        </p>
+        <p className="mt-2 text-sm" data-testid="student-ai-state">
+          Trạng thái: <b>{s?.student_enabled ? (s.student_prompt_version === studentVersion ? "đang bật" : "tạm tắt — lệnh đã đổi, cần chấm lại bộ test") : "đang tắt"}</b>
+        </p>
+        <ul className="mt-2 text-sm text-muted">
+          {AI_MODELS.map((m) => (
+            <li key={m}>
+              {MODEL_LABEL[m]}: {pass[m].passed ? "đạt bộ test" : `chưa đạt (đã chấm ${pass[m].scored}, sai toán ${pass[m].mathWrong})`}
+            </li>
+          ))}
+        </ul>
+        <ActionForm action={saveStudentAi} submitLabel="Lưu cài đặt Hỏi thêm" className="mt-3 flex flex-col gap-3">
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="studentEnabled" defaultChecked={!!s?.student_enabled} data-testid="student-enabled" /> Bật &ldquo;Hỏi thêm&rdquo; cho con
+          </label>
+          <label className={`${labelClass} max-w-sm`}>
+            Model
+            <select name="studentModel" defaultValue={(s?.student_model as string) ?? "claude-haiku-5-5"} className={inputClass}>
+              {AI_MODELS.map((m) => (
+                <option key={m} value={m}>
+                  {MODEL_LABEL[m]}
+                </option>
+              ))}
+            </select>
+          </label>
+        </ActionForm>
+      </section>
+
+      <section id="bi-bao" className="mt-6 rounded-xl border border-border bg-surface p-4" data-testid="ai-flagged">
+        <h2 className="font-display text-base font-semibold">Tin AI bị báo</h2>
+        {!flagged.data?.length ? (
+          <p className="mt-2 text-sm text-muted">Chưa có tin nào bị báo.</p>
+        ) : (
+          <ul className="mt-2 flex flex-col gap-2">
+            {flagged.data.map((m) => (
+              <li key={m.id as number} className="rounded-lg border border-border p-3 text-sm">
+                <p className="font-mono text-[11px] text-muted">
+                  {m.flag === "student" ? "Con báo “AI nói sai?”" : "Máy chủ chặn → con thấy gợi ý viết sẵn"} · {getUnit(m.unit_id as string)?.unit.title ?? (m.unit_id as string)} · {(m.item_id as string).replace(`${m.unit_id as string}-`, "")} ·{" "}
+                  {new Date(m.flagged_at as string).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}
+                </p>
+                <p className="mt-1 whitespace-pre-line">{m.content as string}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="mt-6 rounded-xl border border-border bg-surface p-4">
@@ -80,6 +140,7 @@ export default async function AiPage() {
         {[
           ["Nhận xét báo cáo tuần", WEEKLY_SYSTEM],
           ["Tóm tắt cho gia sư", BRIEF_SYSTEM],
+          ["Hỏi thêm cho con", STUDENT_SYSTEM],
         ].map(([name, text]) => (
           <details key={name} className="mt-2">
             <summary className="cursor-pointer text-sm">

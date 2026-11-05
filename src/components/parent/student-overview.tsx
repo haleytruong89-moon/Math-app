@@ -4,7 +4,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { ActionForm, inputClass, labelClass } from "@/components/action-form";
 import { confirmLevel } from "@/app/parent/actions";
 import { loadStudentState } from "@/lib/learning/state";
-import { RULES, vnDate, type AttemptRow, type Level } from "@/lib/learning/rules";
+import { RULES, addDays, vnDate, type AttemptRow, type Level } from "@/lib/learning/rules";
 import { needsTutor } from "@/lib/content/curriculum";
 import { curriculum } from "@/lib/content";
 import { currentPhase, lateUnits, milestoneProgress } from "@/lib/learning/milestones";
@@ -21,7 +21,8 @@ const DAY_NAME = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sá
 /** One student's "Tổng quan" (S4). Reads through the parent's RLS client. */
 export async function StudentOverview({ supabase, student }: { supabase: SupabaseClient; student: { id: string; full_name: string } }) {
   const id = student.id;
-  const [state, proposals, confirmations, assignments, sessions, reviewLog, homework, profiles] = await Promise.all([
+  const since = addDays(vnDate(), -14);
+  const [state, proposals, confirmations, assignments, sessions, reviewLog, homework, profiles, aiFlags] = await Promise.all([
     loadStudentState(supabase, id),
     supabase.from("tutor_proposals").select("session_id, unit_id, level, tutor_id, created_at").eq("student_id", id).order("created_at", { ascending: false }).limit(500),
     supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", id).order("created_at", { ascending: false }).limit(500),
@@ -30,6 +31,8 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
     supabase.from("review_log").select("created_at").eq("student_id", id).order("created_at", { ascending: false }).limit(200),
     supabase.from("homework").select("created_at, done_at, reviewed_at").eq("student_id", id).order("created_at", { ascending: false }).limit(200),
     supabase.from("profiles").select("id, display_name"),
+    // S8b: AI messages the student marked "AI nói sai?" in the last 14 days.
+    supabase.from("ai_messages").select("id").eq("student_id", id).eq("flag", "student").gt("flagged_at", since).limit(50),
   ]);
   for (const r of [proposals, confirmations, assignments, sessions, reviewLog, homework]) if (r.error) console.error("StudentOverview", r.error.message);
 
@@ -82,6 +85,14 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
 
       <h3 id="can-chu-y" className="mt-8 font-display text-base font-semibold">Cần chú ý</h3>
       <ul className="mt-3 flex flex-col gap-3">
+        {(aiFlags.data?.length ?? 0) > 0 && (
+          <li className="rounded-xl border border-warn bg-surface p-4" data-testid="ai-flag-notice">
+            <p className="font-display font-semibold">Con báo &ldquo;AI nói sai?&rdquo; {aiFlags.data!.length} lần (14 ngày qua)</p>
+            <Link href="/parent/ai#bi-bao" className="mt-1 inline-block text-sm text-accent hover:underline">
+              Đọc các tin bị báo →
+            </Link>
+          </li>
+        )}
         {flags.map((f) => {
           const u = unitOf(f.unitId)!;
           const m = u.mastery;

@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { publicItem } from "@/lib/content";
 import { findOpenRun, loadStudentState, reviewSession } from "@/lib/learning/state";
 import { ReviewPlayer } from "@/components/lesson/review-player";
+import { aiSettings, studentAiOff } from "@/lib/ai/usage";
 
 export const metadata: Metadata = { title: "Ôn lại — App Toán" };
 
@@ -42,6 +43,7 @@ export default async function ReviewPage() {
       answered={session.answered.map(({ unitId, correct }) => ({ unitId, correct }))}
       units={due.map((u) => ({ id: u.unit.id, title: u.unit.title, stage: u.review!.stage }))}
       hasFigure={due.some((u) => u.unit.figure === "right-triangle-altitude")}
+      ai={!(await studentAiOff(await aiSettings()))}
     />
   );
 }

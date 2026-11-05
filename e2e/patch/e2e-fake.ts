@@ -89,12 +89,13 @@ class Query {
     return this;
   }
   insert(rows: Record<string, unknown> | Record<string, unknown>[]) { this.op = "insert"; this.payload = Array.isArray(rows) ? rows : [rows]; return this; }
-  upsert(row: Record<string, unknown>, o: { onConflict?: string; ignoreDuplicates?: boolean } = {}) {
-    this.op = "upsert"; this.payload = [row]; this.conflict = o.onConflict ?? "id"; this.ignoreDup = !!o.ignoreDuplicates; return this;
+  upsert(row: Record<string, unknown> | Record<string, unknown>[], o: { onConflict?: string; ignoreDuplicates?: boolean } = {}) {
+    this.op = "upsert"; this.payload = Array.isArray(row) ? row : [row]; this.conflict = o.onConflict ?? "id"; this.ignoreDup = !!o.ignoreDuplicates; return this;
   }
   update(obj: Record<string, unknown>) { this.op = "update"; this.payload = [obj]; return this; }
   delete() { this.op = "delete"; return this; }
   eq(c: string, v: unknown) { this.where.push(`${c} = ${this.p(v)}`); return this; }
+  gt(c: string, v: unknown) { this.where.push(`${c} > ${this.p(v)}`); return this; }
   is(c: string, v: null) { this.where.push(`${c} is ${v === null ? "null" : String(v)}`); return this; }
   in(c: string, arr: unknown[]) { this.where.push(`${c} = any(${this.p(arr)})`); return this; }
   order(c: string, o: { ascending?: boolean } = {}) { this.orderBy += `${this.orderBy ? "," : " order by"} ${c} ${o.ascending === false ? "desc" : "asc"}`; return this; }
@@ -202,6 +203,11 @@ export async function fakeClaude(req: { system: string; user: string }) {
   let text = "";
   if (req.system.includes("«Nhận xét»")) {
     text = "Tuần này con học khá đều và đã làm bài ôn. Tuần tới nên chữa lại các lỗi tính toán trước khi học bài mới.";
+  } else if (req.system.includes("«Hỏi thêm»")) {
+    // S8b: "lộ đáp án" in her question → a reply that fails the guard twice (unknown number) → written fallback.
+    text = req.user.includes("lộ đáp án")
+      ? JSON.stringify({ reply: "Đáp án là 987654.", offTopic: false })
+      : JSON.stringify({ reply: "Mình cùng xem lại đề: đề cho gì và cần tìm gì, con thử viết ra xem?", offTopic: false });
   } else if (req.system.includes("chuẩn bị buổi dạy")) {
     const facts = JSON.parse(req.user.slice(req.user.indexOf("{"))) as { units: { id: string; title: string; wrong: number }[] };
     const units = facts.units.filter((u) => u.wrong > 0).slice(0, 2);

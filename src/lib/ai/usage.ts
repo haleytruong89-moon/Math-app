@@ -4,9 +4,14 @@ import { vnDate } from "@/lib/learning/rules";
 import { callClaude, hasAiKey } from "./client";
 import type { AiRequest } from "./messages";
 import { budget, costMicros, isAiModel, monthKey, type AiModel } from "./rules";
+import { promptVersion, STUDENT_SYSTEM } from "./prompts";
 
 export type AiKind = "weekly" | "brief" | "student" | "eval";
 export type AiOff = "no-key" | "disabled" | "budget";
+export type StudentAiOff = AiOff | "version";
+
+/** S8b: the version of the student prompt the test set is run against. */
+export const studentPromptVersion = () => promptVersion(STUDENT_SYSTEM);
 export type AiSettings = {
   staffEnabled: boolean;
   staffModel: AiModel;
@@ -55,6 +60,22 @@ export async function monthSpendRows(month: string): Promise<{ kind: string; cos
 export async function staffAiOff(settings: AiSettings): Promise<AiOff | null> {
   if (!hasAiKey()) return "no-key";
   if (!settings.staffEnabled) return "disabled";
+  const rows = await monthSpendRows(monthKey(vnDate()));
+  return budget(rows.reduce((s, r) => s + r.cost_micros, 0)).paused ? "budget" : null;
+}
+
+/** S8b: why the student's AI can't run now (no key, switch off, prompt changed since the test set passed, cap). */
+export async function studentAiOff(settings: AiSettings): Promise<StudentAiOff | null> {
+  if (!hasAiKey()) return "no-key";
+  if (!settings.studentEnabled) return "disabled";
+  if (settings.studentPromptVersion !== studentPromptVersion()) return "version";
+  const rows = await monthSpendRows(monthKey(vnDate()));
+  return budget(rows.reduce((s, r) => s + r.cost_micros, 0)).paused ? "budget" : null;
+}
+
+/** The test set runs whenever there is a key and budget, even with the switch off. */
+export async function evalAiOff(): Promise<"no-key" | "budget" | null> {
+  if (!hasAiKey()) return "no-key";
   const rows = await monthSpendRows(monthKey(vnDate()));
   return budget(rows.reduce((s, r) => s + r.cost_micros, 0)).paused ? "budget" : null;
 }
