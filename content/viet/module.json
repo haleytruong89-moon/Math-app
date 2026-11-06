@@ -1,0 +1,11 @@
+{
+  "id": "viet",
+  "title": "Định lý Viète",
+  "domains": [
+    "E"
+  ],
+  "units": [
+    "e-viete",
+    "e-vietets"
+  ]
+}

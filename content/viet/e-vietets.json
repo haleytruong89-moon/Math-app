@@ -1,0 +1,1289 @@
+{
+  "id": "e-vietets",
+  "module": "viet",
+  "order": 2,
+  "title": "Viète có tham số",
+  "status": "draft",
+  "estMinutes": 65,
+  "theory": [
+    "**Cần nhớ trước:** bài **Viète cơ bản** ($x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$, biểu thức đối xứng theo $S$, $P$) và bài **PT bậc hai chứa tham số** (điều kiện có nghiệm theo $\\Delta'$). Bài này ghép hai việc đó lại.",
+    "**Quy trình 4 bước:** (1) Điều kiện: $\\Delta' \\ge 0$ nếu đề nói “có hai nghiệm”, $\\Delta'>0$ nếu “hai nghiệm phân biệt” (hệ số $a$ chứa $m$ thì thêm $a \\ne 0$). (2) Viète: viết $S=x_1+x_2$, $P=x_1x_2$ theo $m$. (3) Đưa hệ thức đề cho về $S$, $P$, giải ra $m$. (4) **Đối chiếu điều kiện (1)**, loại giá trị không thoả, rồi viết “Kết luận”.",
+    "**Vì sao phải đối chiếu:** Viète chỉ đúng khi phương trình **có nghiệm**. Giải hệ thức theo $m$ có thể ra giá trị làm $\\Delta'<0$: khi đó không có $x_1$, $x_2$ nào, nên giá trị đó phải loại. Ví dụ ra $m=1$ hoặc $m=-5$ mà điều kiện là $m \\ge -1$ thì chỉ giữ $m=1$.",
+    "**Giá trị lớn nhất / nhỏ nhất** (phiếu: biến $m$ – điều kiện – biểu thức theo $m$ – dấu bằng – kết luận): biểu thức bậc hai theo $m$ thì tách $k(m-h)^2+c$, kiểm tra $m=h$ thoả điều kiện. Biểu thức bậc nhất như $8m+10$ thì lớn nhất / nhỏ nhất tại **đầu mút** của điều kiện $\\Delta \\ge 0$.",
+    "**Bẫy hay gặp:** (1) Quên đối chiếu $\\Delta'$, giữ cả giá trị phải loại. (2) Dùng $\\Delta' \\ge 0$ khi đề đòi “phân biệt”. (3) Sai dấu: $S=-\\frac ba$, còn $P=\\frac ca$. (4) $x_1^2+x_2^2=S^2-2P$, không phải $S^2-P$. (5) Hệ thức **không đối xứng** như $x_1-2x_2=1$: ghép với $x_1+x_2=S$ để tìm từng nghiệm trước.",
+    "**Nhận dạng & bảng theo $S$, $P$:** “có hai nghiệm $x_1$, $x_2$ thoả mãn …”, “biểu thức … đạt giá trị lớn nhất / nhỏ nhất” → bài này. Chỉ hỏi số nghiệm → chỉ xét $\\Delta'$; biết một nghiệm → thay vào. Bảng: $x_1^2+x_2^2=S^2-2P$; $(x_1-x_2)^2=S^2-4P$; $\\frac1{x_1}+\\frac1{x_2}=\\frac SP$; $x_1^3+x_2^3=S^3-3SP$; $(x_1-k)(x_2-k)=P-kS+k^2$."
+  ],
+  "worked": {
+    "problem": "Cho phương trình $x^2-2(m+1)x+m^2-1=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $x_1^2+x_2^2=16$.",
+    "steps": [
+      {
+        "text": "Điều kiện: $b'=-(m+1)$, $\\Delta'=(m+1)^2-(m^2-1)=2m+2$. Phương trình có hai nghiệm $\\Leftrightarrow \\Delta' \\ge 0 \\Leftrightarrow m \\ge -1$.",
+        "why": "Đề nói “có hai nghiệm” (không đòi phân biệt) nên dùng $\\Delta' \\ge 0$; ghi điều kiện ra trước để cuối bài đối chiếu."
+      },
+      {
+        "text": "Viète: $x_1+x_2=2(m+1)$, $x_1x_2=m^2-1$. Khi đó $x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2=4(m+1)^2-2(m^2-1)=2m^2+8m+6$.",
+        "why": "$S=-\\frac ba$ nên đổi dấu $b=-2(m+1)$; biểu thức đối xứng đưa về $S$, $P$ bằng $x_1^2+x_2^2=S^2-2P$."
+      },
+      {
+        "text": "$2m^2+8m+6=16 \\Leftrightarrow m^2+4m-5=0 \\Leftrightarrow m=1$ hoặc $m=-5$.",
+        "why": "Nhẩm nghiệm: $1+4-5=0$ nên $m=1$, $m=\\frac{-5}{1}=-5$."
+      },
+      {
+        "text": "Đối chiếu điều kiện $m \\ge -1$: $m=1$ thoả mãn; $m=-5$ không thoả mãn, loại.",
+        "why": "Với $m=-5$: $\\Delta'=-8<0$, phương trình vô nghiệm, không có $x_1$, $x_2$ để tính."
+      },
+      {
+        "text": "Kết luận: $m=1$.",
+        "why": "Thử lại: $m=1$ cho $x^2-4x=0$, hai nghiệm $0$ và $4$; $0^2+4^2=16$."
+      }
+    ],
+    "selfExplain": "Vì sao $m=-5$ vẫn là nghiệm của $m^2+4m-5=0$ mà lại bị loại?"
+  },
+  "faded": {
+    "problem": "Cho phương trình $x^2-2(m+1)x+2m-3=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm của phương trình. Tìm $m$ để $A=x_1^2+x_2^2$ đạt giá trị nhỏ nhất.",
+    "steps": [
+      {
+        "text": "Hệ số: $a=1$, $b'=-(m+1)$, $c=2m-3$."
+      },
+      {
+        "prompt": "Tính $\\Delta'$.",
+        "item": {
+          "id": "e-vietets-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "$\\Delta'$ của phương trình bằng:",
+          "options": [
+            "$m^2-2$",
+            "$m^2-2m+4$",
+            "$m^2+4$",
+            "$4m^2+6m+7$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "Phá ngoặc $-(2m-3)$ phải đổi dấu cả $-3$ thành $+3$."
+            },
+            "1": {
+              "code": "E03",
+              "feedback": "Con nhớ thiếu: $(m+1)^2=m^2+2m+1$.",
+              "review": "f1-hdt"
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "$\\Delta'$ dùng $b'$ là nửa hệ số $b$, không dùng $b$.",
+              "review": "d-ptbh"
+            }
+          },
+          "solution": "$\\Delta'=(m+1)^2-(2m-3)=m^2+2m+1-2m+3=m^2+4$."
+        }
+      },
+      {
+        "text": "Vì $\\Delta'=m^2+4>0$ với mọi $m$ nên phương trình luôn có hai nghiệm phân biệt. Viète: $x_1+x_2=2(m+1)$, $x_1x_2=2m-3$."
+      },
+      {
+        "prompt": "Viết $A$ theo $m$.",
+        "item": {
+          "id": "e-vietets-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "$A=x_1^2+x_2^2$ bằng:",
+          "options": [
+            "$4m^2+4m+10$",
+            "$4m^2+6m+7$",
+            "$4m^2+12m-2$",
+            "$m^2-2m+7$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E03",
+              "feedback": "Con nhớ sai: $x_1^2+x_2^2=S^2-2P$, không phải $S^2-P$.",
+              "review": "e-viete"
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "$x_1^2+x_2^2=S^2-2P$: trừ $2P$, không cộng.",
+              "review": "e-viete"
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "$x_1+x_2=-\\frac ba=2(m+1)$, không phải $m+1$.",
+              "review": "e-viete"
+            }
+          },
+          "solution": "$A=S^2-2P=4(m+1)^2-2(2m-3)=4m^2+8m+4-4m+6=4m^2+4m+10$."
+        }
+      },
+      {
+        "prompt": "Tìm giá trị nhỏ nhất của $A$.",
+        "item": {
+          "id": "e-vietets-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Chọn cách viết đúng và dấu bằng:",
+          "options": [
+            "$A=(2m+1)^2+10 \\ge 10$, dấu “=” khi $m=-\\frac12$",
+            "$A=(2m+1)^2+9 \\ge 9$, dấu “=” khi $m=\\frac12$",
+            "$A=(2m+2)^2+6 \\ge 6$, dấu “=” khi $m=-1$",
+            "$A=(2m+1)^2+9 \\ge 9$, dấu “=” khi $m=-\\frac12$"
+          ],
+          "correct": 3,
+          "mistakes": {
+            "0": {
+              "code": "E02",
+              "feedback": "$(2m+1)^2$ đã chứa sẵn $1$, nên còn lại $10-1$."
+            },
+            "1": {
+              "code": "E02",
+              "feedback": "Dấu “=” khi $2m+1=0$; chuyển vế $1$ phải đổi dấu."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "$(2m+2)^2=4m^2+8m+4$, hạng tử giữa là $2\\cdot 2m\\cdot 2$; ở đây cần $4m=2\\cdot 2m\\cdot 1$.",
+              "review": "f1-hdt"
+            }
+          },
+          "solution": "$4m^2+4m+10=(4m^2+4m+1)+9=(2m+1)^2+9 \\ge 9$, dấu “=” khi $2m+1=0 \\Leftrightarrow m=-\\frac12$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "e-vietets-f4",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng?",
+          "options": [
+            "Kết luận: $A$ nhỏ nhất bằng $9$.",
+            "Kết luận: $m=-\\frac12$ thì $A$ đạt giá trị nhỏ nhất bằng $9$.",
+            "Kết luận: $A$ không có giá trị nhỏ nhất vì $A$ phụ thuộc $m$."
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "Đề hỏi tìm $m$: kết luận phải nêu giá trị $m$ làm $A$ nhỏ nhất."
+            },
+            "2": {
+              "code": "E04",
+              "feedback": "$A \\ge 9$ với mọi $m$ và bằng $9$ tại một giá trị $m$, nên có giá trị nhỏ nhất."
+            }
+          },
+          "solution": "Kết luận: $m=-\\frac12$ thì $A$ đạt giá trị nhỏ nhất bằng $9$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "e-vietets-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-2(m-3)x+m^2-5=0$ (ẩn $x$, tham số $m$). Khi phương trình có hai nghiệm $x_1$, $x_2$, theo Viète:",
+      "hints": [
+        "Đề hỏi tổng và tích hai nghiệm, viết theo $m$.",
+        "Tổng, tích hai nghiệm khi chưa giải phương trình → định lí nào?",
+        "Viète: $x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$; xác định đúng $a$, $b$, $c$."
+      ],
+      "options": [
+        "$x_1+x_2=-2(m-3)$, $x_1x_2=m^2-5$",
+        "$x_1+x_2=2(m-3)$, $x_1x_2=m^2-5$",
+        "$x_1+x_2=m-3$, $x_1x_2=m^2-5$",
+        "$x_1+x_2=2(m-3)$, $x_1x_2=-(m^2-5)$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba$, mà $b=-2(m-3)$.",
+          "review": "e-viete"
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Viète dùng cả hệ số $b$, không dùng $b'$: $x_1+x_2=-\\frac ba$.",
+          "review": "e-viete"
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "Tích $x_1x_2=\\frac ca$, giữ nguyên dấu của $c$.",
+          "review": "e-viete"
+        }
+      },
+      "solution": "$a=1$, $b=-2(m-3)$, $c=m^2-5$. Viète: $x_1+x_2=-\\frac ba=2(m-3)$, $x_1x_2=\\frac ca=m^2-5$."
+    },
+    {
+      "id": "e-vietets-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-2(m+2)x+m^2+3=0$ (ẩn $x$, tham số $m$). Đề hỏi: “Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $x_1^2+x_2^2=10$”. Cách làm đúng là:",
+      "recognition": true,
+      "hints": [
+        "Đề có hai yêu cầu: phương trình có nghiệm, và hai nghiệm thoả một hệ thức.",
+        "Hệ thức đối xứng giữa $x_1$, $x_2$ thường tính qua tổng và tích.",
+        "Điều kiện $\\Delta'$ trước, rồi Viète, cuối cùng đối chiếu điều kiện."
+      ],
+      "options": [
+        "Xét dấu $\\Delta'$ rồi kết luận luôn",
+        "Nhẩm nghiệm theo $a+b+c=0$",
+        "Giải phương trình bằng công thức nghiệm rồi thay $x_1$, $x_2$ vào hệ thức",
+        "Đặt điều kiện $\\Delta' \\ge 0$, dùng Viète viết $x_1^2+x_2^2$ theo $m$, giải rồi đối chiếu điều kiện"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "$\\Delta'$ chỉ cho điều kiện có nghiệm; đề còn hệ thức giữa $x_1$, $x_2$ nên phải dùng thêm Viète."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Hệ số chứa $m$ nên không nhẩm được; hệ thức đối xứng giữa hai nghiệm thì dùng Viète."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Nghiệm chứa căn theo $m$ nên thay vào rất dài; hệ thức đối xứng thì tính qua $S$, $P$."
+        }
+      },
+      "solution": "Cần cả hai: $\\Delta'=4m+1 \\ge 0$ (điều kiện có nghiệm) và Viète $S=2(m+2)$, $P=m^2+3$ để có $x_1^2+x_2^2=S^2-2P=2m^2+16m+10$. Giải $2m^2+16m+10=10$ được $m=0$ hoặc $m=-8$; đối chiếu $m \\ge -\\frac14$ chỉ giữ $m=0$."
+    },
+    {
+      "id": "e-vietets-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-4x+m-2=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $x_1+x_2+x_1x_2=7$.",
+      "hints": [
+        "Cần tìm $m$; hệ thức gồm tổng và tích hai nghiệm.",
+        "Tổng và tích theo $m$ → định lí Viète; nhớ điều kiện có nghiệm.",
+        "Thay $x_1+x_2=4$, $x_1x_2=m-2$ vào hệ thức; kiểm tra $\\Delta'=6-m \\ge 0$."
+      ],
+      "answer": "5",
+      "mistakes": [
+        {
+          "answer": "13",
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba=4$, không phải $-4$.",
+          "review": "e-viete"
+        },
+        {
+          "answer": "-1",
+          "code": "E03",
+          "feedback": "Tích $x_1x_2=\\frac ca=m-2$, giữ nguyên dấu.",
+          "review": "e-viete"
+        }
+      ],
+      "solution": "$\\Delta'=4-(m-2)=6-m \\ge 0 \\Leftrightarrow m \\le 6$. Viète: $x_1+x_2=4$, $x_1x_2=m-2$. Ta có $4+(m-2)=7 \\Leftrightarrow m=5$, thoả $m \\le 6$. Kết luận: $m=5$."
+    },
+    {
+      "id": "e-vietets-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-2(m-2)x+m^2-m-5=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $x_1^2+x_2^2+x_1x_2=9$.",
+      "hints": [
+        "Tìm $m$ để có hai nghiệm và hệ thức đúng.",
+        "Hệ thức đối xứng → đưa về tổng $S$ và tích $P$; đừng quên điều kiện $\\Delta'$.",
+        "$x_1^2+x_2^2+x_1x_2=S^2-P$; giải xong đối chiếu điều kiện $\\Delta' \\ge 0$."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện có nghiệm.",
+          "item": {
+            "id": "e-vietets-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Phương trình có hai nghiệm khi và chỉ khi:",
+            "options": [
+              "$m \\ge 3$",
+              "$m \\le 3$",
+              "$m \\le \\frac95$",
+              "$m<3$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$-3m+9 \\ge 0 \\Leftrightarrow -3m \\ge -9$: chia cho số âm phải đổi chiều."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m^2-m-5)$ phải đổi dấu mọi hạng tử: $-m^2+m+5$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "“Có hai nghiệm” gồm cả nghiệm kép nên dùng $\\Delta' \\ge 0$.",
+                "review": "d-thamso"
+              }
+            },
+            "solution": "$\\Delta'=(m-2)^2-(m^2-m-5)=m^2-4m+4-m^2+m+5=-3m+9 \\ge 0 \\Leftrightarrow m \\le 3$."
+          }
+        },
+        {
+          "prompt": "Đưa hệ thức về phương trình ẩn $m$.",
+          "item": {
+            "id": "e-vietets-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Thay Viète vào $x_1^2+x_2^2+x_1x_2=9$ ta được:",
+            "options": [
+              "$5m^2-17m+2=0$",
+              "$m^2-13m+22=0$",
+              "$m^2-5m+4=0$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x_1^2+x_2^2=S^2-2P$, không phải $S^2$.",
+                "review": "e-viete"
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "$x_1^2+x_2^2=S^2-2P$; cộng thêm $x_1x_2$ thì còn $S^2-P$.",
+                "review": "e-viete"
+              }
+            },
+            "solution": "$S=2(m-2)$, $P=m^2-m-5$. $x_1^2+x_2^2+x_1x_2=S^2-P=4(m-2)^2-(m^2-m-5)=3m^2-15m+21=9 \\Leftrightarrow m^2-5m+4=0$."
+          }
+        },
+        {
+          "prompt": "Đối chiếu điều kiện.",
+          "item": {
+            "id": "e-vietets-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Giải phương trình ẩn $m$ vừa tìm được rồi đối chiếu điều kiện. Kết luận:",
+            "options": [
+              "$m=1$",
+              "$m=1$ hoặc $m=4$",
+              "$m=4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Đối chiếu $m \\le 3$: với $m=4$ thì $\\Delta'<0$, phương trình vô nghiệm."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con loại nhầm: thay lại từng giá trị vào điều kiện $m \\le 3$."
+              }
+            },
+            "solution": "$m^2-5m+4=0 \\Leftrightarrow m=1$ hoặc $m=4$. Đối chiếu $m \\le 3$: loại $m=4$. Kết luận: $m=1$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=-3m+9 \\ge 0 \\Leftrightarrow m \\le 3$. Viète: $S=2(m-2)$, $P=m^2-m-5$. $S^2-P=3m^2-15m+21=9 \\Leftrightarrow m^2-5m+4=0 \\Leftrightarrow m=1$ hoặc $m=4$. Đối chiếu $m \\le 3$, loại $m=4$. Kết luận: $m=1$."
+    },
+    {
+      "id": "e-vietets-p5",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-2x+m-3=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm phân biệt $x_1$, $x_2$ thoả mãn $x_1^2+x_2^2<6$.",
+      "hints": [
+        "Tìm $m$: vừa có hai nghiệm phân biệt, vừa thoả bất đẳng thức.",
+        "Điều kiện phân biệt dùng $\\Delta'$; tổng bình phương dùng Viète.",
+        "$x_1^2+x_2^2=S^2-2P$; giải bất phương trình rồi lấy giao với $\\Delta'>0$."
+      ],
+      "options": [
+        "$m>2$",
+        "$m<2$",
+        "$2<m<4$",
+        "$2<m \\le 4$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Còn điều kiện hai nghiệm phân biệt $\\Delta'=4-m>0$; phải lấy giao với nó."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "$10-2m<6 \\Leftrightarrow -2m<-4$: chia cho số âm phải đổi chiều."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$, nên không lấy dấu bằng.",
+          "review": "d-thamso"
+        }
+      },
+      "solution": "$\\Delta'=1-(m-3)=4-m>0 \\Leftrightarrow m<4$. Viète: $S=2$, $P=m-3$, nên $x_1^2+x_2^2=4-2(m-3)=10-2m<6 \\Leftrightarrow m>2$. Kết hợp: $2<m<4$."
+    },
+    {
+      "id": "e-vietets-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-2(m+1)x-4m-9=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm. Tìm giá trị nhỏ nhất của $A=(x_1-x_2)^2$ và giá trị $m$ tương ứng.",
+      "hints": [
+        "Đề hỏi giá trị nhỏ nhất của $A$ và $m$ để đạt được.",
+        "$(x_1-x_2)^2$ là biểu thức đối xứng → viết theo $S$, $P$.",
+        "$(x_1-x_2)^2=S^2-4P$; rồi tách $A=k(m+\\dots)^2+c$."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện có nghiệm.",
+          "item": {
+            "id": "e-vietets-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn khẳng định đúng:",
+            "options": [
+              "$\\Delta'=(m+3)^2+1>0$ với mọi $m$: luôn có hai nghiệm phân biệt",
+              "$\\Delta'=m^2-2m-8$: chỉ có nghiệm khi $m \\le -2$ hoặc $m \\ge 4$",
+              "$\\Delta'=(2m+3)^2+4>0$ với mọi $m$: luôn có hai nghiệm phân biệt"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(-4m-9)$ thành $+4m+9$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$\\Delta'$ dùng $b'=-(m+1)$, không dùng $b=-2(m+1)$.",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=(m+1)^2-(-4m-9)=m^2+6m+10=(m+3)^2+1>0$ với mọi $m$."
+          }
+        },
+        {
+          "prompt": "Viết $A$ theo $m$.",
+          "item": {
+            "id": "e-vietets-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$A=(x_1-x_2)^2$ bằng:",
+            "options": [
+              "$4m^2+16m+22$",
+              "$4m^2-8m-32$",
+              "$m^2+18m+37$",
+              "$4m^2+24m+40$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$(x_1-x_2)^2=S^2-4P$; $S^2-2P$ là của $x_1^2+x_2^2$.",
+                "review": "e-viete"
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "$-4P=-4(-4m-9)=16m+36$: nhân với số âm phải đổi dấu."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$x_1+x_2=-\\frac ba=2(m+1)$, không phải $m+1$.",
+                "review": "e-viete"
+              }
+            },
+            "solution": "$S=2(m+1)$, $P=-4m-9$. $A=S^2-4P=4m^2+8m+4+16m+36=4m^2+24m+40$."
+          }
+        },
+        {
+          "prompt": "Giá trị nhỏ nhất của $A$.",
+          "item": {
+            "id": "e-vietets-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá trị nhỏ nhất của $A$ là:",
+            "answer": "4",
+            "mistakes": [
+              {
+                "answer": "31",
+                "code": "E02",
+                "feedback": "$4(m+3)^2=4m^2+24m+36$: phần bù phải tính với cả hệ số $4$."
+              },
+              {
+                "answer": "40",
+                "code": "E06",
+                "feedback": "Thay $m=0$ chưa chắc nhỏ nhất; phải tách $A=4(m+\\dots)^2+c$."
+              }
+            ],
+            "solution": "$A=4(m^2+6m+9)+4=4(m+3)^2+4 \\ge 4$."
+          }
+        },
+        {
+          "prompt": "Giá trị $m$ tương ứng.",
+          "item": {
+            "id": "e-vietets-p6-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$A$ nhỏ nhất khi $m$ bằng:",
+            "answer": "-3",
+            "mistakes": [
+              {
+                "answer": "3",
+                "code": "E02",
+                "feedback": "Dấu “=” khi biểu thức trong bình phương bằng $0$; xem lại dấu khi chuyển vế."
+              },
+              {
+                "answer": "-6",
+                "code": "E03",
+                "feedback": "Đỉnh của $am^2+bm+c$ tại $m=-\\frac{b}{2a}$: con quên số $2$ ở mẫu."
+              }
+            ],
+            "solution": "Dấu “=” khi $m+3=0 \\Leftrightarrow m=-3$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=(m+3)^2+1>0$ nên luôn có hai nghiệm phân biệt. Viète: $S=2(m+1)$, $P=-4m-9$. $A=S^2-4P=4m^2+24m+40=4(m+3)^2+4 \\ge 4$, dấu “=” khi $m=-3$. Kết luận: giá trị nhỏ nhất của $A$ là $4$, khi $m=-3$."
+    },
+    {
+      "id": "e-vietets-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2+3x+m+1=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm của phương trình. Tìm giá trị lớn nhất của biểu thức $Q=(x_1-x_2)^2+7m+5x_1x_2$.",
+      "source": "68 đề – Đề 19, Bài 3.3 (đổi tên biểu thức P thành Q)",
+      "hints": [
+        "Tìm giá trị lớn nhất của $Q$; $m$ bị giới hạn bởi điều kiện có nghiệm.",
+        "Biểu thức đối xứng → Viète; điều kiện $\\Delta \\ge 0$ cho miền của $m$.",
+        "$(x_1-x_2)^2=S^2-4P$; nếu $Q$ bậc nhất theo $m$ thì xét đầu mút của điều kiện."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện có nghiệm.",
+          "item": {
+            "id": "e-vietets-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm khi và chỉ khi:",
+            "options": [
+              "$m \\ge \\frac54$",
+              "$m \\le \\frac{13}4$",
+              "$m \\le \\frac54$",
+              "$m<\\frac54$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$5-4m \\ge 0 \\Leftrightarrow -4m \\ge -5$: chia cho số âm phải đổi chiều."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-4(m+1)=-4m-4$, nên $\\Delta=9-4m-4$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Đề chỉ gọi hai nghiệm (có thể trùng nhau) nên dùng $\\Delta \\ge 0$.",
+                "review": "d-thamso"
+              }
+            },
+            "solution": "$\\Delta=3^2-4(m+1)=5-4m \\ge 0 \\Leftrightarrow m \\le \\frac54$."
+          }
+        },
+        {
+          "prompt": "Viết $Q$ theo $m$.",
+          "item": {
+            "id": "e-vietets-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$Q$ bằng:",
+            "options": [
+              "$8m+10$",
+              "$10m+12$",
+              "$8m+6$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E03",
+                "feedback": "$(x_1-x_2)^2=S^2-4P$, không phải $S^2-2P$.",
+                "review": "e-viete"
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$5x_1x_2=5(m+1)=5m+5$: nhân vào cả hai hạng tử."
+              }
+            },
+            "solution": "Viète: $x_1+x_2=-3$, $x_1x_2=m+1$. $(x_1-x_2)^2=9-4(m+1)=5-4m$, nên $Q=5-4m+7m+5m+5=8m+10$."
+          }
+        },
+        {
+          "prompt": "Tìm giá trị lớn nhất.",
+          "item": {
+            "id": "e-vietets-p7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$Q$ không có giá trị lớn nhất vì $8m+10$ tăng mãi",
+              "$Q$ lớn nhất bằng $20$, khi $m=\\frac54$",
+              "$Q$ lớn nhất bằng $10$, khi $m=0$",
+              "$Q$ lớn nhất bằng $36$, khi $m=\\frac{13}4$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "$m$ không lớn tuỳ ý: điều kiện có nghiệm chặn $m$, nên xét đầu mút."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "$8m+10$ tăng theo $m$ nên lớn nhất khi $m$ lớn nhất có thể, không phải tại $m=0$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Kiểm tra lại điều kiện: $\\Delta=9-4(m+1)=5-4m$."
+              }
+            },
+            "solution": "$m \\le \\frac54$ nên $Q=8m+10 \\le 8\\cdot\\frac54+10=20$, dấu “=” khi $m=\\frac54$."
+          }
+        }
+      ],
+      "solution": "$\\Delta=9-4(m+1)=5-4m \\ge 0 \\Leftrightarrow m \\le \\frac54$. Viète: $x_1+x_2=-3$, $x_1x_2=m+1$; $(x_1-x_2)^2=5-4m$. $Q=5-4m+7m+5(m+1)=8m+10 \\le 8\\cdot\\frac54+10=20$. Kết luận: giá trị lớn nhất của $Q$ là $20$, khi $m=\\frac54$."
+    },
+    {
+      "id": "e-vietets-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2+2x+m=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm phân biệt $x_1$, $x_2$ thoả mãn $x_1-2x_2=1$.",
+      "source": "68 đề – Đề 48, Bài 3.3",
+      "hints": [
+        "Tìm $m$: hai nghiệm phân biệt và thoả một hệ thức không đối xứng.",
+        "Hệ thức không đối xứng → ghép với tổng $x_1+x_2$ để tìm từng nghiệm.",
+        "Giải hệ gồm tổng Viète và $x_1-2x_2=1$; rồi $m=x_1x_2$, đối chiếu điều kiện."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện hai nghiệm phân biệt.",
+          "item": {
+            "id": "e-vietets-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m<1$",
+              "$m \\le 1$",
+              "$m>1$",
+              "$m<4$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$.",
+                "review": "d-thamso"
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$1-m>0 \\Leftrightarrow -m>-1$: chia cho số âm phải đổi chiều."
+              },
+              "3": {
+                "code": "E03",
+                "feedback": "$\\Delta'=b'^2-ac$ với $b'=1$ (nửa của $2$).",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=1-m>0 \\Leftrightarrow m<1$."
+          }
+        },
+        {
+          "prompt": "Tìm hai nghiệm.",
+          "item": {
+            "id": "e-vietets-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết hợp Viète với $x_1-2x_2=1$, ta được:",
+            "options": [
+              "$x_1=\\frac53$, $x_2=\\frac13$",
+              "$x_1=\\frac13$, $x_2=-\\frac13$",
+              "$x_1=-1$, $x_2=-1$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba=-2$.",
+                "review": "e-viete"
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Từ $1+3x_2=-2$, chuyển vế $1$ phải đổi dấu: $3x_2=-2-1$."
+              }
+            },
+            "solution": "$x_1+x_2=-2$ và $x_1-2x_2=1$; trừ vế: $3x_2=-3$, nên $x_2=-1$, $x_1=-1$."
+          }
+        },
+        {
+          "prompt": "Tìm $m$ và đối chiếu.",
+          "item": {
+            "id": "e-vietets-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$m=1$",
+              "Không có giá trị nào của $m$",
+              "$m=\\frac59$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "$m=1$ cho $\\Delta'=0$: hai nghiệm trùng nhau, trái với yêu cầu “phân biệt”."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Kiểm tra lại Viète: $x_1+x_2=-2$, nên $x_1$, $x_2$ không phải $\\frac53$, $\\frac13$.",
+                "review": "e-viete"
+              }
+            },
+            "solution": "$m=x_1x_2=(-1)\\cdot(-1)=1$, không thoả $m<1$. Kết luận: không có giá trị nào của $m$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=1-m>0 \\Leftrightarrow m<1$. Viète: $x_1+x_2=-2$. Kết hợp $x_1-2x_2=1$ được $x_1=x_2=-1$, nên $m=x_1x_2=1$, không thoả $m<1$ (hai nghiệm trùng nhau). Kết luận: không có giá trị nào của $m$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "e-vietets-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho phương trình $3x^2-(2m+1)x+m-4=0$ (ẩn $x$, tham số $m$). Khi phương trình có hai nghiệm $x_1$, $x_2$, theo Viète:",
+      "options": [
+        "$x_1+x_2=2m+1$, $x_1x_2=m-4$",
+        "$x_1+x_2=-\\frac{2m+1}3$, $x_1x_2=\\frac{m-4}3$",
+        "$x_1+x_2=\\frac{m-4}3$, $x_1x_2=\\frac{2m+1}3$",
+        "$x_1+x_2=\\frac{2m+1}3$, $x_1x_2=\\frac{m-4}3$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Viète chia cho hệ số $a=3$: $x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$.",
+          "review": "e-viete"
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $b=-(2m+1)$ nên $-\\frac ba=\\frac{2m+1}3$.",
+          "review": "e-viete"
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Tổng đi với $b$, tích đi với $c$.",
+          "review": "e-viete"
+        }
+      },
+      "solution": "$a=3$, $b=-(2m+1)$, $c=m-4$: $x_1+x_2=\\frac{2m+1}3$, $x_1x_2=\\frac{m-4}3$."
+    },
+    {
+      "id": "e-vietets-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho phương trình $x^2-6x+m+1=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $x_1^2x_2+x_1x_2^2=24$.",
+      "answer": "3",
+      "mistakes": [
+        {
+          "answer": "-5",
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba=6$.",
+          "review": "e-viete"
+        },
+        {
+          "answer": "23/6",
+          "code": "E02",
+          "feedback": "$6(m+1)=6m+6$: nhân vào cả hai hạng tử."
+        }
+      ],
+      "solution": "$\\Delta'=9-(m+1)=8-m \\ge 0 \\Leftrightarrow m \\le 8$. $x_1^2x_2+x_1x_2^2=x_1x_2(x_1+x_2)=6(m+1)=24 \\Leftrightarrow m=3$, thoả $m \\le 8$. Kết luận: $m=3$."
+    },
+    {
+      "id": "e-vietets-x3",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-x+3m-11=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm phân biệt $x_1$, $x_2$ thoả mãn $2023x_1+2024x_2=2025$.",
+      "source": "68 đề – Đề 33, Bài 3.3",
+      "steps": [
+        {
+          "prompt": "Điều kiện hai nghiệm phân biệt.",
+          "item": {
+            "id": "e-vietets-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m \\le \\frac{15}4$",
+              "$m<\\frac{15}4$",
+              "$m>\\frac{15}4$",
+              "$m<-\\frac{43}{12}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta>0$.",
+                "review": "d-thamso"
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$45-12m>0 \\Leftrightarrow -12m>-45$: chia cho số âm phải đổi chiều."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-4(3m-11)=-12m+44$."
+              }
+            },
+            "solution": "$\\Delta=1-4(3m-11)=45-12m>0 \\Leftrightarrow m<\\frac{15}4$."
+          }
+        },
+        {
+          "prompt": "Viết $2023x_1+2024x_2=2023(x_1+x_2)+x_2$ rồi tính $x_2$.",
+          "item": {
+            "id": "e-vietets-x3-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$x_2$ bằng:",
+            "answer": "2",
+            "mistakes": [
+              {
+                "answer": "4048",
+                "code": "E03",
+                "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba=1$.",
+                "review": "e-viete"
+              },
+              {
+                "answer": "-2",
+                "code": "E02",
+                "feedback": "Chuyển $2023$ sang vế phải thì đổi dấu thành $-2023$."
+              }
+            ],
+            "solution": "$x_1+x_2=1$ nên $2023\\cdot 1+x_2=2025 \\Leftrightarrow x_2=2$."
+          }
+        },
+        {
+          "prompt": "Tìm $m$.",
+          "item": {
+            "id": "e-vietets-x3-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$m$ bằng:",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "13/3",
+                "code": "E03",
+                "feedback": "Tích $x_1x_2=\\frac ca=3m-11$, giữ nguyên dấu.",
+                "review": "e-viete"
+              }
+            ],
+            "solution": "$x_1=1-2=-1$, $x_1x_2=-2=3m-11 \\Leftrightarrow m=3$; $3<\\frac{15}4$ nên thoả mãn."
+          }
+        }
+      ],
+      "solution": "$\\Delta=45-12m>0 \\Leftrightarrow m<\\frac{15}4$. Viète: $x_1+x_2=1$, $x_1x_2=3m-11$. $2023(x_1+x_2)+x_2=2025$ nên $x_2=2$, $x_1=-1$; $3m-11=-2 \\Leftrightarrow m=3$ (thoả). Kết luận: $m=3$."
+    },
+    {
+      "id": "e-vietets-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-(2m+1)x+m=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ thoả mãn $(x_1-1)(x_2-1) \\ge 19$.",
+      "source": "68 đề – Đề 1, Bài 3.3",
+      "options": [
+        "$m \\ge -19$",
+        "$m \\le -21$",
+        "$m \\ge \\frac{17}3$",
+        "$m \\le -19$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E02",
+          "feedback": "$-m \\ge 19$: nhân hai vế với $-1$ phải đổi chiều."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "$(x_1-1)(x_2-1)=x_1x_2-(x_1+x_2)+1$: số hạng cuối là $+1$."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Con nhớ sai dấu: $x_1+x_2=-\\frac ba=2m+1$.",
+          "review": "e-viete"
+        }
+      },
+      "solution": "$\\Delta=(2m+1)^2-4m=4m^2+1>0$ với mọi $m$. $(x_1-1)(x_2-1)=x_1x_2-(x_1+x_2)+1=m-(2m+1)+1=-m \\ge 19 \\Leftrightarrow m \\le -19$. Kết luận: $m \\le -19$."
+    },
+    {
+      "id": "e-vietets-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho phương trình $x^2-8x+m-1=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ sao cho $P=(x_1^2-1)(x_2^2-1)+2088$ đạt giá trị nhỏ nhất.",
+      "source": "68 đề – Đề 5, Bài 3.3",
+      "steps": [
+        {
+          "prompt": "Điều kiện có nghiệm.",
+          "item": {
+            "id": "e-vietets-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Phương trình có hai nghiệm khi và chỉ khi:",
+            "options": [
+              "$m \\le 15$",
+              "$m \\ge 17$",
+              "$m \\le 17$",
+              "$m \\le 65$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m-1)=-m+1$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "$17-m \\ge 0 \\Leftrightarrow -m \\ge -17$: nhân với $-1$ phải đổi chiều."
+              },
+              "3": {
+                "code": "E03",
+                "feedback": "$\\Delta'$ dùng $b'=-4$ (nửa hệ số $b$), không dùng $b=-8$.",
+                "review": "d-ptbh"
+              }
+            },
+            "solution": "$\\Delta'=16-(m-1)=17-m \\ge 0 \\Leftrightarrow m \\le 17$."
+          }
+        },
+        {
+          "prompt": "Viết $P$ theo $m$.",
+          "item": {
+            "id": "e-vietets-x5-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "$P$ bằng:",
+            "options": [
+              "$m^2-2m+2026$",
+              "$m^2+2024$",
+              "$m^2-2m+2088$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x_1^2+x_2^2=S^2-2P$, con quên trừ $2x_1x_2$.",
+                "review": "e-viete"
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$(x_1^2-1)(x_2^2-1)=x_1^2x_2^2-(x_1^2+x_2^2)+1$, con thiếu hạng tử giữa.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$x_1+x_2=8$, $x_1x_2=m-1$, $x_1^2+x_2^2=64-2(m-1)=66-2m$. $P=(m-1)^2-(66-2m)+1+2088=m^2+2024$."
+          }
+        },
+        {
+          "prompt": "Tìm $m$.",
+          "item": {
+            "id": "e-vietets-x5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$P$ nhỏ nhất khi $m$ bằng:",
+            "answer": "0",
+            "mistakes": [
+              {
+                "answer": "1",
+                "code": "E03",
+                "feedback": "Kiểm tra lại cách viết $P$: $x_1^2+x_2^2=S^2-2P$.",
+                "review": "e-viete"
+              }
+            ],
+            "solution": "$P=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$, thoả $m \\le 17$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=17-m \\ge 0 \\Leftrightarrow m \\le 17$. Viète: $x_1+x_2=8$, $x_1x_2=m-1$. $P=(m-1)^2-(66-2m)+2089=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$ (thoả). Kết luận: $m=0$."
+    },
+    {
+      "id": "e-vietets-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-2(m+1)x+m^2+2=0$ (ẩn $x$, tham số $m$). Tìm tất cả các giá trị của $m$ để phương trình có hai nghiệm phân biệt $x_1$, $x_2$ thoả mãn $x_1^2-x_1x_2+x_2^2=7$.",
+      "source": "68 đề – Đề 14, Bài 3.3",
+      "steps": [
+        {
+          "prompt": "Điều kiện hai nghiệm phân biệt.",
+          "item": {
+            "id": "e-vietets-x6-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m>\\frac12$",
+              "$m \\ge \\frac12$",
+              "$m>-\\frac32$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$.",
+                "review": "d-thamso"
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m^2+2)=-m^2-2$."
+              }
+            },
+            "solution": "$\\Delta'=(m+1)^2-(m^2+2)=2m-1>0 \\Leftrightarrow m>\\frac12$."
+          }
+        },
+        {
+          "prompt": "Đưa hệ thức về phương trình ẩn $m$.",
+          "item": {
+            "id": "e-vietets-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Thay Viète vào $x_1^2-x_1x_2+x_2^2=7$ ta được:",
+            "options": [
+              "$3m^2+8m-5=0$",
+              "$2m^2+8m-7=0$",
+              "$m^2+8m-9=0$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$x_1^2+x_2^2=S^2-2P$; trừ thêm $x_1x_2$ thì còn $S^2-3P$.",
+                "review": "e-viete"
+              },
+              "1": {
+                "code": "E03",
+                "feedback": "Con quên hạng tử $-x_1x_2$: $x_1^2-x_1x_2+x_2^2=S^2-3P$.",
+                "review": "e-viete"
+              }
+            },
+            "solution": "$S=2(m+1)$, $P=m^2+2$. $S^2-3P=4(m+1)^2-3(m^2+2)=m^2+8m-2=7 \\Leftrightarrow m^2+8m-9=0$."
+          }
+        },
+        {
+          "prompt": "Đối chiếu điều kiện.",
+          "item": {
+            "id": "e-vietets-x6-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$m=1$ hoặc $m=-9$",
+              "$m=1$",
+              "$m=-9$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Đối chiếu $m>\\frac12$: $m=-9$ làm $\\Delta'<0$, phải loại."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Con loại nhầm: thay lại từng giá trị vào điều kiện $m>\\frac12$."
+              }
+            },
+            "solution": "$m^2+8m-9=0 \\Leftrightarrow m=1$ hoặc $m=-9$; đối chiếu $m>\\frac12$ được $m=1$."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=2m-1>0 \\Leftrightarrow m>\\frac12$. Viète: $S=2(m+1)$, $P=m^2+2$. $S^2-3P=m^2+8m-2=7 \\Leftrightarrow m=1$ hoặc $m=-9$. Đối chiếu, loại $m=-9$. Kết luận: $m=1$."
+    },
+    {
+      "id": "e-vietets-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình bậc hai $2x^2-(m+3)x+m=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm của phương trình. Tìm giá trị nhỏ nhất của biểu thức $P=|x_1-x_2|$.",
+      "source": "68 đề – Đề 45, Bài 3.3",
+      "steps": [
+        {
+          "prompt": "Điều kiện có nghiệm.",
+          "item": {
+            "id": "e-vietets-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn khẳng định đúng:",
+            "options": [
+              "$\\Delta=(m+1)^2+8>0$ với mọi $m$",
+              "$\\Delta=(m-1)^2+8 \\ge 0$, nghiệm kép khi $m=1$",
+              "$\\Delta=(m-1)^2+8>0$ với mọi $m$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "$\\Delta=b^2-4ac$ với $a=2$: $4ac=8m$.",
+                "review": "d-ptbh"
+              },
+              "1": {
+                "code": "E04",
+                "feedback": "Tại $m=1$ chỉ phần bình phương bằng $0$, còn $\\Delta=8>0$.",
+                "review": "d-thamso"
+              }
+            },
+            "solution": "$\\Delta=(m+3)^2-8m=m^2-2m+9=(m-1)^2+8>0$ với mọi $m$."
+          }
+        },
+        {
+          "prompt": "Tính $P^2=(x_1-x_2)^2$ theo $m$.",
+          "item": {
+            "id": "e-vietets-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$(x_1-x_2)^2$ bằng:",
+            "options": [
+              "$(m+1)^2+8$",
+              "$\\frac{(m-1)^2+8}4$",
+              "$\\frac{(m+1)^2+8}4$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "Viète chia cho $a=2$: $x_1+x_2=\\frac{m+3}2$, $x_1x_2=\\frac m2$.",
+                "review": "e-viete"
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$(x_1-x_2)^2=S^2-4P$, không phải $S^2-2P$.",
+                "review": "e-viete"
+              }
+            },
+            "solution": "$(x_1-x_2)^2=\\left(\\frac{m+3}2\\right)^2-4\\cdot\\frac m2=\\frac{m^2+6m+9-8m}4=\\frac{(m-1)^2+8}4$."
+          }
+        },
+        {
+          "prompt": "Giá trị nhỏ nhất của $P$.",
+          "item": {
+            "id": "e-vietets-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá trị nhỏ nhất của $P$ là:",
+            "answer": "√2",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E11",
+                "feedback": "Đó là giá trị nhỏ nhất của $P^2$; còn phải lấy căn bậc hai."
+              },
+              {
+                "answer": "2√2",
+                "code": "E03",
+                "feedback": "Viète chia cho $a=2$, nên $(x_1-x_2)^2$ còn chia $4$.",
+                "review": "e-viete"
+              }
+            ],
+            "solution": "$P^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $P \\ge \\sqrt2$."
+          }
+        },
+        {
+          "prompt": "Giá trị $m$ tương ứng.",
+          "item": {
+            "id": "e-vietets-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "$P$ nhỏ nhất khi $m$ bằng:",
+            "answer": "1",
+            "mistakes": [
+              {
+                "answer": "-1",
+                "code": "E02",
+                "feedback": "Dấu “=” khi biểu thức trong bình phương bằng $0$; xem lại dấu khi chuyển vế."
+              }
+            ],
+            "solution": "Dấu “=” khi $m=1$."
+          }
+        }
+      ],
+      "solution": "$\\Delta=(m-1)^2+8>0$ nên luôn có hai nghiệm phân biệt. Viète: $x_1+x_2=\\frac{m+3}2$, $x_1x_2=\\frac m2$. $(x_1-x_2)^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $P=|x_1-x_2| \\ge \\sqrt2$, dấu “=” khi $m=1$. Kết luận: giá trị nhỏ nhất của $P$ là $\\sqrt2$, khi $m=1$."
+    },
+    {
+      "id": "e-vietets-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho phương trình $x^2-2(m-2)x+(m^2+2m-3)=0$ (ẩn $x$, tham số $m$). Tìm các giá trị của $m$ để phương trình có hai nghiệm phân biệt $x_1$, $x_2$ thoả mãn $\\frac1{x_1}+\\frac1{x_2}=\\frac{x_1+x_2}5$.",
+      "source": "68 đề – Đề 53, Bài 3.3",
+      "steps": [
+        {
+          "prompt": "Điều kiện hai nghiệm phân biệt.",
+          "item": {
+            "id": "e-vietets-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình có hai nghiệm phân biệt khi và chỉ khi:",
+            "options": [
+              "$m<\\frac76$",
+              "$m>\\frac76$",
+              "$m<\\frac16$",
+              "$m \\le \\frac76$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "$-6m+7>0 \\Leftrightarrow -6m>-7$: chia cho số âm phải đổi chiều."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Phá ngoặc $-(m^2+2m-3)$ phải đổi dấu mọi hạng tử, kể cả $-3$."
+              },
+              "3": {
+                "code": "E04",
+                "feedback": "Hai nghiệm **phân biệt** cần $\\Delta'>0$.",
+                "review": "d-thamso"
+              }
+            },
+            "solution": "$\\Delta'=(m-2)^2-(m^2+2m-3)=-6m+7>0 \\Leftrightarrow m<\\frac76$. Ngoài ra cần $x_1x_2\\ne0$ để $\\frac1{x_1}$, $\\frac1{x_2}$ có nghĩa — kiểm lại ở bước cuối."
+          }
+        },
+        {
+          "prompt": "Giải hệ thức (chưa đối chiếu).",
+          "item": {
+            "id": "e-vietets-x8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Hệ thức $\\frac{x_1+x_2}{x_1x_2}=\\frac{x_1+x_2}5$ cho $x_1+x_2=0$ hoặc $x_1x_2=5$. Các giá trị $m$ tìm được là:",
+            "options": [
+              "$m=-2$ hoặc $m=4$",
+              "$m=2$",
+              "$m=2$ hoặc $m=-4$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Phân tích lại: $m^2+2m-8=(m-2)(m+4)$."
+              },
+              "1": {
+                "code": "E06",
+                "feedback": "Con mới xét trường hợp $x_1+x_2=0$; còn trường hợp $x_1x_2=5$."
+              }
+            },
+            "solution": "$x_1+x_2=2(m-2)=0 \\Leftrightarrow m=2$; $x_1x_2=m^2+2m-3=5 \\Leftrightarrow m^2+2m-8=0 \\Leftrightarrow m=2$ hoặc $m=-4$."
+          }
+        },
+        {
+          "prompt": "Đối chiếu điều kiện.",
+          "item": {
+            "id": "e-vietets-x8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Kết luận:",
+            "options": [
+              "$m=2$ hoặc $m=-4$",
+              "$m=2$",
+              "$m=-4$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Đối chiếu $m<\\frac76$: $m=2$ làm $\\Delta'<0$, phải loại."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Con loại nhầm: thay lại từng giá trị vào điều kiện $m<\\frac76$."
+              }
+            },
+            "solution": "Đối chiếu $m<\\frac76$: loại $m=2$; $m=-4$ cho $x_1x_2=5 \\ne 0$ nên thoả mãn."
+          }
+        }
+      ],
+      "solution": "$\\Delta'=-6m+7>0 \\Leftrightarrow m<\\frac76$. Viète: $S=2(m-2)$, $P=m^2+2m-3$ (cần $P \\ne 0$). $\\frac SP=\\frac S5 \\Leftrightarrow S=0$ hoặc $P=5$, cho $m=2$ hoặc $m=-4$. Đối chiếu, loại $m=2$. Kết luận: $m=-4$."
+    }
+  ]
+}

@@ -39,8 +39,9 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
-| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | 🟡 01/11 — PR mở, không SQL; giải độc lập 80/80; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
-| Nội dung đợt 8–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
+| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Merged 05/11 (PR #49) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
+| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | 🟡 06/11 — PR mở, không SQL; giải độc lập 80/80; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
+| Nội dung đợt 9–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -54,6 +55,35 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 06/11/2026 — Nội dung đợt 8: Viète, bài toán dẫn tới PT bậc hai, hình nâng cao (nhánh `p1-content-8`, không SQL)
+
+Phụ huynh (06/11, sau buổi review 05/11): "làm luôn" đợt 8, không chờ gia sư soát xong đợt 3–7; sau đợt 8 là thiết kế thi thử. Cùng PR: `e2e/run.sh` báo `FAIL flow …` khi một luồng dừng giữa chừng (SPEC §0, 06/11).
+
+### Đã làm
+- 5 KU nháp, mỗi bài 8 câu luyện + 8 câu kiểm tra, 3 gợi ý mỗi câu:
+  - Module mới **viet**: **e-viete** (S, P, biểu thức đối xứng, tìm hai số, lập PT), **e-vietets** (★ mốc 8,5: điều kiện có nghiệm + hệ thức Viète, max/min).
+  - **g-honhop** (pha trộn, hình học có ẩn, bài toán dẫn tới PT bậc hai) — thêm vào module `bai-toan-tt`.
+  - Module mới **hinh-nang-cao**: **o-chungminh** (vuông góc, song song, phân giác, góc bằng nhau — không gồm thẳng hàng/đồng quy, để cho o-thanghang) và **o-dongdang** (đồng dạng trong đường tròn, tích đoạn thẳng); bài hình §10 (phân tích ngược, C3, C2), có hình SVG.
+- Nguồn: chỉ Đề 1–56; câu L1–L2 tự soạn.
+
+### Kiểm tra chất lượng
+- Agent soạn kiểm bằng sympy / toạ độ: e-viete 87, e-vietets 131, g-honhop 237, o-chungminh 194, o-dongdang 239 khẳng định.
+- Giải độc lập (chỉ thấy đề như con, chấm bằng `gradeItem`): **80/80** khớp. Các thứ tự khác người giải tìm ra (o-chungminh p7, x6; o-dongdang p7) app đều chấm đúng.
+- Sửa sau khi giải: e-vietets p4 bước 3 lộ phương trình của bước 2; e-vietets x8 ghi thêm điều kiện $x_1x_2\ne0$; o-dongdang x6 thêm $AB<AC$ vào đề (trước chỉ có trong hình); o-chungminh x3 ghi rõ "đường tròn đường kính $AC$".
+
+### Gia sư soát kỹ (tab Kho bài)
+- **e-viete** — Nguồn: Đề 9 (p7), 34 (p8), 22 (x6), 6 (x7 chuyển thể); x8 tự soạn. 87 khẳng định sympy. Gia sư: p8 nặng (T=(x1²+x2²)/(√x1+√x2)), có thể chuyển sang e-vietets; x8 bẫy PT vô nghiệm; mã lỗi sai dấu P lẫn E02/E03 — chốt quy ước; p3 phương án "đặt t=x²"; x7 chuyển thể bỏ bước bình phương.
+- **g-honhop** — Nguồn: Đề 37, 8, 27, 51, 35, 20, 33, 21, 39 (3.2), 7. 237 khẳng định sympy. p8 có hình. Gia sư: p5, x4 (pha trộn) là hệ bậc nhất nhưng tiên quyết chỉ d-ptbh → E02 không có link ôn g-giaihpt (cân nhắc thêm g-giaihpt vào tiên quyết); điều kiện đầy đủ Q24 (p4 x>5/3, p7 0<x<14, p8 x>10, x8 x>2); loại nghiệm dương (x7 loại 8, p7 loại 84, bài mẫu loại 12 — tinh tế); giả thiết thể tích cộng được (x6, p5); x5 lãi nhập gốc (dạng g-phantram); x6 đáp số thập phân.
+- **e-vietets** — Nguồn (Bài 3.3): Đề 19, 48, 33, 1, 5, 14, 45, 53. 131 khẳng định sympy. Gia sư: p8 (Đề 48, "hai nghiệm phân biệt", x1−2x2=1) → m=1 cho nghiệm kép nên kết luận "không có m" (đúng theo đề gốc, đã đối chiếu); p7 (Đề 19) dùng Δ≥0, max 20 tại nghiệm kép m=5/4 — nếu quy ước Δ>0 thì không có max; x8 bước tách sẵn dễ hơn đề gốc; x3–x5 đề thật gán L2; mã lỗi x7-s3 E11, x8-s2 E06.
+- **o-dongdang** — Nguồn (4.2b/c): Đề 28, 40, 9, 2, 3 (nửa sau), 42, 19, 27, 46 (4.2c). 239 khẳng định; 14 hình. Gia sư: estMinutes 60 (CURRICULUM 70); dặn chứng minh lại PA·PB=PC·PD bằng đồng dạng khi thi — xác nhận cách chấm; p7, x7 dùng hệ thức lượng nhưng htl không là tiên quyết (không có link ôn); x7 (Đề 27) gần l-tieptuyen x7; x6 phụ thuộc thứ tự điểm theo hình, nhãn E sát O; Đề 22/30/42 cùng một bài. Đối chiếu với o-chungminh: Đề 3 4.2b nửa đầu, Đề 27 4.2b nửa sau, Đề 46 4.2b.
+- **o-chungminh** — Nguồn (4.2b trừ x4 4.2a): mẫu Đề 46, p4 Đề 44, p5 Đề 10, p6 Đề 37, p7 Đề 21, p8 Đề 13, x3 Đề 24, x4 Đề 17, x5 Đề 36, x6 Đề 50, x7 Đề 31, x8 Đề 3. 156 + 38 khẳng định. Gia sư: hình chung (Đề 46) lặp ở mọi câu luyện; p7 "cắt các đường thẳng PA, PB" (khác đề gốc); mẹo kẻ đường kính p4 → p8 (L3) có nặng?; dùng tiếp tuyến ⊥ bán kính (cho sẵn trong đề, l-tieptuyen không là tiên quyết); trùng hình khác ý: Đề 44 (f3-dongdang x6 ý a), luyện đề 4.2 dùng ý a Đề 3, 24, 31, 36, 46; cấp độ p6 L2, x8 L3. Cùng đề khác ý với o-dongdang: Đề 3 4.2b (chungminh: góc DEA; dongdang: DE·BC=DC·BM), Đề 46 (chungminh 4.2b phân giác; dongdang 4.2c).
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gia sư soát 5 bài trước **03/01/2027**; phụ huynh "Duyệt cả bài".
+- Quyết định (không gấp): thêm g-giaihpt làm tiên quyết của g-honhop (để câu pha trộn có link ôn); htl-1/2 làm tiên quyết của o-dongdang; l-tieptuyen cho o-chungminh.
 
 ---
 

@@ -1,0 +1,1009 @@
+{
+  "id": "o-dongdang",
+  "module": "hinh-nang-cao",
+  "order": 2,
+  "title": "Đồng dạng trong đường tròn & tích đoạn thẳng",
+  "status": "draft",
+  "estMinutes": 60,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 164.4\" role=\"img\"><title>Đường tròn tâm O, điểm M ở ngoài, hai cát tuyến MAB và MCD</title><circle cx=\"157.8\" cy=\"82.2\" r=\"58.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"70.5\" x2=\"194.8\" y2=\"37.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"70.5\" x2=\"175.1\" y2=\"137.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"106.7\" y1=\"54.4\" x2=\"175.1\" y2=\"137.7\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"105\" y1=\"106.6\" x2=\"194.8\" y2=\"37.3\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><text x=\"169.8\" y=\"82.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"12\" y=\"70.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"102.6\" y=\"43.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"204\" y=\"29.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"100.9\" y=\"117.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"184.3\" y=\"145.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><circle cx=\"157.8\" cy=\"82.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"70.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"106.7\" cy=\"54.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"194.8\" cy=\"37.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"105\" cy=\"106.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"175.1\" cy=\"137.7\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+    "alt": "Đường tròn tâm O; từ điểm M ở ngoài đường tròn kẻ hai cát tuyến M-A-B (phía trên) và M-C-D (phía dưới), A gần M hơn B, C gần M hơn D; nét màu nối AD và CB tạo thành hai tam giác MAD và MCB."
+  },
+  "theory": [
+    "**Cần nhớ trước** (bài *CM vuông góc, song song, phân giác & góc bằng nhau* và *Tiếp tuyến: dấu hiệu & hai TT từ một điểm*): các nguồn góc bằng nhau — hai góc nội tiếp cùng chắn một cung, góc ngoài của tứ giác nội tiếp bằng góc trong ở đỉnh đối, góc tạo bởi tiếp tuyến và dây, góc vuông. Hai tam giác đồng dạng (g.g) cho các cặp cạnh **tương ứng** tỉ lệ.",
+    "**Quy tắc tích → tỉ số → cặp tam giác:** muốn có $a\\cdot b=c\\cdot d$, viết $\\dfrac{a}{c}=\\dfrac{d}{b}$: hai đoạn ở tử ($a$, $d$) là cạnh của tam giác thứ nhất, hai đoạn ở mẫu ($c$, $b$) là cạnh của tam giác thứ hai. **Hệ thức trong đường tròn:** hai đường thẳng $AB$, $CD$ cắt nhau tại $P$ và $A$, $B$, $C$, $D$ cùng thuộc **một** đường tròn ⇒ $PA\\cdot PB=PC\\cdot PD$ (mọi đoạn tính **từ $P$**, $P$ ở trong hay ngoài đường tròn).",
+    "**Vì sao:** hai dây $AB$, $CD$ cắt nhau tại $P$: $\\triangle PAC$ và $\\triangle PDB$ có $\\widehat{APC}=\\widehat{DPB}$ (đối đỉnh), $\\widehat{PAC}=\\widehat{PDB}$ (cùng chắn cung $BC$) ⇒ $\\triangle PAC\\backsim\\triangle PDB$ ⇒ $\\dfrac{PA}{PD}=\\dfrac{PC}{PB}$. $P$ ở ngoài: góc $P$ chung thay cho đối đỉnh. Khi trình bày bài thi, chứng minh lại bằng cặp tam giác đồng dạng, không chỉ trích hệ thức.",
+    "**Bẫy hay gặp:** (1) viết sai thứ tự đỉnh, ví dụ $\\triangle MAD\\backsim\\triangle MBC$ thay vì $\\triangle MCB$, nên tỉ số sai; (2) dùng đoạn **trong** đường tròn: $MA\\cdot AB$ thay cho $MA\\cdot MB$; (3) ghép sai cặp: $PA\\cdot PC=PB\\cdot PD$; (4) lấy chính hai tam giác đồng dạng để suy ra góc đang dùng chứng minh đồng dạng (lập luận vòng); (5) nói “cùng chắn cung” khi hai góc không nằm trên **cùng một** đường tròn.",
+    "**Nhận dạng:** đề “chứng minh tích $\\ldots=\\ldots$” hoặc “$AB^2=\\ldots$” → đổi sang tỉ số, tìm cặp tam giác có góc chung (hoặc đối đỉnh) ở giao điểm; góc còn lại lấy từ góc nội tiếp, tứ giác nội tiếp, tiếp tuyến. Hai tích không chung cặp tam giác, hoặc có $R^2$, $AB^2$ → **bắc cầu** qua tích trung gian (thường là hệ thức lượng). **Không** dùng hệ thức khi bốn điểm không cùng thuộc một đường tròn.",
+    "**Thẻ cấu hình đề thi:** (a) Hai đường cao $BE$, $CF$; $EF$ cắt $BC$ tại $M$ → $MF\\cdot ME=MB\\cdot MC$ (nhờ $BFEC$ nội tiếp). (b) Tích có $R^2$, $2R^2$ → tìm tam giác vuông có cạnh $R$ hoặc đường kính $2R$. (c) Tiếp tuyến $AB$ là cạnh góc vuông của hai tam giác vuông tại $B$ → bắc cầu qua $AB^2$. (d) Hai góc vuông cùng nhìn $AB$ → bốn điểm thuộc đường tròn đường kính $AB$, dùng như $(O)$."
+  ],
+  "worked": {
+    "problem": "Cho đường tròn $(O)$ và điểm $M$ nằm ngoài đường tròn. Qua $M$ kẻ hai cát tuyến $MAB$ và $MCD$ ($A$ nằm giữa $M$ và $B$, $C$ nằm giữa $M$ và $D$). Chứng minh $MA\\cdot MB=MC\\cdot MD$.",
+    "analysis": {
+      "goal": "$MA\\cdot MB=MC\\cdot MD$",
+      "steps": [
+        {
+          "ask": "Muốn có $MA\\cdot MB=MC\\cdot MD$, đưa về tỉ số nào, xét hai tam giác nào?",
+          "node": "$\\dfrac{MA}{MC}=\\dfrac{MD}{MB}$: $MA$, $MD$ thuộc $\\triangle MAD$; $MC$, $MB$ thuộc $\\triangle MCB$ — cần $\\triangle MAD\\backsim\\triangle MCB$"
+        },
+        {
+          "ask": "Muốn $\\triangle MAD\\backsim\\triangle MCB$ (g.g), cần hai cặp góc nào?",
+          "node": "$\\widehat{M}$ chung và $\\widehat{MDA}=\\widehat{MBC}$"
+        },
+        {
+          "ask": "Vì sao $\\widehat{MDA}=\\widehat{MBC}$?",
+          "node": "$A$, $B$, $C$, $D$ cùng thuộc $(O)$: $\\widehat{ADC}$ và $\\widehat{ABC}$ là hai góc nội tiếp cùng chắn cung $AC$ (giả thiết)"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "text": "Xét $(O)$: $\\widehat{ADC}=\\widehat{ABC}$ (hai góc nội tiếp cùng chắn cung $AC$), tức $\\widehat{MDA}=\\widehat{MBC}$.",
+        "why": "Bắt đầu từ tầng cuối của sơ đồ: điều có ngay vì bốn điểm nằm trên đường tròn."
+      },
+      {
+        "text": "Xét $\\triangle MAD$ và $\\triangle MCB$ có: $\\widehat{M}$ chung; $\\widehat{MDA}=\\widehat{MBC}$ (cmt) ⇒ $\\triangle MAD\\backsim\\triangle MCB$ (g.g).",
+        "why": "Viết đỉnh theo đúng cặp tương ứng: $M\\leftrightarrow M$, $D\\leftrightarrow B$ nên $A\\leftrightarrow C$."
+      },
+      {
+        "text": "⇒ $\\dfrac{MA}{MC}=\\dfrac{MD}{MB}$ (tỉ số các cặp cạnh tương ứng).",
+        "why": "Cạnh $MA$ (nối $M$ với $A$) ứng với $MC$ (nối $M$ với $C$); $MD$ ứng với $MB$."
+      },
+      {
+        "text": "⇒ $MA\\cdot MB=MC\\cdot MD$ (nhân chéo).",
+        "why": "Nhân chéo tỉ lệ thức: tử vế này nhân mẫu vế kia."
+      },
+      {
+        "text": "Kết luận: $MA\\cdot MB=MC\\cdot MD$.",
+        "why": "Viết lại đúng đẳng thức đề yêu cầu."
+      }
+    ],
+    "selfExplain": "Nếu viết nhầm $\\triangle MAD\\backsim\\triangle MBC$ thì con sẽ suy ra tỉ số nào, và vì sao tỉ số đó không cho đẳng thức cần chứng minh?"
+  },
+  "faded": {
+    "problem": "Cho đường tròn $(O)$, hai dây $AB$ và $CD$ cắt nhau tại điểm $I$ nằm trong đường tròn. Chứng minh $IA\\cdot IB=IC\\cdot ID$. Áp dụng: $IA=3$ cm, $IB=4$ cm, $CD=8$ cm và $IC>ID$; tính $IC$.",
+    "steps": [
+      {
+        "text": "Xét $\\triangle IAC$ và $\\triangle IDB$ có: $\\widehat{AIC}=\\widehat{DIB}$ (đối đỉnh)."
+      },
+      {
+        "prompt": "Chọn cặp góc thứ hai bằng nhau và lí do.",
+        "item": {
+          "id": "o-dongdang-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Cặp góc thứ hai của $\\triangle IAC$ và $\\triangle IDB$:",
+          "options": [
+            "$\\widehat{IAC}=\\widehat{IBD}$ (cùng chắn cung $CD$)",
+            "$\\widehat{IAC}=\\widehat{IDB}$ (hai góc nội tiếp cùng chắn cung $BC$)",
+            "$\\widehat{IAC}=\\widehat{IDB}$ (vì $\\triangle IAC\\backsim\\triangle IDB$)"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E08",
+              "feedback": "$\\widehat{IAC}$ chắn cung $BC$ còn $\\widehat{IBD}$ chắn cung $AD$, nên hai góc này không cùng chắn một cung. Con đọc lại cung nằm trong mỗi góc."
+            },
+            "2": {
+              "code": "E09",
+              "feedback": "Đó chính là điều đang cần chứng minh, dùng nó là lập luận vòng. Lí do phải là góc nội tiếp cùng chắn một cung."
+            }
+          },
+          "solution": "$\\widehat{IAC}=\\widehat{BAC}$ và $\\widehat{IDB}=\\widehat{CDB}$ là hai góc nội tiếp cùng chắn cung $BC$ ⇒ bằng nhau."
+        }
+      },
+      {
+        "text": "⇒ $\\triangle IAC\\backsim\\triangle IDB$ (g.g)."
+      },
+      {
+        "prompt": "Viết tỉ số các cặp cạnh tương ứng.",
+        "item": {
+          "id": "o-dongdang-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Từ $\\triangle IAC\\backsim\\triangle IDB$ suy ra:",
+          "options": [
+            "$\\dfrac{IA}{IB}=\\dfrac{IC}{ID}$",
+            "$\\dfrac{IA}{ID}=\\dfrac{IB}{IC}$",
+            "$\\dfrac{IA}{ID}=\\dfrac{IC}{IB}$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E08",
+              "feedback": "Đỉnh tương ứng là $A\\leftrightarrow D$, $C\\leftrightarrow B$, nên $IA$ ứng với $ID$ và $IC$ ứng với $IB$."
+            },
+            "1": {
+              "code": "E08",
+              "feedback": "$IA$ ứng với $ID$ là đúng, nhưng tỉ số thứ hai cũng phải lấy cạnh của $\\triangle IAC$ chia cạnh tương ứng của $\\triangle IDB$ ($C\\leftrightarrow B$)."
+            }
+          },
+          "solution": "$I\\leftrightarrow I$, $A\\leftrightarrow D$, $C\\leftrightarrow B$ ⇒ $\\dfrac{IA}{ID}=\\dfrac{IC}{IB}=\\dfrac{AC}{DB}$."
+        }
+      },
+      {
+        "text": "⇒ $IA\\cdot IB=IC\\cdot ID$. Áp dụng: $IC\\cdot ID=3\\cdot4=12$ và $IC+ID=CD=8$, nên $IC$, $ID$ là hai nghiệm của $t^2-8t+12=0$."
+      },
+      {
+        "prompt": "Tính đoạn cần tìm.",
+        "item": {
+          "id": "o-dongdang-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Tính $IC$ (biết $IC>ID$).",
+          "answer": "6",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "2",
+              "code": "E10",
+              "feedback": "Đó là nghiệm nhỏ hơn; đề cho $IC>ID$ nên chọn nghiệm lớn hơn."
+            },
+            {
+              "answer": "3/2",
+              "code": "E08",
+              "feedback": "Tích là $IC\\cdot ID$ (hai đoạn tính từ $I$), không phải $IC\\cdot CD$."
+            }
+          ],
+          "solution": "$t^2-8t+12=0$ ⇔ $(t-2)(t-6)=0$ ⇒ $\\{IC;ID\\}=\\{6;2\\}$; vì $IC>ID$ nên $IC=6$ (cm)."
+        }
+      },
+      {
+        "text": "Kết luận: $IA\\cdot IB=IC\\cdot ID$; với số liệu đã cho, $IC$ là nghiệm lớn hơn của phương trình trên."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "o-dongdang-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ và điểm $M$ nằm ngoài đường tròn; hai cát tuyến $MAB$ và $MCD$ ($A$ nằm giữa $M$ và $B$, $C$ nằm giữa $M$ và $D$). Đề yêu cầu chứng minh $MA\\cdot MB=MC\\cdot MD$. Bước đầu tiên nên làm gì?",
+      "recognition": true,
+      "hints": [
+        "Đề yêu cầu chứng minh một đẳng thức giữa hai tích độ dài.",
+        "Đẳng thức “tích bằng tích” thường đến từ hai tam giác đồng dạng.",
+        "Chia hai vế để được một tỉ lệ thức, rồi tìm tam giác chứa các đoạn ở tử."
+      ],
+      "options": [
+        "Dùng hệ thức lượng trong tam giác vuông $MAB$",
+        "Chứng minh $MA=MC$ và $MB=MD$",
+        "Viết $\\dfrac{MA}{MC}=\\dfrac{MD}{MB}$ rồi xét hai tam giác $MAD$ và $MCB$",
+        "Tính từng đoạn bằng định lí Pythagore rồi nhân lại"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Hình không có tam giác vuông nào để dùng hệ thức lượng. Tích hai đoạn bằng tích hai đoạn → đưa về tỉ số của hai tam giác đồng dạng."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Các đoạn này nói chung không bằng nhau; đẳng thức tích cần hai tam giác **đồng dạng**, không cần bằng nhau."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Đề không cho số đo nên không tính được từng đoạn. Muốn chứng minh tích bằng nhau, đưa về tỉ số của hai tam giác đồng dạng."
+        }
+      },
+      "solution": "Tích bằng tích → tỉ số $\\dfrac{MA}{MC}=\\dfrac{MD}{MB}$: $MA$, $MD$ thuộc $\\triangle MAD$; $MC$, $MB$ thuộc $\\triangle MCB$. Chứng minh $\\triangle MAD\\backsim\\triangle MCB$ (góc $M$ chung, $\\widehat{MDA}=\\widehat{MBC}$ cùng chắn cung $AC$)."
+    },
+    {
+      "id": "o-dongdang-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Trong đường tròn $(O)$, hai dây $AB$ và $CD$ cắt nhau tại $P$. Biết $PA=4$ cm, $PB=6$ cm, $PC=3$ cm. Tính $PD$.",
+      "hints": [
+        "Cần tìm $PD$, một đoạn của dây $CD$.",
+        "Hai dây cắt nhau trong đường tròn → hệ thức giữa bốn đoạn tính từ $P$.",
+        "Dùng $PA\\cdot PB=PC\\cdot PD$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Hai dây AB và CD cắt nhau tại P trong đường tròn</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"37.7\" y1=\"169.4\" x2=\"202.3\" y2=\"169.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"62.5\" y1=\"196.9\" x2=\"213\" y2=\"96.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"26.1\" y=\"172.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"213.8\" y=\"172.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"53.3\" y=\"204.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"223.5\" y=\"90.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"109.5\" y=\"179.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"120\" y=\"108\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"37.7\" cy=\"169.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"202.3\" cy=\"169.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"62.5\" cy=\"196.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"213\" cy=\"96.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"103.5\" cy=\"169.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O với hai dây AB và CD cắt nhau tại điểm P nằm trong đường tròn; P gần A hơn B và gần C hơn D."
+      },
+      "answer": "8",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2",
+          "code": "E03",
+          "feedback": "Mỗi vế là tích hai đoạn của **cùng một dây**: $PA\\cdot PB=PC\\cdot PD$; con đã ghép $PA$ với $PC$."
+        },
+        {
+          "answer": "9/2",
+          "code": "E03",
+          "feedback": "Con ghép $PA$ với $PD$; mỗi vế phải là tích hai đoạn của cùng một dây: $PA\\cdot PB=PC\\cdot PD$."
+        }
+      ],
+      "solution": "$PA\\cdot PB=PC\\cdot PD$ ⇒ $PD=\\dfrac{PA\\cdot PB}{PC}=\\dfrac{4\\cdot6}{3}=8$ (cm)."
+    },
+    {
+      "id": "o-dongdang-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Biết $\\triangle MAD\\backsim\\triangle MCB$ (các đỉnh viết theo đúng thứ tự tương ứng). Đẳng thức nào đúng?",
+      "hints": [
+        "Cần một đẳng thức rút ra từ hai tam giác đồng dạng đã cho.",
+        "Đỉnh cùng vị trí là đỉnh tương ứng: $M\\leftrightarrow M$, $A\\leftrightarrow C$, $D\\leftrightarrow B$.",
+        "Lập tỉ số các cặp cạnh tương ứng rồi nhân chéo."
+      ],
+      "options": [
+        "$\\dfrac{MA}{MB}=\\dfrac{MD}{MC}$",
+        "$MA\\cdot MB=MC\\cdot MD$",
+        "$MA\\cdot MC=MB\\cdot MD$",
+        "$\\dfrac{AD}{CB}=\\dfrac{MA}{MB}$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E08",
+          "feedback": "Đỉnh tương ứng: $A\\leftrightarrow C$, $D\\leftrightarrow B$, nên $MA$ ứng với $MC$ và $MD$ ứng với $MB$."
+        },
+        "2": {
+          "code": "E02",
+          "feedback": "Từ $\\dfrac{MA}{MC}=\\dfrac{MD}{MB}$, nhân chéo là tử vế này nhân mẫu vế kia: $MA\\cdot MB=MC\\cdot MD$."
+        },
+        "3": {
+          "code": "E08",
+          "feedback": "$AD$ ứng với $CB$ là đúng, nhưng $MA$ ứng với $MC$ chứ không phải $MB$."
+        }
+      },
+      "solution": "$\\triangle MAD\\backsim\\triangle MCB$ ⇒ $\\dfrac{MA}{MC}=\\dfrac{MD}{MB}=\\dfrac{AD}{CB}$ ⇒ $MA\\cdot MB=MC\\cdot MD$."
+    },
+    {
+      "id": "o-dongdang-p4",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho tam giác nhọn $ABC$ ($AB<AC$) nội tiếp đường tròn $(O)$, các đường cao $AD$, $BE$, $CF$ cắt nhau tại $H$. Đường thẳng $CF$ cắt $(O)$ tại điểm thứ hai $N$. Phân tích ngược để chứng minh $BN\\cdot BE=BF\\cdot BA$.",
+      "source": "68 đề – Đề 28, Bài 4.2b (chuyển thể)",
+      "hints": [
+        "Cần một đẳng thức tích, bốn đoạn đều xuất phát từ $B$.",
+        "Viết thành tỉ số; mỗi tam giác chứa một đoạn ở tử và một đoạn ở mẫu.",
+        "Hai đường cao cho góc vuông; góc còn lại lấy từ hai góc nội tiếp cùng chắn một cung."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn O, ba đường cao, CF cắt đường tròn tại N</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"84\" y1=\"31\" x2=\"38.6\" y2=\"170.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"38.6\" y1=\"170.9\" x2=\"201.4\" y2=\"170.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"201.4\" y1=\"170.9\" x2=\"84\" y2=\"31\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"84\" y1=\"31\" x2=\"84\" y2=\"170.9\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"38.6\" y1=\"170.9\" x2=\"134.1\" y2=\"90.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"201.4\" y1=\"170.9\" x2=\"24.2\" y2=\"113.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"38.6\" y1=\"170.9\" x2=\"24.2\" y2=\"113.3\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"128.8,95.2 133.3,100.6 138.6,96.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"52,129.7 58.6,131.8 60.8,125.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"84,163.9 91,163.9 91,170.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"82\" y=\"19.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"27.3\" y=\"175\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"212.7\" y=\"175\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"84\" y=\"182.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"142.6\" y=\"82.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"42.9\" y=\"118.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"95.9\" y=\"130.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"13.8\" y=\"107.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"130.4\" y=\"126\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"84\" cy=\"31\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"38.6\" cy=\"170.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"201.4\" cy=\"170.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84\" cy=\"170.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"134.1\" cy=\"90.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"54.1\" cy=\"123\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84\" cy=\"132.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24.2\" cy=\"113.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC (AB < AC) nội tiếp đường tròn tâm O; các đường cao AD, BE, CF cắt nhau tại H; đường thẳng CF kéo dài qua F cắt đường tròn tại N trên cung AB; đoạn BN tô màu."
+      },
+      "drawFirst": true,
+      "goal": "$BN\\cdot BE=BF\\cdot BA$",
+      "steps": [
+        {
+          "ask": "Muốn có $BN\\cdot BE=BF\\cdot BA$, cần hai tam giác nào đồng dạng?",
+          "node": "$\\triangle BFN\\backsim\\triangle BEA$ (khi đó $\\dfrac{BF}{BE}=\\dfrac{BN}{BA}$)",
+          "item": {
+            "id": "o-dongdang-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp tam giác.",
+            "options": [
+              "$\\triangle BFN\\backsim\\triangle BAE$",
+              "$\\triangle BFN\\backsim\\triangle BEA$",
+              "$\\triangle BNE\\backsim\\triangle BFA$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Sai thứ tự đỉnh: góc vuông ở $F$ phải ứng với góc vuông ở $E$, nên viết $\\triangle BFN\\backsim\\triangle BEA$."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Cặp này cho $BN\\cdot BA=BF\\cdot BE$, không phải đẳng thức cần chứng minh. Viết $\\dfrac{BF}{BE}=\\dfrac{BN}{BA}$ để chọn tam giác."
+              }
+            },
+            "solution": "$\\dfrac{BF}{BE}=\\dfrac{BN}{BA}$: $BF$, $BN$ thuộc $\\triangle BFN$; $BE$, $BA$ thuộc $\\triangle BEA$."
+          }
+        },
+        {
+          "ask": "Đã có $\\widehat{BFN}=\\widehat{BEA}=90^\\circ$ ($CF$, $BE$ là đường cao). Cần thêm cặp góc nào?",
+          "node": "$\\widehat{BNF}=\\widehat{BAE}$, tức $\\widehat{BNC}=\\widehat{BAC}$",
+          "item": {
+            "id": "o-dongdang-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp góc.",
+            "options": [
+              "$\\widehat{BNF}=\\widehat{BCA}$",
+              "$\\widehat{EFC}=\\widehat{EBC}$ (tứ giác $BCEF$ nội tiếp)",
+              "$\\widehat{BNF}=\\widehat{BAE}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Góc ở đỉnh $N$ ứng với góc ở đỉnh $A$ của $\\triangle BEA$, tức $\\widehat{BAE}$; $\\widehat{BCA}$ không thuộc tam giác đó."
+              },
+              "1": {
+                "code": "E06",
+                "feedback": "Đẳng thức này đúng nhưng không phải góc của $\\triangle BFN$ hay $\\triangle BEA$, nên không dẫn tới cặp tam giác đã chọn."
+              }
+            },
+            "solution": "Đỉnh $N$ ứng với đỉnh $A$: cần $\\widehat{BNF}=\\widehat{BAE}$, tức $\\widehat{BNC}=\\widehat{BAC}$."
+          }
+        },
+        {
+          "ask": "Vì sao $\\widehat{BNC}=\\widehat{BAC}$?",
+          "node": "$A$, $N$ cùng nằm trên $(O)$, cùng phía với $BC$: hai góc nội tiếp cùng chắn cung $BC$",
+          "given": true,
+          "item": {
+            "id": "o-dongdang-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Hai góc nội tiếp của $(O)$ cùng chắn cung $BC$",
+              "Tứ giác $AEHF$ nội tiếp",
+              "Vì $\\triangle BFN\\backsim\\triangle BEA$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Đường tròn qua $A$, $E$, $H$, $F$ không đi qua $B$, $N$, $C$, nên lí do không khớp với hai góc này."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "Đó là điều đang cần chứng minh; dùng nó là lập luận vòng."
+              }
+            },
+            "solution": "$A$, $N$ thuộc $(O)$ và cùng phía với $BC$ ⇒ $\\widehat{BNC}=\\widehat{BAC}$ (cùng chắn cung $BC$)."
+          }
+        }
+      ],
+      "outline": [
+        "$\\widehat{BNC}=\\widehat{BAC}$ (cùng chắn cung $BC$) ⇒ $\\widehat{BNF}=\\widehat{BAE}$",
+        "$\\widehat{BFN}=\\widehat{BEA}=90^\\circ$ ($CF\\perp AB$, $BE\\perp AC$)",
+        "⇒ $\\triangle BFN\\backsim\\triangle BEA$ (g.g) ⇒ $\\dfrac{BF}{BE}=\\dfrac{BN}{BA}$",
+        "Kết luận: $BN\\cdot BE=BF\\cdot BA$."
+      ],
+      "solution": "Xét $\\triangle BFN$ và $\\triangle BEA$ có: $\\widehat{BFN}=\\widehat{BEA}=90^\\circ$ ($CF$, $BE$ là đường cao); $\\widehat{BNF}=\\widehat{BNC}=\\widehat{BAC}=\\widehat{BAE}$ (hai góc nội tiếp cùng chắn cung $BC$) ⇒ $\\triangle BFN\\backsim\\triangle BEA$ (g.g) ⇒ $\\dfrac{BF}{BE}=\\dfrac{BN}{BA}$. Kết luận: $BN\\cdot BE=BF\\cdot BA$."
+    },
+    {
+      "id": "o-dongdang-p5",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho tam giác nhọn $ABC$ ($AB<AC$) nội tiếp đường tròn $(O)$, các đường cao $BE$, $CF$; tứ giác $BFEC$ nội tiếp (đã chứng minh). Đường thẳng $EF$ cắt đường thẳng $BC$ tại $M$. Điền vào chỗ trống để chứng minh $MF\\cdot ME=MB\\cdot MC$.",
+      "source": "68 đề – Đề 40, Bài 4.2 ý 2 (chuyển thể)",
+      "hints": [
+        "Cần tích hai đoạn từ $M$ trên đường thẳng $MFE$ bằng tích hai đoạn trên $MBC$.",
+        "Hai tam giác có chung góc $M$; góc còn lại lấy từ tứ giác nội tiếp nào?",
+        "Góc ngoài của tứ giác nội tiếp bằng góc trong ở đỉnh đối diện."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 193.3\" role=\"img\"><title>Tam giác ABC, hai đường cao BE, CF; EF cắt BC tại M</title><circle cx=\"143.3\" cy=\"96.7\" r=\"72.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"107\" y1=\"33.7\" x2=\"77.5\" y2=\"127.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"107\" y1=\"33.7\" x2=\"209.2\" y2=\"127.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"127.4\" x2=\"209.2\" y2=\"127.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"77.5\" y1=\"127.4\" x2=\"137.6\" y2=\"61.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"209.2\" y1=\"127.4\" x2=\"89.4\" y2=\"89.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"127.4\" x2=\"137.6\" y2=\"61.8\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"132.9,66.9 138,71.7 142.8,66.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"87.3,96.3 94,98.4 96.1,91.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"107\" y=\"21.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"77.5\" y=\"139.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"219.6\" y=\"133.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"148\" y=\"55.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"83.4\" y=\"79.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"18\" y=\"137.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"149.3\" y=\"107\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"107\" cy=\"33.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"77.5\" cy=\"127.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"209.2\" cy=\"127.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.6\" cy=\"61.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"89.4\" cy=\"89.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"127.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"143.3\" cy=\"96.7\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC (AB < AC) nội tiếp đường tròn tâm O; hai đường cao BE và CF; đường thẳng EF (tô màu) kéo dài cắt đường thẳng BC tại M nằm ngoài đoạn BC, phía B; thứ tự M, F, E và M, B, C."
+      },
+      "lines": [
+        "Xét $\\triangle MFB$ và $\\triangle MCE$ có: $\\widehat{M}$ chung;",
+        "$\\widehat{MFB}=\\widehat{MCE}$ ([[1]]);",
+        "⇒ $\\triangle MFB\\backsim\\triangle MCE$ ([[2]])",
+        "⇒ [[3]] ⇒ $MF\\cdot ME=MB\\cdot MC$."
+      ],
+      "bank": [
+        "góc ngoài tại $F$ của tứ giác nội tiếp $BFEC$ bằng góc trong ở đỉnh đối $C$",
+        "hai góc nội tiếp cùng chắn cung $BE$ của $(O)$",
+        "g.g",
+        "c.g.c",
+        "$\\dfrac{MF}{MC}=\\dfrac{MB}{ME}$",
+        "$\\dfrac{MF}{MC}=\\dfrac{ME}{MB}$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "$F$, $E$ không nằm trên $(O)$ nên không dùng góc nội tiếp của $(O)$. Góc bằng nhau đến từ tứ giác nội tiếp $BFEC$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E09",
+              "feedback": "Mới có hai cặp góc bằng nhau, chưa có cặp cạnh tỉ lệ nào: trường hợp góc – góc."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "Tỉ số lấy cạnh của $\\triangle MFB$ chia cạnh tương ứng của $\\triangle MCE$: $MB$ ứng với $ME$, nên là $\\dfrac{MB}{ME}$."
+            }
+          }
+        }
+      ],
+      "solution": "Xét $\\triangle MFB$ và $\\triangle MCE$ có: $\\widehat{M}$ chung; $\\widehat{MFB}=\\widehat{MCE}$ (góc ngoài tại $F$ của tứ giác nội tiếp $BFEC$ bằng góc trong ở đỉnh đối $C$) ⇒ $\\triangle MFB\\backsim\\triangle MCE$ (g.g) ⇒ $\\dfrac{MF}{MC}=\\dfrac{MB}{ME}$ ⇒ $MF\\cdot ME=MB\\cdot MC$."
+    },
+    {
+      "id": "o-dongdang-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ hai cát tuyến $MAB$ và $MCD$ ($A$ nằm giữa $M$ và $B$, $C$ nằm giữa $M$ và $D$). Biết $MA=4$ cm, $AB=5$ cm, $MC=3$ cm. Tính độ dài dây $CD$.",
+      "hints": [
+        "Cần độ dài dây $CD$; trước hết tìm đoạn $MD$.",
+        "Hai cát tuyến từ một điểm ngoài đường tròn → hệ thức tích các đoạn tính từ $M$.",
+        "Tính $MB=MA+AB$, rồi dùng $MA\\cdot MB=MC\\cdot MD$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 197.9\" role=\"img\"><title>Hai cát tuyến MAB và MCD của đường tròn</title><circle cx=\"141.1\" cy=\"98.9\" r=\"74.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"98.9\" x2=\"136.3\" y2=\"24.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"98.9\" x2=\"196.7\" y2=\"149.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"12\" y=\"98.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"71.8\" y=\"53.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"142.3\" y=\"13.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"65.1\" y=\"123.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"202.7\" y=\"159.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"153.1\" y=\"98.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"24\" cy=\"98.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"73.9\" cy=\"65.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"136.3\" cy=\"24.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"67.2\" cy=\"111.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.7\" cy=\"149.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"141.1\" cy=\"98.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; từ điểm M bên ngoài có hai cát tuyến: M, A, B thẳng hàng theo thứ tự đó và M, C, D thẳng hàng theo thứ tự đó."
+      },
+      "answer": "9",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "12",
+          "code": "E11",
+          "feedback": "Con mới tính $MD$; dây $CD=MD-MC$."
+        },
+        {
+          "answer": "20/3",
+          "code": "E08",
+          "feedback": "Hệ thức dùng các đoạn tính **từ $M$**: $MA\\cdot MB=MC\\cdot MD$, không phải $MA\\cdot AB=MC\\cdot CD$."
+        },
+        {
+          "answer": "15/4",
+          "code": "E03",
+          "feedback": "Con ghép sai thành $\\dfrac{MA}{MC}=\\dfrac{MB}{MD}$; đúng là $MA\\cdot MB=MC\\cdot MD$."
+        }
+      ],
+      "solution": "$MB=MA+AB=9$; $MA\\cdot MB=MC\\cdot MD$ ⇒ $MD=\\dfrac{4\\cdot9}{3}=12$ ⇒ $CD=MD-MC=12-3=9$ (cm)."
+    },
+    {
+      "id": "o-dongdang-p7",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O)$ đường kính $AB$, điểm $C$ thuộc đường tròn ($C\\ne A$, $C\\ne B$). Tiếp tuyến tại $B$ của $(O)$ cắt đường thẳng $AC$ tại $K$; từ $K$ kẻ tiếp tuyến thứ hai $KD$ ($D$ là tiếp điểm); $OK$ cắt $BD$ tại $I$. Sắp xếp các dòng thành lời giải chứng minh $KC\\cdot KA=KI\\cdot KO$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 9, Bài 4.2b (chuyển thể)",
+      "hints": [
+        "Cần $KC\\cdot KA=KI\\cdot KO$; hai tích này không thuộc cùng một cặp tam giác.",
+        "Tìm một đại lượng bằng cả hai tích: có hai tam giác vuông tại $B$ với đường cao kẻ từ $B$.",
+        "Hệ thức lượng: bình phương cạnh góc vuông bằng hình chiếu nhân cạnh huyền."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 291.3\" role=\"img\"><title>Đường tròn đường kính AB, tiếp tuyến tại B cắt AC tại K, tiếp tuyến KD, OK cắt BD tại I</title><circle cx=\"120\" cy=\"171.3\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"171.3\" x2=\"216\" y2=\"171.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"171.3\" x2=\"216\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"171.3\" x2=\"216\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"24\" x2=\"81.2\" y2=\"83.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"171.3\" x2=\"216\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"171.3\" x2=\"81.2\" y2=\"83.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"171.3\" x2=\"144.8\" y2=\"78.6\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"120\" y1=\"171.3\" x2=\"81.2\" y2=\"83.5\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"140.1,82.3 143.7,87 148.5,83.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"210,171.3 210,165.3 216,165.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"153.6,130.7 156.9,125.7 151.9,122.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12\" y=\"171.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"222\" y=\"181.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"156.4\" y=\"81.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"224.5\" y=\"15.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"70.8\" y=\"77.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"157.8\" y=\"135.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"120\" y=\"183.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"24\" cy=\"171.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"171.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"144.8\" cy=\"78.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"24\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"81.2\" cy=\"83.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"148.6\" cy=\"127.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"171.3\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính AB nằm ngang; C trên đường tròn phía trên; tiếp tuyến tại B (thẳng đứng) cắt tia AC tại K; KD là tiếp tuyến thứ hai; đoạn OK cắt dây BD tại I, BI vuông góc OK; BC vuông góc AK."
+      },
+      "drawFirst": true,
+      "lines": [
+        {
+          "text": "$\\widehat{ACB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $BC\\perp AK$."
+        },
+        {
+          "text": "$KB\\perp AB$ (tiếp tuyến tại $B$) ⇒ $\\triangle ABK$ vuông tại $B$ có đường cao $BC$ ⇒ $KB^2=KC\\cdot KA$ (1)."
+        },
+        {
+          "text": "$KB=KD$ (hai tiếp tuyến cắt nhau), $OB=OD$ ⇒ $OK$ là đường trung trực của $BD$ ⇒ $BI\\perp OK$.",
+          "after": []
+        },
+        {
+          "text": "$\\triangle OBK$ vuông tại $B$ ($KB$ là tiếp tuyến) có đường cao $BI$ ⇒ $KB^2=KI\\cdot KO$ (2)."
+        },
+        {
+          "text": "Kết luận: từ (1) và (2) ⇒ $KC\\cdot KA=KI\\cdot KO$ $(=KB^2)$.",
+          "after": [
+            1,
+            3
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "text": "$\\triangle ABK$ vuông tại $B$ có đường cao $BC$ ⇒ $KB^2=KC\\cdot CA$.",
+          "code": "E08",
+          "feedback": "Cạnh góc vuông $KB$: bình phương bằng hình chiếu $KC$ nhân **cạnh huyền** $KA$, không nhân $CA$."
+        },
+        {
+          "text": "$\\triangle OBK$ vuông tại $B$ có đường cao $BI$ ⇒ $KB^2=KI\\cdot IO$.",
+          "code": "E03",
+          "feedback": "$KI\\cdot IO$ bằng $BI^2$ (bình phương đường cao). Với cạnh góc vuông $KB$ phải là $KI\\cdot KO$."
+        }
+      ],
+      "solution": "$\\widehat{ACB}=90^\\circ$ ⇒ $BC$ là đường cao của $\\triangle ABK$ vuông tại $B$ ⇒ $KB^2=KC\\cdot KA$. $KB=KD$, $OB=OD$ ⇒ $OK$ là trung trực của $BD$ ⇒ $BI$ là đường cao của $\\triangle OBK$ vuông tại $B$ ⇒ $KB^2=KI\\cdot KO$. Kết luận: $KC\\cdot KA=KI\\cdot KO$. Hai cụm (1) và (2) đổi chỗ được."
+    },
+    {
+      "id": "o-dongdang-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho nửa đường tròn $(O)$ đường kính $AB$, bán kính $6$ cm. Điểm $M$ nằm trên nửa đường tròn; tiếp tuyến tại $M$ cắt các tiếp tuyến tại $A$, $B$ lần lượt ở $C$, $D$ và cắt đường thẳng $AB$ tại $P$ sao cho $PA=4$ cm ($A$ nằm giữa $P$ và $O$). Tính $PM$, chứng minh $PA\\cdot PO=PC\\cdot PM$ rồi tính $PC$.",
+      "source": "68 đề – Đề 2, Bài 4.2b (chuyển thể: thêm số liệu R = 6 cm, PA = 4 cm)",
+      "hints": [
+        "Cần $PM$ và $PC$; trước hết tính $PO=PA+AO$.",
+        "$PM$ là tiếp tuyến nên $\\triangle PMO$ vuông. Đẳng thức tích ứng với cặp tam giác vuông nào?",
+        "Pythagore trong $\\triangle PMO$; $\\triangle PAC$ và $\\triangle PMO$ có chung góc $P$ và một góc vuông."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 192\" role=\"img\"><title>Nửa đường tròn đường kính AB, tiếp tuyến tại M cắt hai tiếp tuyến tại A, B và đường thẳng AB</title><path d=\"M 216 168 A 72 72 0 0 0 72 168\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"168\" x2=\"216\" y2=\"168\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"168\" x2=\"216\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"72\" y1=\"168\" x2=\"72\" y2=\"132\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"168\" x2=\"216\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"144\" y1=\"168\" x2=\"100.8\" y2=\"110.4\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"66,168 66,162 72,162\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"104.4,115.2 109.2,111.6 105.6,106.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"18\" y=\"178.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"76.1\" y=\"179.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"144\" y=\"180\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"222\" y=\"178.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"98.7\" y=\"98.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"61.6\" y=\"126\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"227.3\" y=\"19.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><circle cx=\"24\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"72\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"144\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"100.8\" cy=\"110.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"72\" cy=\"132\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"24\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Nửa đường tròn tâm O đường kính AB; P nằm trên đường thẳng AB, ngoài đoạn AB về phía A; tiếp tuyến tại M đi qua P, cắt tiếp tuyến tại A ở C và tiếp tuyến tại B ở D; thứ tự P, C, M, D; OM vuông góc PD, CA vuông góc AB."
+      },
+      "steps": [
+        {
+          "prompt": "Tính $PM$.",
+          "item": {
+            "id": "o-dongdang-p8-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $PM$.",
+            "answer": "8",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "2√34",
+                "code": "E03",
+                "feedback": "Cạnh huyền của $\\triangle PMO$ là $PO$: $PM^2=PO^2-OM^2$, con đã cộng.",
+                "review": "l-tieptuyen"
+              },
+              {
+                "answer": "4",
+                "code": "E03",
+                "feedback": "Pythagore dùng bình phương: $PM^2=PO^2-OM^2$, không trừ thẳng $PO-OM$.",
+                "review": "l-tieptuyen"
+              }
+            ],
+            "solution": "$PO=PA+AO=10$; $OM\\perp PM$ (tiếp tuyến) ⇒ $PM=\\sqrt{PO^2-OM^2}=\\sqrt{100-36}=8$ (cm)."
+          }
+        },
+        {
+          "prompt": "Chọn lập luận đúng cho $PA\\cdot PO=PC\\cdot PM$.",
+          "item": {
+            "id": "o-dongdang-p8-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Lập luận nào đúng?",
+            "options": [
+              "$\\triangle PAC\\backsim\\triangle POM$ (g.g) ⇒ $\\dfrac{PA}{PO}=\\dfrac{PC}{PM}$",
+              "$\\triangle PAC\\backsim\\triangle PMO$ (g.g: $\\widehat{P}$ chung, $\\widehat{PAC}=\\widehat{PMO}=90^\\circ$) ⇒ $\\dfrac{PA}{PM}=\\dfrac{PC}{PO}$",
+              "$\\triangle PCA\\backsim\\triangle PDB$ ($CA\\parallel DB$) ⇒ $\\dfrac{PC}{PD}=\\dfrac{PA}{PB}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Góc vuông ở $A$ phải ứng với góc vuông ở $M$: viết $\\triangle PAC\\backsim\\triangle PMO$."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Cặp này đúng nhưng không chứa $PO$, $PM$, nên không dẫn tới đẳng thức cần chứng minh."
+              }
+            },
+            "solution": "$CA\\perp AB$, $OM\\perp CD$ (tính chất tiếp tuyến) ⇒ $\\widehat{PAC}=\\widehat{PMO}=90^\\circ$, $\\widehat{P}$ chung ⇒ $\\triangle PAC\\backsim\\triangle PMO$ ⇒ $\\dfrac{PA}{PM}=\\dfrac{PC}{PO}$ ⇒ $PA\\cdot PO=PC\\cdot PM$."
+          }
+        },
+        {
+          "prompt": "Tính $PC$.",
+          "item": {
+            "id": "o-dongdang-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $PC$.",
+            "answer": "5",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "16/5",
+                "code": "E08",
+                "feedback": "Con dùng $\\dfrac{PA}{PO}=\\dfrac{PC}{PM}$ (sai cặp đỉnh); đúng là $PA\\cdot PO=PC\\cdot PM$."
+              }
+            ],
+            "solution": "$PC=\\dfrac{PA\\cdot PO}{PM}=\\dfrac{4\\cdot10}{8}=5$ (cm). Kiểm tra: $CA=\\sqrt{PC^2-PA^2}=3=CM$."
+          }
+        }
+      ],
+      "solution": "$PO=10$, $PM=\\sqrt{10^2-6^2}=8$ cm. $\\triangle PAC\\backsim\\triangle PMO$ (g.g: $\\widehat{P}$ chung, $\\widehat{PAC}=\\widehat{PMO}=90^\\circ$) ⇒ $\\dfrac{PA}{PM}=\\dfrac{PC}{PO}$ ⇒ $PA\\cdot PO=PC\\cdot PM$. Kết luận: $PM=8$ cm, $PC=\\dfrac{4\\cdot10}{8}=5$ cm."
+    }
+  ],
+  "exit": [
+    {
+      "id": "o-dongdang-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Từ điểm $M$ nằm ngoài đường tròn $(O)$ kẻ hai cát tuyến $MAB$ và $MCD$ ($A$ nằm giữa $M$ và $B$, $C$ nằm giữa $M$ và $D$). Biết $MA=2$ cm, $MB=9$ cm, $MC=3$ cm. Tính $MD$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 204.2\" role=\"img\"><title>Hai cát tuyến MAB và MCD của đường tròn</title><circle cx=\"137.9\" cy=\"102.1\" r=\"78.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"102.1\" x2=\"189.8\" y2=\"43.7\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"102.1\" x2=\"114.4\" y2=\"176.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"12\" y=\"102.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"58.8\" y=\"77.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"199\" y=\"36\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"67.1\" y=\"151.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"123.6\" y=\"184.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"137.9\" y=\"90.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"24\" cy=\"102.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"60.8\" cy=\"89.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"189.8\" cy=\"43.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"69.2\" cy=\"139.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"114.4\" cy=\"176.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"137.9\" cy=\"102.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; từ điểm M bên ngoài kẻ hai cát tuyến M-A-B và M-C-D (A gần M hơn B, C gần M hơn D)."
+      },
+      "answer": "6",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "2/3",
+          "code": "E03",
+          "feedback": "Mỗi vế là tích hai đoạn trên **cùng một cát tuyến**: $MA\\cdot MB=MC\\cdot MD$; con đã ghép $MA$ với $MC$."
+        },
+        {
+          "answer": "27/2",
+          "code": "E03",
+          "feedback": "Con ghép $MA$ với $MD$; mỗi vế phải là tích hai đoạn trên cùng một cát tuyến."
+        }
+      ],
+      "solution": "$MA\\cdot MB=MC\\cdot MD$ ⇒ $MD=\\dfrac{2\\cdot9}{3}=6$ (cm)."
+    },
+    {
+      "id": "o-dongdang-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Bốn điểm $A$, $B$, $C$, $D$ nằm trên đường tròn $(O)$; hai dây $AB$ và $CD$ cắt nhau tại điểm $I$ nằm trong đường tròn. Khẳng định nào **đúng**?",
+      "options": [
+        "$IA\\cdot IC=IB\\cdot ID$",
+        "$\\triangle IAC\\backsim\\triangle IBD$",
+        "$IA+IB=IC+ID$",
+        "$IA\\cdot IB=IC\\cdot ID$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Mỗi vế là tích hai đoạn của **cùng một dây**: $IA\\cdot IB=IC\\cdot ID$."
+        },
+        "1": {
+          "code": "E08",
+          "feedback": "Góc ở $A$ bằng góc ở $D$ (cùng chắn cung $BC$), nên đỉnh $A$ ứng với $D$: $\\triangle IAC\\backsim\\triangle IDB$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Hai dây nói chung không dài bằng nhau; hệ thức đúng là về **tích** các đoạn."
+        }
+      },
+      "solution": "$\\triangle IAC\\backsim\\triangle IDB$ (đối đỉnh, cùng chắn cung $BC$) ⇒ $\\dfrac{IA}{ID}=\\dfrac{IC}{IB}$ ⇒ $IA\\cdot IB=IC\\cdot ID$."
+    },
+    {
+      "id": "o-dongdang-x3",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O)$, dây $BC$ không đi qua $O$ và điểm $A$ trên cung lớn $BC$ sao cho $\\triangle ABC$ nhọn, $AB<AC$. Vẽ đường cao $CD$ của $\\triangle ABC$ và đường kính $AM$; kẻ $CE\\perp AM$ tại $E$. Biết tứ giác $ADEC$ nội tiếp (đã chứng minh). Phân tích ngược để chứng minh $DE\\cdot BC=DC\\cdot BM$.",
+      "source": "68 đề – Đề 3, Bài 4.2b (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Tam giác ABC nội tiếp đường tròn O, đường cao CD, đường kính AM, CE vuông góc AM</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"84\" y1=\"31\" x2=\"41.4\" y2=\"175.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"41.4\" y1=\"175.1\" x2=\"198.6\" y2=\"175.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"84\" y2=\"31\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"84\" y1=\"31\" x2=\"156\" y2=\"209\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"54\" y2=\"132.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"150.2\" y2=\"194.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"41.4\" y1=\"175.1\" x2=\"156\" y2=\"209\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"156\" y2=\"209\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"54\" y1=\"132.2\" x2=\"150.2\" y2=\"194.6\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"55.8,126.5 61.5,128.2 59.8,133.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"147.9,189.1 153.5,186.8 155.7,192.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"82\" y=\"19.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"30.1\" y=\"179.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"209.9\" y=\"179.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"158\" y=\"220.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"42.2\" y=\"130.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"138.3\" y=\"196.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"131.8\" y=\"117.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"84\" cy=\"31\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"41.4\" cy=\"175.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"198.6\" cy=\"175.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"156\" cy=\"209\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"54\" cy=\"132.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"150.2\" cy=\"194.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC (AB < AC) nội tiếp đường tròn tâm O; đường kính AM; CD vuông góc AB tại D, CE vuông góc AM tại E; nối DE (tô màu), BM và CM."
+      },
+      "goal": "$DE\\cdot BC=DC\\cdot BM$",
+      "steps": [
+        {
+          "ask": "Muốn có $DE\\cdot BC=DC\\cdot BM$, cần hai tam giác nào đồng dạng?",
+          "node": "$\\triangle CDE\\backsim\\triangle CBM$ (khi đó $\\dfrac{DE}{BM}=\\dfrac{CD}{CB}$)",
+          "item": {
+            "id": "o-dongdang-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp tam giác.",
+            "options": [
+              "$\\triangle CDE\\backsim\\triangle CBM$",
+              "$\\triangle CDE\\backsim\\triangle CMB$",
+              "$\\triangle ADE\\backsim\\triangle ABM$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "Sai thứ tự đỉnh: $D$ phải ứng với $B$ để $DE$ ứng với $BM$ và $DC$ ứng với $BC$."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Cặp này cho tỉ số chứa $AD$, $AB$, không chứa $DC$, $BC$ của đẳng thức cần chứng minh."
+              }
+            },
+            "solution": "$\\dfrac{DE}{BM}=\\dfrac{DC}{BC}$: $DE$, $DC$ thuộc $\\triangle CDE$; $BM$, $BC$ thuộc $\\triangle CBM$, với $D\\leftrightarrow B$, $E\\leftrightarrow M$."
+          }
+        },
+        {
+          "ask": "Muốn $\\triangle CDE\\backsim\\triangle CBM$ (g.g), cần hai cặp góc nào?",
+          "node": "$\\widehat{CDE}=\\widehat{CBM}$ và $\\widehat{DCE}=\\widehat{BCM}$",
+          "item": {
+            "id": "o-dongdang-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hai cặp góc.",
+            "options": [
+              "$\\widehat{ADC}=\\widehat{AEC}=90^\\circ$",
+              "$\\widehat{CDE}=\\widehat{CMB}$ và $\\widehat{DCE}=\\widehat{BCM}$",
+              "$\\widehat{CDE}=\\widehat{CBM}$ và $\\widehat{DCE}=\\widehat{BCM}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Hai góc vuông này cho tứ giác $ADEC$ nội tiếp (đã có), không phải góc của $\\triangle CDE$ và $\\triangle CBM$."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "Theo thứ tự $\\triangle CDE\\backsim\\triangle CBM$, góc ở $D$ ứng với góc ở $B$, không phải góc ở $M$."
+              }
+            },
+            "solution": "Đỉnh tương ứng $C\\leftrightarrow C$, $D\\leftrightarrow B$, $E\\leftrightarrow M$ ⇒ cần $\\widehat{CDE}=\\widehat{CBM}$ và $\\widehat{DCE}=\\widehat{BCM}$."
+          }
+        },
+        {
+          "ask": "Vì sao $\\widehat{CDE}=\\widehat{CBM}$ và $\\widehat{DCE}=\\widehat{BCM}$?",
+          "node": "Bắc cầu qua góc ở $A$: $\\widehat{CDE}=\\widehat{CAE}$, $\\widehat{DCE}=\\widehat{DAE}$ (tứ giác $ADEC$ nội tiếp); $\\widehat{CAM}=\\widehat{CBM}$, $\\widehat{BAM}=\\widehat{BCM}$ (góc nội tiếp của $(O)$)",
+          "given": true,
+          "item": {
+            "id": "o-dongdang-x3-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "$\\widehat{CDE}$ và $\\widehat{CBM}$ cùng chắn cung $CM$ của $(O)$",
+              "Bắc cầu qua góc ở $A$: tứ giác $ADEC$ nội tiếp cho $\\widehat{CDE}=\\widehat{CAM}$, $\\widehat{DCE}=\\widehat{DAE}$; góc nội tiếp của $(O)$ cho $\\widehat{CAM}=\\widehat{CBM}$, $\\widehat{BAM}=\\widehat{BCM}$",
+              "Vì $\\triangle CDE\\backsim\\triangle CBM$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "$D$ không nằm trên $(O)$ nên $\\widehat{CDE}$ không phải góc nội tiếp của $(O)$; phải bắc cầu qua góc ở $A$."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "Đó là điều đang cần chứng minh; dùng nó là lập luận vòng."
+              }
+            },
+            "solution": "Trong đường tròn qua $A$, $D$, $E$, $C$: $\\widehat{CDE}=\\widehat{CAE}$ (cùng chắn cung $CE$), $\\widehat{DCE}=\\widehat{DAE}$ (cùng chắn cung $DE$). Trong $(O)$: $\\widehat{CAM}=\\widehat{CBM}$ (cùng chắn cung $CM$), $\\widehat{BAM}=\\widehat{BCM}$ (cùng chắn cung $BM$)."
+          }
+        }
+      ],
+      "outline": [
+        "$\\widehat{CDE}=\\widehat{CAM}=\\widehat{CBM}$ ($ADEC$ nội tiếp; cùng chắn cung $CM$)",
+        "$\\widehat{DCE}=\\widehat{DAE}=\\widehat{BAM}=\\widehat{BCM}$ ($ADEC$ nội tiếp; cùng chắn cung $BM$)",
+        "⇒ $\\triangle CDE\\backsim\\triangle CBM$ (g.g) ⇒ $\\dfrac{DE}{BM}=\\dfrac{CD}{CB}$",
+        "Kết luận: $DE\\cdot BC=DC\\cdot BM$."
+      ],
+      "solution": "Tứ giác $ADEC$ nội tiếp ⇒ $\\widehat{CDE}=\\widehat{CAE}=\\widehat{CAM}$ và $\\widehat{DCE}=\\widehat{DAE}=\\widehat{BAM}$. Trong $(O)$: $\\widehat{CAM}=\\widehat{CBM}$, $\\widehat{BAM}=\\widehat{BCM}$. Vậy $\\triangle CDE\\backsim\\triangle CBM$ (g.g) ⇒ $\\dfrac{DE}{BM}=\\dfrac{CD}{CB}$. Kết luận: $DE\\cdot BC=DC\\cdot BM$."
+    },
+    {
+      "id": "o-dongdang-x4",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O;R)$ có hai đường kính $AB$ và $CD$ vuông góc với nhau. Gọi $I$ là trung điểm của $OB$; tia $CI$ cắt đường tròn tại $E$; $AE$ cắt $CD$ tại $H$. Điền vào chỗ trống để chứng minh $AH\\cdot AE=2R^2$.",
+      "source": "68 đề – Đề 42, Bài 4.2b (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Hai đường kính AB, CD vuông góc; I trung điểm OB; CI cắt đường tròn tại E; AE cắt CD tại H</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"120\" x2=\"216\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"24\" x2=\"120\" y2=\"216\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"24\" x2=\"196.8\" y2=\"177.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"120\" x2=\"196.8\" y2=\"177.6\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"196.8\" y1=\"177.6\" x2=\"216\" y2=\"120\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"126,120 126,114 120,114\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"191.1,175.7 193,170 198.7,171.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"228\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"12\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"120\" y=\"228\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"174\" y=\"109.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"205.3\" y=\"186.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"109.6\" y=\"158\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"111.5\" y=\"111.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"24\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"24\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"216\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"168\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.8\" cy=\"177.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"152\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; đường kính AB nằm ngang, đường kính CD thẳng đứng (C ở trên); I là trung điểm OB; tia CI cắt đường tròn tại E ở phía dưới bên phải; dây AE (tô màu) cắt OD tại H."
+      },
+      "lines": [
+        "Ta có $\\widehat{AEB}=90^\\circ$ ([[1]]).",
+        "Xét $\\triangle AOH$ và $\\triangle AEB$ có: $\\widehat{A}$ chung; $\\widehat{AOH}=\\widehat{AEB}=90^\\circ$ ($AB\\perp CD$ tại $O$)",
+        "⇒ $\\triangle AOH\\backsim\\triangle AEB$ (g.g) ⇒ [[2]]",
+        "⇒ $AH\\cdot AE=$ [[3]] $=R\\cdot 2R=2R^2$."
+      ],
+      "bank": [
+        "góc nội tiếp chắn nửa đường tròn",
+        "hai góc nội tiếp cùng chắn cung $EB$",
+        "$\\dfrac{AO}{AE}=\\dfrac{AH}{AB}$",
+        "$\\dfrac{AO}{AB}=\\dfrac{AH}{AE}$",
+        "$AO\\cdot AB$",
+        "$AO\\cdot OB$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Góc vuông ở $E$ có vì $AB$ là đường kính (góc chắn nửa đường tròn), không phải vì cùng chắn cung $EB$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "Góc vuông ở $O$ ứng với góc vuông ở $E$, nên $AO$ ứng với $AE$ và $AH$ ứng với $AB$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "Từ tỉ số vừa có, tích tính từ đỉnh $A$: $AO\\cdot AB$, với $AB=2R$ là đường kính."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat{AEB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn). $\\triangle AOH$ và $\\triangle AEB$ có $\\widehat{A}$ chung, $\\widehat{AOH}=\\widehat{AEB}=90^\\circ$ ⇒ $\\triangle AOH\\backsim\\triangle AEB$ (g.g) ⇒ $\\dfrac{AO}{AE}=\\dfrac{AH}{AB}$ ⇒ $AH\\cdot AE=AO\\cdot AB=R\\cdot2R=2R^2$."
+    },
+    {
+      "id": "o-dongdang-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Hai dây $AB$ và $CD$ của đường tròn $(O)$ cắt nhau tại $I$. Biết $IA=4$ cm, $IC=6$ cm, $AD=5$ cm. Tính $BC$.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Hai dây AB và CD cắt nhau tại I; nối AD và BC</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"212.9\" y1=\"144.3\" x2=\"27.1\" y2=\"144.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"107.5\" y1=\"215.2\" x2=\"203.9\" y2=\"73.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"212.9\" y1=\"144.3\" x2=\"203.9\" y2=\"73.4\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"27.1\" y1=\"144.3\" x2=\"107.5\" y2=\"215.2\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><text x=\"224.8\" y=\"145.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"15.1\" y=\"144.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"103.5\" y=\"226.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"212.7\" y=\"65.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"155.7\" y=\"156.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><circle cx=\"212.9\" cy=\"144.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"27.1\" cy=\"144.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"107.5\" cy=\"215.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"203.9\" cy=\"73.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"155.7\" cy=\"144.3\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn với hai dây AB và CD cắt nhau tại I; I gần A hơn B; nối AD và BC (tô màu) tạo hai tam giác IAD và ICB đối đỉnh tại I."
+      },
+      "answer": "15/2",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "10/3",
+          "code": "E08",
+          "feedback": "$\\triangle IAD\\backsim\\triangle ICB$: $AD$ ứng với $CB$ và $IA$ ứng với $IC$, nên $\\dfrac{BC}{AD}=\\dfrac{IC}{IA}$."
+        }
+      ],
+      "solution": "$\\triangle IAD\\backsim\\triangle ICB$ (g.g: $\\widehat{AID}=\\widehat{CIB}$ đối đỉnh; $\\widehat{IAD}=\\widehat{ICB}$ cùng chắn cung $BD$) ⇒ $\\dfrac{CB}{AD}=\\dfrac{IC}{IA}$ ⇒ $BC=\\dfrac{5\\cdot6}{4}=\\dfrac{15}{2}$ (cm)."
+    },
+    {
+      "id": "o-dongdang-x6",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho tam giác nhọn $ABC$ ($AB<AC$) nội tiếp đường tròn $(O)$, đường cao $AD$; kẻ đường kính $AK$ và $BE\\perp AK$ tại $E$. Gọi $N$ là giao điểm của $AK$ và $BC$ (như hình). Sắp xếp các dòng thành lời giải chứng minh $NB\\cdot ND=NE\\cdot NA$ (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 19, Bài 4.2b (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Tam giác ABC nội tiếp, đường cao AD, đường kính AK, BE vuông góc AK, AK cắt BC tại N</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"79.4\" y1=\"33\" x2=\"29.8\" y2=\"152.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"29.8\" y1=\"152.8\" x2=\"210.2\" y2=\"152.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"210.2\" y1=\"152.8\" x2=\"79.4\" y2=\"33\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"79.4\" y1=\"33\" x2=\"79.4\" y2=\"152.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"79.4\" y1=\"33\" x2=\"160.6\" y2=\"207\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"29.8\" y1=\"152.8\" x2=\"116.5\" y2=\"112.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"79.4\" y1=\"152.8\" x2=\"116.5\" y2=\"112.4\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"79.4,146.8 85.4,146.8 85.4,152.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"113.9,107 108.5,109.5 111,115\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"77.3\" y=\"21.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"18.5\" y=\"156.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"221.5\" y=\"156.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"75.3\" y=\"164.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"162.7\" y=\"218.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"104.5\" y=\"112.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"145.7\" y=\"158.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"132\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"79.4\" cy=\"33\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"29.8\" cy=\"152.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"210.2\" cy=\"152.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"79.4\" cy=\"152.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"160.6\" cy=\"207\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"116.5\" cy=\"112.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"135.3\" cy=\"152.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Tam giác nhọn ABC nội tiếp đường tròn tâm O; đường cao AD; đường kính AK; BE vuông góc AK tại E; AK cắt BC tại N với thứ tự B, D, N, C trên BC và A, E, N, K trên AK; nối DE (tô màu)."
+      },
+      "lines": [
+        {
+          "text": "$\\widehat{ADB}=\\widehat{AEB}=90^\\circ$ ⇒ $A$, $B$, $D$, $E$ cùng thuộc đường tròn đường kính $AB$."
+        },
+        {
+          "text": "⇒ $\\widehat{DBE}=\\widehat{DAE}$ (hai góc nội tiếp cùng chắn cung $DE$), tức $\\widehat{NBE}=\\widehat{NAD}$."
+        },
+        {
+          "text": "Xét $\\triangle NBE$ và $\\triangle NAD$ có: $\\widehat{N}$ chung; $\\widehat{NBE}=\\widehat{NAD}$ (cmt)"
+        },
+        {
+          "text": "⇒ $\\triangle NBE\\backsim\\triangle NAD$ (g.g) ⇒ $\\dfrac{NB}{NA}=\\dfrac{NE}{ND}$"
+        },
+        {
+          "text": "Kết luận: $NB\\cdot ND=NE\\cdot NA$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "⇒ $\\widehat{DBE}=\\widehat{DAE}$ (hai góc nội tiếp cùng chắn cung $DE$ của $(O)$).",
+          "code": "E09",
+          "feedback": "$D$, $E$ không nằm trên $(O)$; hai góc cùng chắn cung $DE$ của đường tròn đường kính $AB$."
+        },
+        {
+          "text": "⇒ $\\triangle NBE\\backsim\\triangle NAD$ (g.g) ⇒ $\\dfrac{NB}{NA}=\\dfrac{ND}{NE}$",
+          "code": "E08",
+          "feedback": "Theo thứ tự đỉnh, $E$ ứng với $D$: $NE$ ứng với $ND$, nên tỉ số là $\\dfrac{NB}{NA}=\\dfrac{NE}{ND}$."
+        }
+      ],
+      "solution": "$\\widehat{ADB}=\\widehat{AEB}=90^\\circ$ ⇒ $ABDE$ nội tiếp đường tròn đường kính $AB$ ⇒ $\\widehat{NBE}=\\widehat{DBE}=\\widehat{DAE}=\\widehat{NAD}$. $\\triangle NBE$ và $\\triangle NAD$ có $\\widehat{N}$ chung ⇒ $\\triangle NBE\\backsim\\triangle NAD$ (g.g) ⇒ $\\dfrac{NB}{NA}=\\dfrac{NE}{ND}$. Kết luận: $NB\\cdot ND=NE\\cdot NA$."
+    },
+    {
+      "id": "o-dongdang-x7",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Từ điểm $A$ nằm ngoài đường tròn $(O)$ kẻ hai tiếp tuyến $AB$, $AC$ ($B$, $C$ là tiếp điểm). Vẽ đường kính $BD$; đường thẳng $AD$ cắt $(O)$ tại điểm thứ hai $E$; $BC$ cắt $AO$ tại $H$. Điền vào chỗ trống để chứng minh $AE\\cdot AD=AH\\cdot AO$.",
+      "source": "68 đề – Đề 27, Bài 4.2b (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 178.2\" role=\"img\"><title>Hai tiếp tuyến AB, AC; đường kính BD; AD cắt đường tròn tại E; BC cắt AO tại H</title><circle cx=\"150.9\" cy=\"89.1\" r=\"65.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"63.1\" x2=\"130.2\" y2=\"27.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"63.1\" x2=\"107.6\" y2=\"137.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"130.2\" y1=\"27.4\" x2=\"171.6\" y2=\"150.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"63.1\" x2=\"171.6\" y2=\"150.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"63.1\" x2=\"150.9\" y2=\"89.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"130.2\" y1=\"27.4\" x2=\"107.6\" y2=\"137.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"130.2\" y1=\"27.4\" x2=\"86.8\" y2=\"100.4\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"124.5,29.3 126.4,35 132.1,33.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"89.9,95.2 95,98.3 92,103.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"120.1,76.6 126,77.8 124.8,83.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12\" y=\"63.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"130.2\" y=\"15.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"107.6\" y=\"149.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"177.6\" y=\"161.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"84.7\" y=\"112.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"111.2\" y=\"91.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"162.2\" y=\"85\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"24\" cy=\"63.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"130.2\" cy=\"27.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"107.6\" cy=\"137.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"171.6\" cy=\"150.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"86.8\" cy=\"100.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"118.9\" cy=\"82.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"150.9\" cy=\"89.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; từ A bên trái kẻ hai tiếp tuyến AB (trên) và AC (dưới); đường kính BD; đoạn AD cắt đường tròn tại E; BE (tô màu) vuông góc AD; dây BC cắt AO tại H, BH vuông góc AO."
+      },
+      "lines": [
+        "$\\widehat{BED}=90^\\circ$ ([[1]]) ⇒ $BE\\perp AD$.",
+        "$\\triangle ABD$ vuông tại $B$ ($AB$ là tiếp tuyến) có đường cao $BE$ ⇒ $AB^2=$ [[2]] (1).",
+        "$AB=AC$, $OB=OC$ ⇒ $AO$ là đường trung trực của $BC$ ⇒ $BH\\perp AO$.",
+        "$\\triangle ABO$ vuông tại $B$ có đường cao $BH$ ⇒ $AB^2=$ [[3]] (2).",
+        "Kết luận: từ (1) và (2) ⇒ $AE\\cdot AD=AH\\cdot AO$."
+      ],
+      "bank": [
+        "góc nội tiếp chắn nửa đường tròn",
+        "tiếp tuyến vuông góc với bán kính tại tiếp điểm",
+        "$AE\\cdot AD$",
+        "$AE\\cdot ED$",
+        "$AH\\cdot AO$",
+        "$AH\\cdot HO$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Tính chất tiếp tuyến cho góc vuông ở $B$, không phải ở $E$; $\\widehat{BED}$ vuông vì chắn nửa đường tròn đường kính $BD$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "$AE\\cdot ED$ bằng $BE^2$. Với cạnh góc vuông $AB$: hình chiếu $AE$ nhân cạnh huyền $AD$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "$AH\\cdot HO$ bằng $BH^2$. Với cạnh góc vuông $AB$: hình chiếu $AH$ nhân cạnh huyền $AO$."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat{BED}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $BE$ là đường cao của $\\triangle ABD$ vuông tại $B$ ⇒ $AB^2=AE\\cdot AD$. $AO$ là trung trực của $BC$ ⇒ $BH$ là đường cao của $\\triangle ABO$ vuông tại $B$ ⇒ $AB^2=AH\\cdot AO$. Kết luận: $AE\\cdot AD=AH\\cdot AO$."
+    },
+    {
+      "id": "o-dongdang-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho $\\triangle ABC$ nội tiếp đường tròn $(O)$ đường kính $BC=10$ cm, $AB=6$ cm, $AC=8$ cm. Lấy điểm $E$ trên đoạn $AC$ với $CE=5$ cm; tia $BE$ cắt cung nhỏ $AC$ tại $D$; kẻ $EF\\perp BC$ tại $F$; $M$ là trung điểm của $EC$. Tính $CF$ và $DM$ (từ đó thấy $DM\\cdot CA=CF\\cdot CO$).",
+      "source": "68 đề – Đề 46, Bài 4.2c (chuyển thể: thêm số liệu)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Tam giác ABC vuông tại A nội tiếp đường tròn đường kính BC; BE cắt đường tròn tại D; EF vuông góc BC</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"93.1\" y1=\"27.8\" x2=\"24\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"120\" x2=\"216\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"216\" y1=\"120\" x2=\"93.1\" y2=\"27.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"120\" x2=\"177.6\" y2=\"43.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"177.6\" y1=\"43.2\" x2=\"216\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"139.2\" y1=\"62.4\" x2=\"139.2\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"177.6\" y1=\"43.2\" x2=\"177.6\" y2=\"91.2\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"89.5,32.6 94.3,36.2 97.9,31.4\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"139.2,114 145.2,114 145.2,120\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"172.2,45.9 174.9,51.2 180.3,48.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"89\" y=\"16.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"12\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"228\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"127.9\" y=\"66.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"183.6\" y=\"32.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"139.2\" y=\"132\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"183.6\" y=\"101.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"120\" y=\"132\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"93.1\" cy=\"27.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"139.2\" cy=\"62.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"177.6\" cy=\"43.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"139.2\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"177.6\" cy=\"91.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính BC nằm ngang; A trên đường tròn phía trên, gần B; E trên AC; tia BE cắt cung nhỏ AC tại D; EF vuông góc BC tại F; M là trung điểm EC; nối DM (tô màu)."
+      },
+      "steps": [
+        {
+          "prompt": "Cặp tam giác đồng dạng cho $CE\\cdot CA=CF\\cdot CB$.",
+          "item": {
+            "id": "o-dongdang-x8-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Cặp tam giác nào cho $CE\\cdot CA=CF\\cdot CB$?",
+            "options": [
+              "$\\triangle CFE\\backsim\\triangle CBA$",
+              "$\\triangle CFE\\backsim\\triangle CAB$ ($\\widehat{C}$ chung, $\\widehat{CFE}=\\widehat{CAB}=90^\\circ$)",
+              "$\\triangle CED\\backsim\\triangle BEA$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "Góc vuông ở $F$ ứng với góc vuông ở $A$ ($\\widehat{BAC}$ chắn nửa đường tròn): viết $\\triangle CFE\\backsim\\triangle CAB$."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Cặp này có thật nhưng cho $EC\\cdot EA=EB\\cdot ED$, không chứa $CF$, $CB$."
+              }
+            },
+            "solution": "$\\widehat{BAC}=90^\\circ$ (chắn nửa đường tròn), $\\widehat{CFE}=90^\\circ$, $\\widehat{C}$ chung ⇒ $\\triangle CFE\\backsim\\triangle CAB$ ⇒ $\\dfrac{CF}{CA}=\\dfrac{CE}{CB}$ ⇒ $CE\\cdot CA=CF\\cdot CB$."
+          }
+        },
+        {
+          "prompt": "Tính $CF$.",
+          "item": {
+            "id": "o-dongdang-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $CF$.",
+            "answer": "4",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "25/4",
+                "code": "E08",
+                "feedback": "Từ $\\dfrac{CF}{CA}=\\dfrac{CE}{CB}$ ⇒ $CF=\\dfrac{CE\\cdot CA}{CB}$; con đã lấy $\\dfrac{CE\\cdot CB}{CA}$."
+              }
+            ],
+            "solution": "$CF=\\dfrac{CE\\cdot CA}{CB}=\\dfrac{5\\cdot8}{10}=4$ (cm)."
+          }
+        },
+        {
+          "prompt": "Tính $DM$.",
+          "item": {
+            "id": "o-dongdang-x8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $DM$.",
+            "answer": "5/2",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "5",
+                "code": "E03",
+                "feedback": "$\\widehat{BDC}=90^\\circ$ nên $DM$ là trung tuyến ứng với cạnh huyền $EC$ của $\\triangle EDC$: bằng **nửa** cạnh huyền."
+              }
+            ],
+            "solution": "$\\widehat{BDC}=90^\\circ$ (chắn nửa đường tròn) ⇒ $\\triangle EDC$ vuông tại $D$, $DM$ là trung tuyến ứng với cạnh huyền ⇒ $DM=\\dfrac{EC}{2}=\\dfrac{5}{2}$ (cm)."
+          }
+        }
+      ],
+      "solution": "$\\triangle CFE\\backsim\\triangle CAB$ ⇒ $CF=\\dfrac{CE\\cdot CA}{CB}=4$ cm; $\\triangle EDC$ vuông tại $D$ ⇒ $DM=\\dfrac{EC}{2}=\\dfrac52$ cm. Kết luận: $CF=4$ cm, $DM=\\dfrac52$ cm và $DM\\cdot CA=\\dfrac52\\cdot8=20=4\\cdot5=CF\\cdot CO$."
+    }
+  ]
+}
