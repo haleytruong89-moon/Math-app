@@ -18,8 +18,11 @@ run() { # role port script
   for _ in $(seq 60); do curl -s -o /dev/null "http://localhost:$2/" && break; sleep 1; done
   BASE="http://localhost:$2" node "$3"; local rc=$?
   kill -- "-$PID" 2>/dev/null; wait "$PID" 2>/dev/null; PID=; sleep 2
+  # A flow that crashes (uncaught exception, timeout) prints no FAIL line of its own — say it here.
+  if [ "$rc" -ne 0 ]; then echo "FAIL flow $3 exited with code $rc"; FAILED+=("$3"); fi
   return $rc
 }
+FAILED=()
 mkdir -p e2e/out
 run parent 3100 e2e/preview-flow.mjs; a=$?
 run student 3101 e2e/student-flow.mjs; b=$?
@@ -47,4 +50,6 @@ run parent 3119 e2e/focus-parent-flow.mjs; s2=$?
 run student 3120 e2e/ai-student-flow.mjs; t1=$?
 run parent 3121 e2e/ai-eval-flow.mjs; t2=$?
 node scripts/content-index.mjs
-exit $(( a || b || c || d || e || f || g || h || i || j || k || l || m || n || o || p || q || r || s1 || s2 || t1 || t2 ))
+# Exit code comes from every run() call, so a new flow cannot be forgotten in the sum.
+if [ ${#FAILED[@]} -gt 0 ]; then echo "e2e: ${#FAILED[@]} flow(s) failed: ${FAILED[*]}"; exit 1; fi
+echo "e2e: all flows passed"
