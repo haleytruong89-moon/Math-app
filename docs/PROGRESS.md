@@ -83,6 +83,7 @@ Phụ huynh (06/11, sau buổi review 05/11): "làm luôn" đợt 8, không ch�
 
 ### Phụ huynh cần làm
 - Merge PR (không SQL). Gia sư soát 5 bài trước **03/01/2027**; phụ huynh "Duyệt cả bài".
+- Thiết kế thi thử đã chốt 06/11 (4 lựa chọn đề xuất): `docs/superpowers/specs/2026-11-06-thi-thu-design.md`; code chờ phụ huynh nói "làm".
 - Quyết định (không gấp): thêm g-giaihpt làm tiên quyết của g-honhop (để câu pha trộn có link ôn); htl-1/2 làm tiên quyết của o-dongdang; l-tieptuyen cho o-chungminh.
 
 ---
