@@ -32,7 +32,7 @@
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) — không SQL; "Hỏi thêm" bật sau khi phụ huynh chấm bộ test đạt |
-| S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | ✅ Merged 08/11 (PR #51) — SQL 0015 đã áp 07/11 (sao lưu trước); dòng báo cáo tuần để v1.1 |
+| S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | ✅ Merged 07/11 (PR #51) — SQL 0015 đã áp 07/11 (sao lưu trước); dòng báo cáo tuần để v1.1 |
 | Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | 🟡 07/11 — PR mở (nằm trên S9), không SQL; giải độc lập khớp; chờ gia sư soát trước 01/2027 |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
@@ -42,7 +42,7 @@
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Merged 05/11 (PR #49) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
-| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Merged 08/11 (PR #50) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
+| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Merged 07/11 (PR #50) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
 | Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | 🟡 08/11 — PR mở, không SQL; giải độc lập 48/48; chờ gia sư soát + phụ huynh duyệt (hạn 07/02) |
 | Nội dung đợt 10 | `p1-content-10` | ⬜ hq-doanhthu, hq-hinhhoc theo `docs/CURRICULUM.md` §6 (hạn 21/02) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
