@@ -8,7 +8,7 @@
   "estMinutes": 45,
   "theory": [
     "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** (phương pháp thế, cộng đại số). Nhớ: $a\\%$ của $x$ là $\\dfrac{a}{100}x$, ví dụ $15\\%$ của $x$ là $0{,}15x$.",
-    "**Công thức:** tăng $a\\%$: $x \\to x\\left(1+\\dfrac{a}{100}\\right)$; giảm $a\\%$: $x \\to x\\left(1-\\dfrac{a}{100}\\right)$. Giảm $a\\%$ rồi giảm tiếp $b\\%$ **trên giá đã giảm**: nhân lần lượt hai hệ số. Giá có VAT $t\\%$ = giá chưa thuế $\\times (1+t\\%)$. Tiền lãi một năm = tiền gốc $\\times$ lãi suất; lãi nhập gốc sau $2$ năm: $x(1+r)^2$. **Điều kiện dùng:** phần trăm luôn tính trên đại lượng gốc mà đề nói “so với”.",
+    "**Công thức:** tăng $a\\%$: $x \\to x\\left(1+\\dfrac{a}{100}\\right)$; giảm $a\\%$: $x \\to x\\left(1-\\dfrac{a}{100}\\right)$. Giảm $a\\%$ rồi giảm tiếp $b\\%$ **trên giá đã giảm**: nhân lần lượt hai hệ số. Giá có VAT $t\\%$ = giá chưa thuế $\\times (1+t\\%)$. Tiền lãi một năm = tiền gốc $\\times$ lãi suất; lãi suất $a\\%$, lãi nhập gốc sau $2$ năm: $x\\left(1+\\dfrac{a}{100}\\right)^2$. **Điều kiện dùng:** phần trăm luôn tính trên đại lượng gốc mà đề nói “so với”.",
     "**Vì sao:** giảm $20\\%$ là bớt $20$ phần trong $100$ phần của giá gốc, còn $80$ phần, tức nhân $0{,}8$. Lần giảm thứ hai tính trên giá **đã giảm** (nhỏ hơn giá gốc) nên tổng mức giảm nhỏ hơn tổng hai phần trăm.",
     "**Bẫy hay gặp:** giảm $10\\%$ rồi $5\\%$ không phải giảm $15\\%$: $0{,}9 \\cdot 0{,}95 = 0{,}855$, tức giảm $14{,}5\\%$. Biết giá **sau** khi giảm $20\\%$ là $80$ thì giá gốc là $80 : 0{,}8 = 100$, không phải $80 \\cdot 1{,}2 = 96$. “Vượt mức $15\\%$” nghĩa là làm được $1{,}15x$, đừng quên cộng phần kế hoạch $x$.",
     "**Nhận dạng:** đề có “giảm giá”, “tăng”, “vượt mức”, “lãi suất”, “VAT”, “tỉ lệ trúng tuyển” → lập bảng phần trăm. Một đại lượng chưa biết → phương trình một ẩn; hai đại lượng có tổng cho trước → hệ hai ẩn. **Không** dùng cách này khi ẩn là lãi suất trong lãi nhập gốc (dẫn tới phương trình bậc hai, học sau).",
@@ -211,7 +211,7 @@
       "hints": [
         "Đề hỏi số sản phẩm tháng đầu của từng tổ.",
         "Các dữ kiện là tổng sản phẩm và phần trăm vượt mức. Đó là dạng nào?",
-        "Chọn cách có hai ẩn là số sản phẩm tháng đầu và hệ số $1+a\\%$."
+        "Nhớ: vượt mức $a\\%$ so với tháng đầu thì tháng sau bằng $\\left(1+\\dfrac{a}{100}\\right)$ lần tháng đầu."
       ],
       "options": [
         "Gọi năng suất mỗi tổ là $\\frac1x$, $\\frac1y$ rồi lập hệ theo phần việc làm được trong một ngày.",

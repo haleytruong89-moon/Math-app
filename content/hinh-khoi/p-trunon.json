@@ -58,7 +58,7 @@
           "mistakes": [
             {
               "answer": "8",
-              "code": "E08",
+              "code": "E10",
               "feedback": "Đề cho đường kính $8$ cm; bán kính bằng một nửa đường kính."
             }
           ],
@@ -259,7 +259,7 @@
       "mistakes": [
         {
           "answer": "1,0048",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
         },
         {
@@ -290,7 +290,7 @@
       "mistakes": [
         {
           "answer": "1440",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
         },
         {
@@ -322,18 +322,23 @@
       "mistakes": [
         {
           "answer": "3,14",
-          "code": "E08",
+          "code": "E07",
           "feedback": "Cạnh $2$ m là **chu vi** đáy, không phải đường kính. Tìm $r$ từ $C=2\\pi r$."
         },
         {
           "answer": "12,56",
-          "code": "E08",
+          "code": "E07",
           "feedback": "Cạnh $2$ m là chu vi đáy, không phải bán kính. Tìm $r$ từ $C=2\\pi r$."
         },
         {
           "answer": "1,27",
           "code": "E03",
           "feedback": "Chu vi đường tròn là $C=2\\pi r$, không phải $\\pi r$."
+        },
+        {
+          "answer": "0,28",
+          "code": "E15",
+          "feedback": "Con làm tròn $r$ quá sớm; giữ $r=\\dfrac{2}{2\\cdot3{,}14}$ (hoặc nhiều chữ số) đến bước cuối rồi mới làm tròn."
         }
       ],
       "solution": "Chu vi đáy là $2$ m nên $r=\\dfrac{2}{2\\cdot3{,}14}\\approx0{,}3185$ m. $V=3{,}14\\cdot r^2\\cdot1\\approx0{,}3185$ m³ $\\approx0{,}32$ m³."
@@ -377,7 +382,7 @@
       "mistakes": [
         {
           "answer": "2160",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Đề cho đường kính; bán kính bằng một nửa đường kính."
         },
         {
@@ -425,7 +430,7 @@
         },
         {
           "answer": "144",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Con dùng đường kính làm bán kính; $r=\\dfrac d2$."
         }
       ],
@@ -504,6 +509,11 @@
           "answer": "180",
           "code": "E03",
           "feedback": "Đường sinh là cạnh huyền: $h^2=l^2-r^2$, phải trừ chứ không cộng."
+        },
+        {
+          "answer": "154",
+          "code": "E15",
+          "feedback": "Con làm tròn $h$ trước khi tính thể tích; giữ $h=\\sqrt{84}$ đến bước cuối rồi mới làm tròn."
         }
       ],
       "solution": "$h=\\sqrt{10^2-4^2}=\\sqrt{84}\\approx9{,}165$ cm; $V=\\dfrac13\\cdot3{,}14\\cdot4^2\\cdot\\sqrt{84}\\approx153{,}5$ cm³ $\\approx153$ cm³."

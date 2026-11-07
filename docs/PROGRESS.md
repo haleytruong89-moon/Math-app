@@ -99,6 +99,63 @@ Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpo
 
 ---
 
+## 08/11/2026 — Audit AI đợt 3–6 (18 bài đã duyệt, con đang học) + 2 sửa app (nhánh `p1-audit-2`, không SQL)
+
+Tiếp quyết định 08/11 (SPEC §0). Bài đã duyệt và khoá đáp án → agent chỉ sửa lời đề (không đổi nghĩa), lời giải, gợi ý, phản hồi, mã lỗi, lý thuyết, hình; câu sai đáp án sẽ thay bằng id mới.
+
+### Kết quả
+- **18/18 ĐẠT SAU KHI SỬA. Không có câu nào sai đáp án, hai đáp án đúng hay không có đáp án đúng → không thay câu nào, không relock**; lịch sử bài làm của con giữ nguyên.
+- Lỗi đáng kể đã sửa: lý thuyết p-ghep nói sai ("dùng đường kính làm bán kính → thể tích gấp 8" — thật ra trụ/nón gấp 4); k-tugiacnt dạy dấu hiệu cung chứa góc (ngoài chương trình) → chỉ giữ trường hợp góc vuông; j-coban định lí dây – khoảng cách (không còn trong SGK mới) → viết là hệ quả Pythagore; lời giải c-cauphu x8 ghi sai một giá trị trung gian; nhiều phản hồi/gợi ý lộ đáp án; câu điều kiện "đúng" → "đúng và đầy đủ"; mã lỗi thống nhất (dừng giữa chừng E11, đường kính/bán kính theo chữ E10, cộng thời gian E07).
+
+### Sửa app
+- **Ô nhập số hiểu dấu chấm ngăn hàng nghìn**: "1.200" = 1200, "12.500,5" = 12500,5 (trước đây "1.200" bị hiểu là 1,2 → con gõ kiểu Việt Nam bị chấm sai). "0.600", "1.25" vẫn là số thập phân. Đã soát: không đáp số nào trong nội dung đổi nghĩa.
+- **Câu nhiều bước trong bài kiểm tra / phiên ôn mở từng bước** ("Bước tiếp →", bước trước khoá lại): trước đây mọi bước hiện cùng lúc nên bước kết luận có thể lộ đáp số bước trước (vd g-chuso x7, x8; k-tugiacnt p8).
+
+### Chi tiết từng nhóm
+
+**Đợt 3: c-dkxd, b-haib, p-trunon**
+- c-dkxd — ĐẠT SAU KHI SỬA (2): lý thuyết thêm cách phân tích mẫu dạng x+b√x+c (x6, x8 kiểm tra dùng mà chưa dạy); p8 phản hồi nhắc cả hai mẫu.
+- b-haib — ĐẠT SAU KHI SỬA (4): lý thuyết giải thích n(n−1)/2; x4, x7 mã lỗi biến cố đối E04→E06 + ôn b-xsuat; nới hình p8.
+- p-trunon — ĐẠT SAU KHI SỬA (9): mã lỗi đường kính/bán kính khi đề ghi bằng chữ E08→E10 (5 chỗ); p7 E08→E07 + thêm phản hồi làm tròn sớm; x6 thêm phản hồi làm tròn sớm (154).
+- Kiểm: 254 lượt gradeItem + tính lại 157 nhiễu. Không câu nào sai đáp án, không thay câu. Mở: SOURCE_INDEX chuyển Đề 2, 3, 53, 54 từ b-haib sang b-xsuat.
+
+**Đợt 3: p-cau, p-ghep**
+- p-cau — ĐẠT SAU KHI SỬA (1): x6 mã lỗi E08→E07 (vỏ 2 cm trừ vào đường kính thay vì bán kính).
+- p-ghep — ĐẠT SAU KHI SỬA (16): lý thuyết "Bẫy" nói sai (dùng đường kính làm bán kính: trụ, nón gấp 4 lần, cầu gấp 8 lần — không phải 8 lần cho mọi khối); 7 mã lỗi E08→E10 (đề ghi bằng chữ); x3 E08→E04; p6-s3, p7-s3 phản hồi lộ đáp án; x4 lời giải làm tròn; sửa nhãn 4 hình.
+- Kiểm: 48/48 đáp án khớp, 77 tính lại + 176 lượt gradeItem, 6 hình. Không thay câu.
+
+**Đợt 4: g-giaihpt, g-chuso, g-nangsuat**
+- g-giaihpt — ĐẠT SAU KHI SỬA: lý thuyết giải thích tiêu chí số nghiệm (khử ẩn còn 0x = c) thay vì chỉ nêu tỉ số; x8 E11→E04.
+- g-chuso — ĐẠT SAU KHI SỬA: lý thuyết "Bẫy" (hệ đúng vẫn có thể vô nghiệm → kết luận không có số); p7-s1, x6-s1 "đúng và đầy đủ"; p6 phản hồi theo lỗi thật (E07); x8 E07→E02.
+- g-nangsuat — ĐẠT SAU KHI SỬA: p4-s1, x7-s1 "đúng và đầy đủ"; cộng thời gian x+y=t thống nhất E07 (7 chỗ); x6-s1, p8-s1 thêm điều kiện của ẩn; lý thuyết "Nhận dạng" + lời giải x8.
+- Kiểm: 117 ô tự giải, 87 khẳng định sympy, 226 phương án trắc nghiệm, 13 ca gradeItem. Không thay câu.
+- App: bài kiểm tra hiện mọi bước cùng lúc → bước kết luận có thể lộ đáp số bước trước (g-chuso x7, x8).
+
+**Đợt 4–5: g-phantram, g-chuyendong, c-coban**
+- g-phantram — ĐẠT SAU KHI SỬA (2): lý thuyết định nghĩa lãi suất a% trong công thức lãi kép; p3 H3 lộ phương án.
+- g-chuyendong — ĐẠT SAU KHI SỬA (2): lý thuyết "Nhận dạng" mâu thuẫn với p7 → viết lại; p5-s1 E14→E04.
+- c-coban — ĐẠT SAU KHI SỬA (2): p5-s3 E02→E01; x6 lời giải giải thích điều kiện x≠4 của đề gốc + "Kết luận:".
+- Kiểm: 161 sympy + 585 gradeItem. Không thay câu. App: ô số hiểu "1.200" là 1,2 (dấu chấm = thập phân) — con gõ kiểu Việt Nam sẽ bị chấm sai (vd g-phantram p4).
+
+**Đợt 5–6: c-truccan, c-rutgon, c-cauphu**
+- c-truccan — ĐẠT SAU KHI SỬA (2): p7-s1 lời đề làm rõ (một nhiễu cũng là mẫu chung hợp lệ nếu đổi dấu); p5 H1 lộ dạng đáp án.
+- c-rutgon — ĐẠT SAU KHI SỬA (3): p1 mã lỗi E03→E04; p6 lời giải nói rõ không bắt buộc trục căn.
+- c-cauphu — ĐẠT SAU KHI SỬA (15): x8-s4 lời giải ghi sai P(9)=1 (đúng là 2; đáp án không đổi); "dừng ở √x quên bình phương" thống nhất E11 (8 chỗ); "√x>2 ⇒ x>2" E01→E04; p3, p8 giải thích ĐKXĐ giữ từ đề gốc; lý thuyết đoạn 3 viết rõ.
+- Kiểm: ~735 sympy + 312 gradeItem. Không thay câu.
+
+**Đợt 5–6: f3-dongdang, j-coban, k-goiintiep, k-tugiacnt**
+- f3-dongdang — ĐẠT SAU KHI SỬA (4): lý thuyết gọi đúng "hệ quả của định lí Thalès"; f3 phản hồi đúng lỗi; x6 lời giải nêu lí do dòng đổi trung tỉ.
+- j-coban — ĐẠT SAU KHI SỬA (11): "hai dây bằng nhau ⇔ cách đều tâm" (không còn trong SGK mới) → viết là hệ quả của OH² + (AB/2)² = R²; dừng ở nửa dây thống nhất E11 (5 chỗ); p6 nhiễu cần hai lỗi → một lỗi + thêm nhiễu; p7-s2 E06→E08; x2 thêm phản hồi; dời nhãn hình x6.
+- k-goiintiep — ĐẠT SAU KHI SỬA (7): lý thuyết nhắc bài Tam giác đồng dạng; "không bằng nhau" → "bù nhau"; f2 đề hỏi đúng cả cặp góc lẫn lí do; f3, p6 E08→E11; f3 nhiễu 10/3 → 5/3.
+- k-tugiacnt — ĐẠT SAU KHI SỬA (6): **dấu hiệu "hai đỉnh kề cùng nhìn một cạnh dưới góc bằng nhau bất kì" (cung chứa góc) ngoài chương trình** → chỉ giữ trường hợp góc vuông (mọi câu chỉ dùng trường hợp này); rút lý thuyết ≤ 80 chữ; p8-s3 lời đề lộ bước 2; x8 lời giải trực tiếp.
+- Kiểm: 64 sympy, 3.445 khẳng định toạ độ, ~21.200 lượt gradeItem, 44 hình. Không thay câu. Mở: f3-dongdang làm tiên quyết của k-goiintiep.
+
+### Còn mở (phụ huynh quyết, không gấp — `content/curriculum.json`)
+- Thêm f3-dongdang làm tiên quyết của k-goiintiep (cùng danh sách tiên quyết ở mục audit đợt 7–10).
+- SOURCE_INDEX: chuyển Đề 2, 3, 53, 54 từ b-haib sang b-xsuat.
+
+---
+
 ## 08/11/2026 — Audit AI rồi duyệt đợt 7–10 + phiếu chấm Đề 57–59 (nhánh `p1-audit-1`, không SQL)
 
 Phụ huynh (08/11): "cho 1 agent audit lại, thử giải bài ok thì duyệt, còn làm sai thì update lại rồi duyệt" — thay bước gia sư soát trước khi duyệt (SPEC §0 08/11).

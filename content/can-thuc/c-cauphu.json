@@ -9,7 +9,7 @@
   "theory": [
     "**Cần nhớ trước:** bài **Rút gọn biểu thức chứa căn** — câu phụ (Bài 2.3 đề thi) luôn làm trên $P$ **đã rút gọn** và **giữ nguyên ĐKXĐ** của đề, ví dụ $x \\ge 0$, $x \\ne 4$. Mọi giá trị $x$ tìm được phải đối chiếu lại với điều kiện này trước khi kết luận.",
     "**Quy tắc:** (1) *Tính giá trị*: kiểm $x$ thoả ĐKXĐ, tính $\\sqrt x$ (ví dụ $4-2\\sqrt3=(\\sqrt3-1)^2$ nên $\\sqrt x=\\sqrt3-1$), thay vào rồi trục căn. (2) *$P=a$*: đưa về phương trình ẩn $\\sqrt x$, loại nghiệm $\\sqrt x<0$, bình phương, đối chiếu ĐK. (3) *$P<a$, $P>a$, so sánh $P$ với $a$*: xét hiệu $P-a$, quy đồng thành **một phân thức**, xét dấu tử và mẫu.",
-    "**Nguyên, lớn nhất, nhỏ nhất:** $x$ **nguyên** → tách $P=k+\\dfrac{m}{\\sqrt x+b}$; $x$ không chính phương thì $\\sqrt x$ vô tỉ (chỉ còn xét trường hợp tử bằng $0$), $x$ chính phương thì $\\sqrt x+b$ là ước của $m$. $x$ **thực** → chặn $P$ nhờ $\\sqrt x \\ge 0$ (ví dụ $0<P \\le 3$), chọn số nguyên trong khoảng rồi giải ngược ra $x$. Lớn nhất / nhỏ nhất: dùng $\\sqrt x \\ge 0$, chỉ ra dấu bằng nằm trong ĐKXĐ.",
+    "**Nguyên, lớn nhất, nhỏ nhất:** $x$ **nguyên** → tách $P=k+\\dfrac{m}{\\sqrt x+b}$; $x$ chính phương thì $\\sqrt x+b$ là ước của $m$; $x$ không chính phương thì $\\sqrt x$ vô tỉ, $P$ chỉ nguyên khi tử của $P$ bằng $0$. $x$ **thực** → chặn $P$ nhờ $\\sqrt x \\ge 0$ (ví dụ $0<P \\le 3$), chọn số nguyên trong khoảng, giải ngược ra $x$. Lớn nhất / nhỏ nhất: dùng $\\sqrt x \\ge 0$, chỉ ra dấu bằng thuộc ĐKXĐ.",
     "**Vì sao:** $\\sqrt x \\ge 0$ nên mẫu $\\sqrt x+3$ luôn dương — nhân hai vế với nó không đổi chiều; còn $\\sqrt x-3$ âm khi $0 \\le x<9$, dương khi $x>9$, nên **không nhân chéo** khi chưa biết dấu mẫu. Cũng nhờ $\\sqrt x \\ge 0$ mà $\\sqrt x+3 \\ge 3$, suy ra $\\dfrac{3}{\\sqrt x+3} \\le 1$: chặn được $P$.",
     "**Bẫy hay gặp:** (1) Nhân chéo với mẫu có thể âm: $\\dfrac{\\sqrt x+1}{\\sqrt x-2}<1$ **không** suy ra $\\sqrt x+1<\\sqrt x-2$. (2) Quên kết hợp ĐKXĐ: tìm được $x=9$ mà đề cho $x \\ne 9$ thì phải loại. (3) Chỉ xét ước dương, hoặc bỏ sót ước $1$. (4) Nhầm “$x$ nguyên” với “$x$ thực”: hai câu hỏi có hai tập đáp án khác nhau. (5) Giải ra $\\sqrt x=\\dfrac12$ rồi quên bình phương.",
     "**Nhận dạng — thẻ câu phụ** (luôn giữ ĐKXĐ): $\\begin{array}{l|l} \\text{Đề hỏi} & \\text{Cách làm} \\\\ \\hline P \\text{ tại } x=x_0 & \\text{kiểm ĐK, tính } \\sqrt{x_0}\\text{, thay, trục căn} \\\\ P=a & \\text{giải theo } \\sqrt x \\ge 0\\text{, bình phương, đối chiếu ĐK} \\\\ P<a,\\ P>a,\\ \\text{so sánh} & \\text{dấu của } P-a \\text{ (một phân thức)} \\\\ x \\text{ nguyên},\\ P \\text{ nguyên} & \\text{tách phần nguyên, ước của phần dư} \\\\ x \\text{ thực},\\ P \\text{ nguyên} & \\text{chặn } P\\text{, chọn số nguyên, giải ngược} \\\\ \\text{lớn nhất, nhỏ nhất} & \\sqrt x \\ge 0\\text{, chỉ ra dấu bằng} \\end{array}$ **Không** dùng cách chặn $P$ khi đề hỏi $x$ nguyên; **không** nhân chéo khi mẫu có thể âm."
@@ -87,7 +87,7 @@
           "mistakes": [
             {
               "answer": "1/3",
-              "code": "E01",
+              "code": "E11",
               "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
             },
             {
@@ -119,7 +119,7 @@
               "feedback": "Đề hỏi $x$ **thực**, không chỉ $x$ nguyên: trường hợp $P=3$ cho một $x$ không nguyên vẫn thoả mãn."
             },
             "1": {
-              "code": "E01",
+              "code": "E11",
               "feedback": "Từ $\\sqrt x=a$ phải bình phương mới ra $x$."
             },
             "3": {
@@ -208,7 +208,7 @@
       "mistakes": [
         {
           "answer": "6",
-          "code": "E01",
+          "code": "E11",
           "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
         },
         {
@@ -217,7 +217,7 @@
           "feedback": "Chuyển $3$ sang vế phải phải đổi dấu: $\\sqrt x=9-3$."
         }
       ],
-      "solution": "Mẫu dương nên $\\dfrac{3}{\\sqrt x+3}=\\dfrac13 \\Leftrightarrow \\sqrt x+3=9 \\Leftrightarrow \\sqrt x=6 \\Leftrightarrow x=36$ (thoả ĐKXĐ)."
+      "solution": "Mẫu dương nên $\\dfrac{3}{\\sqrt x+3}=\\dfrac13 \\Leftrightarrow \\sqrt x+3=9 \\Leftrightarrow \\sqrt x=6 \\Leftrightarrow x=36$ (thoả ĐKXĐ). (Điều kiện $x \\ne 9$ là ĐKXĐ của biểu thức ban đầu trong đề, vẫn phải giữ khi kết luận.)"
     },
     {
       "id": "c-cauphu-p4",
@@ -372,8 +372,8 @@
             "correct": 3,
             "mistakes": {
               "0": {
-                "code": "E01",
-                "feedback": "Từ $\\sqrt x>2$ phải bình phương hai vế không âm mới ra điều kiện của $x$."
+                "code": "E04",
+                "feedback": "$\\sqrt x>2$ khác $x>2$: hai vế không âm, bình phương hai vế mới ra điều kiện của $x$."
               },
               "1": {
                 "code": "E04",
@@ -543,7 +543,7 @@
                 "feedback": "Con mới lấy ước dương; ước âm $-2$, $-1$ cũng cho $\\sqrt x \\ge 0$."
               },
               "1": {
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương để ra $x$."
               }
             },
@@ -585,7 +585,7 @@
               },
               "2": {
                 "code": "E02",
-                "feedback": "$(\\sqrt x+1)-(\\sqrt x+2)=1-2$, không phải $1-2-2$."
+                "feedback": "Phần dư là hiệu hai hằng số: $(\\sqrt x+1)-(\\sqrt x+2)$ chỉ trừ $2$ một lần."
               }
             },
             "solution": "$\\sqrt x+1=(\\sqrt x+2)-1$ nên $P=1-\\dfrac{1}{\\sqrt x+2}$."
@@ -641,7 +641,7 @@
           }
         }
       ],
-      "solution": "$P=1-\\dfrac{1}{\\sqrt x+2} \\ge 1-\\dfrac12=\\dfrac12$ vì $\\sqrt x+2 \\ge 2$. Dấu bằng khi $x=0$. Kết luận: giá trị nhỏ nhất của $P$ là $\\dfrac12$, tại $x=0$."
+      "solution": "$P=1-\\dfrac{1}{\\sqrt x+2} \\ge 1-\\dfrac12=\\dfrac12$ vì $\\sqrt x+2 \\ge 2$. Dấu bằng khi $x=0$. Kết luận: giá trị nhỏ nhất của $P$ là $\\dfrac12$, tại $x=0$. (Điều kiện $x \\ne 4$ là ĐKXĐ của biểu thức ban đầu trong đề; $x=0$ vẫn thoả.)"
     }
   ],
   "exit": [
@@ -675,7 +675,7 @@
       "mistakes": [
         {
           "answer": "4",
-          "code": "E01",
+          "code": "E11",
           "feedback": "Con mới tìm được $\\sqrt x$; bình phương để ra $x$."
         },
         {
@@ -755,7 +755,7 @@
             "mistakes": [
               {
                 "answer": "2",
-                "code": "E01",
+                "code": "E11",
                 "feedback": "$t=\\sqrt x$; con mới tìm được $\\sqrt x$, bình phương để ra $x$."
               },
               {
@@ -845,8 +845,8 @@
             "correct": 1,
             "mistakes": {
               "0": {
-                "code": "E01",
-                "feedback": "Từ $\\sqrt x<2$ phải bình phương hai vế: $x<4$, không phải $x<2$."
+                "code": "E04",
+                "feedback": "$\\sqrt x<2$ khác $x<2$: bình phương hai vế không âm mới ra điều kiện của $x$."
               },
               "2": {
                 "code": "E14",
@@ -1006,7 +1006,7 @@
                 "feedback": "Trường hợp $P=1$ cho một $x$ mà ĐKXĐ đã loại; đối chiếu lại $x \\ne 9$."
               },
               "2": {
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương rồi mới đối chiếu ĐKXĐ."
               },
               "3": {
@@ -1224,11 +1224,11 @@
                 "feedback": "$x=0$ bị loại vì ĐKXĐ là $x>0$."
               },
               "3": {
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Đó là các giá trị của $\\sqrt x$; bình phương để ra $x$."
               }
             },
-            "solution": "Chính phương: $x \\in \\{4;9;25\\}$ ($P=-1;1;5$). Không chính phương: $x=5$ ($P=0$). Kết luận: $x \\in \\{4;5;9;25\\}$."
+            "solution": "Chính phương: $x \\in \\{4;9;25\\}$ ($P=-1;2;5$). Không chính phương: $x=5$ ($P=0$). Kết luận: $x \\in \\{4;5;9;25\\}$."
           }
         }
       ],

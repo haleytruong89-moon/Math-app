@@ -8,6 +8,14 @@ test("parses integers, decimals with comma or dot, negatives", () => {
   close(parseAnswer("12"), 12);
   close(parseAnswer(" 4,8 "), 4.8);
   close(parseAnswer("4.8"), 4.8);
+  // Vietnamese thousands separator (08/11): dots in groups of three are not decimals.
+  close(parseAnswer("1.200"), 1200);
+  close(parseAnswer("1.200.000"), 1200000);
+  close(parseAnswer("12.500,5"), 12500.5);
+  close(parseAnswer("-2.400"), -2400);
+  close(parseAnswer("0.600"), 0.6);
+  close(parseAnswer("1.25"), 1.25);
+  close(parseAnswer("1.2000"), 1.2);
   close(parseAnswer("-2,5"), -2.5);
 });
 

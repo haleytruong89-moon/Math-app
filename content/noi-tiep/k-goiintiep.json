@@ -11,11 +11,11 @@
     "alt": "Đường tròn tâm O; tam giác nhọn ABC nội tiếp, AB ngắn hơn AC; AD vuông góc với BC tại D nằm giữa B và C; AK là đường kính đi qua O, K nằm trên cung BC không chứa A; đoạn CK, góc ACK vuông (vẽ theo tỉ lệ AB = 5, AC = 6, AD = 4)."
   },
   "theory": [
-    "**Cần nhớ trước:** bài “Đường tròn: tâm, bán kính, dây, góc ở tâm” — góc ở tâm $\\widehat{BOC}$ bằng số đo cung nhỏ $BC$; cung lớn $= 360^\\circ -$ cung nhỏ; nửa đường tròn là cung $180^\\circ$; $OB = OC = R$ nên $\\triangle OBC$ cân tại $O$.",
+    "**Cần nhớ trước:** bài “Đường tròn: tâm, bán kính, dây, góc ở tâm” — góc ở tâm $\\widehat{BOC}$ bằng số đo cung nhỏ $BC$; cung lớn $= 360^\\circ -$ cung nhỏ; nửa đường tròn là cung $180^\\circ$; $OB = OC = R$ nên $\\triangle OBC$ cân tại $O$. Các câu tính tích đoạn thẳng dùng thêm bài “Tam giác đồng dạng” (g.g, cặp cạnh tương ứng).",
     "**Định nghĩa và định lí:** **góc nội tiếp** là góc có **đỉnh nằm trên đường tròn** và hai cạnh chứa hai dây, ví dụ $\\widehat{BAC}$ với $A, B, C \\in (O)$. Cung nằm **bên trong** góc là **cung bị chắn**. Số đo góc nội tiếp **bằng nửa số đo cung bị chắn**. Nếu cung bị chắn là cung nhỏ $BC$ thì $\\widehat{BAC} = \\dfrac{1}{2}\\widehat{BOC}$ (nửa góc ở tâm cùng chắn cung đó).",
     "**Hệ quả:** (1) các góc nội tiếp **cùng chắn một cung** hoặc chắn các cung bằng nhau thì **bằng nhau**; (2) góc nội tiếp **chắn nửa đường tròn là góc vuông**: $AB$ là đường kính, $M \\in (O)$ ⇒ $\\widehat{AMB} = 90^\\circ$, tức tam giác nội tiếp có một cạnh là đường kính thì vuông; (3) ngược lại, tam giác vuông nội tiếp đường tròn có **cạnh huyền là đường kính**, tâm là trung điểm cạnh huyền.",
     "**Vì sao:** khi tâm $O$ nằm trên cạnh $AC$ của $\\widehat{BAC}$: $\\triangle OAB$ cân tại $O$ nên $\\widehat{OAB} = \\widehat{OBA}$, mà góc ngoài $\\widehat{BOC} = \\widehat{OAB} + \\widehat{OBA} = 2\\widehat{BAC}$. Tâm ở vị trí khác: kẻ đường kính qua $A$ rồi cộng hoặc trừ hai góc như trên. Nửa đường tròn là cung $180^\\circ$ nên góc chắn nó bằng $90^\\circ$.",
-    "**Bẫy hay gặp:** (1) **nhân đôi thay vì chia đôi**: góc ở tâm $100^\\circ$ ⇒ góc nội tiếp cùng chắn cung $50^\\circ$; (2) **lấy nhầm cung**: cung bị chắn nằm trong góc, có thể là cung lớn (góc tù); (3) $A$, $D$ **khác phía** đối với dây $BC$ thì $\\widehat{BAC}$, $\\widehat{BDC}$ chắn hai cung khác nhau, không bằng nhau; (4) góc có đỉnh ở tâm, trong đường tròn, hoặc có cạnh không phải dây ($\\widehat{OBC}$) **không** là góc nội tiếp.",
+    "**Bẫy hay gặp:** (1) **nhân đôi thay vì chia đôi**: góc ở tâm $100^\\circ$ ⇒ góc nội tiếp cùng chắn cung $50^\\circ$; (2) **lấy nhầm cung**: cung bị chắn nằm trong góc, có thể là cung lớn (góc tù); (3) $A$, $D$ **khác phía** đối với dây $BC$ thì $\\widehat{BAC}$, $\\widehat{BDC}$ bù nhau, nói chung không bằng nhau; (4) góc có đỉnh ở tâm, trong đường tròn, hoặc có cạnh không phải dây ($\\widehat{OBC}$) **không** là góc nội tiếp.",
     "**Nhận dạng:** đề có “đường kính $AB$” và một điểm $M$ trên đường tròn → viết ngay $\\widehat{AMB} = 90^\\circ$ (góc nội tiếp chắn nửa đường tròn). Cần hai góc bằng nhau mà hai đỉnh cùng nằm trên đường tròn, cùng nhìn một dây từ một phía → cùng chắn một cung. **Không** dùng khi đỉnh góc không nằm trên đường tròn (trực tâm, chân đường cao…): khi đó cần cách khác, như tứ giác nội tiếp ở bài sau."
   ],
   "worked": {
@@ -99,7 +99,7 @@
           "id": "k-goiintiep-f2",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Chọn cặp góc và lí do đúng.",
+          "prompt": "Chọn phương án đúng cả cặp góc lẫn lí do.",
           "options": [
             "$\\widehat{ABD} = \\widehat{AKC}$ (hai góc nội tiếp cùng chắn cung $AC$)",
             "$\\widehat{BAD} = \\widehat{KAC}$ (hai góc nội tiếp cùng chắn một cung)",
@@ -109,7 +109,7 @@
           "mistakes": {
             "1": {
               "code": "E09",
-              "feedback": "$\\widehat{BAD}$ có cạnh $AD$ không phải dây ($D$ không nằm trên đường tròn) nên không phải góc nội tiếp; lí do không khớp."
+              "feedback": "Hai góc này bằng nhau thật (bài mẫu), nhưng $\\widehat{BAD}$ không phải góc nội tiếp vì $D$ không nằm trên đường tròn; lí do không khớp."
             },
             "2": {
               "code": "E08",
@@ -134,13 +134,13 @@
           "mistakes": [
             {
               "answer": "7,5",
-              "code": "E08",
+              "code": "E11",
               "feedback": "Con tính ra $AK$ — đó là đường kính; bán kính $R$ bằng nửa $AK$."
             },
             {
-              "answer": "10/3",
+              "answer": "5/3",
               "code": "E08",
-              "feedback": "Con ghép sai vị trí: $AB\\cdot AC$ ở một vế, $2R\\cdot AD$ ở vế kia."
+              "feedback": "Con ghép sai cặp cạnh tương ứng (ra $AB\\cdot AD = 2R\\cdot AC$); đẳng thức đúng là $AB\\cdot AC = 2R\\cdot AD$."
             }
           ],
           "solution": "$2R = \\dfrac{AB\\cdot AC}{AD} = \\dfrac{5\\cdot 6}{4} = 7,5$ ⇒ $R = 3,75$ (cm)."
@@ -449,7 +449,7 @@
       "mistakes": [
         {
           "answer": "62",
-          "code": "E08",
+          "code": "E11",
           "feedback": "Con tính được $\\widehat{AKC}$ nhưng đề hỏi $\\widehat{KAC}$ (đỉnh $A$); xét tiếp $\\triangle AKC$ vuông tại $C$."
         },
         {

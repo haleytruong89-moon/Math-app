@@ -11,7 +11,7 @@
     "**Công thức:** $s=v\\cdot t$, $v=\\dfrac{s}{t}$, $t=\\dfrac{s}{v}$, dùng cùng hệ đơn vị km – km/h – giờ. **Ngược chiều**, gặp nhau: $s_1+s_2=AB$. **Cùng chiều**, xe sau đuổi kịp xe trước (cùng điểm xuất phát): $s_1=s_2$. **Dòng nước:** $v_{\\text{xuôi}}=v+v_n$, $v_{\\text{ngược}}=v-v_n$, điều kiện $v>v_n>0$.",
     "**Vì sao:** đi ngược chiều, mỗi giờ hai xe xích lại gần nhau $v_1+v_2$ km; đi cùng chiều, xe nhanh chỉ rút ngắn khoảng cách $v_2-v_1$ km mỗi giờ. Xuôi dòng, nước đẩy thêm ca nô; ngược dòng, nước cản lại.",
     "**Bẫy hay gặp:** $40$ phút $=\\dfrac23$ giờ, **không** phải $0{,}4$ giờ. Nhầm $v+v_n$ với $v-v_n$. Quên thời gian nghỉ. Hai xe gặp nhau thì cộng **quãng đường**, không cộng thời gian. Xe xuất phát trước đi **lâu hơn**: đi từ $7$ giờ, gặp lúc $10$ giờ là đã đi $3$ giờ, không phải $10$ giờ.",
-    "**Nhận dạng:** “gặp nhau”, “đuổi kịp”, “xuôi – ngược dòng”, “nghỉ … rồi quay về”, “đi với vận tốc … thì muộn/sớm …” → lập bảng $s$ – $v$ – $t$. Nên đặt ẩn là **thời gian** hoặc **quãng đường** để PT bậc nhất. **Chưa dùng bài này** khi ẩn vận tốc buộc nằm ở mẫu hai phân thức (biết $AB$, “tăng vận tốc thêm … nên đến sớm …”): dẫn tới PT bậc hai, học ở bài sau.",
+    "**Nhận dạng:** “gặp nhau”, “đuổi kịp”, “xuôi – ngược dòng”, “nghỉ … rồi quay về”, “muộn/sớm hơn dự định” → lập bảng $s$ – $v$ – $t$. Đặt ẩn là **thời gian** hoặc **quãng đường** để PT bậc nhất; chưa biết $AB$ thì đặt hai ẩn: vận tốc, thời gian dự định. **Chưa dùng bài này** khi đề cho sẵn $AB$ mà ẩn vận tốc nằm ở mẫu (“tăng vận tốc … nên đến sớm …”): dẫn tới PT bậc hai, học sau.",
     "**Bảng đại lượng:** $\\begin{array}{l|c|c|c} & s\\ (\\text{km}) & v\\ (\\text{km/h}) & t\\ (\\text{giờ}) \\\\ \\hline \\text{Xe 1} & v_1t_1 & v_1 & t_1 \\\\ \\text{Xe 2} & v_2t_2 & v_2 & t_2 \\end{array}$ Mỗi dòng là một xe hoặc một chặng; biết hai ô thì ô thứ ba là tích hoặc thương. **Checklist:** (1) đơn vị: phút → giờ; (2) điều kiện của ẩn ($x>0$, $v>v_n$); (3) quan hệ: tổng/hiệu quãng đường hay thời gian, có thời gian nghỉ không; (4) thử lại vào đề rồi viết **Kết luận** có đơn vị."
   ],
   "worked": {
@@ -307,7 +307,7 @@
             "correct": 3,
             "mistakes": {
               "0": {
-                "code": "E14",
+                "code": "E04",
                 "feedback": "Đó là giờ trên đồng hồ; thời gian đi $=$ giờ gặp $-$ giờ xuất phát."
               },
               "1": {

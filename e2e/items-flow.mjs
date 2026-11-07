@@ -81,7 +81,11 @@ await page.getByRole("navigation", { name: "Các phần của bài" }).getByRole
 const q1 = page.locator("section").filter({ hasText: "Câu 1" });
 await q1.getByTestId("steps-input").waitFor();
 ok("exit: no hints in the test", (await page.getByRole("button", { name: "💡 Gợi ý" }).count()) === 0);
+// Audit 08/11: exit steps open one at a time, the earlier step locks.
+ok("exit: only step 1 shown at first", (await q1.getByLabel("Đáp số").count()) === 1 && (await q1.getByTestId("step-next").isDisabled()));
 await q1.getByLabel("Đáp số").nth(0).fill("1");
+await q1.getByTestId("step-next").click();
+ok("exit: step 2 opens, step 1 locked", (await q1.getByLabel("Đáp số").count()) === 2 && (await q1.getByLabel("Đáp số").nth(0).isDisabled()));
 await q1.getByLabel("Đáp số").nth(1).fill("2");
 for (let n = 2; n <= 5; n++) await page.locator("section").filter({ hasText: `Câu ${n}` }).getByLabel("Đáp số").fill(String(n));
 await page.getByRole("button", { name: "Nộp bài" }).click();

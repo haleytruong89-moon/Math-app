@@ -12,7 +12,7 @@
     "**Vì sao:** không có số nào bình phương lên được số âm, nên căn bậc hai của số âm không có nghĩa; chia cho $0$ cũng không có nghĩa. Còn $\\sqrt{A^2}$ luôn xác định vì $A^2 \\ge 0$ với mọi giá trị.",
     "**Bẫy hay gặp:** $\\sqrt x-3 \\ne 0$ cho $x \\ne 9$, **không** phải $x \\ne 3$. Mẫu $\\sqrt x+2 \\ge 2$ nên **không** thêm điều kiện. Mẫu $x-2$ (không có căn) cho $x \\ne 2$. $\\sqrt{-x}$ xác định khi $x \\le 0$, vì $-x$ chưa chắc âm. $\\sqrt{0}=0$ vẫn có nghĩa: căn không ở mẫu thì dùng $\\ge$, không dùng $>$.",
     "**Nhận dạng:** “tìm điều kiện xác định”, “với giá trị nào thì … có nghĩa” → liệt kê mọi căn và mọi mẫu của biểu thức **ban đầu**, trước khi rút gọn. **Không** cần tìm lại khi đề đã ghi sẵn “với $x \\ge 0$, $x \\ne 4$”: chỉ kiểm tra giá trị thay vào có thỏa không.",
-    "**Thẻ ĐKXĐ căn thức** (dạng → điều kiện, $a>0$): $\\begin{array}{l|l} \\sqrt{A} & A \\ge 0 \\\\ \\dfrac{B}{A} & A \\ne 0 \\\\ \\dfrac{B}{\\sqrt{A}} & A>0 \\\\ \\dfrac{B}{\\sqrt x-a} & x \\ge 0,\\ x \\ne a^2 \\\\ \\dfrac{B}{\\sqrt x+a} & x \\ge 0 \\\\ \\dfrac{B}{x-\\sqrt x} & x>0,\\ x \\ne 1 \\\\ \\sqrt{A^2} & \\text{mọi } x \\end{array}$ **Mẫu chung hay gặp:** $x-a^2=(\\sqrt x-a)(\\sqrt x+a)$; $x-2a\\sqrt x+a^2=(\\sqrt x-a)^2$; $x-a\\sqrt x=\\sqrt x(\\sqrt x-a)$."
+    "**Thẻ ĐKXĐ căn thức** (dạng → điều kiện, $a>0$): $\\begin{array}{l|l} \\sqrt{A} & A \\ge 0 \\\\ \\dfrac{B}{A} & A \\ne 0 \\\\ \\dfrac{B}{\\sqrt{A}} & A>0 \\\\ \\dfrac{B}{\\sqrt x-a} & x \\ge 0,\\ x \\ne a^2 \\\\ \\dfrac{B}{\\sqrt x+a} & x \\ge 0 \\\\ \\dfrac{B}{x-\\sqrt x} & x>0,\\ x \\ne 1 \\\\ \\sqrt{A^2} & \\text{mọi } x \\end{array}$ **Mẫu chung hay gặp:** $x-a^2=(\\sqrt x-a)(\\sqrt x+a)$; $x-2a\\sqrt x+a^2=(\\sqrt x-a)^2$; $x-a\\sqrt x=\\sqrt x(\\sqrt x-a)$. Dạng $x+b\\sqrt x+c$: coi $\\sqrt x$ là $t$, phân tích $t^2+bt+c$ bằng tách hạng tử, ví dụ $x-5\\sqrt x+6=(\\sqrt x-2)(\\sqrt x-3)$; mẫu khác $0$ khi **mọi** nhân tử khác $0$."
   ],
   "worked": {
     "problem": "Tìm điều kiện xác định của $P=\\dfrac{\\sqrt x}{\\sqrt x+3}+\\dfrac{2\\sqrt x}{\\sqrt x-3}-\\dfrac{3x+9}{x-9}$.",
@@ -382,7 +382,7 @@
         {
           "answer": "9",
           "code": "E14",
-          "feedback": "Con thiếu điều kiện từ mẫu $x-2$ của $A$; mẫu này không có căn.",
+          "feedback": "Con còn thiếu một giá trị bị loại: xét lại **từng** mẫu, kể cả mẫu $x-2$ của $A$ và mẫu $x-1$ của $B$ (không có căn).",
           "review": "f1-qd"
         },
         {

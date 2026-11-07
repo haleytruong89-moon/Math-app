@@ -10,7 +10,7 @@
     "**Cần nhớ trước:** bài **Giải hệ PT bậc nhất hai ẩn** — phương pháp thế, cộng đại số; giải xong thì thử lại nghiệm vào cả hai phương trình.",
     "**Công thức:** số có hai chữ số $\\overline{ab}=10a+b$ với $a,b\\in\\mathbb N$, $1\\le a\\le 9$, $0\\le b\\le 9$. Đổi chỗ: $\\overline{ba}=10b+a$. Xen chữ số $0$ vào giữa: $\\overline{a0b}=100a+b$; xen chữ số $1$: $\\overline{a1b}=100a+10+b$. Viết thêm chữ số $c$ bên phải: $\\overline{abc}=10\\cdot\\overline{ab}+c$. Chia $A$ cho $B$ được thương $q$, dư $r$: $A=qB+r$ với $0\\le r<B$.",
     "**Vì sao:** chữ số đứng ở hàng chục có giá trị gấp $10$ lần chính nó. Vì vậy $\\overline{ab}-\\overline{ba}=9(a-b)$ và $\\overline{ab}+\\overline{ba}=11(a+b)$. Ví dụ: $72-27=45=9\\cdot5$ và $72+27=99=11\\cdot9$.",
-    "**Bẫy hay gặp:** viết $\\overline{ab}=a+b$ hay $ab$ (đó là tổng, tích hai chữ số). “Số mới lớn hơn số cũ $18$” là mới $-$ cũ $=18$, không phải cũ $-$ mới. Chia có dư mà viết $A=qB$ là mất số dư. Ra $b=-3$ hay $a=\\frac{11}{3}$ thì đó không phải chữ số: xem lại hệ. Đề hỏi **số**, đừng trả lời một chữ số.",
+    "**Bẫy hay gặp:** viết $\\overline{ab}=a+b$ hay $ab$ (đó là tổng, tích hai chữ số). “Số mới lớn hơn số cũ $18$” là mới $-$ cũ $=18$, không phải cũ $-$ mới. Chia có dư mà viết $A=qB$ là mất số dư. Ra $b=-3$ hay $a=\\frac{11}{3}$ thì đó không phải chữ số: soát lại hệ; hệ đúng mà vẫn ra như vậy thì kết luận không có số nào thỏa mãn. Đề hỏi **số**, đừng trả lời một chữ số.",
     "**Nhận dạng:** đề nói “chữ số hàng chục, hàng đơn vị”, “đổi chỗ”, “viết thêm, xen vào” → đặt ẩn là **hai chữ số** $a$, $b$. Đề “tìm hai số biết tổng, hiệu, tỉ số, phép chia” (không nói chữ số) → đặt ẩn là **chính hai số**. **Không** thuộc bài này: đề có tích hai chữ số hay tổng bình phương, vì dẫn tới phương trình bậc hai (học sau).",
     "**Bảng đại lượng & checklist:** $\\begin{array}{l|c|c} \\text{Đại lượng} & \\text{Kí hiệu} & \\text{Biểu thức} \\\\ \\hline \\text{chữ số hàng chục} & a & 1\\le a\\le 9 \\\\ \\text{chữ số hàng đơn vị} & b & 0\\le b\\le 9 \\\\ \\text{số ban đầu} & \\overline{ab} & 10a+b \\\\ \\text{số đổi chỗ} & \\overline{ba} & 10b+a \\end{array}$ (1) đơn vị: hỏi chữ số hay hỏi số; (2) điều kiện của ẩn; (3) quan hệ: lớn $-$ nhỏ $=$ phần hơn; (4) giải hệ, đối chiếu điều kiện, thử lại trên đề; (5) viết **Kết luận**."
   ],
@@ -477,8 +477,8 @@
                 "feedback": "Con gán nhầm: $\\frac23$ đi với số thứ nhất $x$, $\\frac14$ đi với số thứ hai $y$."
               },
               "1": {
-                "code": "E02",
-                "feedback": "Khi bỏ mẫu, nhân cả hai vế với mẫu chung $12$, không nhân chéo tử với mẫu."
+                "code": "E07",
+                "feedback": "$3x=2y$ nghĩa là số thứ nhất bằng $\\frac23$ số thứ hai, không phải điều đề cho. Đề cho $\\frac23$ **của** số thứ nhất bằng $\\frac14$ **của** số thứ hai: viết đúng câu đó thành phương trình."
               },
               "3": {
                 "code": "E10",
@@ -504,8 +504,8 @@
               },
               {
                 "answer": "132/5",
-                "code": "E02",
-                "feedback": "Bỏ mẫu sai: nhân hai vế của $\\frac23x=\\frac14y$ với $12$."
+                "code": "E07",
+                "feedback": "Con lập thành $x=\\frac23y$; đề cho $\\frac23$ **của** số thứ nhất bằng $\\frac14$ **của** số thứ hai."
               }
             ],
             "solution": "$\\frac23x=\\frac14y \\Rightarrow 8x=3y$. Thế $y=66-x$: $11x=198$, $x=18$."
@@ -527,8 +527,8 @@
               },
               {
                 "answer": "198/5",
-                "code": "E02",
-                "feedback": "Bỏ mẫu sai: nhân hai vế của $\\frac23x=\\frac14y$ với $12$."
+                "code": "E07",
+                "feedback": "Con lập thành $x=\\frac23y$; đề cho $\\frac23$ **của** số thứ nhất bằng $\\frac14$ **của** số thứ hai."
               }
             ],
             "solution": "$y=66-18=48$."
@@ -555,7 +555,7 @@
             "id": "g-chuso-p7-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$. Điều kiện đúng là:",
+            "prompt": "Gọi chữ số hàng chục là $a$, chữ số hàng đơn vị là $b$. Điều kiện đúng và đầy đủ là:",
             "options": [
               "$a,b\\in\\mathbb N$; $0\\le a\\le 9$, $0\\le b\\le 9$",
               "$a,b\\in\\mathbb N$; $1\\le a\\le 9$, $0\\le b\\le 9$",
@@ -1098,7 +1098,7 @@
             "id": "g-chuso-x6-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Gọi số học sinh lúc đầu của nhóm cờ vua là $x$, nhóm cờ tướng là $y$. Điều kiện đúng là:",
+            "prompt": "Gọi số học sinh lúc đầu của nhóm cờ vua là $x$, nhóm cờ tướng là $y$. Điều kiện đúng và đầy đủ là:",
             "options": [
               "$x,y\\in\\mathbb N^*$; $18<x<96$",
               "$x>0$, $y>0$ (số thực bất kì)",
@@ -1323,7 +1323,7 @@
             "correct": 3,
             "mistakes": {
               "0": {
-                "code": "E07",
+                "code": "E02",
                 "feedback": "Nhân chéo sai: từ $\\frac ab=\\frac34$, tích $a$ với $4$ bằng tích $b$ với $3$."
               },
               "1": {
@@ -1349,7 +1349,7 @@
             "mistakes": [
               {
                 "answer": "9/4",
-                "code": "E07",
+                "code": "E02",
                 "feedback": "Nhân chéo sai tỉ số $\\frac ab=\\frac34$."
               },
               {

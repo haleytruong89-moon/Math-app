@@ -16,6 +16,9 @@ function normalise(raw: string): string {
     .replace(/\s+/g, "")
     .replace(/căn|sqrt|v(?=\(|\d)/g, "√")
     .replace(/[−–]/g, "-")
+    // Vietnamese thousands separator (audit 08/11): "1.200" = 1200, "12.500,5" = 12500,5 — dots in groups of
+    // exactly three digits after a non-zero lead. "0.600" and "1.25" stay decimals.
+    .replace(/^(-?[1-9]\d{0,2}(?:\.\d{3})+)(?=$|,)/, (m) => m.replace(/\./g, ""))
     .replace(/,/g, ".")
     .replace(/[·×*](?=√)/g, "") // 2·√3 → 2√3
     .replace(/:/g, "/");
