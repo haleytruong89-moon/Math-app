@@ -53,6 +53,8 @@ import m11 from "../../../content/tiep-tuyen/module.json";
 import m11u0 from "../../../content/tiep-tuyen/l-tieptuyen.json";
 import m12 from "../../../content/toi-uu/module.json";
 import m12u0 from "../../../content/toi-uu/hq-amgm.json";
+import m12u1 from "../../../content/toi-uu/hq-doanhthu.json";
+import m12u2 from "../../../content/toi-uu/hq-hinhhoc.json";
 import m13 from "../../../content/viet/module.json";
 import m13u0 from "../../../content/viet/e-viete.json";
 import m13u1 from "../../../content/viet/e-vietets.json";
@@ -79,7 +81,7 @@ export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m9, units: [m9u0, m9u1, m9u2] },
   { module: m10, units: [m10u0, m10u1] },
   { module: m11, units: [m11u0] },
-  { module: m12, units: [m12u0] },
+  { module: m12, units: [m12u0, m12u1, m12u2] },
   { module: m13, units: [m13u0, m13u1] },
   { module: m14, units: [m14u0, m14u1, m14u2] },
 ];
