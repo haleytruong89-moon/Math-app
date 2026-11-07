@@ -3,15 +3,16 @@
   "module": "pt-bac-hai",
   "order": 2,
   "title": "Nhẩm nghiệm & phân tích nhân tử qua nghiệm",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 40,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — đưa phương trình về dạng $ax^2+bx+c=0$ ($a \\ne 0$), đọc đúng $a$, $b$, $c$ **kèm dấu**.",
     "**Quy tắc nhẩm nghiệm:** nếu $a+b+c=0$ thì phương trình có nghiệm $x_1=1$, $x_2=\\dfrac{c}{a}$. Nếu $a-b+c=0$ thì có nghiệm $x_1=-1$, $x_2=-\\dfrac{c}{a}$. **Phân tích nhân tử qua nghiệm:** nếu $ax^2+bx+c=0$ có hai nghiệm $x_1$, $x_2$ thì $ax^2+bx+c=a(x-x_1)(x-x_2)$. Điều kiện: vế phải đã bằng $0$.",
-    "**Vì sao:** thay $x=1$ vào vế trái được đúng $a+b+c$; thay $x=-1$ được $a-b+c$. Khi $a+b+c=0$ thì $b=-(a+c)$, nên $ax^2+bx+c=(x-1)(ax-c)$; nghiệm còn lại là $\\dfrac{c}{a}$. Khi $a-b+c=0$ thì $ax^2+bx+c=(x+1)(ax+c)$.",
+    "**Vì sao:** thay $x=1$ vào vế trái được đúng $a+b+c$; thay $x=-1$ được $a-b+c$. Khi $a+b+c=0$ thì $b=-(a+c)$, nên $ax^2+bx+c=(x-1)(ax-c)$; nghiệm còn lại là $\\dfrac{c}{a}$. Khi $a-b+c=0$ thì $ax^2+bx+c=(x+1)(ax+c)$. Tổng quát, cộng và nhân hai nghiệm lấy từ công thức nghiệm được $x_1+x_2=-\\dfrac{b}{a}$, $x_1x_2=\\dfrac{c}{a}$, nên khai triển $a(x-x_1)(x-x_2)$ ra đúng $ax^2+bx+c$ (bài Viète học kỹ hơn).",
     "**Bẫy hay gặp:** quên hệ số $a$: $2x^2-3x+1 \\ne (x-1)\\left(x-\\frac12\\right)$, đúng là $2(x-1)\\left(x-\\frac12\\right)=(x-1)(2x-1)$. Nghiệm thứ hai là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$; trường hợp $a-b+c=0$ phải có dấu trừ. Nghiệm $x_1$ cho thừa số $x-x_1$: nghiệm $-1$ cho $x+1$.",
-    "**Nhận dạng:** trước khi tính $\\Delta$, cộng thử $a+b+c$ và $a-b+c$ — bằng $0$ thì nhẩm, nhanh hơn công thức nghiệm. Cả hai khác $0$ → tính $\\Delta$ như bài trước. Đề “phân tích thành nhân tử” một tam thức bậc hai không có hằng đẳng thức → tìm hai nghiệm rồi viết $a(x-x_1)(x-x_2)$. Không dùng khi $\\Delta<0$: tam thức không phân tích được.",
-    "**Phiếu nhẩm nghiệm:** (1) chuyển hết về vế trái, ghi $a$, $b$, $c$ kèm dấu; (2) tính $a+b+c$, rồi $a-b+c$; (3) viết hai nghiệm; (4) thử lại một nghiệm; (5) phân tích $a(x-x_1)(x-x_2)$, nhân $a$ vào một ngoặc cho gọn; (6) viết **Kết luận**. Biểu thức chứa $\\sqrt x$ như $x-5\\sqrt x+4$: coi $t=\\sqrt x$, làm như trên."
+    "**Nhận dạng:** trước khi tính $\\Delta$, cộng thử $a+b+c$ và $a-b+c$ — bằng $0$ thì nhẩm, nhanh hơn công thức nghiệm. Cả hai khác $0$ → tính $\\Delta$ như bài trước. Hệ số chứa $m$, $a+b+c=0$ với mọi $m$ → nghiệm $1$ và $\\dfrac{c}{a}$ theo $m$. Đề “phân tích thành nhân tử” một tam thức bậc hai không có hằng đẳng thức → tìm hai nghiệm rồi viết $a(x-x_1)(x-x_2)$. Không dùng khi $\\Delta<0$: tam thức không phân tích được.",
+    "**Phiếu nhẩm nghiệm:** (1) chuyển hết về vế trái, ghi $a$, $b$, $c$ kèm dấu; (2) tính $a+b+c$, rồi $a-b+c$; (3) viết hai nghiệm; (4) thử lại một nghiệm; (5) phân tích $a(x-x_1)(x-x_2)$, nhân $a$ vào một ngoặc cho gọn; (6) viết **Kết luận**. Biểu thức chứa $\\sqrt x$ như $x-5\\sqrt x+4$: coi $t=\\sqrt x$ (với $x \\ge 0$: $x=t^2$, $x-1=(\\sqrt x-1)(\\sqrt x+1)$), làm như trên."
   ],
   "worked": {
     "problem": "Giải phương trình $3x^2-7x+4=0$, rồi phân tích $3x^2-7x+4$ thành nhân tử.",
@@ -37,7 +38,7 @@
         "why": "Nhân lại: $(x-1)(3x-4)=3x^2-4x-3x+4=3x^2-7x+4$."
       }
     ],
-    "selfExplain": "Bạn viết $3x^2-7x+4=(x-1)\\left(x-\\frac43\\right)$. Nhân ra thử: kết quả khác đề ở đâu, và vì sao?"
+    "selfExplain": "Giả sử con viết $3x^2-7x+4=(x-1)\\left(x-\\frac43\\right)$. Nhân ra thử: kết quả khác đề ở đâu, và vì sao?"
   },
   "faded": {
     "problem": "Giải phương trình $2x^2+7x+5=0$, rồi phân tích $2x^2+7x+5$ thành nhân tử.",
@@ -60,12 +61,12 @@
           "correct": 0,
           "mistakes": {
             "1": {
-              "code": "E04",
-              "feedback": "Con nhầm hai trường hợp: $a-b+c=0$ ứng với thay $x=-1$, không phải $x=1$."
+              "code": "E03",
+              "feedback": "Con nhớ lẫn quy tắc: $a-b+c=0$ ứng với nghiệm $x=-1$ (thay $x=-1$ vào vế trái)."
             },
             "2": {
               "code": "E02",
-              "feedback": "Con đổi dấu sai: $b=7$ nên $a-b+c=2-7+5$."
+              "feedback": "Con đã tính $a+b+c$; đề hỏi $a-b+c$, tức đổi dấu $b$."
             }
           },
           "solution": "$a-b+c=2-7+5=0$, nên phương trình có nghiệm $x_1=-1$."
@@ -168,7 +169,7 @@
       "correct": 3,
       "mistakes": {
         "0": {
-          "code": "E04",
+          "code": "E05",
           "feedback": "Con nhầm trường hợp: ở đây $a+b+c=0$, nên có nghiệm $x=1$."
         },
         "1": {
@@ -281,7 +282,7 @@
         "$(x-1)(2x-1)$",
         "$(x-1)\\left(x-\\frac12\\right)$",
         "$(x+1)(2x+1)$",
-        "$(x-1)(x-2)$"
+        "$2(x-1)(x-2)$"
       ],
       "correct": 0,
       "mistakes": {
@@ -295,7 +296,7 @@
         },
         "3": {
           "code": "E03",
-          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$."
+          "feedback": "Con lấy ngược: nghiệm còn lại là $\\dfrac{c}{a}$, không phải $\\dfrac{a}{c}$; nhân lại để thử."
         }
       },
       "solution": "$a+b+c=2-3+1=0$ nên hai nghiệm là $1$ và $\\dfrac12$. Vậy $2x^2-3x+1=2(x-1)\\left(x-\\frac12\\right)=(x-1)(2x-1)$."
@@ -388,7 +389,7 @@
             "correct": 1,
             "mistakes": {
               "0": {
-                "code": "E04",
+                "code": "E05",
                 "feedback": "Con nhầm trường hợp: ở đây $a+b+c=0$, nên có nghiệm $t=1$."
               },
               "2": {
@@ -436,7 +437,7 @@
             "mistakes": [
               {
                 "answer": "6",
-                "code": "E10",
+                "code": "E11",
                 "feedback": "Con mới tìm được $\\sqrt x$; còn phải bình phương để ra $x$."
               }
             ],
@@ -462,7 +463,7 @@
       "correct": 2,
       "mistakes": {
         "0": {
-          "code": "E04",
+          "code": "E05",
           "feedback": "Con nhầm trường hợp: ở đây $a-b+c=0$, nên có nghiệm $x=-1$."
         },
         "1": {
@@ -490,8 +491,8 @@
         },
         {
           "answer": "-2/7",
-          "code": "E04",
-          "feedback": "Con nhầm trường hợp: nghiệm $1$ ứng với $a+b+c=0$, nghiệm kia là $\\dfrac{c}{a}$, không có dấu trừ."
+          "code": "E03",
+          "feedback": "Khi $a+b+c=0$, nghiệm còn lại là $\\dfrac{c}{a}$, không có dấu trừ."
         }
       ],
       "solution": "$a+b+c=7-9+2=0$ nên $x_2=\\dfrac{c}{a}=\\dfrac27$."
@@ -634,7 +635,7 @@
             "correct": 2,
             "mistakes": {
               "0": {
-                "code": "E04",
+                "code": "E05",
                 "feedback": "Con nhầm trường hợp: ở đây $a+b+c=1+1-2=0$, nên có nghiệm $t=1$."
               },
               "1": {
@@ -683,7 +684,7 @@
             "mistakes": [
               {
                 "answer": "3",
-                "code": "E10",
+                "code": "E11",
                 "feedback": "Con mới tìm được $\\sqrt x$; còn phải bình phương để ra $x$."
               }
             ],

@@ -2,13 +2,14 @@
   "papers": [
     {
       "paper": 57,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 131–132",
       "parts": [
         {
           "part": "1.1",
           "max": 1,
-          "answer": "Theo đề, nhóm $(60;64],(64;68],(68;72],(72;76],(76;80]$ (2 giá trị 60 tính vào nhóm đầu): tần số $7;7;8;6;2$, tương đối $\\approx23,3\\%;23,3\\%;26,7\\%;20\\%;6,7\\%$. Ý kiến SAI: trên 72% chỉ $6+2=8<15$ ngày. Chấp nhận nhóm $[60;64)…$ ($6;6;6;9;3$) nếu lập luận đúng.",
+          "answer": "Nhóm $(60;64],(64;68],\\dots,(76;80]$, hai giá trị 60 tính vào nhóm đầu: tần số $7;7;8;6;2$ (0,5đ); tương đối $\\approx23{,}3\\%;23{,}3\\%;26{,}7\\%;20\\%;6{,}7\\%$ (0,25đ). Ý kiến SAI: trên 72% chỉ $6+2=8<15$ ngày (0,25đ). HS chia $[60;64),\\dots$: $6;6;6;9;3$, $20\\%;20\\%;20\\%;30\\%;10\\%$, từ 72% trở lên $12<15$ ngày — đủ điểm.",
           "units": [
             "a-tanso"
           ]
@@ -24,8 +25,8 @@
         },
         {
           "part": "2.1",
-          "max": 1,
-          "answer": "$G=\\frac{2\\sqrt x-1}{\\sqrt x+1}$ (ĐK $x\\ge0,x\\ne1$). Ý chính: ngoặc 1 $=\\frac{2\\sqrt x-1}{(\\sqrt x-1)(\\sqrt x+2)}$; ngoặc 2 $=1+\\frac{3-x}{(\\sqrt x-1)(\\sqrt x+2)}=\\frac{\\sqrt x+1}{(\\sqrt x-1)(\\sqrt x+2)}$. Hay sai: dấu khi đổi $1-\\sqrt x$ thành $\\sqrt x-1$.",
+          "max": 0.75,
+          "answer": "$G=\\frac{2\\sqrt x-1}{\\sqrt x+1}$ ($x\\ge0,x\\ne1$). Ngoặc 1 $=\\frac{2\\sqrt x-1}{(\\sqrt x-1)(\\sqrt x+2)}$ (0,25đ); ngoặc 2 $=\\frac{\\sqrt x+1}{(\\sqrt x-1)(\\sqrt x+2)}$ (0,25đ); chia, ra $G$ (0,25đ). Hay sai: dấu khi đổi $1-\\sqrt x$ thành $\\sqrt x-1$.",
           "units": [
             "c-rutgon"
           ]
@@ -40,17 +41,16 @@
         },
         {
           "part": "2.3",
-          "max": 0.25,
-          "answer": "$G=2-\\frac{3}{\\sqrt x+1}$; $\\sqrt x+1\\ge1\\Rightarrow\\frac{3}{\\sqrt x+1}\\le3\\Rightarrow G\\ge-1$. $\\min G=-1$ khi $x=0$.",
+          "max": 0.5,
+          "answer": "$G=2-\\frac{3}{\\sqrt x+1}$ (0,25đ); $\\sqrt x+1\\ge1\\Rightarrow\\frac{3}{\\sqrt x+1}\\le3\\Rightarrow G\\ge-1$, dấu bằng khi $x=0$ (TMĐK): $\\min G=-1$ (0,25đ). Hay sai: không chỉ ra giá trị $x$ để dấu bằng xảy ra.",
           "units": [
-            "c-cauphu",
-            "hq-amgm"
+            "c-cauphu"
           ]
         },
         {
           "part": "3.1",
           "max": 1,
-          "answer": "Gọi tốc độ xe máy $v$ km/h ($v>0$), ô tô $v+15$. Đến chỗ gặp xe máy đi 30 km, ô tô 24 km: $\\frac{30}{v}-\\frac{24}{v+15}=\\frac{4}{15}$ ⇔ $2v^2-15v-3375=0$ ⇒ $v=45$ (loại $v=-37{,}5$). Tốc độ ô tô 60 km/h. Hay sai: không đổi 16 phút $=\\frac{4}{15}$ h, lấy nhầm quãng 24 km cho xe máy.",
+          "answer": "Gọi tốc độ xe máy $v$ km/h ($v>0$), ô tô $v+15$ (0,25đ). Tới chỗ gặp xe máy đi 30 km, ô tô 24 km: $\\frac{30}{v}-\\frac{24}{v+15}=\\frac{4}{15}$ (0,25đ) ⇔ $2v^2-15v-3375=0$ ⇒ $v=45$, loại $-37{,}5$ (0,25đ). Ô tô 60 km/h (0,25đ). Hay sai: không đổi 16 phút $=\\frac{4}{15}$ h; gán 24 km cho xe máy; trả lời tốc độ xe máy.",
           "units": [
             "g-chuyendong"
           ]
@@ -58,7 +58,7 @@
         {
           "part": "3.2",
           "max": 1,
-          "answer": "$x+y=460$; $0{,}8x+0{,}75y=357$ ⇒ $x=240$ (Toán), $y=220$ (Khoa học). Kiểm: $192+165=357$.",
+          "answer": "Gọi $x,y$ là số HS thi Toán, Khoa học ($x,y\\in\\mathbb N^*$) (0,25đ). $x+y=460$; $0{,}8x+0{,}75y=357$ (0,25đ) ⇒ $x=240$, $y=220$ (0,25đ). Đối chiếu ĐK, kết luận Toán 240, Khoa học 220 (0,25đ). Kiểm: $192+165=357$.",
           "units": [
             "g-phantram",
             "g-giaihpt"
@@ -75,7 +75,7 @@
         },
         {
           "part": "4.1a",
-          "max": 0.75,
+          "max": 0.5,
           "answer": "$V=\\pi\\cdot1{,}5^2\\cdot2{,}8+\\frac13\\pi\\cdot1{,}5^2\\cdot1=7{,}05\\pi\\approx22{,}1\\ \\text{m}^3$ (chính xác $22{,}148$).",
           "units": [
             "p-ghep",
@@ -84,7 +84,7 @@
         },
         {
           "part": "4.1b",
-          "max": 0.75,
+          "max": 0.5,
           "answer": "Sơn = xung quanh trụ + xung quanh nón (không tính đáy, không tính mặt tiếp giáp): $l=\\sqrt{1^2+1{,}5^2}=\\sqrt{3{,}25}$; $S=2\\pi\\cdot1{,}5\\cdot2{,}8+\\pi\\cdot1{,}5\\cdot\\sqrt{3{,}25}\\approx34{,}9\\ \\text{m}^2$ ($34{,}885$). Hay sai: dùng chiều cao nón 1 m thay cho đường sinh; cộng thêm đáy.",
           "units": [
             "p-ghep",
@@ -93,8 +93,8 @@
         },
         {
           "part": "4.2a",
-          "max": 1,
-          "answer": "$\\widehat{PAO}=\\widehat{PMO}=90^\\circ$ (tính chất tiếp tuyến) ⇒ $A,M$ cùng nhìn $PO$ dưới góc vuông ⇒ $A,P,M,O$ thuộc đường tròn đường kính $PO$.",
+          "max": 1.25,
+          "answer": "Hình vẽ đúng tới ý a (0,25đ). $\\widehat{PAO}=\\widehat{PMO}=90^\\circ$ (tính chất tiếp tuyến) (0,5đ) ⇒ $A,M$ cùng nhìn $PO$ dưới góc vuông ⇒ $A,P,M,O$ thuộc đường tròn đường kính $PO$ (0,5đ).",
           "units": [
             "l-tieptuyen",
             "k-tugiacnt"
@@ -103,7 +103,7 @@
         {
           "part": "4.2b",
           "max": 1,
-          "answer": "$PA=PM$, $OA=OM$ ⇒ $OP$ là trung trực $AM$ ⇒ $\\widehat{OIM}=90^\\circ$; tương tự $\\widehat{OKM}=90^\\circ$; $\\widehat{AMB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $MIOK$ là hình chữ nhật. $\\widehat{POQ}=90^\\circ$, $OM\\perp PQ$ ⇒ $AP\\cdot BQ=PM\\cdot MQ=OM^2=R^2$.",
+          "answer": "$PA=PM$, $OA=OM$ ⇒ $OP$ là trung trực $AM$ ⇒ $\\widehat{OIM}=90^\\circ$; tương tự $\\widehat{OKM}=90^\\circ$; $\\widehat{AMB}=90^\\circ$ (chắn nửa đường tròn) ⇒ $MIOK$ là hình chữ nhật (0,5đ). $\\widehat{POQ}=90^\\circ$, $OM\\perp PQ$ ⇒ $AP\\cdot BQ=PM\\cdot MQ=OM^2=R^2$ (0,5đ).",
           "units": [
             "l-tieptuyen",
             "o-dongdang"
@@ -111,7 +111,7 @@
         },
         {
           "part": "4.2c",
-          "max": 0.5,
+          "max": 0.75,
           "answer": "Gọi $N'=AQ\\cap BP$, $H$ là chân đường vuông góc từ $M$ xuống $AB$. $AP\\parallel BQ$ ⇒ $\\frac{N'P}{N'B}=\\frac{AP}{BQ}=\\frac{MP}{MQ}$ ⇒ $MN'\\parallel BQ$ ⇒ $N'\\in MH$; Thales trong $\\triangle PBQ$, $\\triangle BAP$ ⇒ $N'$ là trung điểm $MH$. $IK$ là đường trung bình $\\triangle MAB$ nên đi qua trung điểm $MH$ ⇒ $N'\\in IK$ ⇒ $N'\\equiv N$ ⇒ $A,N,Q$ thẳng hàng.",
           "units": [
             "o-thanghang"
@@ -126,11 +126,12 @@
           ]
         }
       ],
-      "note": "Bài 1.1: đề in nhóm đầu $(60;64]$ nhưng có hai giá trị 60 — chấp nhận cả cách tính 60 vào nhóm đầu lẫn nhóm $[60;64)$ nếu HS ghi rõ. Lỗi chính tả (\"nhón\", \"viên vi\") không ảnh hưởng. 4.1a: \"thể tích phần của bồn\" = thể tích cả bồn."
+      "note": "1.1: đề in nhóm đầu (60;64] nhưng số liệu có hai giá trị 60 — chấp nhận tính 60 vào nhóm đầu hoặc chia [60;64)… nếu HS ghi rõ; kết luận như nhau. Lỗi in: \"nhón\" = nhóm, \"viên vi\" = viên bi. 4.1a: \"thể tích phần của bồn\" = thể tích cả bồn. 4.1b: không sơn đáy dưới; đáy trên của trụ bị nón che. Bài 5: chữ \"thiếu mặt đáy và 2 mặt bên\" lệch với hình — theo hình, máng hở mặt trên và hai đầu."
     },
     {
       "paper": 58,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 133–134",
       "parts": [
         {
@@ -144,7 +145,7 @@
         {
           "part": "1.2",
           "max": 0.75,
-          "answer": "$\\Omega$: 90 số (10→99); số chia hết cho 4: 12, 16, …, 96 → 22 số. $P(F)=\\frac{22}{90}=\\frac{11}{45}$. Hay sai: đếm 99 hoặc 100 số, tính 23 số (tính cả 100/ bỏ 12).",
+          "answer": "$n(\\Omega)=90$ (các số 10→99) (0,25đ); số chia hết cho 4: $12,16,\\dots,96$ → 22 số (0,25đ); $P(F)=\\frac{22}{90}=\\frac{11}{45}$ (0,25đ). Hay sai: đếm sai số phần tử (89, 99, 100 số); 23 số (lấy cả 100) hoặc 21 số (sót 12).",
           "units": [
             "b-xsuat"
           ]
@@ -176,7 +177,7 @@
         {
           "part": "3.1",
           "max": 1,
-          "answer": "Gọi $a,b$ (bước/phút) của Sơn, Hà: $2a-2b=20$, $5b-3a=160$ ⇒ $a=105$, $b=95$. 1 giờ: Sơn 6300 bước (≥6000, đạt), Hà 5700 bước (<6000, chưa đạt). Kết luận phải tách từng người.",
+          "answer": "Gọi $a,b$ (bước/phút) của Sơn, Hà, $a,b>0$ (0,25đ). $2a-2b=20$, $5b-3a=160$ (0,25đ) ⇒ $a=105$, $b=95$ (0,25đ). 1 giờ: Sơn 6300 bước (≥ 6000, đạt), Hà 5700 bước (< 6000, chưa đạt) (0,25đ). Kết luận phải tách từng người.",
           "units": [
             "g-giaihpt"
           ]
@@ -201,7 +202,7 @@
         {
           "part": "4.1",
           "max": 1,
-          "answer": "Nửa cầu chìm: $\\frac23\\pi R^3=18\\pi$ ⇒ $R=3$ dm; tâm cầu nằm trên mặt miệng bình, $h=2R=6$. Tiếp xúc đường sinh: $\\sin\\alpha=\\frac{R}{h}=\\frac12$ ⇒ nửa góc ở đỉnh $30^\\circ$, $r=h\\tan30^\\circ=2\\sqrt3$. $V_{nón}=\\frac13\\pi\\cdot12\\cdot6=24\\pi$. Còn lại $24\\pi-18\\pi=6\\pi$ dm³ (≈18,85).",
+          "answer": "Nửa cầu chìm: $\\frac23\\pi R^3=18\\pi$ ⇒ $R=3$ dm (0,25đ). Tâm cầu ở mặt miệng bình, $h=2R=6$; tiếp xúc đường sinh: $\\sin\\alpha=\\frac Rh=\\frac12$ ⇒ nửa góc ở đỉnh $30^\\circ$, $r=h\\tan30^\\circ=2\\sqrt3$ (0,25đ). $V_{\\text{nón}}=\\frac13\\pi\\cdot12\\cdot6=24\\pi$ (0,25đ). Còn lại $24\\pi-18\\pi=6\\pi\\approx18{,}85$ dm³ (0,25đ).",
           "units": [
             "p-ghep",
             "p-cau"
@@ -210,7 +211,7 @@
         {
           "part": "4.2a",
           "max": 1.25,
-          "answer": "$\\angle BFC=\\angle BEC=90^\\circ$ ⇒ BFEC nội tiếp (đường tròn đường kính BC). $\\triangle KBF\\sim\\triangle KEC$ (g.g: chung $\\angle K$, $\\angle KBF=\\angle KEC$ do góc ngoài tứ giác nội tiếp) ⇒ $KE\\cdot KF=KB\\cdot KC$.",
+          "answer": "Hình vẽ đúng tới ý a (0,25đ). $\\angle BFC=\\angle BEC=90^\\circ$ ⇒ $BFEC$ nội tiếp đường tròn đường kính $BC$ (0,5đ). $\\triangle KBF\\sim\\triangle KEC$ (g.g: chung $\\angle K$, $\\angle KBF=\\angle KEC$ — góc ngoài tứ giác nội tiếp) ⇒ $KE\\cdot KF=KB\\cdot KC$ (0,5đ).",
           "units": [
             "k-tugiacnt",
             "o-dongdang"
@@ -219,7 +220,7 @@
         {
           "part": "4.2b",
           "max": 1,
-          "answer": "Trong $(O)$: $\\triangle KBM\\sim\\triangle KAC$ ⇒ $KM\\cdot KA=KB\\cdot KC=KE\\cdot KF$ ⇒ $\\triangle KMF\\sim\\triangle KEA$ (c.g.c) ⇒ $\\angle KMF=\\angle KEA$ ⇒ AEFM nội tiếp.",
+          "answer": "Trong $(O)$: $\\triangle KBM\\sim\\triangle KAC$ ⇒ $KM\\cdot KA=KB\\cdot KC$ (0,25đ) $=KE\\cdot KF$ (0,25đ) ⇒ $\\triangle KMF\\sim\\triangle KEA$ (c.g.c) (0,25đ) ⇒ $\\angle KMF=\\angle KEA$ ⇒ $AEFM$ nội tiếp (0,25đ).",
           "units": [
             "o-dongdang",
             "k-tugiacnt"
@@ -246,7 +247,8 @@
     },
     {
       "paper": 59,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 135–136",
       "parts": [
         {
@@ -316,7 +318,7 @@
         {
           "part": "3.2",
           "max": 1,
-          "answer": "Gọi $x,y$ (km/h) của A, B: $2(x+y)=150$, $x+5=2(y-5)$ ⇒ $x=45$, $y=30$. ĐK $y>5$. Kiểm: $50=2\\cdot25$.",
+          "answer": "Gọi $x,y$ (km/h) là vận tốc ô tô A, B; $x>0$, $y>5$ (0,25đ). $2(x+y)=150$; $x+5=2(y-5)$ (0,25đ) ⇒ $x=45$, $y=30$ (0,25đ). Đối chiếu ĐK, kết luận (0,25đ). Kiểm: $50=2\\cdot25$.",
           "units": [
             "g-chuyendong",
             "g-giaihpt"
@@ -334,7 +336,7 @@
         {
           "part": "4.1",
           "max": 1,
-          "answer": "$r=4$, $S_{đáy}=16\\pi$; nước dâng $\\frac{4\\pi}{16\\pi}=0{,}25$ cm ⇒ mực nước $10{,}25$ cm (< 12 cm, không tràn). Hay sai: dùng đường kính 8 làm bán kính (dâng 0,0625).",
+          "answer": "$r=4$ cm, $S_{\\text{đáy}}=16\\pi$ (0,25đ); bi chìm hẳn, nước dâng $\\frac{4\\pi}{16\\pi}=0{,}25$ cm (0,5đ); mực nước $10{,}25$ cm $<12$ cm, không tràn (0,25đ). Hay sai: dùng đường kính 8 làm bán kính (dâng 0,0625).",
           "units": [
             "p-trunon",
             "p-ghep"
@@ -343,7 +345,7 @@
         {
           "part": "4.2a",
           "max": 1.25,
-          "answer": "$\\angle ACB=90^\\circ$ (nội tiếp chắn nửa đường tròn) ⇒ $\\angle ACD=90^\\circ$; $\\angle AHD=90^\\circ$ (giả thiết) ⇒ C, H cùng nhìn AD dưới góc vuông ⇒ AHCD nội tiếp đường tròn đường kính AD. (Gồm 0,25 hình vẽ.)",
+          "answer": "Hình vẽ đúng tới ý a (0,25đ). $\\angle ACB=90^\\circ$ (nội tiếp chắn nửa đường tròn) ⇒ $\\angle ACD=90^\\circ$ (0,5đ); $\\angle AHD=90^\\circ$ ⇒ $C,H$ cùng nhìn $AD$ dưới góc vuông ⇒ $AHCD$ nội tiếp đường tròn đường kính $AD$ (0,5đ).",
           "units": [
             "k-tugiacnt"
           ]
@@ -351,7 +353,7 @@
         {
           "part": "4.2b",
           "max": 1,
-          "answer": "Vuông tại C. $\\angle CHF=\\angle CDA$ (góc ngoài tại H của tứ giác nội tiếp AHCD), $\\angle CFH=\\angle CFA=\\angle CBA$ (cùng chắn cung AC); $\\angle CDA+\\angle CBA=90^\\circ$ ($\\triangle ABD$ vuông tại A) ⇒ $\\angle HCF=90^\\circ$.",
+          "answer": "Vuông tại $C$. $\\angle CHF=\\angle CDA$ (góc ngoài tại $H$ của tứ giác nội tiếp $AHCD$) (0,25đ); $\\angle CFH=\\angle CFA=\\angle CBA$ (cùng chắn cung $AC$) (0,25đ); $\\angle CDA+\\angle CBA=90^\\circ$ ($\\triangle ABD$ vuông tại $A$) (0,25đ) ⇒ $\\angle HCF=90^\\circ$ (0,25đ).",
           "units": [
             "k-goiintiep",
             "o-chungminh"
@@ -360,7 +362,7 @@
         {
           "part": "4.2c",
           "max": 0.75,
-          "answer": "$S=AB=2R$. $DH\\cdot DO=DA^2=DC\\cdot DB$ ⇒ B, O, H, C cùng thuộc 1 đường tròn ⇒ $\\angle AHB=90^\\circ+\\angle OHB=90^\\circ+\\angle ABC=\\angle BFC$; $\\angle BAH=\\angle BCF$ (chắn cung BF) ⇒ $\\triangle BHA\\sim\\triangle BFC$ ⇒ $BH\\cdot BC=BA\\cdot BF$.",
+          "answer": "$S=AB=2R$. $DH\\cdot DO=DA^2=DC\\cdot DB$ ⇒ $\\triangle DHC\\sim\\triangle DBO$ ⇒ B, O, H, C cùng thuộc 1 đường tròn ⇒ $\\angle AHB=90^\\circ+\\angle OHB=90^\\circ+\\angle ABC=\\angle BFC$; $\\angle BAH=\\angle BCF$ (chắn cung BF) ⇒ $\\triangle BHA\\sim\\triangle BFC$ ⇒ $BH\\cdot BC=BA\\cdot BF$.",
           "units": [
             "o-dongdang",
             "k-tugiacnt"
@@ -369,13 +371,13 @@
         {
           "part": "5",
           "max": 0.5,
-          "answer": "Nón A: $V=\\frac13\\pi\\cdot3^2\\cdot6=18\\pi$ (in³) giá 2 đô ⇒ $9\\pi$/đô. Trụ B: $V=\\pi\\cdot3^2\\cdot6=54\\pi$ giá 4 đô ⇒ $13{,}5\\pi$/đô. Nên mua quầy B (B gấp 3 lượng, giá chỉ gấp 2).",
+          "answer": "Nón A: $V=\\frac13\\pi\\cdot3^2\\cdot6=18\\pi$ (in³) giá 2 đô ⇒ $9\\pi$/đô. Trụ B: $V=\\pi\\cdot3^2\\cdot6=54\\pi$ giá 4 đô ⇒ $13{,}5\\pi$/đô. Nên mua quầy B (B gấp 3 lượng, giá chỉ gấp 2). Nếu HS hiểu 3 inch là đường kính: tỉ lệ vẫn 1 : 3, kết luận không đổi.",
           "units": [
             "p-trunon"
           ]
         }
       ],
-      "note": "4.1: “$V=4p$” là lỗi font, đọc là $4\\pi$ cm³. 5: “3 inch” trong hình là bán kính đáy (vạch từ tâm ra mép), “6 inch” là chiều cao; câu chữ “cả từ giấy phần này…” bị vỡ dòng, ý: vỏ hộp được tài trợ, chỉ so lượng bắp/giá. 1.2b: đề ghi “mỗi biến cố sau” nhưng chỉ có một biến cố D. 4.2c: chấp nhận cách khác nếu ra $S=2R$."
+      "note": "4.1: \"V = 4p\" là lỗi font, đọc là 4π cm³; \"thả từ / từ\" in lặp. 5: \"3 inch\" là bán kính đáy (vạch từ tâm ra mép), \"6 inch\" là chiều cao; câu \"Vỏ hộp đều được làm giấy phần này…\" và chữ \"cả từ\" cạnh hình bị vỡ dòng — ý: vỏ hộp được tài trợ, chỉ so lượng bắp với giá. 1.2b: đề ghi \"mỗi biến cố sau\" nhưng chỉ có D. 3.3: m = −2 thì hai nghiệm trùng −1. 4.2c: chấp nhận cách khác nếu ra S = 2R."
     }
   ]
 }

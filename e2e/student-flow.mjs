@@ -1,6 +1,8 @@
 // Student flow against PGlite: learn → exit → review scheduling → interleaved review. Run via e2e/run.sh.
 import { chromium } from "playwright";
 import fs from "node:fs";
+// Number of approved units in the real content (grows as batches are approved — 43 after 08/11).
+const APPROVED = (() => { let n = 0; for (const d of fs.readdirSync("content")) { const p = `content/${d}`; if (!fs.statSync(p).isDirectory()) continue; for (const f of fs.readdirSync(p)) if (f.endsWith(".json") && f !== "module.json" && JSON.parse(fs.readFileSync(`${p}/${f}`, "utf8")).status === "approved") n++; } return n; })();
 const BASE = process.env.BASE ?? "http://localhost:3101";
 const C = "content/he-thuc-luong";
 const units = Object.fromEntries(["htl-1", "htl-2"].map((u) => [u, JSON.parse(fs.readFileSync(`${C}/${u}.json`, "utf8"))]));
@@ -29,11 +31,11 @@ await page.screenshot({ path: "e2e/out/student/1-today-start.png", fullPage: tru
 ok("today: goal 0/4", (await page.getByText("0/4 buổi").count()) === 1);
 ok("today: greeting header + ring", (await page.getByRole("progressbar", { name: "Mục tiêu tuần" }).count()) === 1 && (await page.getByText(/^Chào buổi (sáng|chiều|tối)$/).count()) === 1);
 ok("today: 2 new units suggested (LT3: 1 Track A + 1 Track B/C)", (await page.getByRole("link", { name: "Học bài mới" }).count()) === 2);
-ok("today: journey teaser 0/28", (await page.getByTestId("journey-teaser").getByText("0/28 bài đạt M3+").count()) === 1);
+ok(`today: journey teaser 0/${APPROVED}`, (await page.getByTestId("journey-teaser").getByText(`0/${APPROVED} bài đạt M3+`).count()) === 1);
 await page.getByTestId("journey-teaser").click();
 await page.waitForURL(/\/student\/journey$/);
 ok("journey: htl-1 open 🌰, htl-2 locked 🔒 (needs htl-1 at M3)", (await page.getByTestId("node-htl-1").getByText("M0 — Chưa bắt đầu").count()) === 1 && (await page.getByTestId("node-htl-2").getByText(/Khoá — cần đạt M3/).count()) === 1);
-ok("journey: summary 0 · 0 · 28", (await page.getByTestId("journey-summary").innerText()).replace(/\s+/g, " ").includes("0 Đã vững 0 Đang học 28 Chưa bắt đầu"));
+ok(`journey: summary 0 · 0 · ${APPROVED}`, (await page.getByTestId("journey-summary").innerText()).replace(/\s+/g, " ").includes(`0 Đã vững 0 Đang học ${APPROVED} Chưa bắt đầu`));
 await page.screenshot({ path: "e2e/out/student/1b-journey-start.png", fullPage: true });
 await page.goto(`${BASE}/student`);
 

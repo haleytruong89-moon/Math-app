@@ -3,7 +3,8 @@
   "module": "pt-bac-hai",
   "order": 3,
   "title": "PT bậc hai chứa tham số",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — với $ax^2+bx+c=0$ ($a \\ne 0$): $\\Delta=b^2-4ac$; khi $b=2b'$ dùng $\\Delta'=b'^2-ac$ (cùng dấu với $\\Delta$). Có tham số $m$ thì các hệ số chứa $m$, nên $\\Delta'$ là một biểu thức của $m$.",
@@ -119,7 +120,7 @@
           "id": "d-thamso-f3",
           "type": "mcq",
           "level": "L2",
-          "prompt": "Câu kết luận nào đúng?",
+          "prompt": "Câu kết luận nào trả lời **đúng và đủ** điều đề yêu cầu chứng minh?",
           "options": [
             "Kết luận: phương trình luôn có hai nghiệm phân biệt với mọi $m$.",
             "Kết luận: phương trình có hai nghiệm phân biệt khi $m \\ne -\\frac12$.",
@@ -181,7 +182,7 @@
       "prompt": "Cho phương trình $x^2-2(m+1)x+m^2=0$. Đề hỏi: “Tìm $m$ để phương trình có hai nghiệm phân biệt”. Bước đầu tiên đúng là:",
       "recognition": true,
       "hints": [
-        "Đề hỏi: phương trình có **bao nhiêu** nghiệm.",
+        "Đề hỏi bước đầu tiên, chưa cần giải ra $m$.",
         "Số nghiệm của phương trình bậc hai do đại lượng nào quyết định?",
         "Biệt thức chứa $m$ thì đặt điều kiện cho nó rồi giải theo $m$."
       ],
@@ -434,7 +435,7 @@
           }
         }
       ],
-      "solution": "Phương trình có hai nghiệm phân biệt $\\Leftrightarrow a \\ne 0$ và $\\Delta'>0 \\Leftrightarrow m \\ne 1$ và $2-m>0$. Kết luận: $m<2$ và $m \\ne 1$."
+      "solution": "Phương trình có hai nghiệm phân biệt $\\Leftrightarrow a \\ne 0$ và $\\Delta'>0 \\Leftrightarrow m \\ne 1$ và $2-m>0$. Kết luận: $m<2$ và $m \\ne 1$. (Nếu đề hỏi “**có nghiệm**” thì $m=1$ cũng nhận: khi đó $-2x+3=0$ có nghiệm $x=\\frac32$.)"
     },
     {
       "id": "d-thamso-p8",
@@ -505,8 +506,9 @@
                 "feedback": "Một giá trị $m$ không chứng minh được cho mọi $m$."
               },
               "2": {
-                "code": "E02",
-                "feedback": "Số hạng thứ hai trong bình phương là **nửa** hệ số của $m$; khai triển lại để thử."
+                "code": "E03",
+                "feedback": "Con nhớ sai cách tách bình phương: số hạng thứ hai là **nửa** hệ số của $m$; khai triển lại để thử.",
+                "review": "f1-hdt"
               }
             },
             "solution": "$m^2-3m+4=\\left(m-\\frac32\\right)^2+\\frac74$, mà $\\left(m-\\frac32\\right)^2 \\ge 0$ nên $\\Delta' \\ge \\frac74>0$."
@@ -656,7 +658,7 @@
             "id": "d-thamso-x5-s2",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Từ $\\Delta$ vừa tính, kết luận đúng là:",
+            "prompt": "Từ $\\Delta$ vừa tính, kết luận nào trả lời **đúng và đủ** yêu cầu của đề?",
             "options": [
               "Kết luận: $\\Delta \\ge 0$ với mọi $m$ nên phương trình luôn có nghiệm",
               "Kết luận: phương trình luôn có hai nghiệm phân biệt",

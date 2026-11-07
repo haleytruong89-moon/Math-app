@@ -418,8 +418,9 @@ export function PracticeStage({
         </span>
         <span>{item.level === "L1" ? "Cơ bản" : item.level === "L2" ? "Vận dụng" : "Nâng cao"}</span>
       </div>
-      {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
-      {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-2 max-w-[220px]" />}
+      {/* The unit's shared figure only when the item has none of its own (audit 08/11: two figures confused the item). */}
+      {!item.figure && unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="my-2 max-w-[220px]" />}
+      {!item.figure && unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="my-2 max-w-[220px]" />}
       <ItemFigure key={`f-${item.id}-${pos}`} item={item} />
       <Rich as="div" html={item.promptHtml} className="mt-2 leading-relaxed" />
       {item.hintsHtml && <HintBox key={`h-${item.id}-${pos}`} hintsHtml={item.hintsHtml} onLevel={(n) => setHintLevel((h) => Math.max(h, n))} disabled={!!result} />}
@@ -686,8 +687,8 @@ function ExitStage({
           Xem trước: kho {exit.length} câu — mỗi lượt con được rút 5 (1 Cơ bản, 2 Vận dụng, 2 Nâng cao), ưu tiên câu chưa gặp.
         </p>
       )}
-      {unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
-        {unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="max-w-[220px]" />}
+      {!exit.every((it) => it.figure) && unit.figure === "right-triangle-altitude" && <RightTriangleAltitude className="max-w-[220px]" />}
+        {!exit.every((it) => it.figure) && unit.figureSvg && <SvgFigure figure={unit.figureSvg} className="max-w-[220px]" />}
       {exit.map((it, i) => (
         <Card key={it.id}>
           <p className="font-mono text-xs text-muted" data-item={it.id}>

@@ -3,7 +3,8 @@
   "module": "viet",
   "order": 1,
   "title": "Viète cơ bản: tổng tích & biểu thức đối xứng",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 44,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) để biết phương trình có nghiệm hay không, và đọc hệ số $a$, $b$, $c$ kèm dấu.",
@@ -207,7 +208,7 @@
         "Giải phương trình bằng công thức nghiệm rồi bình phương từng nghiệm",
         "Nhẩm nghiệm theo dấu hiệu $a+b+c=0$",
         "Kiểm tra phương trình có nghiệm, rồi viết $S=x_1+x_2$, $P=x_1x_2$ theo Viète",
-        "Đặt $t=x^2$ để đưa về phương trình bậc nhất"
+        "Phân tích vế trái thành nhân tử rồi tìm từng nghiệm"
       ],
       "correct": 2,
       "mistakes": {
@@ -221,7 +222,7 @@
         },
         "3": {
           "code": "E05",
-          "feedback": "Đặt $t=x^2$ dùng cho phương trình chỉ có $x^4$ và $x^2$; ở đây có hạng tử $-6x$."
+          "feedback": "Vế trái không phân tích được thành nhân tử với hệ số nguyên ($\\Delta'$ không chính phương), và đề yêu cầu không giải phương trình."
         }
       },
       "solution": "Biểu thức $x_1^2+x_2^2$ đối xứng và đề cấm giải: $\\Delta'=9-1=8>0$, $S=6$, $P=1$, rồi $x_1^2+x_2^2=S^2-2P$."
@@ -253,8 +254,8 @@
             "correct": 3,
             "mistakes": {
               "0": {
-                "code": "E02",
-                "feedback": "$b=-3$ nên $-b=3$; con quên đổi dấu."
+                "code": "E03",
+                "feedback": "Con quên dấu trừ: $S=-\\dfrac{b}{a}$, mà $b=-3$."
               },
               "1": {
                 "code": "E03",
@@ -313,8 +314,8 @@
         },
         {
           "answer": "4",
-          "code": "E02",
-          "feedback": "$c=-2$ nên $P=-\\dfrac23$ âm; con bỏ mất dấu trừ."
+          "code": "E03",
+          "feedback": "$P=\\dfrac{c}{a}$ giữ dấu của $c=-2$, nên $P$ âm."
         }
       ],
       "solution": "$S=\\dfrac83$, $P=-\\dfrac23$; $B=\\dfrac{S}{P}=\\dfrac83 \\cdot \\left(-\\dfrac32\\right)=-4$."
@@ -402,8 +403,8 @@
             "mistakes": [
               {
                 "answer": "181/4",
-                "code": "E02",
-                "feedback": "$c=-6$ nên $P=\\dfrac{c}{a}=-3$ âm; con bỏ mất dấu trừ."
+                "code": "E03",
+                "feedback": "$P=\\dfrac{c}{a}$ giữ dấu của $c=-6$, nên $P$ âm."
               },
               {
                 "answer": "163",
@@ -486,8 +487,8 @@
             "mistakes": [
               {
                 "answer": "17/2",
-                "code": "E11",
-                "feedback": "$16$ là bình phương của mẫu; mẫu $\\sqrt{x_1}+\\sqrt{x_2}$ còn phải khai căn."
+                "code": "E06",
+                "feedback": "Con chia cho bình phương của mẫu; mẫu là $\\sqrt{x_1}+\\sqrt{x_2}$, phải khai căn $16$ trước khi chia."
               },
               {
                 "answer": "68√3/3",
@@ -603,8 +604,8 @@
       "mistakes": [
         {
           "answer": "16",
-          "code": "E02",
-          "feedback": "$c=-2$ nên $P=-2$ âm; con bỏ mất dấu trừ."
+          "code": "E03",
+          "feedback": "$P=\\dfrac{c}{a}$ giữ dấu của $c=-2$, nên $P$ âm."
         },
         {
           "answer": "-18",
@@ -638,7 +639,7 @@
           "feedback": "Tử số sau quy đồng là $(x_2+3)+(x_1+3)=S+6$, con thiếu số $6$."
         }
       ],
-      "solution": "$a$, $c$ trái dấu nên có hai nghiệm; $S=-4$, $P=-6$. $A=\\dfrac{S+6}{P+3S+9}=\\dfrac{2}{-6-12+9}=-\\dfrac29$."
+      "solution": "$a$, $c$ trái dấu nên có hai nghiệm; $S=-4$, $P=-6$. Mẫu chung $(x_1+3)(x_2+3)=P+3S+9=-9 \\ne 0$ nên $A$ xác định. $A=\\dfrac{S+6}{P+3S+9}=\\dfrac{2}{-9}=-\\dfrac29$."
     },
     {
       "id": "e-viete-x7",

@@ -3,7 +3,8 @@
   "module": "toi-uu",
   "order": 1,
   "title": "BĐT cơ bản, AM-GM & tìm MAX/MIN",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ**, nhất là $(a-b)^2=a^2-2ab+b^2$. Mọi bất đẳng thức trong bài này đều quy về một điều: bình phương luôn không âm, $A^2 \\ge 0$, dấu “=” khi $A=0$.",
@@ -63,7 +64,7 @@
             },
             "2": {
               "code": "E02",
-              "feedback": "Dấu trừ trước ngoặc đổi dấu cả số $-4$ bên trong: $-[(x-2)^2-4]=-(x-2)^2+4$."
+              "feedback": "Dấu trừ trước ngoặc phải đổi dấu **cả** số $-4$ trong ngoặc $\\left[(x-2)^2-4\\right]$."
             },
             "3": {
               "code": "E03",
@@ -306,7 +307,7 @@
             "id": "hq-amgm-p5-s1",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Cách viết nào giúp dùng được AM-GM?",
+            "prompt": "Cách viết nào giúp AM-GM cho vế phải là **hằng số**?",
             "options": [
               "$P \\ge 2\\sqrt{\\frac{4x}{x-1}}$",
               "$P=(x-1)+\\frac{4}{x-1}-1$",
@@ -360,7 +361,7 @@
             "mistakes": [
               {
                 "answer": "2",
-                "code": "E10",
+                "code": "E11",
                 "feedback": "Con mới tìm được $x-1$; từ đó suy ra $x$."
               },
               {
@@ -389,7 +390,7 @@
       "mistakes": [
         {
           "answer": "3",
-          "code": "E01",
+          "code": "E11",
           "feedback": "Con mới chặn được $\\sqrt{ab}$; bình phương để chặn $ab$."
         },
         {
@@ -473,7 +474,7 @@
             "mistakes": [
               {
                 "answer": "√3",
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Đó là giá trị của $\\sqrt x$; bình phương để ra $x$."
               }
             ],

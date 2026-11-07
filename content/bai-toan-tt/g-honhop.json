@@ -3,10 +3,11 @@
   "module": "bai-toan-tt",
   "order": 6,
   "title": "Bài toán dẫn tới PT bậc hai & pha trộn",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
-    "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) rồi dùng công thức nghiệm; cùng các bước giải bài toán bằng cách lập phương trình đã học ở các bài toán thực tế trước.",
+    "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) rồi dùng công thức nghiệm; cùng các bước giải bài toán bằng cách lập phương trình đã học ở các bài toán thực tế trước; bài trộn theo phần trăm cần thêm cách **giải hệ hai phương trình bậc nhất hai ẩn** (bài Giải hệ PT bậc nhất).",
     "**Công thức:** hình chữ nhật: diện tích $=$ dài $\\times$ rộng, chu vi $=2($dài $+$ rộng$)$, đường chéo$^2=$ dài$^2+$ rộng$^2$. Chia đều: mỗi phần $=$ tổng $:$ số phần. Khối lượng riêng $D=\\dfrac mV$, nên thể tích $V=\\dfrac mD$. Nồng độ $=\\dfrac{\\text{chất tan}}{\\text{dung dịch}}\\cdot 100\\%$, với dung dịch $=$ chất tan $+$ nước. Điều kiện: độ dài, vận tốc dương; số người, số xe nguyên dương.",
     "**Vì sao ra bậc hai:** khi ẩn nhân với ẩn (dài $\\times$ rộng) hoặc ẩn nằm ở mẫu của hai phân thức (một tổng cố định chia cho số phần thay đổi), khử mẫu xong sẽ xuất hiện $x^2$. Phương trình bậc hai thường cho **hai** nghiệm, nhưng bài toán thực tế chỉ có **một** đáp số, nên phải đối chiếu điều kiện để loại nghiệm.",
     "**Bẫy hay gặp:** giữ cả hai nghiệm; chỉ ghi $x>0$ trong khi đề còn điều kiện khác (cạnh sau khi giảm vẫn dương, số bạn nam ít hơn cả nhóm, mỗi xe không chở quá mức cho phép) — nghiệm **dương** vẫn có thể bị loại; viết $V=m\\cdot D$ thay vì $V=\\dfrac mD$; tính nồng độ trên khối lượng nước thay vì khối lượng dung dịch; lấy trung bình cộng hai khối lượng riêng.",
@@ -866,7 +867,7 @@
           "feedback": "Đó là chiều rộng; đề hỏi chiều dài."
         },
         {
-          "answer": "-20",
+          "answer": "-9",
           "code": "E14",
           "feedback": "Độ dài phải dương; nghiệm âm của phương trình phải loại."
         }

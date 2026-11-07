@@ -3,13 +3,14 @@
   "module": "toi-uu",
   "order": 2,
   "title": "Tối ưu kinh tế: doanh thu, lợi nhuận, chi phí",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **BĐT cơ bản, AM-GM & tìm MAX/MIN** (tách bình phương, $a+b \\ge 2\\sqrt{ab}$, kiểm tra dấu bằng) và bài **PT bậc hai: biệt thức & công thức nghiệm** (dùng khi đề hỏi ngược: “lãi đạt đúng … thì bán giá bao nhiêu”).",
     "**Công thức:** Doanh thu $=$ giá bán $\\times$ số lượng. Lợi nhuận $=$ (giá bán $-$ giá vốn) $\\times$ số lượng $=$ doanh thu $-$ chi phí. Đề “cứ tăng giá $a$ đồng thì bán ít đi $b$ sản phẩm”: gọi $x$ là số lần tăng giá, giá bán $p+ax$, số lượng $q-bx$. **Điều kiện:** $x \\ge 0$, số lượng $q-bx \\ge 0$. Giảm giá thì ngược lại: giá $p-ax>0$, số lượng $q+bx$.",
     "**Vì sao có lớn nhất:** lợi nhuận thường thành tích hai thừa số có **tổng không đổi**, ví dụ $(6+x)(20-x)$ có tổng $26$. Với hai số không âm, $ab \\le \\left(\\frac{a+b}{2}\\right)^2$ (vì $(a-b)^2 \\ge 0$), dấu “=” khi $a=b$. Cũng có thể khai triển rồi tách bình phương: $-(x-7)^2+169 \\le 169$.",
-    "**Chi phí theo kích thước, theo số máy:** dùng dữ kiện cố định (thể tích, số sản phẩm) để viết mọi đại lượng theo **một** biến, rồi chi phí $=$ đơn giá $\\times$ diện tích (hoặc số máy, số giờ). Dạng $an+\\frac bn$ → AM-GM. Dạng $ax^2+\\frac bx$ → xét hiệu với giá trị nhỏ nhất dự đoán, đưa về $\\frac{(x-x_0)^2(\\dots)}{x} \\ge 0$.",
+    "**Chi phí theo kích thước, theo số máy:** dùng dữ kiện cố định viết mọi đại lượng theo **một** biến; chi phí $=$ đơn giá $\\times$ diện tích (số máy, số giờ). Dạng $an+\\frac bn$ → AM-GM. Dạng $ax^2+\\frac bx$ → **dự đoán** $x_0$ bằng bảng giá trị (máy tính), rồi xét hiệu $C-C(x_0)$: tử chia hết cho $(x-x_0)^2$, được $\\frac{(x-x_0)^2(\\dots)}{x} \\ge 0$. Sách có thể giải bằng Cô-si ba số (ngoài chương trình); xét hiệu là đủ.",
     "**Bẫy hay gặp:** (1) Quên điều kiện: số máy nguyên dương, số lượng không âm, cạnh dương; dấu bằng phải thuộc điều kiện. (2) Trả lời nhầm đại lượng: đề hỏi **giá bán mới** mà ghi số tiền tăng $x$, hoặc ghi lợi nhuận. (3) Tìm doanh thu lớn nhất khi đề hỏi lợi nhuận (quên trừ giá vốn). (4) Đơn vị: giờ – phút, nghìn – triệu đồng.",
     "**Phiếu tối ưu:** biến – điều kiện – hàm mục tiêu – dấu bằng – kết luận (trả lời đúng câu hỏi, có đơn vị). **Nhận dạng:** “để doanh thu / lợi nhuận lớn nhất”, “chi phí thấp nhất”, một đại lượng thay đổi kéo theo đại lượng khác. **Không** dùng khi đề chỉ so sánh vài phương án cho sẵn (tính từng phương án) hoặc chỉ hỏi diện tích, thể tích thuần hình học (bài **Tối ưu hình học**)."
   ],
@@ -189,7 +190,7 @@
         },
         "2": {
           "code": "E07",
-          "feedback": "Mỗi lần tăng $2$ nghìn đồng, nên sau $x$ lần giá tăng gấp đôi số lần."
+          "feedback": "Mỗi lần tăng $2$ nghìn đồng, nên sau $x$ lần giá tăng $2x$ nghìn đồng, không phải $x$."
         }
       },
       "solution": "Giá bán $50+2x$, lãi mỗi chiếc $50+2x-30=20+2x$, số chiếc $400-10x$. $L=(20+2x)(400-10x)$."
@@ -464,7 +465,7 @@
             "mistakes": [
               {
                 "answer": "36",
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Con mới tìm được $n^2$; lấy căn bậc hai để ra $n$."
               },
               {
@@ -568,7 +569,7 @@
               },
               "1": {
                 "code": "E02",
-                "feedback": "Khai triển lại để kiểm tra: $(x-2)^2(x+4)=x^3-12x+16$, còn $(x+2)^2(x-4)$ thì không."
+                "feedback": "Khai triển lại để kiểm tra: $(x+2)^2(x-4)=x^3-12x-16$, lệch dấu hạng tử tự do so với tử số."
               }
             },
             "solution": "$C-1200=\\frac{100x^3-1200x+1600}{x}=\\frac{100(x^3-12x+16)}{x}=\\frac{100(x-2)^2(x+4)}{x}$."
@@ -706,7 +707,7 @@
       "mistakes": [
         {
           "answer": "3000",
-          "code": "E04",
+          "code": "E07",
           "feedback": "Đó là doanh thu; lợi nhuận phải trừ giá vốn."
         },
         {
@@ -839,7 +840,7 @@
             "mistakes": [
               {
                 "answer": "256",
-                "code": "E01",
+                "code": "E11",
                 "feedback": "Con mới tìm được $n^2$; lấy căn bậc hai để ra $n$."
               },
               {
@@ -871,9 +872,15 @@
           "answer": "2",
           "code": "E11",
           "feedback": "Đó là số tiền tăng thêm; giá bán là giá cũ cộng số tiền tăng."
+        },
+        {
+          "answer": "18",
+          "code": "E02",
+          "feedback": "Con giải sai dấu nghiệm của phương trình bậc hai; thay nghiệm vào phương trình để kiểm tra.",
+          "review": "d-ptbh"
         }
       ],
-      "solution": "Gọi $x$ (nghìn đồng) là số tiền tăng. $(10+x)(100-5x)=1080 \\Leftrightarrow x^2-10x+16=0 \\Leftrightarrow x=2$ hoặc $x=8$. Bán nhiều cốc nhất khi $x$ nhỏ hơn: $x=2$, giá $22$ nghìn đồng ($90$ cốc)."
+      "solution": "Gọi $x$ (nghìn đồng) là số tiền tăng, $0 \\le x \\le 20$. $(10+x)(100-5x)=1080 \\Leftrightarrow x^2-10x+16=0 \\Leftrightarrow x=2$ hoặc $x=8$ (đều thoả). Bán nhiều cốc nhất khi $x$ nhỏ hơn: $x=2$, giá $22$ nghìn đồng ($90$ cốc)."
     },
     {
       "id": "hq-doanhthu-x7",
@@ -928,7 +935,7 @@
               },
               "1": {
                 "code": "E02",
-                "feedback": "Khai triển lại để kiểm tra: $(x-2)^2(x+4)=x^3-12x+16$, còn $(x+2)^2(x-4)$ thì không."
+                "feedback": "Khai triển lại để kiểm tra: $(x+2)^2(x-4)=x^3-12x-16$, lệch dấu hạng tử tự do so với tử số."
               }
             },
             "solution": "$S-36=\\frac{3x^3-36x+48}{x}=\\frac{3(x^3-12x+16)}{x}=\\frac{3(x-2)^2(x+4)}{x} \\ge 0$, dấu “=” khi $x=2$."
@@ -1029,7 +1036,7 @@
           }
         }
       ],
-      "solution": "$60y+150x=15\\,000$; AM-GM: $9000xy=60y\\cdot 150x \\le 7500^2$ nên $S=xy \\le 6250$, dấu “=” khi $x=50$, $y=125$. Kết luận: diện tích lớn nhất $6250$ m²."
+      "solution": "Muốn rào được nhiều nhất thì dùng hết tiền: $60y+150x=15\\,000$ (nếu chỉ có $60y+150x \\le 15\\,000$ thì đánh giá dưới vẫn đúng). AM-GM: $9000xy=60y\\cdot 150x \\le \\left(\\frac{60y+150x}{2}\\right)^2 \\le 7500^2$ nên $S=xy \\le 6250$, dấu “=” khi $60y=150x=7500$: $x=50$, $y=125$. Kết luận: diện tích lớn nhất $6250$ m²."
     }
   ]
 }

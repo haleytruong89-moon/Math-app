@@ -17,11 +17,12 @@
 | Đợt 4 (LT19): g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram | `p1-content-4` | duyệt trước 01/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 5: f3-dongdang, j-coban, c-coban, c-truccan (f3-dongdang theo dạng câu S5) | `p1-content-5` | duyệt trước 15/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
 | Đợt 6: c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt + hình Sổ tay | `p1-content-6` | duyệt trước 29/11 | ✅ phụ huynh duyệt 23/10 (git); gia sư soát sau trên Kho bài |
-| Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ✅ merged 05/11 (PR #49, nháp, giải độc lập 80/80); chờ gia sư soát + phụ huynh duyệt |
-| Đợt 8: e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang | `p1-content-8` | 03/01 | ✅ merged 07/11 (PR #50, nháp, giải độc lập 80/80); chờ gia sư soát + phụ huynh duyệt. Kế: thiết kế thi thử (SPEC §0 06/11), rồi đợt 9 |
-| Đợt 9: o-thanghang, o-nangcao, hq-amgm | `p1-content-9` | 07/02 | 🟡 08/11 PR mở (nháp, giải độc lập 48/48); chờ gia sư soát + phụ huynh duyệt. Kế: đợt 10 |
-| Đợt 10: hq-doanhthu, hq-hinhhoc | `p1-content-10` | 21/02 | 🟡 08/11 PR mở (nháp, giải độc lập 32/32) — **xong soạn 43 KU lõi**. Kế: gia sư soát đợt 3–10; phiếu chấm thi thử Đề 60–68 (02–03/2027); P2 chỉ khi dư thời gian |
-| Thi thử: thiết kế ✅ 06/11 → code ✅ 07/11 (`p1-slice-9`, SQL 0015, merged #51) → phiếu chấm Đề 57–59 ✅ nháp (`p1-thithu-1`, PR mở) → **kế: gia sư soát phiếu; phiếu Đề 60–68 trong 02–03/2027; đợt 9** | `p1-slice-9`, `p1-thithu-1` | Đề 57 trước 01/2027 | 🟡 chờ phụ huynh: merge #50 → áp SQL 0015 + merge #51 → merge PR phiếu chấm |
+| Đợt 7: d-ptbh, d-nhamnghiem, d-thamso, l-tieptuyen, f3-tugiac | `p1-content-7` | 13/12 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
+| Đợt 8: e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang | `p1-content-8` | 03/01 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
+| Đợt 9: o-thanghang, o-nangcao, hq-amgm | `p1-content-9` | 07/02 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
+| Đợt 10: hq-doanhthu, hq-hinhhoc | `p1-content-10` | 21/02 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
+| Audit AI đợt 3–6 (đã duyệt, con đang học): sửa theo luật khoá (chỉ sửa chữ / thêm câu mới id mới) | `p1-audit-2` | sớm | ⬜ kế tiếp |
+| Thi thử: thiết kế ✅ 06/11 → code ✅ 07/11 (`p1-slice-9`, SQL 0015, merged #51) → phiếu chấm Đề 57–59 ✅ duyệt 08/11 sau audit AI → **kế: gia sư soát phiếu; phiếu Đề 60–68 trong 02–03/2027; đợt 9** | `p1-slice-9`, `p1-thithu-1` | Đề 57 trước 01/2027 | 🟡 chờ phụ huynh: merge #50 → áp SQL 0015 + merge #51 → merge PR phiếu chấm |
 | Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt 1 (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52) + đợt 2 (9 + 10 bài ý a, nháp) | `p1-ld42`, `p1-ld42-2` | đợt đầu trước 23/11 | ✅ Merged 23/10 (PR #42 code + đợt 1, #43 đợt 2: Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56) — 19 bài, phụ huynh duyệt 23/10, không SQL. Kế: gia sư soát; đợt 3 = bài ý a có tiếp tuyến (Đề 1, 2, 10, 14, 21, 23, 27…) sau l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027 khi có o-dongdang |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 

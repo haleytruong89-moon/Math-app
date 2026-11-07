@@ -3,14 +3,15 @@
   "module": "hinh-nang-cao",
   "order": 3,
   "title": "CM thẳng hàng, trung điểm, đồng quy & hình đặc biệt",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 70,
   "figure": {
     "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 230 272.0\" role=\"img\"><title>Nửa đường tròn tâm O đường kính AB; tiếp tuyến tại A và tại B; C trên nửa đường tròn; K trung điểm BC; D trên tia OK và tiếp tuyến tại B; CH vuông góc AB, I trung điểm CH; BI cắt tiếp tuyến tại A ở E; BC cắt tiếp tuyến tại A ở P; AC cắt tiếp tuyến tại B ở Q</title><path d=\"M 20.0 240.9 A 92.7 92.7 0 0 1 205.4 240.9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><line x1=\"20.0\" y1=\"240.9\" x2=\"205.4\" y2=\"240.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"20.0\" y1=\"240.9\" x2=\"20.0\" y2=\"85.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"205.4\" y1=\"240.9\" x2=\"205.4\" y2=\"20.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"20.0\" y1=\"240.9\" x2=\"205.4\" y2=\"20.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"205.4\" y1=\"240.9\" x2=\"20.0\" y2=\"85.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"112.7\" y1=\"240.9\" x2=\"205.4\" y2=\"130.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"96.6\" y1=\"149.6\" x2=\"96.6\" y2=\"240.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"205.4\" y1=\"240.9\" x2=\"20.0\" y2=\"163.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"205.4\" y1=\"130.5\" x2=\"96.6\" y2=\"149.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"20.0\" y1=\"163.1\" x2=\"96.6\" y2=\"149.6\" stroke=\"var(--muted)\" stroke-width=\"1.6\" stroke-dasharray=\"4 3\"/><polyline points=\"96.6,233.9 103.6,233.9 103.6,240.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"27.0,240.9 27.0,233.9 20.0,233.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"205.4,233.9 198.4,233.9 198.4,240.9\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"92.6\" y1=\"172.4\" x2=\"100.6\" y2=\"172.4\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><line x1=\"92.6\" y1=\"218.1\" x2=\"100.6\" y2=\"218.1\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"9.0\" y=\"246.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"216.4\" y=\"246.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"112.7\" y=\"252.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"92.6\" y=\"137.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"161.0\" y=\"197.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"216.4\" y=\"132.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"94.6\" y=\"252.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"86.6\" y=\"199.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"9.0\" y=\"163.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"9.0\" y=\"85.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"216.4\" y=\"20.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">Q</text><circle cx=\"20.0\" cy=\"240.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"205.4\" cy=\"240.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"112.7\" cy=\"240.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"96.6\" cy=\"149.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"151.0\" cy=\"195.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"205.4\" cy=\"130.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"96.6\" cy=\"240.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"96.6\" cy=\"195.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"20.0\" cy=\"163.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"20.0\" cy=\"85.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"205.4\" cy=\"20.0\" r=\"1.8\" fill=\"currentColor\"/></svg>",
     "alt": "Nửa đường tròn tâm O đường kính AB, tiếp tuyến tại A và tiếp tuyến tại B vuông góc với AB. C nằm trên nửa đường tròn, gần A hơn B. K là trung điểm BC, tia OK cắt tiếp tuyến tại B ở D, DC là tiếp tuyến. CH vuông góc AB tại H, I là trung điểm CH; BI cắt tiếp tuyến tại A ở E. Đường thẳng BC cắt tiếp tuyến tại A ở P (E nằm giữa A và P); đường thẳng AC cắt tiếp tuyến tại B ở Q (D nằm giữa B và Q). Đoạn EC vẽ nét đứt."
   },
   "theory": [
-    "**Cần nhớ trước** (bài *CM vuông góc, song song, phân giác & góc bằng nhau* và *Tứ giác đặc biệt, đường trung bình & Thalès*): dấu hiệu hình bình hành, đường trung bình, Thalès, trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền. **Ý chính của bài:** thẳng hàng, trung điểm, đồng quy đều đưa về một điều quen thuộc — một **góc bẹt**, hai đường thẳng **trùng nhau**, hoặc một điểm nằm trên một **đường đặc biệt**.",
+    "**Cần nhớ trước** (bài *CM vuông góc, song song…*, *Tứ giác đặc biệt, đường trung bình & Thalès*, *Tiếp tuyến: dấu hiệu & hai TT từ một điểm*): hình bình hành, đường trung bình, Thalès, trung tuyến ứng với cạnh huyền, hai tiếp tuyến cắt nhau. **Ý chính:** thẳng hàng, trung điểm, đồng quy đều đưa về điều quen thuộc — một **góc bẹt**, hai đường thẳng **trùng nhau**, hoặc một điểm nằm trên một **đường đặc biệt**.",
     "**Ba điểm $A$, $B$, $C$ thẳng hàng — ba cách.** (1) **Góc bẹt:** $\\widehat{ABX}+\\widehat{XBC}=180^\\circ$ với $A$, $C$ nằm **khác phía** đối với đường thẳng $BX$. (2) **Trùng nhau:** $BA$, $BC$ cùng vuông góc (hoặc cùng song song) với một đường thẳng. (3) **Đường đặc biệt:** trung điểm của đường chéo hình bình hành nằm trên đường chéo kia; góc nội tiếp $\\widehat{AXC}=90^\\circ$ thì $AC$ là đường kính, đi qua tâm.",
     "**Trung điểm, đồng quy, hình đặc biệt.** $M$ là trung điểm của $AB$ khi $M$ **nằm trên** $AB$ và $MA=MB$: dùng đường trung bình, đường chéo hình bình hành, Thalès, hoặc trung tuyến ứng với cạnh huyền. **Đồng quy:** lấy giao điểm của hai đường, chứng minh nó nằm trên đường thứ ba. **Hình bình hành:** hai cặp cạnh đối song song; **hình thoi:** bốn cạnh bằng nhau; **tam giác cân:** hai góc bằng nhau.",
     "**Vì sao** «cùng vuông góc» cho thẳng hàng: qua một điểm chỉ kẻ được **một** đường thẳng vuông góc với một đường cho trước (và chỉ **một** đường song song — tiên đề Ơ-clit). Nên nếu $CE\\perp OC$ và $CD\\perp OC$ thì hai đường $CE$, $CD$ là một. Hai đường cùng vuông góc với $OC$ mà **không** chung điểm thì chỉ song song.",
@@ -62,7 +63,7 @@
         "why": "Viết lại đúng điều đề yêu cầu."
       }
     ],
-    "selfExplain": "Nếu chỉ biết $CE\\perp OC$ và $DE\\perp OC$ (không chung điểm $C$) thì có kết luận được $E$, $C$, $D$ thẳng hàng không? Vì sao?"
+    "selfExplain": "Bước 4 cần hai ý: $CE$, $CD$ cùng vuông góc với $OC$ **và** cùng đi qua $C$. Nếu thiếu ý thứ hai — chẳng hạn chỉ biết $EA\\perp AB$ và $DB\\perp AB$ — thì hai đường thẳng $EA$, $DB$ quan hệ thế nào, có kết luận được thẳng hàng không?"
   },
   "faded": {
     "problem": "Cùng hình trên: nửa đường tròn $(O)$ đường kính $AB$, $C$ trên nửa đường tròn, $DB$ và $DC$ là hai tiếp tuyến của $(O)$ cắt nhau tại $D$. Gọi $Q$ là giao điểm của đường thẳng $AC$ với tiếp tuyến tại $B$. Chứng minh $D$ là trung điểm của $BQ$.",
@@ -134,25 +135,25 @@
           "prompt": "Đã có $DB=DQ$. Để kết luận $D$ là trung điểm của $BQ$, còn phải nêu điều gì?",
           "options": [
             "$DC\\perp BQ$",
-            "$D$ nằm trên đoạn $BQ$ ($D$ thuộc tiếp tuyến tại $B$, giữa $B$ và $Q$)",
+            "$B$, $D$, $Q$ thẳng hàng ($D$ và $Q$ cùng thuộc tiếp tuyến tại $B$)",
             "$\\widehat{BDC}=90^\\circ$"
           ],
           "correct": 1,
           "mistakes": {
             "0": {
               "code": "E04",
-              "feedback": "Trung điểm không cần vuông góc; cần $D$ nằm trên đoạn $BQ$ và $DB=DQ$."
+              "feedback": "Trung điểm không cần vuông góc; cần $D$ nằm trên đường thẳng $BQ$ và $DB=DQ$."
             },
             "2": {
               "code": "E04",
-              "feedback": "Góc $\\widehat{BDC}$ không liên quan; ý còn thiếu là vị trí của $D$ trên $BQ$."
+              "feedback": "Góc $\\widehat{BDC}$ không liên quan; ý còn thiếu là $D$ nằm trên đường thẳng $BQ$."
             }
           },
-          "solution": "$M$ là trung điểm của $XY$ ⇔ $M$ nằm trên đoạn $XY$ và $MX=MY$. Ở đây $D$, $Q$ cùng thuộc tiếp tuyến tại $B$ nên $D$ nằm trên đoạn $BQ$."
+          "solution": "$M$ là trung điểm của $XY$ ⇔ $M$ nằm trên đoạn $XY$ và $MX=MY$. Ở đây $D$, $Q$ cùng thuộc tiếp tuyến tại $B$ ⇒ $B$, $D$, $Q$ thẳng hàng; điểm trên đường thẳng $BQ$ cách đều $B$ và $Q$ chỉ có thể nằm giữa $B$ và $Q$."
         }
       },
       {
-        "text": "Kết luận: $D$ nằm trên đoạn $BQ$ và $DB=DQ$ ⇒ $D$ là trung điểm của $BQ$."
+        "text": "Kết luận: $B$, $D$, $Q$ thẳng hàng và $DB=DQ$ ⇒ $D$ là trung điểm của $BQ$."
       }
     ]
   },
@@ -896,8 +897,8 @@
       "correct": 3,
       "mistakes": {
         "0": {
-          "code": "E04",
-          "feedback": "Hai đường chéo $OI$ và $BC$ không bằng nhau nên tứ giác không phải hình chữ nhật."
+          "code": "E08",
+          "feedback": "Góc vuông tại $B$ là $\\widehat{OBA}$, không phải $\\widehat{OBI}$; hai đường chéo $OI$, $BC$ cũng không bằng nhau."
         },
         "1": {
           "code": "E04",

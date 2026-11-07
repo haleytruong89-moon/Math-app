@@ -3,6 +3,8 @@ import { chromium } from "playwright";
 const BASE = process.env.BASE ?? "http://localhost:3101";
 const shots = "e2e/out/preview";
 import fs from "node:fs"; fs.mkdirSync(shots, { recursive: true });
+// Number of approved units in the real content (grows as batches are approved — 43 after 08/11).
+const APPROVED = (() => { let n = 0; for (const d of fs.readdirSync("content")) { const p = `content/${d}`; if (!fs.statSync(p).isDirectory()) continue; for (const f of fs.readdirSync(p)) if (f.endsWith(".json") && f !== "module.json" && JSON.parse(fs.readFileSync(`${p}/${f}`, "utf8")).status === "approved") n++; } return n; })();
 const htl2 = JSON.parse(fs.readFileSync("content/he-thuc-luong/htl-2.json", "utf8"));
 const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
 const results = [];
@@ -15,7 +17,7 @@ for (const scheme of ["light", "dark"]) {
   await page.goto(`${BASE}/parent/content`);
   await page.screenshot({ path: `${shots}/${scheme}-1-content-list.png`, fullPage: true });
   if (scheme === "dark") { await ctx.close(); continue; }
-  ok("content list shows 28 approved units", (await page.getByText(/^Đã duyệt \d/).count()) === 28);
+  ok(`content list shows ${APPROVED} approved units`, (await page.getByText(/^Đã duyệt \d/).count()) === APPROVED);
 
   await page.locator('a[href$="/htl-2"]').filter({ hasText: "Xem trước" }).click();
   await page.waitForURL(/htl-2/);
