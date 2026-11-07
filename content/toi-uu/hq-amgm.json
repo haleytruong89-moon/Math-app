@@ -3,7 +3,8 @@
   "module": "toi-uu",
   "order": 1,
   "title": "BĐT cơ bản, AM-GM & tìm MAX/MIN",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ**, nhất là $(a-b)^2=a^2-2ab+b^2$. Mọi bất đẳng thức trong bài này đều quy về một điều: bình phương luôn không âm, $A^2 \\ge 0$, dấu “=” khi $A=0$.",

@@ -3,7 +3,8 @@
   "module": "viet",
   "order": 2,
   "title": "Viète có tham số",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 65,
   "theory": [
     "**Cần nhớ trước:** bài **Viète cơ bản** ($x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$, biểu thức đối xứng theo $S$, $P$) và bài **PT bậc hai chứa tham số** (điều kiện có nghiệm theo $\\Delta'$). Bài này ghép hai việc đó lại.",

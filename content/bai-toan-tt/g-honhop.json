@@ -3,7 +3,8 @@
   "module": "bai-toan-tt",
   "order": 6,
   "title": "Bài toán dẫn tới PT bậc hai & pha trộn",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) rồi dùng công thức nghiệm; cùng các bước giải bài toán bằng cách lập phương trình đã học ở các bài toán thực tế trước; bài trộn theo phần trăm cần thêm cách **giải hệ hai phương trình bậc nhất hai ẩn** (bài Giải hệ PT bậc nhất).",

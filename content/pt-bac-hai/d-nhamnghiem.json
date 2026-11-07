@@ -3,7 +3,8 @@
   "module": "pt-bac-hai",
   "order": 2,
   "title": "Nhẩm nghiệm & phân tích nhân tử qua nghiệm",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 40,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — đưa phương trình về dạng $ax^2+bx+c=0$ ($a \\ne 0$), đọc đúng $a$, $b$, $c$ **kèm dấu**.",

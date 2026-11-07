@@ -3,7 +3,8 @@
   "module": "backfill-hinh",
   "order": 2,
   "title": "Tứ giác đặc biệt, đường trung bình & Thalès",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 50,
   "figure": {
     "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 314.0 246.5\" role=\"img\"><title>Tứ giác ABCD và tứ giác MNPQ nối trung điểm các cạnh</title><line x1=\"55.8\" y1=\"55.8\" x2=\"224.5\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"224.5\" y1=\"22.0\" x2=\"292.0\" y2=\"190.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"292.0\" y1=\"190.8\" x2=\"22.0\" y2=\"224.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"224.5\" x2=\"55.8\" y2=\"55.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.8\" y1=\"55.8\" x2=\"292.0\" y2=\"190.8\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"140.1\" y1=\"38.9\" x2=\"258.2\" y2=\"106.4\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"258.2\" y1=\"106.4\" x2=\"157.0\" y2=\"207.6\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"157.0\" y1=\"207.6\" x2=\"38.9\" y2=\"140.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"38.9\" y1=\"140.1\" x2=\"140.1\" y2=\"38.9\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"49.2\" y=\"44.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"233.7\" y=\"12.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"304.2\" y=\"195.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"12.8\" y=\"233.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"137.9\" y=\"26.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"270.5\" y=\"101.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"157.0\" y=\"220.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"25.9\" y=\"140.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">Q</text><circle cx=\"55.8\" cy=\"55.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"224.5\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"292.0\" cy=\"190.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"224.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"140.1\" cy=\"38.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"258.2\" cy=\"106.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"157.0\" cy=\"207.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"38.9\" cy=\"140.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
@@ -434,13 +435,13 @@
               "code": "E09",
               "feedback": "Định lí Thalès đảo chỉ cho $DE \\parallel BC$; tỉ số có cạnh $DE$, $BC$ là của **hệ quả** định lí Thalès."
             },
-            "5": {
-              "code": "E09",
-              "feedback": "Đề không có tia phân giác nào; tỉ số $\\dfrac{DE}{BC}$ có được từ $DE \\parallel BC$."
-            },
             "1": {
               "code": "E09",
               "feedback": "Định lí Thalès chỉ nói về tỉ số các đoạn trên hai cạnh $AB$, $AC$; tỉ số có $DE$ và $BC$ là của **hệ quả** định lí Thalès."
+            },
+            "5": {
+              "code": "E09",
+              "feedback": "Đề không có tia phân giác nào; tỉ số $\\dfrac{DE}{BC}$ có được từ $DE \\parallel BC$."
             }
           }
         }

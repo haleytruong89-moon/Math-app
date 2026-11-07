@@ -117,7 +117,7 @@ Khi Track B hết bài (khoảng tuần 13), buổi 2 chuyển sang Track C. App
 | 40 | n-ngoainoi | vi-tri-td | Đường tròn ngoại tiếp & nội tiếp tam giác | 9 | k-goiintiep | P2 | 0.25 | partial | 40 | master-plan §18 | N1–N5: tâm = giao trung trực/phân giác. MCQ+proof — **P2 (LT17): hầu như không ra trong 68 đề; học khi dư thời gian** |
 | 53 | q-dagiac | duong-tron | Đa giác đều & phép quay | 9 | j-coban | P2 | 0.25 | full | 30 | SGK Toán 9 (KNTT Bài 30) — LT21 | Đa giác đều, góc ở tâm, phép quay giữ nguyên hình. **P2: không có ở Bài 4.2 của 68 đề; học khi dư thời gian** |
 | 41 | o-chungminh | hinh-nang-cao | CM vuông góc, song song, phân giác & góc bằng nhau | 9 | k-tugiacnt, f3-dongdang | P1 | 0.5 | tutor | 70 | master-plan §19 | O1, O2, O6 + góc bằng nhau (tách 21/10, LT21). Phân tích ngược + C2/C3 (S5) |
-| 42 | o-dongdang | hinh-nang-cao | Đồng dạng trong đường tròn & tích đoạn thẳng | 9 | o-chungminh, l-tieptuyen | P1 | 0.5 | tutor | 70 | master-plan §19 | O7–O8: NT→ĐD→tỉ số→PA·PB=PC·PD |
+| 42 | o-dongdang | hinh-nang-cao | Đồng dạng trong đường tròn & tích đoạn thẳng | 9 | o-chungminh, l-tieptuyen | P1 | 0.5 | tutor | 60 | master-plan §19 | O7–O8: NT→ĐD→tỉ số→PA·PB=PC·PD |
 | 52 | o-thanghang | hinh-nang-cao | CM thẳng hàng, trung điểm, đồng quy & hình đặc biệt | 9 | o-chungminh, f3-tugiac | P1 | 0.5 | tutor | 70 | LT21 (tách từ o-chungminh) | O3, O4, O5, O10: thẳng hàng (15 câu/68 đề), trung điểm, đồng quy, hình bình hành / tam giác cân — chủ yếu 4.2c |
 | 43 | o-nangcao | hinh-nang-cao | Điểm cố định, đường cố định & điểm di động | 9 | o-dongdang | P1 | 0.5 | tutor | 75 | master-plan §19 | ★GATE 9.5 — O9–O15. Chỉ cho HS có năng lực |
 

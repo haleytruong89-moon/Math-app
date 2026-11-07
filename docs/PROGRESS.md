@@ -33,7 +33,7 @@
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) — không SQL; "Hỏi thêm" bật sau khi phụ huynh chấm bộ test đạt |
 | S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | ✅ Merged 07/11 (PR #51) — SQL 0015 đã áp 07/11 (sao lưu trước); dòng báo cáo tuần để v1.1 |
-| Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | 🟡 07/11 — PR mở (nằm trên S9), không SQL; giải độc lập khớp; chờ gia sư soát trước 01/2027 |
+| Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -41,10 +41,10 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
-| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Merged 05/11 (PR #49) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
-| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Merged 07/11 (PR #50) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
-| Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | 🟡 08/11 — PR mở, không SQL; giải độc lập 48/48; chờ gia sư soát + phụ huynh duyệt (hạn 07/02) |
-| Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | 🟡 08/11 — PR mở (nằm trên đợt 9), không SQL; giải độc lập 32/32; chờ gia sư soát + phụ huynh duyệt (hạn 21/02). **Xong soạn 43/43 KU lõi** |
+| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
+| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
+| Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
+| Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) — **43/43 KU lõi đã duyệt** |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -96,6 +96,66 @@ Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpo
 ### Phụ huynh cần làm
 1. Merge #50 (đợt 8) trước — PR này nằm trên nó.
 2. Trên PR này: bấm **"Áp dụng SQL"** (file 0015, sao lưu trước như mọi lần) → merge.
+
+---
+
+## 08/11/2026 — Audit AI rồi duyệt đợt 7–10 + phiếu chấm Đề 57–59 (nhánh `p1-audit-1`, không SQL)
+
+Phụ huynh (08/11): "cho 1 agent audit lại, thử giải bài ok thì duyệt, còn làm sai thì update lại rồi duyệt" — thay bước gia sư soát trước khi duyệt (SPEC §0 08/11).
+
+### Cách làm
+- 7 agent audit (mỗi agent 2–3 bài), **được xem đáp án**, khác người giải mù trước đó: tự giải lại mọi câu (worked, faded, luyện, kiểm tra, từng bước, từng chỗ trống), kiểm lý thuyết, gợi ý, phản hồi, nhiễu, mã lỗi, hình (render PNG), thứ tự lời giải (thử mọi hoán vị bằng `gradeItem`), phạm vi chương trình GDPT 2018; sửa tại chỗ.
+- Kết quả: **18/18 ĐẠT SAU KHI SỬA — không có đáp án sai**. Sau đó Claude duyệt trong git (`approved`, `approvedOn: 2026-11-08`) và khoá đáp án (`content:lock`: 62 bài, 887 câu).
+- App: hình chung của bài không còn hiện phía trên câu đã có hình riêng; "Lưu ý về đề" trong phiếu chấm hiện được công thức.
+
+### Chi tiết từng nhóm
+
+**PT bậc hai**
+- d-ptbh — ĐẠT SAU KHI SỬA: lý thuyết thêm cách xử lý a<0; p6 đổi thành PT có a=−1 (luyện trước x4); x3 dùng Đề 24 Bài 3.3 (giờ có câu đề thật); thống nhất E02 cho sai dấu; thêm nhiễu E10 (gõ nhầm nghiệm kia) ở 5 câu.
+- d-nhamnghiem — ĐẠT SAU KHI SỬA: thống nhất mã lỗi (nhầm trường hợp E05, nhớ sai nghiệm E03, dừng giữa chừng E11); f1 phản hồi lộ kết quả; p5 nhiễu cần hai lỗi → một lỗi; lý thuyết thêm a(x−x1)(x−x2), dạng có tham số, đẳng thức căn.
+- d-thamso — ĐẠT SAU KHI SỬA: f3, x5-s2 có nhiễu "đúng nhưng chưa đủ" → đề ghi "đúng và đủ"; p8-s2 E02→E03 + ôn f1-hdt; p7 ghi chú "có nghiệm" nhận cả a=0; p2 H1.
+- Kiểm: 203 sympy + 405 gradeItem. Mở: c-rutgon làm tiên quyết của d-nhamnghiem (link ôn căn ở p8, x7).
+
+**Tứ giác, tiếp tuyến**
+- f3-tugiac — ĐẠT SAU KHI SỬA (9): đường trung bình hình thang không có trong SGK 8 mới → thêm chứng minh 1 dòng; lý thuyết ¶6; bài khuyết ghi chú hình chung; f2, p2 phản hồi; p1 H3 lộ phương án; p5 thêm bẫy E09; p8 bỏ "vẽ trước"; x8 đề rõ "mảnh chứa đỉnh A".
+- l-tieptuyen — ĐẠT SAU KHI SỬA (lý thuyết + 9 câu): "góc tạo bởi tiếp tuyến và dây" không có trong SGK mới → p3, x5 đổi cách giải trong chương trình, lý thuyết ghi rõ + chứng minh 1 dòng; viết lại 6 đoạn lý thuyết (≤ 80 chữ, nêu bài cần nhớ); p7 tự đứng; bỏ nhiễu 45° (p8-s3, x1); x4 dựng lại thành bài thi đầy đủ (dễ quá); x6 vẽ lại hình; x7 thay câu mới (trùng o-dongdang).
+- Kiểm: 50 + 75 sympy/toạ độ, ~11.300 lượt gradeItem, 26 hình. Mở: k-goiintiep (và htl-2) làm tiên quyết của l-tieptuyen; SOURCE_INDEX thêm mục f3-tugiac.
+
+**Viète, hỗn hợp**
+- e-viete — ĐẠT SAU KHI SỬA (5): p3 phương án "đặt t=x²" sai toán → đổi; quy ước sai dấu S/P = E03 (E02 chỉ cho sai dấu khi biến đổi) ở p4-s1, p5, x5, p7-s2; p8-s3 E11→E06; x6 lời giải thêm kiểm mẫu ≠ 0.
+- e-vietets — ĐẠT SAU KHI SỬA (7): lý thuyết đoạn 4 lộ đáp án p7 → viết dạng chung + nói rõ đạt tại đầu mút chỉ khi Δ≥0; đoạn 2 "hai nghiệm" gồm nghiệm kép; p3 H3 làm hộ phép tính; p7-s3 phương án lộ bước 2; p7 lời giải giải thích nhận nghiệm kép; x5 đổi tên biểu thức P→T, sửa nhiễu 2088→2090 (E02, ôn f1-tgon); x7 P→T.
+- g-honhop — ĐẠT SAU KHI SỬA (2): x3 nhiễu −20 → −9; lý thuyết nhắc bài giải hệ cho câu pha trộn.
+- Mở: thêm g-giaihpt làm tiên quyết của g-honhop (link ôn p5, x4); câu nhiều bước hiện mọi bước cùng lúc → bước sau có thể lộ bước trước (e-vietets p4, x6, x8).
+- Kiểm: 312 khẳng định gradeItem + 53 sympy.
+
+**Chứng minh, đồng dạng**
+- o-chungminh — ĐẠT SAU KHI SỬA (5): 2 nhãn góc gây hiểu sai trên hình (p6, x8), 1 nhãn bị cắt (p4); x6 chấm sai 4 thứ tự đúng → nay nhận đủ 12; lý thuyết bẫy (1) nói quá.
+- o-dongdang — ĐẠT SAU KHI SỬA (7): lý thuyết "Vì sao" giải thích sai trường hợp P ở ngoài đường tròn → viết lại theo △PAD∽△PCB; giải thích hệ thức lượng bằng đồng dạng ngay trong lý thuyết; vẽ lại hình x6 (E dính O); dời nhãn p4; mã lỗi f3 E10→E14, p6 E08→E03; phản hồi p1.
+- Kiểm: 62 + 40 khẳng định toạ độ (200–300 cấu hình mỗi khẳng định), 27 hình, C2/C3 liệt kê hoán vị bằng gradeItem.
+- App: hình chung của bài hiện trên mọi câu, kể cả câu đã có hình riêng. Mở: htl-1 cho o-dongdang; l-tieptuyen cho o-chungminh; CURRICULUM estMinutes o-dongdang 70→60.
+
+**Thẳng hàng, nâng cao**
+- o-thanghang — ĐẠT SAU KHI SỬA (5): câu tự giải thích của bài mẫu có tiền đề sai (dạy ngược) → viết lại; f3 suy luận "nằm trên đoạn" thiếu căn cứ → sửa; x5 E04→E08; lý thuyết nhắc bài Tiếp tuyến.
+- o-nangcao — ĐẠT SAU KHI SỬA (~12): bỏ định lí đảo "góc tạo bởi tiếp tuyến và dây" (ngoài SGK) ở p4, x3, x6 + lý thuyết → dùng góc ở tâm + tam giác cân; sửa 2 nhiễu/phản hồi không khớp lỗi (f3 6→36, p3); x7 nêu nguồn gốc hệ thức; lý thuyết ≤ 80 chữ; dời 4 nhãn hình.
+- Kiểm: 64 + 62 khẳng định toạ độ (~59.000 lần kiểm), 24 hình, C2/C3 bằng gradeItem.
+- Mở: l-tieptuyen làm tiên quyết của o-thanghang; htl-1/2 cho o-nangcao.
+
+**Tối ưu**
+- hq-amgm — ĐẠT SAU KHI SỬA (5): f1 phản hồi gần lộ hằng số; p5-s1 đề mơ hồ (một nhiễu là BĐT đúng) → "vế phải là hằng số"; dừng ở đại lượng trung gian thống nhất E11.
+- hq-doanhthu — ĐẠT SAU KHI SỬA (8): lý thuyết dạy cách dự đoán giá trị rồi xét hiệu (không dạy Cô-si ba số); p7-s2, x7-s2 phản hồi lộ phương án đúng; x1 E04→E07; x6 thêm nhiễu E02 + ôn d-ptbh; x8 lời giải biện minh "dùng hết tiền".
+- hq-hinhhoc — ĐẠT SAU KHI SỬA (4 đoạn lý thuyết + 7 câu): bỏ AM-GM ba số (ngoài chương trình) → dự đoán + xét hiệu ở p1, p8 (thêm bước p8-s4), x7; p4 chứng minh OM=ON; x8 dùng Thales thay tan 60°; x6 dời nhãn hình.
+- Kiểm: 99 + 124 + 113 khẳng định. Mở: d-ptbh, c-rutgon làm tiên quyết của hq-amgm.
+
+**Phiếu chấm thi thử**
+- Phiếu chấm Đề 57–59: ĐẠT SAU KHI SỬA (không đáp số nào sai; 82 khẳng định + 45 góc kiểm lại).
+- - Đề 57 (13 chỗ): chia điểm Bài 2 thành 0,75/0,25/0,5 và Bài 4 thành 4.1a 0,5 · 4.1b 0,5 · 4.2a 1,25 (gồm hình) · 4.2b 1,0 · 4.2c 0,75 cho cùng khung Đề 58/59; bỏ hq-amgm khỏi 2.3; thêm mốc chấm; 1.1 đủ cả hai cách chia nhóm; note thêm 4.1b, Bài 5.
+- - Đề 58 (5 chỗ): sửa dòng "hay sai" ở 1.2; thêm mốc; 4.2a ghi 0,25 hình vẽ.
+- - Đề 59 (7 chỗ): thêm mốc; 4.2c thêm bước △DHC ∽ △DBO (c.g.c) thay cho đảo phương tích (ngoài chương trình); Bài 5 nêu trường hợp hiểu 3 inch là đường kính; note thêm lỗi in.
+- - note viết lại không dùng TeX (trang chấm hiện note dạng chữ thường).
+
+### Còn mở (phụ huynh quyết, không gấp — cần sửa `content/curriculum.json`)
+- Thêm tiên quyết để có link "Ôn lại": l-tieptuyen ← k-goiintiep (+ htl-2); o-thanghang ← l-tieptuyen; o-chungminh ← l-tieptuyen; o-dongdang ← htl-1; o-nangcao ← htl-1/2; g-honhop ← g-giaihpt; d-nhamnghiem ← c-rutgon; hq-amgm ← d-ptbh, c-rutgon.
+- Gia sư / con vẫn báo "Cần sửa" trong app nếu thấy câu nào chưa ổn; audit AI không thay được cảm nhận độ khó với con.
 
 ---
 

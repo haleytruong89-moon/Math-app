@@ -2,7 +2,8 @@
   "papers": [
     {
       "paper": 57,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 131–132",
       "parts": [
         {
@@ -129,7 +130,8 @@
     },
     {
       "paper": 58,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 133–134",
       "parts": [
         {
@@ -245,7 +247,8 @@
     },
     {
       "paper": 59,
-      "status": "draft",
+      "status": "approved",
+      "approvedOn": "2026-11-08",
       "pages": "tr. 135–136",
       "parts": [
         {

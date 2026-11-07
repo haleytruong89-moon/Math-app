@@ -3,7 +3,8 @@
   "module": "toi-uu",
   "order": 2,
   "title": "Tối ưu kinh tế: doanh thu, lợi nhuận, chi phí",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **BĐT cơ bản, AM-GM & tìm MAX/MIN** (tách bình phương, $a+b \\ge 2\\sqrt{ab}$, kiểm tra dấu bằng) và bài **PT bậc hai: biệt thức & công thức nghiệm** (dùng khi đề hỏi ngược: “lãi đạt đúng … thì bán giá bao nhiêu”).",

@@ -3,7 +3,8 @@
   "module": "pt-bac-hai",
   "order": 1,
   "title": "PT bậc hai: biệt thức & công thức nghiệm",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 43,
   "theory": [
     "**Cần nhớ trước:** bài **Quy đồng & điều kiện xác định** và **7 hằng đẳng thức** — chuyển vế phải đổi dấu, khai triển và thu gọn để đưa phương trình về dạng chuẩn $ax^2+bx+c=0$ ($a \\ne 0$).",

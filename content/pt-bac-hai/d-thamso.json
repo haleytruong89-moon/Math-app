@@ -3,7 +3,8 @@
   "module": "pt-bac-hai",
   "order": 3,
   "title": "PT bậc hai chứa tham số",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 50,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — với $ax^2+bx+c=0$ ($a \\ne 0$): $\\Delta=b^2-4ac$; khi $b=2b'$ dùng $\\Delta'=b'^2-ac$ (cùng dấu với $\\Delta$). Có tham số $m$ thì các hệ số chứa $m$, nên $\\Delta'$ là một biểu thức của $m$.",

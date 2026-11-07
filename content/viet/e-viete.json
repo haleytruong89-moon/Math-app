@@ -3,7 +3,8 @@
   "module": "viet",
   "order": 1,
   "title": "Viète cơ bản: tổng tích & biểu thức đối xứng",
-  "status": "draft",
+  "status": "approved",
+  "approvedOn": "2026-11-08",
   "estMinutes": 44,
   "theory": [
     "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) để biết phương trình có nghiệm hay không, và đọc hệ số $a$, $b$, $c$ kèm dấu.",
