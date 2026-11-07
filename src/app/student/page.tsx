@@ -4,7 +4,7 @@ import { requireRole } from "@/lib/dal";
 import { createClient } from "@/lib/supabase/server";
 import { ActionForm } from "@/components/action-form";
 import { loadStudentState, todaysReview, type StudentState, type UnitState } from "@/lib/learning/state";
-import { RULES, daysBetween } from "@/lib/learning/rules";
+import { RULES, addDays, daysBetween, vnDate } from "@/lib/learning/rules";
 import { giveConsent, setHomeworkDone } from "./actions";
 import { dueLabel, studentHomework, type HomeworkRow } from "@/lib/learning/homework";
 import { displayLevel, latestByUnit, type ConfirmationRow } from "@/lib/learning/overview";
@@ -12,6 +12,8 @@ import { HomeHeader } from "@/components/student/home-header";
 import { needsTutor } from "@/lib/content/curriculum";
 import { masteryOf } from "@/components/student/mastery";
 import { studentDrills } from "@/lib/learning/drills";
+import { loadMockExams } from "@/lib/learning/mock-data";
+import { pts, upcomingForStudent, type MockExamRow } from "@/lib/learning/mock";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -30,12 +32,13 @@ export default async function StudentHome() {
   if (!me?.consent_at) return <ConsentScreen name={user.displayName} />;
 
   const cols = "id, unit_id, items, task, links, due_on, done_at, reviewed_at, review_note";
-  const [state, open, recent, confRows, drillRows] = await Promise.all([
+  const [state, open, recent, confRows, drillRows, mocks] = await Promise.all([
     loadStudentState(supabase, me.id),
     supabase.from("homework").select(cols).eq("student_id", me.id).is("reviewed_at", null).limit(50),
     supabase.from("homework").select(cols).eq("student_id", me.id).order("created_at", { ascending: false }).limit(20),
     supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", me.id).limit(500),
     studentDrills(supabase, me.id),
+    loadMockExams(supabase, me.id),
   ]);
   const confs = latestByUnit((confRows.data ?? []) as ConfirmationRow[]);
   for (const r of [open, recent]) if (r.error) console.error("StudentHome homework", r.error.message);
@@ -50,11 +53,44 @@ export default async function StudentHome() {
   return (
     <>
       <HomeHeader name={user.displayName} days={state.studyDays} now={new Date()} />
+      <MockCard exams={mocks} today={vnDate()} />
       <h2 className="mt-6 text-base font-semibold">Hôm nay cần làm</h2>
       <TodayList state={state} homework={homework} shown={shown} />
       {state.units.length > 0 && <JourneyTeaser m3={m3} total={state.units.length} />}
       {drillRows.length > 0 && <DrillTeaser rows={drillRows.map((r) => r.state.status)} />}
     </>
+  );
+}
+
+const WEEKDAY = ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+
+/** Thi thử (S9): the paper coming up (from 3 days before) or running; else a recent result (14 days). */
+function MockCard({ exams, today }: { exams: MockExamRow[]; today: string }) {
+  const up = upcomingForStudent(exams, today);
+  if (up) {
+    const d = up.scheduled_on;
+    return (
+      <Link href={`/student/thi-thu/${up.paper}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border-2 border-accent bg-accent-soft px-4 py-3.5" data-testid="mock-card">
+        <span className="min-w-0 flex-1">
+          <span className="block font-display font-bold">{up.started_at ? `Đang làm Đề ${up.paper}` : `Thi thử Đề ${up.paper}`}</span>
+          <span className="block text-sm text-muted">
+            {up.started_at ? "Mở để xem đồng hồ và nộp bài" : `${WEEKDAY[new Date(`${d}T00:00:00Z`).getUTCDay()]} ${d.slice(8)}/${d.slice(5, 7)} · 120 phút · làm trên giấy`}
+          </span>
+        </span>
+        <span aria-hidden className="text-accent">→</span>
+      </Link>
+    );
+  }
+  const last = exams.filter((e) => e.graded_at && e.graded_at.slice(0, 10) >= addDays(today, -14)).sort((a, b) => (b.graded_at ?? "").localeCompare(a.graded_at ?? ""))[0];
+  if (!last) return null;
+  return (
+    <Link href={`/student/thi-thu/${last.paper}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-4 py-3.5" data-testid="mock-result-card">
+      <span className="min-w-0 flex-1">
+        <span className="block font-display font-bold">Kết quả thi thử Đề {last.paper}: {pts(last.total ?? 0)}/10</span>
+        <span className="block text-sm text-muted">Xem điểm từng ý và bài cần ôn</span>
+      </span>
+      <span aria-hidden className="text-accent">→</span>
+    </Link>
   );
 }
 

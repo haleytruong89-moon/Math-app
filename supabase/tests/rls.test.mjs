@@ -29,6 +29,7 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0011_p1_review_runs.sql`, 'utf
 await db.exec(fs.readFileSync(`${repo}/migrations/0012_p1_content_review.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0013_p1_item_homework.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0014_p1_ai.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0015_p1_mock_exams.sql`, 'utf8'));
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -283,6 +284,19 @@ check('eval case saved', await q14(`insert into public.ai_eval_cases (unit_id, i
 check('eval result: 6 scores 0–2 or none', [isErr(await q14(`insert into public.ai_eval_results (case_id, model, prompt_version, output, scores, math_wrong, scored_at) values ((select max(id) from public.ai_eval_cases), 'claude-haiku-5-5', '0123456789ab', 'x', '{2,2,2,2,2}', false, now())`)), await q14(`insert into public.ai_eval_results (case_id, model, prompt_version, output) values ((select max(id) from public.ai_eval_cases), 'claude-haiku-5-5', '0123456789ab', 'x')`)], [true, 'ok']);
 check('only the parent reads the test set', [(await as('me@example.com','select count(*)::int c from public.ai_eval_results'))[0].c, (await as('trang@example.com','select count(*)::int c from public.ai_eval_cases'))[0].c], [1, 0]);
 check('nobody writes AI tables directly', [isErr(await as('me@example.com',`update public.ai_settings set staff_enabled = false`)) || (await db.query(`select staff_enabled from public.ai_settings`)).rows[0].staff_enabled === true, isErr(await as('nguyen@example.com',`insert into public.ai_messages (student_id, unit_id, item_id, mode, thread, role, content, day) values (${nguyen14}, 'htl-1', 'htl-1-p1', 'practice', gen_random_uuid(), 'student', 'x', current_date)`))], [true, true]);
+// 0015: Thi thử (S9) — mock exams and points per part
+check('mock exam scheduled', await q14(`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 57, '2027-01-09', ${tutor14})`), 'ok');
+check('mock: only papers 57–68', [isErr(await q14(`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 56, '2027-01-09', ${tutor14})`)), isErr(await q14(`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 69, '2027-01-09', ${tutor14})`))], [true, true]);
+check('mock: one exam per paper and student', isErr(await q14(`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 57, '2027-02-09', ${tutor14})`)), true);
+check('mock: finish needs a start', isErr(await q14(`update public.mock_exams set finished_at = now() where paper = 57`)), true);
+check('mock: graded needs grader and total together', isErr(await q14(`update public.mock_exams set graded_at = now() where paper = 57`)), true);
+check('mock score saved', await q14(`insert into public.mock_scores (exam_id, part, points, error_code) values ((select id from public.mock_exams where paper = 57), '1.1', 0.75, 'E02')`), 'ok');
+check('mock score: quarter points, known part keys only', [isErr(await q14(`insert into public.mock_scores (exam_id, part, points) values ((select id from public.mock_exams where paper = 57), '1.2', 0.3)`)), isErr(await q14(`insert into public.mock_scores (exam_id, part, points) values ((select id from public.mock_exams where paper = 57), '6.1', 0.5)`)), await q14(`insert into public.mock_scores (exam_id, part, points) values ((select id from public.mock_exams where paper = 57), '4.2b', 1)`)], [true, true, 'ok']);
+check('adults read the exam and points', [(await as('me@example.com','select count(*)::int c from public.mock_scores'))[0].c, (await as('trang@example.com','select count(*)::int c from public.mock_scores'))[0].c], [2, 2]);
+check('student sees her exam but no points before grading', [(await as('nguyen@example.com','select count(*)::int c from public.mock_exams'))[0].c, (await as('nguyen@example.com','select count(*)::int c from public.mock_scores'))[0].c], [1, 0]);
+await db.exec(`update public.mock_exams set started_at = now() - interval '2 hours', finished_at = now(), graded_at = now(), graded_by = ${tutor14}, total = 1.75 where paper = 57`);
+check('student sees her points once graded; another student sees nothing', [(await as('nguyen@example.com','select count(*)::int c from public.mock_scores'))[0].c, (await as('an@example.com','select count(*)::int c from public.mock_exams'))[0].c], [2, 0]);
+check('nobody writes mock tables directly', [isErr(await as('trang@example.com',`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 58, '2027-02-06', ${tutor14})`)), isErr(await as('nguyen@example.com',`update public.mock_scores set points = 4`)) || (await db.query(`select max(points)::text m from public.mock_scores`)).rows[0].m === '1.00'], [true, true]);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor reads no item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
 check('locked tutor reads no priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);
@@ -292,4 +306,5 @@ check('locked tutor sees no homework', (await as('trang@example.com','select cou
 check('locked tutor sees no confirmations', (await as('trang@example.com','select count(*)::int c from public.parent_confirmations'))[0].c, 0);
 check('locked tutor reads no briefs', (await as('trang@example.com','select count(*)::int c from public.ai_reports'))[0].c, 0);
 check('locked tutor reads no ai messages', (await as('trang@example.com','select count(*)::int c from public.ai_messages'))[0].c, 0);
+check('locked tutor reads no mock exams', [(await as('trang@example.com','select count(*)::int c from public.mock_exams'))[0].c, (await as('trang@example.com','select count(*)::int c from public.mock_scores'))[0].c], [0, 0]);
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASSED'); process.exit(fail ? 1 : 0);

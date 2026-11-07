@@ -2,13 +2,14 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/dal";
 import { tutorStudent, tutorToday } from "@/lib/tutor/workspace";
 
-export type TutorTab = "today" | "bai" | "giao" | "buoi" | "work";
+export type TutorTab = "today" | "bai" | "giao" | "buoi" | "work" | "thi-thu";
 const TABS: { id: TutorTab; label: string; path: string }[] = [
   { id: "today", label: "Hôm nay", path: "" },
   { id: "bai", label: "Kho bài", path: "/bai" },
   { id: "giao", label: "Giao bài", path: "/giao" },
   { id: "buoi", label: "Buổi dạy", path: "/buoi" },
   { id: "work", label: "Bài làm", path: "/work" },
+  { id: "thi-thu", label: "Thi thử", path: "/thi-thu" },
 ];
 
 const initials = (name: string) =>

@@ -1,6 +1,6 @@
 # Thi thử (mock exams, Đề 57–68) — design
 
-Status: **approved by the parent 06/11/2026** (four choices below, all the recommended option). Code not started.
+Status: **approved by the parent 06/11/2026** (four choices below, all the recommended option). **Code built 07/11 (`p1-slice-9`, migration 0015)** — see §8 for what differs from this text.
 Decision row: `docs/SPEC.md` §0, 06/11/2026. Reserved papers: `docs/CONTENT_STANDARD.md` §6 (Đề 57–68 are never used as content).
 
 ## 1. Why
@@ -28,7 +28,7 @@ timer, the per-part score and the follow-up.
 
 ## 3. Score sheets (content, written by Claude)
 
-- One file per paper, `content/thi-thu/de-57.json` … `de-68.json`, loaded **server-side only** (never by `/student/*` before
+- One file for all papers, `content/thi-thu.json` (`{papers: [...]}`; a folder would be read as a content module), loaded **server-side only** (never by `/student/*` before
   the attempt is graded, and never the `answer` field for the student at all).
 - Per part: `key` ("1.1", "4.2b"…), `max` (points), `answer` (final answer or key idea, short, TeX allowed), `units` (1–2 KU ids
   from `curriculum.json`). The sum of `max` per Bài matches the paper (Bài 1 1,5 · Bài 2 1,5 · Bài 3 2,5 · Bài 4 4,0 · Bài 5 0,5)
@@ -75,3 +75,19 @@ solutions to the student; a timer that locks anything; papers other than 57–68
 
 1. Code slice `p1-slice-9` (migration 0015, screens, tests, e2e flows for tutor grading and student view) — after the parent says go.
 2. Score sheets Đề 57–59 (`p1-thithu-1`) before 01/2027; Đề 60–68 in 02–03/2027.
+
+## 8. As built (07/11/2026, `p1-slice-9`)
+
+- Migration `0015_p1_mock_exams.sql` as in §4, plus `mock_exams.comment` (≤ 500, the tutor's comment the student reads).
+  RLS tests in `supabase/tests/rls.test.mjs`.
+- Score sheets: one file `content/thi-thu.json`, schema + rules in `src/lib/content/mock.ts`; empty until the sheets of
+  Đề 57–59 are written (`p1-thithu-1`). A paper without a sheet can be scheduled; the grading page says "chưa có phiếu chấm".
+- Logic in `src/lib/learning/mock.ts` (status, `suggestNext`, `mockTotals`, `lostByUnit`, `checkScores`, `gradeOverdue`,
+  `upcomingForStudent`), writes in `src/app/thi-thu/actions.ts`, views in `src/components/mock/`.
+- Grading is the tutor's only (parent choice); the parent schedules, cancels, reads and uses ★ / "Ôn lại".
+- The tutor can grade from the paper's date even if the student did not press Bắt đầu/Nộp (sat it without the app),
+  and can re-grade (points are replaced).
+- "Ôn lại ngày mai" works only for a KU that already has a review row (the student passed its exit); otherwise the
+  tutor/parent is told to use ★.
+- **Not built yet:** the weekly-report line per graded mock (§5) — v1.1, together with the first real results.
+- e2e: `mock-tutor-flow`, `mock-student-flow`, `mock-parent-flow` on the fixture sheet `e2e/fixtures/content/thi-thu.json`.

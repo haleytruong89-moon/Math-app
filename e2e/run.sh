@@ -49,6 +49,10 @@ run student 3118 e2e/focus-flow.mjs; s1=$?
 run parent 3119 e2e/focus-parent-flow.mjs; s2=$?
 run student 3120 e2e/ai-student-flow.mjs; t1=$?
 run parent 3121 e2e/ai-eval-flow.mjs; t2=$?
+# S9 Thi thử: the fixture score sheet of Đề 57
+run tutor 3122 e2e/mock-tutor-flow.mjs; u1=$?
+run student 3123 e2e/mock-student-flow.mjs; u2=$?
+run parent 3124 e2e/mock-parent-flow.mjs; u3=$?
 node scripts/content-index.mjs
 # Exit code comes from every run() call, so a new flow cannot be forgotten in the sum.
 if [ ${#FAILED[@]} -gt 0 ]; then echo "e2e: ${#FAILED[@]} flow(s) failed: ${FAILED[*]}"; exit 1; fi
