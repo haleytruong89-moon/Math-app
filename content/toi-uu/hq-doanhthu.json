@@ -1,0 +1,1035 @@
+{
+  "id": "hq-doanhthu",
+  "module": "toi-uu",
+  "order": 2,
+  "title": "Tối ưu kinh tế: doanh thu, lợi nhuận, chi phí",
+  "status": "draft",
+  "estMinutes": 55,
+  "theory": [
+    "**Cần nhớ trước:** bài **BĐT cơ bản, AM-GM & tìm MAX/MIN** (tách bình phương, $a+b \\ge 2\\sqrt{ab}$, kiểm tra dấu bằng) và bài **PT bậc hai: biệt thức & công thức nghiệm** (dùng khi đề hỏi ngược: “lãi đạt đúng … thì bán giá bao nhiêu”).",
+    "**Công thức:** Doanh thu $=$ giá bán $\\times$ số lượng. Lợi nhuận $=$ (giá bán $-$ giá vốn) $\\times$ số lượng $=$ doanh thu $-$ chi phí. Đề “cứ tăng giá $a$ đồng thì bán ít đi $b$ sản phẩm”: gọi $x$ là số lần tăng giá, giá bán $p+ax$, số lượng $q-bx$. **Điều kiện:** $x \\ge 0$, số lượng $q-bx \\ge 0$. Giảm giá thì ngược lại: giá $p-ax>0$, số lượng $q+bx$.",
+    "**Vì sao có lớn nhất:** lợi nhuận thường thành tích hai thừa số có **tổng không đổi**, ví dụ $(6+x)(20-x)$ có tổng $26$. Với hai số không âm, $ab \\le \\left(\\frac{a+b}{2}\\right)^2$ (vì $(a-b)^2 \\ge 0$), dấu “=” khi $a=b$. Cũng có thể khai triển rồi tách bình phương: $-(x-7)^2+169 \\le 169$.",
+    "**Chi phí theo kích thước, theo số máy:** dùng dữ kiện cố định (thể tích, số sản phẩm) để viết mọi đại lượng theo **một** biến, rồi chi phí $=$ đơn giá $\\times$ diện tích (hoặc số máy, số giờ). Dạng $an+\\frac bn$ → AM-GM. Dạng $ax^2+\\frac bx$ → xét hiệu với giá trị nhỏ nhất dự đoán, đưa về $\\frac{(x-x_0)^2(\\dots)}{x} \\ge 0$.",
+    "**Bẫy hay gặp:** (1) Quên điều kiện: số máy nguyên dương, số lượng không âm, cạnh dương; dấu bằng phải thuộc điều kiện. (2) Trả lời nhầm đại lượng: đề hỏi **giá bán mới** mà ghi số tiền tăng $x$, hoặc ghi lợi nhuận. (3) Tìm doanh thu lớn nhất khi đề hỏi lợi nhuận (quên trừ giá vốn). (4) Đơn vị: giờ – phút, nghìn – triệu đồng.",
+    "**Phiếu tối ưu:** biến – điều kiện – hàm mục tiêu – dấu bằng – kết luận (trả lời đúng câu hỏi, có đơn vị). **Nhận dạng:** “để doanh thu / lợi nhuận lớn nhất”, “chi phí thấp nhất”, một đại lượng thay đổi kéo theo đại lượng khác. **Không** dùng khi đề chỉ so sánh vài phương án cho sẵn (tính từng phương án) hoặc chỉ hỏi diện tích, thể tích thuần hình học (bài **Tối ưu hình học**)."
+  ],
+  "worked": {
+    "problem": "Một tiệm bánh bán bánh mì giá $15$ nghìn đồng/chiếc, mỗi ngày bán được $200$ chiếc. Chủ tiệm thấy cứ tăng giá $1$ nghìn đồng thì mỗi ngày bán ít đi $10$ chiếc. Giá vốn mỗi chiếc là $9$ nghìn đồng. Hỏi nên bán giá bao nhiêu để lợi nhuận mỗi ngày lớn nhất?",
+    "steps": [
+      {
+        "text": "Gọi $x$ (nghìn đồng) là số tiền tăng giá. Giá bán $15+x$, số bánh bán được $200-10x$. Điều kiện: $x \\ge 0$ và $200-10x \\ge 0$, tức $0 \\le x \\le 20$.",
+        "why": "Mọi đại lượng thay đổi đều viết theo **cùng một** biến; điều kiện lấy từ “số bánh không âm”."
+      },
+      {
+        "text": "Lợi nhuận mỗi chiếc là $(15+x)-9=6+x$, nên lợi nhuận mỗi ngày $L=(6+x)(200-10x)=10(6+x)(20-x)$ (nghìn đồng).",
+        "why": "Lợi nhuận $=$ (giá bán $-$ giá vốn) $\\times$ số lượng; $(15+x)(200-10x)$ chỉ là doanh thu."
+      },
+      {
+        "text": "Hai số $6+x$ và $20-x$ không âm, tổng $(6+x)+(20-x)=26$ không đổi, nên $(6+x)(20-x) \\le \\left(\\frac{26}{2}\\right)^2=169$ và $L \\le 1690$. Dấu “=” khi $6+x=20-x \\Leftrightarrow x=7$, thoả $0 \\le x \\le 20$.",
+        "why": "Tích hai số có tổng không đổi lớn nhất khi hai số bằng nhau; cách khác: $(6+x)(20-x)=169-(x-7)^2$."
+      },
+      {
+        "text": "Kết luận: bán giá $15+7=22$ nghìn đồng/chiếc thì lợi nhuận lớn nhất, bằng $1690$ nghìn đồng mỗi ngày.",
+        "why": "Đề hỏi **giá bán**, nên trả lời $22$ nghìn đồng chứ không dừng ở $x=7$."
+      }
+    ],
+    "selfExplain": "Nếu chủ tiệm muốn **doanh thu** lớn nhất (không quan tâm giá vốn), biểu thức cần tìm GTLN đổi thành gì, và vì sao giá bán tốt nhất sẽ khác $22$ nghìn đồng?"
+  },
+  "faded": {
+    "problem": "Một cửa hàng bán áo phông giá $200$ nghìn đồng/chiếc, mỗi tháng bán được $60$ chiếc. Cửa hàng thấy cứ giảm giá $10$ nghìn đồng thì mỗi tháng bán thêm $6$ chiếc. Hỏi nên bán giá bao nhiêu để doanh thu mỗi tháng lớn nhất?",
+    "steps": [
+      {
+        "text": "Gọi $x$ là số lần giảm giá ($x \\ge 0$). Giá bán $200-10x$ (nghìn đồng), cần $200-10x>0$, tức $x<20$."
+      },
+      {
+        "prompt": "Lập biểu thức doanh thu.",
+        "item": {
+          "id": "hq-doanhthu-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Doanh thu mỗi tháng $R$ (nghìn đồng) là:",
+          "options": [
+            "$R=(200-10x)(60-6x)$",
+            "$R=(200-10x)(60+6x)$",
+            "$R=(200-10x)\\cdot 60$",
+            "$R=(200+10x)(60+6x)$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Giảm giá thì bán **thêm** áo: số áo là $60$ cộng thêm $6$ chiếc cho mỗi lần giảm."
+            },
+            "2": {
+              "code": "E07",
+              "feedback": "Số áo bán được cũng thay đổi theo $x$, không giữ nguyên $60$ chiếc."
+            },
+            "3": {
+              "code": "E07",
+              "feedback": "Mỗi lần **giảm** $10$ nghìn đồng thì giá bán bớt đi, không tăng lên."
+            }
+          },
+          "solution": "Giá $200-10x$, số áo $60+6x$ nên $R=(200-10x)(60+6x)$."
+        }
+      },
+      {
+        "text": "$R=10(20-x)\\cdot 6(10+x)=60(20-x)(10+x)$. Hai thừa số $20-x$ và $10+x$ dương, tổng $30$ không đổi."
+      },
+      {
+        "prompt": "Tìm $x$.",
+        "item": {
+          "id": "hq-doanhthu-f2",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Doanh thu lớn nhất khi $x$ bằng:",
+          "answer": "5",
+          "mistakes": [
+            {
+              "answer": "15",
+              "code": "E06",
+              "feedback": "Đó là giá trị chung của hai thừa số khi chúng bằng nhau; giải $20-x=10+x$ để ra $x$."
+            },
+            {
+              "answer": "-5",
+              "code": "E02",
+              "feedback": "Chuyển vế $20-x=10+x$ phải đổi dấu; lại kiểm tra $x \\ge 0$."
+            }
+          ],
+          "solution": "$(20-x)(10+x) \\le \\left(\\frac{30}{2}\\right)^2=225$, dấu “=” khi $20-x=10+x \\Leftrightarrow x=5$, thoả $0 \\le x<20$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "hq-doanhthu-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng và đủ?",
+          "options": [
+            "Kết luận: doanh thu lớn nhất khi $x=5$.",
+            "Kết luận: bán giá $195$ nghìn đồng/chiếc thì doanh thu lớn nhất.",
+            "Kết luận: bán giá $150$ nghìn đồng/chiếc thì doanh thu lớn nhất, bằng $13\\,500$ nghìn đồng mỗi tháng."
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E11",
+              "feedback": "$x$ mới là số lần giảm giá; đề hỏi giá bán, phải tính ra giá rồi ghi đơn vị."
+            },
+            "1": {
+              "code": "E14",
+              "feedback": "$x$ là **số lần** giảm, mỗi lần $10$ nghìn đồng, không phải số nghìn đồng giảm."
+            }
+          },
+          "solution": "Giảm $5$ lần, mỗi lần $10$ nghìn đồng: giá $200-50=150$ nghìn đồng; $R=150\\cdot 90=13\\,500$ nghìn đồng."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "hq-doanhthu-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Một quán bán trà chanh giá $10$ nghìn đồng/cốc, mỗi ngày bán $300$ cốc; cứ tăng giá $1$ nghìn đồng thì bán ít đi $20$ cốc. Giá vốn $4$ nghìn đồng/cốc. Hỏi bán giá bao nhiêu để lợi nhuận lớn nhất?” Bước đầu tiên nên làm là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi mức giá cho lợi nhuận lớn nhất, chưa có biểu thức nào.",
+        "Giá tăng thì số cốc giảm: cả hai cùng phụ thuộc một đại lượng thay đổi.",
+        "Bắt đầu bằng phiếu tối ưu: biến – điều kiện – hàm mục tiêu."
+      ],
+      "options": [
+        "Lập phương trình “lợi nhuận $=0$” rồi giải",
+        "Áp dụng AM-GM ngay cho giá bán $10$ và số cốc $300$",
+        "Gọi $x$ (nghìn đồng) là số tiền tăng giá, viết giá bán, số cốc và lợi nhuận theo $x$",
+        "Thử tăng $1$, $2$, $3$ nghìn đồng rồi chọn mức lãi cao nhất"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Đề hỏi lợi nhuận **lớn nhất**, không cho lợi nhuận bằng một số; cần lập biểu thức lợi nhuận theo một biến rồi tìm GTLN."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "$10$ và $300$ là số cố định ban đầu; trước hết cần một biến thể hiện việc tăng giá."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Thử vài giá trị không chứng minh được mức khác không lãi hơn; cần biến và biểu thức lợi nhuận."
+        }
+      },
+      "solution": "Bài tối ưu kinh tế: đặt biến cho sự thay đổi (số tiền tăng giá $x$), viết giá $10+x$, số cốc $300-20x$, lợi nhuận $(6+x)(300-20x)$, rồi mới tìm GTLN."
+    },
+    {
+      "id": "hq-doanhthu-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một cơ sở bán nón lá giá $50$ nghìn đồng/chiếc, mỗi tháng bán được $400$ chiếc. Cứ tăng giá $2$ nghìn đồng thì mỗi tháng bán ít đi $10$ chiếc. Giá vốn $30$ nghìn đồng/chiếc. Gọi $x$ là số lần tăng giá. Lợi nhuận mỗi tháng (nghìn đồng) là:",
+      "hints": [
+        "Đề hỏi biểu thức lợi nhuận mỗi tháng theo số lần tăng giá $x$.",
+        "Lợi nhuận $=$ (giá bán $-$ giá vốn) $\\times$ số lượng bán được.",
+        "Sau $x$ lần tăng: giá $50+2x$, số chiếc $400-10x$."
+      ],
+      "options": [
+        "$(50+2x)(400-10x)$",
+        "$(20+2x)(400+10x)$",
+        "$(20+x)(400-10x)$",
+        "$(20+2x)(400-10x)$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Đó là doanh thu; lợi nhuận mỗi chiếc là giá bán trừ giá vốn."
+        },
+        "1": {
+          "code": "E07",
+          "feedback": "Tăng giá thì bán **ít đi**: số chiếc giảm $10$ sau mỗi lần tăng."
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Mỗi lần tăng $2$ nghìn đồng, nên sau $x$ lần giá tăng gấp đôi số lần."
+        }
+      },
+      "solution": "Giá bán $50+2x$, lãi mỗi chiếc $50+2x-30=20+2x$, số chiếc $400-10x$. $L=(20+2x)(400-10x)$."
+    },
+    {
+      "id": "hq-doanhthu-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Khi tăng giá $x$ lần, lợi nhuận mỗi tháng của một cửa hàng là $L=-2x^2+40x+600$ (nghìn đồng). Với $x$ bằng bao nhiêu thì $L$ lớn nhất?",
+      "hints": [
+        "Đề hỏi giá trị của $x$, không hỏi giá trị lớn nhất của $L$.",
+        "Đa thức bậc hai một biến → tách thành bình phương cộng hằng số.",
+        "Đặt $-2$ ra ngoài: $L=-2(x^2-20x)+600$."
+      ],
+      "answer": "10",
+      "mistakes": [
+        {
+          "answer": "20",
+          "code": "E02",
+          "feedback": "Tách bình phương: $x^2-20x=(x-h)^2-h^2$ với $h$ bằng **một nửa** hệ số của $x$.",
+          "review": "hq-amgm"
+        },
+        {
+          "answer": "-10",
+          "code": "E02",
+          "feedback": "Dấu “=” khi biểu thức trong bình phương bằng $0$; chuyển vế phải đổi dấu."
+        },
+        {
+          "answer": "800",
+          "code": "E04",
+          "feedback": "Đó là giá trị lớn nhất của $L$; đề hỏi giá trị của $x$."
+        }
+      ],
+      "solution": "$L=-2(x^2-20x)+600=-2[(x-10)^2-100]+600=-2(x-10)^2+800 \\le 800$, dấu “=” khi $x=10$. Vậy $L$ lớn nhất khi $x=10$."
+    },
+    {
+      "id": "hq-doanhthu-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một cửa hàng cà phê sắp khai trương nghiên cứu giá bán. Nếu bán $20$ nghìn đồng một cốc thì mỗi tháng bán được $2000$ cốc; từ mức đó cứ tăng giá $1$ nghìn đồng thì bán ít đi $100$ cốc. Chi phí nguyên liệu mỗi cốc là $18$ nghìn đồng. Hỏi bán mỗi cốc giá bao nhiêu để lợi nhuận lớn nhất?",
+      "source": "68 đề – Đề 13, Bài 5 (tách bước)",
+      "hints": [
+        "Đề hỏi giá bán mỗi cốc để lợi nhuận lớn nhất.",
+        "Giá tăng kéo theo số cốc giảm → một biến, lợi nhuận là tích hai thừa số.",
+        "Hai thừa số có tổng không đổi → dùng $ab \\le \\left(\\frac{a+b}{2}\\right)^2$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập lợi nhuận.",
+          "item": {
+            "id": "hq-doanhthu-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$ (nghìn đồng) là số tiền tăng giá, $0 \\le x \\le 20$. Lợi nhuận mỗi tháng (nghìn đồng) là:",
+            "options": [
+              "$100(2+x)(20-x)$",
+              "$100(20+x)(20-x)$",
+              "$100(2+x)(20+x)$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Con đang tính doanh thu; lợi nhuận mỗi cốc phải trừ $18$ nghìn đồng chi phí."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Tăng giá thì bán ít đi: số cốc là $2000-100x$."
+              }
+            },
+            "solution": "Lãi mỗi cốc $20+x-18=2+x$, số cốc $2000-100x=100(20-x)$. $L=100(2+x)(20-x)$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "hq-doanhthu-p4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Lợi nhuận lớn nhất khi $x$ bằng:",
+            "answer": "9",
+            "mistakes": [
+              {
+                "answer": "0",
+                "code": "E07",
+                "feedback": "Con đang tìm doanh thu lớn nhất; lợi nhuận dùng thừa số $2+x$."
+              },
+              {
+                "answer": "11",
+                "code": "E06",
+                "feedback": "Đó là giá trị chung của hai thừa số; giải $2+x=20-x$ để ra $x$."
+              }
+            ],
+            "solution": "$2+x$ và $20-x$ không âm, tổng $22$: $(2+x)(20-x) \\le 121$, dấu “=” khi $2+x=20-x \\Leftrightarrow x=9$ (thoả điều kiện)."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "hq-doanhthu-p4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá bán mỗi cốc để lợi nhuận lớn nhất là:",
+            "answer": "29",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "9",
+                "code": "E11",
+                "feedback": "Đó là số tiền tăng thêm; giá bán là giá cũ cộng số tiền tăng."
+              },
+              {
+                "answer": "12100",
+                "code": "E04",
+                "feedback": "Đó là lợi nhuận lớn nhất; đề hỏi giá bán mỗi cốc."
+              }
+            ],
+            "solution": "Giá bán $20+9=29$ nghìn đồng."
+          }
+        }
+      ],
+      "solution": "$L=100(2+x)(20-x) \\le 100\\cdot 11^2=12\\,100$, dấu “=” khi $x=9$ (thoả $0 \\le x \\le 20$). Kết luận: bán $29$ nghìn đồng một cốc thì lợi nhuận lớn nhất ($12\\,100$ nghìn đồng mỗi tháng)."
+    },
+    {
+      "id": "hq-doanhthu-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một công ty du lịch dự định tổ chức tour xuyên Việt. Nếu giá tour là $2$ triệu đồng thì có khoảng $200$ người tham gia; cứ mỗi lần giảm giá $100$ nghìn đồng thì có thêm $20$ người. Hỏi công ty phải giảm giá tour còn bao nhiêu để doanh thu lớn nhất?",
+      "source": "68 đề – Đề 8, Bài 5 (tách bước)",
+      "hints": [
+        "Đề hỏi giá tour sau khi giảm, để doanh thu lớn nhất.",
+        "Giảm giá kéo theo thêm người → một biến số lần giảm, doanh thu là tích.",
+        "Đổi $2$ triệu sang nghìn đồng, viết giá và số người theo $x$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập doanh thu.",
+          "item": {
+            "id": "hq-doanhthu-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$ là số lần giảm giá, $0 \\le x<20$. Doanh thu (nghìn đồng) là:",
+            "options": [
+              "$(2000-100x)(200-20x)$",
+              "$(2000-100x)\\cdot 200$",
+              "$(2000-100x)(200+20x)$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Giảm giá thì có **thêm** người tham gia."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Số người cũng thay đổi theo $x$, không giữ nguyên $200$."
+              }
+            },
+            "solution": "Giá $2$ triệu $=2000$ nghìn đồng; sau $x$ lần giảm: giá $2000-100x$, số người $200+20x$."
+          }
+        },
+        {
+          "prompt": "Tìm $x$.",
+          "item": {
+            "id": "hq-doanhthu-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Doanh thu lớn nhất khi $x$ bằng:",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "15",
+                "code": "E06",
+                "feedback": "Đó là giá trị chung của hai thừa số $20-x$ và $10+x$; giải $20-x=10+x$."
+              },
+              {
+                "answer": "-5",
+                "code": "E02",
+                "feedback": "Chuyển vế phải đổi dấu; lại kiểm tra $x \\ge 0$."
+              }
+            ],
+            "solution": "Doanh thu $=2000(20-x)(10+x)$; $20-x$ và $10+x$ dương, tổng $30$, nên tích lớn nhất khi $20-x=10+x \\Leftrightarrow x=5$."
+          }
+        },
+        {
+          "prompt": "Trả lời.",
+          "item": {
+            "id": "hq-doanhthu-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá tour sau khi giảm là:",
+            "answer": "1,5",
+            "unit": "triệu đồng",
+            "mistakes": [
+              {
+                "answer": "0,5",
+                "code": "E11",
+                "feedback": "Đó là số tiền đã giảm; đề hỏi giá tour còn lại."
+              },
+              {
+                "answer": "1,995",
+                "code": "E14",
+                "feedback": "$x$ là **số lần** giảm, mỗi lần $100$ nghìn đồng, không phải số nghìn đồng giảm."
+              },
+              {
+                "answer": "1500",
+                "code": "E14",
+                "feedback": "Ô trả lời tính bằng **triệu** đồng; đổi từ nghìn đồng sang triệu đồng."
+              },
+              {
+                "answer": "450",
+                "code": "E04",
+                "feedback": "Đó là doanh thu lớn nhất (triệu đồng); đề hỏi giá tour."
+              }
+            ],
+            "solution": "Giá $2000-5\\cdot100=1500$ nghìn đồng $=1,5$ triệu đồng."
+          }
+        }
+      ],
+      "solution": "Doanh thu $=2000(20-x)(10+x) \\le 2000\\cdot 15^2=450\\,000$ nghìn đồng, dấu “=” khi $x=5$. Kết luận: giảm giá tour còn $1,5$ triệu đồng thì doanh thu lớn nhất ($450$ triệu đồng)."
+    },
+    {
+      "id": "hq-doanhthu-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một xưởng in nhận in $6000$ tờ lịch. Xưởng có nhiều máy in giống nhau, mỗi máy in được $50$ tờ mỗi giờ; chi phí khởi động là $100$ nghìn đồng cho mỗi máy. Các máy chạy cùng lúc và một thợ trực trông tất cả các máy với tiền công $30$ nghìn đồng mỗi giờ. Hỏi nên dùng bao nhiêu máy để tổng chi phí thấp nhất?",
+      "hints": [
+        "Đề hỏi số máy để tổng chi phí thấp nhất.",
+        "Thêm máy thì tốn tiền khởi động nhưng in nhanh, bớt tiền công → dạng $an+\\frac bn$.",
+        "Số giờ in là $\\frac{6000}{50n}$; dùng AM-GM cho hai số hạng dương."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập chi phí.",
+          "item": {
+            "id": "hq-doanhthu-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $n$ là số máy ($n$ nguyên dương). Tổng chi phí (nghìn đồng) là:",
+            "options": [
+              "$100n+3600n$",
+              "$100n+\\frac{3600}{n}$",
+              "$100n+3600$",
+              "$100+\\frac{3600}{n}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Nhiều máy thì in xong **sớm** hơn: số giờ chạy là $\\frac{6000}{50n}$, giảm khi $n$ tăng."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Số giờ chạy phụ thuộc số máy, nên tiền công thợ trực cũng phụ thuộc $n$."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Mỗi máy tốn $100$ nghìn đồng khởi động, $n$ máy tốn gấp $n$ lần."
+              }
+            },
+            "solution": "Số giờ in $\\frac{6000}{50n}=\\frac{120}{n}$; tiền công $30\\cdot\\frac{120}{n}=\\frac{3600}{n}$; tiền khởi động $100n$."
+          }
+        },
+        {
+          "prompt": "Số máy.",
+          "item": {
+            "id": "hq-doanhthu-p6-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chi phí thấp nhất khi số máy là:",
+            "answer": "6",
+            "mistakes": [
+              {
+                "answer": "36",
+                "code": "E01",
+                "feedback": "Con mới tìm được $n^2$; lấy căn bậc hai để ra $n$."
+              },
+              {
+                "answer": "-6",
+                "code": "E14",
+                "feedback": "Số máy là số nguyên dương, giá trị âm phải loại."
+              }
+            ],
+            "solution": "Dấu “=” của AM-GM khi $100n=\\frac{3600}{n} \\Leftrightarrow n^2=36 \\Leftrightarrow n=6$ (vì $n>0$), là số nguyên dương."
+          }
+        },
+        {
+          "prompt": "Chi phí thấp nhất.",
+          "item": {
+            "id": "hq-doanhthu-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tổng chi phí thấp nhất là:",
+            "answer": "1200",
+            "unit": "nghìn đồng",
+            "mistakes": [
+              {
+                "answer": "600",
+                "code": "E03",
+                "feedback": "AM-GM là $a+b \\ge 2\\sqrt{ab}$: con quên hệ số $2$.",
+                "review": "hq-amgm"
+              },
+              {
+                "answer": "720000",
+                "code": "E03",
+                "feedback": "Vế phải là $2\\sqrt{ab}$: con quên lấy căn của tích.",
+                "review": "hq-amgm"
+              }
+            ],
+            "solution": "$100n+\\frac{3600}{n} \\ge 2\\sqrt{100\\cdot 3600}=1200$."
+          }
+        }
+      ],
+      "solution": "$C=100n+\\frac{3600}{n} \\ge 2\\sqrt{360\\,000}=1200$ (AM-GM, $n>0$), dấu “=” khi $n=6$. Kết luận: dùng $6$ máy, chi phí thấp nhất $1200$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một người bán gạo muốn đóng một thùng tôn đựng gạo hình hộp chữ nhật, đáy hình vuông, không nắp, thể tích $8$ m³. Tôn làm đáy giá $100$ nghìn đồng/m², tôn làm thành xung quanh giá $50$ nghìn đồng/m² (bỏ qua mép hàn). Gọi $x$ (m) là cạnh đáy, $x>0$. Tìm cạnh đáy để chi phí mua tôn nhỏ nhất.",
+      "source": "68 đề – Đề 33, Bài 5 (tách bước, cho hướng xét hiệu)",
+      "hints": [
+        "Đề hỏi cạnh đáy làm chi phí mua tôn nhỏ nhất.",
+        "Thể tích cố định → chiều cao theo $x$; chi phí $=$ đơn giá $\\times$ diện tích từng phần.",
+        "Dạng $ax^2+\\frac bx$: xét hiệu $C-1200$, quy đồng, phân tích tử."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập chi phí.",
+          "item": {
+            "id": "hq-doanhthu-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chiều cao thùng là $\\frac{8}{x^2}$ m. Chi phí mua tôn $C$ (nghìn đồng) là:",
+            "options": [
+              "$100x^2+\\frac{1600}{x}$",
+              "$100x^2+\\frac{400}{x}$",
+              "$200x^2+\\frac{1600}{x}$",
+              "$100x^2+\\frac{3200}{x}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Thành xung quanh gồm **bốn** mặt, mỗi mặt rộng $x$, cao $\\frac{8}{x^2}$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thùng không nắp: chỉ tính một mặt đáy."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Tôn làm thành xung quanh giá $50$ nghìn đồng/m², không phải giá tôn đáy."
+              }
+            },
+            "solution": "Đáy: $100x^2$. Xung quanh: $50\\cdot 4x\\cdot\\frac{8}{x^2}=\\frac{1600}{x}$. $C=100x^2+\\frac{1600}{x}$."
+          }
+        },
+        {
+          "prompt": "Xét hiệu.",
+          "item": {
+            "id": "hq-doanhthu-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với $x>0$, hiệu $C-1200$ bằng:",
+            "options": [
+              "$100(x-2)^2(x+4)$",
+              "$\\frac{100(x+2)^2(x-4)}{x}$",
+              "$\\frac{100(x-2)^2(x+4)}{x}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Quy đồng mẫu $x$ thì phải giữ mẫu $x$ đến cuối."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Khai triển lại để kiểm tra: $(x-2)^2(x+4)=x^3-12x+16$, còn $(x+2)^2(x-4)$ thì không."
+              }
+            },
+            "solution": "$C-1200=\\frac{100x^3-1200x+1600}{x}=\\frac{100(x^3-12x+16)}{x}=\\frac{100(x-2)^2(x+4)}{x}$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "hq-doanhthu-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chi phí nhỏ nhất khi cạnh đáy bằng:",
+            "answer": "2",
+            "unit": "m",
+            "mistakes": [
+              {
+                "answer": "-4",
+                "code": "E14",
+                "feedback": "Cạnh đáy phải dương; giá trị âm phải loại."
+              },
+              {
+                "answer": "1200",
+                "code": "E04",
+                "feedback": "Đó là chi phí nhỏ nhất (nghìn đồng); đề hỏi cạnh đáy."
+              }
+            ],
+            "solution": "Với $x>0$: $(x-2)^2 \\ge 0$, $x+4>0$ nên $C \\ge 1200$; dấu “=” khi $x=2$."
+          }
+        }
+      ],
+      "solution": "$C=100x^2+\\frac{1600}{x}$; $C-1200=\\frac{100(x-2)^2(x+4)}{x} \\ge 0$ với $x>0$, dấu “=” khi $x=2$. Kết luận: cạnh đáy $2$ m (chiều cao $2$ m), chi phí nhỏ nhất $1200$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một cửa hàng nhập $x$ hộp táo, $y$ hộp cam, $z$ hộp quýt mỗi ngày ($x$, $y$, $z$ là số tự nhiên). Giá nhập mỗi hộp táo $100$ nghìn đồng, cam $200$ nghìn đồng, quýt $100$ nghìn đồng; tổng tiền nhập không quá $1000$ nghìn đồng; phải nhập đủ cả ba loại; số hộp táo và cam cộng lại ít nhất là $3$. Lãi mỗi hộp: táo $200$, cam $300$, quýt $100$ nghìn đồng. Hàng nhập về đều bán hết. Tìm phương án nhập có lãi cao nhất.",
+      "source": "68 đề – Đề 28, Bài 5 (tách bước)",
+      "hints": [
+        "Đề hỏi số hộp mỗi loại để lãi cao nhất.",
+        "Có giới hạn tiền nhập và số hộp tối thiểu → đánh giá lãi theo tiền nhập.",
+        "Tách $200x+300y+100z=200(x+2y+z)-100y-100z$."
+      ],
+      "steps": [
+        {
+          "prompt": "Điều kiện tiền nhập.",
+          "item": {
+            "id": "hq-doanhthu-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Điều kiện “tổng tiền nhập không quá $1000$ nghìn đồng” viết gọn là:",
+            "options": [
+              "$x+y+z \\le 10$",
+              "$x+2y+z \\le 10$",
+              "$x+2y+z \\ge 10$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Mỗi hộp cam giá $200$ nghìn đồng, gấp đôi táo và quýt."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "“Không quá” nghĩa là nhỏ hơn hoặc bằng."
+              }
+            },
+            "solution": "$100x+200y+100z \\le 1000 \\Leftrightarrow x+2y+z \\le 10$."
+          }
+        },
+        {
+          "prompt": "Đánh giá lãi.",
+          "item": {
+            "id": "hq-doanhthu-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Lãi $L=200x+300y+100z$ (nghìn đồng). Đánh giá nào đúng và có dấu bằng xảy ra?",
+            "options": [
+              "$L=200(x+2y+z)-100y-100z \\le 2000-100-100=1800$ (vì $y \\ge 1$, $z \\ge 1$)",
+              "$L=200(x+2y+z)-100y-100z \\le 2000$",
+              "$L \\le 300(x+2y+z) \\le 3000$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "Muốn $L=2000$ cần $y=z=0$, trái điều kiện nhập đủ cả ba loại."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Bất đẳng thức đúng nhưng quá rộng: không có phương án nào đạt lãi $3000$."
+              }
+            },
+            "solution": "$L=200(x+2y+z)-100(y+z) \\le 200\\cdot 10-100\\cdot 2=1800$, dấu “=” khi $x+2y+z=10$, $y=z=1$."
+          }
+        },
+        {
+          "prompt": "Phương án.",
+          "item": {
+            "id": "hq-doanhthu-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương án nhập cho lãi cao nhất là:",
+            "options": [
+              "$1$ hộp táo, $4$ hộp cam, $1$ hộp quýt",
+              "$10$ hộp táo, không nhập cam và quýt",
+              "$7$ hộp táo, $1$ hộp cam, $1$ hộp quýt"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Cam lãi mỗi hộp nhiều nhất nhưng tốn gấp đôi tiền nhập; so lãi trên cùng $100$ nghìn đồng vốn."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Đề yêu cầu nhập đủ cả ba loại trái cây."
+              }
+            },
+            "solution": "$y=z=1$, $x+2+1=10 \\Rightarrow x=7$; kiểm tra: tiền nhập $700+200+100=1000$, táo $+$ cam $=8 \\ge 3$, lãi $1400+300+100=1800$."
+          }
+        }
+      ],
+      "solution": "$x+2y+z \\le 10$; $L=200(x+2y+z)-100y-100z \\le 2000-200=1800$, dấu “=” khi $y=z=1$, $x=7$ (thoả mọi điều kiện). Kết luận: nhập $7$ hộp táo, $1$ hộp cam, $1$ hộp quýt, lãi cao nhất $1800$ nghìn đồng."
+    }
+  ],
+  "exit": [
+    {
+      "id": "hq-doanhthu-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một cửa hàng nhập mỗi chiếc bút giá $12$ nghìn đồng và bán giá $20$ nghìn đồng. Trong tháng cửa hàng bán được $150$ chiếc. Lợi nhuận của cửa hàng trong tháng là bao nhiêu?",
+      "answer": "1200",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "3000",
+          "code": "E04",
+          "feedback": "Đó là doanh thu; lợi nhuận phải trừ giá vốn."
+        },
+        {
+          "answer": "8",
+          "code": "E11",
+          "feedback": "Con mới tính lãi một chiếc; nhân với số chiếc bán được."
+        }
+      ],
+      "solution": "Lợi nhuận $=(20-12)\\cdot 150=1200$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một nhà xe chở khách tham quan với giá vé $50$ nghìn đồng, mỗi ngày có $100$ khách. Cứ giảm giá vé $5$ nghìn đồng thì có thêm $10$ khách. Nếu giảm giá $3$ lần thì doanh thu mỗi ngày là:",
+      "options": [
+        "$6500$ nghìn đồng",
+        "$4550$ nghìn đồng",
+        "$3500$ nghìn đồng",
+        "$4841$ nghìn đồng"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Con quên giảm giá vé: sau $3$ lần, mỗi vé rẻ đi $3\\cdot 5$ nghìn đồng."
+        },
+        "2": {
+          "code": "E07",
+          "feedback": "Con quên số khách tăng thêm $10$ sau mỗi lần giảm."
+        },
+        "3": {
+          "code": "E07",
+          "feedback": "Mỗi lần giảm $5$ nghìn đồng và thêm $10$ khách; con lấy $3$ làm số tiền giảm và số khách thêm."
+        }
+      },
+      "solution": "Giá vé $50-3\\cdot 5=35$ nghìn đồng, số khách $100+3\\cdot 10=130$; doanh thu $35\\cdot 130=4550$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một cơ sở bán khăn mặt giá $30$ nghìn đồng/chiếc, mỗi tháng bán trung bình $3000$ chiếc. Nếu từ mức giá đó cứ tăng thêm $1$ nghìn đồng thì mỗi tháng bán ít hơn $100$ chiếc. Vốn sản xuất mỗi chiếc là $18$ nghìn đồng. Hỏi phải bán với giá mới là bao nhiêu để lợi nhuận lớn nhất?",
+      "source": "68 đề – Đề 7, Bài 5",
+      "answer": "39",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E11",
+          "feedback": "Đó là số tiền tăng thêm; giá mới là giá cũ cộng số tiền tăng."
+        },
+        {
+          "answer": "30",
+          "code": "E07",
+          "feedback": "Con đang tìm doanh thu lớn nhất; lợi nhuận mỗi chiếc phải trừ vốn $18$ nghìn đồng."
+        },
+        {
+          "answer": "44100",
+          "code": "E04",
+          "feedback": "Đó là lợi nhuận lớn nhất; đề hỏi giá bán."
+        }
+      ],
+      "solution": "Gọi $x$ (nghìn đồng) là số tiền tăng, $0 \\le x \\le 30$. $L=(12+x)(3000-100x)=100(12+x)(30-x) \\le 100\\cdot 21^2=44\\,100$, dấu “=” khi $12+x=30-x \\Leftrightarrow x=9$. Giá mới $30+9=39$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-x4",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một quán bán trà sữa có giá vốn mỗi ly $15$ nghìn đồng. Bán giá $20$ nghìn đồng/ly thì mỗi ngày bán $450$ ly; cứ tăng giá $1$ nghìn đồng thì mỗi ngày bán ít đi $30$ ly. Để tiền lãi mỗi ngày cao nhất, mỗi ly phải tăng giá **thêm** bao nhiêu nghìn đồng?",
+      "source": "68 đề – Đề 17, Bài 5 (chuyển thể: hỏi số tiền tăng thêm)",
+      "answer": "5",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "25",
+          "code": "E10",
+          "feedback": "Đó là giá bán mới; đề hỏi số tiền tăng thêm."
+        },
+        {
+          "answer": "10",
+          "code": "E02",
+          "feedback": "Tách bình phương: $x^2-10x=(x-h)^2-h^2$ với $h$ là **một nửa** hệ số của $x$.",
+          "review": "hq-amgm"
+        }
+      ],
+      "solution": "Gọi $x$ là số nghìn đồng tăng, $0 \\le x \\le 15$. $L=(5+x)(450-30x)=30(5+x)(15-x)$; tổng $(5+x)+(15-x)=20$ nên $L \\le 30\\cdot 10^2=3000$, dấu “=” khi $5+x=15-x \\Leftrightarrow x=5$. Tăng thêm $5$ nghìn đồng (giá mới $25$ nghìn đồng)."
+    },
+    {
+      "id": "hq-doanhthu-x5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một công ty nhận đơn hàng sản xuất $8000$ quả bóng tennis. Mỗi máy sản xuất được $30$ quả bóng mỗi giờ; chi phí thiết lập là $200$ nghìn đồng cho mỗi máy. Các máy chạy tự động cùng lúc dưới sự giám sát của một người, tiền công giám sát $192$ nghìn đồng mỗi giờ. Hỏi nên dùng bao nhiêu máy để chi phí sản xuất thấp nhất?",
+      "source": "68 đề – Đề 3, Bài 5 (tách bước; cùng bài ở Đề 54)",
+      "steps": [
+        {
+          "prompt": "Lập chi phí.",
+          "item": {
+            "id": "hq-doanhthu-x5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $n$ là số máy ($n$ nguyên dương). Chi phí (nghìn đồng) là:",
+            "options": [
+              "$200n+\\frac{51200}{n}$",
+              "$200n+51200$",
+              "$200+\\frac{51200}{n}$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Thời gian chạy là $\\frac{8000}{30n}$ giờ, phụ thuộc số máy, nên tiền giám sát cũng vậy."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Mỗi máy tốn $200$ nghìn đồng thiết lập, $n$ máy tốn gấp $n$ lần."
+              }
+            },
+            "solution": "Thời gian $\\frac{8000}{30n}$ giờ; tiền giám sát $192\\cdot\\frac{8000}{30n}=\\frac{51200}{n}$; $C=200n+\\frac{51200}{n}$."
+          }
+        },
+        {
+          "prompt": "Số máy.",
+          "item": {
+            "id": "hq-doanhthu-x5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số máy nên dùng là:",
+            "answer": "16",
+            "mistakes": [
+              {
+                "answer": "256",
+                "code": "E01",
+                "feedback": "Con mới tìm được $n^2$; lấy căn bậc hai để ra $n$."
+              },
+              {
+                "answer": "6400",
+                "code": "E04",
+                "feedback": "Đó là chi phí thấp nhất (nghìn đồng); đề hỏi số máy."
+              }
+            ],
+            "solution": "$C \\ge 2\\sqrt{200\\cdot 51200}=6400$, dấu “=” khi $200n=\\frac{51200}{n} \\Leftrightarrow n^2=256 \\Leftrightarrow n=16$, là số nguyên dương."
+          }
+        }
+      ],
+      "solution": "$C=200n+\\frac{51200}{n} \\ge 2\\sqrt{200\\cdot 51200}=6400$ (AM-GM), dấu “=” khi $n=16$. Kết luận: dùng $16$ máy, chi phí thấp nhất $6400$ nghìn đồng."
+    },
+    {
+      "id": "hq-doanhthu-x6",
+      "type": "numeric",
+      "level": "L3",
+      "prompt": "Một quán nước ép bán giá $20$ nghìn đồng/cốc, mỗi ngày bán $100$ cốc. Cứ tăng giá $1$ nghìn đồng thì mỗi ngày bán ít đi $5$ cốc. Giá vốn $10$ nghìn đồng/cốc. Quán muốn lợi nhuận mỗi ngày đúng $1080$ nghìn đồng và bán được nhiều cốc nhất. Giá bán mỗi cốc là bao nhiêu?",
+      "answer": "22",
+      "unit": "nghìn đồng",
+      "mistakes": [
+        {
+          "answer": "28",
+          "code": "E14",
+          "feedback": "Phương trình có hai nghiệm; mức giá này bán được ít cốc hơn, trái yêu cầu bán nhiều cốc nhất."
+        },
+        {
+          "answer": "2",
+          "code": "E11",
+          "feedback": "Đó là số tiền tăng thêm; giá bán là giá cũ cộng số tiền tăng."
+        }
+      ],
+      "solution": "Gọi $x$ (nghìn đồng) là số tiền tăng. $(10+x)(100-5x)=1080 \\Leftrightarrow x^2-10x+16=0 \\Leftrightarrow x=2$ hoặc $x=8$. Bán nhiều cốc nhất khi $x$ nhỏ hơn: $x=2$, giá $22$ nghìn đồng ($90$ cốc)."
+    },
+    {
+      "id": "hq-doanhthu-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Ông Bình xây một bể nước dạng hộp chữ nhật không nắp, thể tích $18$ m³, đáy là hình chữ nhật có chiều dài gấp $3$ lần chiều rộng. Giá thuê công nhân xây là $500$ nghìn đồng cho mỗi mét vuông (đáy và thành bể). Gọi $x$ (m) là chiều rộng đáy, $x>0$. Tính chi phí thấp nhất để xây bể.",
+      "source": "68 đề – Đề 11, Bài 5 (tách bước, cho hướng xét hiệu)",
+      "steps": [
+        {
+          "prompt": "Diện tích cần xây.",
+          "item": {
+            "id": "hq-doanhthu-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chiều cao bể là $\\frac{6}{x^2}$ m. Diện tích cần xây $S$ (m²) là:",
+            "options": [
+              "$6x^2+\\frac{48}{x}$",
+              "$3x^2+\\frac{48}{x}$",
+              "$3x^2+\\frac{24}{x}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Bể không nắp: chỉ tính một mặt đáy."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thành bể có bốn mặt: hai mặt dài $3x$ và hai mặt dài $x$."
+              }
+            },
+            "solution": "Đáy $3x^2$; thành $2(x+3x)\\cdot\\frac{6}{x^2}=\\frac{48}{x}$. $S=3x^2+\\frac{48}{x}$."
+          }
+        },
+        {
+          "prompt": "Xét hiệu.",
+          "item": {
+            "id": "hq-doanhthu-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với $x>0$, hiệu $S-36$ bằng:",
+            "options": [
+              "$3(x-2)^2(x+4)$",
+              "$\\frac{3(x+2)^2(x-4)}{x}$",
+              "$\\frac{3(x-2)^2(x+4)}{x}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Quy đồng mẫu $x$ thì phải giữ mẫu $x$ đến cuối."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Khai triển lại để kiểm tra: $(x-2)^2(x+4)=x^3-12x+16$, còn $(x+2)^2(x-4)$ thì không."
+              }
+            },
+            "solution": "$S-36=\\frac{3x^3-36x+48}{x}=\\frac{3(x^3-12x+16)}{x}=\\frac{3(x-2)^2(x+4)}{x} \\ge 0$, dấu “=” khi $x=2$."
+          }
+        },
+        {
+          "prompt": "Chi phí.",
+          "item": {
+            "id": "hq-doanhthu-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chi phí thấp nhất để xây bể là:",
+            "answer": "18",
+            "unit": "triệu đồng",
+            "mistakes": [
+              {
+                "answer": "36",
+                "code": "E04",
+                "feedback": "Đó là diện tích nhỏ nhất (m²); nhân với đơn giá để ra chi phí."
+              },
+              {
+                "answer": "18000",
+                "code": "E14",
+                "feedback": "Ô trả lời tính bằng **triệu** đồng; đổi từ nghìn đồng sang triệu đồng."
+              }
+            ],
+            "solution": "$S$ nhỏ nhất bằng $36$ m² khi $x=2$; chi phí $36\\cdot 500=18\\,000$ nghìn đồng $=18$ triệu đồng."
+          }
+        }
+      ],
+      "solution": "$S=3x^2+\\frac{48}{x}$, $S-36=\\frac{3(x-2)^2(x+4)}{x} \\ge 0$ nên $S \\ge 36$, dấu “=” khi $x=2$ (bể $2 \\times 6 \\times 1,5$ m). Kết luận: chi phí thấp nhất $36\\cdot 500=18\\,000$ nghìn đồng $=18$ triệu đồng."
+    },
+    {
+      "id": "hq-doanhthu-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một người nông dân có $15$ triệu đồng để làm hàng rào hình chữ E dọc theo một con sông (như hình), rào được một khu đất gồm hai phần hình chữ nhật. Mặt hàng rào song song với bờ sông (dài $y$ m) có chi phí $60$ nghìn đồng một mét; ba mặt hàng rào vuông góc với bờ sông (mỗi mặt dài $x$ m) có chi phí $50$ nghìn đồng một mét; bờ sông không cần rào. Tìm diện tích lớn nhất của khu đất rào được.",
+      "source": "68 đề – Đề 43, Bài 5 (tách bước)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 260 140\" role=\"img\" aria-label=\"Hàng rào chữ E dọc bờ sông\"><rect x=\"30\" y=\"28\" width=\"200\" height=\"70\" fill=\"var(--accent)\" fill-opacity=\"0.08\" stroke=\"none\"/><polyline points=\"30,98 30,28 230,28 230,98\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><line x1=\"130\" y1=\"28\" x2=\"130\" y2=\"98\" stroke=\"var(--accent)\" stroke-width=\"2.5\"/><line x1=\"10\" y1=\"98\" x2=\"250\" y2=\"98\" stroke=\"currentColor\" stroke-width=\"1.2\"/><path d=\"M 10 116 q 15 -6 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"130\" y=\"132\" font-size=\"11\" text-anchor=\"middle\" fill=\"var(--muted)\">sông</text><text x=\"130\" y=\"20\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">y</text><text x=\"22\" y=\"67\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">x</text><text x=\"124\" y=\"67\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">x</text><text x=\"238\" y=\"67\" font-size=\"12\" fill=\"currentColor\">x</text></svg>",
+        "alt": "Hàng rào hình chữ E dọc bờ sông: một mặt dài y song song với bờ sông, ba mặt dài x vuông góc với bờ sông, chia khu đất thành hai hình chữ nhật; phía bờ sông không rào."
+      },
+      "steps": [
+        {
+          "prompt": "Điều kiện tiền.",
+          "item": {
+            "id": "hq-doanhthu-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Dùng hết số tiền, ta có (đơn vị nghìn đồng):",
+            "options": [
+              "$60y+150x=15\\,000$",
+              "$60y+50x=15\\,000$",
+              "$120y+150x=15\\,000$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "Hình có **ba** mặt rào vuông góc với bờ sông, mỗi mặt dài $x$."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "Phía bờ sông không rào: chỉ có một mặt song song với bờ sông."
+              }
+            },
+            "solution": "Mặt song song: $60y$; ba mặt vuông góc: $3\\cdot 50x=150x$. Tổng $60y+150x=15\\,000$."
+          }
+        },
+        {
+          "prompt": "Diện tích lớn nhất.",
+          "item": {
+            "id": "hq-doanhthu-x8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Diện tích lớn nhất của khu đất là:",
+            "answer": "6250",
+            "unit": "m²",
+            "mistakes": [
+              {
+                "answer": "3125",
+                "code": "E04",
+                "feedback": "Đó là diện tích một phần; đề hỏi cả khu đất gồm hai phần."
+              },
+              {
+                "answer": "18750",
+                "code": "E08",
+                "feedback": "Có **ba** mặt rào vuông góc với bờ sông, nên tiền rào chúng là $3\\cdot 50x$."
+              },
+              {
+                "answer": "12500",
+                "code": "E03",
+                "feedback": "Từ $(a-b)^2 \\ge 0$ ta có $(a+b)^2 \\ge 4ab$: con dùng nhầm hệ số $2$ thay cho $4$.",
+                "review": "hq-amgm"
+              }
+            ],
+            "solution": "AM-GM cho $60y$ và $150x$: $60y\\cdot 150x \\le \\left(\\frac{15\\,000}{2}\\right)^2$, nên $xy \\le \\frac{7500^2}{9000}=6250$. Dấu “=” khi $60y=150x=7500$: $x=50$, $y=125$."
+          }
+        }
+      ],
+      "solution": "$60y+150x=15\\,000$; AM-GM: $9000xy=60y\\cdot 150x \\le 7500^2$ nên $S=xy \\le 6250$, dấu “=” khi $x=50$, $y=125$. Kết luận: diện tích lớn nhất $6250$ m²."
+    }
+  ]
+}

@@ -44,7 +44,7 @@
 | Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Merged 05/11 (PR #49) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
 | Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Merged 07/11 (PR #50) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
 | Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | 🟡 08/11 — PR mở, không SQL; giải độc lập 48/48; chờ gia sư soát + phụ huynh duyệt (hạn 07/02) |
-| Nội dung đợt 10 | `p1-content-10` | ⬜ hq-doanhthu, hq-hinhhoc theo `docs/CURRICULUM.md` §6 (hạn 21/02) |
+| Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | 🟡 08/11 — PR mở (nằm trên đợt 9), không SQL; giải độc lập 32/32; chờ gia sư soát + phụ huynh duyệt (hạn 21/02). **Xong soạn 43/43 KU lõi** |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -96,6 +96,28 @@ Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpo
 ### Phụ huynh cần làm
 1. Merge #50 (đợt 8) trước — PR này nằm trên nó.
 2. Trên PR này: bấm **"Áp dụng SQL"** (file 0015, sao lưu trước như mọi lần) → merge.
+
+---
+
+## 08/11/2026 — Nội dung đợt 10: tối ưu kinh tế & hình học (nhánh `p1-content-10`, không SQL) — xong 43 KU lõi
+
+Phụ huynh nói "làm" (08/11). Với đợt này, **toàn bộ 43 KU lõi đã có nội dung** (còn 9 KU P2, chỉ làm khi dư thời gian).
+
+### Đã làm
+- 2 KU nháp trong module `toi-uu` (sau hq-amgm), mỗi bài 8 câu luyện + 8 câu kiểm tra: **hq-doanhthu** (doanh thu, lợi nhuận, chi phí — Bài 5) và **hq-hinhhoc** (diện tích, thể tích, hộp cắt góc, đường đi / dây điện ngắn nhất — Bài 5; 9 hình).
+- Chia nguồn Bài 5 để không trùng: hq-doanhthu dùng Đề 3, 7, 8, 11, 13, 17, 28, 33, 43; hq-hinhhoc dùng Đề 22, 23, 31, 34, 36, 39, 40, 41, 50, 52, 55.
+
+### Kiểm tra chất lượng
+- Agent soạn kiểm bằng sympy / vét cạn (hq-doanhthu 69, hq-hinhhoc 78 khẳng định).
+- Giải độc lập: **32/32** khớp; không câu nào có vấn đề (ghi chú nhỏ: hq-doanhthu p8 có điều kiện thừa của đề gốc Đề 28; x8 dùng giả thiết "dùng hết tiền" ở bước 1).
+
+### Gia sư soát kỹ (tab Kho bài)
+- **hq-doanhthu** — Nguồn (Bài 5): p4 Đề 13, p5 Đề 8, p7 Đề 33, p8 Đề 28, x3 Đề 7, x4 Đề 17 (đổi "tăng thêm"), x5 Đề 3, x7 Đề 11, x8 Đề 43 (hình); còn lại tự soạn. 69 kiểm tra sympy + vét cạn. Gia sư: p7, x7 dạng $ax^2+\frac bx$ dẫn bằng xét hiệu (đề gốc dùng Cô-si ba số — có dạy thêm?); quy ước mã lỗi (nhầm giá trị max ↔ biến E04, dừng ở số tiền tăng E11, đơn vị nghìn/triệu E14, doanh thu thay lợi nhuận E07); x6 tự soạn (không có link ôn d-ptbh); p5 bẫy đơn vị triệu đồng; hình x8 tỉ lệ gần nghiệm — có lộ hướng giải?
+- **hq-hinhhoc** — Nguồn (Bài 5): mẫu Đề 36, khuyết Đề 39; p2 Đề 22, p4 Đề 55, p6 Đề 34, p7 Đề 41, p8 Đề 50, x3 Đề 52, x6 Đề 31, x7 Đề 40, x8 Đề 23; còn lại tự soạn. 78 khẳng định sympy; 9 hình. Gia sư: AM-GM ba số dùng ở p1, p8, x7 nhưng hq-amgm chỉ dạy hai số — có dạy không? (nếu không đổi sang xét hiệu); p7 (Đề 41), x6 (Đề 31) nặng, đề cho sẵn bất đẳng thức cần dùng; mã lỗi nhầm đại lượng E04, p6 E11, x6 làm tròn lên E15; x8 dùng tan 60° (không có link ôn i-giaitgv).
+
+### Phụ huynh cần làm
+- Merge sau #52 và #53 (PR này nằm trên #53). Gia sư soát 2 bài trước **21/02/2027**; phụ huynh "Duyệt cả bài".
+- Quyết định: có dạy AM-GM ba số / Cô-si ba số cho con không (hq-hinhhoc p1, p8, x7; hq-doanhthu p7, x7 đang dẫn bằng xét hiệu).
 
 ---
 
