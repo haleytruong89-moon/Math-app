@@ -32,6 +32,7 @@
 | Giao diện gia sư bản 2 (nền trắng, sao vàng, Việc tiếp theo) | `p1-tutor-v2` | ✅ Merged 21/10 (PR #31) — không SQL |
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) — không SQL; "Hỏi thêm" bật sau khi phụ huynh chấm bộ test đạt |
+| S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | 🟡 07/11 — PR mở; **cần SQL 0015** (nút "Áp dụng SQL"); phiếu chấm Đề 57–59 làm sau (`p1-thithu-1`, trước 01/2027) |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -55,6 +56,30 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 07/11/2026 — S9 Thi thử: code (nhánh `p1-slice-9`, **SQL 0015**)
+
+Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpowers/specs/2026-11-06-thi-thu-design.md`, §8 = như đã làm).
+
+### Đã làm
+- SQL **0015**: bảng `mock_exams` (lịch, giờ bắt đầu/nộp, người chấm, tổng điểm, nhận xét) và `mock_scores` (điểm từng ý, mã lỗi, ghi chú). RLS: phụ huynh, gia sư đang dạy, con (con chỉ thấy điểm khi đã chấm); ghi chỉ qua máy chủ.
+- Gia sư: tab **Thi thử** — 12 đề, hẹn lịch (app gợi ý đề và ngày: mỗi tháng 1 đề tới 31/03/2027, rồi mỗi tuần, vào thứ Bảy), huỷ lịch trước khi con làm; trang chấm: phiếu chấm (đáp số/ý chính, bài học) + điểm từng ý (bước 0,25), mã lỗi, ghi chú, nhận xét; sau khi chấm: tổng điểm, điểm từng bài, **bài học bị mất điểm** với nút ★ và "Ôn lại ngày mai".
+- Phụ huynh: menu **Thi thử** (hẹn, huỷ, xem kết quả và phiếu chấm, ★/ôn lại); Tổng quan → "Cần chú ý" khi con nộp bài quá 3 ngày chưa được chấm.
+- Con: thẻ trên trang Hôm nay từ 3 ngày trước ngày thi; trang đề: hướng dẫn → "Bắt đầu — 120 phút" → đồng hồ → "Nộp bài"; sau khi chấm: điểm từng ý + bài nên ôn (link), **không có đáp số**.
+- Phiếu chấm nằm ở `content/thi-thu.json` (chưa có đề nào; không chép đề vào app).
+
+### Kiểm tra
+- Unit test (logic + quy tắc phiếu chấm), RLS test 0015, 3 luồng e2e mới (gia sư chấm, con làm bài, phụ huynh) trên phiếu chấm mẫu; lint, `npm test`, build, `./e2e/run.sh`.
+
+### Chưa làm
+- Dòng thi thử trong báo cáo tuần (v1.1).
+- Phiếu chấm Đề 57–59 (nhánh `p1-thithu-1`, trước 01/2027).
+
+### Phụ huynh cần làm
+1. Merge #50 (đợt 8) trước — PR này nằm trên nó.
+2. Trên PR này: bấm **"Áp dụng SQL"** (file 0015, sao lưu trước như mọi lần) → merge.
 
 ---
 
