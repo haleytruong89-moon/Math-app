@@ -33,6 +33,7 @@
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) — không SQL; "Hỏi thêm" bật sau khi phụ huynh chấm bộ test đạt |
 | S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | 🟡 07/11 — PR mở; **cần SQL 0015** (nút "Áp dụng SQL"); phiếu chấm Đề 57–59 làm sau (`p1-thithu-1`, trước 01/2027) |
+| Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | 🟡 07/11 — PR mở (nằm trên S9), không SQL; giải độc lập khớp; chờ gia sư soát trước 01/2027 |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -57,6 +58,20 @@
 | Q11 | Gia sư mới có nên xem buổi dạy của gia sư cũ (để nối tiếp)? | Không — tách biệt theo D3; phụ huynh xem được hết |
 | Q12 | Ngày thi chính thức 2027 | Tạm đầu tháng 6/2027; mốc học xong 31/03 không phụ thuộc |
 | Q14 | KU P2 "chờ mọi KU P0/P1 cùng track đạt M3": tính cả KU lõi chưa có nội dung ("Sắp có")? | Có — tính cả (an toàn: P2 không chen trước bài lõi chưa soạn); phụ huynh mở tay được |
+
+---
+
+## 07/11/2026 — Phiếu chấm thi thử Đề 57–59 (nhánh `p1-thithu-1`, không SQL)
+
+- `content/thi-thu.json`: 3 phiếu chấm **nháp** (Đề 57 tr. 131–132, Đề 58 tr. 133–134, Đề 59 tr. 135–136). Mỗi ý: điểm tối đa (sách chỉ in điểm từng Bài → chia theo kiểu đáp án Hà Nội), đáp số / ý chính, bài học. Không chép đề.
+- Kiểm tra: người soạn kiểm bằng sympy/toạ độ (Đề 57: 44, Đề 58: 31, Đề 59: 17 khẳng định); một người khác giải lại độc lập từ ảnh trang đề — **khớp mọi ý**, trừ Đề 57 ý 1.1: đề in nhóm đầu $(60;64]$ nhưng số liệu có hai giá trị 60 → phiếu theo đúng đề (tính 60 vào nhóm đầu) và chấp nhận cách chia $[60;64)$.
+- Trang chấm hiện dòng "Phiếu chấm bản nháp" và lưu ý về đề.
+
+### Gia sư soát (trang Thi thử → Đề 57/58/59)
+- Cách chia điểm từng ý (ví dụ Đề 58, 59: ý 4.2a 1,25 gồm 0,25 hình vẽ).
+- Đề 58 4.1 (bình nón + khối cầu chìm một nửa: hiểu miệng bình đi qua tâm cầu, đáp số $6\pi$ dm³); Đề 58 Bài 5 (mặt cắt chữ U, $2x+y=80$).
+- Đề 59: 3.1 là bất phương trình (lộ trình không có KU riêng → gắn g-phantram); 4.1 "4p" = $4\pi$; Bài 5 "3 inch" là bán kính.
+- Đề 57: 4.1a "thể tích phần của bồn" = cả bồn; 4.1b không sơn đáy.
 
 ---
 

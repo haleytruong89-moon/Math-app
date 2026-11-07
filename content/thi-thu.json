@@ -1,3 +1,381 @@
 {
-  "papers": []
+  "papers": [
+    {
+      "paper": 57,
+      "status": "draft",
+      "pages": "tr. 131–132",
+      "parts": [
+        {
+          "part": "1.1",
+          "max": 1,
+          "answer": "Theo đề, nhóm $(60;64],(64;68],(68;72],(72;76],(76;80]$ (2 giá trị 60 tính vào nhóm đầu): tần số $7;7;8;6;2$, tương đối $\\approx23,3\\%;23,3\\%;26,7\\%;20\\%;6,7\\%$. Ý kiến SAI: trên 72% chỉ $6+2=8<15$ ngày. Chấp nhận nhóm $[60;64)…$ ($6;6;6;9;3$) nếu lập luận đúng.",
+          "units": [
+            "a-tanso"
+          ]
+        },
+        {
+          "part": "1.2",
+          "max": 0.5,
+          "answer": "Không gian mẫu $4\\cdot5=20$ kết quả đồng khả năng; thuận lợi cho C: $(1;4),(2;5),(4;1)$ → $P(C)=\\frac{3}{20}$. Hay sai: quên cặp $(4;1)$ hoặc tính 16 kết quả.",
+          "units": [
+            "b-haib",
+            "b-xsuat"
+          ]
+        },
+        {
+          "part": "2.1",
+          "max": 1,
+          "answer": "$G=\\frac{2\\sqrt x-1}{\\sqrt x+1}$ (ĐK $x\\ge0,x\\ne1$). Ý chính: ngoặc 1 $=\\frac{2\\sqrt x-1}{(\\sqrt x-1)(\\sqrt x+2)}$; ngoặc 2 $=1+\\frac{3-x}{(\\sqrt x-1)(\\sqrt x+2)}=\\frac{\\sqrt x+1}{(\\sqrt x-1)(\\sqrt x+2)}$. Hay sai: dấu khi đổi $1-\\sqrt x$ thành $\\sqrt x-1$.",
+          "units": [
+            "c-rutgon"
+          ]
+        },
+        {
+          "part": "2.2",
+          "max": 0.25,
+          "answer": "$x=64$ (TMĐK), $\\sqrt x=8$: $G=\\frac{15}{9}=\\frac53$.",
+          "units": [
+            "c-cauphu"
+          ]
+        },
+        {
+          "part": "2.3",
+          "max": 0.25,
+          "answer": "$G=2-\\frac{3}{\\sqrt x+1}$; $\\sqrt x+1\\ge1\\Rightarrow\\frac{3}{\\sqrt x+1}\\le3\\Rightarrow G\\ge-1$. $\\min G=-1$ khi $x=0$.",
+          "units": [
+            "c-cauphu",
+            "hq-amgm"
+          ]
+        },
+        {
+          "part": "3.1",
+          "max": 1,
+          "answer": "Gọi tốc độ xe máy $v$ km/h ($v>0$), ô tô $v+15$. Đến chỗ gặp xe máy đi 30 km, ô tô 24 km: $\\frac{30}{v}-\\frac{24}{v+15}=\\frac{4}{15}$ ⇔ $2v^2-15v-3375=0$ ⇒ $v=45$ (loại $v=-37{,}5$). Tốc độ ô tô 60 km/h. Hay sai: không đổi 16 phút $=\\frac{4}{15}$ h, lấy nhầm quãng 24 km cho xe máy.",
+          "units": [
+            "g-chuyendong"
+          ]
+        },
+        {
+          "part": "3.2",
+          "max": 1,
+          "answer": "$x+y=460$; $0{,}8x+0{,}75y=357$ ⇒ $x=240$ (Toán), $y=220$ (Khoa học). Kiểm: $192+165=357$.",
+          "units": [
+            "g-phantram",
+            "g-giaihpt"
+          ]
+        },
+        {
+          "part": "3.3",
+          "max": 0.5,
+          "answer": "$a+b+c=0$ ⇒ nghiệm $x_1=1$, $x_2=2m+2$ ($\\Delta=(2m+1)^2$); phân biệt ⇔ $m\\ne-\\frac12$. $2m+2=4\\Rightarrow m=1$; $1=4(2m+2)\\Rightarrow m=-\\frac78$. Đáp số $m\\in\\{1;-\\frac78\\}$. Hay sai: chỉ xét $x_2=4x_1$, thiếu $m=-\\frac78$.",
+          "units": [
+            "d-thamso",
+            "d-nhamnghiem"
+          ]
+        },
+        {
+          "part": "4.1a",
+          "max": 0.75,
+          "answer": "$V=\\pi\\cdot1{,}5^2\\cdot2{,}8+\\frac13\\pi\\cdot1{,}5^2\\cdot1=7{,}05\\pi\\approx22{,}1\\ \\text{m}^3$ (chính xác $22{,}148$).",
+          "units": [
+            "p-ghep",
+            "p-trunon"
+          ]
+        },
+        {
+          "part": "4.1b",
+          "max": 0.75,
+          "answer": "Sơn = xung quanh trụ + xung quanh nón (không tính đáy, không tính mặt tiếp giáp): $l=\\sqrt{1^2+1{,}5^2}=\\sqrt{3{,}25}$; $S=2\\pi\\cdot1{,}5\\cdot2{,}8+\\pi\\cdot1{,}5\\cdot\\sqrt{3{,}25}\\approx34{,}9\\ \\text{m}^2$ ($34{,}885$). Hay sai: dùng chiều cao nón 1 m thay cho đường sinh; cộng thêm đáy.",
+          "units": [
+            "p-ghep",
+            "p-trunon"
+          ]
+        },
+        {
+          "part": "4.2a",
+          "max": 1,
+          "answer": "$\\widehat{PAO}=\\widehat{PMO}=90^\\circ$ (tính chất tiếp tuyến) ⇒ $A,M$ cùng nhìn $PO$ dưới góc vuông ⇒ $A,P,M,O$ thuộc đường tròn đường kính $PO$.",
+          "units": [
+            "l-tieptuyen",
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "part": "4.2b",
+          "max": 1,
+          "answer": "$PA=PM$, $OA=OM$ ⇒ $OP$ là trung trực $AM$ ⇒ $\\widehat{OIM}=90^\\circ$; tương tự $\\widehat{OKM}=90^\\circ$; $\\widehat{AMB}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $MIOK$ là hình chữ nhật. $\\widehat{POQ}=90^\\circ$, $OM\\perp PQ$ ⇒ $AP\\cdot BQ=PM\\cdot MQ=OM^2=R^2$.",
+          "units": [
+            "l-tieptuyen",
+            "o-dongdang"
+          ]
+        },
+        {
+          "part": "4.2c",
+          "max": 0.5,
+          "answer": "Gọi $N'=AQ\\cap BP$, $H$ là chân đường vuông góc từ $M$ xuống $AB$. $AP\\parallel BQ$ ⇒ $\\frac{N'P}{N'B}=\\frac{AP}{BQ}=\\frac{MP}{MQ}$ ⇒ $MN'\\parallel BQ$ ⇒ $N'\\in MH$; Thales trong $\\triangle PBQ$, $\\triangle BAP$ ⇒ $N'$ là trung điểm $MH$. $IK$ là đường trung bình $\\triangle MAB$ nên đi qua trung điểm $MH$ ⇒ $N'\\in IK$ ⇒ $N'\\equiv N$ ⇒ $A,N,Q$ thẳng hàng.",
+          "units": [
+            "o-thanghang"
+          ]
+        },
+        {
+          "part": "5",
+          "max": 0.5,
+          "answer": "Mặt cắt chữ U: đáy $40-2x$, cao $x$, dài 100 cm; $0<x<20$. $V=100x(40-2x)=50\\cdot2x(40-2x)\\le50\\cdot20^2=20000\\ \\text{cm}^3$ (AM-GM). $V$ lớn nhất khi $2x=40-2x$ ⇔ $x=10$ cm.",
+          "units": [
+            "hq-hinhhoc"
+          ]
+        }
+      ],
+      "note": "Bài 1.1: đề in nhóm đầu $(60;64]$ nhưng có hai giá trị 60 — chấp nhận cả cách tính 60 vào nhóm đầu lẫn nhóm $[60;64)$ nếu HS ghi rõ. Lỗi chính tả (\"nhón\", \"viên vi\") không ảnh hưởng. 4.1a: \"thể tích phần của bồn\" = thể tích cả bồn."
+    },
+    {
+      "paper": 58,
+      "status": "draft",
+      "pages": "tr. 133–134",
+      "parts": [
+        {
+          "part": "1.1",
+          "max": 0.75,
+          "answer": "12 học viên loại A (điểm $7{,}5\\le X<10$: 7,7; 7,8; 8; 8,4; 8,7; 8,8; 9; 9,2; 9,4; 9,6; 9,8; 9,9). Đối chiếu: D 3, C 6, B 9, A 12 (tổng 30). Hay sai: xếp 2,5 vào D hoặc bỏ sót 8 / 9 (số nguyên).",
+          "units": [
+            "a-tanso"
+          ]
+        },
+        {
+          "part": "1.2",
+          "max": 0.75,
+          "answer": "$\\Omega$: 90 số (10→99); số chia hết cho 4: 12, 16, …, 96 → 22 số. $P(F)=\\frac{22}{90}=\\frac{11}{45}$. Hay sai: đếm 99 hoặc 100 số, tính 23 số (tính cả 100/ bỏ 12).",
+          "units": [
+            "b-xsuat"
+          ]
+        },
+        {
+          "part": "2.1",
+          "max": 0.5,
+          "answer": "$x=16$ (thoả ĐK) ⇒ $\\sqrt x=4$, $A=\\frac{16+8+5}{4-3}=29$.",
+          "units": [
+            "c-coban"
+          ]
+        },
+        {
+          "part": "2.2a",
+          "max": 0.5,
+          "answer": "$x+\\sqrt x-6=(\\sqrt x+3)(\\sqrt x-2)$; quy đồng: tử $=(\\sqrt x+2)(\\sqrt x-2)-5-(\\sqrt x+3)=x-\\sqrt x-12=(\\sqrt x-4)(\\sqrt x+3)$ ⇒ $P=\\frac{\\sqrt x-4}{\\sqrt x-2}$.",
+          "units": [
+            "c-rutgon"
+          ]
+        },
+        {
+          "part": "2.2b",
+          "max": 0.5,
+          "answer": "$P^2>P\\iff P(P-1)>0\\iff P<0$ hoặc $P>1$. $P-1=\\frac{-2}{\\sqrt x-2}>0\\iff 0\\le x<4$; $P<0\\iff 2<\\sqrt x<4\\iff 4<x<16$. KQ: $0\\le x<16$, $x\\ne4$. Hay sai: chia hai vế cho $P$ ⇒ chỉ ra $P>1$.",
+          "units": [
+            "c-cauphu"
+          ]
+        },
+        {
+          "part": "3.1",
+          "max": 1,
+          "answer": "Gọi $a,b$ (bước/phút) của Sơn, Hà: $2a-2b=20$, $5b-3a=160$ ⇒ $a=105$, $b=95$. 1 giờ: Sơn 6300 bước (≥6000, đạt), Hà 5700 bước (<6000, chưa đạt). Kết luận phải tách từng người.",
+          "units": [
+            "g-giaihpt"
+          ]
+        },
+        {
+          "part": "3.2",
+          "max": 0.75,
+          "answer": "Gọi $n$ HS ($n>4$, nguyên): $\\frac{360}{n-4}-\\frac{360}{n}=1\\iff n^2-4n-1440=0$ ⇒ $n=40$ (loại $-36$). Lớp 9A có 40 HS (dự định 9 cây/HS, thực tế 10).",
+          "units": [
+            "g-honhop"
+          ]
+        },
+        {
+          "part": "3.3",
+          "max": 0.75,
+          "answer": "Thay $x=\\frac{\\sqrt3}{2}$: $\\frac32-\\sqrt3-\\frac32+m=0$ ⇒ $m=\\sqrt3$. Viète: $x_1x_2=\\frac{\\sqrt3}{2}$ ⇒ $x_2=1$ (hoặc tổng $=\\frac{2+\\sqrt3}{2}$). $x_1^2+x_2^2=\\frac34+1=\\frac74$.",
+          "units": [
+            "e-viete",
+            "d-thamso"
+          ]
+        },
+        {
+          "part": "4.1",
+          "max": 1,
+          "answer": "Nửa cầu chìm: $\\frac23\\pi R^3=18\\pi$ ⇒ $R=3$ dm; tâm cầu nằm trên mặt miệng bình, $h=2R=6$. Tiếp xúc đường sinh: $\\sin\\alpha=\\frac{R}{h}=\\frac12$ ⇒ nửa góc ở đỉnh $30^\\circ$, $r=h\\tan30^\\circ=2\\sqrt3$. $V_{nón}=\\frac13\\pi\\cdot12\\cdot6=24\\pi$. Còn lại $24\\pi-18\\pi=6\\pi$ dm³ (≈18,85).",
+          "units": [
+            "p-ghep",
+            "p-cau"
+          ]
+        },
+        {
+          "part": "4.2a",
+          "max": 1.25,
+          "answer": "$\\angle BFC=\\angle BEC=90^\\circ$ ⇒ BFEC nội tiếp (đường tròn đường kính BC). $\\triangle KBF\\sim\\triangle KEC$ (g.g: chung $\\angle K$, $\\angle KBF=\\angle KEC$ do góc ngoài tứ giác nội tiếp) ⇒ $KE\\cdot KF=KB\\cdot KC$.",
+          "units": [
+            "k-tugiacnt",
+            "o-dongdang"
+          ]
+        },
+        {
+          "part": "4.2b",
+          "max": 1,
+          "answer": "Trong $(O)$: $\\triangle KBM\\sim\\triangle KAC$ ⇒ $KM\\cdot KA=KB\\cdot KC=KE\\cdot KF$ ⇒ $\\triangle KMF\\sim\\triangle KEA$ (c.g.c) ⇒ $\\angle KMF=\\angle KEA$ ⇒ AEFM nội tiếp.",
+          "units": [
+            "o-dongdang",
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "part": "4.2c",
+          "max": 0.75,
+          "answer": "A, E, H, F, M cùng thuộc đường tròn đường kính AH ⇒ $\\angle AMH=90^\\circ$. Kẻ đường kính AA' của $(O)$: $\\angle AMA'=90^\\circ$ ⇒ M, H, A' thẳng hàng. BHCA' là hình bình hành ⇒ N là trung điểm HA' ⇒ M, H, N thẳng hàng.",
+          "units": [
+            "o-thanghang"
+          ]
+        },
+        {
+          "part": "5",
+          "max": 0.5,
+          "answer": "$2x+y=80$ ⇒ $S=x(80-2x)=800-2(x-20)^2\\le800$; dấu “=” khi $x=20$ ($y=40$). An toàn nhất khi $x=20$ cm, $S_{max}=800$ cm². ĐK $0<x<40$.",
+          "units": [
+            "hq-hinhhoc"
+          ]
+        }
+      ],
+      "note": "4.1: “bình hình nón không có đáy” = nón úp ngược, miệng hở ở trên; “đúng một nửa khối cầu chìm” nghĩa là tâm cầu nằm đúng trên mặt miệng bình (đường kính cầu = chiều cao bình). 5: mặt cắt hở trên, tấm 80 cm uốn thành 2 thành x và đáy y (theo hình). 1.1: bảng xếp loại không có X=10, dữ liệu cũng không có điểm 10."
+    },
+    {
+      "paper": 59,
+      "status": "draft",
+      "pages": "tr. 135–136",
+      "parts": [
+        {
+          "part": "1.1",
+          "max": 0.75,
+          "answer": "Tần số: $[0;0{,}55)$: 0; $[0{,}55;0{,}7)$: 5 (0,699; 0,607; 0,607; 0,593; 0,585); $[0{,}7;0{,}8)$: 2 (0,705; 0,703); $[0{,}8;1)$: 4 (0,939; 0,829; 0,803; 0,8); $N=11$. Hay sai: xếp 0,8 vào $[0{,}7;0{,}8)$.",
+          "units": [
+            "a-tanso"
+          ]
+        },
+        {
+          "part": "1.2a",
+          "max": 0.25,
+          "answer": "$\\Omega=\\{12;13;14;15;23;24;25;34;35;45\\}$ (cặp không thứ tự), $n(\\Omega)=10$. Hay sai: liệt kê cặp có thứ tự (20 phần tử) hoặc có cặp trùng (1;1).",
+          "units": [
+            "b-phepthu"
+          ]
+        },
+        {
+          "part": "1.2b",
+          "max": 0.25,
+          "answer": "Kết quả thuận lợi cho D: $\\{12;14;23;24;25;34;45\\}$ — 7 kết quả (mọi cặp có số 2 hoặc 4). Kiểm nhanh: phần bù là 13; 15; 35.",
+          "units": [
+            "b-phepthu"
+          ]
+        },
+        {
+          "part": "1.2c",
+          "max": 0.25,
+          "answer": "$P(D)=\\frac{7}{10}$.",
+          "units": [
+            "b-xsuat"
+          ]
+        },
+        {
+          "part": "2.1",
+          "max": 0.25,
+          "answer": "$x=36$ (thoả ĐK) ⇒ $\\sqrt x=6$, $A=\\frac{10}{8}=\\frac54$.",
+          "units": [
+            "c-coban"
+          ]
+        },
+        {
+          "part": "2.2",
+          "max": 0.75,
+          "answer": "Ngoặc: $\\frac{\\sqrt x(\\sqrt x-4)+4(\\sqrt x+4)}{x-16}=\\frac{x+16}{x-16}$; nhân nghịch đảo $\\frac{\\sqrt x+2}{x+16}$ ⇒ $B=\\frac{\\sqrt x+2}{x-16}$ ($x\\ge0,x\\ne16$). Hay sai: chia mà không đảo phân thức.",
+          "units": [
+            "c-rutgon"
+          ]
+        },
+        {
+          "part": "2.3",
+          "max": 0.5,
+          "answer": "$A-1=\\frac{2}{\\sqrt x+2}$ ⇒ $B(A-1)=\\frac{2}{x-16}$. Nguyên ⇔ $x-16\\in\\{\\pm1;\\pm2\\}$ ⇒ $x\\in\\{14;15;17;18\\}$ (đều thoả ĐK). Hay sai: chỉ lấy ước dương, hoặc chỉ xét $x$ chính phương.",
+          "units": [
+            "c-cauphu"
+          ]
+        },
+        {
+          "part": "3.1",
+          "max": 0.75,
+          "answer": "Gọi $x$ quyển vở ($x\\in\\mathbb N$): $18+17x\\le100$ ⇔ $x\\le\\frac{82}{17}\\approx4{,}82$ ⇒ nhiều nhất 4 quyển (tổng 86 nghìn). Hay sai: làm tròn lên 5.",
+          "units": [
+            "g-phantram"
+          ]
+        },
+        {
+          "part": "3.2",
+          "max": 1,
+          "answer": "Gọi $x,y$ (km/h) của A, B: $2(x+y)=150$, $x+5=2(y-5)$ ⇒ $x=45$, $y=30$. ĐK $y>5$. Kiểm: $50=2\\cdot25$.",
+          "units": [
+            "g-chuyendong",
+            "g-giaihpt"
+          ]
+        },
+        {
+          "part": "3.3",
+          "max": 0.75,
+          "answer": "$a-b+c=-1-m+m+1=0$ ⇒ luôn có nghiệm $x_1=-1$ (không phụ thuộc $m$). Viète: $x_1x_2=\\frac{m+1}{-1}$ ⇒ $x_2=m+1$ (hoặc từ tổng $x_1+x_2=m$). Lưu ý: $m=-2$ thì hai nghiệm trùng $-1$ — không trừ điểm nếu không nêu.",
+          "units": [
+            "d-nhamnghiem",
+            "d-thamso"
+          ]
+        },
+        {
+          "part": "4.1",
+          "max": 1,
+          "answer": "$r=4$, $S_{đáy}=16\\pi$; nước dâng $\\frac{4\\pi}{16\\pi}=0{,}25$ cm ⇒ mực nước $10{,}25$ cm (< 12 cm, không tràn). Hay sai: dùng đường kính 8 làm bán kính (dâng 0,0625).",
+          "units": [
+            "p-trunon",
+            "p-ghep"
+          ]
+        },
+        {
+          "part": "4.2a",
+          "max": 1.25,
+          "answer": "$\\angle ACB=90^\\circ$ (nội tiếp chắn nửa đường tròn) ⇒ $\\angle ACD=90^\\circ$; $\\angle AHD=90^\\circ$ (giả thiết) ⇒ C, H cùng nhìn AD dưới góc vuông ⇒ AHCD nội tiếp đường tròn đường kính AD. (Gồm 0,25 hình vẽ.)",
+          "units": [
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "part": "4.2b",
+          "max": 1,
+          "answer": "Vuông tại C. $\\angle CHF=\\angle CDA$ (góc ngoài tại H của tứ giác nội tiếp AHCD), $\\angle CFH=\\angle CFA=\\angle CBA$ (cùng chắn cung AC); $\\angle CDA+\\angle CBA=90^\\circ$ ($\\triangle ABD$ vuông tại A) ⇒ $\\angle HCF=90^\\circ$.",
+          "units": [
+            "k-goiintiep",
+            "o-chungminh"
+          ]
+        },
+        {
+          "part": "4.2c",
+          "max": 0.75,
+          "answer": "$S=AB=2R$. $DH\\cdot DO=DA^2=DC\\cdot DB$ ⇒ B, O, H, C cùng thuộc 1 đường tròn ⇒ $\\angle AHB=90^\\circ+\\angle OHB=90^\\circ+\\angle ABC=\\angle BFC$; $\\angle BAH=\\angle BCF$ (chắn cung BF) ⇒ $\\triangle BHA\\sim\\triangle BFC$ ⇒ $BH\\cdot BC=BA\\cdot BF$.",
+          "units": [
+            "o-dongdang",
+            "k-tugiacnt"
+          ]
+        },
+        {
+          "part": "5",
+          "max": 0.5,
+          "answer": "Nón A: $V=\\frac13\\pi\\cdot3^2\\cdot6=18\\pi$ (in³) giá 2 đô ⇒ $9\\pi$/đô. Trụ B: $V=\\pi\\cdot3^2\\cdot6=54\\pi$ giá 4 đô ⇒ $13{,}5\\pi$/đô. Nên mua quầy B (B gấp 3 lượng, giá chỉ gấp 2).",
+          "units": [
+            "p-trunon"
+          ]
+        }
+      ],
+      "note": "4.1: “$V=4p$” là lỗi font, đọc là $4\\pi$ cm³. 5: “3 inch” trong hình là bán kính đáy (vạch từ tâm ra mép), “6 inch” là chiều cao; câu chữ “cả từ giấy phần này…” bị vỡ dòng, ý: vỏ hộp được tài trợ, chỉ so lượng bắp/giá. 1.2b: đề ghi “mỗi biến cố sau” nhưng chỉ có một biến cố D. 4.2c: chấp nhận cách khác nếu ra $S=2R$."
+    }
+  ]
 }
