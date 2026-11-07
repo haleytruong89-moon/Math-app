@@ -7,10 +7,10 @@
   "estMinutes": 55,
   "theory": [
     "**Cần nhớ trước:** bài **BĐT cơ bản, AM-GM & tìm MAX/MIN** — tách bình phương $-k(x-h)^2+M \\le M$, AM-GM $a+b \\ge 2\\sqrt{ab}$ cho hai số không âm, và luôn chỉ ra dấu “=”. Bài này thêm phần **lập biểu thức** từ hình: diện tích, thể tích, độ dài, chi phí theo một biến.",
-    "**Công cụ:** (1) *Đỉnh parabol*: $S=-k(x-h)^2+M$ ($k>0$) lớn nhất bằng $M$ khi $x=h$. (2) *AM-GM hai số*: tổng $a+b$ không đổi thì $ab \\le \\frac{(a+b)^2}{4}$; tích không đổi thì tổng nhỏ nhất khi $a=b$. (3) *AM-GM ba số* $a$, $b$, $c \\ge 0$: $abc \\le \\left(\\frac{a+b+c}{3}\\right)^3$, dấu “=” khi $a=b=c$ — dùng cho thể tích hộp.",
-    "**Vì sao:** khi tổng các thừa số không đổi, tích lớn nhất lúc các thừa số bằng nhau: $x(10-x)=25-(x-5)^2$. Vì thế trong các hình chữ nhật cùng chu vi, hình vuông có diện tích lớn nhất. Với hộp $V=x(a-2x)^2$, nhân $4$ để ba thừa số $4x$, $a-2x$, $a-2x$ có tổng $2a$ không đổi.",
-    "**Bẫy hay gặp:** (1) Quên điều kiện của biến: cắt góc tấm cạnh $a$ thì $0<x<\\frac a2$; giá trị làm dấu “=” không thoả điều kiện thì chưa có max. (2) Trả lời nhầm đại lượng: đề hỏi diện tích mà ghi $x$, đề hỏi $AS$ mà ghi $SB$. (3) Dùng AM-GM cho ba số có tổng còn chứa biến, như $x$, $6-2x$, $6-2x$ (tổng $12-3x$).",
-    "**Nhận dạng:** chu vi / độ dài lưới cố định → $S$ là tam thức bậc hai → đỉnh parabol (rào sát tường: $S=x(L-2x)$). Hộp cắt góc: $S_{xq}=4x(a-2x)$ → đỉnh parabol; $V=x(a-2x)^2$ → AM-GM ba số. Tích không đổi, cần tổng nhỏ nhất (trang giấy có lề) → AM-GM hai số. Đường gấp khúc bờ – nước: đoạn dưới nước $\\sqrt{x^2+h^2}$, đánh giá $n\\sqrt{x^2+h^2} \\ge mx+c$ bằng bình phương hai vế.",
+    "**Công cụ:** (1) *Đỉnh parabol*: $S=-k(x-h)^2+M$ ($k>0$) lớn nhất bằng $M$ khi $x=h$. (2) *AM-GM hai số*: tổng $a+b$ không đổi thì $ab \\le \\frac{(a+b)^2}{4}$; tích không đổi thì tổng nhỏ nhất khi $a=b$. (3) *Dự đoán rồi xét hiệu* (biểu thức bậc ba như thể tích hộp): đoán $x_0$ và $M=V(x_0)$, rồi chứng minh $M-V \\ge 0$ bằng cách phân tích $M-V=(x-x_0)^2\\cdot(\\dots)$ và xét dấu thừa số còn lại.",
+    "**Vì sao:** khi tổng các thừa số không đổi, tích lớn nhất lúc các thừa số bằng nhau: $x(10-x)=25-(x-5)^2$. Vì thế trong các hình chữ nhật cùng chu vi, hình vuông có diện tích lớn nhất. Với cách (3): nếu dự đoán đúng thì $M-V$ bằng $0$ tại $x_0$ và không âm hai bên, nên chia hết cho $(x-x_0)^2$ — chia đa thức (lớp 7) để tìm thừa số còn lại.",
+    "**Bẫy hay gặp:** (1) Quên điều kiện của biến: cắt góc tấm cạnh $a$ thì $0<x<\\frac a2$; giá trị làm dấu “=” không thoả điều kiện thì chưa có max. (2) Trả lời nhầm đại lượng: đề hỏi diện tích mà ghi $x$, đề hỏi $AS$ mà ghi $SB$. (3) Lấy số lớn nhất trong bảng giá trị làm đáp án: bảng chỉ để **dự đoán**, phải xét hiệu để chứng minh.",
+    "**Nhận dạng:** chu vi / độ dài lưới cố định → $S$ là tam thức bậc hai → đỉnh parabol (rào sát tường: $S=x(L-2x)$). Hộp cắt góc tấm vuông cạnh $a$: $S_{xq}=4x(a-2x)$ → đỉnh parabol; $V=x(a-2x)^2$ → dự đoán $x_0=\\frac a6$ rồi xét hiệu (sách có thể dùng Cô-si ba số — ngoài chương trình). Tích không đổi, cần tổng nhỏ nhất → AM-GM hai số. Đoạn dưới nước $\\sqrt{x^2+h^2}$: bình phương hai vế.",
     "**Phiếu tối ưu:** biến (đặt gì, đơn vị) – điều kiện – hàm mục tiêu theo **một** biến (dùng dữ kiện cố định để khử biến kia) – đánh giá $\\le M$ hoặc $\\ge m$ với $M$, $m$ là hằng số – dấu “=” thuộc điều kiện – kết luận đúng câu hỏi (kích thước, diện tích hay vị trí; đơn vị; làm tròn nếu đề yêu cầu)."
   ],
   "worked": {
@@ -145,21 +145,21 @@
       "prompt": "Đề: “Từ tấm bìa hình vuông cạnh $9$ dm, cắt bốn góc bốn hình vuông cạnh $x$ rồi gập thành hộp không nắp. Tìm $x$ để thể tích hộp lớn nhất.” Sau khi lập $V=x(9-2x)^2$, công cụ phù hợp là:",
       "recognition": true,
       "hints": [
-        "Đề hỏi $x$ để thể tích lớn nhất; $V$ là tích ba thừa số.",
-        "Đa thức bậc ba, không phải tam thức bậc hai → công cụ nào cho tích?",
-        "Tích lớn nhất khi tổng các thừa số không đổi: nhân $x$ với $4$."
+        "Đề hỏi $x$ để thể tích lớn nhất; $V$ là một đa thức bậc ba.",
+        "Bậc ba thì không tách bình phương được; làm sao chứng minh $V \\le M$ với $M$ là hằng số?",
+        "Đoán giá trị lớn nhất $M$ (bảng giá trị), rồi chứng minh $M-V \\ge 0$."
       ],
       "options": [
         "Tách bình phương $V=-k(x-h)^2+M$ như với tam thức bậc hai",
         "Giải phương trình $x(9-2x)^2=0$ để tìm $x$",
-        "AM-GM cho ba số $4x$, $9-2x$, $9-2x$ (tổng không đổi), rồi kiểm tra dấu “=”",
+        "Dự đoán $x_0$ và $V(x_0)$ bằng bảng giá trị, rồi xét hiệu $V(x_0)-V$, phân tích thành nhân tử để chứng minh hiệu $\\ge 0$",
         "AM-GM cho hai số $x$ và $(9-2x)^2$"
       ],
       "correct": 2,
       "mistakes": {
         "0": {
           "code": "E05",
-          "feedback": "$V$ là đa thức bậc ba, không đưa được về dạng $-k(x-h)^2+M$; tích ba thừa số thì nghĩ tới AM-GM ba số."
+          "feedback": "$V$ là đa thức bậc ba, không đưa được về dạng $-k(x-h)^2+M$; với biểu thức bậc ba thì dự đoán rồi xét hiệu."
         },
         "1": {
           "code": "E05",
@@ -167,10 +167,10 @@
         },
         "3": {
           "code": "E05",
-          "feedback": "Tổng $x+(9-2x)^2$ còn chứa biến nên vế phải không là hằng số; cần ba thừa số có tổng không đổi."
+          "feedback": "Tích $x\\cdot(9-2x)^2$ còn chứa biến nên vế phải không là hằng số; với biểu thức bậc ba thì dự đoán rồi xét hiệu."
         }
       },
-      "solution": "$4V=4x\\cdot(9-2x)\\cdot(9-2x)$ có tổng ba thừa số $4x+(9-2x)+(9-2x)=18$ không đổi → AM-GM ba số: $4V \\le 6^3$, dấu “=” khi $4x=9-2x$."
+      "solution": "$V$ bậc ba nên không tách bình phương được. Dự đoán: bảng giá trị cho $V$ lớn nhất tại $x_0=1{,}5$ $\\left(=\\frac96\\right)$, $V(1{,}5)=54$. Xét hiệu: $54-V=(2x-3)^2(6-x) \\ge 0$ vì $0<x<4{,}5$; dấu “=” khi $x=1{,}5$."
     },
     {
       "id": "hq-hinhhoc-p2",
@@ -261,7 +261,7 @@
           "feedback": "Đó là độ dài $ON$ khi đạt lớn nhất; đề hỏi diện tích."
         }
       ],
-      "solution": "Đặt $ON=x$, $NP=y$ ($x$, $y>0$). Tam giác $ONP$ vuông tại $N$: $x^2+y^2=OP^2=100$. $S=MN\\cdot NP=2xy \\le x^2+y^2=100$ (vì $(x-y)^2 \\ge 0$). Dấu “=” khi $x=y=5\\sqrt2$. Kết luận: diện tích lớn nhất là $100$ cm²."
+      "solution": "Đặt $ON=x$, $NP=y$ ($x$, $y>0$). Hai tam giác vuông $OMQ$, $ONP$ có $OQ=OP$, $QM=PN$ nên bằng nhau, suy ra $OM=ON=x$, $MN=2x$. Tam giác $ONP$ vuông tại $N$: $x^2+y^2=OP^2=100$. $S=MN\\cdot NP=2xy \\le x^2+y^2=100$ (vì $(x-y)^2 \\ge 0$). Dấu “=” khi $x=y=5\\sqrt2$. Kết luận: diện tích lớn nhất là $100$ cm²."
     },
     {
       "id": "hq-hinhhoc-p5",
@@ -450,15 +450,15 @@
       "type": "steps",
       "level": "L3",
       "prompt": "Một miếng bìa hình vuông cạnh $6$ dm. Ở mỗi góc người ta cắt đi một hình vuông nhỏ cạnh $x$ (dm) rồi gấp thành một hình hộp chữ nhật không nắp. Tính $x$ để hộp có thể tích lớn nhất.",
-      "source": "68 đề – Đề 50, Bài 5, tr.118 (tách bước)",
+      "source": "68 đề – Đề 50, Bài 5, tr.118 (tách bước; dẫn bằng xét hiệu thay cho Cô-si ba số)",
       "figure": {
         "svg": "<svg viewBox=\"0 0 230 230\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"25\" y=\"25\" width=\"180\" height=\"180\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><rect x=\"25\" y=\"25\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"169\" y=\"25\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"25\" y=\"169\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"169\" y=\"169\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"61\" y=\"61\" width=\"108\" height=\"108\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"115\" y=\"17\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">6 dm</text><text x=\"43\" y=\"19\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">x</text><text x=\"20\" y=\"47\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">x</text></svg>",
         "alt": "Miếng bìa hình vuông cạnh 6 dm; bốn hình vuông nhỏ cạnh x ở bốn góc được tô màu (phần cắt đi); hình vuông nét đứt bên trong là đáy hộp, các đường nét đứt là chỗ gấp lên."
       },
       "hints": [
         "Cần $x$ để thể tích hộp lớn nhất; trước hết lập $V$ theo $x$ và điều kiện.",
-        "$V$ là tích ba thừa số → AM-GM ba số, cần tổng không đổi.",
-        "Nhân $V$ với $4$: xét $4x$, $6-2x$, $6-2x$."
+        "$V$ bậc ba → dự đoán giá trị lớn nhất bằng bảng giá trị, rồi xét hiệu.",
+        "Phân tích hiệu thành nhân tử có một bình phương, rồi xét dấu thừa số còn lại."
       ],
       "steps": [
         {
@@ -488,35 +488,61 @@
           }
         },
         {
-          "prompt": "Chọn ba thừa số có tổng không đổi.",
+          "prompt": "Xét hiệu.",
           "item": {
             "id": "hq-hinhhoc-p8-s2",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Để dùng AM-GM ba số, cách viết nào đúng?",
+            "prompt": "Bảng giá trị cho thấy $V$ lớn nhất có thể bằng $16$. Để chứng minh $V \\le 16$, phân tích $16-V$ thành:",
             "options": [
-              "$4V=4x\\cdot(6-2x)\\cdot(6-2x)$, ba thừa số có tổng $12$",
-              "$V=x\\cdot(6-2x)\\cdot(6-2x)$, ba thừa số có tổng $12-3x$",
-              "$2V=2x\\cdot(6-2x)\\cdot(6-2x)$, ba thừa số có tổng $12-2x$"
+              "$4(x-1)^2(x-4)$",
+              "$4(x-1)^2(4-x)$",
+              "$(x-1)^2(4-x)$"
             ],
-            "correct": 0,
+            "correct": 1,
             "mistakes": {
-              "1": {
-                "code": "E06",
-                "feedback": "Tổng còn chứa $x$ nên vế phải không là hằng số; nhân thêm hệ số để $x$ triệt tiêu trong tổng."
+              "0": {
+                "code": "E02",
+                "feedback": "Kiểm tra dấu: $16-V$ có hệ số của $x^3$ là $-4$, còn biểu thức này có hệ số $+4$."
               },
               "2": {
-                "code": "E06",
-                "feedback": "Tổng $12-2x$ vẫn chứa $x$; cần hệ số để $-2x-2x$ bị khử hết."
+                "code": "E02",
+                "feedback": "Khai triển lại: $16-V=-4x^3+24x^2-36x+16$; con quên đặt nhân tử chung."
               }
             },
-            "solution": "$4x+(6-2x)+(6-2x)=12$ không đổi; AM-GM: $4V \\le \\left(\\frac{12}{3}\\right)^3=64$, nên $V \\le 16$."
+            "solution": "$16-V=16-x(36-24x+4x^2)=-4(x^3-6x^2+9x-4)=-4(x-1)^2(x-4)=4(x-1)^2(4-x)$."
+          }
+        },
+        {
+          "prompt": "Xét dấu.",
+          "item": {
+            "id": "hq-hinhhoc-p8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với $0<x<3$, vì sao $16-V \\ge 0$?",
+            "options": [
+              "Vì bảng giá trị cho thấy $V \\le 16$",
+              "Vì $(x-1)^2 \\ge 0$ và $x>0$",
+              "Vì $(x-1)^2 \\ge 0$ và $4-x>0$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Bảng chỉ thử vài giá trị của $x$, chưa chứng minh cho mọi $x$; cần xét dấu từng thừa số của hiệu."
+              },
+              "1": {
+                "code": "E09",
+                "feedback": "Thừa số còn lại của hiệu là $4-x$, không phải $x$; cần chỉ ra thừa số đó dương."
+              }
+            },
+            "solution": "$(x-1)^2 \\ge 0$ và $x<3$ nên $4-x>0$; tích $4(x-1)^2(4-x) \\ge 0$, tức $V \\le 16$."
           }
         },
         {
           "prompt": "Giá trị của $x$.",
           "item": {
-            "id": "hq-hinhhoc-p8-s3",
+            "id": "hq-hinhhoc-p8-s4",
             "type": "numeric",
             "level": "L3",
             "prompt": "Thể tích lớn nhất khi $x$ bằng bao nhiêu dm?",
@@ -524,9 +550,9 @@
             "unit": "dm",
             "mistakes": [
               {
-                "answer": "2",
-                "code": "E06",
-                "feedback": "Dấu “=” của AM-GM ở đây là $4x=6-2x$: ba thừa số bằng nhau là $4x$, không phải $x$."
+                "answer": "4",
+                "code": "E14",
+                "feedback": "Giá trị này không thoả điều kiện $0<x<3$ (cạnh đáy $6-2x$ phải dương)."
               },
               {
                 "answer": "16",
@@ -534,11 +560,11 @@
                 "feedback": "Đó là thể tích lớn nhất; đề hỏi cạnh $x$."
               }
             ],
-            "solution": "Dấu “=” khi $4x=6-2x \\Leftrightarrow x=1$, thoả $0<x<3$."
+            "solution": "Dấu “=” khi $(x-1)^2=0 \\Leftrightarrow x=1$, thoả $0<x<3$."
           }
         }
       ],
-      "solution": "Điều kiện $0<x<3$; $V=x(6-2x)^2$. $4V=4x\\cdot(6-2x)\\cdot(6-2x) \\le \\left(\\frac{4x+6-2x+6-2x}{3}\\right)^3=64$ nên $V \\le 16$. Dấu “=” khi $4x=6-2x \\Leftrightarrow x=1$ (thoả). Kết luận: $x=1$ dm thì thể tích lớn nhất, bằng $16$ dm³."
+      "solution": "Điều kiện $0<x<3$; $V=x(6-2x)^2$. Dự đoán (bảng giá trị): $V$ lớn nhất bằng $16$. Xét hiệu: $16-V=4(x-1)^2(4-x) \\ge 0$ vì $(x-1)^2 \\ge 0$, $4-x>0$. Nên $V \\le 16$, dấu “=” khi $x=1$ (thoả). Kết luận: $x=1$ dm thì thể tích lớn nhất, bằng $16$ dm³."
     }
   ],
   "exit": [
@@ -670,7 +696,7 @@
       "prompt": "Một chiến sĩ phải bơi qua sông để tới mục tiêu ở bờ bên kia. Lòng sông rộng $100$ m (thẳng, nước không chảy); tốc độ bơi bằng một nửa tốc độ chạy trên bờ; mục tiêu $T$ cách chiến sĩ (ở $P$) $1$ km theo đường chim bay. Chiến sĩ chạy dọc bờ đến $M$ rồi bơi thẳng tới $T$. Hỏi chiến sĩ phải bơi bao nhiêu mét để tới mục tiêu nhanh nhất? (Làm tròn đến hàng đơn vị.)",
       "source": "68 đề – Đề 31, Bài 5, tr.79 (tách bước, cho sẵn bất đẳng thức cần dùng)",
       "figure": {
-        "svg": "<svg viewBox=\"0 0 330 105\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"5\" y1=\"86\" x2=\"300\" y2=\"86\" stroke=\"currentColor\" stroke-width=\"1.2\"/><line x1=\"5\" y1=\"59\" x2=\"300\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"1.2\"/><text x=\"150\" y=\"53\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">bờ bên kia</text><text x=\"70\" y=\"100\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">bờ của chiến sĩ</text><line x1=\"14\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"0.8\" stroke-dasharray=\"2 3\"/><line x1=\"14\" y1=\"86\" x2=\"201.6\" y2=\"86\" stroke=\"var(--accent)\" stroke-width=\"2.5\"/><line x1=\"201.6\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-dasharray=\"6 3\"/><line x1=\"282.6\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"0.8\" stroke-dasharray=\"2 2\"/><text x=\"14\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">P</text><text x=\"201.6\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">M</text><text x=\"284.6\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">H</text><text x=\"284.6\" y=\"54\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">T</text><text x=\"242.1\" y=\"82\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">x</text><text x=\"288.6\" y=\"76.5\" font-size=\"10\" text-anchor=\"start\" fill=\"currentColor\">100 m</text><text x=\"120\" y=\"70.5\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">PT = 1 km</text></svg>",
+        "svg": "<svg viewBox=\"0 40 330 66\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"5\" y1=\"86\" x2=\"300\" y2=\"86\" stroke=\"currentColor\" stroke-width=\"1.2\"/><line x1=\"5\" y1=\"59\" x2=\"300\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"1.2\"/><text x=\"150\" y=\"53\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">bờ bên kia</text><text x=\"70\" y=\"100\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">bờ của chiến sĩ</text><line x1=\"14\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"0.8\" stroke-dasharray=\"2 3\"/><line x1=\"14\" y1=\"86\" x2=\"201.6\" y2=\"86\" stroke=\"var(--accent)\" stroke-width=\"2.5\"/><line x1=\"201.6\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-dasharray=\"6 3\"/><line x1=\"282.6\" y1=\"86\" x2=\"282.6\" y2=\"59\" stroke=\"currentColor\" stroke-width=\"0.8\" stroke-dasharray=\"2 2\"/><text x=\"14\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">P</text><text x=\"201.6\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">M</text><text x=\"284.6\" y=\"100\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">H</text><text x=\"284.6\" y=\"54\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">T</text><text x=\"242.1\" y=\"99\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">x</text><text x=\"288.6\" y=\"76.5\" font-size=\"10\" text-anchor=\"start\" fill=\"currentColor\">100 m</text><text x=\"120\" y=\"70.5\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">PT = 1 km</text></svg>",
         "alt": "Hai bờ sông song song cách nhau 100 m. Chiến sĩ ở P, mục tiêu T ở bờ bên kia, PT = 1 km (đường chim bay, nét chấm). H là hình chiếu của T trên bờ của chiến sĩ. Chiến sĩ chạy dọc bờ từ P đến M (nét liền) rồi bơi thẳng từ M đến T (nét đứt); MH = x."
       },
       "steps": [
@@ -764,7 +790,7 @@
       "type": "numeric",
       "level": "L3",
       "prompt": "Cho một miếng bìa hình vuông cạnh $1$ m. Người ta cắt ở bốn góc bốn hình vuông bằng nhau cạnh $x$ (m) rồi gấp thành một hình hộp không nắp. Tìm cạnh $x$ của hình vuông cắt đi để thể tích hình hộp lớn nhất.",
-      "source": "68 đề – Đề 40, Bài 5, tr.98",
+      "source": "68 đề – Đề 40, Bài 5, tr.98 (dẫn bằng xét hiệu thay cho Cô-si ba số)",
       "figure": {
         "svg": "<svg viewBox=\"0 0 230 230\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"25\" y=\"25\" width=\"180\" height=\"180\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><rect x=\"25\" y=\"25\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"169\" y=\"25\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"25\" y=\"169\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"169\" y=\"169\" width=\"36\" height=\"36\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"61\" y=\"61\" width=\"108\" height=\"108\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"115\" y=\"17\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">1 m</text><text x=\"43\" y=\"19\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">x</text><text x=\"20\" y=\"47\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">x</text></svg>",
         "alt": "Miếng bìa hình vuông cạnh 1 m; bốn hình vuông nhỏ cạnh x ở bốn góc được tô màu (phần cắt đi); hình vuông nét đứt bên trong là đáy hộp."
@@ -775,12 +801,12 @@
         {
           "answer": "1/3",
           "code": "E06",
-          "feedback": "Ba số $x$, $1-2x$, $1-2x$ có tổng còn chứa $x$; nhân thêm hệ số để tổng không đổi rồi mới đặt dấu “=”."
+          "feedback": "Hộp lớn nhất không phải lúc chiều cao bằng cạnh đáy; dự đoán bằng bảng giá trị rồi xét hiệu để kiểm tra."
         },
         {
-          "answer": "1/4",
+          "answer": "1/5",
           "code": "E06",
-          "feedback": "Với $2x$, $1-2x$, $1-2x$ tổng vẫn còn chứa $x$; cần hệ số làm $x$ triệt tiêu."
+          "feedback": "Bảng giá trị bước $0{,}1$ chỉ cho dự đoán gần đúng: hiệu $V\\left(\\frac15\\right)-V$ còn âm tại vài giá trị $x$ gần đó, nên chưa phải lớn nhất."
         },
         {
           "answer": "2/27",
@@ -788,7 +814,7 @@
           "feedback": "Đó là thể tích lớn nhất; đề hỏi cạnh $x$."
         }
       ],
-      "solution": "$V=x(1-2x)^2$, $0<x<\\frac12$. $4V=4x(1-2x)(1-2x) \\le \\left(\\frac{4x+1-2x+1-2x}{3}\\right)^3=\\frac{8}{27}$ nên $V \\le \\frac2{27}$. Dấu “=” khi $4x=1-2x \\Leftrightarrow x=\\frac16$ (thoả). Kết luận: cắt hình vuông cạnh $\\frac16$ m."
+      "solution": "$V=x(1-2x)^2$, $0<x<\\frac12$. Dự đoán $x_0=\\frac16$ (hộp cắt góc tấm vuông cạnh $a$: $x_0=\\frac a6$), $V\\left(\\frac16\\right)=\\frac2{27}$. Xét hiệu: $\\frac2{27}-V=\\frac{(6x-1)^2(2-3x)}{27} \\ge 0$ vì $x<\\frac12<\\frac23$. Dấu “=” khi $x=\\frac16$ (thoả). Kết luận: cắt hình vuông cạnh $\\frac16$ m."
     },
     {
       "id": "hq-hinhhoc-x8",
@@ -811,10 +837,10 @@
         {
           "answer": "32√3/3",
           "code": "E03",
-          "feedback": "Trong tam giác $QBM$ vuông tại $M$: $QM=BM\\cdot\\tan60^\\circ$, con dùng nhầm tỉ số."
+          "feedback": "Tam giác $QBM$ vuông tại $M$, $\\angle B=60^\\circ$: $QM=\\sqrt3\\,BM$ (cạnh đối dài hơn cạnh kề); con dùng nhầm tỉ số."
         }
       ],
-      "solution": "Đặt $BM=NC=t$ ($0<t<8$). $QM=t\\tan60^\\circ=\\sqrt3t$, $MN=16-2t$. $S=\\sqrt3t(16-2t)=2\\sqrt3\\,t(8-t) \\le 2\\sqrt3\\cdot\\frac{(t+8-t)^2}{4}=32\\sqrt3$. Dấu “=” khi $t=8-t \\Leftrightarrow t=4$ (thoả). GTLN là $32\\sqrt3$ cm²."
+      "solution": "Đặt $BM=NC=t$ ($0<t<8$). Gọi $H$ là trung điểm $BC$, $AH=8\\sqrt3$. $QM \\parallel AH$ nên $\\frac{QM}{AH}=\\frac{BM}{BH}$, tức $QM=\\sqrt3t$ (hoặc $QM=t\\tan60^\\circ$). $MN=16-2t$. $S=\\sqrt3t(16-2t)=2\\sqrt3\\,t(8-t) \\le 2\\sqrt3\\cdot\\frac{(t+8-t)^2}{4}=32\\sqrt3$. Dấu “=” khi $t=8-t \\Leftrightarrow t=4$ (thoả). GTLN là $32\\sqrt3$ cm²."
     }
   ]
 }

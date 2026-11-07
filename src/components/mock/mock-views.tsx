@@ -166,7 +166,11 @@ export function SheetTable({ paper, scores, editable }: { paper: number; scores:
           Phiếu chấm bản nháp (Claude soạn, đã giải kiểm tra độc lập). Thầy/cô soát trước khi chấm; thấy đáp số hay điểm từng ý chưa hợp lý thì báo phụ huynh để sửa.
         </p>
       )}
-      {sheet.note && <p className="border-b border-border px-3 py-2 text-sm"><span className="text-muted">Lưu ý về đề:</span> {sheet.note}</p>}
+      {sheet.note && (
+        <div className="border-b border-border px-3 py-2 text-sm">
+          <span className="text-muted">Lưu ý về đề:</span> <Rich as="span" html={texToHtml(sheet.note)} />
+        </div>
+      )}
       <table className="w-full text-sm" data-testid="mock-sheet">
         <thead className="text-left font-mono text-xs uppercase tracking-wider text-muted">
           <tr><th className="px-3 py-2">Ý</th><th className="px-3 py-2">Đáp số / ý chính</th><th className="px-3 py-2">Bài học</th><th className="px-3 py-2">Điểm</th><th className="px-3 py-2">{editable ? "Mã lỗi · ghi chú" : "Ghi chú"}</th></tr>

@@ -10,7 +10,7 @@
     "alt": "Nửa đường tròn tâm O đường kính AB, tiếp tuyến tại A và tiếp tuyến tại B vuông góc với AB. C nằm trên nửa đường tròn, gần A hơn B. K là trung điểm BC, tia OK cắt tiếp tuyến tại B ở D, DC là tiếp tuyến. CH vuông góc AB tại H, I là trung điểm CH; BI cắt tiếp tuyến tại A ở E. Đường thẳng BC cắt tiếp tuyến tại A ở P (E nằm giữa A và P); đường thẳng AC cắt tiếp tuyến tại B ở Q (D nằm giữa B và Q). Đoạn EC vẽ nét đứt."
   },
   "theory": [
-    "**Cần nhớ trước** (bài *CM vuông góc, song song, phân giác & góc bằng nhau* và *Tứ giác đặc biệt, đường trung bình & Thalès*): dấu hiệu hình bình hành, đường trung bình, Thalès, trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền. **Ý chính của bài:** thẳng hàng, trung điểm, đồng quy đều đưa về một điều quen thuộc — một **góc bẹt**, hai đường thẳng **trùng nhau**, hoặc một điểm nằm trên một **đường đặc biệt**.",
+    "**Cần nhớ trước** (bài *CM vuông góc, song song…*, *Tứ giác đặc biệt, đường trung bình & Thalès*, *Tiếp tuyến: dấu hiệu & hai TT từ một điểm*): hình bình hành, đường trung bình, Thalès, trung tuyến ứng với cạnh huyền, hai tiếp tuyến cắt nhau. **Ý chính:** thẳng hàng, trung điểm, đồng quy đều đưa về điều quen thuộc — một **góc bẹt**, hai đường thẳng **trùng nhau**, hoặc một điểm nằm trên một **đường đặc biệt**.",
     "**Ba điểm $A$, $B$, $C$ thẳng hàng — ba cách.** (1) **Góc bẹt:** $\\widehat{ABX}+\\widehat{XBC}=180^\\circ$ với $A$, $C$ nằm **khác phía** đối với đường thẳng $BX$. (2) **Trùng nhau:** $BA$, $BC$ cùng vuông góc (hoặc cùng song song) với một đường thẳng. (3) **Đường đặc biệt:** trung điểm của đường chéo hình bình hành nằm trên đường chéo kia; góc nội tiếp $\\widehat{AXC}=90^\\circ$ thì $AC$ là đường kính, đi qua tâm.",
     "**Trung điểm, đồng quy, hình đặc biệt.** $M$ là trung điểm của $AB$ khi $M$ **nằm trên** $AB$ và $MA=MB$: dùng đường trung bình, đường chéo hình bình hành, Thalès, hoặc trung tuyến ứng với cạnh huyền. **Đồng quy:** lấy giao điểm của hai đường, chứng minh nó nằm trên đường thứ ba. **Hình bình hành:** hai cặp cạnh đối song song; **hình thoi:** bốn cạnh bằng nhau; **tam giác cân:** hai góc bằng nhau.",
     "**Vì sao** «cùng vuông góc» cho thẳng hàng: qua một điểm chỉ kẻ được **một** đường thẳng vuông góc với một đường cho trước (và chỉ **một** đường song song — tiên đề Ơ-clit). Nên nếu $CE\\perp OC$ và $CD\\perp OC$ thì hai đường $CE$, $CD$ là một. Hai đường cùng vuông góc với $OC$ mà **không** chung điểm thì chỉ song song.",
@@ -62,7 +62,7 @@
         "why": "Viết lại đúng điều đề yêu cầu."
       }
     ],
-    "selfExplain": "Nếu chỉ biết $CE\\perp OC$ và $DE\\perp OC$ (không chung điểm $C$) thì có kết luận được $E$, $C$, $D$ thẳng hàng không? Vì sao?"
+    "selfExplain": "Bước 4 cần hai ý: $CE$, $CD$ cùng vuông góc với $OC$ **và** cùng đi qua $C$. Nếu thiếu ý thứ hai — chẳng hạn chỉ biết $EA\\perp AB$ và $DB\\perp AB$ — thì hai đường thẳng $EA$, $DB$ quan hệ thế nào, có kết luận được thẳng hàng không?"
   },
   "faded": {
     "problem": "Cùng hình trên: nửa đường tròn $(O)$ đường kính $AB$, $C$ trên nửa đường tròn, $DB$ và $DC$ là hai tiếp tuyến của $(O)$ cắt nhau tại $D$. Gọi $Q$ là giao điểm của đường thẳng $AC$ với tiếp tuyến tại $B$. Chứng minh $D$ là trung điểm của $BQ$.",
@@ -134,25 +134,25 @@
           "prompt": "Đã có $DB=DQ$. Để kết luận $D$ là trung điểm của $BQ$, còn phải nêu điều gì?",
           "options": [
             "$DC\\perp BQ$",
-            "$D$ nằm trên đoạn $BQ$ ($D$ thuộc tiếp tuyến tại $B$, giữa $B$ và $Q$)",
+            "$B$, $D$, $Q$ thẳng hàng ($D$ và $Q$ cùng thuộc tiếp tuyến tại $B$)",
             "$\\widehat{BDC}=90^\\circ$"
           ],
           "correct": 1,
           "mistakes": {
             "0": {
               "code": "E04",
-              "feedback": "Trung điểm không cần vuông góc; cần $D$ nằm trên đoạn $BQ$ và $DB=DQ$."
+              "feedback": "Trung điểm không cần vuông góc; cần $D$ nằm trên đường thẳng $BQ$ và $DB=DQ$."
             },
             "2": {
               "code": "E04",
-              "feedback": "Góc $\\widehat{BDC}$ không liên quan; ý còn thiếu là vị trí của $D$ trên $BQ$."
+              "feedback": "Góc $\\widehat{BDC}$ không liên quan; ý còn thiếu là $D$ nằm trên đường thẳng $BQ$."
             }
           },
-          "solution": "$M$ là trung điểm của $XY$ ⇔ $M$ nằm trên đoạn $XY$ và $MX=MY$. Ở đây $D$, $Q$ cùng thuộc tiếp tuyến tại $B$ nên $D$ nằm trên đoạn $BQ$."
+          "solution": "$M$ là trung điểm của $XY$ ⇔ $M$ nằm trên đoạn $XY$ và $MX=MY$. Ở đây $D$, $Q$ cùng thuộc tiếp tuyến tại $B$ ⇒ $B$, $D$, $Q$ thẳng hàng; điểm trên đường thẳng $BQ$ cách đều $B$ và $Q$ chỉ có thể nằm giữa $B$ và $Q$."
         }
       },
       {
-        "text": "Kết luận: $D$ nằm trên đoạn $BQ$ và $DB=DQ$ ⇒ $D$ là trung điểm của $BQ$."
+        "text": "Kết luận: $B$, $D$, $Q$ thẳng hàng và $DB=DQ$ ⇒ $D$ là trung điểm của $BQ$."
       }
     ]
   },
@@ -896,8 +896,8 @@
       "correct": 3,
       "mistakes": {
         "0": {
-          "code": "E04",
-          "feedback": "Hai đường chéo $OI$ và $BC$ không bằng nhau nên tứ giác không phải hình chữ nhật."
+          "code": "E08",
+          "feedback": "Góc vuông tại $B$ là $\\widehat{OBA}$, không phải $\\widehat{OBI}$; hai đường chéo $OI$, $BC$ cũng không bằng nhau."
         },
         "1": {
           "code": "E04",

@@ -7,9 +7,9 @@
   "estMinutes": 65,
   "theory": [
     "**Cần nhớ trước:** bài **Viète cơ bản** ($x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$, biểu thức đối xứng theo $S$, $P$) và bài **PT bậc hai chứa tham số** (điều kiện có nghiệm theo $\\Delta'$). Bài này ghép hai việc đó lại.",
-    "**Quy trình 4 bước:** (1) Điều kiện: $\\Delta' \\ge 0$ nếu đề nói “có hai nghiệm”, $\\Delta'>0$ nếu “hai nghiệm phân biệt” (hệ số $a$ chứa $m$ thì thêm $a \\ne 0$). (2) Viète: viết $S=x_1+x_2$, $P=x_1x_2$ theo $m$. (3) Đưa hệ thức đề cho về $S$, $P$, giải ra $m$. (4) **Đối chiếu điều kiện (1)**, loại giá trị không thoả, rồi viết “Kết luận”.",
+    "**Quy trình 4 bước:** (1) Điều kiện: $\\Delta' \\ge 0$ nếu đề nói “có hai nghiệm” (kể cả nghiệm kép $x_1=x_2$), $\\Delta'>0$ nếu “hai nghiệm phân biệt” (hệ số $a$ chứa $m$ thì thêm $a \\ne 0$). (2) Viète: viết $S=x_1+x_2$, $P=x_1x_2$ theo $m$. (3) Đưa hệ thức đề cho về $S$, $P$, giải ra $m$. (4) **Đối chiếu điều kiện (1)**, loại giá trị không thoả, rồi viết “Kết luận”.",
     "**Vì sao phải đối chiếu:** Viète chỉ đúng khi phương trình **có nghiệm**. Giải hệ thức theo $m$ có thể ra giá trị làm $\\Delta'<0$: khi đó không có $x_1$, $x_2$ nào, nên giá trị đó phải loại. Ví dụ ra $m=1$ hoặc $m=-5$ mà điều kiện là $m \\ge -1$ thì chỉ giữ $m=1$.",
-    "**Giá trị lớn nhất / nhỏ nhất** (phiếu: biến $m$ – điều kiện – biểu thức theo $m$ – dấu bằng – kết luận): biểu thức bậc hai theo $m$ thì tách $k(m-h)^2+c$, kiểm tra $m=h$ thoả điều kiện. Biểu thức bậc nhất như $8m+10$ thì lớn nhất / nhỏ nhất tại **đầu mút** của điều kiện $\\Delta \\ge 0$.",
+    "**Giá trị lớn nhất / nhỏ nhất** (phiếu: biến $m$ – điều kiện – biểu thức theo $m$ – dấu bằng – kết luận): biểu thức bậc hai theo $m$ thì tách $k(m-h)^2+c$, kiểm tra $m=h$ thoả điều kiện. Biểu thức bậc nhất $km+c$ chỉ đạt lớn nhất (hoặc nhỏ nhất) tại **đầu mút** của điều kiện, khi điều kiện có dấu “=” ($\\Delta \\ge 0$, đầu mút là nghiệm kép); đề đòi $\\Delta>0$ thì không đạt.",
     "**Bẫy hay gặp:** (1) Quên đối chiếu $\\Delta'$, giữ cả giá trị phải loại. (2) Dùng $\\Delta' \\ge 0$ khi đề đòi “phân biệt”. (3) Sai dấu: $S=-\\frac ba$, còn $P=\\frac ca$. (4) $x_1^2+x_2^2=S^2-2P$, không phải $S^2-P$. (5) Hệ thức **không đối xứng** như $x_1-2x_2=1$: ghép với $x_1+x_2=S$ để tìm từng nghiệm trước.",
     "**Nhận dạng & bảng theo $S$, $P$:** “có hai nghiệm $x_1$, $x_2$ thoả mãn …”, “biểu thức … đạt giá trị lớn nhất / nhỏ nhất” → bài này. Chỉ hỏi số nghiệm → chỉ xét $\\Delta'$; biết một nghiệm → thay vào. Bảng: $x_1^2+x_2^2=S^2-2P$; $(x_1-x_2)^2=S^2-4P$; $\\frac1{x_1}+\\frac1{x_2}=\\frac SP$; $x_1^3+x_2^3=S^3-3SP$; $(x_1-k)(x_2-k)=P-kS+k^2$."
   ],
@@ -254,7 +254,7 @@
       "hints": [
         "Cần tìm $m$; hệ thức gồm tổng và tích hai nghiệm.",
         "Tổng và tích theo $m$ → định lí Viète; nhớ điều kiện có nghiệm.",
-        "Thay $x_1+x_2=4$, $x_1x_2=m-2$ vào hệ thức; kiểm tra $\\Delta'=6-m \\ge 0$."
+        "Thay $x_1+x_2=-\\frac ba$, $x_1x_2=\\frac ca$ vào hệ thức; nhớ kiểm tra $\\Delta' \\ge 0$."
       ],
       "answer": "5",
       "mistakes": [
@@ -606,7 +606,7 @@
             "level": "L3",
             "prompt": "Kết luận:",
             "options": [
-              "$Q$ không có giá trị lớn nhất vì $8m+10$ tăng mãi",
+              "$Q$ không có giá trị lớn nhất vì $Q$ tăng mãi theo $m$",
               "$Q$ lớn nhất bằng $20$, khi $m=\\frac54$",
               "$Q$ lớn nhất bằng $10$, khi $m=0$",
               "$Q$ lớn nhất bằng $36$, khi $m=\\frac{13}4$"
@@ -630,7 +630,7 @@
           }
         }
       ],
-      "solution": "$\\Delta=9-4(m+1)=5-4m \\ge 0 \\Leftrightarrow m \\le \\frac54$. Viète: $x_1+x_2=-3$, $x_1x_2=m+1$; $(x_1-x_2)^2=5-4m$. $Q=5-4m+7m+5(m+1)=8m+10 \\le 8\\cdot\\frac54+10=20$. Kết luận: giá trị lớn nhất của $Q$ là $20$, khi $m=\\frac54$."
+      "solution": "$\\Delta=9-4(m+1)=5-4m \\ge 0 \\Leftrightarrow m \\le \\frac54$. Viète: $x_1+x_2=-3$, $x_1x_2=m+1$; $(x_1-x_2)^2=5-4m$. $Q=5-4m+7m+5(m+1)=8m+10 \\le 8\\cdot\\frac54+10=20$. Kết luận: giá trị lớn nhất của $Q$ là $20$, khi $m=\\frac54$. (Tại $m=\\frac54$ phương trình có nghiệm kép $x_1=x_2=-\\frac32$; đề ghi “hai nghiệm” nên vẫn nhận, theo điều kiện $\\Delta \\ge 0$.)"
     },
     {
       "id": "e-vietets-p8",
@@ -907,8 +907,8 @@
       "id": "e-vietets-x5",
       "type": "steps",
       "level": "L2",
-      "prompt": "Cho phương trình $x^2-8x+m-1=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ sao cho $P=(x_1^2-1)(x_2^2-1)+2088$ đạt giá trị nhỏ nhất.",
-      "source": "68 đề – Đề 5, Bài 3.3",
+      "prompt": "Cho phương trình $x^2-8x+m-1=0$ (ẩn $x$, tham số $m$). Tìm $m$ để phương trình có hai nghiệm $x_1$, $x_2$ sao cho $T=(x_1^2-1)(x_2^2-1)+2088$ đạt giá trị nhỏ nhất.",
+      "source": "68 đề – Đề 5, Bài 3.3 (đổi tên biểu thức P thành T)",
       "steps": [
         {
           "prompt": "Điều kiện có nghiệm.",
@@ -943,31 +943,31 @@
           }
         },
         {
-          "prompt": "Viết $P$ theo $m$.",
+          "prompt": "Viết $T$ theo $m$.",
           "item": {
             "id": "e-vietets-x5-s2",
             "type": "mcq",
             "level": "L2",
-            "prompt": "$P$ bằng:",
+            "prompt": "$T$ bằng:",
             "options": [
               "$m^2-2m+2026$",
               "$m^2+2024$",
-              "$m^2-2m+2088$"
+              "$m^2-2m+2090$"
             ],
             "correct": 1,
             "mistakes": {
               "0": {
                 "code": "E03",
-                "feedback": "$x_1^2+x_2^2=S^2-2P$, con quên trừ $2x_1x_2$.",
+                "feedback": "$x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2$, con quên trừ $2x_1x_2$.",
                 "review": "e-viete"
               },
               "2": {
-                "code": "E03",
-                "feedback": "$(x_1^2-1)(x_2^2-1)=x_1^2x_2^2-(x_1^2+x_2^2)+1$, con thiếu hạng tử giữa.",
-                "review": "f1-hdt"
+                "code": "E02",
+                "feedback": "Khai triển $(x_1^2-1)(x_2^2-1)=x_1^2x_2^2-(x_1^2+x_2^2)+1$: con thiếu hạng tử giữa.",
+                "review": "f1-tgon"
               }
             },
-            "solution": "$x_1+x_2=8$, $x_1x_2=m-1$, $x_1^2+x_2^2=64-2(m-1)=66-2m$. $P=(m-1)^2-(66-2m)+1+2088=m^2+2024$."
+            "solution": "$x_1+x_2=8$, $x_1x_2=m-1$, $x_1^2+x_2^2=64-2(m-1)=66-2m$. $T=(m-1)^2-(66-2m)+1+2088=m^2+2024$."
           }
         },
         {
@@ -976,21 +976,21 @@
             "id": "e-vietets-x5-s3",
             "type": "numeric",
             "level": "L2",
-            "prompt": "$P$ nhỏ nhất khi $m$ bằng:",
+            "prompt": "$T$ nhỏ nhất khi $m$ bằng:",
             "answer": "0",
             "mistakes": [
               {
                 "answer": "1",
                 "code": "E03",
-                "feedback": "Kiểm tra lại cách viết $P$: $x_1^2+x_2^2=S^2-2P$.",
+                "feedback": "Kiểm tra lại bước viết $T$ theo $m$: $x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2$.",
                 "review": "e-viete"
               }
             ],
-            "solution": "$P=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$, thoả $m \\le 17$."
+            "solution": "$T=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$, thoả $m \\le 17$."
           }
         }
       ],
-      "solution": "$\\Delta'=17-m \\ge 0 \\Leftrightarrow m \\le 17$. Viète: $x_1+x_2=8$, $x_1x_2=m-1$. $P=(m-1)^2-(66-2m)+2089=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$ (thoả). Kết luận: $m=0$."
+      "solution": "$\\Delta'=17-m \\ge 0 \\Leftrightarrow m \\le 17$. Viète: $x_1+x_2=8$, $x_1x_2=m-1$. $T=(m-1)^2-(66-2m)+2089=m^2+2024 \\ge 2024$, dấu “=” khi $m=0$ (thoả). Kết luận: $m=0$."
     },
     {
       "id": "e-vietets-x6",
@@ -1087,8 +1087,8 @@
       "id": "e-vietets-x7",
       "type": "steps",
       "level": "L3",
-      "prompt": "Cho phương trình bậc hai $2x^2-(m+3)x+m=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm của phương trình. Tìm giá trị nhỏ nhất của biểu thức $P=|x_1-x_2|$.",
-      "source": "68 đề – Đề 45, Bài 3.3",
+      "prompt": "Cho phương trình bậc hai $2x^2-(m+3)x+m=0$ (ẩn $x$, tham số $m$). Gọi $x_1$, $x_2$ là hai nghiệm của phương trình. Tìm giá trị nhỏ nhất của biểu thức $T=|x_1-x_2|$.",
+      "source": "68 đề – Đề 45, Bài 3.3 (đổi tên biểu thức P thành T)",
       "steps": [
         {
           "prompt": "Điều kiện có nghiệm.",
@@ -1119,7 +1119,7 @@
           }
         },
         {
-          "prompt": "Tính $P^2=(x_1-x_2)^2$ theo $m$.",
+          "prompt": "Tính $T^2=(x_1-x_2)^2$ theo $m$.",
           "item": {
             "id": "e-vietets-x7-s2",
             "type": "mcq",
@@ -1139,7 +1139,7 @@
               },
               "2": {
                 "code": "E03",
-                "feedback": "$(x_1-x_2)^2=S^2-4P$, không phải $S^2-2P$.",
+                "feedback": "$(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2$, không phải $(x_1+x_2)^2-2x_1x_2$.",
                 "review": "e-viete"
               }
             },
@@ -1147,18 +1147,18 @@
           }
         },
         {
-          "prompt": "Giá trị nhỏ nhất của $P$.",
+          "prompt": "Giá trị nhỏ nhất của $T$.",
           "item": {
             "id": "e-vietets-x7-s3",
             "type": "numeric",
             "level": "L3",
-            "prompt": "Giá trị nhỏ nhất của $P$ là:",
+            "prompt": "Giá trị nhỏ nhất của $T$ là:",
             "answer": "√2",
             "mistakes": [
               {
                 "answer": "2",
                 "code": "E11",
-                "feedback": "Đó là giá trị nhỏ nhất của $P^2$; còn phải lấy căn bậc hai."
+                "feedback": "Đó là giá trị nhỏ nhất của $T^2$; còn phải lấy căn bậc hai."
               },
               {
                 "answer": "2√2",
@@ -1167,7 +1167,7 @@
                 "review": "e-viete"
               }
             ],
-            "solution": "$P^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $P \\ge \\sqrt2$."
+            "solution": "$T^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $T \\ge \\sqrt2$."
           }
         },
         {
@@ -1176,7 +1176,7 @@
             "id": "e-vietets-x7-s4",
             "type": "numeric",
             "level": "L3",
-            "prompt": "$P$ nhỏ nhất khi $m$ bằng:",
+            "prompt": "$T$ nhỏ nhất khi $m$ bằng:",
             "answer": "1",
             "mistakes": [
               {
@@ -1189,7 +1189,7 @@
           }
         }
       ],
-      "solution": "$\\Delta=(m-1)^2+8>0$ nên luôn có hai nghiệm phân biệt. Viète: $x_1+x_2=\\frac{m+3}2$, $x_1x_2=\\frac m2$. $(x_1-x_2)^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $P=|x_1-x_2| \\ge \\sqrt2$, dấu “=” khi $m=1$. Kết luận: giá trị nhỏ nhất của $P$ là $\\sqrt2$, khi $m=1$."
+      "solution": "$\\Delta=(m-1)^2+8>0$ nên luôn có hai nghiệm phân biệt. Viète: $x_1+x_2=\\frac{m+3}2$, $x_1x_2=\\frac m2$. $(x_1-x_2)^2=\\frac{(m-1)^2+8}4 \\ge 2$, nên $T=|x_1-x_2| \\ge \\sqrt2$, dấu “=” khi $m=1$. Kết luận: giá trị nhỏ nhất của $T$ là $\\sqrt2$, khi $m=1$."
     },
     {
       "id": "e-vietets-x8",

@@ -12,10 +12,10 @@
   "theory": [
     "**Cần nhớ trước** (lớp 7): hai đường thẳng cùng vuông góc với một đường thẳng thì song song; một đường thẳng cắt hai đường song song tạo các cặp góc đồng vị, so le trong bằng nhau; ba trường hợp bằng nhau của tam giác (c.c.c, c.g.c, g.c.g).",
     "**Dấu hiệu hình bình hành:** tứ giác có hai cặp cạnh đối song song; hai cặp cạnh đối bằng nhau; **một cặp cạnh đối song song và bằng nhau**; hai cặp góc đối bằng nhau; hoặc **hai đường chéo cắt nhau tại trung điểm mỗi đường**. Thêm góc vuông hoặc đường chéo bằng nhau → **hình chữ nhật**; thêm hai cạnh kề bằng nhau hoặc đường chéo vuông góc → **hình thoi**; vừa chữ nhật vừa thoi → **hình vuông**.",
-    "**Đường trung bình:** $M$, $N$ là trung điểm của $AB$, $AC$ ⇒ $MN \\parallel BC$ và $MN = \\dfrac{BC}{2}$. Đảo lại: đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì **đi qua trung điểm cạnh thứ ba**. Hình thang $ABCD$ ($AB \\parallel CD$) có $E$, $F$ là trung điểm hai cạnh bên ⇒ $EF \\parallel AB$ và $EF = \\dfrac{AB+CD}{2}$.",
+    "**Đường trung bình:** $M$, $N$ là trung điểm $AB$, $AC$ ⇒ $MN \\parallel BC$, $MN = \\dfrac{BC}{2}$. Đảo lại: đường thẳng qua trung điểm một cạnh, song song với cạnh thứ hai thì **đi qua trung điểm cạnh thứ ba**. Hình thang $ABCD$ ($AB \\parallel CD$), $E$, $F$ là trung điểm hai cạnh bên ⇒ $EF \\parallel AB$, $EF = \\dfrac{AB+CD}{2}$ (SGK mới không có — khi dùng, chứng minh qua trung điểm $I$ của $AC$: $EI = \\dfrac{CD}{2}$, $IF = \\dfrac{AB}{2}$, $E$, $I$, $F$ thẳng hàng).",
     "**Thalès và phân giác:** $M \\in AB$, $N \\in AC$, $MN \\parallel BC$ ⇒ $\\dfrac{AM}{AB}=\\dfrac{AN}{AC}$, $\\dfrac{AM}{MB}=\\dfrac{AN}{NC}$; đảo lại, có tỉ số bằng nhau như vậy thì $MN \\parallel BC$. Hệ quả: $\\dfrac{AM}{AB}=\\dfrac{AN}{AC}=\\dfrac{MN}{BC}$. $AD$ là phân giác của $\\triangle ABC$ ($D \\in BC$) ⇒ $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$. **Vì sao:** $\\triangle AMN$ là $\\triangle ABC$ thu nhỏ; đường trung bình là trường hợp tỉ số $\\dfrac{1}{2}$.",
     "**Bẫy hay gặp:** (1) viết $\\dfrac{MN}{BC}=\\dfrac{AM}{MB}$ — đoạn $MN$ đi với cả cạnh $BC$ thì $AM$ phải đi với cả cạnh $AB$; (2) đường trung bình hình thang lấy **hiệu** hai đáy hoặc quên chia 2; (3) phân giác viết ngược $\\dfrac{DB}{DC}=\\dfrac{AC}{AB}$ — đoạn kề $B$ đi với cạnh kề $B$; (4) tứ giác có một cặp cạnh song song và cặp **kia** bằng nhau chưa chắc là hình bình hành (có thể là hình thang cân).",
-    "**Nhận dạng:** “chứng minh trung điểm” → định lí đảo của đường trung bình, đường chéo hình bình hành, hoặc hai tỉ số Thalès chung một tỉ số trung gian; “chứng minh hình bình hành” → hai đường **cùng vuông góc** một đường; “tam giác cân” → hai cạnh là nửa của hai đoạn bằng nhau. **Cấu hình mẫu:** $H$ là trực tâm $\\triangle ABC$, $IB \\perp AB$, $IC \\perp AC$ ⇒ $BHCI$ là hình bình hành, trung điểm $BC$ cũng là trung điểm $HI$."
+    "**Nhận dạng:** “chứng minh trung điểm” → đường trung bình đảo, đường chéo hình bình hành, hoặc hai tỉ số Thalès chung một tỉ số trung gian; “hình bình hành” → hai cặp cạnh đối song song hoặc một cặp song song và bằng nhau; “tam giác cân” → hai cạnh là nửa hai đoạn bằng nhau. **Không** dùng Thalès khi chưa có đường song song. **Cấu hình mẫu:** trực tâm $H$, $IB \\perp AB$, $IC \\perp AC$ ⇒ $BHCI$ là hình bình hành."
   ],
   "worked": {
     "problem": "Cho tứ giác $ABCD$. Gọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm của $AB$, $BC$, $CD$, $DA$. Chứng minh tứ giác $MNPQ$ là hình bình hành.",
@@ -61,7 +61,7 @@
     "selfExplain": "Vì sao chỉ cần cặp cạnh $MN$, $QP$ mà không phải chứng minh thêm $MQ \\parallel NP$?"
   },
   "faded": {
-    "problem": "Cho $\\triangle ABC$ có $AB = 6$ cm, $AC = 9$ cm, $BC = 10$ cm; $AD$ là tia phân giác của $\\widehat{BAC}$ ($D \\in BC$). Qua $D$ kẻ đường thẳng song song với $AB$, cắt $AC$ tại $E$. Tính $DB$, $DC$ và $DE$.",
+    "problem": "Cho $\\triangle ABC$ có $AB = 6$ cm, $AC = 9$ cm, $BC = 10$ cm; $AD$ là tia phân giác của $\\widehat{BAC}$ ($D \\in BC$). Qua $D$ kẻ đường thẳng song song với $AB$, cắt $AC$ tại $E$. Tính $DB$, $DC$ và $DE$. (Hình phía trên là của bài mẫu — bài này con tự vẽ hình ra giấy.)",
     "steps": [
       {
         "prompt": "$AD$ là phân giác của $\\triangle ABC$: áp dụng tính chất đường phân giác.",
@@ -102,7 +102,7 @@
             {
               "answer": "6",
               "code": "E03",
-              "feedback": "Con lấy nhầm phần của $DC$: $DB$ chiếm 2 phần trong tổng $2+3=5$ phần."
+              "feedback": "Con lấy phần của $DC$ (hay viết ngược tỉ số): $DB$ kề $B$ nên ứng với $AB$, tức 2 phần trong tổng $2+3=5$ phần."
             },
             {
               "answer": "20/3",
@@ -178,7 +178,7 @@
       "hints": [
         "Đề cần chứng minh $I$ là trung điểm của $AC$.",
         "Đề cho một trung điểm và một đường song song: đó là dấu hiệu của định lí nào?",
-        "Nhớ lại định lí đảo của đường trung bình trong tam giác."
+        "Đường thẳng qua trung điểm một cạnh, song song với cạnh thứ hai, sẽ cắt cạnh thứ ba ở điểm nào?"
       ],
       "options": [
         "Tính chất đường phân giác: $\\dfrac{IA}{IC}=\\dfrac{OA}{OB}$",
@@ -223,7 +223,7 @@
         {
           "answer": "4",
           "code": "E03",
-          "feedback": "Con lấy hiệu hai đáy; đường trung bình của hình thang bằng **nửa tổng** hai đáy."
+          "feedback": "Con lấy nửa **hiệu** hai đáy; đường trung bình của hình thang bằng **nửa tổng** hai đáy."
         },
         {
           "answer": "20",
@@ -437,6 +437,10 @@
             "5": {
               "code": "E09",
               "feedback": "Đề không có tia phân giác nào; tỉ số $\\dfrac{DE}{BC}$ có được từ $DE \\parallel BC$."
+            },
+            "1": {
+              "code": "E09",
+              "feedback": "Định lí Thalès chỉ nói về tỉ số các đoạn trên hai cạnh $AB$, $AC$; tỉ số có $DE$ và $BC$ là của **hệ quả** định lí Thalès."
             }
           }
         }
@@ -553,7 +557,6 @@
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 334.0 247.0\" role=\"img\"><title>Tam giác ABN vuông tại A, OM song song BN, CH vuông góc AB, BM cắt CH tại K</title><line x1=\"22.0\" y1=\"225.0\" x2=\"312.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"225.0\" x2=\"22.0\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"22.0\" x2=\"312.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"167.0\" y1=\"225.0\" x2=\"22.0\" y2=\"123.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"312.0\" y1=\"225.0\" x2=\"22.0\" y2=\"123.5\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"196.0\" y1=\"143.8\" x2=\"196.0\" y2=\"225.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><polyline points=\"30.0,225.0 30.0,217.0 22.0,217.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"204.0,225.0 204.0,217.0 196.0,217.0\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"12.8\" y=\"234.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"323.3\" y=\"231.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"22.0\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"167.0\" y=\"238.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"9.0\" y=\"123.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"205.2\" y=\"134.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"196.0\" y=\"238.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"206.6\" y=\"176.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><circle cx=\"22.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"312.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"167.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"123.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"143.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"225.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"196.0\" cy=\"184.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
         "alt": "Tam giác ABN vuông tại A; O là trung điểm AB, OM song song với BN (M trên AN); C trên BN, CH vuông góc với AB tại H; BM cắt CH tại K."
       },
-      "drawFirst": true,
       "goal": "$KH = KC$",
       "steps": [
         {
@@ -993,7 +996,7 @@
       "id": "f3-tugiac-x8",
       "type": "steps",
       "level": "L3",
-      "prompt": "Một tấm bìa hình tam giác $ABC$ có $AB = 6$ dm, $AC = 9$ dm, $BC = 12$ dm. Tại điểm $D$ trên cạnh $BC$ với $BD = 4$ dm, người ta cắt theo hai đường thẳng qua $D$ lần lượt song song với $AC$ (cắt $AB$ tại $F$) và song song với $AB$ (cắt $AC$ tại $E$); phần bìa còn lại là tứ giác $AFDE$. Tính chu vi tứ giác $AFDE$.",
+      "prompt": "Một tấm bìa hình tam giác $ABC$ có $AB = 6$ dm, $AC = 9$ dm, $BC = 12$ dm. Tại điểm $D$ trên cạnh $BC$ với $BD = 4$ dm, người ta cắt theo hai đường thẳng qua $D$ lần lượt song song với $AC$ (cắt $AB$ tại $F$) và song song với $AB$ (cắt $AC$ tại $E$); tấm bìa được chia thành ba mảnh, mảnh chứa đỉnh $A$ là tứ giác $AFDE$. Tính chu vi tứ giác $AFDE$.",
       "source": "68 đề – Đề 1, Bài 5 (chuyển thể: thêm số liệu, hỏi chu vi thay cho diện tích lớn nhất)",
       "figure": {
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 334.0 149.3\" role=\"img\"><title>Tam giác ABC, D trên BC, DF song song AC, DE song song AB</title><line x1=\"121.7\" y1=\"22.0\" x2=\"22.0\" y2=\"127.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"22.0\" y1=\"127.3\" x2=\"312.0\" y2=\"127.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"312.0\" y1=\"127.3\" x2=\"121.7\" y2=\"22.0\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"118.7\" y1=\"127.3\" x2=\"55.2\" y2=\"92.2\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><line x1=\"118.7\" y1=\"127.3\" x2=\"185.1\" y2=\"57.1\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><text x=\"121.7\" y=\"9.0\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"10.7\" y=\"133.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"323.3\" y=\"133.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"118.7\" y=\"140.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"43.0\" y=\"87.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"196.4\" y=\"50.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><circle cx=\"121.7\" cy=\"22.0\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"22.0\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"312.0\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"118.7\" cy=\"127.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"55.2\" cy=\"92.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"185.1\" cy=\"57.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
