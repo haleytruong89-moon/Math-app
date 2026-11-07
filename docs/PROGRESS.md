@@ -33,7 +33,7 @@
 | S8a — Nền AI + báo cáo tuần + tóm tắt gia sư (SQL 0014) | `p1-slice-8` | ✅ Merged 23/10 (PR #37), SQL 0014 chạy bằng nút 22/10 |
 | S8b — AI cho con + bộ test | `p1-slice-8b` | ✅ Merged 05/11 (PR #48) — không SQL; "Hỏi thêm" bật sau khi phụ huynh chấm bộ test đạt |
 | S9 — Thi thử (Đề 57–68): lịch, đồng hồ, chấm từng ý, kết quả | `p1-slice-9` | ✅ Merged 07/11 (PR #51) — SQL 0015 đã áp 07/11 (sao lưu trước); dòng báo cáo tuần để v1.1 |
-| Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
+| Phiếu chấm thi thử Đề 57–59 (nháp) | `p1-thithu-1` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
 | S4b — Tiến độ tới mốc 8.5/9.5 (bỏ mở khoá tay 21/10) | `p1-slice-4b` | ✅ Merged 22/10 (PR #35) — không SQL |
 | Nội dung đợt 1 — f1-hdt, f1-pnt, a-tanso, b-phepthu (nháp) + chuẩn hoá htl-1/2 | `p1-content-1` | ✅ Merged 06/10 (PR #17); **phụ huynh duyệt 15/10** (đổi `approved` trong PR #20) |
 | Nội dung đợt 2 — f1-tgon, f1-qd, a-bieudo, b-xsuat (nháp) | `p1-content-2`, `p1-content-2-qa` | ✅ Merged 14/10 (PR #18); giải độc lập 103/103 + sửa + **phụ huynh duyệt 15/10** (PR #20, chờ merge) |
@@ -41,10 +41,11 @@
 | LT19–LT20 + Nội dung đợt 4 — g-giaihpt, g-chuso, g-chuyendong, g-nangsuat, g-phantram (nháp) | `p1-content-4` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 5 — f3-dongdang (bài hình S5 đầu tiên), j-coban, c-coban, c-truccan (nháp) | `p1-content-5` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
-| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
-| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
-| Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) |
-| Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | ✅ Duyệt 08/11 (audit AI, PR `p1-audit-1`) — **43/43 KU lõi đã duyệt** |
+| Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
+| Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
+| Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
+| Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) — **43/43 KU lõi đã duyệt** |
+| Audit AI đợt 3–6 (18 bài đã duyệt) + ô số hiểu "1.200" + câu nhiều bước mở từng bước | `p1-audit-2` | 🟡 08/11 PR mở — không SQL, không thay câu |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
