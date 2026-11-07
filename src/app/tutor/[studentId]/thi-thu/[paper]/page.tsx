@@ -40,7 +40,6 @@ export default async function TutorMockPaperPage(props: PageProps<"/tutor/[stude
       <p className="mt-1 text-sm text-muted">
         Ngày {dmy(exam.scheduled_on)} · {STATUS_LABEL[st]}{took !== null ? ` · con làm ${took} phút` : ""}{sheet ? ` · trong sách: ${sheet.pages}` : ""}
       </p>
-      {sheet?.note && <p className="mt-2 text-sm">{sheet.note}</p>}
       <div className="mt-5 flex flex-col gap-6">
         {exam.graded_at && <MockResult studentId={student.id} exam={exam} scores={scores} priorities={new Set((prio.data ?? []).map((r) => r.unit_id as string))} />}
         <section aria-label="Phiếu chấm">
