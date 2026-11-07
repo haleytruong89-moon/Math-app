@@ -1,0 +1,22 @@
+{
+  "papers": [
+    {
+      "paper": 57,
+      "status": "approved",
+      "approvedOn": "2026-11-07",
+      "pages": "tr. 1–2 (đề mẫu kiểm thử)",
+      "parts": [
+        { "part": "1.1", "max": 1, "answer": "$A=3$", "units": ["fa-1"] },
+        { "part": "1.2", "max": 0.5, "answer": "$x=4$", "units": ["fa-2"] },
+        { "part": "2", "max": 1.5, "answer": "Mỗi giờ đội I làm $\\frac1{12}$ công việc", "units": ["fb-1"] },
+        { "part": "3.1", "max": 1, "answer": "$(x;y)=(2;1)$", "units": ["fb-2"] },
+        { "part": "3.2", "max": 1.5, "answer": "$m=-1$", "units": ["fb-3", "fc-1"] },
+        { "part": "4.1", "max": 1, "answer": "$V=96\\pi$", "units": ["fc-9"] },
+        { "part": "4.2a", "max": 1, "answer": "Tứ giác $ABOC$ nội tiếp (hai góc vuông)", "units": ["fs-1"] },
+        { "part": "4.2b", "max": 1, "answer": "$MA^2=MB\\cdot MC$ (đồng dạng)", "units": ["fg-1"] },
+        { "part": "4.2c", "max": 1, "answer": "Ba điểm thẳng hàng", "units": ["fl-1"] },
+        { "part": "5", "max": 0.5, "answer": "GTNN bằng $2$ khi $x=1$", "units": ["fd-1"] }
+      ]
+    }
+  ]
+}

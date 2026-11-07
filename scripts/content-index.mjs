@@ -27,6 +27,9 @@ export function render(rootRel) {
   // Luyện đề 4.2 (23/10): the drill bank, when the content root has one.
   const hasDrills = fs.existsSync(path.join(root, "luyen-de-42.json"));
   if (hasDrills) lines.push(`import drills from "${imp("luyen-de-42.json")}";`);
+  // Thi thử (S9, 07/11): score sheets of the mock papers, when the content root has them.
+  const hasMocks = fs.existsSync(path.join(root, "thi-thu.json"));
+  if (hasMocks) lines.push(`import mocks from "${imp("thi-thu.json")}";`);
   const entries = [];
   mods.forEach((m, i) => {
     const mod = JSON.parse(fs.readFileSync(path.join(root, m, "module.json"), "utf8"));
@@ -40,6 +43,7 @@ export function render(rootRel) {
   lines.push("", `export const CONTENT_SOURCE = ${JSON.stringify(rootRel)};`, "export const CURRICULUM: unknown = curriculum;");
   lines.push(hasSoTay ? "export const SO_TAY: unknown = soTay;" : "export const SO_TAY: unknown = null;");
   lines.push(hasDrills ? "export const DRILLS: unknown = drills;" : "export const DRILLS: unknown = null;");
+  lines.push(hasMocks ? "export const MOCKS: unknown = mocks;" : "export const MOCKS: unknown = null;");
   lines.push("export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [", ...entries, "];", "");
   return lines.join("\n");
 }

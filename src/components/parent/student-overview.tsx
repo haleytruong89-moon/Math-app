@@ -9,6 +9,7 @@ import { needsTutor } from "@/lib/content/curriculum";
 import { curriculum } from "@/lib/content";
 import { currentPhase, lateUnits, milestoneProgress } from "@/lib/learning/milestones";
 import { LateNotice, MilestoneCards } from "@/components/parent/milestones";
+import { gradeOverdue, type MockExamRow } from "@/lib/learning/mock";
 import {
   displayLevel, isoWeekday, latestByUnit, mismatchFlags, missedSessions, weekSummary,
   type AssignmentRow, type ConfirmationRow, type ProposalRow,
@@ -22,7 +23,7 @@ const DAY_NAME = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sá
 export async function StudentOverview({ supabase, student }: { supabase: SupabaseClient; student: { id: string; full_name: string } }) {
   const id = student.id;
   const since = addDays(vnDate(), -14);
-  const [state, proposals, confirmations, assignments, sessions, reviewLog, homework, profiles, aiFlags] = await Promise.all([
+  const [state, proposals, confirmations, assignments, sessions, reviewLog, homework, profiles, aiFlags, mocks] = await Promise.all([
     loadStudentState(supabase, id),
     supabase.from("tutor_proposals").select("session_id, unit_id, level, tutor_id, created_at").eq("student_id", id).order("created_at", { ascending: false }).limit(500),
     supabase.from("parent_confirmations").select("unit_id, level, system_level, created_at").eq("student_id", id).order("created_at", { ascending: false }).limit(500),
@@ -33,10 +34,13 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
     supabase.from("profiles").select("id, display_name"),
     // S8b: AI messages the student marked "AI nói sai?" in the last 14 days.
     supabase.from("ai_messages").select("id").eq("student_id", id).eq("flag", "student").gt("flagged_at", since).limit(50),
+    // S9: mock papers handed in and waiting to be graded.
+    supabase.from("mock_exams").select("id, paper, scheduled_on, started_at, finished_at, graded_at, total").eq("student_id", id).is("graded_at", null),
   ]);
   for (const r of [proposals, confirmations, assignments, sessions, reviewLog, homework]) if (r.error) console.error("StudentOverview", r.error.message);
 
   const today = state.today;
+  const mockLate = ((mocks.data ?? []) as MockExamRow[]).filter((e) => gradeOverdue(e, vnDate()));
   const tutorName = new Map((profiles.data ?? []).map((p) => [p.id as string, p.display_name as string]));
   const sessionNote = new Map((sessions.data ?? []).map((s) => [s.id as string, s.note as string | null]));
   const confs = latestByUnit((confirmations.data ?? []) as ConfirmationRow[]);
@@ -85,6 +89,12 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
 
       <h3 id="can-chu-y" className="mt-8 font-display text-base font-semibold">Cần chú ý</h3>
       <ul className="mt-3 flex flex-col gap-3">
+        {mockLate.map((e) => (
+          <li key={`mock-${e.paper}`} className="rounded-xl border border-warn bg-surface p-4" data-testid="mock-overdue-notice">
+            <p className="font-display font-semibold">Thi thử Đề {e.paper}: con nộp bài ngày {ddmm(e.finished_at!)}, gia sư chưa chấm</p>
+            <Link href={`/parent/thi-thu/${id}/${e.paper}`} className="mt-1 inline-block text-sm text-accent hover:underline">Xem đề →</Link>
+          </li>
+        ))}
         {(aiFlags.data?.length ?? 0) > 0 && (
           <li className="rounded-xl border border-warn bg-surface p-4" data-testid="ai-flag-notice">
             <p className="font-display font-semibold">Con báo &ldquo;AI nói sai?&rdquo; {aiFlags.data!.length} lần (14 ngày qua)</p>
@@ -146,7 +156,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
           </li>
         ))}
         <LateNotice late={late} visible={visible} />
-        {!flags.length && !missed.length && !late.length && (
+        {!flags.length && !missed.length && !late.length && !mockLate.length && (
           <li className="rounded-xl border border-dashed border-border p-4 text-sm text-muted">Không có gì cần chú ý.</li>
         )}
       </ul>
