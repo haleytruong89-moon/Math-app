@@ -1,0 +1,827 @@
+{
+  "id": "hq-amgm",
+  "module": "toi-uu",
+  "order": 1,
+  "title": "BĐT cơ bản, AM-GM & tìm MAX/MIN",
+  "status": "draft",
+  "estMinutes": 55,
+  "theory": [
+    "**Cần nhớ trước:** bài **7 hằng đẳng thức đáng nhớ**, nhất là $(a-b)^2=a^2-2ab+b^2$. Mọi bất đẳng thức trong bài này đều quy về một điều: bình phương luôn không âm, $A^2 \\ge 0$, dấu “=” khi $A=0$.",
+    "**Ba công cụ:** (1) *Xét hiệu*: muốn chứng minh $A \\ge B$, chứng minh $A-B \\ge 0$. (2) *Tách bình phương*: $(x-h)^2+c \\ge c$, dấu “=” khi $x=h$. (3) *AM-GM (Cô-si)* cho hai số **không âm**: $a+b \\ge 2\\sqrt{ab}$, dấu “=” khi $a=b$. Hệ quả: $a^2+b^2 \\ge 2ab$ với mọi $a$, $b$; $x+\\frac kx \\ge 2\\sqrt k$ khi $x>0$, $k>0$.",
+    "**Vì sao:** $a+b-2\\sqrt{ab}=(\\sqrt a-\\sqrt b)^2 \\ge 0$ — AM-GM chính là xét hiệu rồi nhận ra một bình phương. Tương tự $a^2+b^2-2ab=(a-b)^2 \\ge 0$. Dấu “=” xảy ra đúng khi bình phương đó bằng $0$.",
+    "**Phiếu tìm GTNN / GTLN:** biến – điều kiện – biểu thức – dấu bằng – kết luận. Chứng minh $P \\ge m$ (hoặc $P \\le M$) với $m$ là **hằng số**, rồi **chỉ ra một giá trị của biến thoả điều kiện** làm $P=m$. Chưa chỉ ra dấu bằng thì chưa được kết luận. Kết luận ghi cả giá trị nhỏ nhất và giá trị của biến.",
+    "**Bẫy hay gặp:** (1) Quên kiểm tra dấu bằng: với $x \\ge 4$ thì $x+\\frac9x \\ge 6$ vẫn đúng, nhưng dấu “=” cần $x=3$ — không thoả, nên $6$ **không** phải GTNN. (2) Dùng AM-GM cho số âm: $x<0$ thì $x+\\frac1x \\le -2$. (3) Vế phải còn chứa biến: $x^2+9 \\ge 6x$ không cho GTNN của $x^2+9$.",
+    "**Nhận dạng:** tổng hai số dương có **tích không đổi** ($x+\\frac9x$, $\\sqrt x+\\frac3{\\sqrt x}$, $(x-1)+\\frac4{x-1}$) → AM-GM. Đa thức bậc hai một biến → tách bình phương. “Chứng minh $A \\ge B$” → xét hiệu. **Không** dùng AM-GM khi số hạng có thể âm. Bài doanh thu, diện tích, thể tích thực tế → bài **Tối ưu kinh tế** / **Tối ưu hình học**."
+  ],
+  "worked": {
+    "problem": "Cho $x>0$. Tìm giá trị nhỏ nhất của $P=\\frac{x^2+2x+9}{x}$.",
+    "steps": [
+      {
+        "text": "Biến $x$, điều kiện $x>0$. Chia từng hạng tử của tử cho $x$: $P=x+\\frac9x+2$.",
+        "why": "Tạo tổng hai số dương $x$ và $\\frac9x$ có tích không đổi: $x\\cdot\\frac9x=9$."
+      },
+      {
+        "text": "Áp dụng AM-GM cho hai số dương $x$ và $\\frac9x$: $x+\\frac9x \\ge 2\\sqrt{x\\cdot\\frac9x}=2\\sqrt9=6$. Suy ra $P \\ge 6+2=8$.",
+        "why": "Vì tích là hằng số nên vế phải là hằng số — đúng thứ cần để có GTNN."
+      },
+      {
+        "text": "Dấu “=” xảy ra khi $x=\\frac9x \\Leftrightarrow x^2=9 \\Leftrightarrow x=3$ (vì $x>0$), thoả điều kiện.",
+        "why": "Phải chỉ ra $P$ thật sự bằng $8$ tại một $x$ hợp lệ; loại $x=-3$ vì $x>0$."
+      },
+      {
+        "text": "Kết luận: giá trị nhỏ nhất của $P$ là $8$, đạt được khi $x=3$.",
+        "why": "Thử lại: $P(3)=\\frac{9+6+9}{3}=8$."
+      }
+    ],
+    "selfExplain": "Nếu đề cho $x \\ge 4$ thay vì $x>0$, vì sao chưa được kết luận ngay GTNN của $P$ là $8$?"
+  },
+  "faded": {
+    "problem": "Tìm giá trị lớn nhất của $Q=4x-x^2+1$.",
+    "steps": [
+      {
+        "text": "Đặt dấu trừ ra ngoài các hạng tử chứa $x$: $Q=-(x^2-4x)+1$."
+      },
+      {
+        "prompt": "Tách bình phương.",
+        "item": {
+          "id": "hq-amgm-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "$Q$ viết được dưới dạng:",
+          "options": [
+            "$Q=-(x-2)^2+1$",
+            "$Q=-(x-2)^2+5$",
+            "$Q=-(x-2)^2-3$",
+            "$Q=-(x+2)^2+5$"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E03",
+              "feedback": "Con nhớ thiếu: $x^2-4x=(x-2)^2-4$, vì $(x-2)^2=x^2-4x+4$.",
+              "review": "f1-hdt"
+            },
+            "2": {
+              "code": "E02",
+              "feedback": "Dấu trừ trước ngoặc đổi dấu cả số $-4$ bên trong: $-[(x-2)^2-4]=-(x-2)^2+4$."
+            },
+            "3": {
+              "code": "E03",
+              "feedback": "Hạng tử giữa là $-4x$ nên là bình phương của một **hiệu**: $(x-2)^2$.",
+              "review": "f1-hdt"
+            }
+          },
+          "solution": "$x^2-4x=(x-2)^2-4$ nên $Q=-[(x-2)^2-4]+1=-(x-2)^2+5$."
+        }
+      },
+      {
+        "prompt": "Đánh giá $Q$ và tìm dấu bằng.",
+        "item": {
+          "id": "hq-amgm-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Từ $Q=-(x-2)^2+5$ suy ra:",
+          "options": [
+            "$Q \\ge 5$, dấu “=” khi $x=2$",
+            "$Q \\le 5$, dấu “=” khi $x=-2$",
+            "$Q \\le 5$, dấu “=” khi $x=2$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E04",
+              "feedback": "$(x-2)^2 \\ge 0$ nên $-(x-2)^2 \\le 0$: dấu trừ đổi chiều bất đẳng thức."
+            },
+            "1": {
+              "code": "E02",
+              "feedback": "Dấu “=” khi $x-2=0$; chuyển vế $-2$ phải đổi dấu."
+            }
+          },
+          "solution": "$-(x-2)^2 \\le 0$ với mọi $x$ nên $Q \\le 5$; dấu “=” khi $x-2=0 \\Leftrightarrow x=2$."
+        }
+      },
+      {
+        "prompt": "Viết kết luận.",
+        "item": {
+          "id": "hq-amgm-f3",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng và đủ?",
+          "options": [
+            "Kết luận: giá trị lớn nhất của $Q$ là $5$, đạt được khi $x=2$.",
+            "Kết luận: giá trị lớn nhất của $Q$ là $2$.",
+            "Kết luận: $Q \\le 5$."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E04",
+              "feedback": "Con đang ghi giá trị của $x$; giá trị lớn nhất là giá trị của $Q$ tại đó."
+            },
+            "2": {
+              "code": "E11",
+              "feedback": "$Q \\le 5$ mới là đánh giá; kết luận phải nêu GTLN và giá trị $x$ làm $Q$ đạt nó."
+            }
+          },
+          "solution": "Kết luận: giá trị lớn nhất của $Q$ là $5$, đạt được khi $x=2$."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "hq-amgm-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho $x>0$. Đề hỏi: “Tìm giá trị nhỏ nhất của $P=x+\\frac{16}{x}$”. Cách làm phù hợp nhất là:",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi giá trị nhỏ nhất của một tổng có $x$ và $\\frac{16}{x}$.",
+        "Hai số hạng dương, nhân với nhau được hằng số → dấu hiệu của công cụ nào?",
+        "Tổng hai số dương có tích không đổi: dùng $a+b \\ge 2\\sqrt{ab}$."
+      ],
+      "options": [
+        "Tách $P$ thành $(x-h)^2+c$ như với đa thức bậc hai",
+        "Áp dụng AM-GM cho hai số dương $x$ và $\\frac{16}{x}$ (tích không đổi), rồi chỉ ra dấu “=”",
+        "Cho $x$ càng nhỏ càng tốt, vì $P$ nhỏ nhất khi $x$ nhỏ nhất",
+        "Thử $x=1$, $2$, $3$ rồi chọn giá trị nhỏ nhất của $P$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "$P$ có hạng tử $\\frac{16}{x}$ nên không phải đa thức bậc hai; tổng hai số dương có tích không đổi thì dùng AM-GM."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "$x$ nhỏ thì $\\frac{16}{x}$ lại rất lớn; tổng hai số dương có tích không đổi thì dùng AM-GM."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "Thử vài giá trị không chứng minh được $P$ không nhỏ hơn nữa; cần một bất đẳng thức như AM-GM."
+        }
+      },
+      "solution": "$x$ và $\\frac{16}{x}$ dương, tích $x\\cdot\\frac{16}{x}=16$ không đổi → AM-GM: $P \\ge 2\\sqrt{16}=8$, dấu “=” khi $x=\\frac{16}{x}$, tức $x=4$. Kết luận: GTNN của $P$ là $8$ khi $x=4$."
+    },
+    {
+      "id": "hq-amgm-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho $x>0$. Tìm giá trị nhỏ nhất của $P=x+\\frac{25}{x}$.",
+      "hints": [
+        "Cần giá trị nhỏ nhất của $P$ khi $x$ dương.",
+        "Hai số dương $x$ và $\\frac{25}{x}$ có tích không đổi.",
+        "Dùng $a+b \\ge 2\\sqrt{ab}$, rồi tìm $x$ để $x=\\frac{25}{x}$."
+      ],
+      "answer": "10",
+      "mistakes": [
+        {
+          "answer": "5",
+          "code": "E03",
+          "feedback": "Con nhớ thiếu hệ số: AM-GM là $a+b \\ge 2\\sqrt{ab}$."
+        },
+        {
+          "answer": "50",
+          "code": "E03",
+          "feedback": "Vế phải là $2\\sqrt{ab}$, có dấu căn: lấy căn của tích trước rồi mới nhân $2$."
+        }
+      ],
+      "solution": "$x$ và $\\frac{25}{x}$ dương nên $P \\ge 2\\sqrt{x\\cdot\\frac{25}{x}}=2\\sqrt{25}=10$. Dấu “=” khi $x=\\frac{25}{x} \\Leftrightarrow x=5$ (vì $x>0$). Kết luận: GTNN của $P$ là $10$, đạt khi $x=5$."
+    },
+    {
+      "id": "hq-amgm-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Giá trị nhỏ nhất của $A=x^2-6x+11$ là:",
+      "hints": [
+        "Đề hỏi giá trị nhỏ nhất của một đa thức bậc hai.",
+        "Đa thức bậc hai một biến → tách thành bình phương cộng một hằng số.",
+        "Dùng $x^2-6x+9=(x-3)^2$, phần còn lại là hằng số."
+      ],
+      "options": [
+        "$11$, đạt khi $x=0$",
+        "$20$, đạt khi $x=3$",
+        "$2$, đạt khi $x=3$",
+        "$2$, đạt khi $x=-3$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "$x=0$ chưa chắc làm $A$ nhỏ nhất; tách bình phương để thấy $A$ nhỏ nhất khi nào."
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "$(x-3)^2$ đã có sẵn $9$, nên phải **trừ** $9$: $11-9$."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Dấu “=” khi $x-3=0$; chuyển vế phải đổi dấu."
+        }
+      },
+      "solution": "$A=(x^2-6x+9)+2=(x-3)^2+2 \\ge 2$, dấu “=” khi $x=3$. GTNN của $A$ là $2$, đạt khi $x=3$."
+    },
+    {
+      "id": "hq-amgm-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Chứng minh rằng với mọi số thực $a$, $b$: $a^2+b^2+2 \\ge 2(a+b)$. Dấu “=” xảy ra khi nào?",
+      "hints": [
+        "Cần chứng minh vế trái không nhỏ hơn vế phải với mọi $a$, $b$.",
+        "Chứng minh $A \\ge B$ → xét hiệu $A-B$ rồi đưa về bình phương.",
+        "Gom $a^2-2a+1$ và $b^2-2b+1$ thành hai bình phương."
+      ],
+      "steps": [
+        {
+          "prompt": "Xét hiệu.",
+          "item": {
+            "id": "hq-amgm-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Hiệu $a^2+b^2+2-2(a+b)$ viết được thành:",
+            "options": [
+              "$(a-1)^2+(b-1)^2$",
+              "$(a-1)^2+(b-1)^2+2$",
+              "$(a+1)^2+(b+1)^2$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E03",
+                "feedback": "$(a-1)^2=a^2-2a+1$ đã chứa số $1$; hai bình phương đã dùng hết số $2$.",
+                "review": "f1-hdt"
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "Hạng tử $-2a$ mang dấu trừ nên là bình phương của một **hiệu**.",
+                "review": "f1-hdt"
+              }
+            },
+            "solution": "$a^2+b^2+2-2a-2b=(a^2-2a+1)+(b^2-2b+1)=(a-1)^2+(b-1)^2 \\ge 0$."
+          }
+        },
+        {
+          "prompt": "Dấu bằng.",
+          "item": {
+            "id": "hq-amgm-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Dấu “=” xảy ra khi:",
+            "options": [
+              "$a=b$",
+              "$a=b=1$",
+              "$a=1$ hoặc $b=1$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E04",
+                "feedback": "Đó là dấu bằng của $a^2+b^2 \\ge 2ab$; ở đây hiệu là $(a-1)^2+(b-1)^2$."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Tổng hai bình phương bằng $0$ khi **cả hai** bình phương bằng $0$."
+              }
+            },
+            "solution": "$(a-1)^2+(b-1)^2=0 \\Leftrightarrow a-1=0$ và $b-1=0 \\Leftrightarrow a=b=1$."
+          }
+        }
+      ],
+      "solution": "Xét hiệu: $a^2+b^2+2-2(a+b)=(a-1)^2+(b-1)^2 \\ge 0$ nên $a^2+b^2+2 \\ge 2(a+b)$. Dấu “=” khi $a=b=1$."
+    },
+    {
+      "id": "hq-amgm-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Cho $x>1$. Tìm giá trị nhỏ nhất của $P=x+\\frac{4}{x-1}$ và giá trị $x$ tương ứng.",
+      "hints": [
+        "Cần giá trị nhỏ nhất của $P$ và $x$ để đạt được.",
+        "$x$ và $\\frac{4}{x-1}$ có tích chưa cố định; hãy tạo hai số có tích không đổi.",
+        "Viết $x=(x-1)+1$, rồi dùng AM-GM cho $x-1$ và $\\frac{4}{x-1}$."
+      ],
+      "steps": [
+        {
+          "prompt": "Tách để dùng AM-GM.",
+          "item": {
+            "id": "hq-amgm-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Cách viết nào giúp dùng được AM-GM?",
+            "options": [
+              "$P \\ge 2\\sqrt{\\frac{4x}{x-1}}$",
+              "$P=(x-1)+\\frac{4}{x-1}-1$",
+              "$P=(x-1)+\\frac{4}{x-1}+1$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "Tích $x\\cdot\\frac{4}{x-1}$ còn chứa $x$, nên vế phải không phải hằng số; cần tạo hai số có tích không đổi."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "$x=(x-1)+1$: thêm bớt phải giữ nguyên giá trị."
+              }
+            },
+            "solution": "$x=(x-1)+1$ nên $P=(x-1)+\\frac{4}{x-1}+1$; hai số dương $x-1$ và $\\frac4{x-1}$ có tích $4$."
+          }
+        },
+        {
+          "prompt": "Giá trị nhỏ nhất.",
+          "item": {
+            "id": "hq-amgm-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Giá trị nhỏ nhất của $P$ là:",
+            "answer": "5",
+            "mistakes": [
+              {
+                "answer": "4",
+                "code": "E02",
+                "feedback": "Con quên hằng số $+1$ còn lại sau khi tách $x=(x-1)+1$."
+              },
+              {
+                "answer": "3",
+                "code": "E02",
+                "feedback": "$x=(x-1)+1$, không phải $(x-1)-1$."
+              }
+            ],
+            "solution": "$(x-1)+\\frac{4}{x-1} \\ge 2\\sqrt4=4$ nên $P \\ge 4+1=5$."
+          }
+        },
+        {
+          "prompt": "Dấu bằng.",
+          "item": {
+            "id": "hq-amgm-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "$P$ đạt giá trị nhỏ nhất khi $x$ bằng:",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "2",
+                "code": "E10",
+                "feedback": "Con mới tìm được $x-1$; từ đó suy ra $x$."
+              },
+              {
+                "answer": "-1",
+                "code": "E14",
+                "feedback": "$x-1=-2$ không thoả $x>1$, phải loại."
+              }
+            ],
+            "solution": "$x-1=\\frac{4}{x-1} \\Leftrightarrow (x-1)^2=4 \\Leftrightarrow x-1=2$ (vì $x-1>0$) $\\Leftrightarrow x=3$."
+          }
+        }
+      ],
+      "solution": "$P=(x-1)+\\frac{4}{x-1}+1 \\ge 2\\sqrt{4}+1=5$; dấu “=” khi $(x-1)^2=4$, $x-1>0$ nên $x=3$. Kết luận: GTNN của $P$ là $5$ khi $x=3$."
+    },
+    {
+      "id": "hq-amgm-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho hai số dương $a$, $b$ thoả mãn $a+b=6$. Tìm giá trị lớn nhất của tích $ab$.",
+      "hints": [
+        "Đề hỏi tích $ab$ lớn nhất khi tổng $a+b$ cố định.",
+        "Tổng và tích hai số dương liên hệ bằng bất đẳng thức nào?",
+        "Từ $a+b \\ge 2\\sqrt{ab}$ chặn $\\sqrt{ab}$, rồi bình phương."
+      ],
+      "answer": "9",
+      "mistakes": [
+        {
+          "answer": "3",
+          "code": "E01",
+          "feedback": "Con mới chặn được $\\sqrt{ab}$; bình phương để chặn $ab$."
+        },
+        {
+          "answer": "36",
+          "code": "E03",
+          "feedback": "Từ $(a-b)^2 \\ge 0$ ta có $(a+b)^2 \\ge 4ab$: con thiếu hệ số $4$.",
+          "review": "f1-hdt"
+        }
+      ],
+      "solution": "AM-GM: $6=a+b \\ge 2\\sqrt{ab}$ nên $\\sqrt{ab} \\le 3$, suy ra $ab \\le 9$. Dấu “=” khi $a=b=3$ (thoả $a+b=6$). Kết luận: GTLN của $ab$ là $9$, khi $a=b=3$."
+    },
+    {
+      "id": "hq-amgm-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho hai biểu thức $M=\\frac{x+3}{\\sqrt x-2}$ và $N=\\frac{\\sqrt x}{\\sqrt x-2}$ (đã rút gọn) với $x>0$, $x \\ne 4$. Tìm giá trị của $x$ để biểu thức $\\frac MN$ đạt giá trị nhỏ nhất.",
+      "source": "68 đề – Đề 2, Bài 2.3 (chuyển thể: cho sẵn N đã rút gọn, tách bước)",
+      "hints": [
+        "Cần $x$ để $\\frac MN$ nhỏ nhất; trước hết rút gọn $\\frac MN$.",
+        "Sau khi chia, được tổng hai số dương có tích không đổi → công cụ nào?",
+        "Chia từng hạng tử của tử cho $\\sqrt x$, dùng AM-GM, rồi kiểm tra $x \\ne 4$."
+      ],
+      "steps": [
+        {
+          "prompt": "Viết $\\frac MN$ thành tổng.",
+          "item": {
+            "id": "hq-amgm-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "$\\frac MN$ bằng:",
+            "options": [
+              "$\\sqrt x+\\frac{3}{\\sqrt x}$",
+              "$x+\\frac{3}{\\sqrt x}$",
+              "$\\sqrt x+3$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "$\\frac{x}{\\sqrt x}=\\sqrt x$ vì $x=\\sqrt x\\cdot\\sqrt x$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Chia **từng** hạng tử của tử cho $\\sqrt x$: $\\frac{3}{\\sqrt x}$ chứ không phải $3$."
+              }
+            },
+            "solution": "$\\frac MN=\\frac{x+3}{\\sqrt x-2}\\cdot\\frac{\\sqrt x-2}{\\sqrt x}=\\frac{x+3}{\\sqrt x}=\\sqrt x+\\frac{3}{\\sqrt x}$."
+          }
+        },
+        {
+          "prompt": "Giá trị nhỏ nhất.",
+          "item": {
+            "id": "hq-amgm-p7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá trị nhỏ nhất của $\\frac MN$ là:",
+            "answer": "2√3",
+            "mistakes": [
+              {
+                "answer": "√3",
+                "code": "E03",
+                "feedback": "AM-GM là $a+b \\ge 2\\sqrt{ab}$: con quên hệ số $2$."
+              },
+              {
+                "answer": "6",
+                "code": "E03",
+                "feedback": "Vế phải là $2\\sqrt{ab}=2\\sqrt3$, con quên dấu căn."
+              }
+            ],
+            "solution": "$\\sqrt x>0$ nên $\\sqrt x+\\frac3{\\sqrt x} \\ge 2\\sqrt{\\sqrt x\\cdot\\frac{3}{\\sqrt x}}=2\\sqrt3$."
+          }
+        },
+        {
+          "prompt": "Giá trị $x$.",
+          "item": {
+            "id": "hq-amgm-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Đạt giá trị nhỏ nhất khi $x$ bằng:",
+            "answer": "3",
+            "mistakes": [
+              {
+                "answer": "√3",
+                "code": "E01",
+                "feedback": "Đó là giá trị của $\\sqrt x$; bình phương để ra $x$."
+              }
+            ],
+            "solution": "$\\sqrt x=\\frac{3}{\\sqrt x} \\Leftrightarrow x=3$, thoả $x>0$, $x \\ne 4$."
+          }
+        }
+      ],
+      "solution": "$\\frac MN=\\frac{x+3}{\\sqrt x}=\\sqrt x+\\frac3{\\sqrt x} \\ge 2\\sqrt3$ (AM-GM, $\\sqrt x>0$). Dấu “=” khi $\\sqrt x=\\frac3{\\sqrt x} \\Leftrightarrow x=3$, thoả điều kiện. Kết luận: $x=3$ thì $\\frac MN$ đạt GTNN bằng $2\\sqrt3$."
+    },
+    {
+      "id": "hq-amgm-p8",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Cho $a>1$. Chứng minh $\\frac{a^2}{a-1} \\ge 4$. Điền vào chỗ trống để được lời giải đúng.",
+      "source": "68 đề – Đề 38, Bài 5 (tách bước: chứng minh một hạng tử)",
+      "hints": [
+        "Cần chứng minh một phân thức không nhỏ hơn $4$ khi $a>1$.",
+        "Tách phân thức thành tổng hai số dương có tích không đổi cộng một hằng số.",
+        "Viết $a^2=(a^2-1)+1$, chia cho $a-1$, rồi dùng AM-GM."
+      ],
+      "lines": [
+        "Vì $a>1$ nên $a-1>0$.",
+        "Ta có $\\frac{a^2}{a-1}=\\frac{(a^2-1)+1}{a-1}=$ [[1]]",
+        "Hai số $a-1$ và $\\frac{1}{a-1}$ đều dương, áp dụng [[2]] ta được $(a-1)+\\frac{1}{a-1} \\ge 2\\sqrt{(a-1)\\cdot\\frac{1}{a-1}}=2$.",
+        "Suy ra $\\frac{a^2}{a-1} \\ge$ [[3]]",
+        "Dấu “=” xảy ra khi [[4]]"
+      ],
+      "bank": [
+        "$(a-1)+\\frac{1}{a-1}+2$",
+        "$(a-1)+\\frac{1}{a-1}+1$",
+        "bất đẳng thức AM-GM (Cô-si)",
+        "hằng đẳng thức $(a-b)^2=a^2-2ab+b^2$",
+        "$4$",
+        "$2$",
+        "$a-1=\\frac{1}{a-1}$, tức $a=2$",
+        "$a-1=\\frac{1}{a-1}$, tức $a=0$ hoặc $a=2$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E02",
+              "feedback": "$\\frac{a^2-1}{a-1}=a+1$, và $a+1=(a-1)+2$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E05",
+              "feedback": "Hai số dương có tích không đổi, cần đánh giá tổng của chúng: đó là AM-GM."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E02",
+              "feedback": "Còn hằng số $+2$ từ dòng tách: cộng nó vào."
+            }
+          }
+        },
+        {
+          "correct": 6,
+          "mistakes": {
+            "7": {
+              "code": "E14",
+              "feedback": "Điều kiện $a>1$: giá trị $a=0$ phải loại."
+            }
+          }
+        }
+      ],
+      "solution": "$a-1>0$; $\\frac{a^2}{a-1}=a+1+\\frac{1}{a-1}=(a-1)+\\frac{1}{a-1}+2 \\ge 2+2=4$ (AM-GM). Dấu “=” khi $(a-1)^2=1$, mà $a>1$ nên $a=2$."
+    }
+  ],
+  "exit": [
+    {
+      "id": "hq-amgm-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Với hai số $a \\ge 0$, $b \\ge 0$, bất đẳng thức AM-GM (Cô-si) là:",
+      "options": [
+        "$a+b \\ge \\sqrt{ab}$, dấu “=” khi $a=b$",
+        "$a+b \\le 2\\sqrt{ab}$, dấu “=” khi $a=b$",
+        "$a+b \\ge 2\\sqrt{ab}$, dấu “=” khi $a=0$",
+        "$a+b \\ge 2\\sqrt{ab}$, dấu “=” khi $a=b$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu hệ số $2$ ở vế phải."
+        },
+        "1": {
+          "code": "E03",
+          "feedback": "Chiều ngược: $a+b-2\\sqrt{ab}=(\\sqrt a-\\sqrt b)^2 \\ge 0$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "$(\\sqrt a-\\sqrt b)^2=0$ khi $\\sqrt a=\\sqrt b$, tức hai số bằng nhau."
+        }
+      },
+      "solution": "$a+b-2\\sqrt{ab}=(\\sqrt a-\\sqrt b)^2 \\ge 0$, dấu “=” khi $a=b$."
+    },
+    {
+      "id": "hq-amgm-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Tìm giá trị nhỏ nhất của $A=x^2-8x+20$.",
+      "answer": "4",
+      "mistakes": [
+        {
+          "answer": "20",
+          "code": "E04",
+          "feedback": "$x=0$ chưa chắc làm $A$ nhỏ nhất; tách bình phương để tìm."
+        },
+        {
+          "answer": "36",
+          "code": "E02",
+          "feedback": "$(x-4)^2$ đã có sẵn $16$, nên phải **trừ** $16$."
+        }
+      ],
+      "solution": "$A=(x-4)^2+4 \\ge 4$, dấu “=” khi $x=4$. GTNN của $A$ là $4$."
+    },
+    {
+      "id": "hq-amgm-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho $x>0$. Tìm giá trị nhỏ nhất của $P=\\frac{x^2+x+16}{x}$.",
+      "answer": "9",
+      "mistakes": [
+        {
+          "answer": "8",
+          "code": "E02",
+          "feedback": "Chia tử cho $x$ còn hằng số $+1$; con bỏ sót nó."
+        },
+        {
+          "answer": "33",
+          "code": "E03",
+          "feedback": "Vế phải AM-GM là $2\\sqrt{ab}$: con quên dấu căn."
+        }
+      ],
+      "solution": "$P=x+\\frac{16}{x}+1 \\ge 2\\sqrt{16}+1=9$, dấu “=” khi $x=\\frac{16}{x} \\Leftrightarrow x=4$. GTNN của $P$ là $9$."
+    },
+    {
+      "id": "hq-amgm-x4",
+      "type": "mcq",
+      "level": "L2",
+      "prompt": "Để chứng minh $a^2+b^2 \\ge \\frac{(a+b)^2}{2}$ với mọi $a$, $b$, ta xét hiệu. Hiệu $a^2+b^2-\\frac{(a+b)^2}{2}$ bằng:",
+      "options": [
+        "$\\frac{a^2+b^2}{2}$",
+        "$(a-b)^2$",
+        "$\\frac{(a-b)^2}{2}$",
+        "$\\frac{(a+b)^2}{2}$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E03",
+          "feedback": "Con nhớ thiếu: $(a+b)^2=a^2+2ab+b^2$.",
+          "review": "f1-hdt"
+        },
+        "1": {
+          "code": "E02",
+          "feedback": "Quy đồng mẫu $2$ rồi phải giữ mẫu $2$ đến cuối."
+        },
+        "3": {
+          "code": "E02",
+          "feedback": "Dấu trừ trước phân thức đổi dấu cả $2ab$ trong tử."
+        }
+      },
+      "solution": "$a^2+b^2-\\frac{a^2+2ab+b^2}{2}=\\frac{a^2-2ab+b^2}{2}=\\frac{(a-b)^2}{2} \\ge 0$."
+    },
+    {
+      "id": "hq-amgm-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho $x>0$. Tìm giá trị lớn nhất của $P=\\frac{x}{x^2+9}$.",
+      "answer": "1/6",
+      "mistakes": [
+        {
+          "answer": "6",
+          "code": "E04",
+          "feedback": "Con đang tìm GTNN của $\\frac{x^2+9}{x}$, tức của $\\frac1P$, chưa phải GTLN của $P$."
+        },
+        {
+          "answer": "1/3",
+          "code": "E03",
+          "feedback": "AM-GM: $x^2+9 \\ge 2\\sqrt{9x^2}$, con quên hệ số $2$."
+        }
+      ],
+      "solution": "$x^2+9 \\ge 2\\sqrt{9x^2}=6x$ (AM-GM, $x>0$) nên $P \\le \\frac{x}{6x}=\\frac16$. Dấu “=” khi $x^2=9$, $x>0$ nên $x=3$. GTLN của $P$ là $\\frac16$."
+    },
+    {
+      "id": "hq-amgm-x6",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho $a$, $b$, $c>1$. Chứng minh $\\frac{4a^2}{a-1}+\\frac{5b^2}{b-1}+\\frac{3c^2}{c-1} \\ge 48$. Sắp xếp các dòng thành lời giải đúng (có dòng thừa).",
+      "source": "68 đề – Đề 38, Bài 5",
+      "lines": [
+        {
+          "text": "Vì $a>1$ nên $a-1>0$, và $\\frac{a^2}{a-1}=(a-1)+\\frac{1}{a-1}+2$."
+        },
+        {
+          "text": "Theo AM-GM: $(a-1)+\\frac{1}{a-1} \\ge 2\\sqrt{(a-1)\\cdot\\frac{1}{a-1}}=2$, nên $\\frac{a^2}{a-1} \\ge 4$."
+        },
+        {
+          "text": "Tương tự: $\\frac{b^2}{b-1} \\ge 4$ và $\\frac{c^2}{c-1} \\ge 4$."
+        },
+        {
+          "text": "Do đó vế trái $\\ge 4\\cdot 4+5\\cdot 4+3\\cdot 4=48$."
+        },
+        {
+          "text": "Dấu “=” xảy ra khi $a=b=c=2$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Do đó vế trái $\\ge 4+4+4=12$.",
+          "code": "E10",
+          "feedback": "Mỗi phân thức còn nhân với hệ số $4$, $5$, $3$ của đề."
+        },
+        {
+          "text": "Dấu “=” xảy ra khi $a=b=c=2$ hoặc $a=b=c=0$.",
+          "code": "E14",
+          "feedback": "Đề cho $a$, $b$, $c>1$: giá trị $0$ không thoả, phải loại."
+        }
+      ],
+      "solution": "$\\frac{a^2}{a-1}=(a-1)+\\frac1{a-1}+2 \\ge 4$ (AM-GM, $a-1>0$), tương tự với $b$, $c$. Vế trái $\\ge 4\\cdot4+5\\cdot4+3\\cdot4=48$. Dấu “=” khi $a-1=\\frac1{a-1}$, …, tức $a=b=c=2$."
+    },
+    {
+      "id": "hq-amgm-x7",
+      "type": "mcq",
+      "level": "L3",
+      "prompt": "Với $x \\ge 4$, bạn Minh viết: “Theo AM-GM, $x+\\frac9x \\ge 2\\sqrt9=6$. Vậy giá trị nhỏ nhất của $x+\\frac9x$ là $6$.” Nhận xét nào đúng?",
+      "options": [
+        "Minh làm đúng.",
+        "Sai, vì AM-GM chỉ dùng được khi $x \\le 3$.",
+        "Sai: bất đẳng thức $\\ge 6$ vẫn đúng, nhưng dấu “=” không xảy ra khi $x \\ge 4$, nên $6$ không phải giá trị nhỏ nhất.",
+        "Sai, phải viết $x+\\frac9x \\ge 2\\sqrt{9x}$."
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E14",
+          "feedback": "Dấu “=” cần $x=\\frac9x$; kiểm tra giá trị đó có thoả $x \\ge 4$ không."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "AM-GM đúng với mọi $x>0$; vấn đề nằm ở điều kiện dấu bằng."
+        },
+        "3": {
+          "code": "E03",
+          "feedback": "$2\\sqrt{ab}$ với $a=x$, $b=\\frac9x$: tích $ab=9$, không phải $9x$."
+        }
+      },
+      "solution": "$x+\\frac9x \\ge 6$ đúng, nhưng dấu “=” cần $x=3$, không thoả $x \\ge 4$: biểu thức không bao giờ bằng $6$. (Thật ra $x+\\frac9x-\\frac{25}4=\\frac{(x-4)(4x-9)}{4x} \\ge 0$ nên GTNN là $\\frac{25}{4}$ tại $x=4$.)"
+    },
+    {
+      "id": "hq-amgm-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho hai số thực $m$, $n$ khác $0$ thoả mãn $\\frac1m+\\frac1n=\\frac12$. Chứng minh trong hai phương trình $x^2+mx+n=0$ và $x^2+nx+m=0$ có ít nhất một phương trình có nghiệm.",
+      "source": "68 đề – Đề 26, Bài 5",
+      "steps": [
+        {
+          "prompt": "Biến đổi giả thiết.",
+          "item": {
+            "id": "hq-amgm-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Từ $\\frac1m+\\frac1n=\\frac12$ suy ra:",
+            "options": [
+              "$m+n=2$",
+              "$mn=2(m+n)$",
+              "$2mn=m+n$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "Cộng hai phân số phải quy đồng: $\\frac1m+\\frac1n=\\frac{m+n}{mn}$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "$\\frac{m+n}{mn}=\\frac12$: nhân chéo được $2(m+n)=mn$, con đặt nhầm vị trí."
+              }
+            },
+            "solution": "$\\frac{m+n}{mn}=\\frac12 \\Leftrightarrow mn=2(m+n)$."
+          }
+        },
+        {
+          "prompt": "Xét tổng hai biệt thức.",
+          "item": {
+            "id": "hq-amgm-x8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Với $\\Delta_1=m^2-4n$, $\\Delta_2=n^2-4m$, tổng $\\Delta_1+\\Delta_2$ bằng:",
+            "options": [
+              "$(m+n)^2$",
+              "$m^2+n^2-8mn$",
+              "$(m-n)^2$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E02",
+                "feedback": "$\\Delta_1+\\Delta_2=m^2+n^2-4(m+n)$, thay $4(m+n)=2mn$ phải giữ dấu trừ."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Từ $mn=2(m+n)$ suy ra $4(m+n)=2mn$, không phải $8mn$."
+              }
+            },
+            "solution": "$\\Delta_1+\\Delta_2=m^2+n^2-4(m+n)=m^2+n^2-2mn=(m-n)^2$."
+          }
+        },
+        {
+          "prompt": "Kết luận.",
+          "item": {
+            "id": "hq-amgm-x8-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Từ kết quả bước 2, kết luận đúng là:",
+            "options": [
+              "Cả hai phương trình đều có nghiệm.",
+              "$\\Delta_1$, $\\Delta_2$ không thể cùng âm, nên ít nhất một phương trình có nghiệm.",
+              "Chỉ kết luận được khi $m=n$."
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Tổng không âm không buộc **cả hai** số hạng không âm (ví dụ $5+(-1) \\ge 0$)."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "$(m-n)^2 \\ge 0$ với mọi $m$, $n$; $m=n$ chỉ là lúc tổng bằng $0$."
+              }
+            },
+            "solution": "Nếu $\\Delta_1<0$ và $\\Delta_2<0$ thì $\\Delta_1+\\Delta_2<0$, vô lí. Vậy ít nhất một trong hai biệt thức không âm."
+          }
+        }
+      ],
+      "solution": "$\\frac1m+\\frac1n=\\frac12 \\Leftrightarrow mn=2(m+n)$. $\\Delta_1+\\Delta_2=m^2+n^2-4(m+n)=m^2+n^2-2mn=(m-n)^2 \\ge 0$, nên $\\Delta_1$, $\\Delta_2$ không cùng âm. Kết luận: ít nhất một phương trình có nghiệm."
+    }
+  ]
+}

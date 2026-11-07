@@ -42,7 +42,8 @@
 | Nội dung đợt 6 — c-rutgon, c-cauphu, k-goiintiep, k-tugiacnt (nháp) + hình Sổ tay | `p1-content-6` | ✅ **Phụ huynh duyệt 23/10** (git, khoá đáp án); gia sư soát sau — "Cần sửa" trên bài đã duyệt tạm ẩn câu đó |
 | Nội dung đợt 7 — d-ptbh, d-nhamnghiem, d-thamso, f3-tugiac, l-tieptuyen (nháp) | `p1-content-7` | ✅ Merged 05/11 (PR #49) — nháp; chờ gia sư soát + phụ huynh duyệt (hạn 13/12) |
 | Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | 🟡 06/11 — PR mở, không SQL; giải độc lập 80/80; chờ gia sư soát + phụ huynh duyệt (hạn 03/01) |
-| Nội dung đợt 9–10 | `p1-content-N` | ⬜ theo `docs/CURRICULUM.md` §6 |
+| Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | 🟡 08/11 — PR mở, không SQL; giải độc lập 48/48; chờ gia sư soát + phụ huynh duyệt (hạn 07/02) |
+| Nội dung đợt 10 | `p1-content-10` | ⬜ hq-doanhthu, hq-hinhhoc theo `docs/CURRICULUM.md` §6 (hạn 21/02) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -80,6 +81,32 @@ Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpo
 ### Phụ huynh cần làm
 1. Merge #50 (đợt 8) trước — PR này nằm trên nó.
 2. Trên PR này: bấm **"Áp dụng SQL"** (file 0015, sao lưu trước như mọi lần) → merge.
+
+---
+
+## 08/11/2026 — Nội dung đợt 9: thẳng hàng, điểm cố định, AM-GM (nhánh `p1-content-9`, không SQL)
+
+Phụ huynh nói "làm" (07/11).
+
+### Đã làm
+- 3 KU nháp, mỗi bài 8 câu luyện + 8 câu kiểm tra, 3 gợi ý mỗi câu:
+  - **o-thanghang** (thẳng hàng, trung điểm, đồng quy, hình đặc biệt — tách từ o-chungminh theo LT21) và **o-nangcao** (★ mốc 9,5: điểm cố định, đường cố định, điểm di động, cực trị hình) — thêm vào module `hinh-nang-cao`; bài hình §10 (phân tích ngược, C3, C2), có hình SVG.
+  - Module mới **toi-uu**: **hq-amgm** (xét hiệu, bình phương ≥ 0, AM-GM, điều kiện dấu bằng).
+- Nguồn: chỉ Đề 1–56; câu L1–L2 tự soạn.
+
+### Kiểm tra chất lượng
+- Agent soạn kiểm bằng sympy / toạ độ (o-thanghang 135 khẳng định trên 400 cấu hình; o-nangcao ~90 khẳng định hình + tính lại mọi nhiễu; hq-amgm 55).
+- Giải độc lập: **48/48** khớp; các thứ tự khác người giải tìm ra (o-thanghang p7, x6; o-nangcao p7, x8) app đều chấm đúng.
+- Sửa sau khi giải: hq-amgm x8 bước 3 lộ đáp án bước 2.
+
+### Gia sư soát kỹ (tab Kho bài)
+- **hq-amgm** — Nguồn: p7 Đề 2 (2.3, chuyển thể), p8 + x6 Đề 38 (Bài 5), x8 Đề 26 (Bài 5); còn lại tự soạn theo SGK. 55 khẳng định sympy. Module mới toi-uu. Gia sư: x8 cần Δ, p7 cần căn thức nhưng tiên quyết chỉ f1-hdt (không có link ôn); p8 (C3) và x6 (C2) là dạng chứng minh đầu tiên trong bài đại số — bấm thử; x8, x6 nặng; p8 và x6 cùng gốc Đề 38; quy ước mã lỗi (quên bình phương √ → E01; lấy GTNN của 1/P → E04; quên nhân hệ số → E10).
+- **o-thanghang** — Nguồn: mẫu Đề 34 4.2c; p4 Đề 43 4.2b, p5 Đề 28 4.2b (ý hình bình hành), p6 Đề 53 4.2b, p7 Đề 22 4.2c, p8 Đề 56 4.2c; x3 Đề 23 4.2b, x4 Đề 39 4.2c, x6 Đề 1 4.2c, x7 Đề 48 4.2c, x8 Đề 8 4.2c; còn lại tự soạn. 135 khẳng định trên 400 cấu hình; 11 hình. Gia sư: dùng tiếp tuyến nhiều nhưng l-tieptuyen không là tiên quyết (cân nhắc thêm); p8, x6, x7 nặng; chuyển thể cho sẵn kết quả trung gian (p4, p7, x4, p8, x7, x8); đồng quy chỉ ở câu nhận dạng p1 (68 đề không có câu đồng quy dùng được); mã lỗi x5, p6, p4 chưa chắc.
+- **o-nangcao** — Nguồn: p5 Đề 24 4.2c (giả định M là trung điểm BC — sách không nói), p7 Đề 3 4.2c (phần DF qua điểm cố định), p8 Đề 36 4.2c, x6 Đề 7 4.2c, x7 Đề 13 4.2c, x8 Đề 16 4.2d; còn lại tự soạn. ~90 khẳng định hình trên 200–400 vị trí + tính lại mọi nhiễu. Gia sư: dùng đảo của góc tạo bởi tiếp tuyến và dây (p4, x3, x6) — SGK 2018 không nêu rõ; con có được trích dẫn khi thi?; Đề 13c cho sẵn AB·AC = 2R·AH, Đề 16d thêm "H nằm giữa O và B"; x8, x4, p7 nặng; không có link ôn (htl không là tiên quyết); 3 đoạn lý thuyết 81–85 chữ; faded trùng một thẻ Sổ tay.
+
+### Phụ huynh cần làm
+- Merge PR (không SQL). Gia sư soát 3 bài trước **07/02/2027**; phụ huynh "Duyệt cả bài".
+- Quyết định (không gấp): thêm l-tieptuyen làm tiên quyết của o-thanghang; htl-1/2 cho o-nangcao; d-ptbh, c-rutgon cho hq-amgm (để có link ôn).
 
 ---
 

@@ -1,0 +1,1085 @@
+{
+  "id": "o-nangcao",
+  "module": "hinh-nang-cao",
+  "order": 4,
+  "title": "Điểm cố định, đường cố định & điểm di động",
+  "status": "draft",
+  "estMinutes": 75,
+  "figure": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 208\" role=\"img\"><title>Đường tròn tâm O, đường thẳng d, hai tiếp tuyến MA, MB, dây AB cắt OH tại K</title><circle cx=\"109.3\" cy=\"88\" r=\"64\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"184\" x2=\"216\" y2=\"184\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"109.3\" y1=\"88\" x2=\"109.3\" y2=\"184\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"109.3\" y1=\"88\" x2=\"178.7\" y2=\"184\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"178.7\" y1=\"184\" x2=\"85.9\" y2=\"147.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"178.7\" y1=\"184\" x2=\"173.2\" y2=\"84.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"85.9\" y1=\"147.6\" x2=\"173.2\" y2=\"84.5\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"109.3,177 116.3,177 116.3,184\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"99.8\" y=\"82.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"105.6\" y=\"194.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"182.4\" y=\"194.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"75.1\" y=\"145.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"183.6\" y=\"80.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"98.1\" y=\"134.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"135.1\" y=\"106.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"19.9\" y=\"172.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">d</text><circle cx=\"109.3\" cy=\"88\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"109.3\" cy=\"184\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"178.7\" cy=\"184\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"85.9\" cy=\"147.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"173.2\" cy=\"84.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"109.3\" cy=\"130.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"129.6\" cy=\"116\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+    "alt": "Đường tròn tâm O; đường thẳng d nằm ngang ở phía dưới, không cắt đường tròn; H là hình chiếu của O trên d (OH vẽ nét đứt). Điểm M trên d (vẽ ở một vị trí bên phải H); MA, MB là hai tiếp tuyến; dây AB (tô màu) cắt OM tại I và cắt OH tại K nằm giữa O và H."
+  },
+  "theory": [
+    "**Cần nhớ trước** (bài *Đồng dạng trong đường tròn & tích đoạn thẳng*, *Tiếp tuyến*): tích đoạn thẳng lấy từ tam giác đồng dạng; $MA$, $MB$ là tiếp tuyến thì $OM\\perp AB$ tại $I$, $OI\\cdot OM=R^2$; góc tạo bởi tiếp tuyến và dây bằng góc nội tiếp chắn cùng cung. Luôn tách rõ **cái cố định** (đường tròn, dây, điểm đề cho) và **cái di động** (điểm chạy và các điểm dựng theo nó).",
+    "**Quy trình 3 bước:** (1) liệt kê cái cố định, cái di động; (2) **dự đoán**: vẽ 2–3 vị trí đặc biệt của điểm di động (điểm chính giữa cung, sát đầu mút, vị trí đối xứng), chỗ các hình gặp nhau là điểm cần tìm; (3) **chứng minh với vị trí bất kì**: gọi tên điểm đoán bằng yếu tố cố định, rồi chứng minh thẳng hàng hoặc một độ dài không đổi.",
+    "**Công cụ:** (a) $K$ thuộc tia cố định $Ox$, $OK$ không đổi ⇒ $K$ cố định (hay gặp $OK\\cdot OH=R^2$). (b) Đường tròn thay đổi luôn qua hai điểm cố định ⇒ tâm thuộc trung trực đoạn nối chúng. (c) Đường tròn thay đổi luôn tiếp xúc với đường thẳng cố định $d$ tại điểm cố định $T$ ⇒ tâm thuộc đường vuông góc với $d$ tại $T$; điều kiện tiếp xúc: góc giữa $d$ và dây $TI$ bằng góc nội tiếp chắn cung $TI$.",
+    "**Vì sao** (c) đúng: gọi $O'$ là tâm; $\\widehat{TO'I}$ gấp đôi góc nội tiếp chắn cung $TI$, $\\triangle O'TI$ cân nên $\\widehat{O'TI}$ phụ với góc nội tiếp đó, tức phụ với góc giữa $d$ và $TI$ ⇒ $O'T\\perp d$. **Không đổi & cực trị:** viết đại lượng qua yếu tố cố định (đồng dạng, hệ thức lượng); lớn nhất / nhỏ nhất dùng đường vuông góc ≤ đường xiên, dây ≤ đường kính, $x+\\dfrac{a^2}{x}\\ge 2a$ ($x>0$); luôn chỉ ra vị trí có dấu “=”.",
+    "**Bẫy hay gặp:** (1) vẽ **một** vị trí rồi kết luận — vị trí đặc biệt chỉ để đoán; (2) dùng tính chất chỉ có ở vị trí đặc biệt (coi $AB=AC$); (3) gọi “cố định” một đường phụ thuộc điểm di động (trung trực của $CE$ khi $E$ chạy); (4) cực trị quên dấu “=” hoặc lấy vị trí ngoài miền di động; (5) viết $x+\\dfrac{a^2}{x}\\ge a$, quên hệ số $2$.",
+    "**Nhận dạng:** “luôn đi qua một điểm cố định” → quy trình 3 bước; điểm cần tìm thường là trung điểm đoạn cố định, điểm chính giữa cung, hoặc điểm trên đường cố định cách gốc $\\dfrac{R^2}{OH}$. “Tâm … nằm trên đường cố định” → tìm hai điểm cố định trên đường tròn hoặc một tiếp tuyến cố định. “Không đổi”, “lớn nhất / nhỏ nhất” → đổi về một độ dài. **Không** dùng khi hình không có điểm di động."
+  ],
+  "worked": {
+    "problem": "Cho đường tròn $(O;R)$ và đường thẳng $d$ cố định không có điểm chung với $(O)$; $H$ là hình chiếu của $O$ trên $d$. Điểm $M$ di động trên $d$; $MA$, $MB$ là hai tiếp tuyến của $(O)$ ($A$, $B$ là tiếp điểm). Chứng minh dây $AB$ luôn đi qua một điểm cố định.",
+    "analysis": {
+      "goal": "Dây $AB$ luôn đi qua một điểm cố định",
+      "steps": [
+        {
+          "ask": "Điểm cố định nằm ở đâu? Thử $M$ trùng $H$, rồi $M$ ở hai bên $H$.",
+          "node": "Khi $M$ trùng $H$: $AB\\perp OH$; hình đối xứng qua $OH$ ⇒ đoán điểm cố định nằm trên $OH$. Gọi $K$ là giao điểm của $AB$ và $OH$: cần $OK$ không đổi"
+        },
+        {
+          "ask": "Muốn $OK$ không đổi, nối $OK$ với tích nào đã biết?",
+          "node": "$OK\\cdot OH=OI\\cdot OM$ ($I$ là giao điểm của $AB$ và $OM$) và $OI\\cdot OM=R^2$"
+        },
+        {
+          "ask": "Vì sao có hai đẳng thức đó?",
+          "node": "$\\triangle OIK\\backsim\\triangle OHM$ (góc $O$ chung, hai góc vuông); $\\triangle OAM$ vuông tại $A$ (tiếp tuyến) có đường cao $AI$ — giả thiết"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "text": "$MA=MB$ (hai tiếp tuyến cắt nhau), $OA=OB$ ⇒ $OM$ là trung trực của $AB$ ⇒ $AB\\perp OM$ tại $I$. $\\triangle OAM$ vuông tại $A$ có đường cao $AI$ ⇒ $OI\\cdot OM=OA^2=R^2$.",
+        "why": "Tầng cuối của sơ đồ: điều có ngay từ hai tiếp tuyến."
+      },
+      {
+        "text": "Gọi $K$ là giao điểm của $AB$ và $OH$. Xét $\\triangle OIK$ và $\\triangle OHM$ có: $\\widehat{O}$ chung; $\\widehat{OIK}=\\widehat{OHM}=90^\\circ$ ⇒ $\\triangle OIK\\backsim\\triangle OHM$ (g.g).",
+        "why": "Điểm dự đoán $K$ được gọi tên bằng đường cố định $OH$ và dây di động $AB$."
+      },
+      {
+        "text": "⇒ $\\dfrac{OI}{OH}=\\dfrac{OK}{OM}$ ⇒ $OK\\cdot OH=OI\\cdot OM=R^2$ ⇒ $OK=\\dfrac{R^2}{OH}$.",
+        "why": "Đúng với **mọi** vị trí của $M$: đây là chứng minh, không còn là dự đoán."
+      },
+      {
+        "text": "$OK$ không đổi và $K$ thuộc đoạn $OH$ cố định ⇒ $K$ cố định.",
+        "why": "Công cụ (a): điểm trên tia cố định, cách gốc một khoảng không đổi."
+      },
+      {
+        "text": "Kết luận: dây $AB$ luôn đi qua điểm $K$ cố định trên đoạn $OH$ với $OK=\\dfrac{R^2}{OH}$.",
+        "why": "Trả lời đúng câu hỏi và chỉ rõ điểm cố định."
+      }
+    ],
+    "selfExplain": "Cho $M$ trùng $H$ đã thấy điểm cố định nằm trên $OH$. Vì sao vẫn phải làm bước 2–3, và chỗ nào trong lời giải dùng $M$ ở vị trí bất kì?"
+  },
+  "faded": {
+    "problem": "Cho nửa đường tròn $(O;R)$ đường kính $AB$; $Ax$, $By$ là các tiếp tuyến tại $A$, $B$ (cùng phía với nửa đường tròn). $M$ di động trên nửa đường tròn ($M\\ne A$, $M\\ne B$); tiếp tuyến tại $M$ cắt $Ax$, $By$ lần lượt tại $C$, $D$. Chứng minh tích $AC\\cdot BD$ không đổi. Áp dụng: $R=3$ cm, $AC=1$ cm; tính $BD$.",
+    "steps": [
+      {
+        "text": "Theo tính chất hai tiếp tuyến cắt nhau: $CA=CM$, $DB=DM$; $OC$ là tia phân giác của $\\widehat{AOM}$, $OD$ là tia phân giác của $\\widehat{BOM}$."
+      },
+      {
+        "prompt": "Chọn lí do đúng cho $\\widehat{COD}=90^\\circ$.",
+        "item": {
+          "id": "o-nangcao-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Vì sao $\\widehat{COD}=90^\\circ$?",
+          "options": [
+            "Vì tứ giác $ACDB$ là hình thang vuông",
+            "Vì $\\widehat{COD}$ là góc nội tiếp chắn nửa đường tròn",
+            "Vì $\\widehat{AOM}$ và $\\widehat{BOM}$ kề bù, $OC$ và $OD$ là hai tia phân giác của chúng"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E09",
+              "feedback": "Hình thang vuông cho $AC\\parallel BD$, không cho biết góc tại $O$. Lí do phải đến từ hai tia phân giác."
+            },
+            "1": {
+              "code": "E04",
+              "feedback": "$O$ là tâm, không nằm trên đường tròn, nên $\\widehat{COD}$ không phải góc nội tiếp."
+            }
+          },
+          "solution": "$\\widehat{AOM}+\\widehat{BOM}=180^\\circ$; $OC$, $OD$ là hai tia phân giác ⇒ $\\widehat{COD}=\\dfrac12\\cdot180^\\circ=90^\\circ$."
+        }
+      },
+      {
+        "text": "$OM\\perp CD$ (tiếp tuyến tại $M$) ⇒ $OM$ là đường cao của $\\triangle COD$ vuông tại $O$."
+      },
+      {
+        "prompt": "Chọn hệ thức suy ra từ tam giác vuông $COD$.",
+        "item": {
+          "id": "o-nangcao-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Trong $\\triangle COD$ vuông tại $O$, đường cao $OM$:",
+          "options": [
+            "$MC\\cdot MD=OM^2=R^2$",
+            "$OC\\cdot OD=OM^2$",
+            "$OC^2=MC\\cdot MD$"
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E03",
+              "feedback": "$OC\\cdot OD$ bằng $OM\\cdot CD$ (hai lần diện tích), không bằng $OM^2$. Với hai hình chiếu $MC$, $MD$: tích của chúng bằng bình phương đường cao."
+            },
+            "2": {
+              "code": "E03",
+              "feedback": "Cạnh góc vuông $OC$: $OC^2=MC\\cdot CD$ (hình chiếu nhân cạnh huyền), không phải $MC\\cdot MD$."
+            }
+          },
+          "solution": "Đường cao $OM$ ứng với cạnh huyền $CD$ ⇒ $MC\\cdot MD=OM^2=R^2$."
+        }
+      },
+      {
+        "text": "⇒ $AC\\cdot BD=MC\\cdot MD=R^2$, không phụ thuộc vị trí của $M$."
+      },
+      {
+        "prompt": "Áp dụng: $R=3$ cm, $AC=1$ cm. Tính $BD$ (cm).",
+        "item": {
+          "id": "o-nangcao-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Với $R=3$ cm, $AC=1$ cm, tính $BD$.",
+          "answer": "9",
+          "unit": "cm",
+          "mistakes": [
+            {
+              "answer": "3",
+              "code": "E03",
+              "feedback": "Hệ thức là $AC\\cdot BD=R^2$ (bình phương bán kính); con đã dùng $R$."
+            },
+            {
+              "answer": "6",
+              "code": "E08",
+              "feedback": "Con đã dùng đường kính $AB$ thay cho bán kính; hệ thức là $AC\\cdot BD=R^2$."
+            }
+          ],
+          "solution": "$BD=\\dfrac{R^2}{AC}=\\dfrac{9}{1}=9$ (cm)."
+        }
+      },
+      {
+        "text": "Kết luận: $AC\\cdot BD=R^2$ không đổi khi $M$ di động; với số liệu đã cho, $BD$ tính từ hệ thức này."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "o-nangcao-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề: “Cho dây $BC$ cố định của đường tròn $(O)$; điểm $A$ di động trên cung lớn $BC$; các điểm $D$, $E$ dựng theo $A$ … Chứng minh đường thẳng $DE$ luôn đi qua một điểm cố định.” Việc đầu tiên nên làm là gì?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi một điểm cố định mà đường thẳng $DE$ luôn đi qua.",
+        "Chưa biết điểm đó là điểm nào thì chưa biết phải chứng minh gì.",
+        "Vị trí đặc biệt của điểm di động giúp đoán điểm cố định."
+      ],
+      "options": [
+        "Chứng minh một tứ giác chứa $D$, $E$ nội tiếp",
+        "Lập tỉ số, tìm hai tam giác đồng dạng có cạnh $DE$",
+        "Vẽ $DE$ ứng với 2–3 vị trí đặc biệt của $A$ để đoán điểm cố định, gọi tên nó bằng yếu tố cố định ($B$, $C$, $O$…)",
+        "Tính độ dài $DE$ theo $R$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Tứ giác nội tiếp chỉ là công cụ giữa chừng; chưa biết điểm cố định là điểm nào thì chưa biết cần chứng minh gì. Con đoán điểm trước."
+        },
+        "1": {
+          "code": "E05",
+          "feedback": "Đề không hỏi đẳng thức tích nên chưa cần cặp tam giác đồng dạng. Việc đầu tiên là đoán điểm cố định bằng vị trí đặc biệt."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$DE$ thay đổi theo $A$, độ dài của nó không chỉ ra điểm cố định. Hãy vẽ vài vị trí đặc biệt của $A$ để đoán."
+        }
+      },
+      "solution": "Quy trình: (1) cố định: $(O)$, $B$, $C$; di động: $A$, $D$, $E$. (2) Vẽ $DE$ với vài vị trí đặc biệt của $A$ (điểm chính giữa cung, gần $B$, gần $C$) để đoán điểm chung — thường là trung điểm $BC$, điểm chính giữa cung hoặc một điểm trên đường cố định. (3) Chứng minh $DE$ đi qua điểm đó với $A$ bất kì."
+    },
+    {
+      "id": "o-nangcao-p2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Cho góc vuông $xOy$. Đoạn thẳng $AB=6$ cm di động, $A$ luôn thuộc tia $Ox$, $B$ luôn thuộc tia $Oy$ ($A$, $B$ khác $O$); $I$ là trung điểm của $AB$. Thử vài vị trí ($OA=OB$; $A$ rất gần $O$; $B$ rất gần $O$) rồi chọn: điểm $I$ luôn nằm trên đường nào?",
+      "hints": [
+        "Cần một đường cố định chứa $I$ với mọi vị trí của $AB$.",
+        "Ở cả ba vị trí thử, đo khoảng cách từ $O$ tới $I$.",
+        "$\\triangle OAB$ vuông tại $O$; $OI$ là trung tuyến ứng với cạnh huyền."
+      ],
+      "options": [
+        "Tia phân giác của góc $xOy$",
+        "Đường tròn tâm $O$ bán kính $3$ cm",
+        "Đường tròn tâm $O$ bán kính $6$ cm",
+        "Đường trung trực của $AB$"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E09",
+          "feedback": "Chỉ vị trí $OA=OB$ mới cho $I$ nằm trên tia phân giác; một vị trí đặc biệt không đủ để kết luận cho mọi vị trí."
+        },
+        "2": {
+          "code": "E03",
+          "feedback": "Trong tam giác vuông, trung tuyến ứng với cạnh huyền bằng **nửa** cạnh huyền."
+        },
+        "3": {
+          "code": "E04",
+          "feedback": "$AB$ di động nên trung trực của $AB$ cũng di động, không phải một đường cố định."
+        }
+      },
+      "solution": "$\\triangle AOB$ vuông tại $O$, $OI$ là trung tuyến ứng với cạnh huyền ⇒ $OI=\\dfrac{AB}{2}=3$ cm không đổi; $O$ cố định ⇒ $I$ luôn nằm trên đường tròn tâm $O$ bán kính $3$ cm (phần nằm trong góc $xOy$)."
+    },
+    {
+      "id": "o-nangcao-p3",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ bán kính $R=6$ cm và đường thẳng $d$ với $OH=9$ cm ($H$ là hình chiếu của $O$ trên $d$). Điểm $M$ chạy trên $d$; $MA$, $MB$ là hai tiếp tuyến của $(O)$. Biết dây $AB$ luôn đi qua điểm cố định $K$ trên đoạn $OH$ với $OK\\cdot OH=R^2$. Tính $OK$.",
+      "hints": [
+        "Cần độ dài $OK$, đã biết $R$ và $OH$.",
+        "Đề đã cho hệ thức nối $OK$, $OH$ và bán kính.",
+        "Thay số vào $OK\\cdot OH=R^2$ rồi chia hai vế cho $OH$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 208\" role=\"img\"><title>Đường tròn tâm O, đường thẳng d, hai tiếp tuyến MA, MB, dây AB cắt OH tại K</title><circle cx=\"109.3\" cy=\"88\" r=\"64\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"184\" x2=\"216\" y2=\"184\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"109.3\" y1=\"88\" x2=\"109.3\" y2=\"184\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"109.3\" y1=\"88\" x2=\"178.7\" y2=\"184\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"178.7\" y1=\"184\" x2=\"85.9\" y2=\"147.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"178.7\" y1=\"184\" x2=\"173.2\" y2=\"84.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"85.9\" y1=\"147.6\" x2=\"173.2\" y2=\"84.5\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"109.3,177 116.3,177 116.3,184\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"99.8\" y=\"82.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"105.6\" y=\"194.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"182.4\" y=\"194.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"75.1\" y=\"145.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"183.6\" y=\"80.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"98.1\" y=\"134.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"135.1\" y=\"106.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"19.9\" y=\"172.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">d</text><circle cx=\"109.3\" cy=\"88\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"109.3\" cy=\"184\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"178.7\" cy=\"184\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"85.9\" cy=\"147.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"173.2\" cy=\"84.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"109.3\" cy=\"130.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"129.6\" cy=\"116\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; đường thẳng d nằm ngang ở phía dưới, không cắt đường tròn; H là hình chiếu của O trên d (OH vẽ nét đứt). Điểm M trên d (vẽ ở một vị trí bên phải H); MA, MB là hai tiếp tuyến; dây AB (tô màu) cắt OM tại I và cắt OH tại K nằm giữa O và H."
+      },
+      "answer": "4",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "9/2",
+          "code": "E04",
+          "feedback": "$K$ không phải trung điểm của $OH$; vị trí của $K$ do hệ thức $OK\\cdot OH=R^2$ quyết định."
+        },
+        {
+          "answer": "3",
+          "code": "E08",
+          "feedback": "$OH-R$ là khoảng cách từ $H$ tới đường tròn, không phải $OK$. Dùng $OK\\cdot OH=R^2$."
+        },
+        {
+          "answer": "27/2",
+          "code": "E03",
+          "feedback": "Con đã lật ngược hệ thức: $OK\\cdot OH=R^2$ nên $OK=\\dfrac{R^2}{OH}$."
+        }
+      ],
+      "solution": "$OK=\\dfrac{R^2}{OH}=\\dfrac{36}{9}=4$ (cm)."
+    },
+    {
+      "id": "o-nangcao-p4",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O)$, dây $CD$ cố định; $A$ là điểm chính giữa cung nhỏ $CD$. Điểm $M$ di động trên cung lớn $CD$; $AM$ cắt $CD$ tại $E$. Phân tích ngược để chứng minh tâm $O'$ của đường tròn ngoại tiếp $\\triangle MCE$ luôn nằm trên một đường thẳng cố định.",
+      "hints": [
+        "Cần một đường cố định chứa tâm $O'$, dù $M$ chạy trên cung lớn.",
+        "Đường tròn $(MCE)$ luôn qua $C$ cố định; đường cố định nào có thể tiếp xúc với nó tại $C$?",
+        "Dấu hiệu: góc giữa $CA$ và dây $CE$ bằng góc nội tiếp chắn cung $CE$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 222.1\" role=\"img\"><title>Đường tròn O, dây CD cố định, A điểm chính giữa cung nhỏ CD, M trên cung lớn, AM cắt CD tại E, đường tròn qua M, C, E</title><circle cx=\"129\" cy=\"111\" r=\"87\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><circle cx=\"86.6\" cy=\"105.4\" r=\"62.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"57.7\" y1=\"160.9\" x2=\"200.3\" y2=\"160.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"129\" y1=\"198.1\" x2=\"73\" y2=\"44.4\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"129\" y1=\"198.1\" x2=\"57.7\" y2=\"160.9\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"73\" y1=\"44.4\" x2=\"57.7\" y2=\"160.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"139.3\" y=\"107.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"47.3\" y=\"164.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"210.6\" y=\"164.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"129\" y=\"209.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"65.2\" y=\"36.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"121.5\" y=\"171.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"75.3\" y=\"101.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O′</text><circle cx=\"129\" cy=\"111\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"57.7\" cy=\"160.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"200.3\" cy=\"160.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"129\" cy=\"198.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"73\" cy=\"44.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"115.5\" cy=\"160.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"86.6\" cy=\"105.4\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; dây CD nằm ngang phía dưới tâm; A là điểm chính giữa cung nhỏ CD (dưới CD). M trên cung lớn CD (vẽ ở một vị trí phía trên bên trái); AM cắt CD tại E. Đường tròn nét đứt tâm O′ đi qua M, C, E. Đoạn AC tô màu."
+      },
+      "drawFirst": true,
+      "goal": "Tâm $O'$ của đường tròn $(MCE)$ luôn nằm trên một đường thẳng cố định",
+      "steps": [
+        {
+          "ask": "Muốn chứng minh $O'$ nằm trên một đường thẳng cố định, nên chứng minh điều gì?",
+          "node": "$AC$ tiếp xúc với đường tròn $(MCE)$ tại $C$; khi đó $O'C\\perp AC$, nên $O'$ thuộc đường vuông góc với $AC$ tại $C$ — cố định vì $A$, $C$ cố định",
+          "item": {
+            "id": "o-nangcao-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "$AC$ tiếp xúc với đường tròn $(MCE)$ tại $C$ (khi đó $O'C\\perp AC$)",
+              "$O'$ nằm trên đường trung trực của $CE$",
+              "$O'$ nằm trên đường trung trực của $CM$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E06",
+                "feedback": "Đúng là $O'$ thuộc trung trực của $CE$, nhưng $E$ chạy theo $M$ nên đường này không cố định."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "$M$ di động nên trung trực của $CM$ cũng di động; cần một đường chỉ phụ thuộc điểm cố định."
+              }
+            },
+            "solution": "Đường tròn $(MCE)$ luôn qua $C$ cố định. Nếu đường thẳng cố định $AC$ tiếp xúc với nó tại $C$ thì $O'C\\perp AC$: $O'$ nằm trên đường vuông góc với $AC$ tại $C$, đường này cố định."
+          }
+        },
+        {
+          "ask": "Muốn $AC$ tiếp xúc với đường tròn $(MCE)$ tại $C$, cần cặp góc nào bằng nhau?",
+          "node": "$\\widehat{ACE}=\\widehat{CME}$: góc giữa tia $CA$ và dây $CE$ bằng góc nội tiếp chắn cung $CE$ ($A$, $M$ ở khác phía $CE$)",
+          "item": {
+            "id": "o-nangcao-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp góc.",
+            "options": [
+              "$\\widehat{ACE}=\\widehat{AEC}$",
+              "$\\widehat{ACE}=\\widehat{MCE}$",
+              "$\\widehat{ACE}=\\widehat{CME}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "$\\widehat{AEC}$ có cạnh $EA$ nằm ngoài đường tròn $(MCE)$, không phải góc nội tiếp chắn cung $CE$."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "$\\widehat{MCE}$ là góc nội tiếp chắn cung $ME$, không phải cung $CE$ nằm trong góc $\\widehat{ACE}$."
+              }
+            },
+            "solution": "Dấu hiệu tiếp xúc: góc giữa tia $CA$ và dây $CE$ bằng góc nội tiếp $\\widehat{CME}$ chắn cung $CE$ của đường tròn $(MCE)$."
+          }
+        },
+        {
+          "ask": "Có $\\widehat{ACE}=\\widehat{ACD}$ và $\\widehat{CME}=\\widehat{CMA}$. Vì sao $\\widehat{ACD}=\\widehat{AMC}$?",
+          "node": "$A$ là điểm chính giữa cung nhỏ $CD$ ⇒ cung $AC$ = cung $AD$ ⇒ hai góc nội tiếp của $(O)$ chắn hai cung bằng nhau (giả thiết)",
+          "given": true,
+          "item": {
+            "id": "o-nangcao-p4-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Vì $AC$ tiếp xúc với đường tròn $(MCE)$",
+              "Hai góc nội tiếp của $(O)$ chắn hai cung bằng nhau $AD$ và $AC$",
+              "Hai góc cùng chắn cung $AC$ của $(O)$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E09",
+                "feedback": "Đó chính là điều đang cần chứng minh; dùng nó là lập luận vòng."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$\\widehat{ACD}$ chắn cung $AD$, còn $\\widehat{AMC}$ chắn cung $AC$; hai cung này bằng nhau vì $A$ là điểm chính giữa cung $CD$."
+              }
+            },
+            "solution": "$A$ là điểm chính giữa cung nhỏ $CD$ ⇒ cung $AC$ = cung $AD$ ⇒ $\\widehat{AMC}=\\widehat{ACD}$ (hai góc nội tiếp chắn hai cung bằng nhau)."
+          }
+        }
+      ],
+      "outline": [
+        "$A$ là điểm chính giữa cung nhỏ $CD$ ⇒ cung $AC$ = cung $AD$ ⇒ $\\widehat{ACD}=\\widehat{AMC}$, tức $\\widehat{ACE}=\\widehat{CME}$",
+        "⇒ $AC$ tiếp xúc với đường tròn $(MCE)$ tại $C$ ⇒ $O'C\\perp AC$",
+        "Đường vuông góc với $AC$ tại $C$ cố định vì $A$, $C$ cố định",
+        "Kết luận: tâm $O'$ luôn nằm trên đường thẳng vuông góc với $AC$ tại $C$."
+      ],
+      "solution": "$A$ là điểm chính giữa cung nhỏ $CD$ ⇒ cung $AC$ = cung $AD$ ⇒ $\\widehat{ACE}=\\widehat{ACD}=\\widehat{AMC}=\\widehat{CME}$. Góc giữa tia $CA$ và dây $CE$ bằng góc nội tiếp chắn cung $CE$ của đường tròn $(MCE)$ ⇒ $AC$ tiếp xúc với đường tròn đó tại $C$ ⇒ $O'C\\perp AC$. Kết luận: $O'$ luôn nằm trên đường thẳng vuông góc với $AC$ tại $C$ (đường này đi qua điểm $A'$ đối xứng với $A$ qua $O$, vì $\\widehat{ACA'}=90^\\circ$)."
+    },
+    {
+      "id": "o-nangcao-p5",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O;R)$, dây $BC$ cố định không đi qua $O$; $A$ di động trên cung lớn $BC$ ($AB<AC$), đường kính $AK$. Kẻ $AD\\perp BC$ tại $D$, $BE\\perp AK$ tại $E$, $CF\\perp AK$ tại $F$; $M$ là trung điểm của $BC$. Đã chứng minh: $A$, $D$, $F$, $C$ cùng thuộc một đường tròn và $DF\\parallel BK$. Điền vào chỗ trống để chứng minh $\\triangle MDF$ cân tại $M$.",
+      "source": "68 đề – Đề 24, Bài 4.2c (chuyển thể: ý ΔMDF cân, M là trung điểm BC)",
+      "hints": [
+        "Cần $MD=MF$, tức $M$ nằm trên trung trực của $DF$.",
+        "$D$, $F$ cùng nằm trên đường tròn đường kính $AC$; tâm của nó ở đâu?",
+        "Đường thẳng qua tâm và vuông góc với một dây là trung trực của dây đó."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Đường tròn O, dây BC, đường kính AK, AD vuông góc BC, BE và CF vuông góc AK, M trung điểm BC</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"74.9\" y1=\"35.2\" x2=\"28.4\" y2=\"148.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"74.9\" y1=\"35.2\" x2=\"211.6\" y2=\"148.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"28.4\" y1=\"148.8\" x2=\"211.6\" y2=\"148.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"74.9\" y1=\"35.2\" x2=\"165.1\" y2=\"204.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"74.9\" y1=\"35.2\" x2=\"74.9\" y2=\"148.8\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"28.4\" y1=\"148.8\" x2=\"111.8\" y2=\"104.5\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"211.6\" y1=\"148.8\" x2=\"152.1\" y2=\"180.4\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"28.4\" y1=\"148.8\" x2=\"165.1\" y2=\"204.8\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"74.9\" y1=\"148.8\" x2=\"152.1\" y2=\"180.4\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"120\" y1=\"148.8\" x2=\"74.9\" y2=\"148.8\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"120\" y1=\"148.8\" x2=\"152.1\" y2=\"180.4\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"74.9,141.8 81.9,141.8 81.9,148.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"158.3,177.1 155,170.9 148.8,174.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"105.6,107.8 108.9,114 115,110.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"66.5\" y=\"28.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"18.1\" y=\"152.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"221.9\" y=\"152.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"173.5\" y=\"211.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"126\" y=\"109.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"72.8\" y=\"160.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"105.8\" y=\"94.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"158.1\" y=\"190.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"117.9\" y=\"160.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"74.9\" cy=\"35.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"28.4\" cy=\"148.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"211.6\" cy=\"148.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"74.9\" cy=\"148.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"111.8\" cy=\"104.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"152.1\" cy=\"180.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"165.1\" cy=\"204.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"148.8\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; dây BC nằm ngang phía dưới tâm; A trên cung lớn BC (vẽ ở một vị trí phía trên bên trái, AB < AC); đường kính AK. AD vuông góc BC tại D; BE, CF vuông góc AK tại E, F; nối BK. M là trung điểm BC; các đoạn DF, MD, MF tô màu."
+      },
+      "lines": [
+        "Gọi $N$ là trung điểm của $AC$. Vì [[1]] nên $A$, $D$, $F$, $C$ thuộc đường tròn tâm $N$.",
+        "$MN$ là đường trung bình của $\\triangle ABC$ ⇒ $MN\\parallel AB$.",
+        "$\\widehat{ABK}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) và $DF\\parallel BK$ ⇒ [[2]].",
+        "Từ $MN\\parallel AB$ ⇒ $MN\\perp DF$ ⇒ $MN$ là [[3]].",
+        "⇒ $MD=MF$. Kết luận: $\\triangle MDF$ cân tại $M$."
+      ],
+      "bank": [
+        "$\\widehat{ADC}=\\widehat{AFC}=90^\\circ$ (cùng nhìn $AC$)",
+        "$\\widehat{DAF}=\\widehat{DCF}$ (cùng chắn cung $DF$)",
+        "$DF\\perp AB$",
+        "$DF\\perp AC$",
+        "đường trung trực của dây $DF$ (qua tâm $N$, vuông góc với dây)",
+        "đường trung trực của $BC$",
+        "tia phân giác của $\\widehat{DMF}$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Hai góc bằng nhau chỉ cho bốn điểm cùng thuộc **một** đường tròn, chưa cho biết tâm là $N$. Cần hai góc vuông cùng nhìn $AC$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "$BK$ vuông góc với $AB$ (góc $\\widehat{ABK}$ vuông), không vuông góc với $AC$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E08",
+              "feedback": "$MN$ đi qua trung điểm $M$ của $BC$ nhưng không vuông góc với $BC$."
+            },
+            "6": {
+              "code": "E09",
+              "feedback": "Tia phân giác suy ra từ tam giác cân — chính là điều đang cần chứng minh."
+            }
+          }
+        }
+      ],
+      "solution": "$\\widehat{ADC}=\\widehat{AFC}=90^\\circ$ ⇒ $A$, $D$, $F$, $C$ thuộc đường tròn đường kính $AC$, tâm $N$ (trung điểm $AC$). $MN\\parallel AB$ (đường trung bình); $BK\\perp AB$ và $DF\\parallel BK$ ⇒ $DF\\perp AB$ ⇒ $MN\\perp DF$. Đường thẳng qua tâm $N$ vuông góc với dây $DF$ là trung trực của $DF$ ⇒ $MD=MF$: $\\triangle MDF$ cân tại $M$. Tương tự với đường tròn đường kính $AB$ (qua $A$, $B$, $D$, $E$) ⇒ $ME=MD$. Vậy tâm đường tròn ngoại tiếp $\\triangle DEF$ là trung điểm $M$ của $BC$ — điểm cố định."
+    },
+    {
+      "id": "o-nangcao-p6",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O)$ bán kính $6$ cm và dây $AB=6\\sqrt3$ cm cố định. Điểm $M$ di động trên cung lớn $AB$. Tính diện tích lớn nhất của $\\triangle MAB$.",
+      "hints": [
+        "Đáy $AB$ cố định; diện tích lớn nhất khi chiều cao từ $M$ lớn nhất.",
+        "So sánh chiều cao $MH$ với $MO+OK$ ($K$ là chân đường vuông góc từ $O$ tới $AB$).",
+        "Tính $OK$ bằng Pythagore trong $\\triangle OKA$ với $KA=\\dfrac{AB}{2}$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Đường tròn O bán kính 6, dây AB, điểm M trên cung lớn, đường cao MH của tam giác MAB</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"36.9\" y1=\"168\" x2=\"203.1\" y2=\"168\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"84\" y1=\"31\" x2=\"36.9\" y2=\"168\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"84\" y1=\"31\" x2=\"203.1\" y2=\"168\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"84\" y1=\"31\" x2=\"84\" y2=\"168\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"120\" y1=\"120\" x2=\"120\" y2=\"168\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"84,161 91,161 91,168\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"120,161 127,161 127,168\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"120\" y=\"179\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"129.5\" y=\"114.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"26.5\" y=\"171.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"213.5\" y=\"171.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"76.3\" y=\"23.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"84\" y=\"179\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"36.9\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"203.1\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84\" cy=\"31\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"84\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"168\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O bán kính 6 cm; dây AB nằm ngang phía dưới tâm, OK vuông góc AB tại K (nét mảnh). M trên cung lớn AB (vẽ ở một vị trí phía trên bên trái); tam giác MAB tô màu, MH là đường cao (nét đứt)."
+      },
+      "answer": "27√3",
+      "unit": "cm²",
+      "mistakes": [
+        {
+          "answer": "9√3",
+          "code": "E08",
+          "feedback": "Con đã lấy điểm chính giữa cung **nhỏ**; $M$ chạy trên cung lớn nên chiều cao lớn nhất là $R$ cộng khoảng cách từ $O$ tới $AB$."
+        },
+        {
+          "answer": "18√3",
+          "code": "E04",
+          "feedback": "Chiều cao từ $M$ không bị chặn bởi $R$: $MH\\le MO+OK$ ($K$ là chân đường vuông góc từ $O$), dấu “=” khi $M$, $O$, $K$ thẳng hàng."
+        },
+        {
+          "answer": "54√3",
+          "code": "E03",
+          "feedback": "Diện tích tam giác bằng **nửa** tích đáy với chiều cao."
+        }
+      ],
+      "solution": "$K$ là trung điểm $AB$ ⇒ $OK\\perp AB$, $OK=\\sqrt{6^2-(3\\sqrt3)^2}=3$ cm. Đường cao $MH\\le MK\\le MO+OK=9$ cm; dấu “=” khi $M$ là điểm chính giữa cung lớn $AB$. Kết luận: $S_{\\max}=\\dfrac12\\cdot6\\sqrt3\\cdot9=27\\sqrt3$ (cm²)."
+    },
+    {
+      "id": "o-nangcao-p7",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O;R)$, dây $BC$ cố định ($BC<2R$); $A$ di động trên $(O)$ sao cho $\\triangle ABC$ nhọn, $AB<AC$. Vẽ đường cao $CD$ của $\\triangle ABC$ và đường kính $AM$; $CE\\perp AM$ tại $E$. Đã chứng minh tứ giác $ADEC$ nội tiếp. Đường thẳng $DE$ cắt $BM$ tại $F$. Sắp xếp các dòng thành lời giải chứng minh $DF$ luôn đi qua một điểm cố định (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 3, Bài 4.2c (chuyển thể: ý điểm cố định, tách bước)",
+      "hints": [
+        "Cần một điểm cố định nằm trên $DE$ với mọi vị trí của $A$.",
+        "Thử vị trí đặc biệt của $A$; điểm cố định thường gắn với $B$, $C$.",
+        "So sánh $\\widehat{EDC}$ với $\\widehat{IDC}$; cả hai cùng bằng $90^\\circ-\\widehat{ABC}$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 244.2\" role=\"img\"><title>Đường tròn O, tam giác ABC, đường cao CD, đường kính AM, CE vuông góc AM, DE cắt BM tại F, I trung điểm BC</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"87.2\" y1=\"29.8\" x2=\"41.4\" y2=\"175.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"41.4\" y1=\"175.1\" x2=\"198.6\" y2=\"175.1\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"87.2\" y2=\"29.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"87.2\" y1=\"29.8\" x2=\"152.8\" y2=\"210.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"55.6\" y2=\"130\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"198.6\" y1=\"175.1\" x2=\"146.9\" y2=\"193.9\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"41.4\" y1=\"175.1\" x2=\"152.8\" y2=\"210.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"55.6\" y1=\"130\" x2=\"184.4\" y2=\"220.2\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"62.3,132.1 64.4,125.4 57.7,123.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"153.5,191.5 151.1,184.9 144.5,187.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"85.3\" y=\"19\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"31\" y=\"178.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"209\" y=\"178.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"44.3\" y=\"125.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"158.7\" y=\"191.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"156.6\" y=\"220.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"180.3\" y=\"231.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">F</text><text x=\"122.1\" y=\"186.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"108\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"87.2\" cy=\"29.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"41.4\" cy=\"175.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"198.6\" cy=\"175.1\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"55.6\" cy=\"130\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"146.9\" cy=\"193.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"152.8\" cy=\"210.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"184.4\" cy=\"220.2\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"175.1\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; dây BC nằm ngang phía dưới; A trên cung lớn (vẽ ở một vị trí phía trên, hơi lệch về B, AB < AC); đường kính AM. CD vuông góc AB tại D, CE vuông góc AM tại E (nét mảnh). Đường thẳng DE (tô màu) cắt BM tại F và đi qua trung điểm I của BC."
+      },
+      "drawFirst": true,
+      "lines": [
+        {
+          "text": "Gọi $I$ là trung điểm của $BC$; $I$ cố định vì $B$, $C$ cố định."
+        },
+        {
+          "text": "$\\triangle BDC$ vuông tại $D$, $DI$ là trung tuyến ⇒ $ID=IC$ ⇒ $\\widehat{IDC}=\\widehat{BCD}=90^\\circ-\\widehat{ABC}$."
+        },
+        {
+          "text": "$\\widehat{EDC}=\\widehat{EAC}$ (tứ giác $ADEC$ nội tiếp), mà $\\widehat{EAC}=\\widehat{MAC}=\\widehat{MBC}$ (cùng chắn cung $MC$ của $(O)$).",
+          "after": []
+        },
+        {
+          "text": "$\\widehat{ABM}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) ⇒ $\\widehat{MBC}=90^\\circ-\\widehat{ABC}$.",
+          "after": []
+        },
+        {
+          "text": "⇒ $\\widehat{EDC}=\\widehat{IDC}$; $E$, $I$ cùng phía với $DC$ ⇒ tia $DE$ trùng tia $DI$ ⇒ $D$, $E$, $I$ thẳng hàng.",
+          "after": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "text": "Kết luận: đường thẳng $DF$ (chính là $DE$) luôn đi qua trung điểm $I$ cố định của $BC$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "$\\widehat{EDC}=\\widehat{EAC}$ (hai góc nội tiếp của $(O)$ cùng chắn cung $EC$).",
+          "code": "E09",
+          "feedback": "$D$, $E$ không nằm trên $(O)$; hai góc này bằng nhau vì tứ giác $ADEC$ nội tiếp."
+        },
+        {
+          "text": "Khi $A$ là điểm chính giữa cung lớn $BC$ thì $DE$ đi qua trung điểm $I$ của $BC$, nên $DF$ luôn đi qua $I$.",
+          "code": "E09",
+          "feedback": "Vị trí đặc biệt chỉ dùng để đoán điểm $I$; chứng minh phải đúng với mọi vị trí của $A$."
+        }
+      ],
+      "solution": "Gọi $I$ là trung điểm $BC$ (cố định). $ID=IC$ ($DI$ là trung tuyến của tam giác vuông $BDC$) ⇒ $\\widehat{IDC}=\\widehat{BCD}=90^\\circ-\\widehat{ABC}$. $\\widehat{EDC}=\\widehat{EAC}$ ($ADEC$ nội tiếp) $=\\widehat{MBC}$ (cùng chắn cung $MC$) $=90^\\circ-\\widehat{ABC}$ (vì $\\widehat{ABM}=90^\\circ$). Vậy $\\widehat{EDC}=\\widehat{IDC}$ ⇒ $D$, $E$, $I$ thẳng hàng. Kết luận: $DF$ luôn đi qua trung điểm $I$ cố định của $BC$. Hai dòng “$\\widehat{EDC}=\\ldots$” và “$\\widehat{ABM}=90^\\circ$” đổi chỗ được. (Nhìn cách khác: $F$ là chân đường vuông góc từ $C$ xuống $BM$, $BDCF$ là hình chữ nhật, hai đường chéo $DF$, $BC$ cắt nhau tại trung điểm $I$.)"
+    },
+    {
+      "id": "o-nangcao-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho nửa đường tròn $(O)$ đường kính $AB=6$ cm; $Ax$ là tiếp tuyến tại $A$. Điểm $C$ di động trên tia $Ax$ ($AC>3$ cm); đường thẳng $CB$ cắt nửa đường tròn tại $M$. Tìm vị trí của $C$ (tính $AC$) để $4MB+CB$ nhỏ nhất.",
+      "source": "68 đề – Đề 36, Bài 4.2c (chuyển thể: R = 3 cm, tách bước)",
+      "hints": [
+        "Cần viết $4MB+CB$ theo một độ dài duy nhất.",
+        "$AM$ là đường cao của tam giác vuông $CAB$: hệ thức nào chứa $MB$ và $CB$?",
+        "Dùng $x+\\dfrac{a^2}{x}\\ge 2a$ với $x>0$, dấu “=” khi $x=a$."
+      ],
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 256\" role=\"img\"><title>Nửa đường tròn đường kính AB, tiếp tuyến Ax tại A, C trên Ax, CB cắt nửa đường tròn tại M</title><path d=\"M216 232A96 96 0 0 0 24 232\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"232\" x2=\"216\" y2=\"232\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"232\" x2=\"24\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"72\" x2=\"216\" y2=\"232\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"24\" y1=\"232\" x2=\"102.7\" y2=\"137.6\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"31,232 31,225 24,225\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"98.2,143 103.6,147.4 108.1,142.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"18.5\" y=\"241.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"221.5\" y=\"241.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"243\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"13\" y=\"72\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"106.5\" y=\"127.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"34\" y=\"24\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">x</text><circle cx=\"120\" cy=\"232\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"232\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"232\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"72\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"102.7\" cy=\"137.6\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Nửa đường tròn tâm O đường kính AB nằm ngang; tia Ax vuông góc AB tại A, hướng lên. C trên Ax (vẽ ở một vị trí, AC lớn hơn bán kính); đoạn CB (tô màu) cắt nửa đường tròn tại M; AM vuông góc CB (nét mảnh)."
+      },
+      "steps": [
+        {
+          "prompt": "Hệ thức nào đúng với mọi vị trí của $C$?",
+          "item": {
+            "id": "o-nangcao-p8-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hệ thức.",
+            "options": [
+              "$MB\\cdot CB=AC^2$",
+              "$MB\\cdot CB=AB^2=36$",
+              "$MB\\cdot MC=AB^2$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "$AC^2$ bằng hình chiếu $CM$ nhân cạnh huyền $CB$; với hình chiếu $MB$ phải dùng cạnh $AB$."
+              },
+              "2": {
+                "code": "E03",
+                "feedback": "$MB\\cdot MC$ bằng bình phương đường cao $AM$; với cạnh góc vuông $AB$ thì $AB^2=MB\\cdot CB$."
+              }
+            },
+            "solution": "$\\widehat{AMB}=90^\\circ$ (chắn nửa đường tròn), $\\widehat{CAB}=90^\\circ$ (tiếp tuyến) ⇒ $AM$ là đường cao của $\\triangle CAB$ vuông tại $A$ ⇒ $AB^2=MB\\cdot CB$, tức $MB\\cdot CB=36$."
+          }
+        },
+        {
+          "prompt": "Tính giá trị nhỏ nhất của $4MB+CB$.",
+          "item": {
+            "id": "o-nangcao-p8-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Giá trị nhỏ nhất của $4MB+CB$ là:",
+            "answer": "24",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "12",
+                "code": "E03",
+                "feedback": "$x+\\dfrac{a^2}{x}\\ge 2a$: con quên hệ số $2$."
+              }
+            ],
+            "solution": "$4MB=\\dfrac{144}{CB}$ ⇒ $4MB+CB=CB+\\dfrac{144}{CB}=24+\\dfrac{(CB-12)^2}{CB}\\ge24$ (cm); dấu “=” khi $CB=12$ cm."
+          }
+        },
+        {
+          "prompt": "Khi đó $AC$ bằng bao nhiêu?",
+          "item": {
+            "id": "o-nangcao-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Tính $AC$ khi $4MB+CB$ nhỏ nhất.",
+            "answer": "6√3",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "12",
+                "code": "E10",
+                "feedback": "Đó là độ dài $CB$; đề hỏi $AC$, tính tiếp bằng Pythagore trong $\\triangle CAB$."
+              },
+              {
+                "answer": "6√5",
+                "code": "E03",
+                "feedback": "Cạnh huyền là $CB$: $AC^2=CB^2-AB^2$, con đã cộng."
+              }
+            ],
+            "solution": "$AC=\\sqrt{CB^2-AB^2}=\\sqrt{144-36}=6\\sqrt3$ (cm), thoả $AC>3$."
+          }
+        }
+      ],
+      "solution": "$AM\\perp CB$, $\\widehat{CAB}=90^\\circ$ ⇒ $MB\\cdot CB=AB^2=36$ ⇒ $4MB+CB=CB+\\dfrac{144}{CB}=24+\\dfrac{(CB-12)^2}{CB}\\ge24$; dấu “=” khi $CB=12$ ⇒ $AC=\\sqrt{144-36}=6\\sqrt3$ cm. Kết luận: $4MB+CB$ nhỏ nhất bằng $24$ cm khi $AC=6\\sqrt3$ cm (tổng quát: $AC=2\\sqrt3\\,R$)."
+    }
+  ],
+  "exit": [
+    {
+      "id": "o-nangcao-x1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một đường tròn thay đổi nhưng luôn tiếp xúc với đường thẳng cố định $d$ tại điểm cố định $T$. Tâm của đường tròn đó luôn nằm trên đường nào?",
+      "options": [
+        "Đường thẳng $d$",
+        "Đường tròn tâm $T$",
+        "Đường thẳng song song với $d$",
+        "Đường thẳng vuông góc với $d$ tại $T$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Tâm cách tiếp điểm một bán kính theo phương vuông góc với tiếp tuyến, nên không nằm trên $d$."
+        },
+        "1": {
+          "code": "E04",
+          "feedback": "Bán kính thay đổi nên khoảng cách từ tâm tới $T$ không cố định."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Khoảng cách từ tâm tới $d$ bằng bán kính, mà bán kính thay đổi."
+        }
+      },
+      "solution": "Bán kính đi qua tiếp điểm vuông góc với tiếp tuyến: tâm $I$ thoả $IT\\perp d$ ⇒ $I$ luôn nằm trên đường thẳng vuông góc với $d$ tại $T$ — đường cố định."
+    },
+    {
+      "id": "o-nangcao-x2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Cho đường tròn $(O)$ bán kính $5$ cm và điểm $P$ cố định với $OP=3$ cm. Dây $AB$ thay đổi nhưng luôn đi qua $P$. Tính độ dài nhỏ nhất của dây $AB$.",
+      "answer": "8",
+      "unit": "cm",
+      "mistakes": [
+        {
+          "answer": "10",
+          "code": "E04",
+          "feedback": "Đó là dây dài nhất (đường kính). Dây ngắn nhất khi khoảng cách từ $O$ tới dây lớn nhất."
+        },
+        {
+          "answer": "4",
+          "code": "E11",
+          "feedback": "Đó mới là nửa dây; dây $AB$ gấp đôi đoạn từ trung điểm tới đầu mút."
+        }
+      ],
+      "solution": "Gọi $H$ là trung điểm $AB$ ⇒ $OH\\perp AB$, $OH\\le OP=3$ cm. $AB=2\\sqrt{25-OH^2}\\ge2\\sqrt{25-9}=8$ (cm); dấu “=” khi $AB\\perp OP$ tại $P$."
+    },
+    {
+      "id": "o-nangcao-x3",
+      "type": "analysis",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O)$, dây $BC$ cố định; $A$ di động trên cung lớn $BC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $D$ và cắt $(O)$ tại $N$. Phân tích ngược để chứng minh tâm $O'$ của đường tròn ngoại tiếp $\\triangle ABD$ luôn nằm trên một đường thẳng cố định.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 219.3\" role=\"img\"><title>Đường tròn O, dây BC, A trên cung lớn, phân giác AN cắt BC tại D, đường tròn qua A, B, D</title><circle cx=\"130.3\" cy=\"109.7\" r=\"85.7\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><circle cx=\"86\" cy=\"93.5\" r=\"62\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"94.1\" y1=\"32\" x2=\"52.7\" y2=\"145.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"94.1\" y1=\"32\" x2=\"208\" y2=\"145.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"52.7\" y1=\"145.9\" x2=\"208\" y2=\"145.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"94.1\" y1=\"32\" x2=\"130.3\" y2=\"195.3\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"52.7\" y1=\"145.9\" x2=\"130.3\" y2=\"195.3\" stroke=\"currentColor\" stroke-width=\"1.6\"/><text x=\"92.2\" y=\"21.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"42.4\" y=\"149.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"218.3\" y=\"149.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"125.4\" y=\"156.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"130.3\" y=\"206.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">N</text><text x=\"141.6\" y=\"105.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"73.8\" y=\"89.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O′</text><circle cx=\"130.3\" cy=\"109.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"94.1\" cy=\"32\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"52.7\" cy=\"145.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"208\" cy=\"145.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"119.4\" cy=\"145.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"130.3\" cy=\"195.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"86\" cy=\"93.5\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; dây BC nằm ngang phía dưới tâm; A trên cung lớn BC (vẽ ở một vị trí phía trên bên trái). Tia phân giác của góc BAC (tô màu) cắt BC tại D và cắt đường tròn tại N trên cung nhỏ BC; nối NB. Đường tròn nét đứt tâm O′ đi qua A, B, D."
+      },
+      "goal": "Tâm $O'$ của đường tròn $(ABD)$ luôn nằm trên một đường thẳng cố định",
+      "steps": [
+        {
+          "ask": "Đường tròn $(ABD)$ luôn đi qua điểm cố định $B$. Nên chứng minh điều gì?",
+          "node": "$NB$ tiếp xúc với đường tròn $(ABD)$ tại $B$ và $N$ cố định; khi đó $O'B\\perp NB$, $O'$ thuộc đường vuông góc với $NB$ tại $B$",
+          "item": {
+            "id": "o-nangcao-x3-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn hướng.",
+            "options": [
+              "$O'$ nằm trên đường trung trực của $AD$",
+              "$NB$ tiếp xúc với đường tròn $(ABD)$ tại $B$, và $N$ là điểm cố định",
+              "$O'$ nằm trên đường trung trực của $BD$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E06",
+                "feedback": "$A$, $D$ đều di động nên trung trực của $AD$ không cố định."
+              },
+              "2": {
+                "code": "E06",
+                "feedback": "Đúng là $O'$ thuộc trung trực của $BD$, nhưng $D$ chạy theo $A$ nên đường này không cố định."
+              }
+            },
+            "solution": "Đường tròn $(ABD)$ luôn qua $B$. Nếu đường thẳng cố định $NB$ tiếp xúc với nó tại $B$ thì $O'B\\perp NB$: $O'$ nằm trên đường vuông góc với $NB$ tại $B$."
+          }
+        },
+        {
+          "ask": "Vì sao $N$ là điểm cố định?",
+          "node": "$\\widehat{BAN}=\\widehat{NAC}$ ⇒ cung $BN$ = cung $NC$: $N$ là điểm chính giữa cung $BC$ không chứa $A$",
+          "item": {
+            "id": "o-nangcao-x3-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn lí do.",
+            "options": [
+              "Hai góc nội tiếp bằng nhau $\\widehat{BAN}=\\widehat{NAC}$ chắn hai cung bằng nhau, nên $N$ là điểm chính giữa cung $BC$ không chứa $A$",
+              "Vì $NB$ tiếp xúc với đường tròn $(ABD)$",
+              "Vì $AN\\perp BC$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E09",
+                "feedback": "Đó là điều đang cần chứng minh ở tầng trên; dùng nó là lập luận vòng."
+              },
+              "2": {
+                "code": "E09",
+                "feedback": "$AN\\perp BC$ chỉ đúng khi $AB=AC$ (một vị trí đặc biệt), không đúng với mọi vị trí của $A$."
+              }
+            },
+            "solution": "$AN$ là phân giác ⇒ $\\widehat{BAN}=\\widehat{NAC}$ ⇒ cung $BN$ = cung $NC$ ⇒ $N$ là điểm chính giữa cung $BC$ không chứa $A$, không phụ thuộc $A$."
+          }
+        },
+        {
+          "ask": "Vì sao $NB$ tiếp xúc với đường tròn $(ABD)$ tại $B$?",
+          "node": "$\\widehat{NBD}=\\widehat{NBC}=\\widehat{NAC}$ (cùng chắn cung $NC$) $=\\widehat{BAD}$ ($AN$ là phân giác): góc giữa $BN$ và dây $BD$ bằng góc nội tiếp chắn cung $BD$ (giả thiết)",
+          "given": true,
+          "item": {
+            "id": "o-nangcao-x3-s3",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Chọn cặp góc và lí do.",
+            "options": [
+              "$\\widehat{NBD}=\\widehat{NDB}$",
+              "$\\widehat{NBD}=\\widehat{ABD}$",
+              "$\\widehat{NBD}=\\widehat{BAD}$ vì cùng bằng $\\widehat{NAC}$ (cùng chắn cung $NC$; $AN$ là phân giác)"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E08",
+                "feedback": "$N$ nằm ngoài đường tròn $(ABD)$; $\\widehat{NDB}$ không phải góc nội tiếp của đường tròn đó chắn cung $BD$."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "$\\widehat{ABD}$ có đỉnh $B$ là tiếp điểm, không chắn cung $BD$; góc nội tiếp chắn cung $BD$ có đỉnh $A$."
+              }
+            },
+            "solution": "$\\widehat{NBC}=\\widehat{NAC}$ (cùng chắn cung $NC$ của $(O)$), $\\widehat{NAC}=\\widehat{BAD}$ (phân giác) ⇒ $\\widehat{NBD}=\\widehat{BAD}$: góc giữa tia $BN$ và dây $BD$ bằng góc nội tiếp chắn cung $BD$ ⇒ $NB$ tiếp xúc với $(ABD)$ tại $B$."
+          }
+        }
+      ],
+      "outline": [
+        "$\\widehat{BAN}=\\widehat{NAC}$ ⇒ cung $BN$ = cung $NC$ ⇒ $N$ là điểm chính giữa cung $BC$ không chứa $A$: $N$ cố định",
+        "$\\widehat{NBD}=\\widehat{NAC}=\\widehat{BAD}$ ⇒ $NB$ tiếp xúc với đường tròn $(ABD)$ tại $B$ ⇒ $O'B\\perp NB$",
+        "Kết luận: $O'$ luôn nằm trên đường thẳng vuông góc với $NB$ tại $B$ — đường cố định."
+      ],
+      "solution": "$N$ là điểm chính giữa cung $BC$ không chứa $A$ (hai góc nội tiếp bằng nhau chắn hai cung bằng nhau) ⇒ $N$ cố định. $\\widehat{NBD}=\\widehat{NAC}=\\widehat{BAD}$ ⇒ $NB$ tiếp xúc với đường tròn $(ABD)$ tại $B$ ⇒ $O'B\\perp NB$. Kết luận: $O'$ luôn nằm trên đường thẳng vuông góc với $NB$ tại $B$."
+    },
+    {
+      "id": "o-nangcao-x4",
+      "type": "proof",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O;R)$ và điểm $A$ cố định nằm ngoài đường tròn. Một đường thẳng thay đổi qua $A$ (không qua $O$) cắt $(O)$ tại $B$, $C$; tiếp tuyến tại $B$ và tại $C$ cắt nhau ở $M$. Gọi $I$ là giao điểm của $OM$ và $BC$, $H$ là hình chiếu của $M$ trên đường thẳng $OA$. Điền vào chỗ trống để chứng minh $M$ luôn nằm trên một đường thẳng cố định.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 197.8\" role=\"img\"><title>Đường tròn O, điểm A ở ngoài, cát tuyến qua A cắt đường tròn tại B, C, hai tiếp tuyến tại B, C cắt nhau ở M</title><circle cx=\"77.3\" cy=\"120.5\" r=\"53.3\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"216\" y1=\"120.5\" x2=\"39.4\" y2=\"83\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"97.8\" y1=\"24\" x2=\"127.2\" y2=\"101.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"97.8\" y1=\"24\" x2=\"39.4\" y2=\"83\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"77.3\" y1=\"120.5\" x2=\"216\" y2=\"120.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"77.3\" y1=\"120.5\" x2=\"97.8\" y2=\"24\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"97.8\" y1=\"24\" x2=\"97.8\" y2=\"120.5\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><polyline points=\"97.8,113.5 104.8,113.5 104.8,120.5\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"82.1,98.2 87.9,99.4 89.2,93.6\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"67\" y=\"124.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"227\" y=\"120.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"131.3\" y=\"112.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"29.1\" y=\"86.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"97.8\" y=\"13\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"77.3\" y=\"102.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"99.9\" y=\"132.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><circle cx=\"77.3\" cy=\"120.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"120.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"127.2\" cy=\"101.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"39.4\" cy=\"83\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"97.8\" cy=\"24\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"83.3\" cy=\"92.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"97.8\" cy=\"120.5\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O; A ở ngoài đường tròn, bên phải, nối OA. Đường thẳng qua A (vẽ ở một vị trí) cắt đường tròn tại B (gần A) và C; hai tiếp tuyến tại B, C cắt nhau ở M phía trên. OM cắt BC tại I; MH vuông góc OA tại H (nét đứt)."
+      },
+      "lines": [
+        "$MB=MC$ (hai tiếp tuyến cắt nhau), $OB=OC$ ⇒ $OM$ là trung trực của $BC$ ⇒ $OM\\perp BC$ tại $I$.",
+        "$\\triangle OBM$ vuông tại $B$ có đường cao $BI$ ⇒ [[1]].",
+        "Xét $\\triangle OIA$ và $\\triangle OHM$ có: $\\widehat{O}$ chung; $\\widehat{OIA}=\\widehat{OHM}=90^\\circ$ ⇒ $\\triangle OIA\\backsim\\triangle OHM$ (g.g) ⇒ [[2]].",
+        "⇒ $OH\\cdot OA=R^2$ ⇒ $OH=\\dfrac{R^2}{OA}$ không đổi ⇒ $H$ cố định trên tia $OA$.",
+        "Kết luận: $M$ luôn nằm trên [[3]]."
+      ],
+      "bank": [
+        "$OI\\cdot OM=OB^2=R^2$",
+        "$BI^2=OI\\cdot IM$",
+        "$OI\\cdot OM=OH\\cdot OA$",
+        "$OI\\cdot OA=OH\\cdot OM$",
+        "đường thẳng vuông góc với $OA$ tại $H$",
+        "đường tròn tâm $O$ bán kính $OH$",
+        "đường thẳng $OA$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E03",
+              "feedback": "$BI^2=OI\\cdot IM$ là hệ thức của đường cao; ở đây cần hệ thức cho cạnh góc vuông $OB$."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "Đỉnh tương ứng: $I\\leftrightarrow H$, $A\\leftrightarrow M$, nên $\\dfrac{OI}{OH}=\\dfrac{OA}{OM}$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E04",
+              "feedback": "$OM$ thay đổi theo cát tuyến; chỉ hình chiếu $H$ của $M$ trên $OA$ là cố định."
+            },
+            "6": {
+              "code": "E08",
+              "feedback": "$M$ nằm ngoài đường thẳng $OA$; điểm cố định trên $OA$ là $H$, không phải $M$."
+            }
+          }
+        }
+      ],
+      "solution": "$OM\\perp BC$ tại $I$; $\\triangle OBM$ vuông tại $B$, đường cao $BI$ ⇒ $OI\\cdot OM=R^2$. $\\triangle OIA\\backsim\\triangle OHM$ (g.g) ⇒ $\\dfrac{OI}{OH}=\\dfrac{OA}{OM}$ ⇒ $OH\\cdot OA=OI\\cdot OM=R^2$ ⇒ $OH=\\dfrac{R^2}{OA}$ không đổi, $H$ cố định. Kết luận: $M$ luôn nằm trên đường thẳng vuông góc với $OA$ tại $H$."
+    },
+    {
+      "id": "o-nangcao-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Cho đường tròn $(O)$ đường kính $AB=10$ cm. Đường thẳng $d$ vuông góc với $AB$ tại $H$, $AH=8$ cm. Điểm $M$ di động trên $(O)$ ($M\\ne A$, $M\\ne B$); tia $AM$ cắt $d$ tại $C$. Tích $AM\\cdot AC$ không phụ thuộc vị trí của $M$; tính giá trị đó.",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 294\" role=\"img\"><title>Đường tròn đường kính AB, đường thẳng d vuông góc AB tại H, M trên đường tròn, tia AM cắt d tại C</title><circle cx=\"120\" cy=\"154.8\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"154.8\" x2=\"216\" y2=\"154.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"177.6\" y1=\"270\" x2=\"177.6\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"154.8\" x2=\"177.6\" y2=\"43.2\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"149.7\" y1=\"63.5\" x2=\"216\" y2=\"154.8\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><polyline points=\"184.6,154.8 184.6,147.8 177.6,147.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><polyline points=\"144,67.6 148.1,73.3 153.8,69.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"13\" y=\"154.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"225.5\" y=\"160.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"120\" y=\"165.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"169.9\" y=\"164\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"145.9\" y=\"53.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"188.6\" y=\"43.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"187.6\" y=\"270\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">d</text><circle cx=\"120\" cy=\"154.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"154.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"154.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"177.6\" cy=\"154.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"149.7\" cy=\"63.5\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"177.6\" cy=\"43.2\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính AB nằm ngang; đường thẳng d thẳng đứng vuông góc AB tại H (H nằm giữa O và B). M trên đường tròn (vẽ ở một vị trí phía trên, gần d, M nằm giữa A và C); tia AM (tô màu) cắt d tại C ở ngoài đường tròn; nối MB."
+      },
+      "answer": "80",
+      "unit": "cm²",
+      "mistakes": [
+        {
+          "answer": "40",
+          "code": "E08",
+          "feedback": "Con đã dùng $AO$ thay cho $AB$; cặp tam giác đồng dạng là $\\triangle AMB$ và $\\triangle AHC$."
+        },
+        {
+          "answer": "16",
+          "code": "E08",
+          "feedback": "$HA\\cdot HB$ là tích hai đoạn trên đường kính tính từ $H$, không phải $AM\\cdot AC$."
+        }
+      ],
+      "solution": "$\\widehat{AMB}=90^\\circ$ (chắn nửa đường tròn). $\\triangle AMB$ và $\\triangle AHC$ có $\\widehat{A}$ chung, $\\widehat{AMB}=\\widehat{AHC}=90^\\circ$ ⇒ đồng dạng (g.g) ⇒ $\\dfrac{AM}{AH}=\\dfrac{AB}{AC}$ ⇒ $AM\\cdot AC=AH\\cdot AB=8\\cdot10=80$ (cm²), không phụ thuộc $M$."
+    },
+    {
+      "id": "o-nangcao-x6",
+      "type": "proof",
+      "level": "L3",
+      "prompt": "Cho đường tròn tâm $O$ đường kính $BC$; $A$ cố định trên đường tròn, $D$ thay đổi trên cung nhỏ $AC$. $AH\\perp BC$ tại $H$; $BD$ cắt $AH$ tại $I$. Đã chứng minh $AB^2=BI\\cdot BD$. Lấy $M$ trên đoạn $BC$ với $BM=AB$. Điền vào chỗ trống để chứng minh tâm $O'$ của đường tròn ngoại tiếp $\\triangle MID$ luôn nằm trên một đường thẳng cố định.",
+      "source": "68 đề – Đề 7, Bài 4.2c (chuyển thể)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Đường tròn đường kính BC, A cố định, D trên cung nhỏ AC, AH vuông góc BC, BD cắt AH tại I, M trên BC với BM = AB, đường tròn qua M, I, D</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><circle cx=\"176.3\" cy=\"87.9\" r=\"32.1\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><line x1=\"24\" y1=\"120\" x2=\"216\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"144.8\" y1=\"27.3\" x2=\"24\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"144.8\" y1=\"27.3\" x2=\"144.8\" y2=\"120\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"120\" x2=\"198.6\" y2=\"64.9\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"176.3\" y1=\"120\" x2=\"144.8\" y2=\"81.9\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><line x1=\"176.3\" y1=\"120\" x2=\"198.6\" y2=\"64.9\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"144.8,113 151.8,113 151.8,120\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"13\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"227\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"144.8\" y=\"16.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"208.2\" y=\"59.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"140.7\" y=\"131.3\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"133.6\" y=\"77.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">I</text><text x=\"182.3\" y=\"130.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"120\" y=\"132\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"190.3\" y=\"87.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O′</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"144.8\" cy=\"27.3\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"198.6\" cy=\"64.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"144.8\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"144.8\" cy=\"81.9\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"176.3\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"176.3\" cy=\"87.9\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính BC nằm ngang; A cố định trên nửa trên (lệch về C); D trên cung nhỏ AC (vẽ ở một vị trí). AH vuông góc BC tại H; BD cắt AH tại I. M trên đoạn BC với BM = AB (M nằm giữa O và C); đường tròn nét đứt tâm O′ qua M, I, D; MI, MD tô màu."
+      },
+      "lines": [
+        "$BM=AB$ ⇒ $BM^2=AB^2=BI\\cdot BD$ ⇒ $\\dfrac{BM}{BI}=\\dfrac{BD}{BM}$.",
+        "Xét $\\triangle BMI$ và $\\triangle BDM$ có: $\\widehat{B}$ chung, $\\dfrac{BM}{BI}=\\dfrac{BD}{BM}$ ⇒ $\\triangle BMI\\backsim\\triangle BDM$ ([[1]]) ⇒ [[2]].",
+        "Góc giữa tia $MB$ và dây $MI$ bằng góc nội tiếp $\\widehat{MDI}$ chắn cung $MI$ ⇒ [[3]] ⇒ $O'M\\perp BC$.",
+        "Kết luận: $O'$ luôn nằm trên [[4]]."
+      ],
+      "bank": [
+        "c.g.c",
+        "g.g",
+        "$\\widehat{BMI}=\\widehat{BDM}$",
+        "$\\widehat{BMI}=\\widehat{BMD}$",
+        "$BM$ tiếp xúc với đường tròn $(MID)$ tại $M$",
+        "$BM$ là đường kính của đường tròn $(MID)$",
+        "đường thẳng vuông góc với $BC$ tại $M$ (cố định vì $M$ cố định)",
+        "đường trung trực của $BC$",
+        "đường trung trực của $MI$"
+      ],
+      "blanks": [
+        {
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E09",
+              "feedback": "Mới có một cặp góc ($\\widehat{B}$ chung) và một cặp tỉ số: đó là trường hợp cạnh – góc – cạnh."
+            }
+          }
+        },
+        {
+          "correct": 2,
+          "mistakes": {
+            "3": {
+              "code": "E08",
+              "feedback": "Đỉnh tương ứng: $M\\leftrightarrow D$, $I\\leftrightarrow M$; góc ở đỉnh $M$ của $\\triangle BMI$ ứng với góc ở đỉnh $D$ của $\\triangle BDM$."
+            }
+          }
+        },
+        {
+          "correct": 4,
+          "mistakes": {
+            "5": {
+              "code": "E04",
+              "feedback": "$B$ nằm ngoài đường tròn $(MID)$ nên $BM$ không thể là đường kính; góc bằng nhau ở đây là dấu hiệu tiếp xúc."
+            }
+          }
+        },
+        {
+          "correct": 6,
+          "mistakes": {
+            "7": {
+              "code": "E08",
+              "feedback": "$M$ không phải trung điểm $BC$ (vì $BM=AB$), nên đường vuông góc tại $M$ khác trung trực của $BC$."
+            },
+            "8": {
+              "code": "E06",
+              "feedback": "$I$ chạy theo $D$ nên trung trực của $MI$ không cố định."
+            }
+          }
+        }
+      ],
+      "solution": "$BM^2=AB^2=BI\\cdot BD$ ⇒ $\\dfrac{BM}{BI}=\\dfrac{BD}{BM}$, cùng góc $B$ ⇒ $\\triangle BMI\\backsim\\triangle BDM$ (c.g.c) ⇒ $\\widehat{BMI}=\\widehat{BDM}=\\widehat{MDI}$. Góc giữa tia $MB$ và dây $MI$ bằng góc nội tiếp chắn cung $MI$ ⇒ $BM$ tiếp xúc với đường tròn $(MID)$ tại $M$ ⇒ $O'M\\perp BC$. Kết luận: $O'$ luôn nằm trên đường thẳng vuông góc với $BC$ tại $M$ — cố định vì $B$, $C$, $A$ cố định nên $M$ cố định."
+    },
+    {
+      "id": "o-nangcao-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O)$ bán kính $R=2$ cm và điểm $A$ cố định trên đường tròn. Dây $BC$ thay đổi sao cho $\\triangle ABC$ nhọn và $AB\\cdot AC=3R^2=12$ (cm²); $AH$ là đường cao của $\\triangle ABC$. Biết $AB\\cdot AC=2R\\cdot AH$. Xác định vị trí của dây $BC$ để $\\triangle ABC$ có diện tích lớn nhất.",
+      "source": "68 đề – Đề 13, Bài 4.2c (chuyển thể: R = 2 cm, cho sẵn AB·AC = 2R·AH, tách bước)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\" role=\"img\"><title>Đường tròn O bán kính 2, A cố định, dây BC, đường cao AH dài 3</title><circle cx=\"120\" cy=\"120\" r=\"96\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"120\" y1=\"24\" x2=\"86.1\" y2=\"209.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"24\" x2=\"214.7\" y2=\"135.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"86.1\" y1=\"209.8\" x2=\"214.7\" y2=\"135.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"24\" x2=\"192\" y2=\"148.7\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"188.5,142.6 194.6,139.1 198.1,145.2\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"120\" y=\"13\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"75.8\" y=\"213.6\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"224.3\" y=\"141.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"198\" y=\"159.1\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"108\" y=\"120\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><circle cx=\"120\" cy=\"120\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"24\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"86.1\" cy=\"209.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"214.7\" cy=\"135.6\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"192\" cy=\"148.7\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O bán kính 2 cm; A cố định ở đỉnh trên của đường tròn. Dây BC (vẽ ở một vị trí, nghiêng) sao cho tam giác ABC nhọn; AH vuông góc BC tại H, đoạn AH tô màu."
+      },
+      "steps": [
+        {
+          "prompt": "Tính $AH$.",
+          "item": {
+            "id": "o-nangcao-x7-s1",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Tính $AH$.",
+            "answer": "3",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "6",
+                "code": "E03",
+                "feedback": "Hệ thức là $AB\\cdot AC=2R\\cdot AH$; con đã bỏ hệ số $2$."
+              }
+            ],
+            "solution": "$AH=\\dfrac{AB\\cdot AC}{2R}=\\dfrac{12}{4}=3$ (cm), không đổi."
+          }
+        },
+        {
+          "prompt": "Khoảng cách từ $O$ đến đường thẳng $BC$ nhỏ nhất bằng bao nhiêu?",
+          "item": {
+            "id": "o-nangcao-x7-s2",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Khoảng cách nhỏ nhất từ $O$ đến $BC$ là:",
+            "answer": "1",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "5",
+                "code": "E06",
+                "feedback": "Cần khoảng cách **nhỏ nhất** để dây dài nhất: từ $AH\\le AO+d(O,BC)$ suy ra $d(O,BC)\\ge AH-AO$."
+              },
+              {
+                "answer": "0",
+                "code": "E14",
+                "feedback": "Nếu $BC$ đi qua $O$ thì $AH\\le OA=2$ cm, trái với $AH$ đã tính; vị trí này không xảy ra."
+              }
+            ],
+            "solution": "$AH\\le AO+d(O,BC)$ ⇒ $d(O,BC)\\ge AH-AO=3-2=1$ (cm); dấu “=” khi $O$ nằm trên đoạn $AH$."
+          }
+        },
+        {
+          "prompt": "Vị trí của dây $BC$ khi diện tích lớn nhất:",
+          "item": {
+            "id": "o-nangcao-x7-s3",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Chọn vị trí.",
+            "options": [
+              "$BC\\perp OA$ và $O$ nằm giữa $A$ và $H$; khi đó $\\triangle ABC$ đều",
+              "$BC$ đi qua $O$",
+              "$BC\\perp OA$ và $H$ nằm giữa $A$ và $O$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E14",
+                "feedback": "$BC$ đi qua $O$ thì $AH\\le OA=2$ cm, không thoả $AH=3$ cm."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "$AH=3$ cm lớn hơn $AO=2$ cm nên $H$ không thể nằm giữa $A$ và $O$."
+              }
+            },
+            "solution": "Dấu “=” khi $O$ thuộc đoạn $AH$: $BC\\perp OA$, $OH=1$ cm ⇒ $BC=2\\sqrt{4-1}=2\\sqrt3$, $AB=AC=\\sqrt{3+9}=2\\sqrt3$ ⇒ $\\triangle ABC$ đều."
+          }
+        },
+        {
+          "prompt": "Tính diện tích lớn nhất của $\\triangle ABC$.",
+          "item": {
+            "id": "o-nangcao-x7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Diện tích lớn nhất của $\\triangle ABC$ là:",
+            "answer": "3√3",
+            "unit": "cm²",
+            "mistakes": [
+              {
+                "answer": "6",
+                "code": "E14",
+                "feedback": "Con lấy $BC$ là đường kính; vị trí đó không thoả $AH$ đã tính."
+              },
+              {
+                "answer": "6√3",
+                "code": "E03",
+                "feedback": "Diện tích tam giác bằng **nửa** tích đáy với chiều cao."
+              }
+            ],
+            "solution": "$BC_{\\max}=2\\sqrt{R^2-1^2}=2\\sqrt3$ cm ⇒ $S_{\\max}=\\dfrac12\\cdot2\\sqrt3\\cdot3=3\\sqrt3$ (cm²)."
+          }
+        }
+      ],
+      "solution": "$AH=\\dfrac{AB\\cdot AC}{2R}=3$ cm không đổi ⇒ $S=\\dfrac12\\cdot BC\\cdot3$ lớn nhất khi $BC$ dài nhất, tức $d(O,BC)$ nhỏ nhất. $d(O,BC)\\ge AH-AO=1$ cm, dấu “=” khi $O$ thuộc đoạn $AH$. Kết luận: $BC\\perp OA$, cách $O$ một khoảng $1$ cm về phía không chứa $A$; khi đó $\\triangle ABC$ đều cạnh $2\\sqrt3$ cm và $S_{\\max}=3\\sqrt3$ cm² (tổng quát: $S_{\\max}=\\dfrac{3\\sqrt3}{4}R^2$)."
+    },
+    {
+      "id": "o-nangcao-x8",
+      "type": "order",
+      "level": "L3",
+      "prompt": "Cho đường tròn $(O)$ đường kính $AB=2R$. Đường thẳng $d$ vuông góc với $OB$ tại $H$ ($H$ cố định, nằm giữa $O$ và $B$). $M$ thay đổi trên một nửa đường tròn ($M\\ne A$, $M\\ne B$, $M$ không nằm trên $d$); tia $AM$, tia $BM$ cắt $d$ lần lượt tại $C$, $D$; $AD$ cắt $(O)$ tại $E$; tiếp tuyến tại $M$ cắt $d$ tại $K$. Đã chứng minh $KE$ cũng là tiếp tuyến của $(O)$. Sắp xếp các dòng thành lời giải chứng minh $ME$ luôn đi qua một điểm cố định (có dòng thừa, không dùng).",
+      "source": "68 đề – Đề 16, Bài 4.2d (chuyển thể: cho sẵn KM, KE là tiếp tuyến)",
+      "figure": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 232.8\" role=\"img\"><title>Đường tròn đường kính AB, đường thẳng d vuông góc OB tại H, M trên nửa đường tròn, C, D trên d, E, tiếp tuyến KM, KE, ME cắt AB tại P</title><circle cx=\"88\" cy=\"144.8\" r=\"64\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"24\" y1=\"144.8\" x2=\"216\" y2=\"144.8\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"176.8\" x2=\"120\" y2=\"24\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"144.8\" x2=\"120\" y2=\"40\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"152\" y1=\"144.8\" x2=\"82.4\" y2=\"81\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"24\" y1=\"144.8\" x2=\"120\" y2=\"115.4\" stroke=\"var(--muted)\" stroke-width=\"1.3\"/><line x1=\"120\" y1=\"77.7\" x2=\"82.4\" y2=\"81\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"120\" y1=\"77.7\" x2=\"141.1\" y2=\"109\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"82.4\" y1=\"81\" x2=\"216\" y2=\"144.8\" stroke=\"var(--accent)\" stroke-width=\"1.8\"/><polyline points=\"126,144.8 126,138.8 120,138.8\" fill=\"none\" stroke=\"var(--muted)\" stroke-width=\"1.2\"/><text x=\"13\" y=\"144.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">A</text><text x=\"158\" y=\"155.2\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">B</text><text x=\"88\" y=\"155.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">O</text><text x=\"112.3\" y=\"154\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">H</text><text x=\"76.9\" y=\"71.5\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">M</text><text x=\"131\" y=\"40\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">C</text><text x=\"108\" y=\"115.4\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">D</text><text x=\"152.4\" y=\"104.9\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">E</text><text x=\"131\" y=\"77.7\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">K</text><text x=\"216\" y=\"155.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">P</text><text x=\"130\" y=\"176.8\" font-size=\"14\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"currentColor\">d</text><circle cx=\"88\" cy=\"144.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"24\" cy=\"144.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"152\" cy=\"144.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"144.8\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"82.4\" cy=\"81\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"40\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"115.4\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"141.1\" cy=\"109\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"77.7\" r=\"1.8\" fill=\"currentColor\"/><circle cx=\"216\" cy=\"144.8\" r=\"1.8\" fill=\"currentColor\"/></svg>",
+        "alt": "Đường tròn tâm O đường kính AB nằm ngang; đường thẳng d thẳng đứng vuông góc OB tại H (trung điểm OB trong hình). M trên nửa trên (vẽ ở một vị trí gần đỉnh, hơi lệch trái); tia AM cắt d tại C (phía trên, ngoài đường tròn), tia BM cắt d tại D (trong đường tròn); AD cắt đường tròn tại E (nửa trên, gần B); K là trung điểm CD, KM, KE là tiếp tuyến. Đường thẳng ME (tô màu) cắt tia OB kéo dài tại P ngoài đường tròn."
+      },
+      "lines": [
+        {
+          "text": "Gọi $P$ là giao điểm của đường thẳng $ME$ và đường thẳng $AB$."
+        },
+        {
+          "text": "$\\widehat{OMK}=\\widehat{OEK}=90^\\circ$ ($KM$, $KE$ là tiếp tuyến), $\\widehat{OHK}=90^\\circ$ ($d\\perp AB$) ⇒ $O$, $H$, $M$, $E$ cùng thuộc đường tròn đường kính $OK$.",
+          "after": []
+        },
+        {
+          "text": "Hai cát tuyến $PME$, $PHO$ của đường tròn đường kính $OK$ ⇒ $PM\\cdot PE=PH\\cdot PO$.",
+          "after": [
+            0,
+            1
+          ]
+        },
+        {
+          "text": "Hai cát tuyến $PME$, $PBA$ của $(O)$ ⇒ $PM\\cdot PE=PB\\cdot PA=(PO-R)(PO+R)=PO^2-R^2$.",
+          "after": [
+            0
+          ]
+        },
+        {
+          "text": "⇒ $PH\\cdot PO=PO^2-R^2$ ⇒ $PO\\,(PO-PH)=R^2$ ⇒ $PO\\cdot OH=R^2$ ⇒ $OP=\\dfrac{R^2}{OH}$ không đổi.",
+          "after": [
+            2,
+            3
+          ]
+        },
+        {
+          "text": "Kết luận: $P$ là điểm cố định trên tia $OB$ (với $OP=\\dfrac{R^2}{OH}$), nên $ME$ luôn đi qua $P$."
+        }
+      ],
+      "distractors": [
+        {
+          "text": "Hai cát tuyến $PME$, $PBA$ của $(O)$ ⇒ $PM\\cdot PE=PB\\cdot BA$.",
+          "code": "E03",
+          "feedback": "Mọi đoạn trong hệ thức đều tính từ $P$: $PM\\cdot PE=PB\\cdot PA$."
+        },
+        {
+          "text": "$O$, $H$, $M$, $E$ cùng thuộc một đường tròn ⇒ $PM\\cdot PE=PO\\cdot OH$.",
+          "code": "E08",
+          "feedback": "Đoạn thứ hai phải tính từ $P$: $PH\\cdot PO$, không phải $PO\\cdot OH$."
+        }
+      ],
+      "solution": "Gọi $P=ME\\cap AB$. $O$, $H$, $M$, $E$ thuộc đường tròn đường kính $OK$ (ba góc vuông nhìn $OK$) ⇒ $PM\\cdot PE=PH\\cdot PO$. Trong $(O)$: $PM\\cdot PE=PB\\cdot PA=PO^2-R^2$. Suy ra $PO\\cdot(PO-PH)=R^2$, tức $PO\\cdot OH=R^2$ ⇒ $OP=\\dfrac{R^2}{OH}$ không đổi. Kết luận: $ME$ luôn đi qua điểm $P$ cố định trên tia $OB$, $OP=\\dfrac{R^2}{OH}$ ($P$ nằm ngoài đường tròn). Dòng (2) và (3) đổi chỗ được; dòng “$O$, $H$, $M$, $E$…” có thể viết trước khi gọi $P$."
+    }
+  ]
+}
