@@ -1,0 +1,1287 @@
+{
+  "id": "g-honhop",
+  "module": "bai-toan-tt",
+  "order": 6,
+  "title": "Bài toán dẫn tới PT bậc hai & pha trộn",
+  "status": "draft",
+  "estMinutes": 55,
+  "theory": [
+    "**Cần nhớ trước:** bài **PT bậc hai: biệt thức & công thức nghiệm** — tính $\\Delta$ (hoặc $\\Delta'$) rồi dùng công thức nghiệm; cùng các bước giải bài toán bằng cách lập phương trình đã học ở các bài toán thực tế trước.",
+    "**Công thức:** hình chữ nhật: diện tích $=$ dài $\\times$ rộng, chu vi $=2($dài $+$ rộng$)$, đường chéo$^2=$ dài$^2+$ rộng$^2$. Chia đều: mỗi phần $=$ tổng $:$ số phần. Khối lượng riêng $D=\\dfrac mV$, nên thể tích $V=\\dfrac mD$. Nồng độ $=\\dfrac{\\text{chất tan}}{\\text{dung dịch}}\\cdot 100\\%$, với dung dịch $=$ chất tan $+$ nước. Điều kiện: độ dài, vận tốc dương; số người, số xe nguyên dương.",
+    "**Vì sao ra bậc hai:** khi ẩn nhân với ẩn (dài $\\times$ rộng) hoặc ẩn nằm ở mẫu của hai phân thức (một tổng cố định chia cho số phần thay đổi), khử mẫu xong sẽ xuất hiện $x^2$. Phương trình bậc hai thường cho **hai** nghiệm, nhưng bài toán thực tế chỉ có **một** đáp số, nên phải đối chiếu điều kiện để loại nghiệm.",
+    "**Bẫy hay gặp:** giữ cả hai nghiệm; chỉ ghi $x>0$ trong khi đề còn điều kiện khác (cạnh sau khi giảm vẫn dương, số bạn nam ít hơn cả nhóm, mỗi xe không chở quá mức cho phép) — nghiệm **dương** vẫn có thể bị loại; viết $V=m\\cdot D$ thay vì $V=\\dfrac mD$; tính nồng độ trên khối lượng nước thay vì khối lượng dung dịch; lấy trung bình cộng hai khối lượng riêng.",
+    "**Nhận dạng:** “diện tích”, “kích thước”, “đường chéo”, “cắt ở bốn góc” → ẩn là một cạnh, cạnh kia viết theo ẩn. “Chia đều… thêm/bớt… nên mỗi… nhiều/ít hơn” → ẩn ở mẫu. “Trộn” kèm “khối lượng riêng” → lập phương trình theo thể tích $\\dfrac mD$. **Không** cần bậc hai khi trộn theo phần trăm và biết tổng khối lượng (quặng, dung dịch): đó là hệ bậc nhất (tổng khối lượng, tổng lượng chất).",
+    "**Bảng đại lượng:** mỗi dòng một trường hợp (dự định – thực tế, trước – sau); các cột là tổng, số phần, mỗi phần (hoặc dài, rộng, diện tích). **Checklist:** (1) ẩn, đơn vị, điều kiện **đầy đủ**; (2) viết các đại lượng còn lại theo ẩn; (3) lập phương trình, khử mẫu, đưa về $ax^2+bx+c=0$; (4) giải, **đối chiếu điều kiện, loại nghiệm**; (5) **Kết luận** có đơn vị."
+  ],
+  "worked": {
+    "problem": "Một mảnh đất hình chữ nhật có chu vi $34$ m và đường chéo dài $13$ m. Tính chiều dài và chiều rộng của mảnh đất.",
+    "steps": [
+      {
+        "text": "Gọi chiều rộng là $x$ (m). Nửa chu vi là $17$ m nên chiều dài là $17-x$ (m). Điều kiện: $0<x<17-x$, tức $0<x<8{,}5$.",
+        "why": "Chiều rộng dương và ngắn hơn chiều dài; điều kiện này dùng để loại nghiệm ở cuối."
+      },
+      {
+        "text": "Theo định lí Pythagore: $x^2+(17-x)^2=13^2$.",
+        "why": "Đường chéo chia hình chữ nhật thành hai tam giác vuông, hai cạnh góc vuông là chiều rộng và chiều dài."
+      },
+      {
+        "text": "Khai triển: $2x^2-34x+289=169$, tức $x^2-17x+60=0$. $\\Delta=17^2-4\\cdot60=49$, nên $x_1=\\dfrac{17+7}{2}=12$, $x_2=\\dfrac{17-7}{2}=5$.",
+        "why": "Chia hai vế cho $2$ để hệ số gọn trước khi tính $\\Delta$."
+      },
+      {
+        "text": "Kết luận: $x=12$ không thỏa $x<8{,}5$ nên loại; $x=5$ thỏa điều kiện. Chiều rộng là $5$ m, chiều dài là $17-5=12$ m.",
+        "why": "Thử lại: $2(5+12)=34$ và $5^2+12^2=169=13^2$."
+      }
+    ],
+    "selfExplain": "Vì sao $x=12$ cũng dương mà vẫn phải loại? Nếu chỉ ghi điều kiện $x>0$ thì câu kết luận sẽ sai ở chỗ nào?"
+  },
+  "faded": {
+    "problem": "Một lớp dự định chia đều $360$ quyển vở để thưởng cho các bạn học sinh giỏi. Khi phát thưởng, lớp có thêm $6$ bạn đạt học sinh giỏi nên mỗi bạn nhận ít hơn dự định $2$ quyển. Hỏi lúc đầu lớp dự định thưởng cho bao nhiêu bạn?",
+    "steps": [
+      {
+        "prompt": "Gọi $x$ là số bạn dự định được thưởng. Chọn điều kiện và biểu thị số vở mỗi bạn nhận khi phát thật.",
+        "item": {
+          "id": "g-honhop-f1",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Điều kiện của $x$ và số vở mỗi bạn nhận khi phát thật là:",
+          "options": [
+            "$x$ nguyên dương; mỗi bạn nhận $\\dfrac{360}{x}-6$ quyển",
+            "$x$ nguyên dương; mỗi bạn nhận $\\dfrac{360}{x+6}$ quyển",
+            "$x$ nguyên dương; mỗi bạn nhận $\\dfrac{360}{x-6}$ quyển",
+            "$x>6$; mỗi bạn nhận $\\dfrac{x+6}{360}$ quyển"
+          ],
+          "correct": 1,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Thêm $6$ bạn thì số bạn tăng thành $x+6$; không trừ $6$ vào số vở."
+            },
+            "2": {
+              "code": "E07",
+              "feedback": "Có **thêm** $6$ bạn nên số bạn là $x+6$, không phải $x-6$."
+            },
+            "3": {
+              "code": "E04",
+              "feedback": "Số vở mỗi bạn bằng tổng số vở chia cho số bạn, không chia ngược."
+            }
+          },
+          "solution": "Khi phát thật có $x+6$ bạn, mỗi bạn nhận $\\dfrac{360}{x+6}$ quyển; $x$ là số người nên nguyên dương."
+        }
+      },
+      {
+        "prompt": "Lập phương trình.",
+        "item": {
+          "id": "g-honhop-f2",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Dự định mỗi bạn nhận $\\dfrac{360}{x}$ quyển. Phương trình đúng là:",
+          "options": [
+            "$\\dfrac{360}{x}+\\dfrac{360}{x+6}=2$",
+            "$\\dfrac{360}{x+6}-\\dfrac{360}{x}=2$",
+            "$\\dfrac{360}{x}-\\dfrac{360}{x+6}=2$"
+          ],
+          "correct": 2,
+          "mistakes": {
+            "0": {
+              "code": "E07",
+              "feedback": "Đề nói mỗi bạn nhận **ít hơn** $2$ quyển: đó là hiệu hai số vở, không phải tổng."
+            },
+            "1": {
+              "code": "E07",
+              "feedback": "Số vở thực tế ít hơn dự định, nên lấy số vở dự định trừ số vở thực tế."
+            }
+          },
+          "solution": "Số vở dự định trừ số vở thực tế bằng $2$: $\\dfrac{360}{x}-\\dfrac{360}{x+6}=2$."
+        }
+      },
+      {
+        "text": "Nhân hai vế với $x(x+6)$: $360(x+6)-360x=2x(x+6)$, tức $2160=2x^2+12x$, hay $x^2+6x-1080=0$."
+      },
+      {
+        "prompt": "Giải phương trình và chọn nghiệm.",
+        "item": {
+          "id": "g-honhop-f3",
+          "type": "numeric",
+          "level": "L2",
+          "prompt": "Giải phương trình $x^2+6x-1080=0$ rồi chọn nghiệm thỏa điều kiện: $x=$",
+          "answer": "30",
+          "unit": "bạn",
+          "mistakes": [
+            {
+              "answer": "-36",
+              "code": "E14",
+              "feedback": "Số bạn phải nguyên dương; nghiệm âm phải loại."
+            },
+            {
+              "answer": "36",
+              "code": "E03",
+              "feedback": "Con quên dấu trừ trong công thức nghiệm thu gọn: $x=\\dfrac{-b'\\pm\\sqrt{\\Delta'}}{a}$.",
+              "review": "d-ptbh"
+            }
+          ],
+          "solution": "$\\Delta'=3^2+1080=1089=33^2$, $x=-3\\pm33$: $x=30$ (nhận), $x=-36$ (loại)."
+        }
+      },
+      {
+        "prompt": "Đối chiếu điều kiện và kết luận.",
+        "item": {
+          "id": "g-honhop-f4",
+          "type": "mcq",
+          "level": "L2",
+          "prompt": "Câu kết luận nào đúng và đầy đủ?",
+          "options": [
+            "Kết luận: $x=30$ thỏa điều kiện, $x=-36$ loại. Lúc đầu lớp dự định thưởng cho $30$ bạn.",
+            "Kết luận: $x=30$ hoặc $x=-36$.",
+            "Kết luận: lớp có $36$ bạn được thưởng.",
+            "Kết luận: mỗi bạn nhận $12$ quyển."
+          ],
+          "correct": 0,
+          "mistakes": {
+            "1": {
+              "code": "E14",
+              "feedback": "Bài toán thực tế chỉ có một đáp số: số bạn không thể âm, phải loại $x=-36$."
+            },
+            "2": {
+              "code": "E10",
+              "feedback": "Đó là số bạn khi phát thật; đề hỏi số bạn dự định lúc đầu."
+            },
+            "3": {
+              "code": "E10",
+              "feedback": "Đề hỏi số bạn dự định được thưởng, không hỏi số vở mỗi bạn."
+            }
+          },
+          "solution": "$x=30$ nguyên dương nên nhận. Thử lại: $\\dfrac{360}{30}-\\dfrac{360}{36}=12-10=2$. Lúc đầu dự định thưởng $30$ bạn."
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "id": "g-honhop-p1",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một mảnh vườn hình chữ nhật có chiều dài hơn chiều rộng $7$ m và diện tích bằng $60$ m². Gọi chiều rộng là $x$ (m), $x>0$. Phương trình đúng là:",
+      "hints": [
+        "Đề hỏi phương trình nào đúng, chưa cần giải.",
+        "Chiều dài hơn chiều rộng $7$ m: viết chiều dài theo $x$.",
+        "Diện tích hình chữ nhật bằng chiều dài nhân chiều rộng."
+      ],
+      "options": [
+        "$2(x+x+7)=60$",
+        "$x(x-7)=60$",
+        "$x(x+7)=60$",
+        "$x+(x+7)=60$"
+      ],
+      "correct": 2,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Đó là công thức chu vi; đề cho diện tích, bằng dài nhân rộng."
+        },
+        "1": {
+          "code": "E07",
+          "feedback": "Chiều dài **hơn** chiều rộng $7$ m nên chiều dài là $x+7$."
+        },
+        "3": {
+          "code": "E07",
+          "feedback": "Diện tích là tích chiều dài và chiều rộng, không phải tổng."
+        }
+      },
+      "solution": "Chiều dài là $x+7$ (m), diện tích $x(x+7)=60$ (giải ra $x=5$: vườn rộng $5$ m, dài $12$ m)."
+    },
+    {
+      "id": "g-honhop-p2",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Hòa tan $20$ g muối vào $80$ g nước. Nồng độ phần trăm của dung dịch muối thu được là bao nhiêu?",
+      "hints": [
+        "Cần nồng độ phần trăm của dung dịch.",
+        "Dung dịch gồm những gì? Khối lượng dung dịch bằng bao nhiêu?",
+        "Nồng độ bằng khối lượng muối chia khối lượng dung dịch, nhân $100\\%$."
+      ],
+      "answer": "20",
+      "unit": "%",
+      "mistakes": [
+        {
+          "answer": "25",
+          "code": "E04",
+          "feedback": "Nồng độ tính trên khối lượng **dung dịch** (muối cộng nước), không phải chỉ khối lượng nước."
+        },
+        {
+          "answer": "0,2",
+          "code": "E11",
+          "feedback": "Con chưa đổi ra phần trăm: nhân thêm với $100\\%$."
+        }
+      ],
+      "solution": "Khối lượng dung dịch: $20+80=100$ g. Nồng độ: $\\dfrac{20}{100}\\cdot100\\%=20\\%$."
+    },
+    {
+      "id": "g-honhop-p3",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Đề bài: “Một đội xe dự định chở $60$ tấn hàng, các xe chở như nhau. Khi chở thật, đội có thêm $3$ xe nên mỗi xe chở ít hơn dự định $1$ tấn. Hỏi lúc đầu đội có bao nhiêu xe?” Nên bắt đầu thế nào?",
+      "recognition": true,
+      "hints": [
+        "Đề hỏi cách bắt đầu, chưa cần tính.",
+        "Tổng $60$ tấn không đổi, số xe thay đổi: số tấn mỗi xe viết thế nào?",
+        "Mỗi xe chở bằng tổng số tấn chia số xe; so sánh hai lần chở."
+      ],
+      "options": [
+        "Gọi số xe là $x$, số tấn mỗi xe là $y$, lập hệ bậc nhất $x+y=60$ và $x-y=3$",
+        "Gọi số xe lúc đầu là $x$; mỗi xe dự định chở $\\dfrac{60}{x}$ tấn, thực tế chở $\\dfrac{60}{x+3}$ tấn; lập phương trình theo hiệu hai số tấn",
+        "Dùng phần việc $\\dfrac1x$ như bài hai vòi nước cùng chảy",
+        "Tính ngay $60:3=20$ xe"
+      ],
+      "correct": 1,
+      "mistakes": {
+        "0": {
+          "code": "E05",
+          "feedback": "Số xe **nhân** số tấn mỗi xe mới bằng $60$; tổng cố định chia đều thì ẩn nằm ở mẫu."
+        },
+        "2": {
+          "code": "E05",
+          "feedback": "Đề không có hai đối tượng làm chung; đây là chia đều một tổng cố định."
+        },
+        "3": {
+          "code": "E05",
+          "feedback": "$3$ là số xe thêm, không phải số tấn; phải đặt ẩn và lập phương trình."
+        }
+      },
+      "solution": "Tổng cố định chia đều nên ẩn nằm ở mẫu: $\\dfrac{60}{x}-\\dfrac{60}{x+3}=1$, dẫn tới $x^2+3x-180=0$ (giải ra $x=12$)."
+    },
+    {
+      "id": "g-honhop-p4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một thửa ruộng hình chữ nhật có chiều dài gấp ba lần chiều rộng. Nếu gấp đôi chiều rộng và giảm chiều dài đi $5$ m thì diện tích thửa ruộng tăng thêm $48$ m². Tính chiều dài và chiều rộng của thửa ruộng.",
+      "source": "68 đề – Đề 37, Bài 3.1 (chuyển thể: dài gấp ba, giảm 5 m, diện tích tăng 48 m²)",
+      "hints": [
+        "Cần chiều dài và chiều rộng ban đầu.",
+        "Viết chiều rộng mới và chiều dài mới theo $x$; chiều dài mới phải dương.",
+        "Diện tích mới bằng diện tích cũ cộng $48$; khai triển rồi đưa về $ax^2+bx+c=0$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện.",
+          "item": {
+            "id": "g-honhop-p4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi chiều rộng là $x$ (m), chiều dài là $3x$ (m). Điều kiện đúng và đầy đủ của $x$ là:",
+            "options": [
+              "$x>0$",
+              "$x>5$",
+              "$0<x<\\dfrac53$",
+              "$x>\\dfrac53$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Chiều dài sau khi giảm, $3x-5$, cũng phải dương; $x>0$ còn thiếu."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Chiều dài $3x$ giảm $5$ m nên cần $3x>5$, không phải $x>5$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Ngược chiều: cần $3x-5>0$, tức $x$ **lớn hơn** $\\dfrac53$."
+              }
+            },
+            "solution": "Cần $x>0$ và $3x-5>0$, gộp lại $x>\\dfrac53$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-p4-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Phương trình đúng là:",
+            "options": [
+              "$2x(3x-5)=3x^2+48$",
+              "$(x+2)(3x-5)=3x^2+48$",
+              "$2x(3x-5)=3x^2-48$",
+              "$2x\\cdot3x-5=3x^2+48$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Gấp đôi chiều rộng là $2x$, không phải $x+2$."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Diện tích **tăng thêm** nên diện tích mới bằng diện tích cũ cộng $48$."
+              },
+              "3": {
+                "code": "E02",
+                "feedback": "Thiếu ngoặc: chiều dài mới là cả cụm $3x-5$."
+              }
+            },
+            "solution": "Chiều rộng mới $2x$, chiều dài mới $3x-5$: $2x(3x-5)=3x^2+48$."
+          }
+        },
+        {
+          "prompt": "Giải phương trình, chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-p4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chiều rộng của thửa ruộng là $x=$",
+            "answer": "6",
+            "unit": "m",
+            "mistakes": [
+              {
+                "answer": "-8/3",
+                "code": "E14",
+                "feedback": "Nghiệm âm không thỏa điều kiện $x>\\dfrac53$, phải loại."
+              },
+              {
+                "answer": "18",
+                "code": "E10",
+                "feedback": "Đó là chiều dài; bước này hỏi chiều rộng."
+              }
+            ],
+            "solution": "$6x^2-10x=3x^2+48 \\Leftrightarrow 3x^2-10x-48=0$; $\\Delta'=25+144=169$, $x=\\dfrac{5\\pm13}{3}$: $x=6$ (nhận), $x=-\\dfrac83$ (loại)."
+          }
+        },
+        {
+          "prompt": "Tính chiều dài.",
+          "item": {
+            "id": "g-honhop-p4-s4",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Chiều dài của thửa ruộng là",
+            "answer": "18",
+            "unit": "m",
+            "mistakes": [
+              {
+                "answer": "13",
+                "code": "E10",
+                "feedback": "Đó là chiều dài sau khi giảm $5$ m; đề hỏi chiều dài ban đầu."
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là chiều rộng."
+              }
+            ],
+            "solution": "Chiều dài $3\\cdot6=18$ m."
+          }
+        }
+      ],
+      "solution": "$2x(3x-5)=3x^2+48 \\Leftrightarrow 3x^2-10x-48=0$, $x=6$ (nhận) hoặc $x=-\\dfrac83$ (loại). Thử lại: $12\\cdot13=156=108+48$. Thửa ruộng rộng $6$ m, dài $18$ m."
+    },
+    {
+      "id": "g-honhop-p5",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Bạn Bình cần pha $50$ ml dung dịch axit nồng độ $16\\%$. Phòng thí nghiệm chỉ có dung dịch cùng loại axit nồng độ $10\\%$ và nồng độ $25\\%$. Bình cần lấy bao nhiêu mililít mỗi loại? (Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch.)",
+      "source": "68 đề – Đề 8, Bài 3.1 (chuyển thể: 50 ml nồng độ 16% từ dung dịch 10% và 25%)",
+      "hints": [
+        "Cần thể tích của mỗi loại dung dịch.",
+        "Có hai điều về tổng: tổng thể tích và tổng lượng axit nguyên chất.",
+        "Lượng axit trong $x$ ml dung dịch $10\\%$ là $0{,}1x$ ml."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-honhop-p5-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ (ml) là thể tích dung dịch $10\\%$ và $25\\%$ cần lấy ($0<x<50$, $0<y<50$). Hệ đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=50 \\\\ 0{,}1x+0{,}25y=0{,}16 \\end{cases}$",
+              "$\\begin{cases} x+y=50 \\\\ 0{,}1x+0{,}25y=8 \\end{cases}$",
+              "$\\begin{cases} x+y=50 \\\\ 0{,}25x+0{,}1y=8 \\end{cases}$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Vế phải là lượng axit nguyên chất trong $50$ ml, tức $16\\%$ của $50$ ml."
+              },
+              "2": {
+                "code": "E10",
+                "feedback": "Con đảo hai loại: $x$ là thể tích dung dịch nồng độ $10\\%$."
+              }
+            },
+            "solution": "Tổng thể tích $x+y=50$; lượng axit $0{,}1x+0{,}25y=0{,}16\\cdot50=8$."
+          }
+        },
+        {
+          "prompt": "Tìm thể tích dung dịch $25\\%$.",
+          "item": {
+            "id": "g-honhop-p5-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thể tích dung dịch nồng độ $25\\%$ cần lấy là $y=$",
+            "answer": "20",
+            "unit": "ml",
+            "mistakes": [
+              {
+                "answer": "30",
+                "code": "E10",
+                "feedback": "Đó là thể tích dung dịch nồng độ $10\\%$."
+              },
+              {
+                "answer": "-280",
+                "code": "E02",
+                "feedback": "Khi nhân phương trình $x+y=50$ với $0{,}1$, con phải nhân cả vế phải."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}1$: $0{,}1x+0{,}1y=5$; trừ vế theo vế: $0{,}15y=3$, $y=20$."
+          }
+        },
+        {
+          "prompt": "Tìm thể tích dung dịch $10\\%$.",
+          "item": {
+            "id": "g-honhop-p5-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Thể tích dung dịch nồng độ $10\\%$ cần lấy là $x=$",
+            "answer": "30",
+            "unit": "ml",
+            "mistakes": [
+              {
+                "answer": "20",
+                "code": "E10",
+                "feedback": "Đó là thể tích dung dịch nồng độ $25\\%$."
+              }
+            ],
+            "solution": "$x=50-20=30$."
+          }
+        }
+      ],
+      "solution": "$x+y=50$, $0{,}1x+0{,}25y=8$ cho $y=20$, $x=30$. Thử lại: $3+5=8$ ml axit, $\\dfrac{8}{50}=16\\%$. Bình lấy $30$ ml dung dịch $10\\%$ và $20$ ml dung dịch $25\\%$."
+    },
+    {
+      "id": "g-honhop-p6",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Một phòng họp có $112$ ghế được xếp thành các dãy, số ghế ở mỗi dãy như nhau. Có một lần phòng họp cất bớt $2$ dãy ghế và mỗi dãy còn lại xếp thêm $2$ ghế (số ghế ở các dãy vẫn như nhau) thì vừa đủ chỗ cho $120$ đại biểu. Hỏi ban đầu phòng họp có bao nhiêu dãy ghế?",
+      "source": "68 đề – Đề 27, Bài 3.1 (chuyển thể: 112 ghế, cất 2 dãy, mỗi dãy thêm 2 ghế, 120 đại biểu)",
+      "hints": [
+        "Cần số dãy ghế lúc đầu.",
+        "Lúc đầu mỗi dãy có bao nhiêu ghế, viết theo $x$?",
+        "Số dãy mới nhân số ghế mới mỗi dãy bằng $120$; nhân hai vế với $x$."
+      ],
+      "steps": [
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-p6-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$ là số dãy ghế ban đầu ($x$ nguyên, $x>2$). Phương trình đúng là:",
+            "options": [
+              "$(x+2)\\left(\\dfrac{112}{x}-2\\right)=120$",
+              "$(x-2)\\cdot\\dfrac{112}{x}+2=120$",
+              "$(x-2)\\left(\\dfrac{112}{x}+2\\right)=120$",
+              "$\\dfrac{112}{x-2}=120$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Cất bớt dãy thì số dãy là $x-2$; mỗi dãy xếp thêm ghế thì cộng $2$."
+              },
+              "1": {
+                "code": "E02",
+                "feedback": "Thiếu ngoặc: mỗi dãy còn lại đều thêm $2$ ghế, nên nhân $x-2$ với cả cụm $\\dfrac{112}{x}+2$."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Số chỗ mới bằng số dãy mới nhân số ghế mới mỗi dãy; $112$ là số ghế cũ."
+              }
+            },
+            "solution": "Ban đầu mỗi dãy có $\\dfrac{112}{x}$ ghế; sau đó có $x-2$ dãy, mỗi dãy $\\dfrac{112}{x}+2$ ghế, tổng $120$ chỗ."
+          }
+        },
+        {
+          "prompt": "Đưa về phương trình bậc hai.",
+          "item": {
+            "id": "g-honhop-p6-s2",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Nhân phá ngoặc, nhân hai vế với $x$ rồi chia cho $2$, ta được:",
+            "options": [
+              "$x^2-6x-112=0$",
+              "$x^2+6x-112=0$",
+              "$x^2-6x-224=0$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E02",
+                "feedback": "Chuyển $12$ sang vế trái phải đổi dấu: $2x-\\dfrac{224}{x}-12=0$."
+              },
+              "2": {
+                "code": "E02",
+                "feedback": "Chia hai vế cho $2$ thì mọi số hạng đều phải chia, kể cả $224$."
+              }
+            },
+            "solution": "$112+2x-\\dfrac{224}{x}-4=120 \\Leftrightarrow 2x-\\dfrac{224}{x}-12=0 \\Leftrightarrow 2x^2-12x-224=0 \\Leftrightarrow x^2-6x-112=0$."
+          }
+        },
+        {
+          "prompt": "Giải và chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-p6-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Số dãy ghế ban đầu là",
+            "answer": "14",
+            "unit": "dãy",
+            "mistakes": [
+              {
+                "answer": "-8",
+                "code": "E14",
+                "feedback": "Số dãy ghế phải nguyên dương, lớn hơn $2$; nghiệm âm phải loại."
+              },
+              {
+                "answer": "8",
+                "code": "E03",
+                "feedback": "Con quên dấu trừ trong công thức nghiệm thu gọn: $x=\\dfrac{-b'\\pm\\sqrt{\\Delta'}}{a}$.",
+                "review": "d-ptbh"
+              },
+              {
+                "answer": "12",
+                "code": "E10",
+                "feedback": "Đó là số dãy sau khi cất bớt; đề hỏi số dãy ban đầu."
+              }
+            ],
+            "solution": "$\\Delta'=9+112=121$, $x=3\\pm11$: $x=14$ (nhận), $x=-8$ (loại)."
+          }
+        }
+      ],
+      "solution": "$(x-2)\\left(\\dfrac{112}{x}+2\\right)=120 \\Leftrightarrow x^2-6x-112=0$, $x=14$ (nhận) hoặc $x=-8$ (loại). Thử lại: ban đầu $14$ dãy, mỗi dãy $8$ ghế; sau đó $12$ dãy, mỗi dãy $10$ ghế, đủ $120$ chỗ. Ban đầu phòng họp có $14$ dãy ghế."
+    },
+    {
+      "id": "g-honhop-p7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một nhóm gồm $14$ học sinh (cả nam và nữ) tham gia trồng cây. Các bạn nam trồng được $48$ cây, các bạn nữ trồng được $30$ cây. Mỗi bạn nam trồng số cây như nhau, mỗi bạn nữ trồng số cây như nhau, và mỗi bạn nam trồng nhiều hơn mỗi bạn nữ $1$ cây. Tính số học sinh nam và số học sinh nữ của nhóm.",
+      "source": "68 đề – Đề 51, Bài 3.1 (chuyển thể: 14 học sinh, nam trồng 48 cây, nữ trồng 30 cây)",
+      "hints": [
+        "Cần số học sinh nam và số học sinh nữ.",
+        "Số cây mỗi bạn nam, mỗi bạn nữ trồng viết thế nào theo $x$?",
+        "Hiệu số cây của mỗi bạn nam và mỗi bạn nữ bằng $1$; nhân hai vế với $x(14-x)$."
+      ],
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện.",
+          "item": {
+            "id": "g-honhop-p7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$ là số học sinh nam. Điều kiện đúng và đầy đủ của $x$ là:",
+            "options": [
+              "$x$ nguyên dương",
+              "$x$ nguyên, $0<x<14$",
+              "$x$ nguyên, $x>14$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Nhóm có cả nữ nên số nữ $14-x$ cũng phải dương; còn thiếu $x<14$."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Số nam là một phần của nhóm $14$ bạn, nên phải nhỏ hơn $14$."
+              }
+            },
+            "solution": "Số nam $x$ và số nữ $14-x$ đều nguyên dương: $0<x<14$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-p7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình đúng là:",
+            "options": [
+              "$\\dfrac{30}{14-x}-\\dfrac{48}{x}=1$",
+              "$\\dfrac{48}{x}-\\dfrac{30}{x}=1$",
+              "$48x-30(14-x)=1$",
+              "$\\dfrac{48}{x}-\\dfrac{30}{14-x}=1$"
+            ],
+            "correct": 3,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Mỗi bạn nam trồng **nhiều hơn**, nên lấy số cây mỗi bạn nam trừ số cây mỗi bạn nữ."
+              },
+              "1": {
+                "code": "E07",
+                "feedback": "Số bạn nữ là $14-x$, không phải $x$."
+              },
+              "2": {
+                "code": "E04",
+                "feedback": "Số cây mỗi bạn bằng tổng số cây **chia** cho số bạn, không phải nhân."
+              }
+            },
+            "solution": "Mỗi bạn nam trồng $\\dfrac{48}{x}$ cây, mỗi bạn nữ trồng $\\dfrac{30}{14-x}$ cây; hiệu bằng $1$."
+          }
+        },
+        {
+          "prompt": "Giải và chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-p7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Khử mẫu, đưa về phương trình bậc hai rồi giải. Số học sinh nam là",
+            "answer": "8",
+            "unit": "học sinh",
+            "mistakes": [
+              {
+                "answer": "84",
+                "code": "E14",
+                "feedback": "Nghiệm này dương nhưng lớn hơn $14$, không thỏa điều kiện $x<14$, phải loại."
+              },
+              {
+                "answer": "6",
+                "code": "E10",
+                "feedback": "Đó là số học sinh nữ; bước này hỏi số học sinh nam."
+              }
+            ],
+            "solution": "$48(14-x)-30x=x(14-x) \\Leftrightarrow x^2-92x+672=0$; $\\Delta'=46^2-672=1444=38^2$, $x=46\\pm38$: $x=8$ (nhận), $x=84$ (loại vì $84>14$)."
+          }
+        },
+        {
+          "prompt": "Tính số học sinh nữ.",
+          "item": {
+            "id": "g-honhop-p7-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Số học sinh nữ là",
+            "answer": "6",
+            "unit": "học sinh",
+            "mistakes": [
+              {
+                "answer": "8",
+                "code": "E10",
+                "feedback": "Đó là số học sinh nam."
+              },
+              {
+                "answer": "-70",
+                "code": "E14",
+                "feedback": "Con dùng nghiệm $x=84$ đã phải loại."
+              }
+            ],
+            "solution": "$14-8=6$."
+          }
+        }
+      ],
+      "solution": "$\\dfrac{48}{x}-\\dfrac{30}{14-x}=1 \\Leftrightarrow x^2-92x+672=0$, $x=8$ (nhận) hoặc $x=84$ (loại vì lớn hơn $14$). Thử lại: mỗi bạn nam trồng $6$ cây, mỗi bạn nữ trồng $5$ cây. Nhóm có $8$ bạn nam và $6$ bạn nữ."
+    },
+    {
+      "id": "g-honhop-p8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Từ một tấm tôn hình chữ nhật có chiều dài gấp đôi chiều rộng, người ta cắt ở bốn góc bốn hình vuông cạnh $5$ cm rồi gấp lên để được một chiếc thùng hình hộp chữ nhật không nắp có thể tích $5000$ cm³. Tính kích thước của tấm tôn ban đầu.",
+      "source": "68 đề – Đề 35, Bài 3.1 (chuyển thể: cắt góc 5 cm, thể tích 5000 cm³)",
+      "hints": [
+        "Cần chiều dài và chiều rộng tấm tôn ban đầu.",
+        "Cắt góc rồi gấp lên: mỗi chiều của đáy giảm bao nhiêu? Chiều cao thùng là bao nhiêu?",
+        "Thể tích bằng chiều dài đáy nhân chiều rộng đáy nhân chiều cao."
+      ],
+      "figure": {
+        "svg": "<svg viewBox=\"0 0 240 140\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"30\" y=\"25\" width=\"180\" height=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"25\" width=\"15\" height=\"15\" fill=\"var(--accent)\" fill-opacity=\"0.15\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"195\" y=\"25\" width=\"15\" height=\"15\" fill=\"var(--accent)\" fill-opacity=\"0.15\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"30\" y=\"100\" width=\"15\" height=\"15\" fill=\"var(--accent)\" fill-opacity=\"0.15\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"195\" y=\"100\" width=\"15\" height=\"15\" fill=\"var(--accent)\" fill-opacity=\"0.15\" stroke=\"currentColor\" stroke-width=\"1\"/><rect x=\"45\" y=\"40\" width=\"150\" height=\"60\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"37.5\" y=\"19\" font-size=\"10\" text-anchor=\"middle\" fill=\"currentColor\">5 cm</text><text x=\"22\" y=\"74\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">x</text><text x=\"120\" y=\"132\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">2x</text></svg>",
+        "alt": "Tấm tôn hình chữ nhật, chiều rộng x, chiều dài 2x; ở bốn góc tô bốn hình vuông cạnh 5 cm; đường nét đứt nối các góc trong là chỗ gấp lên, bao quanh đáy thùng."
+      },
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện và kích thước đáy thùng.",
+          "item": {
+            "id": "g-honhop-p8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi chiều rộng tấm tôn là $x$ (cm). Điều kiện và kích thước đáy thùng là:",
+            "options": [
+              "$x>10$; đáy thùng dài $2x-10$ (cm), rộng $x-10$ (cm)",
+              "$x>5$; đáy thùng dài $2x-5$ (cm), rộng $x-5$ (cm)",
+              "$x>0$; đáy thùng dài $2x$ (cm), rộng $x$ (cm)"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E08",
+                "feedback": "Mỗi cạnh tấm tôn bị cắt ở **cả hai đầu**, nên giảm $2\\cdot5=10$ cm."
+              },
+              "2": {
+                "code": "E08",
+                "feedback": "Sau khi cắt góc và gấp lên, đáy thùng nhỏ hơn tấm tôn ở cả hai chiều."
+              }
+            },
+            "solution": "Mỗi chiều giảm $2\\cdot5=10$ cm: đáy thùng $(2x-10)\\times(x-10)$; cần $x-10>0$, tức $x>10$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-p8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình đúng là:",
+            "options": [
+              "$(2x-10)(x-10)=5000$",
+              "$5\\cdot2x\\cdot x=5000$",
+              "$5(2x-10)(x-10)=5000$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "Thể tích hình hộp bằng diện tích đáy nhân chiều cao; chiều cao thùng là $5$ cm."
+              },
+              "1": {
+                "code": "E08",
+                "feedback": "Đáy thùng là phần còn lại sau khi cắt góc, không phải cả tấm tôn."
+              }
+            },
+            "solution": "Chiều cao thùng bằng cạnh hình vuông cắt đi, $5$ cm: $5(2x-10)(x-10)=5000$."
+          }
+        },
+        {
+          "prompt": "Giải và chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-p8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chiều rộng tấm tôn là $x=$",
+            "answer": "30",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "-15",
+                "code": "E14",
+                "feedback": "Độ dài phải lớn hơn $10$ cm; nghiệm âm phải loại."
+              },
+              {
+                "answer": "60",
+                "code": "E10",
+                "feedback": "Đó là chiều dài tấm tôn; bước này hỏi chiều rộng."
+              }
+            ],
+            "solution": "$(2x-10)(x-10)=1000 \\Leftrightarrow x^2-15x-450=0$; $\\Delta=225+1800=2025=45^2$, $x=\\dfrac{15\\pm45}{2}$: $x=30$ (nhận), $x=-15$ (loại)."
+          }
+        },
+        {
+          "prompt": "Tính chiều dài.",
+          "item": {
+            "id": "g-honhop-p8-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Chiều dài tấm tôn là",
+            "answer": "60",
+            "unit": "cm",
+            "mistakes": [
+              {
+                "answer": "50",
+                "code": "E10",
+                "feedback": "Đó là chiều dài đáy thùng; đề hỏi tấm tôn ban đầu."
+              },
+              {
+                "answer": "30",
+                "code": "E10",
+                "feedback": "Đó là chiều rộng tấm tôn."
+              }
+            ],
+            "solution": "$2\\cdot30=60$ cm."
+          }
+        }
+      ],
+      "solution": "$5(2x-10)(x-10)=5000 \\Leftrightarrow x^2-15x-450=0$, $x=30$ (nhận) hoặc $x=-15$ (loại). Thử lại: đáy thùng $50\\times20$, cao $5$: $50\\cdot20\\cdot5=5000$. Tấm tôn rộng $30$ cm, dài $60$ cm."
+    }
+  ],
+  "exit": [
+    {
+      "id": "g-honhop-x1",
+      "type": "numeric",
+      "level": "L1",
+      "prompt": "Một chất lỏng có khối lượng riêng $0{,}8$ g/cm³. Thể tích của $12$ g chất lỏng đó là bao nhiêu?",
+      "answer": "15",
+      "unit": "cm³",
+      "mistakes": [
+        {
+          "answer": "9,6",
+          "code": "E03",
+          "feedback": "Thể tích bằng khối lượng **chia** khối lượng riêng: $V=\\dfrac mD$."
+        },
+        {
+          "answer": "1/15",
+          "code": "E03",
+          "feedback": "Con chia ngược: $V=\\dfrac mD$, khối lượng ở tử."
+        }
+      ],
+      "solution": "$V=\\dfrac mD=\\dfrac{12}{0{,}8}=15$ cm³."
+    },
+    {
+      "id": "g-honhop-x2",
+      "type": "mcq",
+      "level": "L1",
+      "prompt": "Một lớp có $x$ học sinh ($x$ nguyên, $x>4$) được giao trồng $120$ cây, chia đều cho mỗi bạn. Hôm lao động có $4$ bạn vắng, số cây được chia đều cho các bạn có mặt. Mỗi bạn có mặt phải trồng bao nhiêu cây?",
+      "options": [
+        "$\\dfrac{120}{x}+4$",
+        "$\\dfrac{120}{x+4}$",
+        "$\\dfrac{x-4}{120}$",
+        "$\\dfrac{120}{x-4}$"
+      ],
+      "correct": 3,
+      "mistakes": {
+        "0": {
+          "code": "E07",
+          "feedback": "Vắng $4$ bạn thì **số bạn** giảm $4$; không cộng $4$ vào số cây."
+        },
+        "1": {
+          "code": "E07",
+          "feedback": "Vắng bạn thì số bạn có mặt là $x-4$, không phải $x+4$."
+        },
+        "2": {
+          "code": "E04",
+          "feedback": "Số cây mỗi bạn bằng tổng số cây chia cho số bạn, không chia ngược."
+        }
+      },
+      "solution": "Có $x-4$ bạn chia đều $120$ cây: mỗi bạn trồng $\\dfrac{120}{x-4}$ cây."
+    },
+    {
+      "id": "g-honhop-x3",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Một mảnh đất hình chữ nhật có chiều rộng ngắn hơn chiều dài $11$ m và diện tích là $180$ m². Tính chiều dài của mảnh đất.",
+      "source": "68 đề – Đề 20, Bài 3.1",
+      "answer": "20",
+      "unit": "m",
+      "mistakes": [
+        {
+          "answer": "9",
+          "code": "E10",
+          "feedback": "Đó là chiều rộng; đề hỏi chiều dài."
+        },
+        {
+          "answer": "-20",
+          "code": "E14",
+          "feedback": "Độ dài phải dương; nghiệm âm của phương trình phải loại."
+        }
+      ],
+      "solution": "Gọi chiều rộng là $x$ (m), $x>0$: $x(x+11)=180 \\Leftrightarrow x^2+11x-180=0$, $\\Delta=121+720=841=29^2$, $x=\\dfrac{-11\\pm29}{2}$: $x=9$ (nhận), $x=-20$ (loại). Chiều dài $9+11=20$ m."
+    },
+    {
+      "id": "g-honhop-x4",
+      "type": "steps",
+      "level": "L2",
+      "prompt": "Có hai loại quặng sắt: loại I chứa $70\\%$ sắt, loại II chứa $40\\%$ sắt. Cần trộn bao nhiêu tấn quặng mỗi loại để được $30$ tấn quặng chứa $60\\%$ sắt? (Coi khối lượng hao hụt không đáng kể.)",
+      "source": "68 đề – Đề 33, Bài 3.1 (chuyển thể: quặng 70% và 40%, được 30 tấn quặng 60%)",
+      "steps": [
+        {
+          "prompt": "Lập hệ phương trình.",
+          "item": {
+            "id": "g-honhop-x4-s1",
+            "type": "mcq",
+            "level": "L2",
+            "prompt": "Gọi $x$, $y$ (tấn) là khối lượng quặng loại I, loại II cần trộn ($0<x<30$, $0<y<30$). Hệ đúng là:",
+            "options": [
+              "$\\begin{cases} x+y=30 \\\\ 0{,}7x+0{,}4y=0{,}6 \\end{cases}$",
+              "$\\begin{cases} x+y=30 \\\\ 0{,}4x+0{,}7y=18 \\end{cases}$",
+              "$\\begin{cases} x+y=30 \\\\ 0{,}7x+0{,}4y=18 \\end{cases}$"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E07",
+                "feedback": "Vế phải là khối lượng sắt trong $30$ tấn quặng, tức $60\\%$ của $30$ tấn."
+              },
+              "1": {
+                "code": "E10",
+                "feedback": "Con đảo hai loại: $x$ là quặng loại I, chứa $70\\%$ sắt."
+              }
+            },
+            "solution": "Tổng khối lượng $x+y=30$; khối lượng sắt $0{,}7x+0{,}4y=0{,}6\\cdot30=18$."
+          }
+        },
+        {
+          "prompt": "Tìm khối lượng quặng loại I.",
+          "item": {
+            "id": "g-honhop-x4-s2",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Khối lượng quặng loại I cần dùng là $x=$",
+            "answer": "20",
+            "unit": "tấn",
+            "mistakes": [
+              {
+                "answer": "10",
+                "code": "E10",
+                "feedback": "Đó là khối lượng quặng loại II."
+              },
+              {
+                "answer": "-40",
+                "code": "E02",
+                "feedback": "Khi nhân phương trình $x+y=30$ với $0{,}4$, con phải nhân cả vế phải."
+              }
+            ],
+            "solution": "Nhân phương trình đầu với $0{,}4$: $0{,}4x+0{,}4y=12$; trừ vế theo vế: $0{,}3x=6$, $x=20$."
+          }
+        },
+        {
+          "prompt": "Tìm khối lượng quặng loại II.",
+          "item": {
+            "id": "g-honhop-x4-s3",
+            "type": "numeric",
+            "level": "L2",
+            "prompt": "Khối lượng quặng loại II cần dùng là $y=$",
+            "answer": "10",
+            "unit": "tấn",
+            "mistakes": [
+              {
+                "answer": "20",
+                "code": "E10",
+                "feedback": "Đó là khối lượng quặng loại I."
+              }
+            ],
+            "solution": "$y=30-20=10$."
+          }
+        }
+      ],
+      "solution": "$x+y=30$, $0{,}7x+0{,}4y=18$ cho $x=20$, $y=10$. Thử lại: $14+4=18$ tấn sắt, $\\dfrac{18}{30}=60\\%$. Cần $20$ tấn quặng loại I và $10$ tấn quặng loại II."
+    },
+    {
+      "id": "g-honhop-x5",
+      "type": "numeric",
+      "level": "L2",
+      "prompt": "Bác Hà gửi tiết kiệm $200$ triệu đồng, kì hạn một năm. Hết năm thứ nhất bác không rút, tiền lãi được cộng vào gốc để tính lãi năm thứ hai; lãi suất hai năm như nhau. Sau hai năm bác nhận được cả gốc lẫn lãi $242$ triệu đồng. Lãi suất mỗi năm là bao nhiêu phần trăm?",
+      "answer": "10",
+      "unit": "%",
+      "mistakes": [
+        {
+          "answer": "10,5",
+          "code": "E07",
+          "feedback": "Lãi năm thứ hai tính trên cả gốc và lãi năm đầu, nên không chia đều tiền lãi cho hai năm."
+        },
+        {
+          "answer": "21",
+          "code": "E07",
+          "feedback": "Đó là tổng lãi cả hai năm so với gốc; lãi nhập gốc nên phải giải $200(1+r)^2=242$."
+        },
+        {
+          "answer": "-210",
+          "code": "E14",
+          "feedback": "Lãi suất phải dương; nghiệm ứng với $1+r<0$ phải loại."
+        }
+      ],
+      "solution": "Gọi lãi suất là $r$ ($r>0$): $200(1+r)^2=242 \\Leftrightarrow (1+r)^2=1{,}21 \\Leftrightarrow 1+r=1{,}1$ hoặc $1+r=-1{,}1$. Loại nghiệm âm: $r=0{,}1=10\\%$."
+    },
+    {
+      "id": "g-honhop-x6",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Người ta trộn $8$ g chất lỏng A với $6$ g chất lỏng B để được hỗn hợp có khối lượng riêng $0{,}7$ g/cm³. Biết khối lượng riêng của chất lỏng A lớn hơn khối lượng riêng của chất lỏng B là $0{,}2$ g/cm³. Tính khối lượng riêng của mỗi chất lỏng. (Coi thể tích hỗn hợp bằng tổng thể tích hai chất lỏng.)",
+      "source": "68 đề – Đề 21, Bài 3.1 (tách bước)",
+      "steps": [
+        {
+          "prompt": "Tính thể tích hỗn hợp.",
+          "item": {
+            "id": "g-honhop-x6-s1",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Thể tích của hỗn hợp là",
+            "answer": "20",
+            "unit": "cm³",
+            "mistakes": [
+              {
+                "answer": "9,8",
+                "code": "E03",
+                "feedback": "Thể tích bằng khối lượng **chia** khối lượng riêng: $V=\\dfrac mD$."
+              },
+              {
+                "answer": "1/20",
+                "code": "E03",
+                "feedback": "Con chia ngược: $V=\\dfrac mD$, khối lượng ở tử."
+              }
+            ],
+            "solution": "Khối lượng hỗn hợp $8+6=14$ g, thể tích $\\dfrac{14}{0{,}7}=20$ cm³."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-x6-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$ (g/cm³) là khối lượng riêng của chất lỏng B ($x>0$), của A là $x+0{,}2$. Phương trình đúng là:",
+            "options": [
+              "$8(x+0{,}2)+6x=20$",
+              "$\\dfrac{8}{x+0{,}2}+\\dfrac{6}{x}=20$",
+              "$\\dfrac{x+(x+0{,}2)}{2}=0{,}7$",
+              "$\\dfrac{8}{x}+\\dfrac{6}{x+0{,}2}=20$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E03",
+                "feedback": "Thể tích bằng khối lượng chia khối lượng riêng, không phải nhân."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Khối lượng riêng của hỗn hợp không phải trung bình cộng hai khối lượng riêng; hãy cộng thể tích."
+              },
+              "3": {
+                "code": "E10",
+                "feedback": "Chất lỏng A ($8$ g) mới có khối lượng riêng $x+0{,}2$."
+              }
+            },
+            "solution": "Thể tích A là $\\dfrac{8}{x+0{,}2}$, thể tích B là $\\dfrac6x$; tổng bằng $20$ cm³."
+          }
+        },
+        {
+          "prompt": "Giải và chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-x6-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Khối lượng riêng của chất lỏng B là $x=$",
+            "answer": "0,6",
+            "unit": "g/cm³",
+            "mistakes": [
+              {
+                "answer": "-0,1",
+                "code": "E14",
+                "feedback": "Khối lượng riêng phải dương; nghiệm âm phải loại."
+              },
+              {
+                "answer": "0,8",
+                "code": "E10",
+                "feedback": "Đó là khối lượng riêng của chất lỏng A."
+              }
+            ],
+            "solution": "$8x+6(x+0{,}2)=20x(x+0{,}2) \\Leftrightarrow 20x^2-10x-1{,}2=0 \\Leftrightarrow 50x^2-25x-3=0$; $\\Delta=625+600=1225=35^2$, $x=\\dfrac{25\\pm35}{100}$: $x=0{,}6$ (nhận), $x=-0{,}1$ (loại)."
+          }
+        },
+        {
+          "prompt": "Tính khối lượng riêng của A.",
+          "item": {
+            "id": "g-honhop-x6-s4",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Khối lượng riêng của chất lỏng A là",
+            "answer": "0,8",
+            "unit": "g/cm³",
+            "mistakes": [
+              {
+                "answer": "0,6",
+                "code": "E10",
+                "feedback": "Đó là khối lượng riêng của chất lỏng B."
+              },
+              {
+                "answer": "0,4",
+                "code": "E02",
+                "feedback": "A lớn hơn B $0{,}2$ g/cm³ nên phải cộng, không trừ."
+              }
+            ],
+            "solution": "$0{,}6+0{,}2=0{,}8$ g/cm³."
+          }
+        }
+      ],
+      "solution": "Thể tích hỗn hợp $20$ cm³. $\\dfrac{8}{x+0{,}2}+\\dfrac6x=20 \\Leftrightarrow 50x^2-25x-3=0$, $x=0{,}6$ (nhận) hoặc $x=-0{,}1$ (loại). Thử lại: $\\dfrac{8}{0{,}8}+\\dfrac{6}{0{,}6}=10+10=20$. Khối lượng riêng của A là $0{,}8$ g/cm³, của B là $0{,}6$ g/cm³."
+    },
+    {
+      "id": "g-honhop-x7",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một đoàn xe vận tải dự định điều một số xe cùng loại để chở $40$ tấn hàng. Lúc sắp khởi hành, đoàn được giao thêm $15$ tấn hàng nữa, nên phải điều thêm $2$ xe cùng loại và mỗi xe phải chở thêm $0{,}5$ tấn. Tính số xe phải điều theo dự định, biết mỗi xe chở số hàng như nhau và mỗi xe chở không quá $3$ tấn.",
+      "source": "68 đề – Đề 39, Bài 3.2 (tách bước)",
+      "steps": [
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-x7-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$ là số xe dự định ($x$ nguyên dương). Phương trình đúng là:",
+            "options": [
+              "$\\dfrac{55}{x+2}-\\dfrac{40}{x}=0{,}5$",
+              "$\\dfrac{40}{x}-\\dfrac{55}{x+2}=0{,}5$",
+              "$\\dfrac{15}{x+2}-\\dfrac{40}{x}=0{,}5$",
+              "$\\dfrac{55}{x}-\\dfrac{40}{x+2}=0{,}5$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Thực tế mỗi xe chở **thêm**, nên số tấn mỗi xe thực tế lớn hơn dự định."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Thực tế đoàn chở cả $40+15=55$ tấn, không chỉ $15$ tấn."
+              },
+              "3": {
+                "code": "E07",
+                "feedback": "Thực tế có $x+2$ xe chở $55$ tấn; dự định $x$ xe chở $40$ tấn."
+              }
+            },
+            "solution": "Dự định mỗi xe chở $\\dfrac{40}{x}$ tấn, thực tế $\\dfrac{55}{x+2}$ tấn; thực tế nhiều hơn $0{,}5$ tấn."
+          }
+        },
+        {
+          "prompt": "Đối chiếu điều kiện.",
+          "item": {
+            "id": "g-honhop-x7-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình trên đưa về $x^2-28x+160=0$, có hai nghiệm $x=20$ và $x=8$. Chọn nhận xét đúng:",
+            "options": [
+              "Nhận cả hai nghiệm vì đều nguyên dương",
+              "Nhận $x=8$; loại $x=20$ vì số xe lớn quá",
+              "Nhận $x=20$; loại $x=8$ vì khi đó mỗi xe dự định chở $5$ tấn, quá $3$ tấn",
+              "Loại cả hai nghiệm vì không nghiệm nào thỏa"
+            ],
+            "correct": 2,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Còn điều kiện mỗi xe chở không quá $3$ tấn: thử số tấn mỗi xe với từng nghiệm."
+              },
+              "1": {
+                "code": "E14",
+                "feedback": "Với $20$ xe, mỗi xe chở $2$ tấn rồi $2{,}5$ tấn, đều không quá $3$ tấn; hãy kiểm tra nghiệm còn lại."
+              },
+              "3": {
+                "code": "E14",
+                "feedback": "Thử lại từng nghiệm: có một nghiệm cho số tấn mỗi xe không quá $3$ tấn."
+              }
+            },
+            "solution": "$x=20$: mỗi xe dự định $2$ tấn, thực tế $\\dfrac{55}{22}=2{,}5$ tấn, thỏa. $x=8$: mỗi xe dự định $5$ tấn, quá $3$ tấn, loại."
+          }
+        },
+        {
+          "prompt": "Thử lại bằng số tấn mỗi xe.",
+          "item": {
+            "id": "g-honhop-x7-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Với số xe vừa nhận, theo dự định mỗi xe chở bao nhiêu tấn?",
+            "answer": "2",
+            "unit": "tấn",
+            "mistakes": [
+              {
+                "answer": "2,5",
+                "code": "E10",
+                "feedback": "Đó là số tấn mỗi xe chở thực tế; câu này hỏi theo dự định."
+              },
+              {
+                "answer": "5",
+                "code": "E14",
+                "feedback": "Con dùng nghiệm $x=8$ đã phải loại vì quá $3$ tấn."
+              }
+            ],
+            "solution": "$\\dfrac{40}{20}=2$ tấn (thực tế $\\dfrac{55}{22}=2{,}5$ tấn, đúng là nhiều hơn $0{,}5$ tấn)."
+          }
+        }
+      ],
+      "solution": "$\\dfrac{55}{x+2}-\\dfrac{40}{x}=0{,}5 \\Leftrightarrow 110x-80(x+2)=x(x+2) \\Leftrightarrow x^2-28x+160=0$, $x=20$ hoặc $x=8$. Với $x=8$ mỗi xe chở $5$ tấn, quá $3$ tấn, loại. Theo dự định phải điều $20$ xe."
+    },
+    {
+      "id": "g-honhop-x8",
+      "type": "steps",
+      "level": "L3",
+      "prompt": "Một tàu tuần tra chạy ngược dòng $60$ km, sau đó chạy xuôi dòng $48$ km trên cùng một dòng sông có vận tốc dòng nước là $2$ km/h. Tính vận tốc của tàu tuần tra khi nước yên lặng, biết thời gian tàu đi xuôi dòng ít hơn thời gian đi ngược dòng $1$ giờ.",
+      "source": "68 đề – Đề 7, Bài 3.1 (tách bước)",
+      "steps": [
+        {
+          "prompt": "Chọn điều kiện.",
+          "item": {
+            "id": "g-honhop-x8-s1",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Gọi $x$ (km/h) là vận tốc của tàu khi nước yên lặng. Điều kiện đúng và đầy đủ của $x$ là:",
+            "options": [
+              "$x>0$",
+              "$x>2$",
+              "$0<x<2$"
+            ],
+            "correct": 1,
+            "mistakes": {
+              "0": {
+                "code": "E14",
+                "feedback": "Tàu phải đi ngược dòng được nên vận tốc riêng phải lớn hơn vận tốc dòng nước."
+              },
+              "2": {
+                "code": "E14",
+                "feedback": "Ngược chiều: vận tốc ngược dòng $x-2$ phải dương, tức $x>2$."
+              }
+            },
+            "solution": "Vận tốc ngược dòng $x-2>0$ nên $x>2$."
+          }
+        },
+        {
+          "prompt": "Lập phương trình.",
+          "item": {
+            "id": "g-honhop-x8-s2",
+            "type": "mcq",
+            "level": "L3",
+            "prompt": "Phương trình đúng là:",
+            "options": [
+              "$\\dfrac{60}{x-2}-\\dfrac{48}{x+2}=1$",
+              "$\\dfrac{48}{x+2}-\\dfrac{60}{x-2}=1$",
+              "$\\dfrac{60}{x+2}-\\dfrac{48}{x-2}=1$",
+              "$60(x-2)-48(x+2)=1$"
+            ],
+            "correct": 0,
+            "mistakes": {
+              "1": {
+                "code": "E07",
+                "feedback": "Thời gian xuôi dòng ít hơn, nên lấy thời gian ngược dòng trừ thời gian xuôi dòng."
+              },
+              "2": {
+                "code": "E07",
+                "feedback": "Ngược dòng thì vận tốc là $x-2$, xuôi dòng là $x+2$."
+              },
+              "3": {
+                "code": "E03",
+                "feedback": "Thời gian bằng quãng đường **chia** vận tốc."
+              }
+            },
+            "solution": "Thời gian ngược dòng $\\dfrac{60}{x-2}$, xuôi dòng $\\dfrac{48}{x+2}$; hiệu bằng $1$ giờ."
+          }
+        },
+        {
+          "prompt": "Giải và chọn nghiệm.",
+          "item": {
+            "id": "g-honhop-x8-s3",
+            "type": "numeric",
+            "level": "L3",
+            "prompt": "Vận tốc của tàu khi nước yên lặng là",
+            "answer": "22",
+            "unit": "km/h",
+            "mistakes": [
+              {
+                "answer": "-10",
+                "code": "E14",
+                "feedback": "Vận tốc phải lớn hơn $2$ km/h; nghiệm âm phải loại."
+              },
+              {
+                "answer": "24",
+                "code": "E10",
+                "feedback": "Đó là vận tốc xuôi dòng; đề hỏi vận tốc khi nước yên lặng."
+              },
+              {
+                "answer": "20",
+                "code": "E10",
+                "feedback": "Đó là vận tốc ngược dòng; đề hỏi vận tốc khi nước yên lặng."
+              }
+            ],
+            "solution": "$60(x+2)-48(x-2)=x^2-4 \\Leftrightarrow x^2-12x-220=0$; $\\Delta'=36+220=256$, $x=6\\pm16$: $x=22$ (nhận), $x=-10$ (loại)."
+          }
+        }
+      ],
+      "solution": "$\\dfrac{60}{x-2}-\\dfrac{48}{x+2}=1 \\Leftrightarrow x^2-12x-220=0$, $x=22$ (nhận) hoặc $x=-10$ (loại). Thử lại: ngược dòng $\\dfrac{60}{20}=3$ giờ, xuôi dòng $\\dfrac{48}{24}=2$ giờ. Vận tốc của tàu khi nước yên lặng là $22$ km/h."
+    }
+  ]
+}

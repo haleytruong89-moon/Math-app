@@ -17,6 +17,7 @@ import m2u1 from "../../../content/bai-toan-tt/g-chuso.json";
 import m2u2 from "../../../content/bai-toan-tt/g-chuyendong.json";
 import m2u3 from "../../../content/bai-toan-tt/g-nangsuat.json";
 import m2u4 from "../../../content/bai-toan-tt/g-phantram.json";
+import m2u5 from "../../../content/bai-toan-tt/g-honhop.json";
 import m3 from "../../../content/can-thuc/module.json";
 import m3u0 from "../../../content/can-thuc/c-dkxd.json";
 import m3u1 from "../../../content/can-thuc/c-coban.json";
@@ -32,22 +33,28 @@ import m6 from "../../../content/hinh-khoi/module.json";
 import m6u0 from "../../../content/hinh-khoi/p-trunon.json";
 import m6u1 from "../../../content/hinh-khoi/p-cau.json";
 import m6u2 from "../../../content/hinh-khoi/p-ghep.json";
-import m7 from "../../../content/noi-tiep/module.json";
-import m7u0 from "../../../content/noi-tiep/k-goiintiep.json";
-import m7u1 from "../../../content/noi-tiep/k-tugiacnt.json";
-import m8 from "../../../content/pt-bac-hai/module.json";
-import m8u0 from "../../../content/pt-bac-hai/d-ptbh.json";
-import m8u1 from "../../../content/pt-bac-hai/d-nhamnghiem.json";
-import m8u2 from "../../../content/pt-bac-hai/d-thamso.json";
-import m9 from "../../../content/thong-ke/module.json";
-import m9u0 from "../../../content/thong-ke/a-tanso.json";
-import m9u1 from "../../../content/thong-ke/a-bieudo.json";
-import m10 from "../../../content/tiep-tuyen/module.json";
-import m10u0 from "../../../content/tiep-tuyen/l-tieptuyen.json";
-import m11 from "../../../content/xac-suat/module.json";
-import m11u0 from "../../../content/xac-suat/b-phepthu.json";
-import m11u1 from "../../../content/xac-suat/b-xsuat.json";
-import m11u2 from "../../../content/xac-suat/b-haib.json";
+import m7 from "../../../content/hinh-nang-cao/module.json";
+import m7u0 from "../../../content/hinh-nang-cao/o-chungminh.json";
+import m7u1 from "../../../content/hinh-nang-cao/o-dongdang.json";
+import m8 from "../../../content/noi-tiep/module.json";
+import m8u0 from "../../../content/noi-tiep/k-goiintiep.json";
+import m8u1 from "../../../content/noi-tiep/k-tugiacnt.json";
+import m9 from "../../../content/pt-bac-hai/module.json";
+import m9u0 from "../../../content/pt-bac-hai/d-ptbh.json";
+import m9u1 from "../../../content/pt-bac-hai/d-nhamnghiem.json";
+import m9u2 from "../../../content/pt-bac-hai/d-thamso.json";
+import m10 from "../../../content/thong-ke/module.json";
+import m10u0 from "../../../content/thong-ke/a-tanso.json";
+import m10u1 from "../../../content/thong-ke/a-bieudo.json";
+import m11 from "../../../content/tiep-tuyen/module.json";
+import m11u0 from "../../../content/tiep-tuyen/l-tieptuyen.json";
+import m12 from "../../../content/viet/module.json";
+import m12u0 from "../../../content/viet/e-viete.json";
+import m12u1 from "../../../content/viet/e-vietets.json";
+import m13 from "../../../content/xac-suat/module.json";
+import m13u0 from "../../../content/xac-suat/b-phepthu.json";
+import m13u1 from "../../../content/xac-suat/b-xsuat.json";
+import m13u2 from "../../../content/xac-suat/b-haib.json";
 
 export const CONTENT_SOURCE = "content";
 export const CURRICULUM: unknown = curriculum;
@@ -56,14 +63,16 @@ export const DRILLS: unknown = drills;
 export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m0, units: [m0u0, m0u1, m0u2, m0u3] },
   { module: m1, units: [m1u0, m1u1] },
-  { module: m2, units: [m2u0, m2u1, m2u2, m2u3, m2u4] },
+  { module: m2, units: [m2u0, m2u1, m2u2, m2u3, m2u4, m2u5] },
   { module: m3, units: [m3u0, m3u1, m3u2, m3u3, m3u4] },
   { module: m4, units: [m4u0] },
   { module: m5, units: [m5u0, m5u1] },
   { module: m6, units: [m6u0, m6u1, m6u2] },
   { module: m7, units: [m7u0, m7u1] },
-  { module: m8, units: [m8u0, m8u1, m8u2] },
-  { module: m9, units: [m9u0, m9u1] },
-  { module: m10, units: [m10u0] },
-  { module: m11, units: [m11u0, m11u1, m11u2] },
+  { module: m8, units: [m8u0, m8u1] },
+  { module: m9, units: [m9u0, m9u1, m9u2] },
+  { module: m10, units: [m10u0, m10u1] },
+  { module: m11, units: [m11u0] },
+  { module: m12, units: [m12u0, m12u1] },
+  { module: m13, units: [m13u0, m13u1, m13u2] },
 ];
