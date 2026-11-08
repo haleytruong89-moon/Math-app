@@ -46,7 +46,8 @@
 | Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
 | Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) — **43/43 KU lõi đã duyệt** |
 | Audit AI đợt 3–6 (18 bài đã duyệt) + ô số hiểu "1.200" + câu nhiều bước mở từng bước | `p1-audit-2` | ✅ Merged 08/11 (PR #56) — không SQL, không thay câu |
-| Kế hoạch tới 8,5 — bảng mục tiêu, kiểm tra tiến bộ 2 tuần/lần, kế hoạch tuần của gia sư | `p1-plan-design` → `p1-slice-12` | 🟡 08/11 thiết kế (docs), chờ phụ huynh "làm" — lát A trước 22/11 |
+| Kế hoạch tới 8,5 — thiết kế (docs) | `p1-plan-design` | 🟡 08/11 PR #57 mở — không SQL |
+| Lát A1 — bảng mục tiêu 8,5 + kiểm tra tiến bộ trên giấy + đề KT1 (đã duyệt) | `p1-slice-12` | 🟡 08/11 PR mở — **SQL 0016** (bấm "Áp dụng SQL" trên nhánh trước khi merge) |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
@@ -98,6 +99,28 @@ Phụ huynh nói "làm" (07/11) sau khi chốt thiết kế 06/11 (`docs/superpo
 ### Phụ huynh cần làm
 1. Merge #50 (đợt 8) trước — PR này nằm trên nó.
 2. Trên PR này: bấm **"Áp dụng SQL"** (file 0015, sao lưu trước như mọi lần) → merge.
+
+---
+
+## 08/11/2026 — Lát A1: mục tiêu 8,5 + kiểm tra tiến bộ + đề KT1 (nhánh `p1-slice-12`, SQL 0016)
+
+Theo quyết định 08/11 (SPEC §0, thiết kế `docs/superpowers/specs/2026-11-08-ke-hoach-8-5-design.md`).
+
+### Đã làm
+- **Tab "Kiểm tra"** (gia sư, phụ huynh — thay tab "Thi thử"): bảng mục tiêu 8,5 → danh sách kiểm tra tiến bộ KT1… → thi thử Đề 57–68.
+- **Bảng mục tiêu 8,5** theo phần đề (Bài 1 · 2 · 3 · 4.1 · 4.2 · 5): mục tiêu, lần đo gần nhất, "quy ra" trên đề thật, số bài vững, trạng thái. Bản gọn ở Hôm nay của gia sư và Tổng quan của phụ huynh. Con **không** thấy bảng này.
+- **Kiểm tra tiến bộ trên giấy:** hẹn lịch (ngày dự kiến điền sẵn), trang **In đề** A4 (không có đáp án), con bấm "Bắt đầu" → đồng hồ + đề hiện trên màn hình → "Nộp bài"; gia sư chấm từng ý như thi thử, có ô **"Chưa học"** (ý đó không tính điểm). "Việc tiếp theo" của gia sư = **chấm bài** khi con đã nộp.
+- **Mốc 9,5** chỉ còn ở trang phụ huynh, gắn "nâng cao"; vạch thi thử chỉ còn 8,5.
+- **Đề KT1** (Chủ nhật 22/11, giấy, 45 phút, 3,5 điểm: Bài 1 thống kê + xác suất 1,5 · Bài 3.1 lập hệ 1,0 · Bài 4.1 đinh tán nửa cầu + trụ 1,0), viết lại từ Đề 5, 25, 45 với số liệu mới. Giải độc lập khớp 7/7 ý; audit AI: đáp số đúng hết, đã làm rõ phiếu chấm (lỗi hay gặp được bao nhiêu điểm, không trừ hai lần thiếu điều kiện) → **duyệt 08/11**.
+- **SQL 0016:** `mock_exams.kind` ('mock' | 'progress', KT 1–20), `answers` (cho lát A2), `mock_scores.skipped`; RLS không đổi. Có test RLS.
+
+### Phụ huynh cần làm
+1. Mở PR của `p1-slice-12` → bấm **"Áp dụng SQL"** trên nhánh này (0016, sao lưu trước) → merge.
+2. Hẹn KT1 ngày 22/11 ở tab Kiểm tra (hoặc để gia sư hẹn), in đề từ nút "In đề" nếu muốn con làm trên giấy in.
+
+### Còn lại
+- **Lát A2 (trước 06/12):** kiểm tra trên app (tự chấm) + đề KT2; đề KT3 (giấy, 20/12).
+- Lát B: kế hoạch tuần của gia sư + nhận xét con đọc được.
 
 ---
 

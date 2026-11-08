@@ -30,6 +30,9 @@ export function render(rootRel) {
   // Thi thử (S9, 07/11): score sheets of the mock papers, when the content root has them.
   const hasMocks = fs.existsSync(path.join(root, "thi-thu.json"));
   if (hasMocks) lines.push(`import mocks from "${imp("thi-thu.json")}";`);
+  // Kiểm tra tiến bộ + mục tiêu 8,5 (08/11): progress tests and the target, when the content root has them.
+  const hasProgress = fs.existsSync(path.join(root, "kiem-tra.json"));
+  if (hasProgress) lines.push(`import progress from "${imp("kiem-tra.json")}";`);
   const entries = [];
   mods.forEach((m, i) => {
     const mod = JSON.parse(fs.readFileSync(path.join(root, m, "module.json"), "utf8"));
@@ -44,6 +47,7 @@ export function render(rootRel) {
   lines.push(hasSoTay ? "export const SO_TAY: unknown = soTay;" : "export const SO_TAY: unknown = null;");
   lines.push(hasDrills ? "export const DRILLS: unknown = drills;" : "export const DRILLS: unknown = null;");
   lines.push(hasMocks ? "export const MOCKS: unknown = mocks;" : "export const MOCKS: unknown = null;");
+  lines.push(hasProgress ? "export const PROGRESS: unknown = progress;" : "export const PROGRESS: unknown = null;");
   lines.push("export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [", ...entries, "];", "");
   return lines.join("\n");
 }

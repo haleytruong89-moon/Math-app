@@ -30,6 +30,8 @@ await db.exec(fs.readFileSync(`${repo}/migrations/0012_p1_content_review.sql`, '
 await db.exec(fs.readFileSync(`${repo}/migrations/0013_p1_item_homework.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0014_p1_ai.sql`, 'utf8'));
 await db.exec(fs.readFileSync(`${repo}/migrations/0015_p1_mock_exams.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0016_p1_progress_tests.sql`, 'utf8'));
+await db.exec(fs.readFileSync(`${repo}/migrations/0016_p1_progress_tests.sql`, 'utf8')); // idempotent: applying twice is harmless
 await db.exec(`insert into auth.users (email) values ('me@example.com');`);
 await db.exec(fs.readFileSync(`${repo}/seed_first_parent.sql`, 'utf8').replace('REPLACE_WITH_PARENT_EMAIL','me@example.com'));
 // Server-side account creation, as the app will do it
@@ -297,6 +299,15 @@ check('student sees her exam but no points before grading', [(await as('nguyen@e
 await db.exec(`update public.mock_exams set started_at = now() - interval '2 hours', finished_at = now(), graded_at = now(), graded_by = ${tutor14}, total = 1.75 where paper = 57`);
 check('student sees her points once graded; another student sees nothing', [(await as('nguyen@example.com','select count(*)::int c from public.mock_scores'))[0].c, (await as('an@example.com','select count(*)::int c from public.mock_exams'))[0].c], [2, 0]);
 check('nobody writes mock tables directly', [isErr(await as('trang@example.com',`insert into public.mock_exams (student_id, paper, scheduled_on, created_by) values (${nguyen14}, 58, '2027-02-06', ${tutor14})`)), isErr(await as('nguyen@example.com',`update public.mock_scores set points = 4`)) || (await db.query(`select max(points)::text m from public.mock_scores`)).rows[0].m === '1.00'], [true, true]);
+// 0016: Kiểm tra tiến bộ — progress tests share the mock tables (kind), papers 1–20, "chưa học" parts, server-graded in-app tests
+const kt = (paper, extra = '') => q14(`insert into public.mock_exams (student_id, kind, paper, scheduled_on, created_by${extra ? ', ' + extra.split('=')[0] : ''}) values (${nguyen14}, 'progress', ${paper}, '2026-11-22', ${tutor14}${extra ? ', ' + extra.split('=')[1] : ''})`);
+check('progress test KT1 scheduled next to thi thử', await kt(1), 'ok');
+check('progress: papers 1–20 only; thi thử still 57–68; unknown kind refused', [isErr(await kt(21)), isErr(await kt(0)), isErr(await q14(`insert into public.mock_exams (student_id, kind, paper, scheduled_on, created_by) values (${nguyen14}, 'mock', 1, '2026-11-22', ${tutor14})`)), isErr(await q14(`insert into public.mock_exams (student_id, kind, paper, scheduled_on, created_by) values (${nguyen14}, 'quiz', 2, '2026-11-22', ${tutor14})`))], [true, true, true, true]);
+check('progress: one KT per number and student', isErr(await kt(1)), true);
+check('progress: KT57 and Đề 57 are different exams', await kt(57 - 40), 'ok');
+check('progress: graded by the server (no grader) allowed; thi thử still needs a grader', [await q14(`update public.mock_exams set started_at = now(), finished_at = now(), graded_at = now(), total = 1.5 where kind = 'progress' and paper = 17`), isErr(await q14(`insert into public.mock_exams (student_id, paper, scheduled_on, created_by, started_at, finished_at, graded_at, total) values (${nguyen14}, 60, '2027-02-06', ${tutor14}, now(), now(), now(), 5)`))], ['ok', true]);
+check('skipped part ("chưa học") must have 0 points', [await q14(`insert into public.mock_scores (exam_id, part, points, skipped) values ((select id from public.mock_exams where kind = 'progress' and paper = 17), '4.1', 0, true)`), isErr(await q14(`insert into public.mock_scores (exam_id, part, points, skipped) values ((select id from public.mock_exams where kind = 'progress' and paper = 17), '1.1', 0.5, true)`))], ['ok', true]);
+check('student reads her graded progress test and its points', [(await as('nguyen@example.com',"select count(*)::int c from public.mock_exams where kind = 'progress'"))[0].c, (await as('nguyen@example.com',"select count(*)::int c from public.mock_scores s join public.mock_exams e on e.id = s.exam_id where e.kind = 'progress'"))[0].c, (await as('an@example.com',"select count(*)::int c from public.mock_exams"))[0].c], [2, 1, 0]);
 await db.exec(`update public.profiles set is_active=false where id=(select id from auth.users where email='trang@example.com')`);
 check('locked tutor reads no item reviews', (await as('trang@example.com','select count(*)::int c from public.item_reviews'))[0].c, 0);
 check('locked tutor reads no priorities', (await as('trang@example.com','select count(*)::int c from public.tutor_priorities'))[0].c, 0);

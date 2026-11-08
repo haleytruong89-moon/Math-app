@@ -15,9 +15,9 @@ try {
   await sql(`delete from public.mock_exams;`);
   const sid = (await sql(`select id from public.students where full_name='Hạnh Nguyên'`))[0].id;
   await page.goto(`${BASE}/parent/thi-thu`);
-  ok("parent nav has Thi thử", (await page.getByRole("link", { name: "Thi thử" }).count()) >= 1);
+  ok("parent nav has Kiểm tra", (await page.getByRole("link", { name: "Kiểm tra", exact: true }).count()) >= 1);
   await page.getByTestId("mock-date").fill("2030-01-05");
-  await page.getByRole("button", { name: "Hẹn lịch" }).click();
+  await page.getByRole("region", { name: "Hẹn lịch thi thử" }).getByRole("button", { name: "Hẹn lịch" }).click();
   await page.getByText("Đã hẹn Đề 57").waitFor();
   ok("parent scheduled, created_by = parent", (await sql(`select created_by from public.mock_exams`))[0].created_by === PARENT);
   await page.getByTestId("mock-row-57").getByRole("button", { name: "Huỷ lịch" }).click();

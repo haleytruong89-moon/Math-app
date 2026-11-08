@@ -1,6 +1,6 @@
 # Kế hoạch tới 8,5 — target, progress tests, weekly plan (design)
 
-Status: **draft 08/11/2026 — four choices made by the parent (below); waiting for "làm" before code.**
+Status: **approved 08/11/2026** (four choices below; parent "làm" 08/11). **Slice A1 built 08/11 (`p1-slice-12`, migration 0016)** — see §8.
 Decision row: `docs/SPEC.md` §0, 08/11/2026. Brainstorm: parent asked what the student and tutor desks lack for "đồng hành lên
 kế hoạch để đạt 8–8,5 điểm thi vào 10, có progress test, đánh giá thường xuyên và planning".
 
@@ -91,3 +91,15 @@ attempt on the tutor's Hôm nay; difficulty signal ("9/9 đúng, 40″/câu → 
 - Tutor time is the whole loop — agreed 08/11; if it slips, the weekly report shows plans not set.
 - Progress-test content is new work every 2 weeks (KT1 due ~19/11).
 - A per-Bài "rate" from one half-paper is noisy; the board shows how many points were tested, not a prediction.
+
+## 8. As built — slice A1 (08/11, `p1-slice-12`)
+
+- Progress tests reuse the thi thử tables (`kind`), actions, grading screen and timer; the exam key is `57` / `kt1`. Tab "Thi thử" → **"Kiểm tra"**.
+- **KT1** (Sun 22/11, paper, **45′, 3,5 points**: Bài 1 1,5 · 3.1 1,0 · 4.1 1,0) — sources Đề 5, 25, 45 with new numbers; sympy, blind solve
+  (all answers matched) and AI audit (rubric made explicit: what each common mistake earns), approved 08/11.
+- The problems are numbered like the real exam (KT1 has Bài 1, 3, 4) so points map to the target; the paper says so and shows
+  points per Bài.
+- The board is for adults (tutor Kiểm tra + compact on Hôm nay, parent Kiểm tra + compact on Tổng quan). The student sees her test
+  result only.
+- **Not yet (slice A2, before 06/12):** in-app tests (`mode: "app"`, auto-graded; columns already in 0016) and KT2 content; KT3
+  (paper, 20/12) content.

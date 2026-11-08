@@ -27,16 +27,19 @@ export function sessionDue(lastTaughtOn: string | null, weekdays: number[], toda
 
 export type ShelfLite = { id: string; title: string; status: "approved" | "reapprove" | "waiting" | "none"; reviewed: number; total: number };
 export type NextAction =
+  | { kind: "grade"; key: string; label: string }
   | { kind: "correct"; count: number }
   | { kind: "review"; unitId: string; title: string; reviewed: number; total: number; priority: number | null }
   | { kind: "session"; date: string }
   | { kind: "assign" };
 
 /**
- * "Việc tiếp theo" on the tutor's Hôm nay (v2, 21/10): homework the student finished → correct it; then her priority
- * KUs still waiting for review (in her order); then a teaching day not logged; then any KU waiting; else give homework.
+ * "Việc tiếp theo" on the tutor's Hôm nay (v2, 21/10): a progress test / thi thử handed in and not graded (08/11) →
+ * grade it; homework the student finished → correct it; then her priority KUs still waiting for review (in her order);
+ * then a teaching day not logged; then any KU waiting; else give homework.
  */
-export function nextAction(p: { priorities: string[]; shelf: ShelfLite[]; homeworkDone: number; sessionDue: string | null }): NextAction {
+export function nextAction(p: { priorities: string[]; shelf: ShelfLite[]; homeworkDone: number; sessionDue: string | null; toGrade?: { key: string; label: string } | null }): NextAction {
+  if (p.toGrade) return { kind: "grade", ...p.toGrade };
   if (p.homeworkDone) return { kind: "correct", count: p.homeworkDone };
   const waiting = (s: ShelfLite) => s.status === "waiting" || s.status === "reapprove";
   const review = (s: ShelfLite, i: number | null): NextAction => ({ kind: "review", unitId: s.id, title: s.title, reviewed: s.reviewed, total: s.total, priority: i });

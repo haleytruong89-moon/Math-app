@@ -9,7 +9,7 @@ const TABS: { id: TutorTab; label: string; path: string }[] = [
   { id: "giao", label: "Giao bài", path: "/giao" },
   { id: "buoi", label: "Buổi dạy", path: "/buoi" },
   { id: "work", label: "Bài làm", path: "/work" },
-  { id: "thi-thu", label: "Thi thử", path: "/thi-thu" },
+  { id: "thi-thu", label: "Kiểm tra", path: "/thi-thu" },
 ];
 
 const initials = (name: string) =>

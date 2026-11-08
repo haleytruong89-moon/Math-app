@@ -18,7 +18,7 @@ try {
   await page.goto(`${BASE}/student`);
   ok("no card for a paper far ahead", (await page.getByTestId("mock-card").count()) === 0);
   await page.goto(`${BASE}/student/thi-thu/57`);
-  ok("too early: no start button", (await page.getByTestId("mock-start").count()) === 0 && (await page.getByText("Chưa tới ngày thi thử.").count()) === 1);
+  ok("too early: no start button", (await page.getByTestId("mock-start").count()) === 0 && (await page.getByText("Chưa tới ngày làm bài.").count()) === 1);
   await sql(`update public.mock_exams set scheduled_on = '${today}'`);
   await page.goto(`${BASE}/student`);
   const card = page.getByTestId("mock-card");

@@ -11,6 +11,9 @@ import { TutorTabs } from "@/components/tutor/tutor-tabs";
 import { OpenHomework } from "@/components/tutor/open-homework";
 import { Progress } from "@/components/ui/progress";
 import { btn, card, sectionTitle } from "@/components/ui/styles";
+import { loadMockExams } from "@/lib/learning/mock-data";
+import { mockStatus, refKey, refLabel, refOf } from "@/lib/learning/mock";
+import { loadTargetBoard, TargetBoard } from "@/components/mock/target-board";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -25,10 +28,14 @@ export default async function TodayPage(props: PageProps<"/tutor/[studentId]">) 
   const student = await tutorStudent(studentId);
   if (!student) notFound();
   const supabase = await createClient();
-  const [state, t] = await Promise.all([loadStudentState(supabase, student.id), tutorToday(tutor.id, student.id)]);
+  const [state, t, exams] = await Promise.all([loadStudentState(supabase, student.id), tutorToday(tutor.id, student.id), loadMockExams(supabase, student.id)]);
   const today = vnDate();
   const base = `/tutor/${student.id}`;
-  const next = nextAction({ priorities: state.priorities, shelf: t.shelf, homeworkDone: t.homeworkDone, sessionDue: t.sessionDue });
+  // 08/11: a progress test / thi thử handed in and waiting for grading is the next thing to do.
+  const handedIn = exams.filter((e) => mockStatus(e) === "finished").sort((a, b) => (a.finished_at ?? "").localeCompare(b.finished_at ?? ""))[0];
+  const toGrade = handedIn ? { key: refKey(refOf(handedIn)), label: refLabel(refOf(handedIn)) } : null;
+  const next = nextAction({ priorities: state.priorities, shelf: t.shelf, homeworkDone: t.homeworkDone, sessionDue: t.sessionDue, toGrade });
+  const board = await loadTargetBoard(supabase, student.id, new Map(state.units.map((u) => [u.unit.id, u.mastery.level])));
   const week = weekSummary(state.units.flatMap((u) => u.attempts), today);
   const byId = new Map(t.shelf.map((r) => [r.id, r]));
 
@@ -56,6 +63,12 @@ export default async function TodayPage(props: PageProps<"/tutor/[studentId]">) 
                   <Link href={`${base}/bai/${next.unitId}/thu`} className="font-display text-sm font-semibold text-accent hover:underline">
                     Làm thử như con
                   </Link>
+                </>
+              )}
+              {next.kind === "grade" && (
+                <>
+                  <p className="min-w-0 flex-[1_1_320px] font-display text-xl font-bold">Con đã nộp {next.label} — chấm bài</p>
+                  <Link href={`${base}/thi-thu/${next.key}`} className={btn.primary}>Chấm bài →</Link>
                 </>
               )}
               {next.kind === "correct" && (
@@ -137,6 +150,7 @@ export default async function TodayPage(props: PageProps<"/tutor/[studentId]">) 
         </section>
 
         <aside className="flex min-w-0 flex-[1_1_300px] flex-col gap-4">
+          <TargetBoard board={board} compact href={`${base}/thi-thu`} />
           <div className={`${card} p-4`}>
             <div className="flex items-center">
               <h2 className={sectionTitle}>Ưu tiên luyện trước</h2>

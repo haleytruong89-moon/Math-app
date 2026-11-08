@@ -29,6 +29,8 @@ test("Việc tiếp theo: correct finished homework → priority KU to review �
     { id: "d", title: "D", status: "reapprove" as const, reviewed: 17, total: 17 },
   ];
   assert.deepEqual(nextAction({ priorities: ["d"], shelf, homeworkDone: 2, sessionDue: "2026-10-21" }), { kind: "correct", count: 2 });
+  // 08/11: a test handed in and not graded comes first.
+  assert.deepEqual(nextAction({ priorities: ["d"], shelf, homeworkDone: 2, sessionDue: "2026-10-21", toGrade: { key: "kt1", label: "KT1" } }), { kind: "grade", key: "kt1", label: "KT1" });
   assert.deepEqual(nextAction({ priorities: ["c", "b", "d"], shelf, homeworkDone: 0, sessionDue: "2026-10-21" }), { kind: "review", unitId: "d", title: "D", reviewed: 17, total: 17, priority: 3 });
   assert.deepEqual(nextAction({ priorities: ["b"], shelf, homeworkDone: 0, sessionDue: "2026-10-21" }), { kind: "session", date: "2026-10-21" });
   assert.deepEqual(nextAction({ priorities: [], shelf, homeworkDone: 0, sessionDue: null }), { kind: "review", unitId: "a", title: "A", reviewed: 3, total: 17, priority: null });

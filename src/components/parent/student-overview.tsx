@@ -9,7 +9,8 @@ import { needsTutor } from "@/lib/content/curriculum";
 import { curriculum } from "@/lib/content";
 import { currentPhase, lateUnits, milestoneProgress } from "@/lib/learning/milestones";
 import { LateNotice, MilestoneCards } from "@/components/parent/milestones";
-import { gradeOverdue, type MockExamRow } from "@/lib/learning/mock";
+import { loadTargetBoard, TargetBoard } from "@/components/mock/target-board";
+import { gradeOverdue, refKey, refLabel, refOf, type MockExamRow } from "@/lib/learning/mock";
 import {
   displayLevel, isoWeekday, latestByUnit, mismatchFlags, missedSessions, weekSummary,
   type AssignmentRow, type ConfirmationRow, type ProposalRow,
@@ -35,7 +36,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
     // S8b: AI messages the student marked "AI nói sai?" in the last 14 days.
     supabase.from("ai_messages").select("id").eq("student_id", id).eq("flag", "student").gt("flagged_at", since).limit(50),
     // S9: mock papers handed in and waiting to be graded.
-    supabase.from("mock_exams").select("id, paper, scheduled_on, started_at, finished_at, graded_at, total").eq("student_id", id).is("graded_at", null),
+    supabase.from("mock_exams").select("id, kind, paper, scheduled_on, started_at, finished_at, graded_at, total").eq("student_id", id).is("graded_at", null),
   ]);
   for (const r of [proposals, confirmations, assignments, sessions, reviewLog, homework]) if (r.error) console.error("StudentOverview", r.error.message);
 
@@ -65,6 +66,7 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
   const visible = new Set(state.units.map((u) => u.unit.id));
   const milestoneInput = { levels: new Map(units.map(({ u, shown }) => [u.unit.id, shown.level as Level])), withContent: visible, today };
   const progress = milestoneProgress(roadmap, milestoneInput);
+  const board = await loadTargetBoard(supabase, id, milestoneInput.levels);
   const late = lateUnits(roadmap, milestoneInput);
   const lateIds = new Set(late.map((u) => u.id));
   const unitOf = (uid: string) => state.units.find((u) => u.unit.id === uid);
@@ -85,14 +87,17 @@ export async function StudentOverview({ supabase, student }: { supabase: Supabas
         <Stat testid="stat-flags" value={String(flags.length)} label="Cờ lệch đánh giá cần chốt" href="#can-chu-y" warn={flags.length > 0} />
       </div>
 
+      <div className="mt-8">
+        <TargetBoard board={board} compact href="/parent/thi-thu" />
+      </div>
       <MilestoneCards progress={progress} phase={currentPhase(roadmap.phases, today)} />
 
       <h3 id="can-chu-y" className="mt-8 font-display text-base font-semibold">Cần chú ý</h3>
       <ul className="mt-3 flex flex-col gap-3">
         {mockLate.map((e) => (
-          <li key={`mock-${e.paper}`} className="rounded-xl border border-warn bg-surface p-4" data-testid="mock-overdue-notice">
-            <p className="font-display font-semibold">Thi thử Đề {e.paper}: con nộp bài ngày {ddmm(e.finished_at!)}, gia sư chưa chấm</p>
-            <Link href={`/parent/thi-thu/${id}/${e.paper}`} className="mt-1 inline-block text-sm text-accent hover:underline">Xem đề →</Link>
+          <li key={`mock-${refKey(refOf(e))}`} className="rounded-xl border border-warn bg-surface p-4" data-testid="mock-overdue-notice">
+            <p className="font-display font-semibold">{refOf(e).kind === "progress" ? "Kiểm tra tiến bộ" : "Thi thử"} {refLabel(refOf(e))}: con nộp bài ngày {ddmm(e.finished_at!)}, gia sư chưa chấm</p>
+            <Link href={`/parent/thi-thu/${id}/${refKey(refOf(e))}`} className="mt-1 inline-block text-sm text-accent hover:underline">Xem bài →</Link>
           </li>
         ))}
         {(aiFlags.data?.length ?? 0) > 0 && (

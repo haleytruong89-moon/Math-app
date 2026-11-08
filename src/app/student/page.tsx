@@ -13,7 +13,8 @@ import { needsTutor } from "@/lib/content/curriculum";
 import { masteryOf } from "@/components/student/mastery";
 import { studentDrills } from "@/lib/learning/drills";
 import { loadMockExams } from "@/lib/learning/mock-data";
-import { pts, upcomingForStudent, type MockExamRow } from "@/lib/learning/mock";
+import { pts, refKey, refLabel, refOf, upcomingForStudent, type MockExamRow } from "@/lib/learning/mock";
+import { examSheet } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Hôm nay — App Toán" };
 
@@ -64,17 +65,20 @@ export default async function StudentHome() {
 
 const WEEKDAY = ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
 
-/** Thi thử (S9): the paper coming up (from 3 days before) or running; else a recent result (14 days). */
+/** Thi thử (S9) / Kiểm tra tiến bộ (08/11): the exam coming up (from 3 days before) or running; else a recent result (14 days). */
 function MockCard({ exams, today }: { exams: MockExamRow[]; today: string }) {
   const up = upcomingForStudent(exams, today);
   if (up) {
     const d = up.scheduled_on;
+    const ref = refOf(up);
+    const kind = ref.kind === "progress" ? "Kiểm tra tiến bộ" : "Thi thử";
+    const minutes = examSheet(ref)?.minutes ?? 120;
     return (
-      <Link href={`/student/thi-thu/${up.paper}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border-2 border-accent bg-accent-soft px-4 py-3.5" data-testid="mock-card">
+      <Link href={`/student/thi-thu/${refKey(ref)}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border-2 border-accent bg-accent-soft px-4 py-3.5" data-testid="mock-card">
         <span className="min-w-0 flex-1">
-          <span className="block font-display font-bold">{up.started_at ? `Đang làm Đề ${up.paper}` : `Thi thử Đề ${up.paper}`}</span>
+          <span className="block font-display font-bold">{up.started_at ? `Đang làm ${refLabel(ref)}` : `${kind} ${refLabel(ref)}`}</span>
           <span className="block text-sm text-muted">
-            {up.started_at ? "Mở để xem đồng hồ và nộp bài" : `${WEEKDAY[new Date(`${d}T00:00:00Z`).getUTCDay()]} ${d.slice(8)}/${d.slice(5, 7)} · 120 phút · làm trên giấy`}
+            {up.started_at ? "Mở để xem đồng hồ và nộp bài" : `${WEEKDAY[new Date(`${d}T00:00:00Z`).getUTCDay()]} ${d.slice(8)}/${d.slice(5, 7)} · ${minutes} phút · làm trên giấy`}
           </span>
         </span>
         <span aria-hidden className="text-accent">→</span>
@@ -83,10 +87,13 @@ function MockCard({ exams, today }: { exams: MockExamRow[]; today: string }) {
   }
   const last = exams.filter((e) => e.graded_at && e.graded_at.slice(0, 10) >= addDays(today, -14)).sort((a, b) => (b.graded_at ?? "").localeCompare(a.graded_at ?? ""))[0];
   if (!last) return null;
+  const ref = refOf(last);
   return (
-    <Link href={`/student/thi-thu/${last.paper}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-4 py-3.5" data-testid="mock-result-card">
+    <Link href={`/student/thi-thu/${refKey(ref)}`} className="mt-5 flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-4 py-3.5" data-testid="mock-result-card">
       <span className="min-w-0 flex-1">
-        <span className="block font-display font-bold">Kết quả thi thử Đề {last.paper}: {pts(last.total ?? 0)}/10</span>
+        <span className="block font-display font-bold">
+          {ref.kind === "progress" ? `Kết quả kiểm tra ${refLabel(ref)}: ${pts(last.total ?? 0)} điểm` : `Kết quả thi thử ${refLabel(ref)}: ${pts(last.total ?? 0)}/10`}
+        </span>
         <span className="block text-sm text-muted">Xem điểm từng ý và bài cần ôn</span>
       </span>
       <span aria-hidden className="text-accent">→</span>
