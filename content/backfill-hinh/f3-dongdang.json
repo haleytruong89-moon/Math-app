@@ -12,10 +12,10 @@
   },
   "theory": [
     "**Định nghĩa và thứ tự đỉnh:** $\\triangle ABC \\backsim \\triangle MNP$ nghĩa là $A \\leftrightarrow M$, $B \\leftrightarrow N$, $C \\leftrightarrow P$: $\\widehat A=\\widehat M$, $\\widehat B=\\widehat N$, $\\widehat C=\\widehat P$ và $\\dfrac{AB}{MN}=\\dfrac{BC}{NP}=\\dfrac{CA}{PM}=k$ (tỉ số đồng dạng). **Viết đỉnh theo đúng cặp tương ứng**: cạnh nối đỉnh thứ 1–2 của tam giác này ứng với cạnh nối đỉnh thứ 1–2 của tam giác kia. Từ tỉ lệ thức suy ra tích: $\\dfrac{a}{b}=\\dfrac{c}{d} \\iff a\\cdot d=b\\cdot c$.",
-    "**Các trường hợp đồng dạng:** **g.g** — hai cặp góc bằng nhau; **c.g.c** — hai cặp cạnh tỉ lệ và góc **xen giữa** bằng nhau; **c.c.c** — ba cặp cạnh tỉ lệ. **Tam giác vuông:** một cặp góc nhọn bằng nhau; hoặc hai cạnh góc vuông tỉ lệ; hoặc cạnh huyền và một cạnh góc vuông tỉ lệ. **Song song:** $MN \\parallel BC$ ($M \\in AB$, $N \\in AC$) thì $\\triangle AMN \\backsim \\triangle ABC$ (định lí Thalès).",
+    "**Các trường hợp đồng dạng:** **g.g** — hai cặp góc bằng nhau; **c.g.c** — hai cặp cạnh tỉ lệ và góc **xen giữa** bằng nhau; **c.c.c** — ba cặp cạnh tỉ lệ. **Tam giác vuông:** một cặp góc nhọn bằng nhau; hoặc hai cạnh góc vuông tỉ lệ; hoặc cạnh huyền và một cạnh góc vuông tỉ lệ. **Song song:** $MN \\parallel BC$ ($M \\in AB$, $N \\in AC$) thì $\\triangle AMN \\backsim \\triangle ABC$ (hệ quả của định lí Thalès).",
     "**Vì sao:** tam giác này là tam giác kia được phóng to hoặc thu nhỏ: các góc giữ nguyên, mọi cạnh nhân cùng một số $k$. Biết hai cặp góc bằng nhau là biết luôn cặp thứ ba (tổng ba góc $180^\\circ$), nên g.g là đủ.",
     "**Bẫy hay gặp:** (1) viết đỉnh theo thứ tự chữ cái — có $\\widehat A=\\widehat N$, $\\widehat B=\\widehat M$ thì phải viết $\\triangle ABC \\backsim \\triangle NMP$; (2) lập tỉ số với đoạn không tương ứng, như lấy $\\dfrac{AM}{MB}$ thay cho $\\dfrac{AM}{AB}$; (3) dùng c.g.c khi góc không nằm giữa hai cạnh; (4) lấy chính điều cần chứng minh làm lí do.",
-    "**Nhận dạng:** đề hỏi “chứng minh $AB\\cdot CD=EF\\cdot GH$” → đổi thành tỉ lệ thức $\\dfrac{AB}{EF}=\\dfrac{GH}{CD}$ → tìm hai tam giác chứa các đoạn đó. Có góc chung và góc vuông → g.g; có đường song song → định lí Thalès; đề cho toàn số đo cạnh → c.g.c hoặc c.c.c. **Không** dùng đồng dạng khi đề chỉ cần một hệ thức đã thuộc sẵn.",
+    "**Nhận dạng:** đề hỏi “chứng minh $AB\\cdot CD=EF\\cdot GH$” → đổi thành tỉ lệ thức $\\dfrac{AB}{EF}=\\dfrac{GH}{CD}$ → tìm hai tam giác chứa các đoạn đó. Có góc chung và góc vuông → g.g; có đường song song với một cạnh → tam giác nhỏ đồng dạng tam giác lớn; đề cho toàn số đo cạnh → c.g.c hoặc c.c.c. **Không** dùng đồng dạng khi đề chỉ cần một hệ thức đã thuộc sẵn.",
     "**Cấu hình mẫu:** $\\triangle ABC$ vuông tại $A$, đường cao $AH$: $\\triangle HBA \\backsim \\triangle ABC$, $\\triangle HAC \\backsim \\triangle ABC$, $\\triangle HBA \\backsim \\triangle HAC$ (cầu nối sang hệ thức lượng: $AB^2=BH\\cdot BC$, $AH^2=BH\\cdot CH$). Hai đường cao $BE$, $CF$ của $\\triangle ABC$: $\\triangle ABE \\backsim \\triangle ACF$ (g.g), rồi $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c)."
   ],
   "worked": {
@@ -145,7 +145,7 @@
             {
               "answer": "12",
               "code": "E08",
-              "feedback": "Con đặt sai vị trí trong tích: $HB\\cdot HE$ là tích của hai đoạn trên cùng đường cao $BE$."
+              "feedback": "Con lập $HF\\cdot HE = HB\\cdot HC$; tích đúng ghép hai đoạn trên cùng một đường cao: $HB\\cdot HE = HC\\cdot HF$."
             }
           ],
           "solution": "$HC\\cdot HF = HB\\cdot HE = 6\\cdot 2 = 12$ ⇒ $HF = \\dfrac{12}{4} = 3$ (cm)."
@@ -859,7 +859,7 @@
           "feedback": "$EF$ không song song với $BC$, nên không có cặp góc đồng vị; lí do không khớp."
         }
       ],
-      "solution": "$\\triangle ABE \\backsim \\triangle ACF$ (g.g) ⇒ $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$ ⇒ $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$; cùng với $\\widehat A$ chung ⇒ $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c). Hai dòng “góc chung” và “chứng minh trên” đổi chỗ được."
+      "solution": "$\\triangle ABE \\backsim \\triangle ACF$ (g.g) ⇒ $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$ ⇒ $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$ (đổi chỗ hai trung tỉ $AF$ và $AB$ của tỉ lệ thức trên); cùng với $\\widehat A$ chung ⇒ $\\triangle AEF \\backsim \\triangle ABC$ (c.g.c). Hai dòng “góc chung” và “chứng minh trên” đổi chỗ được."
     },
     {
       "id": "f3-dongdang-x7",

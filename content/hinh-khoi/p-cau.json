@@ -567,8 +567,8 @@
       "mistakes": [
         {
           "answer": "77,87",
-          "code": "E08",
-          "feedback": "Vỏ bao quanh cả hai phía nên đường kính ruột giảm hai lần độ dày vỏ."
+          "code": "E07",
+          "feedback": "Vỏ bao quanh ruột về mọi phía nên bán kính ruột giảm đúng bằng độ dày vỏ, tức đường kính giảm hai lần độ dày vỏ."
         },
         {
           "answer": "84",

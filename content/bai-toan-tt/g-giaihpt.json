@@ -9,7 +9,7 @@
   "theory": [
     "**Cần nhớ trước:** chuyển vế phải đổi dấu; nhân hai vế với cùng một số khác $0$ (giải phương trình bậc nhất một ẩn, lớp 8). Đây là bài mở đầu mạch **giải bài toán bằng cách lập phương trình, hệ phương trình**.",
     "**Quy tắc:** phương trình bậc nhất hai ẩn $ax+by=c$ ($a$, $b$ không cùng bằng $0$) có nghiệm là một **cặp số** $(x_0;y_0)$ làm đẳng thức đúng. Nghiệm của hệ là cặp số thỏa **cả hai** phương trình. **Thế:** rút một ẩn từ một phương trình, thế vào phương trình **còn lại**. **Cộng đại số:** nhân hai vế để hệ số của một ẩn bằng nhau (thì trừ) hoặc đối nhau (thì cộng) vế theo vế.",
-    "**Vì sao:** cả hai cách đều để **khử một ẩn**, đưa về phương trình một ẩn đã biết giải; tìm được ẩn này rồi thế lại để tìm ẩn kia. **Số nghiệm** (các hệ số khác $0$): $\\frac{a}{a'} \\ne \\frac{b}{b'}$ → nghiệm duy nhất; $\\frac{a}{a'} = \\frac{b}{b'} \\ne \\frac{c}{c'}$ → vô nghiệm; $\\frac{a}{a'} = \\frac{b}{b'} = \\frac{c}{c'}$ → vô số nghiệm.",
+    "**Vì sao:** cả hai cách đều **khử một ẩn** để về phương trình một ẩn; có ẩn này rồi thế lại tìm ẩn kia. Khử xong mà còn $0x=c$: $c \\ne 0$ → **vô nghiệm**, $c=0$ → **vô số nghiệm**. Đếm nhanh (các hệ số khác $0$): $\\frac{a}{a'} \\ne \\frac{b}{b'}$ → nghiệm duy nhất; $\\frac{a}{a'} = \\frac{b}{b'} \\ne \\frac{c}{c'}$ → vô nghiệm; $\\frac{a}{a'} = \\frac{b}{b'} = \\frac{c}{c'}$ → vô số nghiệm. Lí do: khi $\\frac{a}{a'} = \\frac{b}{b'}$, nhân phương trình thứ hai với tỉ số đó thì hai vế trái trùng nhau.",
     "**Bẫy hay gặp:** $(3x+2y)-(3x-y)=3y$, không phải $y$. Nhân hai vế: $2(x+3y)=2 \\cdot 5$ cho $2x+6y=10$, không phải $2x+3y=10$ hay $2x+6y=5$. Thế ngược vào chính phương trình vừa rút chỉ được $1=1$, không tìm ra gì. Đặt $u=\\frac1x$ phải có $x \\ne 0$; tìm được $u$ rồi còn phải đổi lại $x=\\frac1u$.",
     "**Nhận dạng:** có ẩn với hệ số $1$ hoặc $-1$ → **thế**. Hệ số của một ẩn bằng nhau, đối nhau hoặc dễ nhân cho bằng → **cộng đại số**. Có ngoặc, phân số → bỏ ngoặc, quy đồng về dạng $ax+by=c$ trước. Ẩn nằm ở mẫu dạng $\\frac1x$, $\\frac1y$ → **đặt ẩn phụ**. Đề chỉ hỏi số nghiệm → so các tỉ số hệ số, **không** cần giải.",
     "**Thẻ bài toán thực tế:** hệ đến từ bài toán thì lập bảng **đại lượng – ẩn – biểu thức**, ví dụ: thời gian làm một mình – $x$ (giờ) – mỗi giờ làm $\\frac1x$ công việc. Checklist: (1) **đơn vị** thống nhất; (2) **điều kiện** của ẩn ($x>0$; $x \\ne 0$ khi đặt $u=\\frac1x$); (3) mỗi **quan hệ** → một phương trình; (4) **thử lại** vào cả hai phương trình, viết **Kết luận** đủ cặp $(x;y)$."
@@ -930,11 +930,11 @@
       "correct": 2,
       "mistakes": {
         "0": {
-          "code": "E11",
+          "code": "E04",
           "feedback": "Con mới thay vào phương trình thứ nhất; $(3;1)$ còn phải thỏa phương trình thứ hai với cùng giá trị $m$."
         },
         "1": {
-          "code": "E11",
+          "code": "E04",
           "feedback": "Con mới thay vào phương trình thứ hai; $(3;1)$ còn phải thỏa phương trình thứ nhất với cùng giá trị $m$."
         },
         "3": {

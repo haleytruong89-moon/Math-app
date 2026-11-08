@@ -323,7 +323,7 @@
               },
               {
                 "answer": "-56/25",
-                "code": "E02",
+                "code": "E01",
                 "feedback": "Chia tử cho mẫu chứ không nhân: chia cho phân số là nhân với phân số đảo ngược."
               }
             ],
@@ -553,7 +553,7 @@
           "feedback": "Con thay $x$ vào chỗ $\\sqrt x$; tìm $x$ rồi tính $\\sqrt x$ riêng."
         }
       ],
-      "solution": "$(x-5)^3=64=4^3 \\iff x-5=4 \\iff x=9$, thỏa điều kiện. $\\sqrt x=3$; $A=\\dfrac{9-3+1}{3-1}=\\dfrac72$."
+      "solution": "$(x-5)^3=64=4^3 \\iff x-5=4 \\iff x=9$, thỏa điều kiện. $\\sqrt x=3$; $A=\\dfrac{9-3+1}{3-1}=\\dfrac72$. (Điều kiện $x \\ne 4$ giữ như đề gốc, dành cho biểu thức ở ý sau; $x=9$ thỏa mọi điều kiện.) Kết luận: $A=\\dfrac72$."
     },
     {
       "id": "c-coban-x7",

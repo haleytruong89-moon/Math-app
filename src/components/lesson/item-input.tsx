@@ -134,22 +134,45 @@ export function unreadable(item: PublicItem, value: string, parse: (s: string) =
   return item.type === "numeric" && !!value.trim() && parse(value) === null;
 }
 
+/**
+ * Multi-step answer for the exit test and the review session. Steps open one at a time (audit 08/11): a later step's
+ * prompt or options can name an earlier step's answer, so step k+1 shows only after "Bước tiếp" and step k is then
+ * locked. Once the item is answered (disabled) every step shows. An answer typed earlier (restored value) opens as
+ * many steps as it fills.
+ */
 function StepsInput({ item, value, onChange, disabled }: { item: PublicItem; value: string; onChange: (v: string) => void; disabled?: boolean }) {
   const parts = stepParts(item, value);
+  const steps = item.steps!;
+  const filled = parts.findIndex((p, i) => isBlank(steps[i].item, p));
+  const [open, setOpen] = useState(() => Math.max(1, filled === -1 ? steps.length : filled + 1));
+  const shown = disabled ? steps.length : Math.min(open, steps.length);
   return (
     <ol className="mt-3 flex flex-col gap-3" data-testid="steps-input">
-      {item.steps!.map((st, i) => (
+      {steps.slice(0, shown).map((st, i) => (
         <li key={st.item.id} className="rounded-lg border border-border p-3">
           <p className="font-mono text-[11px] text-muted">Bước {i + 1}</p>
           <Rich as="div" html={st.promptHtml} className="mt-1 leading-relaxed" />
           <ItemInput
             item={st.item}
             value={parts[i]}
-            disabled={disabled}
+            disabled={disabled || i < shown - 1}
             onChange={(v) => onChange(parts.map((p, j) => (j === i ? v.replaceAll(SEP, "") : p)).join(SEP))}
           />
         </li>
       ))}
+      {!disabled && shown < steps.length && (
+        <li className="list-none">
+          <button
+            type="button"
+            disabled={isBlank(steps[shown - 1].item, parts[shown - 1])}
+            onClick={() => setOpen(shown + 1)}
+            className="rounded-lg border border-accent px-3 py-1.5 text-sm font-semibold text-accent disabled:opacity-50"
+            data-testid="step-next"
+          >
+            Bước tiếp → (bước {shown} sẽ khoá lại)
+          </button>
+        </li>
+      )}
     </ol>
   );
 }

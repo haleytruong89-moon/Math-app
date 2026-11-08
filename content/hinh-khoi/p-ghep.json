@@ -10,7 +10,7 @@
     "**Cần nhớ trước:** bài **Hình trụ & hình nón** ($V=\\pi r^2h$; $V_{\\text{nón}}=\\dfrac13\\pi r^2h$; $S_{xq}=2\\pi rh$; $S_{xq\\,\\text{nón}}=\\pi rl$, $l=\\sqrt{r^2+h^2}$) và bài **Hình cầu & bán cầu** ($V=\\dfrac43\\pi R^3$, $S=4\\pi R^2$; nửa cầu: $V=\\dfrac23\\pi R^3$, mặt cong $2\\pi R^2$).",
     "**Quy tắc:** thể tích vật ghép $=$ **tổng** thể tích các khối; thể tích còn lại $=$ khối lớn **trừ** phần khoét. Diện tích cần sơn / vật liệu $=$ tổng các mặt **lộ ra**: mặt hai khối dán vào nhau không tính; khoét lỗ thì trừ miệng lỗ, cộng mặt trong lỗ. Nước dâng: $\\pi r^2 \\cdot \\Delta h = V_{\\text{vật chìm}}$. Đơn vị: $1$ lít $=1$ dm³ $=1000$ cm³; $1$ m³ $=1000$ lít.",
     "**Vì sao:** thể tích là chỗ chiếm trong không gian nên ghép thì cộng, khoét thì trừ. Sơn chỉ phủ được mặt nhìn thấy; chỗ hai khối dán khít bị che kín. Vật chìm đẩy nước lên đúng bằng thể tích của nó, phần nước dâng là một hình trụ cùng đáy với cốc.",
-    "**Bẫy hay gặp:** dùng đường kính làm bán kính (kết quả thể tích gấp $8$ lần); cộng mặt tiếp giáp vào diện tích; quên trừ phần khoét; dùng cả mặt cầu $4\\pi R^2$ cho nửa cầu; đổi $1$ m³ thành $100$ lít; thay $\\pi\\approx3{,}14$ và làm tròn từng phần quá sớm.",
+    "**Bẫy hay gặp:** dùng đường kính làm bán kính (thể tích hình trụ, hình nón thành gấp $4$ lần, hình cầu gấp $8$ lần); cộng mặt tiếp giáp vào diện tích; quên trừ phần khoét; dùng cả mặt cầu $4\\pi R^2$ cho nửa cầu; đổi $1$ m³ thành $100$ lít; thay $\\pi\\approx3{,}14$ và làm tròn từng phần quá sớm.",
     "**Nhận dạng:** “gồm … và …”, “phía trên là nửa hình cầu” → cộng; “khoét, khoan, đục” → trừ; “thả vào cốc nước” → nước dâng / tràn; “sơn, tôn, vật liệu” → diện tích mặt lộ ra; “bao nhiêu lít, bao nhiêu ngày, bao nhiêu tiền” → đổi đơn vị rồi chia / nhân. **Không** cần bài này khi vật chỉ là một khối: dùng thẳng công thức của bài trước.",
     "**Phiếu bài thực tế:** (1) vẽ / tách vật thành các khối; (2) đổi đường kính ra bán kính; (3) lập bảng: khối – công thức – kết quả theo $\\pi$; (4) cộng hoặc trừ, liệt kê từng mặt lộ ra nếu tính diện tích; (5) đổi về đơn vị đề hỏi; (6) thay $\\pi\\approx3{,}14$ và làm tròn **ở bước cuối**; (7) viết **Kết luận**."
   ],
@@ -101,8 +101,8 @@
             },
             {
               "answer": "√52",
-              "code": "E08",
-              "feedback": "Đề cho **đường kính** $6$ cm; bán kính là $3$ cm."
+              "code": "E10",
+              "feedback": "Con lấy đường kính $6$ cm làm bán kính; bán kính bằng nửa đường kính."
             }
           ],
           "solution": "$l=\\sqrt{3^2+4^2}=5$ (cm)."
@@ -151,7 +151,7 @@
         "Đổi đường kính ra bán kính, rồi dùng $\\pi r^2h$ và $\\dfrac13\\pi r^2h$."
       ],
       "figure": {
-        "svg": "<svg viewBox=\"0 0 230 236\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M62 126 L110 62 L158 126 L158 206 A48 12 0 0 1 62 206 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M62 126 L62 206 M158 126 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 0 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 1 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 A48 12 0 0 0 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 126 A48 12 0 0 1 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 L110 62 L158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"110\" y=\"232\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">6 cm</text><path d=\"M110 62 L110 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"116\" y=\"100\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M176 126 L176 206 M171 126 L181 126 M171 206 L181 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"184\" y=\"170\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">5 cm</text></svg>",
+        "svg": "<svg viewBox=\"0 0 230 236\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M62 126 L110 62 L158 126 L158 206 A48 12 0 0 1 62 206 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M62 126 L62 206 M158 126 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 0 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 A48 12 0 0 1 158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 A48 12 0 0 0 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 126 A48 12 0 0 1 158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M62 126 L110 62 L158 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M62 206 L158 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"110\" y=\"232\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">6 cm</text><path d=\"M110 62 L110 126\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M176 62 L176 126 M171 62 L181 62\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"184\" y=\"98\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M176 126 L176 206 M171 126 L181 126 M171 206 L181 206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"184\" y=\"170\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">5 cm</text></svg>",
         "alt": "Hình trụ đường kính đáy 6 cm, cao 5 cm; phía trên là hình nón cao 4 cm cùng đáy."
       },
       "answer": "57",
@@ -240,7 +240,7 @@
         "Cộng: xung quanh trụ $2\\pi rh$, mặt cong nửa cầu $2\\pi R^2$, đáy dưới $\\pi r^2$."
       ],
       "figure": {
-        "svg": "<svg viewBox=\"0 0 220 240\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 120 A36 36 0 0 1 136 120 L136 210 A36 9 0 0 1 64 210 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M64 120 L64 210 M136 120 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 0 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 1 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 9 0 0 0 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 120 A36 9 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 36 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M100 120 L100 84\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"105\" y=\"106\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M100 210 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"233\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">bán kính 4 cm</text><path d=\"M154 120 L154 210 M149 120 L159 120 M149 210 L159 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"162\" y=\"168\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">10 cm</text></svg>",
+        "svg": "<svg viewBox=\"0 0 220 240\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 120 A36 36 0 0 1 136 120 L136 210 A36 9 0 0 1 64 210 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M64 120 L64 210 M136 120 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 0 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 210 A36 9 0 0 1 136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 9 0 0 0 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M64 120 A36 9 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M64 120 A36 36 0 0 1 136 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M100 120 L100 84\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M154 84 L154 120 M149 84 L159 84\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"162\" y=\"106\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">4 cm</text><path d=\"M100 210 L136 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"233\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">bán kính 4 cm</text><path d=\"M154 120 L154 210 M149 120 L159 120 M149 210 L159 210\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"162\" y=\"168\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">10 cm</text></svg>",
         "alt": "Hình trụ bán kính 4 cm, cao 10 cm; phía trên là nửa hình cầu bán kính 4 cm."
       },
       "answer": "128",
@@ -285,7 +285,7 @@
         },
         {
           "answer": "1/2",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Đề cho **đường kính** $8$ cm; bán kính là $4$ cm."
         },
         {
@@ -318,7 +318,7 @@
             "mistakes": [
               {
                 "answer": "2,16",
-                "code": "E08",
+                "code": "E10",
                 "feedback": "Đề cho **đường kính** $1{,}2$ m; bán kính là $0{,}6$ m."
               },
               {
@@ -368,7 +368,7 @@
               {
                 "answer": "15",
                 "code": "E14",
-                "feedback": "Ngày thứ $15$ không còn đủ $120$ lít; số ngày trọn vẹn phải lấy phần nguyên."
+                "feedback": "Con làm tròn lên; phần lẻ của phép chia không đủ dùng trọn một ngày nên chỉ lấy phần nguyên."
               },
               {
                 "answer": "14,13",
@@ -394,7 +394,7 @@
         "Số que bằng thể tích hộp chia thể tích một que, rồi lấy phần nguyên."
       ],
       "figure": {
-        "svg": "<svg viewBox=\"0 0 190 226\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M48 74 A42 42 0 0 1 132 74 L90 214 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M48 74 L90 214 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 0 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M48 74 A42 42 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"138\" y=\"78\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">6 cm</text><path d=\"M90 74 L90 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M34 74 L34 214 M30 74 L38 74 M30 214 L38 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"30\" y=\"148\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">10 cm</text></svg>",
+        "svg": "<svg viewBox=\"-8 0 198 226\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M48 74 A42 42 0 0 1 132 74 L90 214 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M48 74 L90 214 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 0 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 A42 10 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M48 74 A42 42 0 0 1 132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M48 74 L132 74\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"138\" y=\"78\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">6 cm</text><path d=\"M90 74 L90 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><path d=\"M34 74 L34 214 M30 74 L38 74 M30 214 L38 214\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"30\" y=\"148\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">10 cm</text></svg>",
         "alt": "Bánh ốc quế hình nón cao 10 cm, đường kính miệng 6 cm, phía trên là nửa hình cầu kem."
       },
       "steps": [
@@ -409,7 +409,7 @@
             "mistakes": [
               {
                 "answer": "3024",
-                "code": "E08",
+                "code": "E10",
                 "feedback": "Đề cho **đường kính** $12$ cm; bán kính là $6$ cm."
               }
             ],
@@ -459,7 +459,7 @@
               {
                 "answer": "16",
                 "code": "E14",
-                "feedback": "Que thứ $16$ không đủ kem; số que đầy đủ phải lấy phần nguyên, không làm tròn lên."
+                "feedback": "Con làm tròn lên; phần lẻ của phép chia không đủ một que đầy đủ nên chỉ lấy phần nguyên."
               },
               {
                 "answer": "15,75",
@@ -485,7 +485,7 @@
         "Liệt kê từng mặt, tính theo $\\pi$, cộng lại rồi mới thay $\\pi\\approx3{,}14$."
       ],
       "figure": {
-        "svg": "<svg viewBox=\"0 0 220 230\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 46 L50 196 A50 12 0 0 0 150 196 L150 46 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M50 46 L50 196 M150 46 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 0 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 1 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M50 46 A50 12 0 0 0 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 46 A50 12 0 0 1 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 0 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 1 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 L80 106 M120 46 L120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 0 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 1 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"30\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">8 cm</text><text x=\"100\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">12 cm</text><path d=\"M50 196 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"222\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">20 cm</text><path d=\"M164 46 L164 196 M159 46 L169 46 M159 196 L169 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"172\" y=\"124\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">30 cm</text></svg>",
+        "svg": "<svg viewBox=\"0 0 220 230\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 46 L50 196 A50 12 0 0 0 150 196 L150 46 Z\" fill=\"var(--accent)\" fill-opacity=\"0.1\" stroke=\"none\"/><path d=\"M50 46 L50 196 M150 46 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 0 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 196 A50 12 0 0 1 150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><path d=\"M50 46 A50 12 0 0 0 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M50 46 A50 12 0 0 1 150 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 0 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 A20 5 0 0 1 120 46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M80 46 L80 106 M120 46 L120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 0 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 106 A20 5 0 0 1 120 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><path d=\"M80 44 L80 22 M120 44 L120 22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"0.8\"/><path d=\"M80 25 L120 25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"100\" y=\"18\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">8 cm</text><text x=\"100\" y=\"80\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">12 cm</text><path d=\"M50 196 L150 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"100\" y=\"222\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">20 cm</text><path d=\"M164 46 L164 196 M159 46 L169 46 M159 196 L169 196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"172\" y=\"124\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">30 cm</text></svg>",
         "alt": "Khối trụ đường kính 20 cm, cao 30 cm; giữa mặt trên có lỗ hình trụ đường kính 8 cm, sâu 12 cm."
       },
       "steps": [
@@ -638,7 +638,7 @@
       "mistakes": [
         {
           "answer": "776",
-          "code": "E08",
+          "code": "E04",
           "feedback": "Rãnh chỉ là **nửa** hình trụ: lấy một nửa của $\\pi r^2h$."
         },
         {
@@ -680,7 +680,7 @@
           "review": "p-trunon"
         }
       ],
-      "solution": "$l=\\sqrt{0{,}6^2+0{,}8^2}=1$ m. Đáy: $0{,}36\\pi$; thân: $2\\pi\\cdot0{,}6\\cdot1=1{,}2\\pi$; nắp: $\\pi\\cdot0{,}6\\cdot1=0{,}6\\pi$. Tổng $2{,}16\\pi\\approx6{,}7824$ m²; cộng $10\\%$: $7{,}46\\approx7{,}5$ m²."
+      "solution": "$l=\\sqrt{0{,}6^2+0{,}8^2}=1$ m. Đáy: $0{,}36\\pi$; thân: $2\\pi\\cdot0{,}6\\cdot1=1{,}2\\pi$; nắp: $\\pi\\cdot0{,}6\\cdot1=0{,}6\\pi$. Tổng $2{,}16\\pi\\approx6{,}7824$ m²; cộng $10\\%$: $6{,}7824\\cdot1{,}1=7{,}46064\\approx7{,}5$ m²."
     },
     {
       "id": "p-ghep-x5",
@@ -692,7 +692,7 @@
       "mistakes": [
         {
           "answer": "64",
-          "code": "E08",
+          "code": "E10",
           "feedback": "Đề cho **đường kính** $2$ cm; bán kính là $1$ cm."
         },
         {
@@ -738,7 +738,7 @@
               },
               {
                 "answer": "288",
-                "code": "E08",
+                "code": "E10",
                 "feedback": "Đề cho **đường kính** $8$ m; bán kính là $4$ m."
               }
             ],
@@ -811,7 +811,7 @@
             "mistakes": [
               {
                 "answer": "0,42",
-                "code": "E08",
+                "code": "E10",
                 "feedback": "Đề cho **đường kính** $20$ cm; bán kính là $10$ cm."
               },
               {

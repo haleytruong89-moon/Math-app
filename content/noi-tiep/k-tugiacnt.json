@@ -12,11 +12,11 @@
   },
   "theory": [
     "**Cần nhớ trước** (bài *Góc nội tiếp*): hai góc nội tiếp cùng chắn một cung thì bằng nhau; góc nội tiếp chắn nửa đường tròn bằng $90^\\circ$. **Định nghĩa:** tứ giác có bốn đỉnh cùng nằm trên một đường tròn là **tứ giác nội tiếp**. **Tính chất:** tứ giác nội tiếp có tổng hai góc đối bằng $180^\\circ$.",
-    "**Bốn dấu hiệu** (tứ giác $ABCD$ nội tiếp nếu có một trong bốn điều): (1) tổng hai góc **đối** bằng $180^\\circ$, như $\\widehat A+\\widehat C=180^\\circ$; (2) hai đỉnh **kề** $C$, $D$ cùng nhìn cạnh $AB$ dưới hai góc bằng nhau ($\\widehat{ACB}=\\widehat{ADB}$) — hay gặp nhất là cùng nhìn dưới góc $90^\\circ$: khi đó bốn điểm thuộc đường tròn **đường kính $AB$**; (3) góc ngoài tại một đỉnh bằng góc trong tại đỉnh **đối**; (4) bốn đỉnh cách đều một điểm $I$.",
+    "**Bốn dấu hiệu** ($ABCD$ nội tiếp nếu có một trong bốn điều): (1) tổng hai góc **đối** bằng $180^\\circ$; (2) hai đỉnh **kề** $C$, $D$ cùng nhìn cạnh $AB$ dưới góc **vuông** ($\\widehat{ACB}=\\widehat{ADB}=90^\\circ$): bốn điểm thuộc đường tròn **đường kính $AB$**; (3) góc ngoài tại một đỉnh bằng góc trong tại đỉnh **đối**; (4) bốn đỉnh cách đều một điểm. Dấu hiệu (2) chỉ dùng với góc vuông (SGK mới không học trường hợp góc bất kì).",
     "**Vì sao:** hai góc đối là hai góc nội tiếp chắn hai cung ghép lại thành cả đường tròn, nên tổng bằng nửa của $360^\\circ$, tức $180^\\circ$. Góc ngoài tại một đỉnh bù với góc trong tại đỉnh đó, nên dấu hiệu (3) chính là dấu hiệu (1). Nếu $\\widehat{ACB}=90^\\circ$ thì $C$ cách trung điểm của $AB$ một khoảng bằng nửa $AB$ (trung tuyến ứng với cạnh huyền), tức $C$ nằm trên đường tròn đường kính $AB$.",
     "**Bẫy hay gặp:** (1) cộng hai góc **kề**: hình thang vuông $ABCD$ ($\\widehat A=\\widehat D=90^\\circ$, không là hình chữ nhật) **không** nội tiếp dù $\\widehat A+\\widehat D=180^\\circ$; (2) đọc sai thứ tự đỉnh: trong tứ giác $BCEF$, $E$ và $F$ là hai đỉnh **kề**, nên hai góc vuông $\\widehat{BEC}$, $\\widehat{BFC}$ dùng dấu hiệu (2), không phải “tổng hai góc đối”; (3) lấy điều cần chứng minh, hoặc hệ quả của nó, làm lí do.",
-    "**Nhận dạng:** đề hỏi “tứ giác … nội tiếp” hoặc “bốn điểm … cùng thuộc một đường tròn” → tìm **hai góc vuông** (đường cao, hình chiếu, góc chắn nửa đường tròn, tiếp tuyến ⊥ bán kính): ở hai đỉnh **đối** → dấu hiệu (1); ở hai đỉnh **kề** cùng nhìn một cạnh → dấu hiệu (2). **Câu b thường là ứng dụng:** nội tiếp ⇒ góc bằng nhau ⇒ đồng dạng (g.g) ⇒ đẳng thức tích. **Không** cần cách này khi đề chỉ hỏi độ dài tính được bằng Pythagore.",
-    "**Thẻ cấu hình đề thi:** (a) ba đường cao $AD$, $BE$, $CF$ cắt nhau tại $H$: $AEHF$, $BFHD$, $CDHE$ nội tiếp (dấu hiệu 1, tâm: trung điểm $AH$, $BH$, $CH$); $BCEF$, $CAFD$, $ABDE$ nội tiếp (dấu hiệu 2, tâm: trung điểm $BC$, $CA$, $AB$). (b) Hai tiếp tuyến $MA$, $MB$ của $(O)$: $\\widehat{MAO}=\\widehat{MBO}=90^\\circ$ ⇒ $MAOB$ nội tiếp, đường kính $MO$. (c) Điểm $M$ trên đường tròn đường kính $AB$ ($\\widehat{AMB}=90^\\circ$) và một đường vuông góc với $AB$ → tìm hai góc vuông đối nhau."
+    "**Nhận dạng:** đề hỏi “tứ giác … nội tiếp” / “bốn điểm … cùng thuộc một đường tròn” → tìm **hai góc vuông** (đường cao, hình chiếu, góc chắn nửa đường tròn, tiếp tuyến ⊥ bán kính): ở hai đỉnh **đối** → dấu hiệu (1); ở hai đỉnh **kề** → dấu hiệu (2). **Câu b** thường: nội tiếp ⇒ góc bằng nhau ⇒ đồng dạng ⇒ đẳng thức tích. **Không** cần cách này khi chỉ tính độ dài bằng Pythagore.",
+    "**Thẻ cấu hình đề thi:** (a) ba đường cao $AD$, $BE$, $CF$ cắt nhau tại $H$: $AEHF$, $BFHD$, $CDHE$ nội tiếp (dấu hiệu 1, tâm: trung điểm $AH$, $BH$, $CH$); $BCEF$, $CAFD$, $ABDE$ nội tiếp (dấu hiệu 2, tâm: trung điểm $BC$, $CA$, $AB$). (b) Hai tiếp tuyến $MA$, $MB$ ($MA \\perp OA$, $MB \\perp OB$) ⇒ $MAOB$ nội tiếp, đường kính $MO$. (c) $M$ trên đường tròn đường kính $AB$ và một đường thẳng $\\perp AB$ → tìm hai góc vuông đối nhau."
   ],
   "worked": {
     "problem": "Cho $\\triangle ABC$ nhọn có hai đường cao $BE$, $CF$ ($E \\in AC$, $F \\in AB$). Chứng minh tứ giác $BCEF$ nội tiếp, rồi suy ra $\\widehat{AEF}=\\widehat{ABC}$.",
@@ -611,7 +611,7 @@
             "id": "k-tugiacnt-p8-s3",
             "type": "mcq",
             "level": "L2",
-            "prompt": "Xét $\\triangle AEF$ và $\\triangle ABC$: $\\widehat A$ chung, $\\widehat{AEF}=\\widehat{ABC}$. Suy ra:",
+            "prompt": "Xét $\\triangle AEF$ và $\\triangle ABC$: $\\widehat A$ chung và cặp góc bằng nhau vừa tìm ở bước 2. Suy ra:",
             "options": [
               "$\\triangle AEF \\backsim \\triangle ACB$ (g.g)",
               "$\\triangle AEF \\backsim \\triangle ABC$ (c.g.c)",
@@ -1023,7 +1023,7 @@
           "feedback": "Con lật ngược tỉ số: $I$ nằm trên đoạn $BD$ nên $BI$ phải nhỏ hơn $BD = 8$ cm."
         }
       ],
-      "solution": "$\\widehat{BDC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn) và $\\widehat{IHC}=90^\\circ$ ⇒ tứ giác $IHCD$ nội tiếp. Xét $\\triangle BHI$ và $\\triangle BDC$: $\\widehat B$ chung, $\\widehat{BHI}=\\widehat{BDC}=90^\\circ$ ⇒ $\\triangle BHI \\backsim \\triangle BDC$ (g.g) ⇒ $\\dfrac{BH}{BD}=\\dfrac{BI}{BC}$ ⇒ $BI\\cdot BD = BH\\cdot BC = 40$ ⇒ $BI = 5$ cm."
+      "solution": "$\\widehat{BDC}=90^\\circ$ (góc nội tiếp chắn nửa đường tròn). Xét $\\triangle BHI$ và $\\triangle BDC$: $\\widehat B$ chung, $\\widehat{BHI}=\\widehat{BDC}=90^\\circ$ ⇒ $\\triangle BHI \\backsim \\triangle BDC$ (g.g) ⇒ $\\dfrac{BH}{BD}=\\dfrac{BI}{BC}$ ⇒ $BI\\cdot BD = BH\\cdot BC = 4\\cdot 10 = 40$ ⇒ $BI = \\dfrac{40}{8} = 5$ (cm). (Cách theo ý a của đề gốc: tứ giác $IHCD$ nội tiếp vì $\\widehat{IHC}+\\widehat{IDC}=180^\\circ$, nên góc ngoài $\\widehat{BIH}$ bằng góc trong $\\widehat{BCD}$; cùng $\\widehat B$ chung cũng cho $\\triangle BHI \\backsim \\triangle BDC$.)"
     }
   ]
 }

@@ -261,7 +261,7 @@
       "level": "L2",
       "prompt": "Với $x \\ge 0$, rút gọn đến tận cùng $\\dfrac{x-1}{\\sqrt x+1}$.",
       "hints": [
-        "Đề hỏi: viết biểu thức gọn nhất, không còn phân số.",
+        "Đề hỏi: viết biểu thức gọn nhất.",
         "Tử $x-1$ có viết được thành tích chứa $\\sqrt x+1$ không?",
         "Với $x \\ge 0$ thì $x=(\\sqrt x)^2$: dùng hiệu hai bình phương cho tử rồi giản ước."
       ],
@@ -403,7 +403,7 @@
             "id": "c-truccan-p7-s1",
             "type": "mcq",
             "level": "L3",
-            "prompt": "Mẫu chung của $\\dfrac{1}{3-\\sqrt x}$ và $\\dfrac{1}{\\sqrt x+3}$ là:",
+            "prompt": "Lấy mẫu chung là tích hai mẫu. Tích $(3-\\sqrt x)(\\sqrt x+3)$ bằng:",
             "options": [
               "$x-9$",
               "$9+x$",
@@ -414,7 +414,7 @@
             "mistakes": {
               "0": {
                 "code": "E02",
-                "feedback": "$(3-\\sqrt x)(3+\\sqrt x)$: số hạng đứng trước là $3$, nên bình phương của $3$ đứng trước trong hiệu."
+                "feedback": "$(3-\\sqrt x)(3+\\sqrt x)$: số hạng đứng trước là $3$, nên bình phương của $3$ đứng trước trong hiệu hai bình phương."
               },
               "1": {
                 "code": "E03",

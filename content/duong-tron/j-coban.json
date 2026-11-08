@@ -12,8 +12,8 @@
   },
   "theory": [
     "**Cần nhớ trước:** định lí **Pythagore** (lớp 8) — trong tam giác vuông, bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông. Bộ số hay gặp: $3$–$4$–$5$, $6$–$8$–$10$, $5$–$12$–$13$ (số lớn nhất là cạnh huyền).",
-    "**Quy tắc:** đường tròn $(O;R)$ gồm các điểm cách $O$ đúng $R$. Điểm $M$ nằm trong / trên / ngoài đường tròn khi $OM<R$ / $OM=R$ / $OM>R$. **Dây** nối hai điểm của đường tròn; đường kính $2R$ là dây lớn nhất. Kẻ $OH \\perp AB$ thì $H$ là trung điểm dây và $OH^2+\\left(\\frac{AB}{2}\\right)^2=R^2$. Hai dây bằng nhau $\\iff$ cách đều tâm. **Góc ở tâm** $\\widehat{AOB}$ bằng số đo cung nhỏ $AB$; cung lớn $=360^\\circ-$ cung nhỏ.",
-    "**Vì sao:** $OA=OB=R$ nên tam giác $OAB$ cân tại $O$; đường cao $OH$ cũng là trung tuyến, nên $H$ là trung điểm dây. Tam giác $OHA$ vuông tại $H$, cạnh huyền là **bán kính** $OA$. Ngược lại, đường kính đi qua trung điểm một dây **không qua tâm** thì vuông góc với dây đó. Dây càng gần tâm càng dài; khoảng cách bằng $0$ thì dây là đường kính.",
+    "**Quy tắc:** đường tròn $(O;R)$ gồm các điểm cách $O$ đúng $R$. Điểm $M$ nằm trong / trên / ngoài đường tròn khi $OM<R$ / $OM=R$ / $OM>R$. **Dây** nối hai điểm của đường tròn; đường kính $2R$ là dây lớn nhất. Kẻ $OH \\perp AB$ thì $H$ là trung điểm dây và $OH^2+\\left(\\frac{AB}{2}\\right)^2=R^2$. **Góc ở tâm** $\\widehat{AOB}$ bằng số đo cung nhỏ $AB$; cung lớn $=360^\\circ-$ cung nhỏ.",
+    "**Vì sao:** $OA=OB=R$ nên tam giác $OAB$ cân tại $O$; đường cao $OH$ cũng là trung tuyến, nên $H$ là trung điểm dây. Tam giác $OHA$ vuông tại $H$, cạnh huyền là **bán kính** $OA$. Ngược lại, đường kính đi qua trung điểm một dây **không qua tâm** thì vuông góc với dây đó. Từ $OH^2+\\left(\\frac{AB}{2}\\right)^2=R^2$: hai dây bằng nhau $\\iff$ cách đều tâm; dây càng gần tâm càng dài; khoảng cách bằng $0$ thì dây là đường kính.",
     "**Bẫy hay gặp:** (1) **Quên chia đôi dây**: $R=5$, $AB=8$ thì $OH=\\sqrt{5^2-4^2}=3$, không dùng $8$. (2) **Nhầm cạnh huyền**: cạnh huyền là $R$, nên $OH^2=R^2-AH^2$ (trừ), còn $R^2=OH^2+AH^2$ (cộng). (3) **Nhầm cung**: $\\widehat{AOB}=70^\\circ$ thì cung nhỏ $70^\\circ$, cung lớn $290^\\circ$. (4) So sánh $OM$ với **đường kính** thay vì bán kính.",
     "**Nhận dạng:** đề có “dây”, “khoảng cách từ tâm đến dây”, “bán kính” → kẻ $OH \\perp$ dây, xét tam giác vuông $OHA$. Đề có “góc ở tâm”, “số đo cung”, kim đồng hồ, nan hoa → góc ở tâm $=$ cung nhỏ; một vòng $360^\\circ$, mỗi số trên đồng hồ cách $30^\\circ$. **Không** coi $H$ là trung điểm khi $H$ chỉ là một điểm bất kì trên dây (chưa có $OH \\perp AB$).",
     "**Thẻ dây – khoảng cách – bán kính** ($l$: độ dài dây, $d$: khoảng cách từ tâm đến dây): $\\begin{array}{l|l} \\text{Biết } R,\\ d & l=2\\sqrt{R^2-d^2} \\\\ \\text{Biết } R,\\ l & d=\\sqrt{R^2-\\left(\\frac{l}{2}\\right)^2} \\\\ \\text{Biết } d,\\ l & R=\\sqrt{d^2+\\left(\\frac{l}{2}\\right)^2} \\end{array}$ Bộ $(d;\\ \\frac{l}{2};\\ R)$ đẹp: $(3;4;5)$, $(6;8;10)$, $(5;12;13)$. **Cung:** nhỏ $=$ góc ở tâm; lớn $=360^\\circ-$ nhỏ; nửa đường tròn $=180^\\circ$."
@@ -182,7 +182,7 @@
       "mistakes": [
         {
           "answer": "8",
-          "code": "E06",
+          "code": "E11",
           "feedback": "Con mới tính nửa dây $AH$; dây $AB=2AH$."
         },
         {
@@ -310,9 +310,14 @@
           "feedback": "$240^\\circ$ là phía lớn; đề lấy góc không quá $180^\\circ$, tức $360^\\circ$ trừ phía lớn."
         },
         {
-          "answer": "48",
+          "answer": "24",
           "code": "E03",
           "feedback": "Hai số liền nhau trên mặt đồng hồ cách $360^\\circ:12=30^\\circ$; $6^\\circ$ là góc của một vạch phút."
+        },
+        {
+          "answer": "150",
+          "code": "E10",
+          "feedback": "Con đếm số (8, 9, 10, 11, 12) thay vì đếm khoảng giữa hai số liền nhau; hãy đếm số khoảng $30^\\circ$."
         }
       ],
       "solution": "Mỗi khoảng giữa hai số liền nhau: $360^\\circ:12=30^\\circ$. Từ số $8$ đến số $12$ theo đường ngắn có $4$ khoảng: $4\\cdot 30^\\circ=120^\\circ$."
@@ -374,7 +379,7 @@
               },
               {
                 "answer": "√21",
-                "code": "E06",
+                "code": "E08",
                 "feedback": "Con dùng $AI$; trong tam giác vuông $OIC$ cạnh góc vuông là $OI$."
               }
             ],
@@ -393,7 +398,7 @@
             "mistakes": [
               {
                 "answer": "4",
-                "code": "E06",
+                "code": "E11",
                 "feedback": "Đường kính $AB \\perp CD$ nên $I$ là trung điểm $CD$: $CD=2CI$."
               }
             ],
@@ -470,6 +475,10 @@
       ],
       "correct": 3,
       "mistakes": {
+        "0": {
+          "code": "E04",
+          "feedback": "Dây có thể ngắn tùy ý: dây càng xa tâm càng ngắn. Chỉ có giới hạn trên là đường kính $2R$."
+        },
         "1": {
           "code": "E04",
           "feedback": "Dây có thể dài hơn bán kính; dây dài nhất là đường kính $2R$."
@@ -495,7 +504,7 @@
       "correct": 0,
       "mistakes": {
         "1": {
-          "code": "E06",
+          "code": "E11",
           "feedback": "Con mới tính nửa dây $AB$; dây $AB$ gấp đôi nửa dây."
         },
         "2": {
@@ -558,7 +567,7 @@
       "prompt": "Cho nửa đường tròn tâm $O$, đường kính $AB=2R$. Trên nửa đường tròn lấy điểm $M$ sao cho $MB=R$. Số đo cung $AM$ (cung nằm trên nửa đường tròn) là:",
       "source": "68 đề – Đề 51, Bài 4.2 (chuyển thể: tính số đo cung AM)",
       "figure": {
-        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 135\" role=\"img\" aria-label=\"Nửa đường tròn tâm O đường kính AB, điểm M với MB = R\"><path d=\"M 30 115 A 90 90 0 0 1 210 115\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"115\" x2=\"210\" y2=\"115\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"115\" x2=\"165\" y2=\"37.1\" stroke=\"var(--warn)\" stroke-width=\"1.5\"/><line x1=\"165\" y1=\"37.1\" x2=\"210\" y2=\"115\" stroke=\"var(--accent)\" stroke-width=\"2\"/><circle cx=\"30\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"210\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"165\" cy=\"37.1\" r=\"2.5\" fill=\"currentColor\"/><text x=\"24\" y=\"119\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"216\" y=\"119\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"130\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">O</text><text x=\"169\" y=\"30.1\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">M</text><text x=\"196.5\" y=\"73\" font-size=\"11\" text-anchor=\"start\" fill=\"var(--accent)\">R</text></svg>",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 135\" role=\"img\" aria-label=\"Nửa đường tròn tâm O đường kính AB, điểm M với MB = R\"><path d=\"M 30 115 A 90 90 0 0 1 210 115\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"30\" y1=\"115\" x2=\"210\" y2=\"115\" stroke=\"currentColor\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"115\" x2=\"165\" y2=\"37.1\" stroke=\"var(--warn)\" stroke-width=\"1.5\"/><line x1=\"165\" y1=\"37.1\" x2=\"210\" y2=\"115\" stroke=\"var(--accent)\" stroke-width=\"2\"/><circle cx=\"30\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"210\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"120\" cy=\"115\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"165\" cy=\"37.1\" r=\"2.5\" fill=\"currentColor\"/><text x=\"24\" y=\"119\" font-size=\"12\" text-anchor=\"end\" fill=\"currentColor\">A</text><text x=\"216\" y=\"119\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">B</text><text x=\"120\" y=\"130\" font-size=\"12\" text-anchor=\"middle\" fill=\"currentColor\">O</text><text x=\"169\" y=\"30.1\" font-size=\"12\" text-anchor=\"start\" fill=\"currentColor\">M</text><text x=\"183\" y=\"84\" font-size=\"11\" text-anchor=\"end\" fill=\"var(--accent)\">R</text></svg>",
         "alt": "Nửa đường tròn tâm O, đường kính AB nằm ngang; điểm M trên nửa đường tròn, gần B, với dây MB = R; nối OM."
       },
       "options": [
@@ -646,7 +655,7 @@
             "mistakes": [
               {
                 "answer": "3√3",
-                "code": "E06",
+                "code": "E11",
                 "feedback": "$OH \\perp BC$ nên $H$ là trung điểm $BC$: $BC=2BH$."
               },
               {
@@ -677,7 +686,7 @@
         },
         {
           "answer": "4√2",
-          "code": "E06",
+          "code": "E11",
           "feedback": "Đó là độ dài dây $BC$; khoảng cách là đoạn $OH \\perp BC$."
         }
       ],
