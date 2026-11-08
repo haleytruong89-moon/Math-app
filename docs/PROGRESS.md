@@ -45,7 +45,8 @@
 | Nội dung đợt 8 — e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang (nháp) | `p1-content-8` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
 | Nội dung đợt 9 — o-thanghang, o-nangcao, hq-amgm (nháp) | `p1-content-9` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) |
 | Nội dung đợt 10 — hq-doanhthu, hq-hinhhoc (nháp) | `p1-content-10` | ✅ Duyệt 08/11 (audit AI) — merged 08/11 (PR #53–#55) — **43/43 KU lõi đã duyệt** |
-| Audit AI đợt 3–6 (18 bài đã duyệt) + ô số hiểu "1.200" + câu nhiều bước mở từng bước | `p1-audit-2` | 🟡 08/11 PR mở — không SQL, không thay câu |
+| Audit AI đợt 3–6 (18 bài đã duyệt) + ô số hiểu "1.200" + câu nhiều bước mở từng bước | `p1-audit-2` | ✅ Merged 08/11 (PR #56) — không SQL, không thay câu |
+| Kế hoạch tới 8,5 — bảng mục tiêu, kiểm tra tiến bộ 2 tuần/lần, kế hoạch tuần của gia sư | `p1-plan-design` → `p1-slice-12` | 🟡 08/11 thiết kế (docs), chờ phụ huynh "làm" — lát A trước 22/11 |
 | S7 — Pilot (tài khoản Nguyên) | — | 🟡 Mốc học chính thức **12/10/2026**; chưa có báo cáo thực tế (phụ huynh) |
 | S5 — Hình học: Phân tích ngược, C3, C2, Sổ tay (C1 để sau) | `p1-slice-5` | ✅ Merged 22/10 (PR #33) — không SQL |
 | Luyện đề hình 4.2 — kho bài 4.2 thật (Đề 1–56), mở khi M3/★, 3 bài mới/tuần; đợt đầu 9 bài ý a (nháp) | `p1-ld42`, `p1-ld42-2`, `p1-approve-ld42` | ✅ Merged 23/10 (PR #42, #43); **phụ huynh duyệt 19 bài 23/10** (git, khoá đáp án như bài học) |
