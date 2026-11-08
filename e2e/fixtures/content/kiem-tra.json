@@ -1,0 +1,135 @@
+{
+  "target": {
+    "total": 8.5,
+    "groups": [
+      {
+        "key": "1",
+        "label": "Bài 1 · Thống kê, xác suất",
+        "max": 1.5,
+        "target": 1.5,
+        "units": [
+          "fa-1",
+          "fa-2"
+        ]
+      },
+      {
+        "key": "2",
+        "label": "Bài 2 · Căn thức",
+        "max": 1.5,
+        "target": 1.25,
+        "units": [
+          "fb-1"
+        ]
+      },
+      {
+        "key": "3",
+        "label": "Bài 3 · Bài toán thực tế, phương trình",
+        "max": 2.5,
+        "target": 2.5,
+        "units": [
+          "fb-2",
+          "fb-3"
+        ]
+      },
+      {
+        "key": "4.1",
+        "label": "Bài 4.1 · Hình khối thực tế",
+        "max": 1.0,
+        "target": 1.0,
+        "units": [
+          "fc-1"
+        ]
+      },
+      {
+        "key": "4.2",
+        "label": "Bài 4.2 · Hình phẳng, đường tròn",
+        "max": 3.0,
+        "target": 2.25,
+        "units": [
+          "fs-1",
+          "fg-1",
+          "fl-1"
+        ]
+      },
+      {
+        "key": "5",
+        "label": "Bài 5 · Tối ưu",
+        "max": 0.5,
+        "target": 0,
+        "units": [
+          "fd-1"
+        ]
+      }
+    ]
+  },
+  "tests": [
+    {
+      "n": 1,
+      "date": "2026-11-22",
+      "mode": "paper",
+      "minutes": 45,
+      "status": "draft",
+      "covers": "Giai đoạn 1 (fixture): Bài 1, Bài 3, Bài 4.1",
+      "problems": [
+        {
+          "bai": 1,
+          "text": [
+            "Bảng tần số ghép nhóm (fixture): $\\begin{array}{c|c|c} \\text{Nhóm} & [0;5) & [5;10) \\\\ \\hline n & 4 & 6 \\end{array}$",
+            "a) Tính tần số tương đối nhóm $[5;10)$. b) Xác suất chọn được bạn ở nhóm $[0;5)$."
+          ]
+        },
+        {
+          "bai": 3,
+          "text": [
+            "Hai vòi nước (fixture) … lập hệ phương trình."
+          ]
+        },
+        {
+          "bai": 4,
+          "text": [
+            "Một hộp sữa hình trụ (fixture) bán kính đáy $3$ cm …"
+          ]
+        }
+      ],
+      "parts": [
+        {
+          "part": "1.1",
+          "max": 0.75,
+          "answer": "$f=60\\%$",
+          "units": [
+            "fa-1"
+          ],
+          "source": "fixture"
+        },
+        {
+          "part": "1.2",
+          "max": 0.75,
+          "answer": "$P=\\dfrac{2}{5}$",
+          "units": [
+            "fa-2"
+          ],
+          "source": "fixture"
+        },
+        {
+          "part": "3.1",
+          "max": 1.25,
+          "answer": "$x=12,\\ y=24$",
+          "units": [
+            "fb-2",
+            "fb-3"
+          ],
+          "source": "fixture"
+        },
+        {
+          "part": "4.1",
+          "max": 1,
+          "answer": "$V=36\\pi$",
+          "units": [
+            "fc-1"
+          ],
+          "source": "fixture"
+        }
+      ]
+    }
+  ]
+}

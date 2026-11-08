@@ -15,12 +15,12 @@ try {
   await sql(`delete from public.mock_exams; delete from public.tutor_priorities; delete from public.review_queue;`);
   const sid = (await sql(`select id from public.students where full_name='Hạnh Nguyên'`))[0].id;
   await page.goto(`${BASE}/tutor/${sid}/thi-thu`);
-  ok("tutor tab Thi thử is active", (await page.getByRole("link", { name: /Thi thử/ }).count()) >= 1);
+  ok("tutor tab Kiểm tra is active", (await page.getByRole("link", { name: "Kiểm tra", exact: true }).count()) >= 1);
   ok("list shows the 12 papers", (await page.getByTestId("mock-list").locator("tbody tr").count()) === 12);
   ok("Đề 58 marked as without score sheet", (await page.getByTestId("mock-row-58").innerText()).includes("chưa có phiếu chấm"));
   ok("schedule form suggests Đề 57", (await page.getByTestId("mock-paper").inputValue()) === "57");
   await page.getByTestId("mock-date").fill(today);
-  await page.getByRole("button", { name: "Hẹn lịch" }).click();
+  await page.getByRole("region", { name: "Hẹn lịch thi thử" }).getByRole("button", { name: "Hẹn lịch" }).click();
   await page.getByText("Đã hẹn Đề 57").waitFor();
   const ex = await sql(`select paper, scheduled_on::text d, created_by from public.mock_exams`);
   ok("exam saved with date and tutor", ex.length === 1 && ex[0].paper === 57 && ex[0].d === today && ex[0].created_by === TUTOR, JSON.stringify(ex));

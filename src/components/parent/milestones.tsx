@@ -4,7 +4,7 @@ import type { MilestoneProgress, MilestoneUnit } from "@/lib/learning/milestones
 const dmy = (iso: string) => iso.split("-").reverse().join("/");
 const dm = (iso: string) => dmy(iso).slice(0, 5);
 
-/** S4b: progress to 8.5 / 9.5 (CURRICULUM.md §4). Server component, display only. */
+/** S4b: progress to 8.5 / 9.5 (CURRICULUM.md §4). Server component, display only. 08/11: 8,5 is the target; 9,5 is "nâng cao". */
 export function MilestoneCards({ progress, phase }: { progress: MilestoneProgress[]; phase: CurriculumPhase | null }) {
   return (
     <>
@@ -29,7 +29,10 @@ function Card({ m }: { m: MilestoneProgress }) {
   return (
     <article className="rounded-xl border border-border bg-surface p-4" data-testid={`milestone-${m.id}`} aria-label={m.title}>
       <header className="flex flex-wrap items-baseline justify-between gap-2">
-        <h4 className="font-display font-semibold">{m.title}</h4>
+        <h4 className="font-display font-semibold">
+          {m.title}
+          {m.id !== "8.5" && <span className="ml-2 rounded bg-bg px-1.5 py-0.5 text-xs font-normal text-muted">nâng cao</span>}
+        </h4>
         <span className="font-mono text-xs text-muted">hạn {dmy(m.due)}</span>
       </header>
       <p className="mt-2 font-display text-3xl font-bold tabular-nums" data-testid="milestone-solid">

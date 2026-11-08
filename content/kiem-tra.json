@@ -1,0 +1,207 @@
+{
+  "target": {
+    "total": 8.5,
+    "groups": [
+      {
+        "key": "1",
+        "label": "Bài 1 · Thống kê, xác suất",
+        "max": 1.5,
+        "target": 1.5,
+        "units": [
+          "a-tanso",
+          "a-bieudo",
+          "b-phepthu",
+          "b-xsuat",
+          "b-haib"
+        ]
+      },
+      {
+        "key": "2",
+        "label": "Bài 2 · Căn thức",
+        "max": 1.5,
+        "target": 1.25,
+        "units": [
+          "c-dkxd",
+          "c-coban",
+          "c-truccan",
+          "c-rutgon",
+          "c-cauphu"
+        ]
+      },
+      {
+        "key": "3",
+        "label": "Bài 3 · Bài toán thực tế, phương trình",
+        "max": 2.5,
+        "target": 2.5,
+        "units": [
+          "g-giaihpt",
+          "g-chuso",
+          "g-chuyendong",
+          "g-nangsuat",
+          "g-phantram",
+          "g-honhop",
+          "d-ptbh",
+          "d-nhamnghiem",
+          "d-thamso",
+          "e-viete",
+          "e-vietets"
+        ]
+      },
+      {
+        "key": "4.1",
+        "label": "Bài 4.1 · Hình khối thực tế",
+        "max": 1.0,
+        "target": 1.0,
+        "units": [
+          "p-trunon",
+          "p-cau",
+          "p-ghep"
+        ]
+      },
+      {
+        "key": "4.2",
+        "label": "Bài 4.2 · Hình phẳng, đường tròn",
+        "max": 3.0,
+        "target": 2.25,
+        "units": [
+          "htl-1",
+          "htl-2",
+          "f3-dongdang",
+          "f3-tugiac",
+          "j-coban",
+          "k-goiintiep",
+          "k-tugiacnt",
+          "l-tieptuyen",
+          "o-chungminh",
+          "o-dongdang",
+          "o-thanghang",
+          "o-nangcao"
+        ]
+      },
+      {
+        "key": "5",
+        "label": "Bài 5 · Tối ưu",
+        "max": 0.5,
+        "target": 0,
+        "units": [
+          "hq-amgm",
+          "hq-doanhthu",
+          "hq-hinhhoc"
+        ]
+      }
+    ]
+  },
+  "tests": [
+    {
+      "n": 1,
+      "date": "2026-11-22",
+      "mode": "paper",
+      "minutes": 45,
+      "status": "approved",
+      "approvedOn": "2026-11-08",
+      "covers": "Cuối giai đoạn 1: Bài 1 (thống kê, xác suất), Bài 3.1 (lập hệ phương trình), Bài 4.1 (hình khối)",
+      "problems": [
+        {
+          "bai": 1,
+          "text": [
+            "1) Bạn Minh ghi lại quãng đường (đơn vị: km) mình chạy bộ mỗi buổi sáng trong $40$ ngày và thu được bảng tần số ghép nhóm sau:",
+            "$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Quãng đường (km)} & [3;4) & [4;5) & [5;6) & [6;7) & [7;8) \\\\ \\hline \\text{Số ngày} & 4 & 10 & 14 & 8 & 4 \\\\ \\hline \\end{array}$",
+            "a) Lập bảng tần số tương đối ghép nhóm của mẫu số liệu trên.",
+            "b) Minh đặt mục tiêu: số ngày chạy được từ $6$ km trở lên chiếm ít nhất $35\\%$ tổng số ngày. Minh đã đạt mục tiêu đó chưa? Vì sao?",
+            "2) Bạn Lan có ba chiếc áo màu trắng, hồng, xanh và ba chiếc chân váy màu đen, be, xám. Lan chọn ngẫu nhiên một chiếc áo và một chiếc chân váy để mặc.",
+            "a) Mô tả không gian mẫu của phép thử. Không gian mẫu có bao nhiêu phần tử?",
+            "b) Tính xác suất của biến cố $A$: “Lan chọn được áo màu trắng hoặc chân váy màu đen”."
+          ]
+        },
+        {
+          "bai": 3,
+          "text": [
+            "1) Giải bài toán bằng cách lập hệ phương trình: Một hợp tác xã cấy $50$ ha lúa giống mới và $30$ ha lúa giống cũ. Vụ này thu hoạch được tất cả $450$ tấn thóc. Biết rằng $4$ ha lúa giống mới thu hoạch được ít hơn $5$ ha lúa giống cũ là $1$ tấn thóc. Hỏi năng suất của mỗi giống lúa là bao nhiêu tấn thóc trên $1$ ha?"
+          ]
+        },
+        {
+          "bai": 4,
+          "text": [
+            "1) Một nhà máy sản xuất đinh tán bằng thép. Mỗi chiếc đinh tán gồm phần đầu có dạng nửa hình cầu bán kính $6$ mm và phần thân có dạng hình trụ đường kính đáy $6$ mm, dài $25$ mm (như hình bên).",
+            "a) Tính thể tích của một chiếc đinh tán (lấy $\\pi \\approx 3{,}14$ và làm tròn kết quả đến hàng đơn vị của $\\text{mm}^3$).",
+            "b) Tính khối lượng thép cần dùng để sản xuất $2000$ chiếc đinh tán như vậy, biết khối lượng riêng của thép là $7850\\ \\text{kg/m}^3$ (bỏ qua hao hụt khi gia công; làm tròn kết quả đến hàng phần mười của kg)."
+          ],
+          "figure": {
+            "svg": "<svg viewBox=\"0 0 274 118\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M80 20 A30 30 0 0 0 80 80 A7 30 0 0 0 80 20 Z\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M86.1 35 L205 35 A7 15 0 0 1 205 65 L86.1 65\" fill=\"var(--accent)\" fill-opacity=\"0.08\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M205 35 A7 15 0 0 0 205 65\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><path d=\"M80 50 L58.8 28.8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><circle cx=\"80\" cy=\"50\" r=\"1.8\" fill=\"currentColor\"/><text x=\"54.8\" y=\"24.8\" font-size=\"11\" text-anchor=\"end\" fill=\"currentColor\">6 mm</text><path d=\"M80 96 L205 96 M80 91 L80 101 M205 91 L205 101\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><path d=\"M205 69 L205 90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"142.5\" y=\"110\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">25 mm</text><path d=\"M226 35 L226 65 M221 35 L231 35 M221 65 L231 65\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/><text x=\"234\" y=\"54\" font-size=\"11\" text-anchor=\"start\" fill=\"currentColor\">6 mm</text></svg>",
+            "alt": "Đinh tán nhìn ngang: bên trái là đầu nửa hình cầu bán kính 6 mm, mặt phẳng của đầu gắn với thân hình trụ đường kính 6 mm, dài 25 mm."
+          }
+        }
+      ],
+      "parts": [
+        {
+          "part": "1.1a",
+          "max": 0.5,
+          "answer": "$N=40$; tần số tương đối các nhóm $[3;4),\\dots,[7;8)$: $10\\%;\\ 25\\%;\\ 35\\%;\\ 20\\%;\\ 10\\%$ (tổng $100\\%$). Đúng 3–4 nhóm, hoặc đủ 5 nhóm nhưng không lập bảng: 0,25; đủ 5 nhóm, có bảng: 0,5 (phân số, thập phân hay % đều được). Hay sai: chia cho số nhóm, viết tần số thay tần số tương đối.",
+          "units": [
+            "a-tanso"
+          ],
+          "source": "68 đề – Đề 5, Bài 1.1, tr.25 (đổi số liệu)"
+        },
+        {
+          "part": "1.1b",
+          "max": 0.25,
+          "answer": "Từ $6$ km trở lên: nhóm $[6;7)$ và $[7;8)$, $8+4=12$ ngày $=30\\%<35\\%$ → **chưa đạt**. Chỉ cho điểm khi có lí do ($30\\%$ hoặc $12<14$ ngày). Hay sai: tính cả nhóm $[5;6)$ ($65\\%$, “đạt”).",
+          "units": [
+            "a-tanso"
+          ],
+          "source": "68 đề – Đề 5, Bài 1.1, tr.25 (đổi số liệu, thêm câu nhận xét)"
+        },
+        {
+          "part": "1.2a",
+          "max": 0.25,
+          "answer": "$\\Omega$ gồm $9$ cặp (áo; chân váy): (trắng; đen), (trắng; be), (trắng; xám), (hồng; đen), (hồng; be), (hồng; xám), (xanh; đen), (xanh; be), (xanh; xám). Liệt kê đủ hoặc kẻ bảng $3\\times3$ + nêu $9$ phần tử. Chỉ ghi số $9$ mà không mô tả: 0.",
+          "units": [
+            "b-phepthu",
+            "b-haib"
+          ],
+          "source": "68 đề – Đề 45, Bài 1.2, tr.107 (đổi số liệu)"
+        },
+        {
+          "part": "1.2b",
+          "max": 0.5,
+          "answer": "Kết quả thuận lợi: (trắng; đen), (trắng; be), (trắng; xám), (hồng; đen), (xanh; đen) — $5$ kết quả (0,25); $P(A)=\\dfrac59$ (0,25). Hay sai: đếm (trắng; đen) hai lần → $\\dfrac69$; hiểu “hoặc” là “và” → $\\dfrac19$.",
+          "units": [
+            "b-haib",
+            "b-xsuat"
+          ],
+          "source": "68 đề – Đề 45, Bài 1.2, tr.107 (đổi số liệu, hỏi biến cố “hoặc”)"
+        },
+        {
+          "part": "3.1",
+          "max": 1,
+          "answer": "Gọi năng suất giống mới $x$, giống cũ $y$ (tấn/ha), $x,y>0$ (0,25) · Lập hệ $50x+30y=450$; $5y-4x=1$ (0,25) · Giải: $x=6$, $y=5$ (0,25) · KL: giống mới $6$ tấn/ha, giống cũ $5$ tấn/ha (TMĐK) (0,25). Hay sai: viết $4x-5y=1$ (ra số lẻ $\\frac{228}{37}$) → chỉ được 0,25 (gọi ẩn).",
+          "units": [
+            "g-nangsuat",
+            "g-giaihpt"
+          ],
+          "source": "68 đề – Đề 45, Bài 3.1, tr.108 (đổi số liệu)"
+        },
+        {
+          "part": "4.1a",
+          "max": 0.5,
+          "answer": "$V=\\frac23\\pi\\cdot6^3+\\pi\\cdot3^2\\cdot25=144\\pi+225\\pi=369\\pi$ (0,25) $\\approx1159$ mm³ (0,25) (π máy tính cũng ra $1159$). Hay sai: thân lấy bán kính $6$ (≈ $3278$); dùng cả hình cầu (≈ $1611$).",
+          "units": [
+            "p-ghep",
+            "p-trunon"
+          ],
+          "source": "68 đề – Đề 25, Bài 4.1a, tr.66 (đổi số liệu, cho đủ kích thước)"
+        },
+        {
+          "part": "4.1b",
+          "max": 0.5,
+          "answer": "$2000\\cdot1158{,}66\\approx2\\,317\\,320$ mm³ $\\approx0{,}0023173$ m³ (đổi $1$ m³ $=10^9$ mm³) (0,25); $m\\approx18{,}2$ kg (0,25). Dùng $1159$ hay $369\\pi$ đều ra $18{,}2$. Hay sai: đổi $10^6$ → $18\\,191$ kg (0 điểm); làm tròn sớm $0{,}0023$ m³ → $18{,}1$ (trừ 0,25).",
+          "units": [
+            "p-ghep"
+          ],
+          "source": "68 đề – Đề 25, Bài 4.1b, tr.66 (đổi số liệu)"
+        }
+      ],
+      "note": "Chấm theo mốc 0,25 trong từng ý; ý con chưa học đánh “chưa học”. 4.1b: chấp nhận dùng kết quả đã làm tròn ở 4.1a; sai 4.1a nhưng đổi đơn vị và tính đúng theo số của mình → cho 0,25 bước đổi đơn vị. 3.1 thiếu điều kiện → mất 0,25 mốc gọi ẩn (không trừ thêm ở mốc kết luận); kết luận không đơn vị → mất 0,25 mốc kết luận."
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import curriculum from "../../../content/curriculum.json";
 import soTay from "../../../content/so-tay.json";
 import drills from "../../../content/luyen-de-42.json";
 import mocks from "../../../content/thi-thu.json";
+import progress from "../../../content/kiem-tra.json";
 import m0 from "../../../content/backfill-dai-so/module.json";
 import m0u0 from "../../../content/backfill-dai-so/f1-hdt.json";
 import m0u1 from "../../../content/backfill-dai-so/f1-pnt.json";
@@ -68,6 +69,7 @@ export const CURRICULUM: unknown = curriculum;
 export const SO_TAY: unknown = soTay;
 export const DRILLS: unknown = drills;
 export const MOCKS: unknown = mocks;
+export const PROGRESS: unknown = progress;
 export const MODULE_FILES: { module: unknown; units: unknown[] }[] = [
   { module: m0, units: [m0u0, m0u1, m0u2, m0u3] },
   { module: m1, units: [m1u0, m1u1] },

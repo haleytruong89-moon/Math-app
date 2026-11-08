@@ -4,11 +4,11 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { finishMock, startMock } from "@/app/thi-thu/actions";
 
-const MINUTES = 120;
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 // Thi thử (S9): "Bắt đầu" → 120-minute countdown → "Nộp bài". Only the times are recorded; nothing locks.
-export function MockTimer({ paper, startedAt }: { paper: number; startedAt: string | null }) {
+// Kiểm tra tiến bộ (08/11): the same with the test's own minutes; `exam` is the key ("57", "kt1").
+export function MockTimer({ exam, minutes, startedAt }: { exam: string; minutes: number; startedAt: string | null }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -21,10 +21,10 @@ export function MockTimer({ paper, startedAt }: { paper: number; startedAt: stri
     return () => clearInterval(t);
   }, [startedAt]);
 
-  const run = (fn: (p: number) => Promise<{ ok: boolean; message?: string }>) =>
+  const run = (fn: (key: string) => Promise<{ ok: boolean; message?: string }>) =>
     start(async () => {
       setError(null);
-      const r = await fn(paper);
+      const r = await fn(exam);
       if (!r.ok) setError(r.message ?? "Có lỗi, thử lại.");
       router.refresh();
     });
@@ -33,13 +33,13 @@ export function MockTimer({ paper, startedAt }: { paper: number; startedAt: stri
     return (
       <div className="mt-4 flex flex-col items-start gap-2">
         <button type="button" disabled={pending} onClick={() => run(startMock)} className="rounded-xl bg-accent px-5 py-3 font-display font-bold text-on-accent disabled:opacity-60" data-testid="mock-start">
-          {pending ? "Đang mở…" : "Bắt đầu — 120 phút"}
+          {pending ? "Đang mở…" : `Bắt đầu — ${minutes} phút`}
         </button>
         {error && <p role="alert" className="text-sm text-warn">{error}</p>}
       </div>
     );
 
-  const left = now === null ? null : Math.max(0, Math.round(MINUTES * 60 - (now - new Date(startedAt).getTime()) / 1000));
+  const left = now === null ? null : Math.max(0, Math.round(minutes * 60 - (now - new Date(startedAt).getTime()) / 1000));
   return (
     <div className="mt-4 flex flex-col items-start gap-3">
       <p className={`font-mono text-5xl font-bold ${left === 0 ? "text-warn" : ""}`} data-testid="mock-clock" aria-live="off">
