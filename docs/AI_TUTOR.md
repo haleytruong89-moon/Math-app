@@ -1,6 +1,8 @@
 # AI trong App Toán — thiết kế
 
 > Duyệt 05/10/2026 (quyết định AI1–AI4 trong `docs/SPEC.md` §0). Chi tiết hoá D9 và hub §3.9. Chưa code; lát **S8**.
+> **12/11/2026:** chế độ mới **gia sư AI** (phỏng vấn chẩn đoán, sửa lỗi, huấn luyện giải toán, ảnh bài làm) — thiết kế riêng
+> `docs/superpowers/specs/2026-11-12-gia-su-ai-design.md`, chưa định ngày code.
 > Nguyên tắc gốc: **AI giúp con tự nghĩ, không giải hộ; không bao giờ là nguồn kiến thức mới.** Mọi kiến thức con học
 > đến từ nội dung đã kiểm tra + phụ huynh duyệt (D16). AI chỉ diễn đạt lại và hỏi gợi mở dựa trên nội dung đó.
 

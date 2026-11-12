@@ -1,7 +1,7 @@
 # HANDOFF — việc kế tiếp cho từng phiên
 
 > Phụ huynh chỉ cần nói **"đọc HANDOFF"**. Phiên nào xong việc thì cập nhật mục của mình (ngày, trạng thái, việc kế).
-> Cập nhật lần cuối: 01/11/2026 ("Cần tập trung": phụ huynh ★ + mục chọn bài cho con; Luyện đề 4.2 đã duyệt). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
+> Cập nhật lần cuối: 08/11/2026 (kế hoạch tới 8,5 — thiết kế); trước đó 01/11/2026 ("Cần tập trung": phụ huynh ★ + mục chọn bài cho con; Luyện đề 4.2 đã duyệt). Quy tắc phối hợp: `CLAUDE.md` mục "Working with two Claude surfaces".
 
 ## Quy ước
 - Mỗi phiên một nhánh, một thư mục. Không merge, không push `main`, không chạy SQL (kể cả nút "Áp dụng SQL" — chỉ phụ huynh bấm), không đọc/in khoá bí mật.
@@ -21,14 +21,18 @@
 | Đợt 8: e-viete, e-vietets, g-honhop, o-chungminh, o-dongdang | `p1-content-8` | 03/01 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
 | Đợt 9: o-thanghang, o-nangcao, hq-amgm | `p1-content-9` | 07/02 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
 | Đợt 10: hq-doanhthu, hq-hinhhoc | `p1-content-10` | 21/02 | ✅ duyệt 08/11 sau audit AI (`p1-audit-1`) |
-| Audit AI đợt 3–6 (đã duyệt, con đang học): 18/18 đạt sau khi sửa, không thay câu; + ô số hiểu dấu chấm hàng nghìn, câu nhiều bước trong kiểm tra mở từng bước | `p1-audit-2` | — | 🟡 08/11 PR mở |
-| Thi thử: thiết kế ✅ 06/11 → code ✅ 07/11 (`p1-slice-9`, SQL 0015, merged #51) → phiếu chấm Đề 57–59 ✅ duyệt 08/11 sau audit AI → **kế: gia sư soát phiếu; phiếu Đề 60–68 trong 02–03/2027; đợt 9** | `p1-slice-9`, `p1-thithu-1` | Đề 57 trước 01/2027 | 🟡 chờ phụ huynh: merge #50 → áp SQL 0015 + merge #51 → merge PR phiếu chấm |
+| Audit AI đợt 3–6 (đã duyệt, con đang học): 18/18 đạt sau khi sửa, không thay câu; + ô số hiểu dấu chấm hàng nghìn, câu nhiều bước trong kiểm tra mở từng bước | `p1-audit-2` | — | ✅ merged 08/11 (PR #56) |
+| Thi thử: thiết kế ✅ 06/11 → code ✅ 07/11 (`p1-slice-9`, SQL 0015, merged #51) → phiếu chấm Đề 57–59 ✅ duyệt 08/11 sau audit AI → **kế: phiếu Đề 60–68 trong 02–03/2027** | `p1-slice-9`, `p1-thithu-1` | Đề 57 trước 01/2027 | ✅ code merged 07/11 (#51), SQL 0015 đã áp, phiếu 57–59 merged 08/11 (#55) |
 | Luyện đề 4.2: thiết kế ✅ 23/10 → code + đợt 1 (Đề 3, 5, 6, 8, 28, 31, 35, 46, 52) + đợt 2 (9 + 10 bài ý a, nháp) | `p1-ld42`, `p1-ld42-2` | đợt đầu trước 23/11 | ✅ Merged 23/10 (PR #42 code + đợt 1, #43 đợt 2: Đề 7, 19, 24, 25, 26, 32, 36, 38, 41, 56) — 19 bài, phụ huynh duyệt 23/10, không SQL. Kế: gia sư soát; đợt 3 = bài ý a có tiếp tuyến (Đề 1, 2, 10, 14, 21, 23, 27…) sau l-tieptuyen (đợt 7, 13/12); ý b từ 01/2027 khi có o-dongdang |
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
 ## Phiên Code (VS Code / cloud)
+
+> **12/11/2026 — tạm dừng tới tháng 12** (phụ huynh): A2, B, C chờ. Đang có bản thiết kế **gia sư AI** (`docs/superpowers/specs/2026-11-12-gia-su-ai-design.md`, chưa định ngày code). PR #58 (lát A1, SQL 0016) vẫn mở — chỉ cần áp SQL + merge nếu muốn dùng KT1 ngày 22/11.
+
 | Việc | Nhánh | Hạn | Điều kiện |
 |---|---|---|---|
+| **Kế hoạch tới 8,5** — lát A: bảng mục tiêu theo Bài + kiểm tra tiến bộ KT1–KT4 (giấy ↔ app, 2 tuần/lần, SQL 0016); lát B: kế hoạch tuần của gia sư + nhận xét con đọc được; lát C: chuẩn bị buổi, "Con bị kẹt" | `p1-slice-12` (A), sau đó B, C | **KT1 Chủ nhật 22/11** (giấy) → lát A + đề KT1 xong ~19/11 | 🟡 Thiết kế 08/11 `docs/superpowers/specs/2026-11-08-ke-hoach-8-5-design.md`; chờ phụ huynh "làm" |
 | Bàn làm việc gia sư (T7–T9): mẫu giao diện 5 tab → lát S10 (kho bài, duyệt, ưu tiên; SQL bảng duyệt) → lát S11 (giao từng câu, buổi dạy gọn, Hôm nay; SQL) | `p1-tutor-ux`, `p1-slice-10`, `p1-slice-11` | code tuần 43–44 | ✅ Mẫu duyệt 20/10; kế hoạch `docs/superpowers/plans/2026-10-20-s10-*.md`, `…-s11-*.md` (4 quyết định chốt 20/10). S10 ✅ #27, S11 ✅ #29 (20/10); chỉnh cho laptop ✅ #30, giao diện bản 2 ✅ #31 (21/10, không SQL) |
 | S9 — Gia sư giao bài trong app: bài về nhà gắn KU → nút "Làm trên app" (mở cả khi KU còn khoá), gia sư thấy kết quả của bài đó; ưu tiên theo hạn nộp. Không SQL (dùng `homework.unit_id`) | `p1-slice-9` | ngay sau khi phụ huynh "ok" | ✅ Phụ huynh "ok" 17/10 → PR #23 (không SQL) |
 | **1.** S5 — thiết kế | `p1-plan-reorder` (PR #32) | ✅ 21/10 | Spec `docs/superpowers/specs/2026-10-21-s5-geometry-design.md`; mẫu trên design canvas (hàng "S5 · Học hình"); LT21 (52 KU) |
