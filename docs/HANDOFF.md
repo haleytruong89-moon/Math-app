@@ -27,6 +27,9 @@
 | Đợt 7 thêm f3-tugiac; đợt 9: o-thanghang thay l-kethop; P2 thêm q-dagiac (LT21, 21/10) | — | theo `CURRICULUM.md` §6 | ⬜ |
 
 ## Phiên Code (VS Code / cloud)
+
+> **12/11/2026 — tạm dừng tới tháng 12** (phụ huynh): A2, B, C chờ. Đang có bản thiết kế **gia sư AI** (`docs/superpowers/specs/2026-11-12-gia-su-ai-design.md`, chưa định ngày code). PR #58 (lát A1, SQL 0016) vẫn mở — chỉ cần áp SQL + merge nếu muốn dùng KT1 ngày 22/11.
+
 | Việc | Nhánh | Hạn | Điều kiện |
 |---|---|---|---|
 | **Kế hoạch tới 8,5** — lát A: bảng mục tiêu theo Bài + kiểm tra tiến bộ KT1–KT4 (giấy ↔ app, 2 tuần/lần, SQL 0016); lát B: kế hoạch tuần của gia sư + nhận xét con đọc được; lát C: chuẩn bị buổi, "Con bị kẹt" | `p1-slice-12` (A), sau đó B, C | **KT1 Chủ nhật 22/11** (giấy) → lát A + đề KT1 xong ~19/11 | 🟡 Thiết kế 08/11 `docs/superpowers/specs/2026-11-08-ke-hoach-8-5-design.md`; chờ phụ huynh "làm" |
